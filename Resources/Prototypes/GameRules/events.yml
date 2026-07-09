@@ -17,7 +17,7 @@
     - id: KudzuGrowth
     - id: MassHallucinations
     - id: MimicVendorRule
-    # - id: MothroachSpawn # Claw Command # No.
+    - id: MothroachSpawn # Claw Command
     - id: MouseMigration
     - id: PowerGridCheck
     - id: RandomSentience
@@ -157,7 +157,7 @@
   parent: BaseGameRule
   components:
   - type: StationEvent
-    weight: 7
+    weight: 3.5 # _ClawCommand: 7 -> 3.5
     duration: 1
     minimumPlayers: 15
   - type: BreakerFlipRule
@@ -408,7 +408,7 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 20
-    minimumPlayers: 15
+    minimumPlayers: 20 # _ClawCommand: 15 -> 20.
     weight: 5
     duration: 5
     maxDuration: 20
@@ -429,7 +429,7 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 20
-    minimumPlayers: 15
+    minimumPlayers: 20 # _ClawCommand: 15 -> 20.
     weight: 5
     duration: 5
     maxDuration: 20
@@ -450,7 +450,7 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 20
-    minimumPlayers: 15
+    minimumPlayers: 20 # _ClawCommand: 15 -> 20.
     weight: 5
     duration: 5
     maxDuration: 20

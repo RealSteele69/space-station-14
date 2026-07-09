@@ -1,10 +1,11 @@
 ﻿using Content.Server.GameTicking.Rules.VariationPass.Components;
-using Content.Server.Light.Components;
 using Content.Server.Light.EntitySystems;
 using Content.Shared.Light.Components;
 using Robust.Shared.Random;
 
 namespace Content.Server.GameTicking.Rules.VariationPass;
+
+// !! CLAW COMMAND MODIFIED !! //
 
 /// <inheritdoc cref="PoweredLightVariationPassComponent"/>
 public sealed partial class PoweredLightVariationPassSystem : VariationPassSystem<PoweredLightVariationPassComponent>
@@ -31,21 +32,25 @@ public sealed partial class PoweredLightVariationPassSystem : VariationPassSyste
                 continue;
             }
 
-            if (!Random.Prob(ent.Comp.LightAgingChance))
-                continue;
+            // CC: No, this is too damn buggy.
+            /*
+            if (Random.Prob(ent.Comp.LightAgingChance))
+            {
+                if (comp.BulbType == LightBulbType.Tube)
+                {
+                    // some aging fluorescents (tubes) start to flicker
+                    // its also way too annoying right now so we wrap it in another prob lol
+                    if (Random.Prob(ent.Comp.AgedLightTubeFlickerChance))
+                        EnsureComp<BlinkingPoweredLightComponent>(uid);
+                    _poweredLight.ReplaceSpawnedPrototype((uid, comp), ent.Comp.AgedLightTubePrototype);
+                }
+                else
+                {
+                    _poweredLight.ReplaceSpawnedPrototype((uid, comp), ent.Comp.AgedLightBulbPrototype);
+                }
+            }
+            */
 
-            if (comp.BulbType == LightBulbType.Tube)
-            {
-                // some aging fluorescents (tubes) start to flicker
-                // its also way too annoying right now so we wrap it in another prob lol
-                if (Random.Prob(ent.Comp.AgedLightTubeFlickerChance))
-                    EnsureComp<BlinkingPoweredLightComponent>(uid);
-                _poweredLight.ReplaceSpawnedPrototype((uid, comp), ent.Comp.AgedLightTubePrototype);
-            }
-            else
-            {
-                _poweredLight.ReplaceSpawnedPrototype((uid, comp), ent.Comp.AgedLightBulbPrototype);
-            }
         }
     }
 }

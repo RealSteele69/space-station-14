@@ -11,7 +11,7 @@
     startAnnouncement: station-event-slimes-spawn-announcement
     earliestStart: 20
     minimumPlayers: 10
-    weight: 5
+    weight: 1
     duration: 60
   - type: VentCrittersRule
     entries:
@@ -31,7 +31,7 @@
     startAnnouncement: station-event-spider-spawn-announcement
     earliestStart: 20
     minimumPlayers: 7
-    weight: 3.35
+    weight: 1.15
     duration: 60
   - type: VentCrittersRule
     entries:
@@ -47,7 +47,7 @@
     startAnnouncement: station-event-spider-clown-spawn-announcement
     earliestStart: 20
     minimumPlayers: 10
-    weight: 1.5
+    weight: 0.5
     duration: 60
   - type: VentCrittersRule
     entries:
@@ -82,7 +82,7 @@
     earliestStart: 20
     reoccurrenceDelay: 20
     minimumPlayers: 15
-    weight: 3
+    weight: 1
     duration: 80
   - type: VentCrittersRule
     entries:
@@ -146,7 +146,7 @@
     earliestStart: 20
     reoccurrenceDelay: 20
     minimumPlayers: 9
-    weight: 3
+    weight: 1
   - type: VentCrittersRule
     entries:
     - id: MobXeno

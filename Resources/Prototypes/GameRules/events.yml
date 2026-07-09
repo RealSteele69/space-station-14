@@ -1,3 +1,5 @@
+# !! CLAW COMMAND MODIFIED # !!
+
 - type: entityTable
   id: BasicCalmEventsTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
@@ -15,17 +17,17 @@
     - id: KudzuGrowth
     - id: MassHallucinations
     - id: MimicVendorRule
-    - id: MothroachSpawn # Claw Command
+    # - id: MothroachSpawn # Claw Command # No.
     - id: MouseMigration
     - id: PowerGridCheck
     - id: RandomSentience
-    - id: SlimesSpawn # Claw Command
+    # - id: SlimesSpawn # Claw Command # No.
     - id: SlimesSpawnHorde
     - id: SolarFlare
     - id: SnakeSpawnHorde
-    - id: SpiderClownSpawn # Claw Command
+    # - id: SpiderClownSpawn # Claw Command # No.
     - id: SpiderClownSpawnHorde
-    - id: SpiderSpawn # Claw Command
+    # - id: SpiderSpawn # Claw Command # No.
     - id: SpiderSpawnHorde
     - id: VentClog
 
@@ -36,7 +38,7 @@
     - id: ClosetSkeleton
     - id: KingRatMigration
     - id: RevenantSpawn
-    - id: XenoVentsWeak # Claw Command
+    # - id: XenoVentsWeak # Claw Command
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
 
@@ -52,7 +54,7 @@
     - id: LoneOpsSpawn
     - id: WizardSpawn
     - id: SyndieOutpostSpawn #claw command
-    - id: XenoVents # Claw Command
+    - id: XenoVentsWeak # Claw Command # Changed from XenoVents to XenoVentsWeak, no.
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
 

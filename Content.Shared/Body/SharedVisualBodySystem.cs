@@ -12,7 +12,6 @@ namespace Content.Shared.Body;
 /// </summary>
 public abstract partial class SharedVisualBodySystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private MarkingManager _marking = default!;
     [Dependency] private SharedContainerSystem _container = default!;
 
@@ -150,7 +149,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         // markings; user-picked colors on customizable markings are preserved.
         if (TryComp<VisualOrganMarkingsComponent>(ent, out var markingsComp)
             && markingsComp.Markings.Count > 0
-            && _prototype.TryIndex(markingsComp.MarkingData.Group, out var groupProto))
+            && ProtoMan.TryIndex(markingsComp.MarkingData.Group, out var groupProto))
         {
             var resolved = markingsComp.Markings.ToDictionary(
                 kvp => kvp.Key,
@@ -167,7 +166,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (!args.Args.Markings.TryGetValue(category, out var markingSet))
             return;
 
-        var groupProto = _prototype.Index(ent.Comp.MarkingData.Group);
+        var groupProto = ProtoMan.Index(ent.Comp.MarkingData.Group);
         var organMarkings = ent.Comp.Markings.ShallowClone();
 
         foreach (var layer in ent.Comp.MarkingData.Layers)

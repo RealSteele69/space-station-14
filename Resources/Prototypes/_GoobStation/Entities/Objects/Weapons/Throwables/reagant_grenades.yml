@@ -16,7 +16,12 @@
   description: A grenade that releases Space Lube foam.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Grenades/metalfoam.rsi # _ClawCommand - foamdart.rsi does not exist in this fork; metalfoam is the foam grenade sprite
+    sprite: Objects/Fun/Foam/foam_grenade.rsi
+    layers:
+    - state: icon
+      map: ["Base"]
+    - state: primed
+      map: ["enum.TriggerVisualLayers.Base"]
   - type: SmokeOnTrigger
     duration: 5
     spreadAmount: 25

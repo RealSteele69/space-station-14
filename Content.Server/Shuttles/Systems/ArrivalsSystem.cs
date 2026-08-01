@@ -53,7 +53,6 @@ public sealed partial class ArrivalsSystem : EntitySystem
     [Dependency] private IConfigurationManager _cfgManager = default!;
     [Dependency] private IConsoleHost _console = default!;
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private IPrototypeManager _protoManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ActorSystem _actor = default!;
     [Dependency] private BiomeSystem _biomes = default!;
@@ -446,7 +445,7 @@ public sealed partial class ArrivalsSystem : EntitySystem
         // Claw Command: skip arrivals for JobEntity jobs (AI, Borg). Those need to be inserted into
         // their specific container/pod by ContainerSpawnPointSystem or routed to a Job spawn point,
         // not dumped at arrivals as a stray AI brain.
-        if (_protoManager.Resolve(ev.Job, out var jobProto) && jobProto.JobEntity != null)
+        if (ProtoMan.Resolve(ev.Job, out var jobProto) && jobProto.JobEntity != null)
             return;
 
         // We use arrivals as the default spawn so don't check for job prio (Cryosleep/Arrivals
@@ -664,7 +663,7 @@ public sealed partial class ArrivalsSystem : EntitySystem
         if (_cfgManager.GetCVar(CCVars.ArrivalsPlanet))
         {
             var template = _random.Pick(_arrivalsBiomeOptions);
-            _biomes.EnsurePlanet(mapUid, _protoManager.Index(template));
+            _biomes.EnsurePlanet(mapUid, ProtoMan.Index(template));
             var restricted = new RestrictedRangeComponent
             {
                 Range = 32f

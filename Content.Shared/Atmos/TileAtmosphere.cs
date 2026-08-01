@@ -9,7 +9,8 @@ namespace Content.Shared.Atmos;
 /// Use the public APIs in <see cref="SharedAtmosphereSystem"/> instead.
 /// </summary>
 [Access(typeof(SharedAtmosphereSystem), typeof(SharedGasTileOverlaySystem), typeof(SharedAtmosDebugOverlaySystem))]
-public sealed class TileAtmosphere : IGasMixtureHolder
+[DataDefinition]
+public sealed partial class TileAtmosphere : IGasMixtureHolder
 {
     /// <summary>
     /// The last cycle this tile's air was archived into <see cref="AirArchived"/>.
@@ -116,13 +117,6 @@ public sealed class TileAtmosphere : IGasMixtureHolder
     /// </summary>
     [ViewVariables]
     public AtmosDirection LastPressureDirection;
-
-    /// <summary>
-    /// Last computed continuous pressure vector (Navier-Stokes / MAS output) for this tile.
-    /// Used by the new Space Wind to remember the most recent airflow direction for visuals/debug.
-    /// </summary>
-    [ViewVariables]
-    public System.Numerics.Vector2 LastPressureVector;
 
     /// <summary>
     /// Grid entity this tile belongs to.

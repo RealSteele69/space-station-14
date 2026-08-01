@@ -1,4 +1,4 @@
-﻿using Content.Server.Chat.Systems;
+using Content.Server.Chat.Systems;
 using Content.Server.Shuttles.Components;
 using Content.Shared.Chat;
 using Content.Shared.Teleportation;
@@ -66,7 +66,11 @@ public sealed partial class TeleportLocationsSystem : SharedTeleportLocationsSys
 
         while (allEnts.MoveNext(out var warpEnt, out var warpPointComp, out var xform))
         {
-            if (_whitelist.IsWhitelistPass(warpPointComp.Blacklist, warpEnt) || string.IsNullOrWhiteSpace(warpPointComp.Location))
+
+            if (string.IsNullOrWhiteSpace(warpPointComp.Location))
+                continue;
+
+            if (!_whitelist.CheckBoth(warpEnt, ent.Comp.Blacklist, ent.Comp.Whitelist))
                 continue;
 
             if (xform.MapUid is { } map && centcommMaps.Contains(map))

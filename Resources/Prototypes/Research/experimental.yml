@@ -1,8 +1,8 @@
 # Experimental discipline - tech-tree layout
 #
-# Y axis: themed row clustering inside the Experimental band (rows 10-12)
+# Y axis: themed row clustering inside the Experimental band (rows 10-13)
 #   Rows 10-11  Robotics, anomalies, archeology, and utility
-#   Row 12      Artifact manipulation and psionics
+#   Rows 12-13  Artifact manipulation, psionics, and vision technology
 
 # Tier 1
 
@@ -105,6 +105,8 @@
   position: 4,12
   recipeUnlocks:
   - ArtifactCrusherMachineCircuitboard
+  technologyPrerequisites:
+  - BasicAnomalousResearch
 
 - type: technology
   id: AdvancedAnomalyResearch
@@ -136,6 +138,9 @@
   recipeUnlocks:
   - WeaponParticleDecelerator
   - HoloprojectorField
+  technologyPrerequisites:
+  - MagnetsTech
+  - PowerGeneration
 
 - type: technology
   id: GravityManipulation
@@ -150,6 +155,8 @@
   recipeUnlocks:
     - WeaponForceGun
     - WeaponTetherGun
+  technologyPrerequisites:
+  - MagnetsTech
 
 # Tier 3
 
@@ -165,6 +172,8 @@
   position: 7,10
   recipeUnlocks:
   - DeviceQuantumSpinInverter
+  technologyPrerequisites:
+  - BluespaceTimeManipulation
 
 - type: technology
   id: BluespaceTimeManipulation
@@ -178,6 +187,9 @@
   position: 7,11
   recipeUnlocks:
   - DeviceDesynchronizer
+  technologyPrerequisites:
+  - GravityManipulation
+  - AdvancedAnomalyResearch
 
 - type: technology
   id: TeleSci
@@ -193,3 +205,21 @@
   - StationTeleportersControlCircuitboard
   - StationTeleporterMachineCircuitboard
   - TeleporterChipBlank
+  technologyPrerequisites:
+  - BluespaceTimeManipulation
+
+- type: technology
+  id: NightVisionTech
+  name: research-technology-night-vision
+  icon:
+    sprite: _ClawCommand/Clothing/Eyes/Goggles/nightvision.rsi
+    state: icon
+  discipline: Experimental
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+  - ClothingEyesNightVisionGoggles
+  - ClothingEyesNightVisionSecurityGoggles
+  - ClothingEyesNightVisionMedicalGoggles
+  - ClothingEyesNightVisionDiagnosticGoggles
+  position: 7,13

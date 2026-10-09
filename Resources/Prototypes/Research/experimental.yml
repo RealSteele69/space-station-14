@@ -1,3 +1,9 @@
+# Experimental discipline - tech-tree layout
+#
+# Y axis: themed row clustering inside the Experimental band (rows 10-12)
+#   Rows 10-11  Robotics, anomalies, archeology, and utility
+#   Row 12      Artifact manipulation and psionics
+
 # Tier 1
 
 - type: technology
@@ -9,6 +15,7 @@
   discipline: Experimental
   tier: 1
   cost: 5000
+  position: 0,10
   recipeUnlocks:
   - ProximitySensor
 
@@ -21,6 +28,7 @@
   discipline: Experimental
   tier: 1
   cost: 5000
+  position: 1,10
   recipeUnlocks:
   - AnomalyScanner
   - AnomalyLocator
@@ -37,6 +45,7 @@
   discipline: Experimental
   tier: 1
   cost: 5000
+  position: 2,10
   recipeUnlocks:
   - NodeScanner
   - AnalysisComputerCircuitboard
@@ -51,6 +60,7 @@
   discipline: Experimental
   tier: 1
   cost: 5000
+  position: 0,11
   recipeUnlocks:
   - TechDiskComputerCircuitboard
 
@@ -63,6 +73,7 @@
   discipline: Experimental
   tier: 1
   cost: 7500
+  position: 1,11
   recipeUnlocks:
   - ClothingShoesBootsMagSci
   - ClothingShoesBootsMoon
@@ -76,6 +87,7 @@
   discipline: Experimental
   tier: 1
   cost: 10000
+  position: 2,11
   recipeUnlocks:
   - WeaponGauntletGorilla
 
@@ -90,6 +102,7 @@
   discipline: Experimental
   tier: 2
   cost: 5000
+  position: 4,12
   recipeUnlocks:
   - ArtifactCrusherMachineCircuitboard
 
@@ -102,6 +115,7 @@
   discipline: Experimental
   tier: 2
   cost: 10000
+  position: 4,10
   recipeUnlocks:
   - WeaponPistolCHIMP
   - AnomalySynchronizerCircuitboard
@@ -118,6 +132,7 @@
   discipline: Experimental
   tier: 2
   cost: 7500
+  position: 4,11
   recipeUnlocks:
   - WeaponParticleDecelerator
   - HoloprojectorField
@@ -131,6 +146,7 @@
   discipline: Experimental
   tier: 2
   cost: 10000
+  position: 5,11
   recipeUnlocks:
     - WeaponForceGun
     - WeaponTetherGun
@@ -146,6 +162,7 @@
   discipline: Experimental
   tier: 3
   cost: 10000
+  position: 7,10
   recipeUnlocks:
   - DeviceQuantumSpinInverter
 
@@ -158,6 +175,7 @@
   discipline: Experimental
   tier: 3
   cost: 10000
+  position: 7,11
   recipeUnlocks:
   - DeviceDesynchronizer
 
@@ -170,6 +188,7 @@
   discipline: Experimental
   tier: 3
   cost: 10000
+  position: 7,12
   recipeUnlocks:
   - StationTeleportersControlCircuitboard
   - StationTeleporterMachineCircuitboard

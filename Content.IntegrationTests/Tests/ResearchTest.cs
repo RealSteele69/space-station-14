@@ -46,6 +46,27 @@ public sealed class ResearchTest : GameTest
     }
 
     [Test]
+    public async Task ExperimentalTechnologiesHaveVisibleTreePositionsTest()
+    {
+        var pair = Pair;
+        var protoManager = pair.Server.ResolveDependency<IPrototypeManager>();
+
+        await pair.Server.WaitAssertion(() =>
+        {
+            var experimentalTechs = protoManager.EnumeratePrototypes<TechnologyPrototype>()
+                .Where(tech => tech.Discipline == "Experimental")
+                .ToList();
+
+            Assert.That(experimentalTechs, Is.Not.Empty);
+            Assert.That(experimentalTechs.All(tech => tech.Position.Y is >= 10 and <= 12), Is.True,
+                "Experimental technologies should occupy their dedicated visible tree band.");
+            Assert.That(experimentalTechs.Select(tech => tech.Position).Distinct().Count(),
+                Is.EqualTo(experimentalTechs.Count),
+                "Experimental technologies should not overlap each other.");
+        });
+    }
+
+    [Test]
     public async Task AllTechPrintableTest()
     {
         var pair = Pair;

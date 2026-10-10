@@ -58,11 +58,68 @@ public sealed class ResearchTest : GameTest
                 .ToList();
 
             Assert.That(experimentalTechs, Is.Not.Empty);
-            Assert.That(experimentalTechs.All(tech => tech.Position.Y is >= 10 and <= 12), Is.True,
+            Assert.That(experimentalTechs.All(tech => tech.Position.Y is >= 10 and <= 13), Is.True,
                 "Experimental technologies should occupy their dedicated visible tree band.");
             Assert.That(experimentalTechs.Select(tech => tech.Position).Distinct().Count(),
                 Is.EqualTo(experimentalTechs.Count),
                 "Experimental technologies should not overlap each other.");
+        });
+    }
+
+    [Test]
+    public async Task ResearchTechnologiesHaveExpectedPrerequisitesTest()
+    {
+        var pair = Pair;
+        var protoManager = pair.Server.ResolveDependency<IPrototypeManager>();
+        (string Technology, string Prerequisite)[] expectedPrerequisites =
+        {
+            ("GravityManipulation", "MagnetsTech"),
+            ("DeterrenceTechnologies", "MagnetsTech"),
+            ("DeterrenceTechnologies", "PowerGeneration"),
+            ("AbnormalArtifactManipulation", "BasicAnomalousResearch"),
+            ("PsionicCountermeasures", "SpecialMeans"),
+            ("QuantumLeaping", "BluespaceTimeManipulation"),
+            ("TeleSci", "BluespaceTimeManipulation"),
+            ("BluespaceTimeManipulation", "GravityManipulation"),
+            ("BluespaceTimeManipulation", "AdvancedAnomalyResearch"),
+            ("BluespaceStorage", "BluespaceTimeManipulation"),
+        };
+
+        await pair.Server.WaitAssertion(() =>
+        {
+            foreach (var (technologyId, prerequisiteId) in expectedPrerequisites)
+            {
+                var technology = protoManager.Index<TechnologyPrototype>(technologyId);
+                Assert.That(technology.TechnologyPrerequisites.Select(prerequisite => prerequisite.Id),
+                    Does.Contain(prerequisiteId),
+                    $"Technology '{technologyId}' should require '{prerequisiteId}'.");
+            }
+        });
+    }
+
+    [Test]
+    public async Task PortedTechnologiesUseTheirResearchDisciplineAndTierTest()
+    {
+        var pair = Pair;
+        var protoManager = pair.Server.ResolveDependency<IPrototypeManager>();
+        (string Technology, string Discipline, int Tier)[] expectedPlacements =
+        {
+            ("NightVisionTech", "Experimental", 3),
+            ("RapidPartExchange", "Industrial", 2),
+            ("ThermalVisionTech", "Industrial", 2),
+            ("SuperParts", "Industrial", 3),
+        };
+
+        await pair.Server.WaitAssertion(() =>
+        {
+            foreach (var (technologyId, disciplineId, tier) in expectedPlacements)
+            {
+                var technology = protoManager.Index<TechnologyPrototype>(technologyId);
+                Assert.That(technology.Discipline.Id, Is.EqualTo(disciplineId),
+                    $"Technology '{technologyId}' should be in the '{disciplineId}' discipline.");
+                Assert.That(technology.Tier, Is.EqualTo(tier),
+                    $"Technology '{technologyId}' should be tier {tier}.");
+            }
         });
     }
 

@@ -216,6 +216,34 @@
   - RipleyAPLU
 
 
+# Additional Tier 2 technologies
+
+- type: technology
+  id: RapidPartExchange
+  name: research-technology-rped
+  icon:
+    sprite: Objects/Specific/Research/rped.rsi
+    state: icon
+  discipline: Industrial
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
+  - RPED
+  position: 4,0
+
+- type: technology
+  id: ThermalVisionTech
+  name: research-technology-thermal-vision
+  icon:
+    sprite: Clothing/Eyes/Glasses/thermal.rsi
+    state: icon
+  discipline: Industrial
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - ClothingEyesThermalVisionGoggles
+  position: 5,0
+
 # Tier 3
 
 - type: technology
@@ -234,6 +262,7 @@
   - ClothingBackpackDuffelHolding
   technologyPrerequisites:
   - OptimizedMicrogalvanism
+  - BluespaceTimeManipulation
 
 
 - type: technology
@@ -251,3 +280,18 @@
   - PowerCellHyper
   technologyPrerequisites:
   - AdvancedPowercells
+
+- type: technology
+  id: SuperParts
+  name: research-technology-super-parts
+  icon:
+    sprite: Objects/Misc/stock_parts.rsi
+    state: super_matter_bin
+  discipline: Industrial
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - SuperCapacitorStockPart
+  - SuperMatterBinStockPart
+  - PicoManipulatorStockPart
+  position: 7,2

@@ -1,23 +1,23 @@
 # Claw Command - psionics port.
 #
-# The action system was split since the fork this came from. Fields that used to live on
-# EntityTargetAction / WorldTargetAction / InstantAction now belong to:
-#   - type: Action        -> icon, iconOn, useDelay, itemIconStyle, checkCanInteract, priority
-#   - type: TargetAction  -> range, checkCanAccess
-#   - the specific action -> event, whitelist/blacklist, canTargetSelf
-# Leaving them on the old component silently dropped them (the serializer ignores unknown fields), which
-# would have meant no icons, no cooldowns and default range on every psionic power.
+# Action icons are rendered from the Sprite component, not an icon field on Action.
+# BaseAction supplies the required sprite and appearance components; each action maps its icon
+# texture/state to the ActionVisuals.Icon layer.
 
 - type: entity
+  parent: BaseAction
   id: ActionDispel
   name: Dispel
   description: Dispel summoned entities such as familiars or forcewalls.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: Interface/VerbIcons/dispel.png
       useDelay: 45
       itemIconStyle: BigAction
+    - type: Sprite
+      layers:
+      - texture: Interface/VerbIcons/dispel.png
+        map: ["enum.ActionVisuals.Icon"]
     - type: TargetAction
       checkCanAccess: false
       range: 6
@@ -30,15 +30,19 @@
       event: !type:DispelPowerActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionMassSleep
   name: Mass Sleep
   description: Put targets in a small area to sleep.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: Interface/VerbIcons/mass_sleep.png
       useDelay: 60
       itemIconStyle: BigAction
+    - type: Sprite
+      layers:
+      - texture: Interface/VerbIcons/mass_sleep.png
+        map: ["enum.ActionVisuals.Icon"]
     - type: TargetAction
       checkCanAccess: false
       range: 8
@@ -47,15 +51,19 @@
 
 - type: entity
   # Claw Command - renamed from ActionMindSwap: the fork's Magic/mindswap_spell.yml already owns that ID.
+  parent: BaseAction
   id: ActionPsionicMindSwap
   name: Mind Swap
   description: Swap minds with the target. Either can change back after 20 seconds.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: Interface/VerbIcons/mind_swap.png
       useDelay: 30
       itemIconStyle: BigAction
+    - type: Sprite
+      layers:
+      - texture: Interface/VerbIcons/mind_swap.png
+        map: ["enum.ActionVisuals.Icon"]
     - type: TargetAction
       checkCanAccess: false
       range: 10
@@ -68,28 +76,36 @@
       event: !type:MindSwapPowerActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionMindSwapReturn
   name: Reverse Mind Swap
   description: Return to your original body.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: Interface/VerbIcons/mind_swap_return.png
       useDelay: 20
       checkCanInteract: false
+    - type: Sprite
+      layers:
+      - texture: Interface/VerbIcons/mind_swap_return.png
+        map: ["enum.ActionVisuals.Icon"]
     - type: InstantAction
       event: !type:MindSwapPowerReturnActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionNoosphericZap
   name: Noospheric Zap
   description: Shocks the conciousness of the target and leaves them stunned and stuttering.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: Interface/VerbIcons/noospheric_zap.png
       useDelay: 100
       itemIconStyle: BigAction
+    - type: Sprite
+      layers:
+      - texture: Interface/VerbIcons/noospheric_zap.png
+        map: ["enum.ActionVisuals.Icon"]
     - type: TargetAction
       range: 5
     - type: EntityTargetAction
@@ -100,15 +116,19 @@
       event: !type:NoosphericZapPowerActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionPyrokinesis
   name: Pyrokinesis
   description: Light a flammable target on fire.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: Interface/VerbIcons/pyrokinesis.png
       useDelay: 50
       itemIconStyle: BigAction
+    - type: Sprite
+      layers:
+      - texture: Interface/VerbIcons/pyrokinesis.png
+        map: ["enum.ActionVisuals.Icon"]
     - type: TargetAction
       range: 6
       checkCanAccess: false
@@ -116,74 +136,99 @@
       event: !type:PyrokinesisPowerActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionMetapsionic
   name: Metapsionic Pulse
   description: Send a mental pulse through the area to see if there are any psychics nearby.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: Interface/VerbIcons/metapsionic.png
       useDelay: 45
+    - type: Sprite
+      layers:
+      - texture: Interface/VerbIcons/metapsionic.png
+        map: ["enum.ActionVisuals.Icon"]
     - type: InstantAction
       event: !type:MetapsionicPowerActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionPsionicRegeneration
   name: Psionic Regeneration
   description: Push your natural metabolism to the limit to power your body's regenerative capability.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: Interface/VerbIcons/psionic_regeneration.png
       useDelay: 120
+    - type: Sprite
+      layers:
+      - texture: Interface/VerbIcons/psionic_regeneration.png
+        map: ["enum.ActionVisuals.Icon"]
     - type: InstantAction
       event: !type:PsionicRegenerationPowerActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionTelegnosis
   name: Telegnosis
   description: Create a telegnostic projection to remotely observe things.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: Interface/VerbIcons/telegnosis.png
       useDelay: 150
+    - type: Sprite
+      layers:
+      - texture: Interface/VerbIcons/telegnosis.png
+        map: ["enum.ActionVisuals.Icon"]
     - type: InstantAction
       event: !type:TelegnosisPowerActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionPsionicInvisibility
   name: Psionic Invisibility
   description: Render yourself invisible to any entity that could potentially be psychic. Borgs, animals, and so on are not affected.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: Interface/VerbIcons/psionic_invisibility.png
       useDelay: 120
+    - type: Sprite
+      layers:
+      - texture: Interface/VerbIcons/psionic_invisibility.png
+        map: ["enum.ActionVisuals.Icon"]
     - type: InstantAction
       event: !type:PsionicInvisibilityPowerActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionPsionicInvisibilityUsed
   name: Turn Off Psionic Invisibility
   description: Return to visibility, and receive a stun.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: Interface/VerbIcons/psionic_invisibility_off.png
+    - type: Sprite
+      layers:
+      - texture: Interface/VerbIcons/psionic_invisibility_off.png
+        map: ["enum.ActionVisuals.Icon"]
     - type: InstantAction
       event: !type:RemovePsionicInvisibilityOffPowerActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionHealingWord
   name: Healing Word
   description: Speak the Lesser Secret Of Life, and restore health to another.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: { sprite: Interface/Actions/psionics.rsi, state: healing_word }
       useDelay: 10
       itemIconStyle: BigAction
+    - type: Sprite
+      sprite: Interface/Actions/psionics.rsi
+      layers:
+      - state: healing_word
+        map: ["enum.ActionVisuals.Icon"]
     - type: TargetAction
       checkCanAccess: false
       range: 6
@@ -219,15 +264,20 @@
         glimmerDoAfterVisibilityThreshold: 70
 
 - type: entity
+  parent: BaseAction
   id: ActionRevivify
   name: Breath of Life
   description: Speak the Greater Secret of Life, and restore another to life.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: { sprite: Interface/Actions/psionics.rsi, state: revivify }
       useDelay: 120
       itemIconStyle: BigAction
+    - type: Sprite
+      sprite: Interface/Actions/psionics.rsi
+      layers:
+      - state: revivify
+        map: ["enum.ActionVisuals.Icon"]
     - type: TargetAction
       checkCanAccess: false
       range: 2
@@ -262,15 +312,20 @@
         glimmerDoAfterVisibilityThreshold: 35
 
 - type: entity
+  parent: BaseAction
   id: ActionAssay
   name: Assay
   description: Probe an entity at close range to glean metaphorical information about any powers they may have
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: { sprite: Interface/Actions/psionics.rsi, state: assay }
       useDelay: 45
       itemIconStyle: BigAction
+    - type: Sprite
+      sprite: Interface/Actions/psionics.rsi
+      layers:
+      - state: assay
+        map: ["enum.ActionVisuals.Icon"]
     - type: TargetAction
       checkCanAccess: false
       range: 2
@@ -283,15 +338,20 @@
       event: !type:AssayPowerActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionSummonRemilia
   name: Summon Remilia
   description: Call forth your ever-loyal familiar Remilia.
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: { sprite: Interface/Actions/psionics.rsi, state: summon_remilia }
       useDelay: 120
       checkCanInteract: false
+    - type: Sprite
+      sprite: Interface/Actions/psionics.rsi
+      layers:
+      - state: summon_remilia
+        map: ["enum.ActionVisuals.Icon"]
     - type: InstantAction
       event: !type:SummonPsionicFamiliarActionEvent
         familiarProto: MobBatRemilia

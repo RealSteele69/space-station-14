@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared._ClawCommand.Grab;
 using Content.Shared.Actions.Events;
 using Content.Shared.Climbing.Components;
@@ -84,7 +85,7 @@ public sealed partial class PullingSystem
             || _timing.CurTime < ent.Comp.NextStageChange)
             return;
 
-        var surface = args.HitEntities[0];
+        var surface = args.HitEntities.First();
         if (surface == victim || !IsSlammable(surface, out var hardSurface))
             return;
 

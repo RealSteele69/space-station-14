@@ -44,6 +44,11 @@
   parent: [ GasPipeSansLayersIndestructible, StructureHealthContainer ]
   id: GasPipeSansLayers
   components:
+  - type: RCDDeconstructable # CLAW COMMAND: Added.
+    cost: 1
+    delay: 2
+    fx: EffectRCDDeconstruct2
+    rpd: true
   - type: Damageable
     damageModifierSet: SteelMod
   - type: Destructible

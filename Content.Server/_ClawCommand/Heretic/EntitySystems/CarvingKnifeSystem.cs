@@ -25,7 +25,6 @@ using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
 using Content.Shared.Movement.Pulling.Systems;
-using Content.Shared.Speech.Muting;
 using Content.Shared.StatusEffect;
 using Content.Shared.Tag;
 using Robust.Server.Audio;
@@ -50,7 +49,6 @@ public sealed partial class CarvingKnifeSystem : EntitySystem
     [Dependency] private TagSystem _tag = default!;
     [Dependency] private NavMapSystem _navMap = default!;
     [Dependency] private SharedStaminaSystem _stamina = default!;
-    [Dependency] private StatusEffectsSystem _status = default!;
     [Dependency] private Shared.StatusEffectNew.StatusEffectsSystem _statusNew = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private MindSystem _mind = default!;
@@ -63,6 +61,7 @@ public sealed partial class CarvingKnifeSystem : EntitySystem
 
     private static readonly ProtoId<TagPrototype> CarvingTag = "HereticCarving";
     private static readonly EntProtoId AlertEffect = "CarvingAlertedStatusEffect";
+    private static readonly EntProtoId MutedEffect = "StatusEffectMuted"; // Claw Command
 
     public override void Initialize()
     {
@@ -128,7 +127,7 @@ public sealed partial class CarvingKnifeSystem : EntitySystem
     {
         _stamina.TakeStaminaDamage(args.Victim, ent.Comp.StaminaDamage);
 
-        if (!TryComp(args.Victim, out StatusEffectsComponent? status))
+        if (!HasComp<StatusEffectsComponent>(args.Victim))
             return;
 
         // _ClawCommand: migrated from old TemporaryBlindness to new BlindnessSystem (PR #43705)
@@ -136,11 +135,8 @@ public sealed partial class CarvingKnifeSystem : EntitySystem
             Content.Shared.Eye.Blinding.Systems.BlindnessSystem.BlindingStatusEffect,
             ent.Comp.BlindnessTime);
 
-        _status.TryAddStatusEffect<MutedStatusEffectComponent>(args.Victim,
-            "Muted",
-            ent.Comp.MuteTime,
-            true,
-            status);
+        // Claw Command - upstream removed the old "Muted" status key; apply the StatusEffectMuted entity instead (refresh semantics)
+        _statusNew.TryUpdateStatusEffectDuration(args.Victim, MutedEffect, ent.Comp.MuteTime);
     }
 
     private void OnAlertTriggered(Entity<AlertCarvingComponent> ent, ref TrapTriggeredEvent args)

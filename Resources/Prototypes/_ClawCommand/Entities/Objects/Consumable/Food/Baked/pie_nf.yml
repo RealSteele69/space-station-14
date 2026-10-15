@@ -35,17 +35,16 @@
     layers:
     - state: tin
     - state: applecrisp
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 6
-        - ReagentId: Vitamin
-          Quantity: 4
-        - ReagentId: Flavorol
-          Quantity: 3
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: Vitamin
+        Quantity: 4
+      - ReagentId: Flavorol
+        Quantity: 3
   - type: ToolRefinable
     refineResult:
     - id: FoodPieAppleHoneySlice

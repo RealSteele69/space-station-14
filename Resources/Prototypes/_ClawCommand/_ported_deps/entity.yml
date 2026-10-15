@@ -97,9 +97,9 @@
   description: It's a snappy jumpsuit, looks a bit burnt.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Cargo/shaft_miner.rsi
+    sprite: _GoobStation/Clothing/Uniforms/Jumpsuit/Cargo/shaft_miner.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Cargo/shaft_miner.rsi
+    sprite: _GoobStation/Clothing/Uniforms/Jumpsuit/Cargo/shaft_miner.rsi
 
 # from Resources/Prototypes/_Lavaland/Entities/Objects/Materials/ore.yml
 - type: entity
@@ -221,11 +221,23 @@
 
 # from Resources/Prototypes/_Nuclear14/Entities/Structures/Furniture/chairs.yml
 - type: entity
-  parent: OfficeChairBase
+  parent: [ OfficeChairBase, StructureHealthFurniture ] # Claw Command - upstream structure rebalance moved seat health into StructureHealth* mixins
   id: N14ChairOfficeBlue
   name: office chair
   suffix: blue
   components:
+  # Claw Command - mirrors upstream steel chairs (health formerly inherited from SeatBase).
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: &ThresholdsPortedSeatSteel
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/chairs.rsi
     state: office_chair_blue
@@ -235,11 +247,15 @@
 
 # from Resources/Prototypes/_Nuclear14/Entities/Structures/Furniture/chairs.yml
 - type: entity
-  parent: OfficeChairBase
+  parent: [ OfficeChairBase, StructureHealthFurniture ] # Claw Command - see N14ChairOfficeBlue
   id: N14ChairOfficeGreen
   name: office chair
   suffix: green
   components:
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: *ThresholdsPortedSeatSteel
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/chairs.rsi
     state: office_chair_green
@@ -249,11 +265,15 @@
 
 # from Resources/Prototypes/_Nuclear14/Entities/Structures/Furniture/chairs.yml
 - type: entity
-  parent: OfficeChairBase
+  parent: [ OfficeChairBase, StructureHealthFurniture ] # Claw Command - see N14ChairOfficeBlue
   id: N14ChairOfficeRed
   name: office chair
   suffix: red
   components:
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: *ThresholdsPortedSeatSteel
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/chairs.rsi
     state: office_chair
@@ -279,10 +299,14 @@
 
 # from Resources/Prototypes/_Nuclear14/Entities/Structures/Furniture/chairs.yml
 - type: entity
-  parent: StoolBase
+  parent: [ StoolBase, StructureHealthFurniture ] # Claw Command - see N14ChairOfficeBlue
   id: N14ChairStoolBarRed
   description: A red bar stool.
   components:
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: *ThresholdsPortedSeatSteel
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/chairs.rsi
     state: barstool
@@ -292,10 +316,14 @@
 
 # from Resources/Prototypes/_Nuclear14/Entities/Structures/Furniture/chairs.yml
 - type: entity
-  parent: StoolBase
+  parent: [ StoolBase, StructureHealthFurniture ] # Claw Command - see N14ChairOfficeBlue
   id: N14ChairStoolBarTan
   description: A tan bar stool.
   components:
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: *ThresholdsPortedSeatSteel
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/bedsandchairs.rsi
     state: bar_tan
@@ -474,18 +502,18 @@
 
 # from Resources/Prototypes/_Lavaland/Entities/Structures/walls.yml
 - type: entity
-  parent: BaseWall
+  parent: [ BaseWall, BaseStructureHealth ] # Claw Command - BaseWall lost Damageable/Injurable in the upstream structure rebalance; no thresholds, as before
   id: WallHierophantArenaTemporary
   name: hierophant field
   description: "Keeps the salvager in and... Why are you looking at this in a middle of a fight? You have nothing to do?!"
   components:
-  - type: Tag
-    tags:
-      - Wall
+  # Claw Command - "Wall" tag removed upstream (#45008); WallComponent is inherited from BaseStructureWall
   - type: Sprite
     sprite: _Lavaland/Structures/Walls/hierophant_temp.rsi
   - type: Icon
     sprite: _Lavaland/Structures/Walls/hierophant_temp.rsi
+  - type: Damageable # Claw Command - formerly inherited from BaseStructureWall
+    damageModifierSet: SteelStaticMod
   - type: Destructible
   - type: IconSmooth
     key: hierofield

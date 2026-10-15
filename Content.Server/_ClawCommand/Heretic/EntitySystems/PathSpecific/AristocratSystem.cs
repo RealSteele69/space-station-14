@@ -29,6 +29,7 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
+using Content.Shared.Wall; // Claw Command - Wall tag -> WallComponent (upstream #45008)
 using Content.Shared.Weather;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
@@ -46,7 +47,7 @@ using Content.Goobstation.Common.Atmos;
 using Content.Shared.Movement.Components;
 using Content.Shared.Projectiles;
 using Content.Shared.Standing;
-using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew; // Claw Command - old "PressureImmunity" status key removed upstream
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Components;
@@ -61,7 +62,6 @@ namespace Content.Server.Heretic.EntitySystems.PathSpecific;
 public sealed partial class AristocratSystem : EntitySystem
 {
     private static readonly ProtoId<TagPrototype> WindowTag = "Window";
-    private static readonly ProtoId<TagPrototype> WallTag = "Wall";
 
     [Dependency] private TileSystem _tile = default!;
     [Dependency] private IRobustRandom _rand = default!;
@@ -87,7 +87,9 @@ public sealed partial class AristocratSystem : EntitySystem
 
     private static readonly EntProtoId IceTilePrototype = "IceCrust";
     private static readonly ProtoId<ContentTileDefinition> SnowTilePrototype = "FloorAstroSnow";
-    private static readonly EntProtoId IceWallPrototype = "WallIce";
+    // Claw Command - upstream deleted WallIce (and its ice.rsi sprite) in #44857 and migrates it to WallRockSnow;
+    // WallIceVoid is the restored pre-merge ice wall (_ClawCommand/Entities/Structures/Walls/ice.yml)
+    private static readonly EntProtoId IceWallPrototype = "WallIceVoid";
 
     private const float ConduitDelay = 2f;
 
@@ -316,7 +318,6 @@ public sealed partial class AristocratSystem : EntitySystem
         var xformQuery = GetEntityQuery<TransformComponent>();
         var hereticQuery = GetEntityQuery<HereticComponent>();
         var ghoulQuery = GetEntityQuery<GhoulComponent>();
-        var statusQuery = GetEntityQuery<StatusEffectsComponent>();
 
         HashSet<EntityUid> ignored = new();
         var conduitQuery = EntityQueryEnumerator<VoidConduitComponent, TransformComponent>();
@@ -345,14 +346,10 @@ public sealed partial class AristocratSystem : EntitySystem
                 if (_heretic.IsHereticOrGhoul(ent))
                 {
                     ignored.Add(ent);
-                    if (statusQuery.TryComp(ent, out var status))
-                    {
-                        _status.TryAddStatusEffect<SpecialPressureImmunityComponent>(ent,
-                            "PressureImmunity",
-                            TimeSpan.FromSeconds(2),
-                            true,
-                            status);
-                    }
+                    // Claw Command - upstream moved pressure immunity to the StatusEffectPressureImmunity entity effect
+                    _status.TryUpdateStatusEffectDuration(ent,
+                        PressureImmunityStatusEffectSystem.PressureImmunityEffect,
+                        TimeSpan.FromSeconds(2));
                     continue;
                 }
 
@@ -546,12 +543,13 @@ public sealed partial class AristocratSystem : EntitySystem
 
         var coords = ent.Comp2.Coordinates;
 
-        var tags = _lookup.GetEntitiesInRange<TagComponent>(coords, ent.Comp1.Range, LookupFlags.Static);
+        // Claw Command - upstream replaced the "Wall" tag with WallComponent (#45008); look up walls directly
+        var walls = _lookup.GetEntitiesInRange<WallComponent>(coords, ent.Comp1.Range, LookupFlags.Static);
 
-        foreach (var (uid, tag) in tags)
+        foreach (var (uid, _) in walls)
         {
             // walls
-            if (!_tag.HasTag(tag, WallTag) || !_rand.Prob(.45f) ||
+            if (!_rand.Prob(.45f) ||
                 (Prototype(uid)?.ID ?? string.Empty) == IceWallPrototype)
                 continue;
 

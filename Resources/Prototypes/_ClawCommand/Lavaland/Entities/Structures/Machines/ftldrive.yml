@@ -14,11 +14,23 @@
 
 - type: entity
   id: FTLDriveBase
-  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseMachinePowered, ConstructibleMachine, StructureHealthMachineWeak ] # Claw Command - BaseMachine lost its health upstream; MachineWeak = 100, the old BaseMachine threshold
   abstract: true
   placement:
     mode: SnapgridCenter
   components:
+  # Claw Command - mirrors the pre-rebalance BaseMachine damage/destruction sound.
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
   - type: Transform
     anchored: true
   - type: Physics

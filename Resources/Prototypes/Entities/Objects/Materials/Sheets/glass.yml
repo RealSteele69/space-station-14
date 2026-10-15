@@ -11,6 +11,14 @@
     sprite: Objects/Materials/Sheets/glass.rsi
   - type: Damageable
     damageModifierSet: Glass
+  - type: Tag # _ClawCommand - heretic ritual input (AmberFocus/BladeCosmos); all glass variants inherit
+    tags:
+    # Sheet + ConstructionMaterial are inherited from BaseSheet and MUST be re-listed:
+    # TagComponent.Tags is a plain DataField, so a child's list replaces the parent's
+    # instead of merging. Dropping Sheet breaks lathe/fabricator/silo/flatpacker insertion.
+    - Sheet
+    - ConstructionMaterial
+    - SheetGlass
 
 - type: entity
   parent: SheetGlassBase

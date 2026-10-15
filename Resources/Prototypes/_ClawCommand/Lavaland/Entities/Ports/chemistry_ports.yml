@@ -15,10 +15,10 @@
   - type: Sprite
     sprite: Objects/Specific/Chemistry/beaker.rsi
     state: beaker
-  - type: SolutionContainerManager
-    solutions:
-      beaker:
-        maxVol: 50
+  - type: Solution
+    id: beaker
+    solution:
+      maxVol: 50
 
 - type: entity
   parent: BasePayload

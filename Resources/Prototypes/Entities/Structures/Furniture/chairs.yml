@@ -43,6 +43,9 @@
   components:
   - type: Anchorable
   - type: Rotatable
+  - type: Tag # _ClawCommand - heretic ritual input (Reminiscence); all chairs/stools inherit
+    tags:
+    - Chair
 
 #Start anchored, cannot be rotated while anchored
 - type: entity
@@ -74,6 +77,13 @@
   parent: [ OfficeChairBase, BaseVehicleStrap ]
   id: OfficeChairVehicleBase
   components:
+  # _ClawCommand - both parents define Tag and tag lists don't merge across parents;
+  # re-list BaseVehicleStrap's tags alongside Chair (heretic Reminiscence ritual input)
+  - type: Tag
+    tags:
+    - Chair
+    - DoorBumpOpener
+    - FootstepSound
   - type: Physics
     bodyType: KinematicController
   - type: Vehicle

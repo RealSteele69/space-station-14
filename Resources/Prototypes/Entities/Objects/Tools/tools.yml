@@ -44,6 +44,17 @@
   - type: StaticPrice
     price: 30
   - type: BotanySampleTaker
+  - type: Fixtures # Claw Command: custom density (18) for the wirecutter
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 18
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
 
 - type: entity
   name: screwdriver

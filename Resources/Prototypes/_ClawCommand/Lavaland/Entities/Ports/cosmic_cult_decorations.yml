@@ -6,13 +6,25 @@
 # active in this fork.
 
 - type: entity
-  parent: SeatBase
+  parent: [ SeatBase, StructureHealthFurniture ] # Claw Command - upstream structure rebalance moved seat health into StructureHealth* mixins
   id: CosmicChair
   name: malign settee
   description: A chair of unsettling, otherworldly design.
   placement:
     mode: SnapgridCenter
   components:
+  # Claw Command - mirrors upstream steel Chair (health formerly inherited from SeatBase).
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
   - type: Sprite
     sprite: _DV/CosmicCult/Tileset/cosmicchair.rsi
     state: chair
@@ -49,11 +61,13 @@
     noRot: true
 
 - type: entity
-  parent: CounterBase
+  parent: [ CounterBase, BaseStructureHealth ] # Claw Command - TableBase lost Damageable/Injurable upstream; restored with no destruction thresholds, as before the merge
   id: CosmicTable
   name: malign table
   description: Unfathomably, cosmically square.
   components:
+  - type: Damageable
+    damageModifierSet: SteelMod
   - type: Sprite
     sprite: _DV/CosmicCult/Tileset/cosmictable.rsi
   - type: Icon

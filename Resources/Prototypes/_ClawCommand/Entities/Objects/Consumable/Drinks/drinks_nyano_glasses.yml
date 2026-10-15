@@ -4,13 +4,12 @@
   suffix: orange creamcicle
   description: Orangy, creamy goodness.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: OrangeCreamice
-          Quantity: 30
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: OrangeCreamice
+        Quantity: 30
   - type: Icon
     sprite: Nyanotrasen/Objects/Consumable/Drinks/orangecreamcicle.rsi
     state: icon
@@ -21,13 +20,12 @@
   suffix: silverjack
   description: Reminds you of family.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Silverjack
-          Quantity: 30
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Silverjack
+        Quantity: 30
   - type: Icon
     sprite: Nyanotrasen/Objects/Consumable/Drinks/silverjack.rsi
     state: icon
@@ -38,13 +36,12 @@
   suffix: brainbomb
   description: Toxic to about anything alive, especially your liver.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Brainbomb
-          Quantity: 30
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Brainbomb
+        Quantity: 30
   - type: Icon
     sprite: Nyanotrasen/Objects/Consumable/Drinks/brainbomb.rsi
     state: icon
@@ -55,13 +52,12 @@
   suffix: clown blood
   description: Security Officers favorite drink after a long day.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: ClownBlood
-          Quantity: 30
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: ClownBlood
+        Quantity: 30
   - type: Icon
     sprite: Nyanotrasen/Objects/Consumable/Drinks/clownblood.rsi
     state: icon
@@ -72,13 +68,12 @@
   suffix: circus juice
   description: Honkmother would be proud.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: CircusJuice
-          Quantity: 30
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: CircusJuice
+        Quantity: 30
   - type: Icon
     sprite: Nyanotrasen/Objects/Consumable/Drinks/circusjuice.rsi
     state: icon
@@ -89,13 +84,12 @@
   suffix: sapo picante
   description: Tastes nothing like a toad.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: SapoPicante
-          Quantity: 30
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: SapoPicante
+        Quantity: 30
   - type: Icon
     sprite: Nyanotrasen/Objects/Consumable/Drinks/sapopicante.rsi
     state: icon
@@ -106,13 +100,12 @@
   suffix: graveyard
   description: For those shifts that never seem to end.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Graveyard
-          Quantity: 30
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Graveyard
+        Quantity: 30
   - type: Icon
     sprite: Nyanotrasen/Objects/Consumable/Drinks/graveyard.rsi
     state: icon
@@ -123,13 +116,12 @@
   suffix: atomic punch
   description: Will NOT make you immune to bullets; Isotopes included!
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: AtomicPunch
-          Quantity: 30
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: AtomicPunch
+        Quantity: 30
   - type: Icon
     sprite: Nyanotrasen/Objects/Consumable/Drinks/atomicpunch.rsi
     state: icon
@@ -140,13 +132,12 @@
   suffix: pink drink
   description: Entire civilizations have crumbled trying to decide if this drink really tastes like pink...
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: PinkDrink
-          Quantity: 30
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: PinkDrink
+        Quantity: 30
   - type: Icon
     sprite: Nyanotrasen/Objects/Consumable/Drinks/pinkdrink.rsi
     state: icon
@@ -157,13 +148,12 @@
   suffix: bubble tea
   description: Big straw not included.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: BubbleTea
-          Quantity: 30
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: BubbleTea
+        Quantity: 30
   - type: Icon
     sprite: Nyanotrasen/Objects/Consumable/Drinks/bubbletea.rsi
     state: icon

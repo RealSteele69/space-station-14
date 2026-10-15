@@ -172,8 +172,14 @@
   - type: TemperatureProtection
     coolingCoefficient: 0.9
   - type: Wagging # TODO: Need to add the wagging sprites.
-  - type: Thirst
-    baseDecayRate: 0.2 # Double that of default value.
+  # Claw Command - was the retired `Thirst` component with baseDecayRate 0.2 (double the default 0.1); now a satiation
+  # prototype. Redeclaring Satiation replaces the inherited one wholesale, so Hunger is restated too.
+  - type: Satiation
+    satiations:
+      Hunger:
+        prototype: NormalSatiationHunger
+      Thirst:
+        prototype: FeroxiSatiationThirst
   - type: FeroxiDehydrate
     hydratedMetabolizer: MetabolizerFeroxi
     dehydratedMetabolizer: MetabolizerFeroxiDehydrated

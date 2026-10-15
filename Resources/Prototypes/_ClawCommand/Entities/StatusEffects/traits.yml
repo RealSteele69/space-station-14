@@ -1,0 +1,7 @@
+# Claw Command - permanent status effects granted by fork traits.
+
+# Clumsy trait. Clumsy behaviour now lives on status-effect entities, so the trait applies this one
+# instead of putting the Clumsy*StatusEffect components on the mob, where nothing reads them.
+- type: entity
+  parent: [ StatusEffectClumsyAll, MobStatusEffectBase, TraitStatusEffectBase ]
+  id: TraitStatusEffectClumsy

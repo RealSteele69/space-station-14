@@ -11,17 +11,16 @@
   - type: Sprite
     sprite: _NF/Objects/Consumable/Food/sushi.rsi
     state: avocadosushi
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 40
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 20
-        - ReagentId: Flavorol
-          Quantity: 10
-        - ReagentId: CucumberWater
-          Quantity: 2
+  - type: Solution
+    solution:
+      maxVol: 40
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 20
+      - ReagentId: Flavorol
+        Quantity: 10
+      - ReagentId: CucumberWater
+        Quantity: 2
   - type: ToolRefinable
     refineResult:
     - id: FoodMealAvocadoSushiSlice
@@ -40,17 +39,16 @@
   - type: Sprite
     sprite: _NF/Objects/Consumable/Food/sushi.rsi
     state: avocadosushislice
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 8
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 4
-        - ReagentId: Flavorol
-          Quantity: 2
-        - ReagentId: CucumberWater
-          Quantity: .4
+  - type: Solution
+    solution:
+      maxVol: 8
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Flavorol
+        Quantity: 2
+      - ReagentId: CucumberWater
+        Quantity: .4
 
 - type: entity
   name: carp sushi
@@ -65,19 +63,18 @@
   - type: Sprite
     sprite: _NF/Objects/Consumable/Food/sushi.rsi
     state: carpsushi
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 45
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 20
-        - ReagentId: Flavorol
-          Quantity: 10
-        - ReagentId: CarpoToxin
-          Quantity: 5
-        - ReagentId: CucumberWater
-          Quantity: 2
+  - type: Solution
+    solution:
+      maxVol: 45
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 20
+      - ReagentId: Flavorol
+        Quantity: 10
+      - ReagentId: CarpoToxin
+        Quantity: 5
+      - ReagentId: CucumberWater
+        Quantity: 2
   - type: ToolRefinable
     refineResult:
     - id: FoodMealCarpSushiSlice
@@ -96,16 +93,15 @@
   - type: Sprite
     sprite: _NF/Objects/Consumable/Food/sushi.rsi
     state: carpsushislice
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 9
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 4
-        - ReagentId: Flavorol
-          Quantity: 2
-        - ReagentId: CarpoToxin
-          Quantity: 1
-        - ReagentId: CucumberWater
-          Quantity: .4
+  - type: Solution
+    solution:
+      maxVol: 9
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Flavorol
+        Quantity: 2
+      - ReagentId: CarpoToxin
+        Quantity: 1
+      - ReagentId: CucumberWater
+        Quantity: .4

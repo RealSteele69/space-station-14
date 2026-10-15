@@ -30,6 +30,10 @@ public sealed partial class RCDMenuBoundUserInterface : BoundUserInterface
             ["Airlocks"] = ("rcd-component-airlocks", 2, new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/airlocks.png"))),
             ["Electrical"] = ("rcd-component-electrical", 3, new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/multicoil.png"))),
             ["Lighting"] = ("rcd-component-lighting", 4, new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/lighting.png"))),
+            ["Piping"] = ("rcd-component-piping", 5, new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RPD/fourway.png"))),
+            ["AtmosphericUtility"] = ("rcd-component-atmosphericutility", 6, new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RPD/port.png"))),
+            ["PumpsValves"] = ("rcd-component-pumps", 7, new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RPD/pump_volume.png"))),
+            ["Vents"] = ("rcd-component-vents", 8, new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RPD/vent_passive.png"))),
         };
 
     private SimpleRadialMenu? _menu;

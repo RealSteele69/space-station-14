@@ -114,7 +114,7 @@
 
 - type: entity
   id: ClothingHeadHelmetDZ
-  parent: ClothingHeadHelmetCBURN
+  parent: [ ClawHardsuitHelmetNoWornLightVisuals, ClothingHeadHelmetCBURN ]
   name: "DZ exosuit helmet"
   suffix: "Fredik21, Недра"
   components:
@@ -140,7 +140,7 @@
 
 - type: entity
   id: ClothingHeadHelmetHardsuitSCPDeva
-  parent: ClothingHeadHelmetHardsuitSyndie
+  parent: [ ClawHardsuitHelmetLegacyLightVisuals, ClothingHeadHelmetHardsuitSyndie ]
   name: "Empire Deva Helmet"
   description: "Durable and high-tech helmet protecting the wearer's head. Contains built-in communicator and display for tactical info."
   suffix: "Fredik21, Недра"
@@ -154,7 +154,7 @@
 
 - type: entity
   id: ClothingHeadHelmetHardsuitSCPDevaCommander
-  parent: ClothingHeadHelmetHardsuitSyndie
+  parent: [ ClawHardsuitHelmetLegacyLightVisuals, ClothingHeadHelmetHardsuitSyndie ]
   name: "Empire Deva Helmet"
   description: "Durable and high-tech helmet protecting the wearer's head. Contains built-in communicator and display for tactical information."
   suffix: "Fredik21, Недра"
@@ -168,7 +168,7 @@
 
 - type: entity
   id: ClothingHeadHelmetHardsuitSCPGOCPHYSICS
-  parent: ClothingHeadHelmetHardsuitSyndie
+  parent: [ ClawHardsuitHelmetLegacyLightVisuals, ClothingHeadHelmetHardsuitSyndie ]
   name: "GOC Exoskeleton Helmet \"Guardian Physics\""
   description: "Technological superiority"
   suffix: "Fredik21, Недра"

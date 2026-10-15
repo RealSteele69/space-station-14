@@ -14,6 +14,11 @@ public record struct BeforeHeatExchangeEvent() : IInventoryRelayEvent
     /// A multiplicative modifier for heat transfers on the entity this event is being raised to.
     /// </summary>
     public float HeatTransferModifier = 1f;
+
+    /// <summary>
+    /// Claw Command - true when this exchange removes heat from the entity, for effects that only insulate one way.
+    /// </summary>
+    public bool Cooling;
 }
 
 /// <summary>

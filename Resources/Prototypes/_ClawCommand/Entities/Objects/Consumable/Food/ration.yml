@@ -18,13 +18,12 @@
   - type: Item
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/ration.rsi
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 15
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 15
   - type: Tag
     tags:
     - Fruit # DeltaV - Allow anyone to eat it, hopefully

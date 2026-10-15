@@ -1,8 +1,10 @@
+using System.Globalization; // Claw Command
 using System.Linq;
 using System.Numerics;
 using Content.Server.Administration;
 using Content.Server.Antag;
 using Content.Server.Chat.Managers;
+using Content.Server.Chat.Systems; // Claw Command
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
@@ -18,9 +20,11 @@ using Content.Shared.CCVar;
 using Content.Shared.Damage.Components;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.GameTicking;
+using Content.Shared.Mind; // Claw Command
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Parallax.Biomes;
+using Content.Shared.Roles.Jobs; // Claw Command
 using Content.Shared.RoundEnd;
 using Content.Shared.Salvage;
 using Content.Shared.Shuttles.Components;
@@ -61,6 +65,9 @@ public sealed partial class ArrivalsSystem : EntitySystem
     [Dependency] private StationSpawningSystem _stationSpawning = default!;
     [Dependency] private StationSystem _station = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private ChatSystem _chatSystem = default!; // Claw Command
+    [Dependency] private SharedJobSystem _jobs = default!; // Claw Command
+    [Dependency] private SharedMindSystem _mind = default!; // Claw Command
 
     [Dependency] private EntityQuery<PendingClockInComponent> _pendingQuery = default!;
     [Dependency] private EntityQuery<ArrivalsBlacklistComponent> _blacklistQuery = default!;
@@ -92,7 +99,11 @@ public sealed partial class ArrivalsSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<PlayerSpawningEvent>(HandlePlayerSpawning, before: new []{ typeof(SpawnPointSystem)}, after: new [] { typeof(ContainerSpawnPointSystem)});
+        // Claw Command: subscribe BEFORE ContainerSpawnPointSystem so arrivals always wins for
+        // humanoid players, regardless of their saved SpawnPriority preference. Previously this
+        // ran AFTER container, which let cryo containers (CryogenicSleepUnitSpawnerLateJoin) grab
+        // Cryosleep-pref players before arrivals could fire. Matches space/ subscription order.
+        SubscribeLocalEvent<PlayerSpawningEvent>(HandlePlayerSpawning, before: new []{ typeof(ContainerSpawnPointSystem), typeof(SpawnPointSystem)});
 
         SubscribeLocalEvent<StationArrivalsComponent, StationPostInitEvent>(OnStationPostInit);
 
@@ -102,6 +113,12 @@ public sealed partial class ArrivalsSystem : EntitySystem
         SubscribeLocalEvent<RoundStartingEvent>(OnRoundStarting);
         SubscribeLocalEvent<ArrivalsShuttleComponent, FTLStartedEvent>(OnArrivalsFTL);
         SubscribeLocalEvent<ArrivalsShuttleComponent, FTLCompletedEvent>(OnArrivalsDocked);
+
+        // Claw Command: fire "X has arrived at the station" only when the player's parent grid
+        // becomes a real station grid (i.e. they walked off the shuttle). Event-driven, no polling
+        // — the marker component is removed in the handler, so the subscription only sees each
+        // late-joiner for the brief window between spawn and first arrival.
+        SubscribeLocalEvent<PendingClockInComponent, EntParentChangedMessage>(OnPendingPlayerParentChanged);
 
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(SendDirections);
 
@@ -293,6 +310,98 @@ public sealed partial class ArrivalsSystem : EntitySystem
         }
     }
 
+    /// <summary>
+    /// Claw Command: when a late-joiner's transform parent changes, check whether they just
+    /// stepped onto a real station grid. If so, fire the arrival announcement (deferred from
+    /// GameTicker.Spawning) and remove the pending marker so we never see this entity again.
+    /// </summary>
+    private void OnPendingPlayerParentChanged(EntityUid uid, PendingClockInComponent component, ref EntParentChangedMessage args)
+    {
+        if (!TryGetArrivals(out var arrivalsUid))
+            return;
+
+        var arrivalsMapUid = Transform(arrivalsUid).MapUid;
+        var xform = args.Transform;
+
+        // Still on the arrivals map (shuttle hasn't dropped them off yet, or this is just the
+        // initial spawn parent assignment). Wait.
+        if (xform.MapUid == arrivalsMapUid)
+            return;
+
+        // Not on any grid — floating in space mid-transit. Wait for them to land somewhere.
+        if (xform.GridUid == null)
+            return;
+
+        // The grid must belong to a real station. Rules out e.g. lavaland or a debris grid.
+        var station = _station.GetOwningStation(uid);
+        if (station == null)
+            return;
+
+        AnnounceArrival(uid, station.Value);
+
+        RemCompDeferred<PendingClockInComponent>(uid);
+        RemCompDeferred<AutoOrientComponent>(uid);
+
+        if (ArrivalsGodmode)
+            RemCompDeferred<GodmodeComponent>(uid);
+
+        // Antag assignment is anchored to actual arrival, not the shuttle FTL undock from earlier.
+        // The OnArrivalsFTL path still runs as a fallback for anyone we somehow miss.
+        if (_actor.TryGetSession(uid, out var session) && session is not null)
+            _antag.TryMakeLateJoinAntag(session);
+    }
+
+    private void AnnounceArrival(EntityUid mob, EntityUid station)
+    {
+        // Claw Command - only announce someone who is actually a crewmember clocking in right now.
+        //
+        // This fires from EntParentChangedMessage on anything still holding PendingClockInComponent,
+        // and that component outlives the player: if they ghost off to take a ghost role, or
+        // disconnect, the abandoned body keeps it. Any later reparenting of that body (FTL dumps,
+        // being dragged off the shuttle, gibbing) re-enters this method. The old code answered that
+        // by announcing "Unknown has arrived", which is the spurious announcement.
+        //
+        // So: no attached player, no mind, or no job means no announcement. There is no legitimate
+        // arrival that lacks all three, and every illegitimate one lacks at least one.
+        if (!_actor.TryGetSession(mob, out var arrivalSession) || arrivalSession == null)
+            return;
+
+        if (!_mind.TryGetMind(mob, out var mindId, out _) || !_jobs.MindTryGetJob(mindId, out var jobProto))
+            return;
+
+        // claw command - roles flagged as non-announcing (e.g. Anomaly/Shadekin) never hit the arrivals feed.
+        if (!jobProto.AnnounceArrival)
+            return;
+
+        var joinNotifyCrew = jobProto.JoinNotifyCrew;
+        var jobName = jobProto.LocalizedName;
+
+        var characterName = MetaData(mob).EntityName;
+        var titleCaseJob = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName);
+
+        if (joinNotifyCrew)
+        {
+            _chatSystem.DispatchStationAnnouncement(station,
+                Loc.GetString("latejoin-arrival-announcement-special",
+                    ("character", characterName),
+                    ("entity", mob),
+                    ("job", titleCaseJob)),
+                Loc.GetString("latejoin-arrival-sender"),
+                playDefaultSound: false,
+                colorOverride: Color.Gold);
+        }
+        else
+        {
+            _chatSystem.DispatchStationAnnouncement(station,
+                Loc.GetString("latejoin-arrival-announcement",
+                    ("character", characterName),
+                    ("entity", mob),
+                    ("job", titleCaseJob)),
+                Loc.GetString("latejoin-arrival-sender"),
+                playDefaultSound: false);
+        }
+    }
+
     private void DumpChildren(EntityUid uid, ref FTLStartedEvent args)
     {
         var toDump = new List<Entity<TransformComponent>>();
@@ -334,7 +443,18 @@ public sealed partial class ArrivalsSystem : EntitySystem
         if (ev.SpawnResult != null)
             return;
 
-        // We use arrivals as the default spawn so don't check for job prio.
+        //claw command - skip arrivals for jobs that must always use their own spawner (e.g. Prisoner)
+        if (ev.DesiredSpawnPointType != null)
+            return;
+
+        // Claw Command: skip arrivals for JobEntity jobs (AI, Borg). Those need to be inserted into
+        // their specific container/pod by ContainerSpawnPointSystem or routed to a Job spawn point,
+        // not dumped at arrivals as a stray AI brain.
+        if (ProtoMan.Resolve(ev.Job, out var jobProto) && jobProto.JobEntity != null)
+            return;
+
+        // We use arrivals as the default spawn so don't check for job prio (Cryosleep/Arrivals
+        // SpawnPriorityPreference is intentionally ignored — preference still saves in the UI).
 
         // Only works on latejoin even if enabled.
         if (!Enabled || _ticker.RunLevel != GameRunLevel.InRound)

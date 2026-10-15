@@ -100,3 +100,6 @@ heretic-speech-realignment = R'S'T!
 heretic-speech-fuckoff = F'K 'FF!!
 heretic-speech-ice-spear = D'WN 'F TH'CE!
 heretic-speech-shapeshft = SH'PE
+
+# Claw Command - restored: upstream deleted this key from ninja/katana.ftl, still used by SharedHereticAbilitySystem.Void
+dash-ability-cant-see = You can't see that!

@@ -17,6 +17,12 @@
   components:
   - type: Sprite
     sprite: Imperial/Objects/Weapons/Melee/AdvancedStunBaton/stunbaton.rsi
+  # Claw Command - restores the pre-merge Stunbaton energyPerUse: 25 (80 hits on 2000 charge).
+  # The old component used one value for both the per-hit cost and the minimum charge to switch on / stay on.
+  - type: StaminaDamageOnHitRequiresCharge
+    requiredCharge: 25
+  - type: ItemToggleRequiresCharge
+    requiredCharge: 25
   - type: Battery
     maxCharge: 2000
     startingCharge: 2000
@@ -28,7 +34,7 @@
   description: "A tasteful grey jumpsuit that reminds you of the good old days."
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/color.rsi
+    sprite: Clothing/Uniforms/Jumpsuits/Color/color.rsi # Claw Command - RSI moved upstream
     layers:
     - state: icon
       color: "#b3b3b3"
@@ -44,7 +50,7 @@
         color: "#b3b3b3"
       - state: trinkets-inhand-right
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/color.rsi
+    sprite: Clothing/Uniforms/Jumpsuits/Color/color.rsi # Claw Command - RSI moved upstream
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING

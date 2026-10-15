@@ -8,14 +8,13 @@
     layers:
       - state: skewer
       - state: skewer-rat
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 12
-        - ReagentId: Vitamin
-          Quantity: 6
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 12
+      - ReagentId: Vitamin
+        Quantity: 6
 
 - type: entity
   name: fiesta kebab
@@ -41,11 +40,10 @@
     layers:
       - state: skewer
       - state: skewer-snake
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        canReact: false # Dont want cause reactions inside skewers after merging ingredients
-        maxVol: 0
+  - type: Solution
+    solution:
+      canReact: false # Dont want cause reactions inside skewers after merging ingredients
+      maxVol: 0
   - type: FoodSequenceStartPoint
     key: Skewer
     maxLayers: 4

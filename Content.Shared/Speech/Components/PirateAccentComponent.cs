@@ -11,7 +11,7 @@ namespace Content.Shared.Speech.Components;
 public sealed partial class PirateAccentComponent : BaseAccentComponent
 {
     [DataField]
-    public float YarrChance = 0.5f;
+    public float YarrChance = 0.25f; // Claw Command - lowered to match space/
 
     [ViewVariables]
     public readonly List<string> PirateWords = new()

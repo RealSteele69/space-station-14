@@ -46,13 +46,17 @@ public abstract partial class SharedTemperatureSystem : EntitySystem
         var mass = CompOrNull<PhysicsComponent>(entity)?.FixturesMass ?? 1f;
 
         // TODO: This assumes this is temperature for the whole body, but ideally we want it split into surface and internal temperature!
-        entity.Comp.HeatCapacity = mass * entity.Comp.SpecificHeat;
+        entity.Comp.HeatCapacity = MathF.Max(mass, MinimumHeatMass) * entity.Comp.SpecificHeat; // Claw Command
     }
 
     private void OnMassDataChanged(Entity<TemperatureComponent> entity, ref MassDataChangedEvent args)
     {
-        entity.Comp.HeatCapacity = args.NewMass * entity.Comp.SpecificHeat;
+        entity.Comp.HeatCapacity = MathF.Max(args.NewMass, MinimumHeatMass) * entity.Comp.SpecificHeat; // Claw Command
     }
+
+    // Claw Command - sub-kilogram entities (small clothing, paper, etc.) shouldn't get their heat capacity scaled
+    // toward zero; that produces nonsense temperatures when atmos pushes them around. Port: EE Physics-Based Air Throws (#342).
+    private const float MinimumHeatMass = 1f;
 
     private void OnTemperatureChanged(Entity<TemperatureSpeedComponent> ent, ref TemperatureChangedEvent args)
     {
@@ -123,7 +127,7 @@ public abstract partial class SharedTemperatureSystem : EntitySystem
         var conductance = entity.Comp.ThermalConductivity * heatTransferMod;
         if (!ignoreHeatResistance)
         {
-            var ev = new BeforeHeatExchangeEvent();
+            var ev = new BeforeHeatExchangeEvent { Cooling = heatContainer.Temperature < entity.Comp.Temperature }; // Claw Command
             RaiseLocalEvent(entity, ref ev);
             conductance *= ev.HeatTransferModifier;
         }
@@ -154,7 +158,7 @@ public abstract partial class SharedTemperatureSystem : EntitySystem
         var conductance = entity.Comp.ThermalConductivity * heatTransferMod;
         if (!ignoreHeatResistance)
         {
-            var ev = new BeforeHeatExchangeEvent();
+            var ev = new BeforeHeatExchangeEvent { Cooling = temperature < entity.Comp.Temperature }; // Claw Command
             RaiseLocalEvent(entity, ref ev);
             conductance *= ev.HeatTransferModifier;
         }
@@ -181,7 +185,7 @@ public abstract partial class SharedTemperatureSystem : EntitySystem
 
         if (!ignoreHeatResistance)
         {
-            var ev = new BeforeHeatExchangeEvent();
+            var ev = new BeforeHeatExchangeEvent { Cooling = heatAmount < 0f }; // Claw Command
             RaiseLocalEvent(entity, ref ev );
             heatAmount *= ev.HeatTransferModifier;
         }

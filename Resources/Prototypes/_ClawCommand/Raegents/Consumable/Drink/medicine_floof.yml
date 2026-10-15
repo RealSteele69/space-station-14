@@ -172,13 +172,12 @@
         showInChat: true
         probability: 0.02
       # !type:MovespeedModifier stripped — effect not present in this fork.
-      - !type:GenericStatusEffect # 'refresh' field stripped — not supported on this fork's GenericStatusEffect.
+      - !type:ModifyStatusEffect # Claw Command - old ForcedSleep status key no longer exists; Add = cumulative (refresh: false)
         conditions:
         - !type:ReagentCondition
           reagent: Philterex
           min: 30.0
-        key: ForcedSleep
-        component: ForcedSleeping
+        effectProto: StatusEffectForcedSleeping
         type: Add
         probability: 0.1
       - !type:HealthChange # poisons you if you take way too much

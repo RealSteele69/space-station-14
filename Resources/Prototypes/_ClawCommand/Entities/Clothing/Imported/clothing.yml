@@ -590,6 +590,7 @@
 - type: entity
   id: ClothingHeadHelmetOpsCore
   parent:
+  - ClawHardsuitHelmetLegacyLightVisuals
   - ClothingHeadHardsuitBase
   - ClothingHeadSuitWithLightBase
   name: "fire helmet"
@@ -993,7 +994,7 @@
           - FlashOnTrigger
       stunbaton:
         whitelist:
-          components:
+          tags: # Claw Command - Stunbaton component became a tag upstream
           - Stunbaton
       tear_gas_grenade:
         whitelist:
@@ -1218,6 +1219,7 @@
 - type: entity
   id: USSPHardsuitGuardHelmet
   parent:
+  - ClawHardsuitHelmetLegacyLightVisuals
   - ClothingHeadHardsuitBase
   - ClothingHeadSuitWithLightBase
   name: "Guard hardsuit helmet"
@@ -1248,6 +1250,7 @@
 - type: entity
   id: USSPHardsuitSoldierHelmet
   parent:
+  - ClawHardsuitHelmetLegacyLightVisuals
   - ClothingHeadHardsuitBase
   - ClothingHeadSuitWithLightBase
   name: "Military hardsuit helmet"
@@ -1278,6 +1281,7 @@
 - type: entity
   id: USSPHardsuitStormHelmet
   parent:
+  - ClawHardsuitHelmetLegacyLightVisuals
   - ClothingHeadHardsuitBase
   - ClothingHeadSuitWithLightBase
   name: "Elite hardsuit helmet"

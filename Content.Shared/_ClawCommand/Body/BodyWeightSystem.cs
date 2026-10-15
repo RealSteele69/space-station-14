@@ -7,11 +7,15 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Nutrition.Prototypes;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._ClawCommand.Body;
 
@@ -40,6 +44,8 @@ public sealed partial class BodyWeightSystem : EntitySystem
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
     [Dependency] private MobThresholdSystem _thresholds = default!;
     [Dependency] private INetManager _net = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SatiationSystem _satiation = default!;
 
     /// <summary>
     ///     A mob fixture much past half a tile starts snagging on doorframes and corners, which is a
@@ -140,11 +146,8 @@ public sealed partial class BodyWeightSystem : EntitySystem
             weight.BaseRadius = fixture.Shape.Radius;
         }
 
-        if (TryComp<HungerComponent>(uid, out var hunger))
-            weight.BaseHungerDecay = hunger.BaseDecayRate;
-
-        if (TryComp<ThirstComponent>(uid, out var thirst))
-            weight.BaseThirstDecay = thirst.BaseDecayRate;
+        // Hunger/thirst baselines are no longer captured: satiation change rates live on the shared
+        // prototype, so ApplyMetabolism scales the decay relative to it instead (see Update).
 
         if (TryComp<MobThresholdsComponent>(uid, out var thresholds))
         {
@@ -203,24 +206,77 @@ public sealed partial class BodyWeightSystem : EntitySystem
     }
 
     /// <summary>
-    ///     Bigger bodies burn through food and water faster. Both systems recompute ActualDecayRate
-    ///     from BaseDecayRate every update, so setting the base is enough.
+    ///     Bigger bodies burn through food and water faster. Satiation keeps its change rate on the
+    ///     shared prototype, so the factor is recorded here and settled periodically in
+    ///     <see cref="Update"/> as extra drain (or, for a light build, a small refund).
     /// </summary>
     private void ApplyMetabolism(EntityUid uid, BodyWeightComponent weight)
     {
         var factor = Influence(weight.Scale, weight.MetabolismInfluence);
 
-        if (TryComp<HungerComponent>(uid, out var hunger) && weight.BaseHungerDecay > 0f)
+        // A default build burns at the prototype rate; nothing to settle.
+        if (MathHelper.CloseTo(factor, 1f))
         {
-            hunger.BaseDecayRate = weight.BaseHungerDecay * factor;
-            Dirty(uid, hunger);
+            RemComp<BodyWeightMetabolismComponent>(uid);
+            return;
         }
 
-        if (TryComp<ThirstComponent>(uid, out var thirst) && weight.BaseThirstDecay > 0f)
+        if (!TryComp<BodyWeightMetabolismComponent>(uid, out var metabolism))
         {
-            thirst.BaseDecayRate = weight.BaseThirstDecay * factor;
-            Dirty(uid, thirst);
+            metabolism = AddComp<BodyWeightMetabolismComponent>(uid);
+            metabolism.NextUpdate = _timing.CurTime + metabolism.UpdateInterval;
         }
+
+        metabolism.Factor = factor;
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        // Metabolism is server bookkeeping, same as ApplyMetabolism; the client just gets the result.
+        if (_net.IsClient)
+            return;
+
+        var query = EntityQueryEnumerator<BodyWeightMetabolismComponent, SatiationComponent>();
+        while (query.MoveNext(out var uid, out var metabolism, out var satiation))
+        {
+            if (_timing.CurTime < metabolism.NextUpdate)
+                continue;
+
+            metabolism.NextUpdate += metabolism.UpdateInterval;
+
+            var seconds = (float) metabolism.UpdateInterval.TotalSeconds;
+            ScaleDecay((uid, satiation), SatiationSystem.Hunger, metabolism.Factor, seconds);
+            ScaleDecay((uid, satiation), SatiationSystem.Thirst, metabolism.Factor, seconds);
+        }
+    }
+
+    /// <summary>
+    ///     Applies (factor - 1) times the satiation's current natural decay over <paramref name="seconds"/>,
+    ///     so the meter effectively drains at factor times its prototype rate. Does nothing while the
+    ///     satiation is empty or not decaying.
+    /// </summary>
+    private void ScaleDecay(
+        Entity<SatiationComponent> ent,
+        ProtoId<SatiationTypePrototype> type,
+        float factor,
+        float seconds)
+    {
+        if (_satiation.GetValueOrNull(ent, type) is not { } value || value <= 0f)
+            return;
+
+        // The satiation API exposes no rate directly, but it does say when the current linear decay
+        // reaches zero; the decay rate falls out of that.
+        if (_satiation.GetTimeToBound(ent, type, null, 0) is not { } emptyAt)
+            return;
+
+        var secondsToEmpty = (float) (emptyAt - _timing.CurTime).TotalSeconds;
+        if (secondsToEmpty <= 0f)
+            return;
+
+        var decayPerSecond = value / secondsToEmpty;
+        _satiation.ModifyValue(ent, type, -decayPerSecond * (factor - 1f) * seconds);
     }
 
     /// <summary>

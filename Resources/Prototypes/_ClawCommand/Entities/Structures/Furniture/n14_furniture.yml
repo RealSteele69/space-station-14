@@ -14,10 +14,22 @@
     state: bed
 
 - type: entity
-  parent: StoolBase
+  parent: [ StoolBase, StructureHealthFurniture ] # Claw Command - upstream structure rebalance moved seat health into StructureHealth* mixins
   id: N14ChairStoolBarBlack
   description: A black bar stool.
   components:
+  # Claw Command - mirrors upstream steel StoolBar (formerly inherited from SeatBase).
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: &ThresholdsN14SeatSteel
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/bedsandchairs.rsi
     state: bar_black
@@ -111,11 +123,15 @@
     state: metal_chair_red
 
 - type: entity
-  parent: OfficeChairBase
+  parent: [ OfficeChairBase, StructureHealthFurniture ] # Claw Command - see N14ChairStoolBarBlack
   id: N14ChairOfficeErgonomic
   name: ergonomic office chair
   description: An ergonomic chair built for long shifts.
   components:
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds: *ThresholdsN14SeatSteel
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/chairs.rsi
     state: ergo_chair

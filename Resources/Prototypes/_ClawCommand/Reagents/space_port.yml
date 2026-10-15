@@ -100,9 +100,8 @@
     Narcotic:
       metabolismRate: 0.2
       effects:
-      - !type:GenericStatusEffect
-        key: SeeingRainbows
-        component: SeeingRainbows
+      - !type:ModifyStatusEffect # Claw Command - old SeeingRainbows status key removed upstream
+        effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 5
       - !type:GenericStatusEffect
@@ -117,9 +116,9 @@
           reagent: LotophagoiOil
           min: 20
       # Claw Command - restored by the psionics port. Makes the drinker echo telepathic chatter aloud.
-      - !type:GenericStatusEffect
-        key: SlurredSpeech
-        component: TelepathicRepeater
+      # Now an entity status effect: the old "SlurredSpeech" status key it was keyed to was removed upstream.
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectTelepathicRepeater
       # Claw Command - the most extreme high in the game, and the worst comedown.
       - !type:AddMoodlet
         moodlet: LotoTranscendence

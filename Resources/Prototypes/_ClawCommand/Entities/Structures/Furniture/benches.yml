@@ -4,7 +4,7 @@
 
 # Base bench (port of BenchBaseMiddle)
 - type: entity
-  parent: SeatBase
+  parent: [ SeatBase, StructureHealthFurniture ] # Claw Command - upstream structure rebalance moved seat health into StructureHealth* mixins
   id: BenchBaseMiddle
   name: bench
   description: Multiple seats spanning a single object. Truly a marvel of science.
@@ -13,6 +13,18 @@
   placement:
     mode: SnapgridCenter
   components:
+  # Claw Command - mirrors upstream steel Chair (formerly inherited from SeatBase).
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
   - type: Physics
     bodyType: Static
   - type: Transform

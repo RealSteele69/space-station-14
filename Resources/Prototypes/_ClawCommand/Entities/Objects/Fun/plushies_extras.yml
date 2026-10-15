@@ -94,16 +94,25 @@
   - type: Sprite
     sprite: _Floof/Objects/HypnoTempPlushies/staffer_plushies.rsi
     state: staffer_Cap
-  - type: SolutionContainerManager
+  # Claw Command - BasePlushie's own Solution is "food", so the "absorbed" fill is a separate solution entity (upstream multi-solution pattern).
+  - type: SolutionManager
     solutions:
-      absorbed:
-        maxVol: 30
-        reagents:
-        - ReagentId: Cream
-          Quantity: 5
-        - ReagentId: Coffee
-          Quantity: 10
-        - ReagentId: Desoxyephedrine
-          Quantity: 7
-        - ReagentId: Diphenhydramine
-          Quantity: 8
+    - SolutionMopHypnoTempCap
+
+- type: entity
+  parent: SolutionMop
+  id: SolutionMopHypnoTempCap
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Cream
+        Quantity: 5
+      - ReagentId: Coffee
+        Quantity: 10
+      - ReagentId: Desoxyephedrine
+        Quantity: 7
+      - ReagentId: Diphenhydramine
+        Quantity: 8

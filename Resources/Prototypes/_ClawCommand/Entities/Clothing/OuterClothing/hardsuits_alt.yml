@@ -292,7 +292,7 @@
 
 # Basic Hardsuit Helmet (no upstream equivalent — kept as imported)
 - type: entity
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClawHardsuitHelmetLegacyVisuals, ClothingHeadHardsuitBase ]
   id: ClothingHeadHelmetHardsuitBasicAlt
   name: basic hardsuit helmet
   description: A basic-looking hardsuit helmet that provides minor protection against most sources of damage.
@@ -395,7 +395,7 @@
 
 # Maxim Hardsuit Helmet
 - type: entity
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClawHardsuitHelmetLegacyVisuals, ClothingHeadHardsuitBase ]
   id: ClothingHeadHelmetHardsuitMaximAlt
   categories: [ HideSpawnMenu ]
   name: salvager maxim helmet
@@ -419,7 +419,7 @@
 
 # Paramedic Void Helmet (no upstream equivalent — kept as imported)
 - type: entity
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClawHardsuitHelmetLegacyVisuals, ClothingHeadHardsuitBase ]
   id: ClothingHeadHelmetHardsuitVoidParamedAlt
   name: paramedic void helmet
   description: A void helmet made for paramedics.
@@ -437,7 +437,7 @@
 
 # Ling Helmet
 - type: entity
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClawHardsuitHelmetLegacyVisuals, ClothingHeadHardsuitBase ]
   id: ClothingHeadHelmetHardsuitLingAlt
   name: organic space helmet
   description: A spaceworthy biomass of pressure and temperature resistant tissue.
@@ -453,7 +453,7 @@
 
 # Pirate EVA Helmet
 - type: entity
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClawHardsuitHelmetLegacyVisuals, ClothingHeadHardsuitBase ]
   id: ClothingHeadHelmetHardsuitPirateEVAAlt
   name: deep space EVA helmet
   suffix: Pirate
@@ -470,7 +470,7 @@
 
 # Pirate Captain Hardsuit Helmet
 - type: entity
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClawHardsuitHelmetLegacyVisuals, ClothingHeadHardsuitBase ]
   id: ClothingHeadHelmetHardsuitPirateCapAlt
   name: pirate captain's hardsuit helmet
   suffix: Pirate
@@ -494,7 +494,7 @@
 
 # Santa's Hardsuit Helmet
 - type: entity
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClawHardsuitHelmetLegacyVisuals, ClothingHeadHardsuitBase ]
   id: ClothingHeadHelmetHardsuitSantaAlt
   name: Santa's hardsuit helmet
   description: A festive-looking hardsuit helmet that provides the jolly gift-giver protection from low-pressure environments.
@@ -511,7 +511,7 @@
 
 # Clown Hardsuit Helmet (parents security helmet to mirror upstream stat inheritance)
 - type: entity
-  parent: ClothingHeadHelmetHardsuitSecurity
+  parent: [ ClawHardsuitHelmetLegacyLightVisuals, ClothingHeadHelmetHardsuitSecurity ]
   id: ClothingHeadHelmetHardsuitClownAlt
   name: clown hardsuit helmet
   description: A clown hardsuit helmet.
@@ -526,7 +526,7 @@
 
 # Mime Hardsuit Helmet
 - type: entity
-  parent: ClothingHeadHelmetHardsuitSecurity
+  parent: [ ClawHardsuitHelmetLegacyLightVisuals, ClothingHeadHelmetHardsuitSecurity ]
   id: ClothingHeadHelmetHardsuitMimeAlt
   name: mime hardsuit helmet
   description: A mime hardsuit helmet.

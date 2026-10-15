@@ -5,11 +5,32 @@
   - MobAtmosStandard
   - MobFlammable
   - BaseSpeciesMob
+  - BaseMobDestructible # Claw Command - upstream split gib/ash thresholds out of MobDamageable; mirror BaseSpeciesMobOrganic.
+  - BaseHungerThirstSlowdown # Claw Command - starving/parched slowdown, formerly built into the retired Hunger/Thirst components
   id: BaseSpeciesMobOrganicNoRespirator
   save: false
   components:
-  - type: Hunger
-  - type: Thirst
+  # Claw Command - upstream retired Hunger/Thirst for the Satiation system; mirror BaseSpeciesMobOrganic.
+  - type: Satiation
+    satiations:
+      Hunger:
+        prototype: NormalSatiationHunger
+      Thirst:
+        prototype: NormalSatiationThirst
+  - type: SatiationMood # Claw Command - how fed and hydrated you are feeds into mood.
+    satiations:
+      Hunger:
+        thresholds:
+          Overfed: HungerOverfed
+          Okay: HungerOkay
+          Peckish: HungerPeckish
+          Starving: HungerStarving
+      Thirst:
+        thresholds:
+          Overhydrated: ThirstOverHydrated
+          Okay: ThirstOkay
+          Thirsty: ThirstThirsty
+          Parched: ThirstParched
   - type: Barotrauma
     damage:
       types:

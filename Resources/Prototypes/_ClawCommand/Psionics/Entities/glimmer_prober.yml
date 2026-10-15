@@ -91,11 +91,23 @@
         path: /Audio/Ambience/Objects/prober_hum_dangerous.ogg
 
 - type: entity
-  parent: BaseMachinePowered
+  parent: [ BaseMachinePowered, StructureHealthMachineWeak ] # Claw Command - BaseMachine lost its health upstream; MachineWeak = 100, the old BaseMachine threshold
   id: GlimmerDrain
   name: glimmer drain
   description: Uses electricity to try and sort out the noösphere, reducing its level of entropy.
   components:
+  # Claw Command - mirrors the pre-rebalance BaseMachine damage/destruction sound.
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
   - type: Psionic
     removable: false
     assayFeedback:

@@ -17,6 +17,12 @@
   components:
   - type: Sprite
     sprite: Imperial/Objects/Weapons/Melee/AdvancedStunBaton/stunbaton.rsi
+  # Claw Command - restores the pre-merge Stunbaton energyPerUse: 25 (8 hits on 200 charge).
+  # The old component used one value for both the per-hit cost and the minimum charge to switch on / stay on.
+  - type: StaminaDamageOnHitRequiresCharge
+    requiredCharge: 25
+  - type: ItemToggleRequiresCharge
+    requiredCharge: 25
   - type: MeleeWeapon
     wideAnimationRotation: -135
     damage:

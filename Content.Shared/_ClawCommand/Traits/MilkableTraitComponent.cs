@@ -9,7 +9,7 @@ namespace Content.Shared._ClawCommand.Traits;
 
 /// <summary>
 ///     Gives the ability to produce a solution;
-///     produces endlessly if the owner does not have a HungerComponent.
+///     produces endlessly if the owner has no Hunger satiation (see SatiationComponent).
 /// </summary>
 [RegisterComponent, AutoGenerateComponentState, AutoGenerateComponentPause, NetworkedComponent]
 public sealed partial class MilkableTraitComponent : Component
@@ -39,7 +39,7 @@ public sealed partial class MilkableTraitComponent : Component
     public FixedPoint2 QuantityPerUpdate = 25;
 
     /// <summary>
-    ///     The amount of nutrient consumed on update.
+    ///     The amount of Hunger satiation consumed on update.
     /// </summary>
     [DataField, AutoNetworkedField]
     public float HungerUsage = 10f;

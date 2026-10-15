@@ -149,6 +149,10 @@
     - Inorganic
     - Silicon
     - Biological
+  - type: ShowSatiationIcons # Claw Command - replaces the removed ShowThirstIcons/ShowHungerIcons
+    shownTypes:
+    - Hunger
+    - Thirst
   - type: ShowSyndicateIcons
   - type: TrayScanner
   - type: ClothingSpeedModifier

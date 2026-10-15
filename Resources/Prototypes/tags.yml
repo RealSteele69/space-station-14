@@ -233,6 +233,9 @@
 - type: Tag
   id: CaptainSabre # Storage whitelist: ClothingBeltSheath. ItemMapper: ClothingBeltSheath
 
+- type: Tag # Claw Command
+  id: CentCommSabre # Storage whitelist: ClothingBeltCentcommSheath. ItemMapper: ClothingBeltCentcommSheath
+
 - type: Tag
   id: Carp # CargoBounty: BountyCarp
 
@@ -460,6 +463,9 @@
 
 - type: Tag
   id: Dice # Storage whitelist: BorgModuleService, DiceBag, BooksBag
+
+- type: Tag
+  id: Dildo # claw command
 
 - type: Tag
   id: DiscreteHealthAnalyzer # Storage whitelist: ClothingBeltMedical. ConstructionGraph: MediBot
@@ -1304,6 +1310,9 @@
 - type: Tag
   id: SiliconEmotes # Whitelisted and blacklisted in various EmotePrototypes to create a silicon emote group.
 
+- type: Tag #claw command - IPC
+  id: SiliconMob
+
 - type: Tag
   id: Skewer # Food sequence key
 
@@ -1551,6 +1560,9 @@
 
 - type: Tag
   id: WhitelistChameleonPDA # Chameleon key for ChameleonPDA
+
+- type: Tag
+  id: Whip # claw command
 
 - type: Tag
   id: Windoor # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.

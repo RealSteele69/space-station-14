@@ -16,15 +16,14 @@
   components:
   - type: Sprite
     state: jelly-blue
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 3
-        - ReagentId: Vitamin
-          Quantity: 1
+  - type: Solution
+    solution:
+      maxVol: 5
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Vitamin
+        Quantity: 1
   - type: Tag
     tags:
     - Fruit
@@ -38,13 +37,12 @@
   components:
   - type: Sprite
     state: jelly-slug
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 3
-        - ReagentId: Vitamin
-          Quantity: 1
+  - type: Solution
+    solution:
+      maxVol: 5
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Vitamin
+        Quantity: 1
 # Tastes like jelly-donut, fizzy tutti frutti.

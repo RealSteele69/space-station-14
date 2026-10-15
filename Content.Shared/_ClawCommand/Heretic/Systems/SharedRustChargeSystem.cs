@@ -38,7 +38,8 @@ public abstract partial class SharedRustChargeSystem : EntitySystem
         SubscribeLocalEvent<RustChargeComponent, StopThrowEvent>(OnStopThrow);
         SubscribeLocalEvent<RustChargeComponent, DownAttemptEvent>(OnDownAttempt);
         SubscribeLocalEvent<RustChargeComponent, InteractionAttemptEvent>(OnInteractAttempt);
-        SubscribeLocalEvent<RustChargeComponent, BeforeOldStatusEffectAddedEvent>(OnBeforeRustChargeStatusEffect);
+        // Claw Command - knockdown no longer uses the old "KnockedDown" status key; block knockdown attempts instead
+        SubscribeLocalEvent<RustChargeComponent, KnockDownAttemptEvent>(OnBeforeRustChargeKnockDown);
         SubscribeLocalEvent<RustChargeComponent, ComponentShutdown>(OnRustChargeShutdown);
     }
 
@@ -50,10 +51,10 @@ public abstract partial class SharedRustChargeSystem : EntitySystem
         RemCompDeferred<RustObjectsInRadiusComponent>(ent);
     }
 
-    private void OnBeforeRustChargeStatusEffect(Entity<RustChargeComponent> ent, ref BeforeOldStatusEffectAddedEvent args)
+    // Claw Command - was BeforeOldStatusEffectAddedEvent checking the "KnockedDown" key
+    private void OnBeforeRustChargeKnockDown(Entity<RustChargeComponent> ent, ref KnockDownAttemptEvent args)
     {
-        if (args.EffectKey == "KnockedDown")
-            args.Cancelled = true;
+        args.Cancelled = true;
     }
 
     private void OnInteractAttempt(Entity<RustChargeComponent> ent, ref InteractionAttemptEvent args)

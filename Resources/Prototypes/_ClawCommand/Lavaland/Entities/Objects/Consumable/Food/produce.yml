@@ -9,7 +9,6 @@
     state: produce
   - type: Item
     heldPrefix: produce
-  - type: SolutionContainerManager
   - type: MeleeWeapon
     damage:
       types:

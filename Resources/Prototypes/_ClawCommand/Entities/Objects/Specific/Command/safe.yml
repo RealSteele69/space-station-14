@@ -30,6 +30,8 @@
           visible: true
         - state: closed
           map: ["enum.OpenableVisuals.Layer"]
+    - type: Injurable # Claw Command - formerly inherited from BaseWallmountMetallic, removed upstream; still no Destructible ("Indestructible")
+      damageContainer: StructuralInorganic
     - type: AccessReader
       access: [["CC-SpareSafe"]]
     - type: SpareIDSafe

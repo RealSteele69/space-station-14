@@ -17,15 +17,14 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/salad.rsi
     state: capresesalad
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 7
-        - ReagentId: Protein
-          Quantity: 3
+  - type: Solution
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 7
+      - ReagentId: Protein
+        Quantity: 3
   - type: Tag
     tags:
     - Fruit
@@ -45,17 +44,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/salad.rsi
     state: fleetsalad
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 12
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Protein
-          Quantity: 3
+  - type: Solution
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 12
+      - ReagentId: Vitamin
+        Quantity: 5
+      - ReagentId: Protein
+        Quantity: 3
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -75,17 +73,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/salad.rsi
     state: cottonsalad
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Vitamin
-          Quantity: 7
-        - ReagentId: Fiber
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Vitamin
+        Quantity: 7
+      - ReagentId: Fiber
+        Quantity: 5
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -105,17 +102,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/salad.rsi
     state: kachumbarisalad
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 12
-        - ReagentId: Vitamin
-          Quantity: 2
-        - ReagentId: Protein
-          Quantity: 6
+  - type: Solution
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 12
+      - ReagentId: Vitamin
+        Quantity: 2
+      - ReagentId: Protein
+        Quantity: 6
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -136,17 +132,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/ingredients.rsi
     state: herbycheese
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 7
-        - ReagentId: Protein
-          Quantity: 2
-        - ReagentId: Cream
-          Quantity: 1
+  - type: Solution
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 7
+      - ReagentId: Protein
+        Quantity: 2
+      - ReagentId: Cream
+        Quantity: 1
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -166,17 +161,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/ingredients.rsi
     state: mothsaladbase
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 7
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 4
-        - ReagentId: Vitamin
-          Quantity: 2
-        - ReagentId: Allicin
-          Quantity: 0.5
+  - type: Solution
+    solution:
+      maxVol: 7
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Vitamin
+        Quantity: 2
+      - ReagentId: Allicin
+        Quantity: 0.5
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -200,17 +194,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/Snacks/moth.rsi
     state: squeakingstirfry
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 25
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 6
-        - ReagentId: Vitamin
-          Quantity: 6
-        - ReagentId: Protein
-          Quantity: 8
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: Vitamin
+        Quantity: 6
+      - ReagentId: Protein
+        Quantity: 8
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -238,17 +231,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/meal.rsi
     state: greenlasagne
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 18
-        - ReagentId: Protein
-          Quantity: 6
-        - ReagentId: Vitamin
-          Quantity: 6
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 18
+      - ReagentId: Protein
+        Quantity: 6
+      - ReagentId: Vitamin
+        Quantity: 6
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -270,17 +262,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/Baked/misc.rsi
     state: cheesecakes
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 2
-        - ReagentId: Protein
-          Quantity: 1
-        - ReagentId: Sugar
-          Quantity: 12
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: Protein
+        Quantity: 1
+      - ReagentId: Sugar
+        Quantity: 12
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -304,15 +295,14 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/Baked/misc.rsi
     state: mothmallow
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Sugar
-          Quantity: 10
+  - type: Solution
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Sugar
+        Quantity: 10
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -332,15 +322,14 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/Baked/misc.rsi
     state: mothmallow-slice
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 7
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 4
-        - ReagentId: Sugar
-          Quantity: 2
+  - type: Solution
+    solution:
+      maxVol: 7
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Sugar
+        Quantity: 2
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -370,17 +359,16 @@
       - muffin
       - cotton
       - fiber
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 4
-        - ReagentId: Vitamin
-          Quantity: 1
-        - ReagentId: Fiber
-          Quantity: 4
+  - type: Solution
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Vitamin
+        Quantity: 1
+      - ReagentId: Fiber
+        Quantity: 4
   - type: Tag
     tags:
       - ClothMade # Mothic Food

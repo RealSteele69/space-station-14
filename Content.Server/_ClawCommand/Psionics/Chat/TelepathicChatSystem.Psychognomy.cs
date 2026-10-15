@@ -7,6 +7,8 @@ using Content.Shared.Speech.Muting;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.CombatMode;
 using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Nutrition.Prototypes;
 using Content.Shared.Abilities.Psionics;
 using Content.Server.Abilities.Psionics;
 using Content.Server.Psionics.Glimmer;
@@ -35,6 +37,11 @@ namespace Content.Server.Chat;
 /// </remarks>
 public sealed partial class TelepathicChatSystem
 {
+    [Dependency] private SatiationSystem _satiation = default!; // Claw Command - HungerComponent retired for Satiation
+
+    // Claw Command - the old HungerThreshold.Peckish, now the matching key on the hunger satiation prototype.
+    private static readonly SatiationValue PeckishThreshold = "Peckish";
+
     public string SourceToDescriptor(EntityUid source)
     {
         var ev = new GetPsychognomicDescriptorEvent();
@@ -52,7 +59,7 @@ public sealed partial class TelepathicChatSystem
         // Claw Command - the damage container moved from DamageableComponent to InjurableComponent.
         SubscribeLocalEvent<InjurableComponent, GetPsychognomicDescriptorEvent>(DescribeDamage);
         SubscribeLocalEvent<MobStateComponent, GetPsychognomicDescriptorEvent>(DescribeMobState);
-        SubscribeLocalEvent<HungerComponent, GetPsychognomicDescriptorEvent>(DescribeHunger);
+        SubscribeLocalEvent<SatiationComponent, GetPsychognomicDescriptorEvent>(DescribeHunger); // Claw Command - was HungerComponent
         SubscribeLocalEvent<PhysicsComponent, GetPsychognomicDescriptorEvent>(DescribePhysics);
         SubscribeLocalEvent<FixturesComponent, GetPsychognomicDescriptorEvent>(DescribeFixtures);
         SubscribeLocalEvent<GlimmerSourceComponent, GetPsychognomicDescriptorEvent>(DescribeGlimmerSource);
@@ -96,9 +103,10 @@ public sealed partial class TelepathicChatSystem
         ev.Descriptors.Add(Loc.GetString("p-descriptor-liminal"));
     }
 
-    private void DescribeHunger(EntityUid uid, HungerComponent component, GetPsychognomicDescriptorEvent ev)
+    private void DescribeHunger(EntityUid uid, SatiationComponent component, GetPsychognomicDescriptorEvent ev)
     {
-        if (component.CurrentThreshold > HungerThreshold.Peckish)
+        // Claw Command - hungry once under the Peckish threshold; nothing if the entity has no hunger at all.
+        if (!_satiation.IsValueInRange((uid, component), SatiationSystem.Hunger, below: PeckishThreshold))
             return;
 
         ev.Descriptors.Add(Loc.GetString("p-descriptor-hungry"));
@@ -144,7 +152,8 @@ public sealed partial class TelepathicChatSystem
             }
         }
 
-        if (!HasComp<SpeechComponent>(uid) || HasComp<MutedStatusEffectComponent>(uid))
+        // Claw Command - MutedComponent became MutedStatusEffectComponent, which lives on the status effect entity, not the mob
+        if (!HasComp<SpeechComponent>(uid) || _statusEffects.HasEffectComp<MutedStatusEffectComponent>(uid))
             ev.Descriptors.Add(Loc.GetString("p-descriptor-dumb"));
 
         if (!HasComp<CombatModeComponent>(uid) || HasComp<PacifiedComponent>(uid))

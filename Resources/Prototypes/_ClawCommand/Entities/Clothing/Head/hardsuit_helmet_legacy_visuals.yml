@@ -1,0 +1,62 @@
+# Claw Command - visual mixins for hardsuit helmets whose RSIs still use the pre-merge state names.
+#
+# Upstream (2026-09 merge) changed the helmet bases in Entities/Clothing/Head/base_clothinghead.yml:
+#  - ClothingHeadHardsuitBase now sets explicit Clothing.clothingVisuals.head [equipped-head, equipped-head-unshaded]
+#  - ClothingHeadSuitWithLightBase now uses icon / icon-unshaded / light-overlay sprite layers and adds an
+#    equipped-head-light worn layer through ToggleableVisuals.
+# Explicit clothingVisuals bypass the client's default "<prefix>-equipped-HELMET" lookup, so helmets drawn with
+# the old scheme became invisible when worn and spammed missing-state errors.
+#
+# These mixins put the old behaviour back without renaming any PNGs. List the mixin FIRST in the helmet's
+# parent list so its fields win over the upstream bases (first parent takes priority).
+# A clothingVisuals dictionary without a slot key (the "none" key below) makes ClientClothingSystem fall back
+# to its default lookup: equipped-HELMET, or off-/on-equipped-HELMET when an equippedPrefix is set, including
+# -<species> variants when the RSI has them.
+
+# For lightless helmets drawn with icon + equipped-HELMET.
+- type: entity
+  abstract: true
+  id: ClawHardsuitHelmetLegacyVisuals
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Clothing
+    clothingVisuals:
+      none: []
+
+# For helmets with a light drawn with icon + icon-flash + off-/on-equipped-HELMET.
+# Must be combined with a ClothingHeadSuitWithLightBase descendant: the HandheldLight prefix swaps the worn
+# sprite between off-equipped-HELMET and on-equipped-HELMET, and icon-flash is the toggled item-sprite layer.
+- type: entity
+  abstract: true
+  id: ClawHardsuitHelmetLegacyLightVisuals
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: icon-flash
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+  - type: Clothing
+    equippedPrefix: off
+    clothingVisuals:
+      none: []
+  - type: HandheldLight
+    addPrefix: true
+  - type: ToggleableVisuals
+    spriteLayer: light
+    clothingVisuals:
+      none: []
+
+# For helmets that already use the modern equipped-head / icon-unshaded / light-overlay states but whose RSI has
+# no equipped-head-light state. Drops only the worn light layer added by ClothingHeadSuitWithLightBase.
+- type: entity
+  abstract: true
+  id: ClawHardsuitHelmetNoWornLightVisuals
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ToggleableVisuals
+    spriteLayer: light
+    clothingVisuals:
+      none: []

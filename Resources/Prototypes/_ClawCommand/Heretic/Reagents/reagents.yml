@@ -78,8 +78,8 @@
             - Heretic
             - Ghoul
           guidebookComponentName: reagent-comp-condition-heretic-or-ghoul
-      - !type:GenericStatusEffect
-        key: SeeingRainbows
+      - !type:ModifyStatusEffect # Claw Command - old SeeingRainbows status key no longer exists
+        effectProto: StatusEffectSeeingRainbow
         time: 50.0
         type: Remove
         conditions:

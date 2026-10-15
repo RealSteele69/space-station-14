@@ -24,14 +24,13 @@
     maxFillLevels: 4
     fillBaseName: mothdog-
     changeColor: false
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Protein
-          Quantity: 10
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Protein
+        Quantity: 10
   - type: Appearance
   - type: Edible
     trash:
@@ -58,10 +57,9 @@
     flavors:
     - paper
   - type: BadFood
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 1
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 5

@@ -8,6 +8,7 @@ using Content.Server.Chemistry.EntitySystems; // Claw Command - SolutionContaine
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Research.Systems;
 using Content.Shared.Abilities.Psionics;
+using Content.Shared.Botany.Components; // Claw Command
 using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
@@ -281,8 +282,14 @@ public sealed partial class OracleSystem : EntitySystem
 
     private bool GetRandomPlantProto(Entity<OracleComponent> oracle, [NotNullWhen(true)] out string? proto)
     {
+        // Claw Command - upstream's botany refactor turned seeds into plant entities whose PlantData lists the
+        // produce; demand each plant's first product, as the oracle did with SeedPrototype.ProductPrototypes.
         var allPlants = _protoMan.EnumeratePrototypes<EntityPrototype>()
-            .Select(x => (EntProtoId?) x.ID)
+            .Where(x => !x.Abstract)
+            .Select(x => x.TryGetComponent<PlantDataComponent>(out var plant, EntityManager.ComponentFactory)
+                         && plant.ProductPrototypes.Count > 0
+                ? (EntProtoId?) plant.ProductPrototypes[0]
+                : null)
             .Where(x => IsDemandValid(oracle, x))
             .ToList();
 

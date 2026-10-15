@@ -14,7 +14,7 @@
 
 - type: entity
   id: KitchenDeepFryer
-  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseMachinePowered, ConstructibleMachine, StructureHealthMachine ] # Claw Command - BaseMachine lost its health upstream; Machine = 175, nearest tier to this fryer's own 200
   name: deep fryer
   description: An industrial deep fryer. A big hit at state fairs!
   components:
@@ -55,10 +55,10 @@
         layer:
         - MachineLayer
   # DeepFryer component dropped — system not present.
-  - type: SolutionContainerManager
-    solutions:
-      vat_oil:
-        maxVol: 100
+  - type: Solution
+    id: vat_oil
+    solution:
+      maxVol: 100
   - type: DrainableSolution
     solution: vat_oil
   - type: ExaminableSolution
@@ -68,11 +68,13 @@
   - type: RefillableSolution
     solution: vat_oil
   - type: Appearance
+  - type: Damageable # Claw Command - formerly inherited from BaseMachine
+    damageModifierSet: SteelMod
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 200
+        damage: 175 # Claw Command - aligned with StructureHealthMachine so the spill/frame drop fires on destruction (was 200)
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]

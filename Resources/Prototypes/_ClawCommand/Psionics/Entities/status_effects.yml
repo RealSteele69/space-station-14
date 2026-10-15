@@ -1,0 +1,12 @@
+# Claw Command - entity status effects for the psionics port.
+
+# Makes the affected mob speak aloud whatever is said in telepathic chat (Lotophagoi Oil).
+# Replaces the old GenericStatusEffect keyed to the removed "SlurredSpeech" status key; the
+# TelepathicRepeater component now lives on this effect entity and TelepathicChatSystem speaks
+# through the entity it is applied to.
+- type: entity
+  parent: MobStatusEffectDebuff
+  id: StatusEffectTelepathicRepeater
+  name: telepathic repeating
+  components:
+  - type: TelepathicRepeater

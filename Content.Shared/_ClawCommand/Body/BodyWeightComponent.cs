@@ -47,12 +47,6 @@ public sealed partial class BodyWeightComponent : Component
     public float BaseRadius;
 
     [ViewVariables]
-    public float BaseHungerDecay;
-
-    [ViewVariables]
-    public float BaseThirstDecay;
-
-    [ViewVariables]
     public Dictionary<Mobs.MobState, Content.Shared.FixedPoint.FixedPoint2> BaseThresholds = new();
 
     [ViewVariables]

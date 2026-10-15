@@ -29,16 +29,14 @@
     - Wooden
     - RawMaterial
     - DroneUsable # Goobstation
-  - type: Extractable
-    grindableSolutionName: wood
-  - type: SolutionContainerManager
-    solutions:
-      wood:
-        reagents:
-        - ReagentId: Cellulose
-          Quantity: 5
-        - ReagentId: Ash
-          Quantity: 5
+  # Claw Command - grinds via MaterialBase's per-sheet "composite" solution (upstream MaterialWoodPlank pattern).
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Cellulose
+        Quantity: 5
+      - ReagentId: Ash
+        Quantity: 5
 
 - type: entity
   parent: MaterialAshwoodPlank

@@ -185,20 +185,10 @@
   cost: -1
   excludes:
     - TrapAvoider
-  components:
-    - type: ClumsyCatchStatusEffect
-      failDamage:
-        types:
-          Blunt: 1
-    - type: ClumsyDefibStatusEffect
-    - type: ClumsyGunStatusEffect
-      failDamage:
-        types:
-          Blunt: 5
-          Piercing: 4
-          Heat: 3
-    - type: ClumsyInjectorStatusEffect
-    - type: ClumsyVaultStatusEffect
+  specials:
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - TraitStatusEffectClumsy
 
 - type: trait
   id: Feeble

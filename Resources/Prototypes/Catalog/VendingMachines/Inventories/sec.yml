@@ -21,6 +21,8 @@
     RiotBulletShield: 2
     RadioHandheldSecurity: 5
     SecurityBola: 6
+    ClothingLongcoatSec: 1 # Claw Command - Floof longcoat
+    ShadekinRestraints: 5 # Claw Command - shadekin restraints
   # security officers need to follow a diet regimen!
   contrabandInventory:
     WeaponMeleeNeedle: 2

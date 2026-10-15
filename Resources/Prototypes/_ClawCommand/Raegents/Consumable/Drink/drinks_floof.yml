@@ -58,8 +58,8 @@
         key: Stutter
         component: StutteringAccent
       - !type:Jitter
-      - !type:GenericStatusEffect
-        key: Drowsiness
+      - !type:ModifyStatusEffect # Claw Command - old Drowsiness status key no longer exists
+        effectProto: StatusEffectDrowsiness
         time: 10
         type: Remove
     Medicine:

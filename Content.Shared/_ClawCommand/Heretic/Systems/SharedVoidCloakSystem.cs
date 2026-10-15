@@ -33,6 +33,18 @@ public abstract partial class SharedVoidCloakSystem : EntitySystem
         SubscribeLocalEvent<VoidCloakHoodComponent, EntityTerminatingEvent>(OnTerminating);
 
         SubscribeLocalEvent<VoidCloakComponent, InventoryRelayedEvent<CheckMagicItemEvent>>(OnCheckMagicItem);
+        SubscribeLocalEvent<VoidCloakComponent, InventoryRelayedEvent<BeforeHeatExchangeEvent>>(OnBeforeHeatExchange); // Claw Command
+    }
+
+    /// <summary>
+    /// Claw Command - The (non-transparent) void cloak shields its wearer from the cold, but not from heat.
+    /// </summary>
+    private void OnBeforeHeatExchange(Entity<VoidCloakComponent> ent, ref InventoryRelayedEvent<BeforeHeatExchangeEvent> args)
+    {
+        if (ent.Comp.Transparent || !args.Args.Cooling)
+            return;
+
+        args.Args.HeatTransferModifier = 0f;
     }
 
     private void OnCheckMagicItem(Entity<VoidCloakComponent> ent, ref InventoryRelayedEvent<CheckMagicItemEvent> args)

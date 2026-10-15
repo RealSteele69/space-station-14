@@ -90,9 +90,8 @@
   - type: TileEntityEffect
     effects:
     - !type:VoidCurse
-    - !type:GenericStatusEffect
-      key: PressureImmunity
-      component: PressureImmunity
+    - !type:ModifyStatusEffect # Claw Command - old PressureImmunity status key/component removed upstream
+      effectProto: StatusEffectPressureImmunity
       conditions:
       - !type:HasComponentCondition
         checkMind: true
@@ -193,8 +192,8 @@
     lifetime: 30
   - type: Tag
     tags:
-    - Wall
     - WideSwingIgnore
+  - type: Wall # Claw Command - "Wall" tag replaced with WallComponent upstream (#45008)
   - type: Physics
     bodyType: Static
   - type: Fixtures

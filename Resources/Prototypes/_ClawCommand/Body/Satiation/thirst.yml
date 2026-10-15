@@ -1,0 +1,8 @@
+# Claw Command - fork satiation tunings, replacing per-species overrides of the retired Thirst component.
+
+# Feroxi dry out twice as fast: the old Thirst component ran baseDecayRate 0.2 against the default 0.1,
+# so this doubles NormalSatiationThirst's -0.1 change rate.
+- type: satiation
+  id: FeroxiSatiationThirst
+  parent: NormalSatiationThirst
+  baseChangeRate: -0.2

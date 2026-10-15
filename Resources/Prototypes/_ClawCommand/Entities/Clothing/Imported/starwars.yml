@@ -12,6 +12,7 @@
 - type: entity
   id: ClothingHeadHardsuitStormTrooper
   parent:
+  - ClawHardsuitHelmetLegacyLightVisuals
   - ClothingHeadHardsuitBase
   - ClothingHeadSuitWithLightBase
   name: "stormtrooper hardsuit helmet"
@@ -33,6 +34,7 @@
 - type: entity
   id: ClothingHeadHardsuitVader
   parent:
+  - ClawHardsuitHelmetLegacyLightVisuals
   - ClothingHeadHardsuitBase
   - ClothingHeadSuitWithLightBase
   name: "Vader helmet"

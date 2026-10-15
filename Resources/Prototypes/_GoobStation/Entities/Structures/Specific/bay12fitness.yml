@@ -8,10 +8,22 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  parent: SeatBase
+  parent: [ SeatBase, StructureHealthFurniture ] # Claw Command - upstream structure rebalance moved seat health into StructureHealth* mixins
   id: FitnessWeightsBench1
   name: weights bench
   components:
+  # Claw Command - mirrors upstream steel Chair (health formerly inherited from SeatBase).
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
   - type: Transform
     anchored: true
   - type: Physics

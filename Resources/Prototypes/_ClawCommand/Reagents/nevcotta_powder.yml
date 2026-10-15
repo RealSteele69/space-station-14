@@ -30,8 +30,9 @@
           types:
             Poison: 2
             Asphyxiation: 0.25
-      - !type:GenericStatusEffect
-        key: Drunk
-        component: DrunkStatusEffect
-        type: Add
+      # Claw Command - DrunkStatusEffect belongs on a status effect entity; adding it to the mob via the old "Drunk"
+      # key did nothing. Update = the old GenericStatusEffect refresh behaviour.
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectDrunk
+        type: Update
         time: 20

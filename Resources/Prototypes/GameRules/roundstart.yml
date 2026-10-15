@@ -34,6 +34,8 @@
       prob: 0.05
     - id: SubXenoborgs
       prob: 0.05
+    - id: CalmHeretic # _ClawCommand: heretic as a sub-event during extended/secret/irregular
+      prob: 0.15
     - id: Changeling
       prob: 0.25
 
@@ -60,6 +62,8 @@
       prob: 0.5
     - id: SubWizard
       prob: 0.05
+    - id: CalmHeretic # _ClawCommand: heretic as a sub-event
+      prob: 0.15
     - id: Changeling
       prob: 0.25
 
@@ -301,7 +305,7 @@
   id: Wizard
   components:
   - type: GameRule
-    minPlayers: 10
+    minPlayers: 15 # Claw Command - was 10.
   - type: DynamicRuleCost
     cost: 150
 

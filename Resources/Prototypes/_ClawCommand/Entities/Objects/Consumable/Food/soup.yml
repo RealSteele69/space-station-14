@@ -13,19 +13,18 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/soup.rsi
     state: cottonsoup
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 6
-        - ReagentId: Vitamin
-          Quantity: 6
-        - ReagentId: Water
-          Quantity: 3
-        - ReagentId: Fiber
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: Vitamin
+        Quantity: 6
+      - ReagentId: Water
+        Quantity: 3
+      - ReagentId: Fiber
+        Quantity: 5
   - type: Tag
     tags:
       - ClothMade
@@ -45,19 +44,18 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/soup.rsi
     state: cheesesoup
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Protein
-          Quantity: 1
-        - ReagentId: Milk
-          Quantity: 3
+  - type: Solution
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Vitamin
+        Quantity: 5
+      - ReagentId: Protein
+        Quantity: 1
+      - ReagentId: Milk
+        Quantity: 3
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -76,17 +74,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/soup.rsi
     state: seedsoup
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 7
-        - ReagentId: Vitamin
-          Quantity: 3
-        - ReagentId: Water
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 7
+      - ReagentId: Vitamin
+        Quantity: 3
+      - ReagentId: Water
+        Quantity: 5
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -104,15 +101,14 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/soup.rsi
     state: eyesoup
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 12
-        reagents:
-          - ReagentId: Nutriment
-            Quantity: 5
-          - ReagentId: Vitamin
-            Quantity: 3
+  - type: Solution
+    solution:
+      maxVol: 12
+      reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Vitamin
+          Quantity: 3
 # Tastes like tomato, squirming.
 
 - type: entity
@@ -129,19 +125,18 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/soup.rsi
     state: beanstew
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 25
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 12
-        - ReagentId: Vitamin
-          Quantity: 8
-        - ReagentId: Protein
-          Quantity: 3
-        - ReagentId: Water
-          Quantity: 2
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 12
+      - ReagentId: Vitamin
+        Quantity: 8
+      - ReagentId: Protein
+        Quantity: 3
+      - ReagentId: Water
+        Quantity: 2
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -161,17 +156,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/soup.rsi
     state: oatstew
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Vitamin
-          Quantity: 10
-        - ReagentId: Water
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Vitamin
+        Quantity: 10
+      - ReagentId: Water
+        Quantity: 5
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -190,19 +184,18 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/soup.rsi
     state: heartburnsoup
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 6
-        - ReagentId: Vitamin
-          Quantity: 4
-        - ReagentId: Protein
-          Quantity: 4
-        - ReagentId: CapsaicinOil
-          Quantity: 1
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: Vitamin
+        Quantity: 4
+      - ReagentId: Protein
+        Quantity: 4
+      - ReagentId: CapsaicinOil
+        Quantity: 1
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -222,15 +215,14 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/soup.rsi
     state: huamulancongee
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 22
-        - ReagentId: Protein
-          Quantity: 8
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 22
+      - ReagentId: Protein
+        Quantity: 8
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -247,15 +239,14 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/soup.rsi
     state: cornmealporridge
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 11
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 9
-        - ReagentId: Vitamin
-          Quantity: 2
+  - type: Solution
+    solution:
+      maxVol: 11
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 9
+      - ReagentId: Vitamin
+        Quantity: 2
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -274,17 +265,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/soup.rsi
     state: cheesyporridge
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 12
-        - ReagentId: Vitamin
-          Quantity: 4
-        - ReagentId: Protein
-          Quantity: 4
+  - type: Solution
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 12
+      - ReagentId: Vitamin
+        Quantity: 4
+      - ReagentId: Protein
+        Quantity: 4
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -305,17 +295,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/soup.rsi
     state: eggplantpolenta
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Vitamin
-          Quantity: 6
-        - ReagentId: Protein
-          Quantity: 12
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Vitamin
+        Quantity: 6
+      - ReagentId: Protein
+        Quantity: 12
   - type: Tag
     tags:
       - ClothMade # Mothic Food
@@ -337,19 +326,18 @@
     layers:
     - state: bowl
     - state: chili-hot
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 6
-        - ReagentId: CapsaicinOil
-          Quantity: 3
-        - ReagentId: Vitamin
-          Quantity: 3
-        - ReagentId: JuiceTomato
-          Quantity: 3
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: CapsaicinOil
+        Quantity: 3
+      - ReagentId: Vitamin
+        Quantity: 3
+      - ReagentId: JuiceTomato
+        Quantity: 3
   - type: Tag
     tags:
       - ClothMade # Mothic Food

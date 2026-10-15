@@ -1,5 +1,5 @@
 using Content.Shared._ClawCommand.InteractionVerbs;
-using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -8,8 +8,11 @@ namespace Content.Server._ClawCommand.InteractionVerbs.Actions;
 [Serializable]
 public sealed partial class ModifyStatusEffectAction : InteractionAction
 {
+    /// <summary>
+    ///     The status effect entity prototype to modify, e.g. StatusEffectStunned.
+    /// </summary>
     [DataField(required: true)]
-    public ProtoId<StatusEffectPrototype> Effect;
+    public EntProtoId Effect;
 
     /// <summary>
     ///     Amount of time added by this action. Can be negative, but then <see cref="EnsureEffect"/> should be false.
@@ -27,9 +30,6 @@ public sealed partial class ModifyStatusEffectAction : InteractionAction
     public override bool CanPerform(InteractionArgs ctx, InteractionVerbPrototype proto, bool isBefore, VerbDependencies deps)
     {
         var statusSys = deps.EntMan.System<StatusEffectsSystem>();
-        if (!statusSys.CanApplyEffect(ctx.Target, Effect))
-            return false;
-
         return !EnsureEffect || TimeAdded >= TimeSpan.Zero || statusSys.HasStatusEffect(ctx.Target, Effect);
     }
 
@@ -39,8 +39,9 @@ public sealed partial class ModifyStatusEffectAction : InteractionAction
 
         if (statusSys.HasStatusEffect(ctx.Target, Effect))
             return statusSys.TryAddTime(ctx.Target, Effect, TimeAdded);
-        else if (EnsureEffect)
-            return statusSys.TryAddStatusEffect(ctx.Target, Effect, TimeAdded, true);
+
+        if (EnsureEffect && TimeAdded > TimeSpan.Zero)
+            return statusSys.TryAddStatusEffectDuration(ctx.Target, Effect, TimeAdded);
 
         return false;
     }

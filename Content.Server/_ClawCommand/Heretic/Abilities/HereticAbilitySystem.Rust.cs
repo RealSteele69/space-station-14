@@ -19,6 +19,7 @@ using Content.Shared.Heretic;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Tiles;
+using Content.Shared.Wall; // Claw Command - Wall tag -> WallComponent (upstream #45008)
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
@@ -243,7 +244,7 @@ public sealed partial class HereticAbilitySystem
             targetEntity = Spawn(transformation, coords, rotation: rotation);
         }
 
-        if (TerminatingOrDeleted(targetEntity) || !_tag.HasTag(targetEntity, WallTag))
+        if (TerminatingOrDeleted(targetEntity) || !HasComp<WallComponent>(targetEntity)) // Claw Command - Wall tag -> WallComponent (upstream #45008)
             return false;
 
         if (targetEntity == target && !canRust)

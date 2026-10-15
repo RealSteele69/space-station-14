@@ -38,7 +38,10 @@ public abstract partial class SharedHereticAbilitySystem
         // SubscribeLocalEvent<SilverMaelstromComponent, BeforeHarmfulActionEvent>(OnBladeHarmfulAction);
 
         SubscribeLocalEvent<RealignmentComponent, BeforeStaminaDamageEvent>(OnBeforeBladeStaminaDamage);
-        SubscribeLocalEvent<RealignmentComponent, BeforeOldStatusEffectAddedEvent>(OnBeforeBladeStatusEffect);
+        // Claw Command - stun/knockdown no longer go through the old string-key status effects ("Stun"/"KnockedDown");
+        // block the StatusEffectStunned entity effect and knockdown attempts instead.
+        SubscribeLocalEvent<RealignmentComponent, StatusEffectNew.BeforeStatusEffectAddedEvent>(OnBeforeBladeStatusEffect);
+        SubscribeLocalEvent<RealignmentComponent, Content.Shared.Stunnable.KnockDownAttemptEvent>(OnBladeKnockDownAttempt);
         SubscribeLocalEvent<RealignmentComponent, SlipAttemptEvent>(OnBladeSlipAttempt);
         SubscribeLocalEvent<RealignmentComponent, BeforeHarmfulActionEvent>(OnBladeHarmfulAction);
         SubscribeLocalEvent<RealignmentComponent, StatusEffectEndedEvent>(OnStatusEnded);
@@ -82,11 +85,18 @@ public abstract partial class SharedHereticAbilitySystem
         args.NoSlip = true;
     }
 
-    private void OnBeforeBladeStatusEffect(EntityUid uid, Component component, ref BeforeOldStatusEffectAddedEvent args)
+    // Claw Command - was BeforeOldStatusEffectAddedEvent checking the "KnockedDown"/"Stun" keys
+    private void OnBeforeBladeStatusEffect(EntityUid uid, Component component, ref StatusEffectNew.BeforeStatusEffectAddedEvent args)
     {
-        if (args.EffectKey is not ("KnockedDown" or "Stun"))
+        if (args.Effect != Content.Shared.Stunnable.SharedStunSystem.StunId)
             return;
 
+        args.Cancelled = true;
+    }
+
+    // Claw Command
+    private void OnBladeKnockDownAttempt(EntityUid uid, Component component, ref Content.Shared.Stunnable.KnockDownAttemptEvent args)
+    {
         args.Cancelled = true;
     }
 

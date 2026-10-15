@@ -49,10 +49,10 @@
       - MagazineMagnum
       - CombatKnife
       - Truncheon
+      - Stunbaton # Claw Command - Stunbaton component became a tag upstream
       components:
       - LightReplacer
       - SmokeOnTrigger
-      - Stunbaton
       - FlashOnTrigger
       - SmokeOnTrigger
       - Flash

@@ -3503,6 +3503,55 @@ entities:
     - type: Transform
       parent: 1
       pos: -8.966801,10.694164
+- proto: PirateCaptainScoonerSpawner
+  entities:
+  - uid: 551
+    components:
+    - type: Transform
+      parent: 1
+      pos: -8.5,9.5
+- proto: PirateScoonerSpawner
+  entities:
+  - uid: 550
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,-3.5
+  - uid: 552
+    components:
+    - type: Transform
+      parent: 1
+      pos: -7.5,2.5
+  - uid: 553
+    components:
+    - type: Transform
+      parent: 1
+      pos: -7.5,5.5
+  - uid: 554
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,10.5
+  - uid: 555
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.5,2.5
+  - uid: 556
+    components:
+    - type: Transform
+      parent: 1
+      pos: -8.5,-2.5
+  - uid: 557
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.5,6.5
+  - uid: 558
+    components:
+    - type: Transform
+      parent: 1
+      pos: -3.5,-3.5
 - proto: PlasmaReinforcedWindowDirectional
   entities:
   - uid: 335
@@ -4038,53 +4087,6 @@ entities:
           ents: []
           showEnts: False
           occludes: True
-- proto: SpawnPointPirates
-  entities:
-  - uid: 550
-    components:
-    - type: Transform
-      parent: 1
-      pos: 0.5,-3.5
-  - uid: 551
-    components:
-    - type: Transform
-      parent: 1
-      pos: -8.5,9.5
-  - uid: 552
-    components:
-    - type: Transform
-      parent: 1
-      pos: -7.5,2.5
-  - uid: 553
-    components:
-    - type: Transform
-      parent: 1
-      pos: -7.5,5.5
-  - uid: 554
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.5,10.5
-  - uid: 555
-    components:
-    - type: Transform
-      parent: 1
-      pos: 2.5,2.5
-  - uid: 556
-    components:
-    - type: Transform
-      parent: 1
-      pos: -8.5,-2.5
-  - uid: 557
-    components:
-    - type: Transform
-      parent: 1
-      pos: 2.5,6.5
-  - uid: 558
-    components:
-    - type: Transform
-      parent: 1
-      pos: -3.5,-3.5
 - proto: StoolBar
   entities:
   - uid: 559

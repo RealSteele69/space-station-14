@@ -96,13 +96,12 @@
   name: deep salt water
   description: Deep ocean water with a faint taste of salt. The depths below are dark and vast.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      pool:
-        maxVol: 9999999
-        reagents:
-        - ReagentId: Water
-          Quantity: 9999999
+  - type: Solution
+    solution:
+      maxVol: 9999999
+      reagents:
+      - ReagentId: Water
+        Quantity: 9999999
 
 - type: entity
   parent: FloorWaterMedium
@@ -110,13 +109,12 @@
   name: salt water
   description: Clear salt water lapping gently. You can taste the ocean breeze.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      pool:
-        maxVol: 9999999
-        reagents:
-        - ReagentId: Water
-          Quantity: 9999999
+  - type: Solution
+    solution:
+      maxVol: 9999999
+      reagents:
+      - ReagentId: Water
+        Quantity: 9999999
 
 - type: entity
   parent: FloorWaterShallow
@@ -124,10 +122,9 @@
   name: shallow salt water
   description: Warm, shallow salt water washing over your feet. Tiny waves catch the light.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      pool:
-        maxVol: 9999999
-        reagents:
-        - ReagentId: Water
-          Quantity: 9999999
+  - type: Solution
+    solution:
+      maxVol: 9999999
+      reagents:
+      - ReagentId: Water
+        Quantity: 9999999

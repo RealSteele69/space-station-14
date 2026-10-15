@@ -30,9 +30,7 @@
     - - !type:Vomit
         thirstAmount: -50
         hungerAmount: -50
-      - !type:GenericStatusEffect
-        key: KnockedDown
-        component: KnockedDown
+      - !type:ModifyKnockdown # Claw Command - old KnockedDown status key no longer exists
         time: 20
         type: Add
       - !type:HealthChange
@@ -62,9 +60,8 @@
     - - !type:SpillBlood
         amount: 100
     # Lock
-    - - !type:GenericStatusEffect
-        key: TemporaryBlindness
-        component: TemporaryBlindness
+    - - !type:ModifyStatusEffect # Claw Command - old TemporaryBlindness status key no longer exists
+        effectProto: StatusEffectBlindness
         time: 20
         type: Add
       - !type:RemoveAccess

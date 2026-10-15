@@ -13,13 +13,12 @@
       - state: icon
         map: ["drinkCanIcon"]
       - state: corn
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 100
-        reagents:
-        - ReagentId: Cornoil
-          Quantity: 100
+  - type: Solution
+    solution:
+      maxVol: 100
+      reagents:
+      - ReagentId: Cornoil
+        Quantity: 100
 
 # --- BaseOilJar ---
 - type: entity

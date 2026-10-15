@@ -143,9 +143,9 @@ namespace Content.Shared.Decals
     public sealed partial class RequestDecalRemovalEvent : EntityEventArgs
     {
         public NetCoordinates Coordinates;
-        public uint? DecalId; // Claw Command Specific //
+        public DecalIndex? DecalId; // Claw Command Specific // - chunk-scoped since upstream moved decals onto chunk entities
 
-        public RequestDecalRemovalEvent(NetCoordinates coordinates, uint? decalId = null)
+        public RequestDecalRemovalEvent(NetCoordinates coordinates, DecalIndex? decalId = null)
         {
             Coordinates = coordinates;
             DecalId = decalId;

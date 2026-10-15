@@ -16,19 +16,18 @@
   - type: Edible
     trash:
     - FoodPacketProteinbarTrash
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 4
-        - ReagentId: Protein
-          Quantity: 4
-        - ReagentId: CocoaPowder
-          Quantity: 1
-        - ReagentId: Theobromine
-          Quantity: 1
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Protein
+        Quantity: 4
+      - ReagentId: CocoaPowder
+        Quantity: 1
+      - ReagentId: Theobromine
+        Quantity: 1
 
 # Sol Vend / Mars Mart
 - type: entity
@@ -359,13 +358,12 @@
     sprite: Objects/Consumable/Food/bay_food.rsi
     state: ancient_burger
   - type: Item
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 3
+  - type: Solution
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
   - type: RandomFillSolution
     solution: food
     weightedRandomId: RandomFillSpaceshroom

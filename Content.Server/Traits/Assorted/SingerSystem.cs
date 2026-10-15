@@ -10,9 +10,10 @@ using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Popups;
-using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew; // Claw Command - old "Muted" status key removed upstream
 using Content.Shared.Stunnable;
 using Content.Shared.Speech.Components;
+using Content.Shared.Speech.Muting; // Claw Command
 using Content.Shared.Traits.Assorted.Components;
 using Content.Shared.Traits.Assorted.Prototypes;
 using Content.Shared.Traits.Assorted.Systems;
@@ -38,7 +39,9 @@ public sealed partial class SingerSystem : SharedSingerSystem
         SubscribeLocalEvent<InstrumentComponent, KnockedDownEvent>(OnKnockedDown);
         SubscribeLocalEvent<InstrumentComponent, StunnedEvent>(OnStunned);
         SubscribeLocalEvent<InstrumentComponent, SleepStateChangedEvent>(OnSleep);
-        SubscribeLocalEvent<InstrumentComponent, StatusEffectAddedEvent>(OnStatusEffect);
+        // Claw Command - the old "Muted" status key was replaced by the StatusEffectMuted entity effect;
+        // react when a muting status effect entity is applied to the singer instead.
+        SubscribeLocalEvent<MutedStatusEffectComponent, StatusEffectAppliedEvent>(OnMutedApplied);
         SubscribeLocalEvent<InstrumentComponent, DamageChangedEvent>(OnDamageChanged);
         // This is intended to intercept and cancel the UI event before it reaches ActivatableUISystem.
         SubscribeLocalEvent<SingerComponent, OpenUiActionEvent>(OnInstrumentOpen, before: [typeof(ActivatableUISystem)]);
@@ -88,10 +91,11 @@ public sealed partial class SingerSystem : SharedSingerSystem
             CloseMidiUi(uid);
     }
 
-    private void OnStatusEffect(EntityUid uid, SharedInstrumentComponent component, StatusEffectAddedEvent args)
+    // Claw Command - was OnStatusEffect(StatusEffectAddedEvent) checking args.Key == "Muted"
+    private void OnMutedApplied(Entity<MutedStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)
     {
-        if (args.Key == "Muted")
-            CloseMidiUi(uid);
+        if (HasComp<InstrumentComponent>(args.Target))
+            CloseMidiUi(args.Target);
     }
 
     /// <summary>

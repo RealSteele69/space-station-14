@@ -181,6 +181,20 @@
         prototype: NormalSatiationHunger
       Thirst:
         prototype: NormalSatiationThirst
+  - type: SatiationMood # Claw Command - how fed and hydrated you are feeds into mood.
+    satiations:
+      Hunger:
+        thresholds:
+          Overfed: HungerOverfed
+          Okay: HungerOkay
+          Peckish: HungerPeckish
+          Starving: HungerStarving
+      Thirst:
+        thresholds:
+          Overhydrated: ThirstOverHydrated
+          Okay: ThirstOkay
+          Thirsty: ThirstThirsty
+          Parched: ThirstParched
   - type: Barotrauma
     damage:
       types:

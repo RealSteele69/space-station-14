@@ -164,6 +164,9 @@
     sprite: Imperial/VlClothes/PurpleChase/GlassesOne.rsi
   - type: Clothing
     sprite: Imperial/VlClothes/PurpleChase/GlassesOne.rsi
+  - type: ShowSatiationIcons # Claw Command - replaces the removed ShowThirstIcons
+    shownTypes:
+    - Thirst
   - type: SolutionScanner
   - type: FlashImmunity
 
@@ -217,8 +220,8 @@
       - Sidearm
       - MagazinePistol
       - MagazineMagnum
+      - Stunbaton # Claw Command - Stunbaton component became a tag upstream
       components:
-      - Stunbaton
       - FlashOnTrigger
       - SmokeOnTrigger
       - Flash
@@ -232,7 +235,7 @@
           - FlashOnTrigger
       stunbaton:
         whitelist:
-          components:
+          tags: # Claw Command - Stunbaton component became a tag upstream
           - Stunbaton
       tear_gas_grenade:
         whitelist:

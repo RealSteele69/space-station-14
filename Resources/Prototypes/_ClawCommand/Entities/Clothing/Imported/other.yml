@@ -365,8 +365,8 @@
       - Taser
       - SecBeltEquip
       - Radio
+      - Stunbaton # Claw Command - Stunbaton component became a tag upstream
       components:
-      - Stunbaton
       - FlashOnTrigger
       - Flash
       - Handcuff
@@ -378,7 +378,7 @@
           - FlashOnTrigger
       stunbaton:
         whitelist:
-          components:
+          tags: # Claw Command - Stunbaton component became a tag upstream
           - Stunbaton
     sprite: Clothing/Belt/belt_overlay.rsi
   - type: Appearance
@@ -516,7 +516,7 @@
 
 - type: entity
   id: ClothingHeadHardsuitSingularitySienceBlack
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClawHardsuitHelmetLegacyVisuals, ClothingHeadHardsuitBase ]
   name: "scientiest helmet"
   suffix: "Singularity"
   components:
@@ -533,7 +533,7 @@
 
 - type: entity
   id: ClothingHeadHardsuitSingularitySienceGreen
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClawHardsuitHelmetLegacyVisuals, ClothingHeadHardsuitBase ]
   name: "scientiest helmet"
   suffix: "Singularity"
   components:
@@ -550,7 +550,7 @@
 
 - type: entity
   id: ClothingHeadHardsuitSingularitySienceOrange
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClawHardsuitHelmetLegacyVisuals, ClothingHeadHardsuitBase ]
   name: "scientiest helmet"
   suffix: "Singularity"
   components:
@@ -567,7 +567,7 @@
 
 - type: entity
   id: ClothingHeadHardsuitSingularitySienceWhite
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClawHardsuitHelmetLegacyVisuals, ClothingHeadHardsuitBase ]
   name: "scientiest helmet"
   suffix: "Singularity"
   components:
@@ -701,6 +701,7 @@
 - type: entity
   id: ClothingHeadHelmetCBURNLeader
   parent:
+  - ClawHardsuitHelmetNoWornLightVisuals
   - ClothingHeadHardsuitBase
   - ClothingHeadSuitWithLightBase
   name: "CBURN exosuit helmet"
@@ -1594,6 +1595,7 @@
 - type: entity
   id: EngSuitTwo
   parent:
+  - ClawHardsuitHelmetLegacyLightVisuals
   - ClothingHeadHardsuitBase
   - ClothingHeadSuitWithLightBase
   name: "Helmet from the suit of the bio-engineer S-o.N.A"

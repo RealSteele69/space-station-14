@@ -19,7 +19,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  parent: [ ClothingOuterBaseToggleable, AllowSuitStorageClothing, BaseMagicalContraband ]
+  parent: [ ClothingOuterStorageBase, AllowSuitStorageClothing, BaseMagicalContraband ] # Claw Command: upstream removed ClothingOuterStorageToggleableBase; storage base + explicit toggleable (as ClothingOuterJacketToggleableBase does) keeps the pockets
   id: ClothingOuterArmorHeretic
   name: ominous armor
   description: A ragged, dusty set of robes. Strange eyes line the inside.
@@ -58,6 +58,11 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodHeretic
     slot: head
+  - type: ContainerContainer # Claw Command: was inherited from ClothingOuterStorageToggleableBase
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container
+        ents: []
   - type: ModifyDelayedKnockdown
     delayDelta: 3
     knockdownTimeDelta: -3
@@ -143,7 +148,7 @@
     slot: head
 
 - type: entity
-  parent: [ ClothingOuterBaseMedium, ClothingOuterBaseToggleable, AllowSuitStorageClothing, BaseMagicalContraband ]
+  parent: [ ClothingOuterBaseMedium, ClothingOuterStorageBase, AllowSuitStorageClothing, BaseMagicalContraband ] # Claw Command: was ClothingOuterStorageToggleableBase (removed upstream)
   id: ClothingOuterArmorCloakVoid
   name: void cloak
   description: Black like tar, reflecting no light. Runic symbols line the outside. With each flash you lose comprehension of what you are seeing.
@@ -186,6 +191,11 @@
     stripDelay: null
     clothingPrototype: ClothingHeadHatHoodVoidCloakHeretic
     slot: head
+  - type: ContainerContainer # Claw Command: was inherited from ClothingOuterStorageToggleableBase
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container
+        ents: []
   - type: ModifyDelayedKnockdown
     delayDelta: 2
     knockdownTimeDelta: -2

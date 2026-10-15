@@ -19,19 +19,18 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/Baked/pizza.rsi
     state: firecracker
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 40
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 25
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: CapsaicinOil
-          Quantity: 1
-        - ReagentId: BbqSauce
-          Quantity: 4
+  - type: Solution
+    solution:
+      maxVol: 40
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 25
+      - ReagentId: Vitamin
+        Quantity: 5
+      - ReagentId: CapsaicinOil
+        Quantity: 1
+      - ReagentId: BbqSauce
+        Quantity: 4
   - type: Tag
     tags:
     - Pizza
@@ -52,19 +51,18 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/Baked/pizza.rsi
     state: firecracker-slice
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 6
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 4
-        - ReagentId: Vitamin
-          Quantity: 0.8
-        - ReagentId: CapsaicinOil
-          Quantity: 0.1
-        - ReagentId: BbqSauce
-          Quantity: 0.5
+  - type: Solution
+    solution:
+      maxVol: 6
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Vitamin
+        Quantity: 0.8
+      - ReagentId: CapsaicinOil
+        Quantity: 0.1
+      - ReagentId: BbqSauce
+        Quantity: 0.5
   - type: Tag
     tags:
     - Pizza
@@ -133,17 +131,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/Baked/pizza.rsi
     state: pesto
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 40
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 30
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Allicin
-          Quantity: 2
+  - type: Solution
+    solution:
+      maxVol: 40
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 30
+      - ReagentId: Vitamin
+        Quantity: 5
+      - ReagentId: Allicin
+        Quantity: 2
   - type: Tag
     tags:
     - Pizza
@@ -164,17 +161,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/Baked/pizza.rsi
     state: pesto-slice
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 6
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Vitamin
-          Quantity: 0.8
-        - ReagentId: Allicin
-          Quantity: 0.25
+  - type: Solution
+    solution:
+      maxVol: 6
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Vitamin
+        Quantity: 0.8
+      - ReagentId: Allicin
+        Quantity: 0.25
   - type: Tag
     tags:
     - Pizza
@@ -200,17 +196,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/Baked/pizza.rsi
     state: cotton
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 40
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 25
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Fiber
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 40
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 25
+      - ReagentId: Vitamin
+        Quantity: 5
+      - ReagentId: Fiber
+        Quantity: 5
   - type: Tag
     tags:
     - Pizza
@@ -230,17 +225,16 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/Baked/pizza.rsi
     state: cotton-slice
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 6
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 4.4
-        - ReagentId: Vitamin
-          Quantity: 0.8
-        - ReagentId: Fiber
-          Quantity: 0.8
+  - type: Solution
+    solution:
+      maxVol: 6
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4.4
+      - ReagentId: Vitamin
+        Quantity: 0.8
+      - ReagentId: Fiber
+        Quantity: 0.8
   - type: Tag
     tags:
     - Pizza

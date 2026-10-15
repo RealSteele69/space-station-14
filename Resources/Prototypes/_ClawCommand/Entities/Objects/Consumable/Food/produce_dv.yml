@@ -7,15 +7,14 @@
   - type: FlavorProfile
     flavors:
     - sharp
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 25
-        reagents:
-        - ReagentId: Quartzite
-          Quantity: 10
-        - ReagentId: Ethyloxyephedrine
-          Quantity: 15
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Quartzite
+        Quantity: 10
+      - ReagentId: Ethyloxyephedrine
+        Quantity: 15
   - type: Sprite
     sprite: DeltaV/Objects/Specific/Hydroponics/Crystal_Thistle.rsi
   - type: Produce
@@ -33,19 +32,18 @@
     flavors:
     - spicy
     - sweet
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 39
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 6
-        - ReagentId: CapsaicinOil
-          Quantity: 15
-        - ReagentId: Vitamin
-          Quantity: 6
-        - ReagentId: Thermite
-          Quantity: 10
+  - type: Solution
+    solution:
+      maxVol: 39
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: CapsaicinOil
+        Quantity: 15
+      - ReagentId: Vitamin
+        Quantity: 6
+      - ReagentId: Thermite
+        Quantity: 10
   - type: TileFrictionModifier
     modifier: 0.05
   - type: Sprite
@@ -66,19 +64,18 @@
     flavors:
     - spicy
     - spooky
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 41
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 8
-        - ReagentId: CapsaicinOil
-          Quantity: 20
-        - ReagentId: Vitamin
-          Quantity: 8
-        - ReagentId: Ectoplasm
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 41
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+      - ReagentId: CapsaicinOil
+        Quantity: 20
+      - ReagentId: Vitamin
+        Quantity: 8
+      - ReagentId: Ectoplasm
+        Quantity: 5
   - type: TileFrictionModifier
     modifier: 0.0001
   - type: Sprite

@@ -1,38 +1,58 @@
+# Claw Command - upstream's structure rebalance stripped health from BaseRock; mirror upstream FloraRockSolid.
 - type: entity
-  parent: BaseRock
+  parent: [ BaseRock, StructureHealthFurnitureStrong ]
   id: FloraRockSolid01
   components:
+  - type: Damageable
+    damageModifierSet: RockMod
+  - type: Destructible
+    thresholds: &ThresholdsFloraRock
+    - trigger:
+        !type:DamageTrigger
+        damage: 80
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
   - type: Sprite
     state: rocksolid01
 
 - type: entity
-  parent: BaseRock
+  parent: [ BaseRock, StructureHealthFurnitureStrong ] # Claw Command - see FloraRockSolid01
   id: FloraRockSolid02
   components:
+  - type: Damageable
+    damageModifierSet: RockMod
+  - type: Destructible
+    thresholds: *ThresholdsFloraRock
   - type: Sprite
     state: rocksolid02
 
 - type: entity
-  parent: BaseRock
+  parent: [ BaseRock, StructureHealthFurnitureStrong ] # Claw Command - see FloraRockSolid01
   id: FloraRockSolid03
   components:
+  - type: Damageable
+    damageModifierSet: RockMod
+  - type: Destructible
+    thresholds: *ThresholdsFloraRock
   - type: Sprite
     state: rocksolid03
 
 - type: entity
   name: stalagmite
   description: Natural stone spikes.
-  parent: BaseRock
+  parent: [ BaseRock, StructureHealthFurnitureWeak ] # Claw Command - health mixin after upstream structure rebalance; mirrors upstream FloraStalagmite
   id: FloraStalagmite1
   components:
+  - type: Damageable
+    damageModifierSet: RockMod
   - type: Destructible
     thresholds:
       - trigger:
           !type:DamageTrigger
           damage: 5
         behaviors:
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
           - !type:PlaySoundBehavior
             sound:
               collection: GlassBreak

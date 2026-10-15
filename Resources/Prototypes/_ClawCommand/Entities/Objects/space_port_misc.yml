@@ -26,51 +26,47 @@
   components:
   - type: Label
     currentLabel: reagent-name-nutriment
-  - type: SolutionContainerManager
-    solutions:
-      beaker:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 200
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 200
 
 - type: entity
   id: NecrosolChemistryBottle
   parent: BaseChemistryBottleFilled
   name: necrosol bottle
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Necrosol
-          Quantity: 30
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Necrosol
+        Quantity: 30
 
 - type: entity
   id: SyringeCognizine
   parent: Syringe
   name: cognizine syringe
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 15
-        reagents:
-        - ReagentId: Cognizine
-          Quantity: 15
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Cognizine
+        Quantity: 15
 
 - type: entity
   id: SyringeOpporozidone
   parent: Syringe
   name: opporozidone syringe
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 15
-        reagents:
-        - ReagentId: Opporozidone
-          Quantity: 15
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Opporozidone
+        Quantity: 15
 
 # === Pills & canisters ===
 
@@ -79,13 +75,12 @@
   parent: Pill
   id: PillPax
   components:
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Pax
-          Quantity: 10
+  - type: Solution
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: Pax
+        Quantity: 10
 
 - type: entity
   name: pill canister (Pax 10u)

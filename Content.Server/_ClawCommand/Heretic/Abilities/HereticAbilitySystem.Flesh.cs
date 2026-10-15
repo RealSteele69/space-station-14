@@ -302,9 +302,10 @@ public sealed partial class HereticAbilitySystem
 
         AddComp(clone.Value, ghoul);
 
-        if (_statusEffect.TryGetTime(uid, "KnockedDown", out var knockdownStartEnd))
+        // Claw Command - knockdown is a KnockedDownComponent timer now, not the old "KnockedDown" status key
+        if (TryComp<Content.Shared.Stunnable.KnockedDownComponent>(uid, out var knockedDown))
         {
-            var time = knockdownStartEnd.Value.Item2 - Timing.CurTime;
+            var time = knockedDown.NextUpdate - Timing.CurTime;
             if (time > TimeSpan.Zero)
                 _stun.TryKnockdown(clone.Value, time, true, true, false);
         }

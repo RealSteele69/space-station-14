@@ -4,6 +4,7 @@ using Content.Shared.Throwing;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Mobs;
+using Content.Shared.Temperature; // Claw Command
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Network;
 
@@ -26,6 +27,18 @@ public abstract partial class SharedEtherealSystem : EntitySystem
         SubscribeLocalEvent<EtherealComponent, ShotAttemptedEvent>(OnShootAttempt);
         SubscribeLocalEvent<EtherealComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<EtherealComponent, PreventCollideEvent>(PreventCollision);
+        SubscribeLocalEvent<EtherealComponent, BeforeHeatExchangeEvent>(OnBeforeHeatExchange); // Claw Command
+    }
+
+    /// <summary>
+    /// Claw Command - Ethereals are phased out into the Dark and don't trade heat with the world around them.
+    /// This used to be done by zeroing TemperatureComponent.AtmosTemperatureTransferEfficiency, which upstream
+    /// removed when temperature moved onto heat containers; every conductance-respecting exchange (atmos
+    /// exposure included) now goes through this event instead.
+    /// </summary>
+    private void OnBeforeHeatExchange(Entity<EtherealComponent> ent, ref BeforeHeatExchangeEvent args)
+    {
+        args.HeatTransferModifier = 0f;
     }
 
     public virtual void OnStartup(EntityUid uid, EtherealComponent component, MapInitEvent args)

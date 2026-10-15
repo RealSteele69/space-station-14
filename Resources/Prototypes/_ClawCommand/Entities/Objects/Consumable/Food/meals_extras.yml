@@ -9,15 +9,14 @@
       - chicken
   - type: Sprite
     state: harpywings
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 25
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 13
-        - ReagentId: Protein
-          Quantity: 7
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 13
+      - ReagentId: Protein
+        Quantity: 7
   - type: Tag
     tags:
     - Cooked
@@ -36,15 +35,14 @@
   - type: Sprite
     sprite: DeltaV/Objects/Consumable/Food/Baked/grilledcheese.rsi
     state: grilledcheese
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 6
-        - ReagentId: Vitamin
-          Quantity: 2
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: Vitamin
+        Quantity: 2
 
 - type: entity
   name: scrambled eggs
@@ -61,13 +59,12 @@
     layers:
       - state: bowl
       - state: scrambled-eggs
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Protein
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Protein
+        Quantity: 5
 # Tastes like eggs, butter and salt

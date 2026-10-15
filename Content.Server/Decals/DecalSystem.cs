@@ -184,6 +184,32 @@ public sealed partial class DecalSystem : SharedDecalSystem
         if (gridId == null)
             return;
 
+        // !! CLAW COMMAND SPECIFIC !!
+        // If a specific decal ID is provided, remove only that one.
+        if (ev.DecalId is { } targetId)
+        {
+            if (!TryGetDecalChunk(gridId.Value, targetId, out var chunk))
+                return; // Decal doesn't exist
+
+            var targetDecal = chunk.Comp2.Decals[targetId.Id];
+
+            if (eventArgs.SenderSession.AttachedEntity != null)
+            {
+                _adminLogger.Add(LogType.CrayonDraw, LogImpact.Low,
+                    $"{ToPrettyString(eventArgs.SenderSession.AttachedEntity.Value):actor} removed a {targetDecal.Color} {targetDecal.Id} at {ev.Coordinates}");
+            }
+            else
+            {
+                _adminLogger.Add(LogType.CrayonDraw, LogImpact.Low,
+                    $"{eventArgs.SenderSession.Name} removed a {targetDecal.Color} {targetDecal.Id} at {ev.Coordinates}");
+            }
+
+            RemoveDecal(gridId.Value, targetId);
+            return;
+        }
+        // Otherwise remove all decals on the tile (for backwards compatibility and area deletion).
+        // !! END CLAW COMMAND SPECIFIC !!
+
         foreach (var (decalId, decal) in GetDecalsInRange(gridId.Value, ev.Coordinates.Position))
         {
             if (eventArgs.SenderSession.AttachedEntity != null)

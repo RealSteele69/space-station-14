@@ -24,6 +24,7 @@
   parent:
   - BaseMob
   - MobDamageable
+  - BaseMobDestructible # Claw Command - upstream split gib/ash thresholds out of MobDamageable
   - MobAtmosExposed
   - MobCombat
   abstract: true

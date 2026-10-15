@@ -9,6 +9,7 @@ using Content.Shared.Popups;
 using Content.Shared.Speech.Components;
 using Content.Shared.Speech.EntitySystems;
 using Content.Shared.StatusEffect;
+using Content.Shared.Stunnable; // Claw Command - SharedStunSystem.StunId
 using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Heretic.EntitySystems;
@@ -16,6 +17,7 @@ namespace Content.Server.Heretic.EntitySystems;
 public sealed partial class FeastOfOwlsSystem : EntitySystem
 {
     [Dependency] private StatusEffectsSystem _status = default!;
+    [Dependency] private Content.Shared.StatusEffectNew.StatusEffectsSystem _statusNew = default!; // Claw Command
     [Dependency] private JitteringSystem _jitter = default!;
     [Dependency] private StutteringSystem _stutter = default!;
     [Dependency] private StunSystem _stun = default!;
@@ -69,8 +71,10 @@ public sealed partial class FeastOfOwlsSystem : EntitySystem
             if (comp.CurrentStep < comp.Reward)
                 continue;
 
-            _status.TryRemoveStatusEffect(uid, "Stun", status);
-            _status.TryRemoveStatusEffect(uid, "KnockedDown", status);
+            // Claw Command - paralysis is the StatusEffectStunned entity + a KnockedDownComponent timer now; the old
+            // "Stun"/"KnockedDown" keys did nothing. End both so the heretic gets up immediately, as before.
+            _statusNew.TryRemoveStatusEffect(uid, SharedStunSystem.StunId);
+            _stun.SetKnockdownTime(uid, TimeSpan.Zero);
             RemCompDeferred(uid, comp);
         }
     }

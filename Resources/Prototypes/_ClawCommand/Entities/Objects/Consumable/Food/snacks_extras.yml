@@ -15,19 +15,18 @@
   - type: Edible
     trash:
     - FoodPacketBoritosTrash
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 13
-        - ReagentId: CapsaicinOil
-          Quantity: 1
-        - ReagentId: Vitamin
-          Quantity: 2
-        - ReagentId: Protein
-          Quantity: 4
+  - type: Solution
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 13
+      - ReagentId: CapsaicinOil
+        Quantity: 1
+      - ReagentId: Vitamin
+        Quantity: 2
+      - ReagentId: Protein
+        Quantity: 4
   - type: Tag
     tags:
     - Meat

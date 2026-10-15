@@ -35,13 +35,12 @@
     equippedPrefix: unlit
   - type: Item
     size: Tiny
-  - type: SolutionContainerManager
-    solutions:
-      smokable:
-        maxVol: 6480
-        reagents:
-          - ReagentId: Nicotine
-            Quantity: 6480
+  - type: Solution
+    solution:
+      maxVol: 6480
+      reagents:
+        - ReagentId: Nicotine
+          Quantity: 6480
 
 # --- Energy Sabre Sheath ---
 # Tag EnergySabre + ItemMapper layer reference still work (Tag IDs in
@@ -105,7 +104,7 @@
       heldPrefix: off
     - type: PointLight
       enabled: false
-      mask: /Textures/Effects/LightMasks/cone.png
+      lightMask: ConeSingle
       autoRot: true
       radius: 2
       netsync: false

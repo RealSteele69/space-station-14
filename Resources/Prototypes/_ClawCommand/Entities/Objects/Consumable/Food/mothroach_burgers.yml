@@ -16,17 +16,16 @@
   - type: Sprite
     sprite: _ClawCommand/Objects/Consumable/Food/chud_burger.rsi
     state: icon
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 3
-        - ReagentId: Protein
-          Quantity: 6
-        - ReagentId: Nothing
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Protein
+        Quantity: 6
+      - ReagentId: Nothing
+        Quantity: 5
   - type: Tag
     tags:
     - Meat
@@ -46,17 +45,16 @@
   - type: Sprite
     sprite: _ClawCommand/Objects/Consumable/Food/mothroach_burger.rsi
     state: mustard_mothroach
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 3
-        - ReagentId: Protein
-          Quantity: 4
-        - ReagentId: Vitamin
-          Quantity: 7
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Protein
+        Quantity: 4
+      - ReagentId: Vitamin
+        Quantity: 7
   - type: Tag
     tags:
     - Meat

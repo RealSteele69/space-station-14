@@ -14,17 +14,17 @@
   - type: SyncSprite
   - type: Clickable
   - type: Sprite
-    sprite: Tiles/Planet/water.rsi
+    sprite: _ClawCommand/Tiles/Planet/water.rsi # Claw Command - upstream deleted Tiles/Planet/water.rsi; restored copy (CC-BY-SA-3.0)
     drawdepth: BelowFloor
     layers:
       - state: shoreline_water
-  - type: SolutionContainerManager
-    solutions:
-      pool:
-        maxVol: 9999999
-        reagents:
-        - ReagentId: Water
-          Quantity: 9999999
+  - type: Solution
+    id: pool
+    solution:
+      maxVol: 9999999
+      reagents:
+      - ReagentId: Water
+        Quantity: 9999999
   - type: DrainableSolution
     solution: pool
   - type: SpeedModifierContacts

@@ -55,10 +55,10 @@
     slots:
     - back
     - suitStorage
-  - type: SolutionContainerManager
-    solutions:
-      melee:
-        maxVol: 5
+  - type: Solution
+    id: melee
+    solution:
+      maxVol: 5
   - type: MeleeChemicalInjector
     transferAmount: 1
     solution: melee

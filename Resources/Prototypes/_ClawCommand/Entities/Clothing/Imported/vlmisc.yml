@@ -92,7 +92,7 @@
 
 - type: entity
   id: ClothingHeadHelmetModsuitSpecialForces
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClawHardsuitHelmetLegacyVisuals, ClothingHeadHardsuitBase ]
   name: "Special Forces Helmet"
   description: "Designed to protect your head from enemy forces"
   components:

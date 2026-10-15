@@ -4,7 +4,7 @@
   suffix: Maintenance, Security/Lawyer, Locked
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/maint.rsi
+    sprite: Structures/Doors/Airlocks/Standard/airlock-maints.rsi # Claw Command - maint.rsi was replaced upstream; matches upstream AirlockMaint*Locked
 
 - type: entity
   parent: AirlockMedicalLocked

@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Clothing;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Examine; // Claw Command: examine hint for smoke-blocking masks
 using Content.Shared.Fluids.Components;
 using Content.Shared.Foldable;
 using Content.Shared.Interaction.Components;
@@ -22,6 +23,7 @@ public sealed partial class IngestionSystem
         SubscribeLocalEvent<IngestionBlockerComponent, FoldedEvent>(OnBlockerFolded);
         SubscribeLocalEvent<IngestionBlockerComponent, IngestionAttemptEvent>(OnIngestionBlockerAttempt);
         SubscribeLocalEvent<IngestionBlockerComponent, InventoryRelayedEvent<IngestionAttemptEvent>>(OnIngestionBlockerAttempt);
+        SubscribeLocalEvent<IngestionBlockerComponent, ExaminedEvent>(OnIngestionBlockerExamined); // Claw Command: show smoke-block hint on examine
 
         // Edible Event
         SubscribeLocalEvent<EdibleComponent, EdibleEvent>(OnEdible);
@@ -54,6 +56,14 @@ public sealed partial class IngestionSystem
     {
         entity.Comp.Enabled = !args.IsFolded;
         Dirty(entity);
+    }
+
+    // Claw Command: ported from Goob-Station. Tells the player on examine that this mask
+    // will keep smoke chems out of their bloodstream while worn — no internals required.
+    private void OnIngestionBlockerExamined(Entity<IngestionBlockerComponent> ent, ref ExaminedEvent args)
+    {
+        if (ent.Comp.BlockSmokeIngestion)
+            args.PushMarkup(Loc.GetString("ingestion-blocker-block-smoke-examine"));
     }
 
     private void OnIngestionBlockerAttempt(Entity<IngestionBlockerComponent> entity, ref IngestionAttemptEvent args)

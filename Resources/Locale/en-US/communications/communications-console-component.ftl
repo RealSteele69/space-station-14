@@ -26,7 +26,10 @@ comms-console-emergency-tab-title = Emergency
 comms-console-station-emergency-header = Emergency Response Team
 comms-console-menu-request-ert = Request ERT
 comms-console-menu-request-ert-tooltip = Request an Emergency Response Team from Central Command. Admins will be notified to deploy a team.
-comms-console-ert-request-cooldown = ERT request is on cooldown. Wait {$minutes} more minute(s).
+comms-console-ert-request-cooldown = ERT request is on cooldown. Wait {$minutes} more {$minutes ->
+    [one] minute
+    *[other] minutes
+}.
 comms-console-ert-request-sent = ERT request sent. Admins have been notified.
 comms-console-ert-request-admin = {$sender} has requested an Emergency Response Team from the communications console.
 

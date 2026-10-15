@@ -93,18 +93,10 @@ public sealed partial class EmergencyAccessMedbayStateSystem : EntitySystem
 
     private void OnPlayerJobsRemoved(Entity<EmergencyAccessMedbayStateComponent> ent, ref PlayerJobsRemovedEvent args)
     {
-        if (!TryComp<StationJobsComponent>(ent, out var stationJobs))
-            return;
-        if (!args.PlayerJobs.Contains("ChiefMedicalOfficer") ||
-        !args.PlayerJobs.Contains("MedicalDoctor") ||
-        !args.PlayerJobs.Contains("Chemist") ||
-        !args.PlayerJobs.Contains("Paramedic")) // If the player that left was a captain we need to check if there are any captains left
-            return;
-        if (stationJobs.PlayerJobs.Any(playerJobs => playerJobs.Value.Contains("ChiefMedicalOfficer")) ||
-        stationJobs.PlayerJobs.Any(playerJobs => playerJobs.Value.Contains("MedicalDoctor")) ||
-       stationJobs.PlayerJobs.Any(playerJobs => playerJobs.Value.Contains("Chemist")) ||
-       stationJobs.PlayerJobs.Any(playerJobs => playerJobs.Value.Contains("Paramedic"))
-       ) // We check the PlayerJobs if there are any cpatins left
+        if (!args.PlayerJobs.Contains("ChiefMedicalOfficer") &&
+            !args.PlayerJobs.Contains("MedicalDoctor") &&
+            !args.PlayerJobs.Contains("Chemist") &&
+            !args.PlayerJobs.Contains("Paramedic"))
             return;
         ent.Comp.DoctorCount -= 1;
         if (ent.Comp.DoctorCount < 0)

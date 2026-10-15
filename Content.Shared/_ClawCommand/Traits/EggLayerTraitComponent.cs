@@ -17,7 +17,7 @@ public sealed partial class EggLayerTraitComponent : Component
     ///     Player action.
     /// </summary>
     [DataField]
-    public EntProtoId EggLayAction = "ActionAnimalLayEgg";
+    public EntProtoId EggLayAction = "ActionTraitLayEgg";
 
     [DataField]
     public SoundSpecifier EggLaySound = new SoundPathSpecifier("/Audio/Effects/pop.ogg");

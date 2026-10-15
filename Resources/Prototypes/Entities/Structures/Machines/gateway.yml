@@ -1,6 +1,13 @@
+# Claw Command - BaseGateway restored. Upstream folded BaseGateway into Gateway and turned it into a
+# station teleporter (StationTeleporter autoLinkKey: Nanotrasen + a permanent Portal). The fork's
+# Lavaland gateways still run on the old GatewayComponent/GatewaySystem (UI-driven, Portal added and
+# removed on open/close), so they must not inherit either of those or they would show up as
+# destinations in every station teleporter console. Shared frame/sprite/physics live here; the
+# upstream station-teleporter behaviour lives on Gateway below.
 - type: entity
+  abstract: true
   parent: BaseStructure
-  id: Gateway
+  id: BaseGateway
   name: gateway
   description: A mysterious gateway built by unknown hands, it allows for faster than light travel to far-flung locations.
   components:
@@ -17,13 +24,16 @@
       shader: unshaded
       map: ["portal"]
       visible: false
+  # GatewaySystem sets GatewayVisuals.Active on BOTH ends on open and close. LinkedEntityVisuals is
+  # not usable for these: GatewaySystem links one-way, so only the source gets HasAnyLinks and the
+  # unlink on close never clears it.
   - type: GenericVisualizer
     visuals:
       enum.PowerDeviceVisuals.Powered:
         enum.PowerDeviceVisualLayers.Powered:
           True: { visible: true }
           False: { visible: false }
-      enum.LinkedEntityVisuals.HasAnyLinks:
+      enum.GatewayVisuals.Active:
         portal:
           True: { visible: true }
           False: { visible: false }
@@ -44,6 +54,21 @@
         - WallLayer
         hard: false
   - type: Appearance
+
+- type: entity
+  parent: BaseGateway # Claw Command - was the root prototype upstream
+  id: Gateway
+  components:
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+      enum.LinkedEntityVisuals.HasAnyLinks:
+        portal:
+          True: { visible: true }
+          False: { visible: false }
   - type: StationTeleporter
     portalLayerMap: "portal"
     autoLinkKey: Nanotrasen

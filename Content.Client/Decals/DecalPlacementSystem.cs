@@ -9,6 +9,7 @@ using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
+using Robust.Shared.Map; // Claw Command
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Decals;
@@ -25,6 +26,7 @@ public sealed partial class DecalPlacementSystem : EntitySystem
     [Dependency] private SharedMapSystem _maps = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SpriteSystem _sprite = default!;
+    [Dependency] private DecalSystem _decals = default!; // Claw Command
     public static readonly EntProtoId DecalAction = "BaseMappingDecalAction";
 
     private string? _decalId;
@@ -93,7 +95,20 @@ public sealed partial class DecalPlacementSystem : EntitySystem
 
                 _erasing = true;
 
-                RaisePredictiveEvent(new RequestDecalRemovalEvent(GetNetCoordinates(coords)));
+                // Trieste Specific // Claw Command - erase only the top-Z / closest decal under the cursor instead of
+                // wiping every decal on the tile.
+                var targetDecalId = GetEraseTarget(coords);
+
+                if (targetDecalId != null)
+                {
+                    // Not predicted: the client-side removal handler wipes everything in range, which would
+                    // mispredict a single-decal erase until the server state arrives.
+                    RaiseNetworkEvent(new RequestDecalRemovalEvent(GetNetCoordinates(coords), targetDecalId));
+                }
+                else
+                {
+                    RaisePredictiveEvent(new RequestDecalRemovalEvent(GetNetCoordinates(coords)));
+                }
 
                 return true;
             }, (session, coords, uid) =>
@@ -107,6 +122,38 @@ public sealed partial class DecalPlacementSystem : EntitySystem
 
         SubscribeLocalEvent<FillActionSlotEvent>(OnFillSlot);
         SubscribeLocalEvent<PlaceDecalActionEvent>(OnPlaceDecalAction);
+    }
+
+    /// <summary>
+    /// Claw Command - Finds the decal the eraser should remove at the given click position: the highest
+    /// Z-index decal within ~1 tile, ties broken by distance. Null if there is nothing there.
+    /// </summary>
+    private DecalIndex? GetEraseTarget(EntityCoordinates coords)
+    {
+        var gridId = _transform.GetGrid(coords);
+        if (gridId == null)
+            return null;
+
+        DecalIndex? targetDecalId = null;
+        var closestDistance = float.MaxValue;
+        var highestZIndex = int.MinValue;
+
+        // Same 0.75 radius / half-tile offset the server uses when wiping a tile.
+        foreach (var (decalId, decal) in _decals.GetDecalsInRange(gridId.Value, coords.Position, 0.75f))
+        {
+            var distance = (coords.Position - decal.Coordinates - new Vector2(0.5f, 0.5f)).Length();
+
+            // Prioritize by the Z-Index first, then by distance.
+            if (decal.ZIndex > highestZIndex
+                || (decal.ZIndex == highestZIndex && distance < closestDistance))
+            {
+                highestZIndex = decal.ZIndex;
+                closestDistance = distance;
+                targetDecalId = decalId;
+            }
+        }
+
+        return targetDecalId;
     }
 
     private void OnPlaceDecalAction(PlaceDecalActionEvent args)

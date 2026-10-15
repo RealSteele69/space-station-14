@@ -49,8 +49,9 @@ public sealed partial class HereticAbilitySystem
         RemCompDeferred<StunnedComponent>(ent);
         RemCompDeferred<DelayedKnockdownComponent>(ent);
 
-        _statusEffect.TryRemoveStatusEffect(ent, "ForcedSleep");
-        _statusEffect.TryRemoveStatusEffect(ent, "Drowsiness");
+        // Claw Command - the old "ForcedSleep"/"Drowsiness" status keys don't exist; these are entity status effects now
+        _statusEffectNew.TryRemoveStatusEffect(ent, ForcedSleepingEffect);
+        _statusEffectNew.TryRemoveStatusEffect(ent, DrowsinessEffect);
 
         if (TryComp<StaminaComponent>(ent, out var stam))
         {
@@ -64,7 +65,9 @@ public sealed partial class HereticAbilitySystem
         _standing.Stand(ent);
         _pulling.StopAllPulls(ent, stopPuller: false);
         if (_statusEffect.TryAddStatusEffect<PacifiedComponent>(ent, "Pacified", TimeSpan.FromSeconds(10f), true))
-            _statusEffect.TryAddStatusEffect<RealignmentComponent>(ent, "Realignment", TimeSpan.FromSeconds(10f), true);
+            // Claw Command - there is no "Realignment" status key, so TryAddStatusEffect always failed. Add the component
+            // directly; SharedHereticAbilitySystem.Blade removes it when the "Pacified" effect above ends.
+            EnsureComp<RealignmentComponent>(ent);
 
         args.Handled = true;
     }

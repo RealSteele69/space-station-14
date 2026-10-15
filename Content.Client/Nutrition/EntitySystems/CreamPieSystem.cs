@@ -30,7 +30,7 @@ public sealed partial class CreamPieSystem : SharedCreamPieSystem
     private void OnComponentShutdown(Entity<CreamPiedComponent> ent, ref ComponentShutdown args)
     {
         _displacement.EnsureDisplacementIsNotOnSprite((ent, Comp<SpriteComponent>(ent)), CreamPiedVisualLayer.Key);
-        _sprite.RemoveLayer(ent.Owner, CreamPiedVisualLayer.Key);
+        _sprite.RemoveLayer(ent.Owner, CreamPiedVisualLayer.Key, logMissing: false); // Claw Command
     }
 
     private void OnAppearanceChange(Entity<CreamPiedComponent> ent, ref AppearanceChangeEvent args)
@@ -56,7 +56,7 @@ public sealed partial class CreamPieSystem : SharedCreamPieSystem
         // If there is no sprite to use, remove the layer. Otherwise ensure that it exists and set the visuals accordingly.
         if (creamPied.Sprite == null)
         {
-            _sprite.RemoveLayer((ent.Owner, sprite), CreamPiedVisualLayer.Key);
+            _sprite.RemoveLayer((ent.Owner, sprite), CreamPiedVisualLayer.Key, logMissing: false); // Claw Command
             _displacement.EnsureDisplacementIsNotOnSprite((ent.Owner, sprite), CreamPiedVisualLayer.Key);
             return;
         }

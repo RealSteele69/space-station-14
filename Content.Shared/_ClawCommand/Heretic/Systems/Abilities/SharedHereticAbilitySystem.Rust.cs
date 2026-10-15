@@ -20,7 +20,10 @@ public abstract partial class SharedHereticAbilitySystem
     protected virtual void SubscribeRust()
     {
         SubscribeLocalEvent<RustbringerComponent, BeforeStaminaDamageEvent>(OnBeforeStaminaDamage);
-        SubscribeLocalEvent<RustbringerComponent, BeforeOldStatusEffectAddedEvent>(OnBeforeStatusEffect);
+        // Claw Command - stun/knockdown no longer use the old "Stun"/"KnockedDown" status keys; block the
+        // StatusEffectStunned entity effect and knockdown attempts instead.
+        SubscribeLocalEvent<RustbringerComponent, StatusEffectNew.BeforeStatusEffectAddedEvent>(OnBeforeStatusEffect);
+        SubscribeLocalEvent<RustbringerComponent, Content.Shared.Stunnable.KnockDownAttemptEvent>(OnKnockDownAttempt);
         SubscribeLocalEvent<RustbringerComponent, SlipAttemptEvent>(OnSlipAttempt);
         SubscribeLocalEvent<RustbringerComponent, GetExplosionResistanceEvent>(OnGetExplosionResists);
         SubscribeLocalEvent<RustbringerComponent, ElectrocutionAttemptEvent>(OnElectrocuteAttempt);
@@ -71,12 +74,22 @@ public abstract partial class SharedHereticAbilitySystem
         args.NoSlip = true;
     }
 
-    private void OnBeforeStatusEffect(Entity<RustbringerComponent> ent, ref BeforeOldStatusEffectAddedEvent args)
+    // Claw Command - was BeforeOldStatusEffectAddedEvent checking the "KnockedDown"/"Stun" keys
+    private void OnBeforeStatusEffect(Entity<RustbringerComponent> ent, ref StatusEffectNew.BeforeStatusEffectAddedEvent args)
     {
+        if (args.Effect != Content.Shared.Stunnable.SharedStunSystem.StunId)
+            return;
+
         if (!IsTileRust(Transform(ent).Coordinates, out _))
             return;
 
-        if (args.EffectKey is not ("KnockedDown" or "Stun"))
+        args.Cancelled = true;
+    }
+
+    // Claw Command
+    private void OnKnockDownAttempt(Entity<RustbringerComponent> ent, ref Content.Shared.Stunnable.KnockDownAttemptEvent args)
+    {
+        if (!IsTileRust(Transform(ent).Coordinates, out _))
             return;
 
         args.Cancelled = true;

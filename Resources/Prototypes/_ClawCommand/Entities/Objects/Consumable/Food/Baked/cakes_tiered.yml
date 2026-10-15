@@ -50,17 +50,16 @@
   components:
   - type: Sprite
     state: double
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 130
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 72
-        - ReagentId: Sugar
-          Quantity: 36
-        - ReagentId: Vitamin
-          Quantity: 12
+  - type: Solution
+    solution:
+      maxVol: 130
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 72
+      - ReagentId: Sugar
+        Quantity: 36
+      - ReagentId: Vitamin
+        Quantity: 12
   - type: ToolRefinable
     refineResult:
     - id: FoodCakeTieredSlice
@@ -87,17 +86,16 @@
   components:
   - type: Sprite
     state: triple
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 200
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 108
-        - ReagentId: Sugar
-          Quantity: 54
-        - ReagentId: Vitamin
-          Quantity: 18
+  - type: Solution
+    solution:
+      maxVol: 200
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 108
+      - ReagentId: Sugar
+        Quantity: 54
+      - ReagentId: Vitamin
+        Quantity: 18
   - type: ToolRefinable
     refineResult:
     - id: FoodCakeTieredSlice
@@ -114,14 +112,13 @@
   - type: Sprite
     sprite: _Floof/Objects/Consumable/Food/Baked/cake_tiered.rsi
     state: slice
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 6
-        - ReagentId: Sugar
-          Quantity: 3
-        - ReagentId: Vitamin
-          Quantity: 1
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: Sugar
+        Quantity: 3
+      - ReagentId: Vitamin
+        Quantity: 1

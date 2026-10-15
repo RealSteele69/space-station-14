@@ -48,10 +48,10 @@
           collection: MetalBreak
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: SolutionContainerManager
-    solutions:
-      tank:
-        maxVol: 1500
+  - type: Solution
+    id: tank
+    solution:
+      maxVol: 1500
   - type: DrainableSolution
     solution: tank
   - type: ReagentTank
@@ -107,12 +107,12 @@
   id: StorageTankWideFullFuel
   suffix: Full
   components:
-  - type: SolutionContainerManager
-    solutions:
-      tank:
-        reagents:
-        - ReagentId: WeldingFuel
-          Quantity: 2000
+  - type: Solution
+    solution:
+      maxVol: 2000
+      reagents:
+      - ReagentId: WeldingFuel
+        Quantity: 2000
 
 
 - type: entity
@@ -141,12 +141,11 @@
   parent: StorageTank2
   suffix: Full
   components:
-  - type: SolutionContainerManager
-    solutions:
-      tank:
-        reagents:
-        - ReagentId: WeldingFuel
-          Quantity: 1500
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: WeldingFuel
+        Quantity: 1500
 
 - type: entity
   id: StorageTankHuge
@@ -174,9 +173,9 @@
   parent: StorageTankHuge
   suffix: Full
   components:
-  - type: SolutionContainerManager
-    solutions:
-      tank:
-        reagents:
-        - ReagentId: WeldingFuel
-          Quantity: 2000
+  - type: Solution
+    solution:
+      maxVol: 2000
+      reagents:
+      - ReagentId: WeldingFuel
+        Quantity: 2000

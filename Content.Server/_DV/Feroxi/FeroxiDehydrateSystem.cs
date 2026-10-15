@@ -2,21 +2,28 @@ using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Metabolism;
 using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Nutrition.Prototypes;
 
 namespace Content.Server._DV.Feroxi;
 
 public sealed partial class FeroxiDehydrateSystem : EntitySystem
 {
     [Dependency] private BodySystem _body = default!;
+    [Dependency] private SatiationSystem _satiation = default!; // Claw Command - Thirst component retired for Satiation
+
+    // Claw Command - the old ThirstThreshold.Parched, now the matching key on the thirst satiation prototype.
+    private static readonly SatiationValue ParchedThreshold = "Parched";
 
     public override void Update(float frameTime)
     {
-        var query = EntityQueryEnumerator<FeroxiDehydrateComponent, ThirstComponent>();
+        // Claw Command - was a query on the retired ThirstComponent's CurrentThirstThreshold.
+        var query = EntityQueryEnumerator<FeroxiDehydrateComponent, SatiationComponent>();
 
-        while (query.MoveNext(out var uid, out var feroxiDehydrate, out var thirst))
+        while (query.MoveNext(out var uid, out var feroxiDehydrate, out var satiation))
         {
-            var currentThirst = thirst.CurrentThirstThreshold;
-            var shouldBeDehydrated = currentThirst <= ThirstThreshold.Parched;
+            // Under the Parched threshold. False (hydrated) when the entity has no thirst satiation at all.
+            var shouldBeDehydrated = _satiation.IsValueInRange((uid, satiation), SatiationSystem.Thirst, below: ParchedThreshold);
 
             if (feroxiDehydrate.Dehydrated != shouldBeDehydrated)
             {

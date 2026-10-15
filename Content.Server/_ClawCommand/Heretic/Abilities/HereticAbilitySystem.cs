@@ -92,7 +92,7 @@ public sealed partial class HereticAbilitySystem : SharedHereticAbilitySystem
 {
     private static readonly ProtoId<TagPrototype> BladeBladeTag = "HereticBladeBlade";
     private static readonly ProtoId<TagPrototype> CatwalkTag = "Catwalk";
-    private static readonly ProtoId<TagPrototype> WallTag = "Wall";
+    // Claw Command - upstream replaced the "Wall" tag with WallComponent (#45008); see HereticAbilitySystem.Rust.cs
     private static readonly ProtoId<TagPrototype> WindowTag = "Window";
 
     // keeping track of all systems in a single file
@@ -118,6 +118,8 @@ public sealed partial class HereticAbilitySystem : SharedHereticAbilitySystem
     [Dependency] private IComponentFactory _compFactory = default!;
     [Dependency] private ProtectiveBladeSystem _pblade = default!;
     [Dependency] private StatusEffectsSystem _statusEffect = default!;
+    // Claw Command - entity status effects for the effects whose old string keys were removed/never existed
+    [Dependency] private Content.Shared.StatusEffectNew.StatusEffectsSystem _statusEffectNew = default!;
     [Dependency] private BloodstreamSystem _blood = default!;
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
     [Dependency] private ContainerSystem _container = default!;
@@ -136,6 +138,11 @@ public sealed partial class HereticAbilitySystem : SharedHereticAbilitySystem
     [Dependency] private MovementSpeedModifierSystem _modifier = default!;
 
     private static readonly ProtoId<HereticRitualPrototype> BladeBladeRitual = "BladeBlade";
+
+    // Claw Command - entity status effect replacements for the old "ForcedSleep"/"Drowsiness"/"SeeingRainbows" keys
+    private static readonly EntProtoId ForcedSleepingEffect = "StatusEffectForcedSleeping";
+    private static readonly EntProtoId DrowsinessEffect = "StatusEffectDrowsiness";
+    private static readonly EntProtoId SeeingRainbowsEffect = "StatusEffectSeeingRainbow";
 
     private const float LeechingWalkUpdateInterval = 1f;
     private float _accumulator;
@@ -574,18 +581,21 @@ public sealed partial class HereticAbilitySystem : SharedHereticAbilitySystem
                     visual: false);
             }
 
+            // Claw Command - stun, knockdown, forced sleep, blindness and rainbows are entity status effects /
+            // KnockedDownComponent timers now; the old "Stun"/"KnockedDown"/"ForcedSleep"/"TemporaryBlindness"/
+            // "SeeingRainbows" keys did nothing. Same removals as upstream's ModifyStatusEffect/ModifyKnockdown "Remove".
+            var reduction = leech.StunReduction * multiplier;
+            _statusEffectNew.TryRemoveTime(uid, SharedStunSystem.StunId, reduction);
+            _stun.AddKnockdownTime(uid, -reduction);
+            _statusEffectNew.TryRemoveStatusEffect(uid, ForcedSleepingEffect);
+            _statusEffectNew.TryRemoveStatusEffect(uid, Content.Shared.Eye.Blinding.Systems.BlindnessSystem.BlindingStatusEffect);
+            _statusEffectNew.TryRemoveStatusEffect(uid, SeeingRainbowsEffect);
+
             if (statusQuery.TryComp(uid, out var status))
             {
-                var reduction = leech.StunReduction * multiplier;
-                _statusEffect.TryRemoveTime(uid, "Stun", reduction, status);
-                _statusEffect.TryRemoveTime(uid, "KnockedDown", reduction, status);
-
                 _statusEffect.TryRemoveStatusEffect(uid, "Pacified", status);
-                _statusEffect.TryRemoveStatusEffect(uid, "ForcedSleep", status);
                 _statusEffect.TryRemoveStatusEffect(uid, "SlowedDown", status);
-                _statusEffect.TryRemoveStatusEffect(uid, "BlurryVision", status);
-                _statusEffect.TryRemoveStatusEffect(uid, "TemporaryBlindness", status);
-                _statusEffect.TryRemoveStatusEffect(uid, "SeeingRainbows", status);
+                // Claw Command - "BlurryVision" was never a status effect (blurriness comes from eye damage); dropped
             }
         }
     }

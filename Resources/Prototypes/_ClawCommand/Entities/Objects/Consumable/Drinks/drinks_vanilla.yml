@@ -50,10 +50,9 @@
   id: DrinkBasePlastic
   abstract: true
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 50
+  - type: Solution
+    solution:
+      maxVol: 50
   - type: PhysicalComposition
     materialComposition:
       Plastic: 100
@@ -89,13 +88,12 @@
   id: DrinkIrishCarBomb
   suffix: irish car bomb
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 60
-        reagents:
-        - ReagentId: IrishCarBomb
-          Quantity: 60
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: IrishCarBomb
+        Quantity: 60
   - type: Icon
     sprite: Objects/Consumable/Drinks/irishcarbomb.rsi
     state: icon
@@ -105,13 +103,12 @@
   id: DrinkKiraSpecial
   suffix: kira special
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 60
-        reagents:
-        - ReagentId: KiraSpecial
-          Quantity: 60
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: KiraSpecial
+        Quantity: 60
   - type: Icon
     sprite: Objects/Consumable/Drinks/kiraspecial.rsi
     state: icon

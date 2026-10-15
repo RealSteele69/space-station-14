@@ -11,17 +11,16 @@
   - type: Sprite
     sprite: _NF/Objects/Consumable/Food/Baked/bread.rsi
     state: avocadotoast
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 25
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 9
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Flavorol
-          Quantity: 1
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 9
+      - ReagentId: Vitamin
+        Quantity: 5
+      - ReagentId: Flavorol
+        Quantity: 1
 
 - type: entity
   name: breakfast bagel
@@ -38,17 +37,16 @@
   - type: Sprite
     sprite: _NF/Objects/Consumable/Food/Baked/bread.rsi
     state: breakfastbagel
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 25
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 9
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Flavorol
-          Quantity: 1
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 9
+      - ReagentId: Vitamin
+        Quantity: 5
+      - ReagentId: Flavorol
+        Quantity: 1
 
 - type: entity
   name: poppyseed breakfast bagel
@@ -65,19 +63,18 @@
   - type: Sprite
     sprite: _NF/Objects/Consumable/Food/Baked/bread.rsi
     state: breakfastbagelpoppy
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 25
-        reagents:
-        - ReagentId: SalicylicAcid
-          Quantity: 5
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Protein
-          Quantity: 7
-        - ReagentId: Flavorol
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: SalicylicAcid
+        Quantity: 5
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Protein
+        Quantity: 7
+      - ReagentId: Flavorol
+        Quantity: 5
   - type: Tag
     tags:
     - Meat
@@ -96,17 +93,16 @@
   - type: Sprite
     sprite: _NF/Objects/Consumable/Food/Baked/bread.rsi
     state: cucumbersandwich
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 25
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 9
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: CucumberWater
-          Quantity: 10
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 9
+      - ReagentId: Vitamin
+        Quantity: 5
+      - ReagentId: CucumberWater
+        Quantity: 10
   - type: Tag
     tags:
     - Meat
@@ -126,19 +122,18 @@
     layers:
     - state: bowl
     - state: greek
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 8
-        - ReagentId: Vitamin
-          Quantity: 6
-        - ReagentId: Flavorol
-          Quantity: 5
-        - ReagentId: CucumberWater
-          Quantity: 10
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+      - ReagentId: Vitamin
+        Quantity: 6
+      - ReagentId: Flavorol
+        Quantity: 5
+      - ReagentId: CucumberWater
+        Quantity: 10
   - type: Tag
     tags:
     - Vegetable
@@ -159,19 +154,18 @@
     layers:
     - state: bowl
     - state: avocado
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 8
-        - ReagentId: Vitamin
-          Quantity: 6
-        - ReagentId: Flavorol
-          Quantity: 5
-        - ReagentId: CucumberWater
-          Quantity: 10
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+      - ReagentId: Vitamin
+        Quantity: 6
+      - ReagentId: Flavorol
+        Quantity: 5
+      - ReagentId: CucumberWater
+        Quantity: 10
   - type: Tag
     tags:
     - Vegetable
@@ -193,17 +187,16 @@
     layers:
     - state: bowl
     - state: poachedpear
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 25
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 12
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Flavorol
-          Quantity: 8
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 12
+      - ReagentId: Vitamin
+        Quantity: 5
+      - ReagentId: Flavorol
+        Quantity: 8
   - type: Tag
     tags:
     - Fruit
@@ -224,19 +217,18 @@
     layers:
     - state: bowl
     - state: bellepear
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 35
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 12
-        - ReagentId: Vitamin
-          Quantity: 8
-        - ReagentId: Flavorol
-          Quantity: 8
-        - ReagentId: Theobromine
-          Quantity: 3
+  - type: Solution
+    solution:
+      maxVol: 35
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 12
+      - ReagentId: Vitamin
+        Quantity: 8
+      - ReagentId: Flavorol
+        Quantity: 8
+      - ReagentId: Theobromine
+        Quantity: 3
   - type: Tag
     tags:
     - Fruit

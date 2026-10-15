@@ -310,27 +310,27 @@
     - HEAD
   - type: EmitSoundOnUse
     sound:
-      path: /Audio/_Goobstation/Weapons/Effects/nanotrasenenergyon.ogg
+      path: /Audio/_GoobStation/Weapons/Effects/nanotrasenenergyon.ogg
   - type: EmitSoundOnLand
     sound:
-      path: /Audio/_Goobstation/Weapons/Effects/nanotrasenenergyon.ogg
+      path: /Audio/_GoobStation/Weapons/Effects/nanotrasenenergyon.ogg
   - type: EmitSoundOnActivate
     sound:
-      path: /Audio/_Goobstation/Weapons/Effects/nanotrasenenergyon.ogg
+      path: /Audio/_GoobStation/Weapons/Effects/nanotrasenenergyon.ogg
   - type: EmitSoundOnTrigger
     sound:
-      path: /Audio/_Goobstation/Weapons/Effects/nanotrasenenergyon.ogg
+      path: /Audio/_GoobStation/Weapons/Effects/nanotrasenenergyon.ogg
   - type: EmitSoundOnCollide
     sound:
-      path: /Audio/_Goobstation/Weapons/Effects/nanotrasenenergyon.ogg
+      path: /Audio/_GoobStation/Weapons/Effects/nanotrasenenergyon.ogg
   - type: MeleeWeapon
     damage:
       types:
         Blunt: 0
     soundHit:
-      path: /Audio/_Goobstation/Weapons/Effects/nanotrasenenergyon.ogg
+      path: /Audio/_GoobStation/Weapons/Effects/nanotrasenenergyon.ogg
     soundNoDamage:
-      path: /Audio/_Goobstation/Weapons/Effects/nanotrasenenergyon.ogg
+      path: /Audio/_GoobStation/Weapons/Effects/nanotrasenenergyon.ogg
   - type: Extractable
     juiceSolution:
       reagents:
@@ -338,17 +338,16 @@
         Quantity: 10
       - ReagentId: Ice
         Quantity: 10
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 10
-        - ReagentId: Ice
-          Quantity: 5
-        - ReagentId: TableSalt
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 10
+      - ReagentId: Ice
+        Quantity: 5
+      - ReagentId: TableSalt
+        Quantity: 5
 
 ## Jvne goes here because she's cooler
 
@@ -396,16 +395,16 @@
     state: plushie_fern
   - type: EmitSoundOnUse
     sound:
-      path: /Audio/_Goobstation/Wizard/charge.ogg
+      path: /Audio/_GoobStation/Wizard/charge.ogg
   - type: EmitSoundOnLand
     sound:
-      path: /Audio/_Goobstation/Wizard/teleport_app.ogg
+      path: /Audio/_GoobStation/Wizard/teleport_app.ogg
   - type: EmitSoundOnActivate
     sound:
-      path: /Audio/_Goobstation/Wizard/charge.ogg
+      path: /Audio/_GoobStation/Wizard/charge.ogg
   - type: EmitSoundOnTrigger
     sound:
-      path: /Audio/_Goobstation/Wizard/charge.ogg
+      path: /Audio/_GoobStation/Wizard/charge.ogg
 
 - type: entity
   parent: BasePlushie
@@ -628,15 +627,14 @@
         Blunt: 0
     soundHit:
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 10
-        - ReagentId: BlueCuracao # mnwaar's favourite drink, or so i'm told.
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 10
+      - ReagentId: BlueCuracao # mnwaar's favourite drink, or so i'm told.
+        Quantity: 5
   - type: FlavorProfile
     flavors:
       - bluecuracao
@@ -774,7 +772,7 @@
   - type: PointLight
     radius: 8
     energy: 6
-    mask: /Textures/Effects/LightMasks/double_cone.png
+    lightMask: ConeDouble
   - type: RgbLightController
     cycleRate: 0.3
   - type: RotatingLight
@@ -874,25 +872,25 @@
     - HEAD
   - type: EmitSoundOnUse
     sound:
-      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
+      path: /Audio/_GoobStation/Voice/Moth/moth_flap.ogg
   - type: EmitSoundOnLand
     sound:
-      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
+      path: /Audio/_GoobStation/Voice/Moth/moth_flap.ogg
   - type: EmitSoundOnActivate
     sound:
-      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
+      path: /Audio/_GoobStation/Voice/Moth/moth_flap.ogg
   - type: EmitSoundOnTrigger
     sound:
-      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
+      path: /Audio/_GoobStation/Voice/Moth/moth_flap.ogg
   - type: EmitSoundOnCollide
     sound:
-      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
+      path: /Audio/_GoobStation/Voice/Moth/moth_flap.ogg
   - type: MeleeWeapon
     damage:
       types:
         Blunt: 0
     soundHit:
-      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
+      path: /Audio/_GoobStation/Voice/Moth/moth_flap.ogg
 
 - type: entity
   parent: BasePlushie

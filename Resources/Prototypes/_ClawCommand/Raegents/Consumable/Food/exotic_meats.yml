@@ -23,9 +23,8 @@
           type: Local
           messages: [ "reagent-popup-tranquility" ]
           probability: 0.2
-      - !type:GenericStatusEffect
-        key: Muted
-        component: Muted
+      - !type:ModifyStatusEffect # Claw Command - old Muted status key/component removed upstream
+        effectProto: StatusEffectMuted
       - !type:GenericStatusEffect
         key: Pacified
         component: Pacified

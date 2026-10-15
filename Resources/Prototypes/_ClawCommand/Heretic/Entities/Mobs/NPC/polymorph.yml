@@ -148,8 +148,7 @@
       components:
       - MobState
       - Door
-      tags:
-      - Wall
+      - Wall # Claw Command - "Wall" tag replaced with WallComponent upstream (#45008)
   - type: Metabolizer
     solutionOnBody: false
     updateInterval: 0.25

@@ -30,10 +30,10 @@
       - XenoglossyPower
       - TelepathyPower
       - NoosphericZapPower
-  - type: SolutionContainerManager
-    solutions:
-      fountain:
-        maxVol: 200
+  - type: Solution
+    id: fountain
+    solution:
+      maxVol: 200
   # Claw Command - the Drink component was folded into Edible with an `edible: Drink` discriminator.
   - type: Edible
     edible: Drink

@@ -13,8 +13,8 @@ using Content.Server.Temperature.Systems;
 using Content.Shared._Goobstation.Heretic.Components;
 using Content.Shared._Goobstation.Heretic.Systems;
 using Content.Shared.Atmos;
-using Content.Shared.Speech.Muting;
-using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew; // Claw Command - old "Muted" status key removed upstream; use entity status effects
+using Robust.Shared.Prototypes;
 
 using Content.Shared.Temperature.Components;
 namespace Content.Server._Goobstation.Heretic.EntitySystems.PathSpecific;
@@ -23,6 +23,9 @@ public sealed partial class VoidCurseSystem : SharedVoidCurseSystem
 {
     [Dependency] private TemperatureSystem _temp = default!;
     [Dependency] private StatusEffectsSystem _statusEffect = default!;
+
+    // Claw Command - upstream replaced the "Muted" status key with the StatusEffectMuted entity
+    private static readonly EntProtoId MutedEffect = "StatusEffectMuted";
 
     public override void Update(float frameTime)
     {
@@ -64,6 +67,6 @@ public sealed partial class VoidCurseSystem : SharedVoidCurseSystem
             _temp.ChangeHeat((ent.Owner, temp), (target - temp.Temperature) * temp.HeatCapacity, true);
         }
 
-        _statusEffect.TryAddStatusEffect<MutedStatusEffectComponent>(ent, "Muted", TimeSpan.FromSeconds(5), true);
+        _statusEffect.TryUpdateStatusEffectDuration(ent, MutedEffect, TimeSpan.FromSeconds(5)); // Claw Command
     }
 }

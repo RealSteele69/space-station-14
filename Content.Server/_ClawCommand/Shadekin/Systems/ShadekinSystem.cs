@@ -50,25 +50,6 @@ public sealed partial class ShadekinSystem : EntitySystem
     public const string ShadekinSleepActionId = "ShadekinActionSleep";
     public const string ShadekinDarkVisionActionId = "ShadekinDarkVision"; // Claw Command
 
-    private sealed class LightCone
-    {
-        public float Direction { get; set; }
-        public float InnerWidth { get; set; }
-        public float OuterWidth { get; set; }
-    }
-    private readonly Dictionary<string, List<LightCone>> _lightMasks = new()
-    {
-        ["/Textures/Effects/LightMasks/cone.png"] = new List<LightCone>
-    {
-        new LightCone { Direction = 0, InnerWidth = 30, OuterWidth = 60 }
-    },
-        ["/Textures/Effects/LightMasks/double_cone.png"] = new List<LightCone>
-    {
-        new LightCone { Direction = 0, InnerWidth = 30, OuterWidth = 60 },
-        new LightCone { Direction = 180, InnerWidth = 30, OuterWidth = 60 }
-    }
-    };
-
     public override void Initialize()
     {
         base.Initialize();
@@ -473,7 +454,36 @@ public sealed partial class ShadekinSystem : EntitySystem
             var attenuation = 1 - (denom * denom);
             var calculatedLight = 0f;
 
-            calculatedLight = pointLight.Energy * attenuation * attenuation;
+            // Claw Command - cone-masked lights (flashlights, helmet lights, etc.) only count when the target
+            // is inside one of the mask's cones. The engine moved masks from a raw texture path onto
+            // LightMaskPrototype, which carries the cone data itself.
+            if (pointLight.LightMask is { } maskId
+                && ProtoMan.TryIndex(maskId, out var mask)
+                && mask.LightCones.Count > 0)
+            {
+                var angleToTarget = GetAngle(light, pointLight, uid);
+                foreach (var cone in mask.LightCones)
+                {
+                    var direction = (float) cone.Direction.Degrees;
+                    var innerWidth = (float) cone.InnerWidth.Degrees;
+                    var outerWidth = (float) cone.OuterWidth.Degrees;
+
+                    var coneLight = 0f;
+                    var angleAttenuation = (float) Math.Min((float) Math.Max(outerWidth - angleToTarget.Theta, 0f), innerWidth) / outerWidth;
+
+                    if (angleToTarget.Degrees - direction > outerWidth)
+                        continue;
+                    else if (angleToTarget.Degrees - direction > innerWidth
+                        && angleToTarget.Degrees - direction < outerWidth)
+                        coneLight = pointLight.Energy * attenuation * attenuation * angleAttenuation;
+                    else
+                        coneLight = pointLight.Energy * attenuation * attenuation;
+
+                    calculatedLight = Math.Max(calculatedLight, coneLight);
+                }
+            }
+            else
+                calculatedLight = pointLight.Energy * attenuation * attenuation;
 
             illumination += calculatedLight;
         }

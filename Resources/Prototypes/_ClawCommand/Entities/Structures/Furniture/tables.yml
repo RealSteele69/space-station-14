@@ -14,6 +14,8 @@
     sprite: Nyanotrasen/Structures/Furniture/Tables/rwood.rsi
   - type: Damageable
     damageModifierSet: Wood
+  - type: Injurable # Claw Command - formerly inherited from TableBase, removed by the upstream structure rebalance
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

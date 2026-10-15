@@ -39,7 +39,7 @@
   - BorgHead
   - BorgLeg
   - BotanyHatchet
-  - BotanyHoe
+  - Hoe # Claw Command - was BotanyHoe; upstream botany refactor (#44576) turned BotanyHoe into a component, hoes keep the Hoe tag
   - BotanyShovel
   - Bottle
   - Brain

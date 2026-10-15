@@ -12,3 +12,20 @@
     checkCanInteract: false
   - type: InstantAction
     event: !type:KitsuneFoxFormActionEvent
+
+# Egg-laying trait. Upstream's ActionAnimalLayEgg now raises EntityProductionActionEvent for its own
+# production system, so the trait gets an action that still raises the event EggLayerTraitSystem handles.
+- type: entity
+  parent: BaseAction
+  id: ActionTraitLayEgg
+  name: Lay egg
+  description: Uses hunger to lay an egg.
+  components:
+  - type: Action
+    useDelay: 60
+  - type: Sprite
+    sprite: Objects/Consumable/Food/egg.rsi
+    layers:
+    - state: icon
+  - type: InstantAction
+    event: !type:EggLayInstantActionEvent

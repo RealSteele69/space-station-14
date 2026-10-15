@@ -15,12 +15,11 @@
         Base: mite
       Dead:
         Base: mite_dead
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Ectoplasm
-          Quantity: 15
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Ectoplasm
+        Quantity: 15
   - type: Psionic
     removable: false
     roller: false

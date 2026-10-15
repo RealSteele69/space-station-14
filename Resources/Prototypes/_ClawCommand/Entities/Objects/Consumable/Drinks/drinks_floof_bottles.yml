@@ -4,12 +4,11 @@
   name: anisette bottle
   description: Liquor made of anise and sugar, typically used as a sweeter form of absinthe.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: Anisette
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Anisette
+        Quantity: 100
   - type: Label
     currentLabel: anisette
   - type: Sprite
@@ -22,12 +21,11 @@
   name: eggnog bottle
   description: A fancy looking bottle of eggnog, with a festive label and sealed cap.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: Eggnog
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Eggnog
+        Quantity: 100
   - type: Label
     currentLabel: eggnog
   - type: Sprite
@@ -43,12 +41,11 @@
   name: syndicate eggnog bottle
   description: A bottle of eggnog, with a festive label and sealed cap.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: SyndicateEggnog
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: SyndicateEggnog
+        Quantity: 100
   - type: Label
     currentLabel: syndicate eggnog
   - type: Sprite
@@ -65,12 +62,11 @@
   name: claw command's special reserve
   description: "A potent triple-layer shot (red, gold, shades of gray) symbolizing the hierarchy of chaos: crew, command, catastrophe."
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: ReagentDrinkClawtail
-          Quantity: 120
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: ReagentDrinkClawtail
+        Quantity: 120
   - type: Label
     currentLabel: clawtail
   - type: Sprite
@@ -82,13 +78,12 @@
   id: DrinkClawtailGlass
   suffix: clawtail
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 60
-        reagents:
-        - ReagentId: ReagentDrinkClawtail
-          Quantity: 60
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: ReagentDrinkClawtail
+        Quantity: 60
   - type: Icon
     sprite: _ClawCommand/Objects/Consumable/Drinks/clawtail.rsi
     state: icon

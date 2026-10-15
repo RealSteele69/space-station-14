@@ -1,6 +1,6 @@
 - type: entity
   id: MobLegion
-  parent: BaseMobAsteroid
+  parent: [ BaseMobAsteroid, BaseMobDestructible ] # Claw Command - BaseMobDestructible: upstream split gibbing out of MobDamageable
   name: legion humanoid
   description: You can still see what was once a human under the shifting mass of corruption.
   components:

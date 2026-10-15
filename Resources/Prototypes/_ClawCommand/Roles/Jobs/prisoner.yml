@@ -9,7 +9,7 @@
   supervisors: job-supervisors-security
   setPreference: true
   alwaysUseSpawner: true
-  weight: 0
+  # weight moved to Resources/Prototypes/Roles/job_weights.yml (Default profile) after upstream removed JobPrototype.Weight
   access:
   - GenpopEnter
 

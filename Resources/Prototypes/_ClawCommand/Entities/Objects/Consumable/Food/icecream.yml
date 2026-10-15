@@ -9,10 +9,9 @@
   description: A simple glass bowl, used for ice cream.
   components:
   - type: Item
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
+  - type: Solution
+    solution:
+      maxVol: 50
   - type: Sprite
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
@@ -71,13 +70,12 @@
     trash:
     - IceCreamBowl
     utensil: Spoon
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 30
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 30
   - type: Sprite
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
@@ -142,12 +140,11 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: rainbow
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22

@@ -49,3 +49,23 @@
     Warden: 5
     Psychologist: 0
     Reporter: 0
+    # Claw Command - fork jobs. None set a non-zero JobPrototype.weight before upstream moved
+    # weights here (#45056); Prisoner was explicitly 0, the rest used the implicit default of 0.
+    CentralCommandOfficer: 0
+    ClawCommandOfficer: 0
+    ClawCommandMaid: 0
+    AdmiralClaw: 0
+    Anomaly: 0
+    ForensicMantis: 0
+    Prisoner: 0
+    SeniorOfficer: 0
+    SeniorEngineer: 0
+    SeniorPhysician: 0
+    SeniorResearcher: 0
+    SeniorCourier: 0
+    DogborgSecurity: 0
+    DogborgMedical: 0
+    DogborgEngineering: 0
+    DogborgJanitor: 0
+    DogborgService: 0
+    DogborgMining: 0

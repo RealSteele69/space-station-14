@@ -23,10 +23,9 @@
   id: DrinkCartonBaseSmallFull
   abstract: true
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 25
+  - type: Solution
+    solution:
+      maxVol: 25
 
 - type: entity
   parent: [DrinkCartonVisualsOpenable, DrinkCartonBaseFull]
@@ -34,13 +33,12 @@
   name: mini milk
   description: An opaque white liquid produced by the mammary glands of mammals.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 25
-        reagents:
-        - ReagentId: Milk
-          Quantity: 25
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Milk
+        Quantity: 25
   - type: Sprite
     sprite: Objects/Consumable/Drinks/milkmini.rsi
     state: icon
@@ -51,13 +49,12 @@
   name: mini choco milk
   description: A milk drink flavored with chocolate.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 25
-        reagents:
-        - ReagentId: MilkChoco
-          Quantity: 25
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: MilkChoco
+        Quantity: 25
   - type: Sprite
     sprite: Objects/Consumable/Drinks/milkminichoco.rsi
     state: icon

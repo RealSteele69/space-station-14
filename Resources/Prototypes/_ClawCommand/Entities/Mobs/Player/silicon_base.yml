@@ -275,9 +275,7 @@
         - SeeingRainbows
         - Electrocution
         - Flashed
-        - SlurredSpeech
-        - PressureImmunity
-        - Muted
+        # Claw Command - SlurredSpeech, PressureImmunity and Muted were removed upstream; they are entity status effects now
         - TemporaryBlindness
         - Pacified
     - type: Blindable

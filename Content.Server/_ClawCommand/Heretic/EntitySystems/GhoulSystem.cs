@@ -46,6 +46,8 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Nutrition.AnimalHusbandry;
 using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Nutrition.Prototypes;
 using Robust.Server.Audio;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Heretic.Abilities;
@@ -80,6 +82,9 @@ public sealed partial class GhoulSystem : EntitySystem
     private static readonly ProtoId<HTNCompoundPrototype> Compound = "HereticSummonCompound";
     private static readonly EntProtoId<MindRoleComponent> GhoulRole = "MindRoleGhoul";
 
+    // Claw Command - hunger/thirst are topped up to this key before being removed (see GhoulifyEntity).
+    private static readonly SatiationValue SatedThreshold = "Okay";
+
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
     // [Dependency] private HumanoidAppearanceSystem _humanoid = default!; // No upstream skin-color API
@@ -98,6 +103,7 @@ public sealed partial class GhoulSystem : EntitySystem
     [Dependency] private HTNSystem _htn = default!;
     [Dependency] private SharedRoleSystem _role = default!;
     [Dependency] private HereticSystem _heretic = default!;
+    [Dependency] private SatiationSystem _satiation = default!; // Claw Command
 
     public override void Initialize()
     {
@@ -163,8 +169,16 @@ public sealed partial class GhoulSystem : EntitySystem
     {
         RemComp<RespiratorComponent>(ent);
         RemComp<BarotraumaComponent>(ent);
-        RemComp<HungerComponent>(ent);
-        RemComp<ThirstComponent>(ent);
+        // Claw Command - Hunger/Thirst components were retired for Satiation. Drop just those two satiation types,
+        // first settling them on a fed threshold so threshold-driven effects (slowdown, starvation damage, mood)
+        // don't stay frozen in a hungry state once the meter is gone.
+        if (TryComp<SatiationComponent>(ent, out var satiation))
+        {
+            _satiation.SetValue((ent.Owner, satiation), SatiationSystem.Hunger, SatedThreshold);
+            _satiation.SetValue((ent.Owner, satiation), SatiationSystem.Thirst, SatedThreshold);
+            _satiation.RemoveSatiationType(ent.Owner, SatiationSystem.Hunger);
+            _satiation.RemoveSatiationType(ent.Owner, SatiationSystem.Thirst);
+        }
         RemComp<ReproductiveComponent>(ent);
         RemComp<ReproductivePartnerComponent>(ent);
         RemComp<TemperatureComponent>(ent);

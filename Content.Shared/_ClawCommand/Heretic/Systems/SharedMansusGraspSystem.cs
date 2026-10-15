@@ -25,6 +25,7 @@ using Content.Shared.Silicons.StationAi;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
+using Content.Shared.Wall; // Claw Command - Wall tag -> WallComponent (upstream #45008)
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -58,7 +59,6 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
     [Dependency] private SharedStarMarkSystem _starMark = default!;
 
     private static readonly ProtoId<TagPrototype> BladeBladeTag = "HereticBladeBlade";
-    private static readonly ProtoId<TagPrototype> WallTag = "Wall";
     private static readonly ProtoId<TagPrototype> CatwalkTag = "Catwalk";
     private static readonly ProtoId<TagPrototype> MeatTag = "Meat";
     private static readonly ProtoId<TagPrototype> BotTag = "Bot";
@@ -208,7 +208,7 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
             {
                 if (TryComp(target, out StationAiHolderComponent? aiHolder)) // Kill AI
                     QueueDel(aiHolder.Slot.ContainerSlot?.ContainedEntity);
-                else if (HasComp<RustGraspComponent>(grasp) && _tag.HasAnyTag(target, WallTag, CatwalkTag) ||
+                else if (HasComp<RustGraspComponent>(grasp) && (HasComp<WallComponent>(target) || _tag.HasTag(target, CatwalkTag)) || // Claw Command - Wall tag -> WallComponent (upstream #45008)
                          HasComp<HereticRitualRuneComponent>(
                              target)) // If we have rust grasp and targeting a wall (or a catwalk) - do nothing, let other methods handle that. Also don't damage transmutation rune.
                     return false;

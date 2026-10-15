@@ -16,16 +16,15 @@
   components:
   - type: Sprite
     state: plain
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: UncookedAnimalProteins
-          Quantity: 9
-        - ReagentId: Fat
-          Quantity: 9
-        - ReagentId: Tranquility
-          Quantity: 10
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: UncookedAnimalProteins
+        Quantity: 9
+      - ReagentId: Fat
+        Quantity: 9
+      - ReagentId: Tranquility
+        Quantity: 10
   - type: Construction
     graph: GondolaSteak
     node: start
@@ -45,16 +44,15 @@
   - type: Sprite
     layers:
     - state: plain-cooked
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Protein
-          Quantity: 5
-        - ReagentId: Tranquility
-          Quantity: 15
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Protein
+        Quantity: 5
+      - ReagentId: Tranquility
+        Quantity: 15
   - type: Construction
     graph: GondolaSteak
     node: gondola steak
@@ -68,16 +66,15 @@
   - type: Sprite
     sprite: _ClawCommand/Objects/Consumable/Food/bingle.rsi
     state: binglemeat
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: UncookedAnimalProteins
-          Quantity: 10
-        - ReagentId: Fat
-          Quantity: 9
-        - ReagentId: BingleJuice
-          Quantity: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: UncookedAnimalProteins
+        Quantity: 10
+      - ReagentId: Fat
+        Quantity: 9
+      - ReagentId: BingleJuice
+        Quantity: 1
   - type: Construction
     graph: BingleSteak
     node: start
@@ -97,16 +94,15 @@
   - type: Sprite
     sprite: _ClawCommand/Objects/Consumable/Food/bingle.rsi
     state: cookedbinglemeat
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 9
-        - ReagentId: Protein
-          Quantity: 9
-        - ReagentId: BingleJuice
-          Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 9
+      - ReagentId: Protein
+        Quantity: 9
+      - ReagentId: BingleJuice
+        Quantity: 2
   - type: Construction
     graph: BingleSteak
     node: bingle steak
@@ -133,16 +129,15 @@
       - enum.DamageStateVisualLayers.Base:
           chicken-fried: ""
           chicken2-fried: ""
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Protein
-          Quantity: 5
-        - ReagentId: Ammonia
-          Quantity: 5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Protein
+        Quantity: 5
+      - ReagentId: Ammonia
+        Quantity: 5
   - type: FoodSequenceElement
     entries:
       Burger: FSE_FoodMeatVoxFried

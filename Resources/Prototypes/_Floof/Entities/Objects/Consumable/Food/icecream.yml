@@ -11,17 +11,16 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: blooddrop
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 20
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Blood
-          Quantity: 20
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 20
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Blood
+        Quantity: 20
 
 - type: entity
   name: caramel ice cream
@@ -37,15 +36,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: caramel
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: coffee ice cream
@@ -60,15 +58,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: coffee
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: greentea ice cream
@@ -84,15 +81,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: greentea
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: lemon ice cream
@@ -108,15 +104,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: lemon
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: orange ice cream
@@ -132,15 +127,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: orange
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: salted caramel ice cream
@@ -157,15 +151,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: saltedcaramel
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 
 - type: entity
@@ -183,15 +176,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: spaghetti
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: strawberry ice cream
@@ -206,15 +198,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: strawberry
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: bananasplit ice cream
@@ -232,15 +223,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: bananasplit
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: chocolate ice cream
@@ -255,15 +245,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: choco
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: coconut ice cream
@@ -278,15 +267,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: coconut
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: cosmos ice cream
@@ -301,15 +289,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: cosmos
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: gilded ice cream
@@ -326,15 +313,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: gilded
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: hazelnut ice cream
@@ -349,15 +335,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: hazelnut
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: lover's delight ice cream
@@ -374,15 +359,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: loversdelight
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: mint chocolate ice cream
@@ -398,15 +382,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: mintchoco
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: solar ice cream
@@ -421,15 +404,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: napalm
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: nebula ice cream
@@ -444,15 +426,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: nebula
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 
 - type: entity
@@ -470,15 +451,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: neapolitan
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: rocky road ice cream
@@ -495,15 +475,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: rockyroad
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: starlight ice cream
@@ -518,15 +497,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: starlight
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: vanilla ice cream
@@ -541,15 +519,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: vanilla
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: void ice cream
@@ -566,15 +543,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: void
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: walnut ice cream
@@ -589,15 +565,14 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: walnut
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22
 
 - type: entity
   name: watermelon ice cream
@@ -612,12 +587,11 @@
     sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: watermelon
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: IceCream
-          Quantity: 22
-        - ReagentId: Nutriment
-          Quantity: 22
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: IceCream
+        Quantity: 22
+      - ReagentId: Nutriment
+        Quantity: 22

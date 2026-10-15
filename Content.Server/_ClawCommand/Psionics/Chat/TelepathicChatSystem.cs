@@ -8,6 +8,7 @@ using Content.Shared.Bed.Sleep;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.StatusEffectNew;
+using Content.Shared.StatusEffectNew.Components; // Claw Command - TelepathicRepeater status effect
 using Robust.Shared.Prototypes;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -140,8 +141,23 @@ public sealed partial class TelepathicChatSystem : EntitySystem
             _chatManager.ChatMessageToMany(ChatChannel.Telepathic, obfuscated, messageWrap, source, hideChat, false, GetDreamers(clients.normal.Concat(clients.psychog)), Color.PaleVioletRed);
         }
 
-        foreach (var repeater in EntityQuery<TelepathicRepeaterComponent>())
-            _chatSystem.TrySendInGameICMessage(repeater.Owner, message, InGameICChatType.Speak, false);
+        // Claw Command - TelepathicRepeater is now applied as the StatusEffectTelepathicRepeater status effect entity
+        // (the old "SlurredSpeech" status key was removed upstream), so speak through the mob it is applied to.
+        // A repeater component placed directly on a mob still works.
+        var repeaters = EntityQueryEnumerator<TelepathicRepeaterComponent>();
+        while (repeaters.MoveNext(out var repeaterUid, out _))
+        {
+            var speaker = repeaterUid;
+            if (TryComp<StatusEffectComponent>(repeaterUid, out var effect))
+            {
+                if (effect.AppliedTo is not { } target)
+                    continue;
+
+                speaker = target;
+            }
+
+            _chatSystem.TrySendInGameICMessage(speaker, message, InGameICChatType.Speak, false);
+        }
     }
 
     private string ObfuscateMessageReadability(string message, float chance)

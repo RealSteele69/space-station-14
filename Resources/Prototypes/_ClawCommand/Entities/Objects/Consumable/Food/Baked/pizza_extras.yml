@@ -14,15 +14,14 @@
     refineResult:
     - id: FoodPizzaCorncobSlice
       amount: 10
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 100
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 36
-        - ReagentId: Nausium
-          Quantity: 33
+  - type: Solution
+    solution:
+      maxVol: 100
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 36
+      - ReagentId: Nausium
+        Quantity: 33
   - type: Tag
     tags:
     - Pizza
@@ -39,15 +38,14 @@
   - type: Sprite
     sprite: Nyanotrasen/Objects/Consumable/Food/Baked/pizza.rsi
     state: corncob-slice
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 6
-        - ReagentId: Nausium
-          Quantity: 5.5
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: Nausium
+        Quantity: 5.5
   - type: Tag
     tags:
     - Pizza

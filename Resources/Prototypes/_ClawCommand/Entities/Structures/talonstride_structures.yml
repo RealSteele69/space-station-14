@@ -1,0 +1,103 @@
+# Ported from space/ for the TalonStride map.
+# Blueshield airlocks (AirlockBlueshieldOfficerCommand[Glass]Locked) are NOT redefined here:
+# they map onto the existing AirlockClawCommand[Glass]Locked via migration.
+
+# Lighting (source: Nyanotrasen/Entities/Structures/Lighting/base_lighting.yml)
+- type: entity
+  id: AlwaysPoweredLightPostSmallRed
+  name: post light
+  description: "A light fixture. Draws power and produces light when equipped with a light tube."
+  suffix: Always Powered, Red
+  parent: LightPostSmall
+  components:
+  - type: Sprite
+    state: base
+  - type: PointLight
+    radius: 10
+    energy: 0.9
+    softness: 1
+    offset: "0, -0.5"
+    color: "#FF6666"
+
+# Barrel (source: Entities/Structures/Storage/barrels.yml)
+# Adapted: the fork already has a Goob BaseBarrel that is itself a black barrel, so this
+# reuses its sprite/damage/destruction instead of importing a second barrels.rsi.
+- type: entity
+  parent: BaseBarrel
+  id: BlackBarrel
+  name: black barrel
+  description: A worn out black barrel. The label is torn off.
+
+# Gas canister (source: _Floof/Entities/Structures/Storage/Canisters/gas_canisters.yml)
+- type: entity
+  parent: StorageCanister
+  id: LargeStorageCanister
+  name: large storage canister
+  components:
+  - type: GasCanister
+    air:
+      volume: 2000
+      temperature: 293.15
+
+# Cryo (source: DeltaV/Entities/Structures/cryopod.yml)
+- type: entity
+  parent: CryogenicSleepUnit
+  id: CryogenicSleepUnitSpawnerPrisoner
+  suffix: Spawner, Prisoner
+  components:
+  - type: ContainerSpawnPoint
+    containerId: storage
+    spawnType: Job
+    job: Prisoner
+
+# Holosign (source: Nyanotrasen/Entities/Structures/Holographic/projections.yml)
+- type: entity
+  id: HolosignEng
+  name: engineering warning sign
+  description: What's the worst that could lie beyond?
+  components:
+  - type: Sprite
+    sprite: Nyanotrasen/Structures/Holo/eng.rsi
+    state: icon
+  - type: TimedDespawn
+    lifetime: 180
+
+# Painting (source: Nyanotrasen/Entities/Structures/Wallmounts/Signs/paintings.yml)
+- type: entity
+  parent: PaintingBase
+  id: PaintingMothBigCatch
+  name: Big Catch
+  description: Depicts a blue moth wearing a tophat who caught a relatively large space carp.
+  components:
+  - type: Sprite
+    sprite: Nyanotrasen/Structures/Wallmounts/Paintings/wabungus.rsi
+    state: bigcatch
+
+# Poster (source: DeltaV/Entities/Structures/Wallmounts/Signs/posters.yml)
+- type: entity
+  parent: PosterBase
+  id: PosterLegitFuckAround
+  name: Fuck Around...
+  description: ...and find out. Sponsored by the Intergalactic Bartenders' Federation, Delta branch.
+  components:
+  - type: Sprite
+    sprite: DeltaV/Structures/Wallmounts/Posters/TJohnson.rsi
+    state: fuckaround
+
+# Decoration (source: DeltaV/Entities/Structures/Decoration/shuttle_manipulator.yml)
+- type: entity
+  id: shuttle_manipulator
+  parent: BaseStructure
+  name: station holograph
+  description: A three-dimensional hologram projection of a space station.
+  components:
+  - type: Sprite
+    sprite: DeltaV/Structures/Decoration/shuttle_manipulator.rsi
+    state: holograph_station
+  - type: PointLight
+    radius: 1.4
+    energy: 2
+    color: "#26DEB3"
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Inorganic

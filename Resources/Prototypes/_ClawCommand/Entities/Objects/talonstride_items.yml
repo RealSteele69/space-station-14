@@ -1,0 +1,590 @@
+# Ported from space/ for the TalonStride map.
+# Misc handheld items. Source files noted per section; behaviour that depends on
+# systems this fork lacks has been stripped (see per-entity comments).
+
+# --- Nyanotrasen/Entities/Objects/Specific/Chapel/bibles.yml ---
+# Source Summonable used `specialItem: SpawnPointGhostIfrit` (field and ghost role
+# don't exist here); the override is dropped and the Bible parent's summon is kept.
+- type: entity
+  parent: Bible
+  id: BibleMystagogue
+  name: book of mysteries
+  description: The mystagogue's holy book.
+  components:
+  - type: Sprite
+    sprite: Nyanotrasen/Objects/Specific/Chapel/holylight.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: Nyanotrasen/Objects/Specific/Chapel/holylight.rsi
+
+# --- Entities/Objects/Specific/Mail/Items/boxes.yml ---
+# Old BodyPart entities (HeadHuman, TorsoSlime, ...) are replaced here by the
+# organ-based body system, so the kits are filled with the equivalent Organ* parts.
+- type: entity
+  name: Build-a-Buddy kit
+  suffix: Human
+  parent: BoxHug
+  id: BoxBuildABuddyHuman
+  description: "\"Henry the Human\" Build-a-Buddy kit. Some assembly required."
+  components:
+  - type: StorageFill
+    contents:
+    - id: OrganHumanHead
+    - id: OrganHumanTorso
+    - id: OrganHumanArmLeft
+    - id: OrganHumanArmRight
+    - id: OrganHumanHandLeft
+    - id: OrganHumanHandRight
+    - id: OrganHumanLegLeft
+    - id: OrganHumanLegRight
+    - id: OrganHumanFootLeft
+    - id: OrganHumanFootRight
+  - type: Storage
+    grid:
+    - 0,0,4,3
+    whitelist:
+      components:
+      - Organ
+
+- type: entity
+  name: Build-a-Buddy kit
+  suffix: Slime
+  parent: BoxBuildABuddyHuman
+  id: BoxBuildABuddySlime
+  description: "\"Steven the Slime\" Build-a-Buddy kit. Some assembly required."
+  components:
+  - type: StorageFill
+    contents:
+    - id: OrganSlimePersonHead
+    - id: OrganSlimePersonTorso
+    - id: OrganSlimePersonArmLeft
+    - id: OrganSlimePersonArmRight
+    - id: OrganSlimePersonHandLeft
+    - id: OrganSlimePersonHandRight
+    - id: OrganSlimePersonLegLeft
+    - id: OrganSlimePersonLegRight
+    - id: OrganSlimePersonFootLeft
+    - id: OrganSlimePersonFootRight
+
+# --- _Floof/Entities/Objects/Misc/folders.yml ---
+# The Floof department paperwork templates these held are not ported; the folders
+# use this fork's BoxFolderBase random-paper fill with the Floof department colours.
+- type: entity
+  id: BoxFolderCommand
+  parent: BoxFolderBase
+  suffix: Command
+  components:
+  - type: Sprite
+    layers:
+    - state: folder-colormap
+      color: "#009100"
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#009100"
+      right:
+      - state: inhand-right
+        color: "#009100"
+
+- type: entity
+  id: BoxFolderJustice
+  parent: BoxFolderBase
+  suffix: Justice
+  components:
+  - type: Sprite
+    layers:
+    - state: folder-colormap
+      color: "#6b2833"
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#6b2833"
+      right:
+      - state: inhand-right
+        color: "#6b2833"
+
+- type: entity
+  id: BoxFolderMedical
+  parent: BoxFolderBase
+  suffix: Medical
+  components:
+  - type: Sprite
+    layers:
+    - state: folder-colormap
+      color: "#5b97bc"
+    - state: folder-base
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#5b97bc"
+      right:
+      - state: inhand-right
+        color: "#5b97bc"
+
+# --- _Floof/Catalog/Fills/Boxes/general.yml ---
+- type: entity
+  name: mixed color lightbulb box
+  parent: BoxCardboard
+  id: BoxLightbulbColorMixed
+  description: This box is shaped on the inside so that only light tubes and bulbs fit.
+  components:
+  - type: Sprite
+    layers:
+    - state: box
+    - state: light
+  - type: Storage
+    grid:
+    - 0,0,5,3
+    whitelist:
+      components:
+      - LightBulb
+  - type: StorageFill
+    contents:
+    - id: LightBulbCrystalCyan
+      amount: 2
+    - id: LightBulbCrystalBlue
+      amount: 2
+    - id: LightBulbCrystalGreen
+      amount: 2
+    - id: LightBulbCrystalPink
+      amount: 2
+    - id: LightBulbCrystalRed
+      amount: 2
+    - id: LightBulbCrystalOrange
+      amount: 2
+
+- type: entity
+  name: mixed color lighttube box
+  parent: BoxCardboard
+  id: BoxLighttubeColorMixed
+  description: This box is shaped on the inside so that only light tubes and bulbs fit.
+  components:
+  - type: Sprite
+    layers:
+    - state: box
+    - state: lighttube
+  - type: Storage
+    grid:
+    - 0,0,5,3
+    whitelist:
+      components:
+      - LightBulb
+  - type: StorageFill
+    contents:
+    - id: LightTubeCrystalCyan
+      amount: 2
+    - id: LightTubeCrystalBlue
+      amount: 2
+    - id: LightTubeCrystalGreen
+      amount: 2
+    - id: LightTubeCrystalPink
+      amount: 2
+    - id: LightTubeCrystalRed
+      amount: 2
+    - id: LightTubeCrystalOrange
+      amount: 2
+
+# --- EstacaoPirata/Entities/Objects/Misc/{base,black_cards,nt_cards}.yml ---
+# This fork has no playing-card system (CardDeck/CardStack/OpenTriggeredStorageFill),
+# so the deck boxes are plain, empty small storage boxes with the open/closed sprite.
+- type: entity
+  parent: [ BoxCardboard, BaseBagOpenClose ]
+  id: CardBoxBase
+  name: deck box
+  abstract: true
+  components:
+  - type: Item
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Sprite
+    sprite: EstacaoPirata/Objects/Misc/cards.rsi
+    layers:
+    - state: black_box
+    - state: black_box_open
+      map: [ "openLayer" ]
+      visible: false
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,1,1
+  - type: Appearance
+  - type: StaticPrice
+    price: 20
+
+- type: entity
+  parent: CardBoxBase
+  id: CardBoxBlack
+  name: black deck box
+  components:
+  - type: Sprite
+    sprite: EstacaoPirata/Objects/Misc/cards.rsi
+    layers:
+    - state: black_box
+    - state: black_box_open
+      map: [ "openLayer" ]
+      visible: false
+
+- type: entity
+  parent: CardBoxBase
+  id: CardBoxNanotrasen
+  name: nanotrasen deck box
+  components:
+  - type: Sprite
+    sprite: EstacaoPirata/Objects/Misc/cards.rsi
+    layers:
+    - state: nanotrasen_box
+    - state: nanotrasen_box_open
+      map: [ "openLayer" ]
+      visible: false
+
+# --- Catalog/Fills/Items/belt.yml ---
+- type: entity
+  id: ClothingBeltUtilityAtmos
+  parent: ClothingBeltUtility
+  suffix: Atmospherics
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: Crowbar
+        - id: Wrench
+        - id: Screwdriver
+        - id: Wirecutter
+        - id: Welder
+        - id: Multitool
+        - id: GasAnalyzer
+        - id: HolofanProjector
+
+# --- Entities/Objects/Tools/light_replacer.yml ---
+# This fork's LightReplacer is already empty by default; this is a named alias.
+- type: entity
+  parent: LightReplacer
+  id: LightReplacerEmpty
+  suffix: Empty
+
+# --- DeltaV/Entities/Objects/Consumable/Food/Containers/lunchbox.yml ---
+# MeleeWeapon heavy-attack fields and the stamina-only DamageOtherOnHit don't
+# exist in this fork and are dropped.
+- type: entity
+  id: LunchboxGeneric
+  parent: [ BoxCardboard, BaseBagOpenClose ]
+  name: lunchbox
+  description: For on-the-go meal carrying needs.
+  components:
+  - type: Sprite
+    sprite: DeltaV/Objects/Storage/lunchbox.rsi
+    layers:
+    - state: generic
+    - state: generic-open
+      map: ["openLayer"]
+  - type: Item
+    size: Large
+    shape: null
+    sprite: DeltaV/Objects/Storage/lunchbox.rsi
+    heldPrefix: generic
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,1,2
+    - 3,0,4,2 # Claw Command - source had an inverted `3,0,1,2` box (left > right), which fails to load here
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 100
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 5.5
+    angle: 80.5
+    soundHit:
+      path: "/Audio/Weapons/click.ogg"
+  - type: StaticPrice
+    price: 10
+
+- type: entity
+  parent: LunchboxGeneric
+  id: LunchboxMedical
+  suffix: Medical
+  components:
+  - type: Sprite
+    layers:
+    - state: medical
+    - state: medical-open
+      map: [ "openLayer" ]
+  - type: Item
+    heldPrefix: medical
+
+- type: entity
+  parent: LunchboxGeneric
+  id: LunchboxSyndicate
+  suffix: Syndicate
+  components:
+  - type: Sprite
+    layers:
+    - state: syndicate
+    - state: syndicate-open
+      map: [ "openLayer" ]
+  - type: Item
+    heldPrefix: syndicate
+
+# --- Corvax/Entities/Objects/Materials/Sheets/other.yml ---
+# Printer paper stack. The Corvax printer and its SheetPrinter material are not
+# ported (no machine here to consume it); stack prototype is in talonstride_misc.yml.
+- type: entity
+  parent: Paper
+  id: SheetPrinter
+  suffix: Full
+  components:
+  - type: Stack
+    stackType: SheetPrinter
+    baseLayer: base
+    layerStates:
+    - paper
+    - paper
+    - paper
+  - type: Sprite
+    state: paper
+    layers:
+    - state: paper
+      map: ["base"]
+    - state: paper_words
+      map: ["enum.PaperVisualLayers.Writing"]
+      visible: false
+    - state: paper_stamp-generic
+      map: ["enum.PaperVisualLayers.Stamp"]
+      visible: false
+
+- type: entity
+  parent: SheetPrinter
+  id: SheetPrinter1
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: SheetPrinter
+    count: 1
+
+# --- Entities/Objects/Weapons/Melee/spear.yml ---
+# EmbedPassiveDamage doesn't exist here (dropped). Sharp is replaced by the Slicing
+# tool quality, matching this fork's Spear. MeleeWeapon heavy-attack fields dropped.
+# Solution comes from SolutionDart like the fork's Spear.
+- type: entity
+  name: salvage harpoon
+  parent: [ BaseItem, SolutionDart ]
+  id: SalvageHarpoon
+  description: A spear made of refined steel produced for salvage and hunting purposes. Hunters fancy it when it comes to hunting various carp species.
+  components:
+  - type: Tool
+    qualities:
+    - Slicing
+  - type: EmbeddableProjectile
+    offset: 0.15,0.15
+  - type: ThrowingAngle
+    angle: 225
+  - type: LandAtCursor
+  - type: Tag
+    tags:
+    - Spear
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PolygonShape
+          vertices:
+          - -0.40,-0.30
+          - -0.30,-0.40
+          - 0.40,0.30
+          - 0.30,0.40
+        density: 20
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+  - type: Sprite
+    sprite: _DEN/Objects/Weapons/Melee/harpoon.rsi
+    layers:
+    - state: spear
+    - state: spear1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    range: 1.75
+    damage:
+      types:
+        Piercing: 10
+        Slash: 2
+    maxTargets: 3
+    angle: 20
+    animation: WeaponArcThrust
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 16
+  - type: Item
+    size: Ginormous
+    shape:
+    - 0,0,0,6
+    storedRotation: -45
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+  - type: MeleeChemicalInjector
+    solution: melee
+  - type: RefillableSolution
+    solution: melee
+  - type: InjectableSolution
+    solution: melee
+  - type: SolutionInjectOnEmbed
+    transferAmount: 1
+    solution: melee
+  - type: SolutionTransfer
+    maxTransferAmount: 1
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 3
+        Slash: 3
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 5
+  - type: UseDelay
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    fillBaseName: spear
+
+# --- DeltaV/Entities/Objects/Weapons/Guns/Projectiles/toy_projectiles.yml ---
+- type: entity
+  id: BulletBB
+  name: BB
+  description: Don't shoot your eye out.
+  parent: BaseItem
+  components:
+  - type: Item
+    size: Tiny
+  - type: Reflective
+  - type: Appearance
+  - type: FlyBySound
+  - type: Sprite
+    sprite: DeltaV/Objects/Weapons/Guns/Ammunition/Boxes/bbgun.rsi
+    layers:
+    - state: bbbullet
+  - type: Tag
+    tags:
+    - BulletBB
+    - Trash
+  - type: Physics
+    bodyType: Dynamic
+    linearDamping: 0.1
+    angularDamping: 0.1
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.01
+        density: 1
+        mask:
+        - ItemMask
+        restitution: 0.3 #bounce
+        friction: 0.2
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.15,-0.15,0.15,0.15"
+        hard: false
+        mask:
+        - Impassable
+        - BulletImpassable
+      fly-by:
+        shape: !type:PhysShapeCircle
+          radius: 1.5
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: False
+  - type: TileFrictionModifier
+    modifier: 0.01
+  - type: Projectile
+    impactEffect: BulletImpactEffect
+    deleteOnCollide: false
+    onlyCollideWhenShot: true
+    damage:
+      types:
+        Blunt: 1
+    soundHit:
+      path: /Audio/Weapons/Guns/Hits/bullet_hit.ogg
+  - type: Ammo
+    muzzleFlash: null
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 1
+  - type: SpaceGarbage
+
+# --- DeltaV/Entities/Objects/Fun/toy_guns.yml ---
+# Dropped obsolete Sprite fields `netsync` and `size`.
+- type: entity
+  name: BB Gun
+  parent: BaseItem
+  id: WeaponRifleBB
+  description: The classic Red Ryder BB gun. Don't shoot your eye out.
+  components:
+  - type: Sprite
+    sprite: DeltaV/Objects/Weapons/Guns/Rifles/bbgun.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Clothing
+    sprite: DeltaV/Objects/Weapons/Guns/Rifles/bbgun.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: AmmoCounter
+  - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    fireRate: 2
+    soundGunshot:
+      path: /Audio/Weapons/click.ogg
+  - type: BallisticAmmoProvider
+    cycleable: false
+    proto: BulletBB
+    whitelist:
+      tags:
+      - BulletBB
+    soundInsert:
+      path: /Audio/Weapons/drawbow2.ogg
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+        ents: []
+  - type: Appearance
+  - type: StaticPrice
+    price: 275
+
+# --- DeltaV/Entities/Objects/Weapons/Guns/Pistols/pistols.yml ---
+# WeaponPistolViperWood already exists in _ClawCommand/.../service_weapons.yml.
+- type: entity
+  name: viper
+  parent: WeaponPistolViperWood
+  id: WeaponPistolViperWoodSecurity
+  description: A small, low-power pistol with pleasant lacquered wooden grips. Uses .35 auto ammo. The serial number on the handguard marks this gun as belonging to an NT Security Officer.
+  suffix: Wood, Security
+  components:
+  - type: GuideHelp
+    guides: [ SecurityWeapons ]

@@ -1,0 +1,188 @@
+# Ported from space/ for the TalonStride map.
+
+# ---------------------------------------------------------------- Spawners
+
+# source: Entities/Markers/Spawners/bots.yml
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobDisablerBot
+  name: disablerbot spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Mobs/Silicon/Bots/disablerbot.rsi
+      state: disablerbot
+  - type: ConditionalSpawner
+    prototypes:
+    - MobDisablerBot
+
+# source: _Floof/Entities/Markers/Spawners/Random/lewd.yml
+# Adapted: EntityTableSpawner offset moved to the component (where this fork reads it);
+# icon uses the fork's existing crotch whip sprite.
+- type: entity
+  parent: MarkerBase
+  id: LewdLootSpawnerToys
+  name: Lewd Loot Spawner
+  suffix: Toys
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _ClawCommand/Objects/Fun/Cute/Weapons/crotch_pink.rsi
+      state: icon
+  - type: EntityTableSpawner
+    offset: 0.2
+    table: !type:NestedSelector
+      tableId: TalonStrideLewdLootToys
+
+- type: entityTable
+  id: TalonStrideLewdLootToys
+  table: !type:GroupSelector
+    children:
+    - !type:NestedSelector
+      tableId: TalonStrideLewdKinkClothing # defined in Catalog/Fills/talonstride_fills.yml
+    - !type:NestedSelector
+      tableId: TalonStrideLewdImpactPlay
+
+# ---------------------------------------------------------------- Spawned mobs
+# Mobs referenced by the spawners/crates above that the fork did not have.
+
+# source: Entities/Mobs/NPCs/disablerbot.yml
+# Adapted: no construction graph; BatteryAmmoProvider replaces ProjectileBatteryAmmoProvider;
+# BulletDisablerSmgStunning (15 stamina) stands in for the source BulletDisablerSmg;
+# the fork's SimpleRangedHostileCompound replaces the source-only DisablerbotCompound.
+- type: entity
+  parent: MobSiliconBase
+  id: MobDisablerBot
+  name: disablerbot
+  description: Defends the station from hostile wildlife.
+  components:
+  - type: StaticPrice
+    price: 545
+  - type: Sprite
+    sprite: Mobs/Silicon/Bots/disablerbot.rsi
+    state: disablerbot
+  - type: SentienceTarget
+    flavorKind: station-event-random-sentience-flavor-mechanical
+  - type: UseDelay
+    delay: 1
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
+  - type: CombatMode
+  - type: BatterySelfRecharger
+    autoRechargeRate: 300
+  - type: Battery
+    maxCharge: 10000
+    startingCharge: 10000
+  - type: Gun
+    fireRate: 1
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot: /Audio/Weapons/Guns/Gunshots/taser2.ogg
+  - type: BatteryAmmoProvider
+    proto: BulletDisablerSmgStunning
+    fireCost: 1
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      60: Dead
+    stateAlertDict:
+      Alive: BorgHealth
+      Dead: BorgDead
+    showOverlays: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:TriggerBehavior
+    - trigger:
+        !type:DamageTrigger
+        damage: 60
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ProximitySensor:
+            min: 1
+            max: 1
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          WeaponDisabler:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 3
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound # ranged -> melee -> idle; equivalent of source DisablerbotCompound
+  - type: InteractionPopup
+    interactSuccessString: petting-success-disablerbot
+    interactFailureString: petting-failure-disablerbot
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
+
+# source: Entities/Mobs/NPCs/dogs.yml
+# Adapted onto the fork's MobCorgi (inventory/displacements/refining); source-only bits
+# (DogVision, LanguageKnowledge, names_pitbull dataset) dropped.
+- type: entity
+  parent: MobCorgi
+  id: MobPibble
+  name: pitbull
+  description: Nanny dog. Or a lab mix depending on who is asking.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Mobs/Pets/pitbull.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: pibble
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pibble
+      Critical:
+        Base: pibble_dead
+      Dead:
+        Base: pibble_dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 135
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    angle: 0
+    animation: WeaponArcBite
+    damage:
+      types:
+        Slash: 4
+        Piercing: 8
+        Blunt: 1
+        Structural: 4
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeat
+      amount: 3
+  - type: InteractionPopup
+    successChance: 0.7
+    interactSuccessString: petting-success-dog
+    interactFailureString: petting-failure-pibble
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/small_dog_bark_happy.ogg

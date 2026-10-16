@@ -1,0 +1,1102 @@
+# Ported from space/ (Nuclear14 via Floof) for the TalonStride map.
+# Source: Resources/Prototypes/_Nuclear14/Entities/Structures/** in the `space` tree.
+# Only the entities TalonStride places, plus the parents they need, are brought over.
+#
+# Claw Command - general adaptations applied throughout this file:
+# - Damageable `damageContainer` moved to the separate Injurable component (this fork's split).
+# - Legacy damage modifier sets (Wood/Metallic/Rock/Glass, "may be removed" per
+#   material_old.yml) swapped for this fork's current WoodMod/SteelMod/RockMod/GlassMod.
+# - Sprite `netsync: false` dropped (obsolete field).
+# - Construction graphs that don't exist here (N14Bed, N14DoorGraph, N14WoodWall, BarCounter)
+#   are omitted, so these pieces are non-constructible decor, as with n14_furniture.yml.
+# - The N14 "Loot"/"Refilling" closets have no fill in the source either (TODO in N14),
+#   so they are ported as empty containers.
+# Sprites already live under Resources/Textures/_Nuclear14/Structures/.
+
+#region Beds
+
+- type: entity
+  parent: N14Bed
+  id: N14BedWood
+  name: wooden bed
+  description: A bed with a wooden frame.
+  components:
+  - type: Sprite
+    state: bed_wood
+
+- type: entity
+  parent: N14Bed
+  id: N14BedMattressDirty1
+  name: mattress
+  description: A mattress on the floor. A little rough.
+  components:
+  - type: Sprite
+    state: mattress1
+    snapCardinals: true
+
+#endregion
+#region Chairs / fitness
+
+- type: entity
+  parent: [ OfficeChairBase, StructureHealthFurniture ] # Claw Command - mirrors the other ported N14 office chairs (_ported_deps/entity.yml)
+  id: N14ChairOfficeRedBroken
+  name: office chair
+  suffix: red, broken
+  components:
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/chairs.rsi
+    state: office_chair_broken
+
+- type: entity
+  parent: [ SeatBase, StructureHealthFurniture ] # Claw Command - this fork's SeatBase carries no health
+  id: N14FitnessWeightsBench1
+  name: weights bench
+  description: A bench for pumping iron.
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Anchorable
+  - type: Rotatable
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/np13_misc.rsi
+    state: fitnessweight
+
+- type: entity
+  parent: N14FitnessWeightsBench1
+  id: N14FitnessWeightLifter
+  name: weight lifter
+  components:
+  - type: Sprite
+    state: fitnesslifter
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.1"
+
+#endregion
+#region Barrels
+
+- type: entity
+  parent: BaseStructureDynamic
+  id: N14BaseBarrel
+  name: barrel
+  description: This barrel looks like it could contain something.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/barrels.rsi
+    state: blue-closed
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.45"
+        density: 50
+        mask:
+        - MachineMask
+        layer:
+        - WallLayer
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    # Claw Command - source's SolutionExplosion/Spill thresholds dropped: closed N14 barrels
+    # carry no solution, so they were no-ops.
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: N14BaseBarrel
+  id: N14BlackBarrel
+  name: black barrel
+  description: A worn out black barrel. The label is torn off.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/barrels.rsi
+    state: black-closed
+
+#endregion
+#region Floor decor
+
+- type: entity
+  id: N14DecorFloorBase
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/cave_decor.rsi
+    noRot: true
+    drawdepth: FloorObjects
+  - type: Damageable
+    damageModifierSet: WoodMod
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Clickable
+  - type: InteractionOutline
+
+- type: entity
+  parent: N14DecorFloorBase
+  id: N14DecorFloorWorldBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/world.rsi
+
+- type: entity
+  parent: N14DecorFloorWorldBase
+  id: N14DecorFloorPalletStack
+  name: pallet stack
+  description: a stack of wooden pallets
+  components:
+  - type: Sprite
+    state: pallet_stack
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.20
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: entity
+  parent: N14DecorFloorPalletStack
+  id: N14DecorFloorBrickStack
+  name: brick stack
+  description: a neat stack of bricks
+  components:
+  - type: Sprite
+    state: brickpile
+
+- type: entity
+  parent: BaseStructure
+  id: N14CarpetSingleBase
+  description: Better than the floor.
+  abstract: true
+  components:
+  - type: Sprite
+    drawdepth: FloorTiles
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: N14CarpetSingleBase
+  id: N14RugMat
+  name: mat
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/rugs.rsi
+    state: mat_blank
+
+- type: entity
+  parent: N14RugMat
+  id: N14RugMatWelcome
+  suffix: welcome
+  components:
+  - type: Sprite
+    state: mat_welcome
+
+#endregion
+#region Doors
+
+- type: entity
+  id: N14BaseDoor # Metal Base
+  parent: BaseStructure
+  name: door
+  abstract: true
+  description: A door, where will it lead?
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    noRot: true
+    sprite: _Nuclear14/Structures/Doors/FalloutDoors/wooddoor.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: AnimationPlayer
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - AirlockLayer
+  - type: Door
+    bumpOpen: false
+    clickOpen: true
+    closeTimeOne: 0.2
+    closeTimeTwo: 0.6
+    openTimeOne: 0.6
+    openTimeTwo: 0.2
+    openSound:
+      path: /Audio/Effects/door_open.ogg
+    closeSound:
+      path: /Audio/Effects/door_close.ogg
+  - type: Appearance
+  - type: Airtight
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Occluder
+  - type: BlockWeather
+
+- type: entity
+  parent: N14BaseDoor
+  id: N14DoorMakeshift # Base Door Wood
+  name: makeshift door
+  description: It's a wooden door. It looks dirty and handmade.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Doors/FalloutDoors/wooddoor.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Damageable
+    damageModifierSet: WoodMod
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 250
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  # Claw Command - Construction (graph N14DoorGraph) omitted; graph not ported.
+
+- type: entity
+  parent: N14DoorMakeshift
+  id: N14DoorWoodRoomDamaged
+  suffix: damaged
+  name: wooden door
+  description: A door used inside pre-war houses. Unsurprisingly, it looks like it'll fall apart at any moment.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Doors/FalloutDoors/room_ddoor.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+
+#endregion
+#region Flora
+
+- type: entity
+  parent: BaseTree
+  id: N14FloraDesertCactus
+  name: cactus
+  description: Some kind of wasteland flora.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/floradesert.rsi
+    state: cactus
+    offset: 0,0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.7,-1.2,-0.4,-0.3" # Claw Command - source had this box inverted ("-0.7,-0.3,-0.4,-1.2"); same area, normalised
+        density: 1000
+        layer:
+        - WallLayer
+
+- type: entity
+  parent: N14FloraDesertCactus
+  id: N14FloraTreeBald
+  name: bald tree
+  description: "What? Even trees go bald."
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/trees-ms.rsi
+    state: bald
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-1.8,0.2,-1.4" # Claw Command - source had this box inverted ("0.2,-1.4,-0.2,-1.8"); same area, normalised
+        density: 1000
+        layer:
+        - WallLayer
+
+- type: entity
+  parent: N14FloraTreeBald
+  id: N14FloraTreePine
+  name: pine tree
+  description: It has an almost overwhelming scent.
+  components:
+  - type: Sprite
+    layers:
+    - state: pine_1
+      map: [ "tree" ]
+  - type: RandomSprite
+    available:
+    - tree:
+        pine_1: ""
+        pine_1_alt: ""
+
+- type: entity
+  parent: N14FloraTreeBald
+  id: N14FloraTreeDead1
+  name: dead tree
+  description: A dead memory of a tree.
+  components:
+  - type: Sprite
+    layers:
+    - state: dead_tree1
+      map: [ "tree" ]
+  - type: RandomSprite
+    available:
+    - tree:
+        dead_tree1: ""
+        dead_tree2: ""
+        dead_tree3: ""
+
+- type: entity
+  parent: N14FloraTreeDead1
+  id: N14FloraTreeDead2
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/trees-dead.rsi
+    layers:
+    - state: tree_1
+      map: [ "tree" ]
+  - type: RandomSprite
+    available:
+    - tree:
+        tree_1: ""
+        tree_2: ""
+        tree_3: ""
+
+#endregion
+#region Casino / television
+
+- type: entity
+  parent: BaseStructure
+  id: N14FurnitureCasinoRoulettetable
+  name: roulette table
+  description: An old casino roulette table. It still works.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/roulettetable.rsi
+    snapCardinals: true
+    state: roulette
+  - type: Damageable
+    damageModifierSet: WoodMod
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Tag
+    tags:
+    - Wooden
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1,-0.45,1,0.45"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+
+- type: entity
+  parent: BaseStructure
+  id: N14Television
+  name: television
+  description: An old pre-war television.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/televisions.rsi
+    state: wood_tv
+
+- type: entity
+  parent: N14Television
+  id: N14TelevisionRedwood
+  description: A television in a redwood cabinet.
+  components:
+  - type: Sprite
+    state: redwood_tv
+
+#endregion
+#region Closets
+
+- type: entity
+  parent: [ N14ClosetBase, StructureHealthContainerWeak ] # Claw Command - this fork's ClosetBase carries no health; mirrors ClosetSteelBase
+  id: N14ClosetBaseW
+  name: closet
+  description: A basic closet for storing things.
+  components:
+  - type: Weldable
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Sprite
+    noRot: true
+    sprite: _Nuclear14/Structures/Storage/Closets/closet.rsi
+    layers:
+    - state: closet
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: closet_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    # Claw Command - label layer driven by ClosetBase's GenericVisualizer
+    - state: paper
+      visible: false
+      sprite: Structures/Storage/closet_labels.rsi
+      map: ["enum.PaperLabelVisuals.Layer"]
+  - type: EntityStorageVisuals
+    stateBaseClosed: closet
+    stateDoorOpen: closet_open
+    stateDoorClosed: closet_door
+
+- type: entity
+  parent: N14ClosetBaseW
+  id: N14ClosetSafe
+  name: safe
+  description: Might be filled with valuables.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Furniture/safe.rsi
+
+- type: entity
+  parent: N14ClosetSafe
+  id: N14LootClosetSafe
+  suffix: Loot, Random Military # Claw Command - empty: no fill defined in the source either
+
+- type: entity
+  parent: [ BaseWallmountMetallic, StructureHealthContainerWeak ] # Claw Command - parented like vanilla BaseWallCloset (source had no parent)
+  id: N14ClosetWallMedicabinet
+  name: medicabinet
+  description: A medicabinet mounted on the wall.
+  components:
+  - type: ResistLocker
+  - type: Weldable
+  - type: WallMount
+    arc: 180
+  - type: Transform
+    noRot: false
+  - type: Sprite
+    drawdepth: WallMountedItems
+    noRot: false
+    sprite: _Nuclear14/Structures/Storage/Closets/medicabinet.rsi
+    layers:
+    - state: closet
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: closet_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+  - type: EntityStorage
+    isCollidableWhenOpen: true
+    enteringOffset: 0, -0.75
+    closeSound:
+      path: /Audio/Items/deconstruct.ogg
+    openSound:
+      path: /Audio/Items/deconstruct.ogg
+  - type: ContainerContainer
+    containers:
+      entity_storage: !type:Container
+        ents: []
+  # Claw Command - added so the door opens visually (source lacked storage visuals)
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: closet
+    stateDoorOpen: closet_open
+    stateDoorClosed: closet_door
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 1
+
+- type: entity
+  parent: N14ClosetWallMedicabinet
+  id: N14LootClosetWallMedicabinet
+  suffix: Loot, Medical, Random # Claw Command - empty: no fill defined in the source either
+
+#endregion
+#region Tables
+
+- type: entity
+  id: N14FreeTableBase # Base off this for metal tables
+  parent: BaseStructure
+  name: table
+  description: A square piece of metal standing on four metal legs.
+  abstract: true
+  components:
+  - type: Damageable
+    damageModifierSet: SteelMod
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: PlaceableSurface
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask: # tables should collide with other tables
+        - TableMask
+        layer:
+        - TableLayer
+  - type: Sprite
+  - type: Climbable
+  - type: Bonkable
+    bonkDamage:
+      types:
+        Blunt: 4
+  - type: Clickable
+
+- type: entity
+  parent: N14FreeTableBase
+  id: N14TableDeskSchool
+  name: end table
+  description: A wooden end table.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/Tables/tables.rsi
+    state: table_wood_end
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.15,-0.25,0.25,0.25"
+        density: 55
+        mask: # tables should collide with other tables
+        - TableMask
+        layer:
+        - TableLayer
+
+- type: entity
+  parent: N14TableDeskSchool
+  id: N14TableWoodSquare
+  name: wooden table
+  description: A wooden square table.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/Tables/tables.rsi
+    state: table_wood_square
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.35,-0.15,0.35,0.45"
+        density: 55
+        mask: # tables should collide with other tables
+        - TableMask
+        layer:
+        - TableLayer
+
+#64x64 tables
+- type: entity
+  parent: N14FreeTableBase
+  id: N14TableDeskMetal
+  name: metal desk
+  description: A metal desk for working at. Sturdy.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/Tables/desks.rsi
+    state: desk_metal
+    offset: 0.5, 0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.35,0,1.35,0.45"
+        density: 55
+        mask: # tables should collide with other tables
+        - TableMask
+        layer:
+        - TableLayer
+
+- type: entity
+  parent: N14TableDeskMetal
+  id: N14TableDeskMetalDirty
+  suffix: dirty
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/64x64_furniture.rsi
+    state: desk_metal
+
+- type: entity
+  parent: N14FreeTableBase
+  id: N14TableDeskMetalSmall
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/64x64_furniture.rsi
+    state: desk_metal_small
+
+- type: entity
+  parent: N14TableDeskSchool
+  id: N14TableDeskWood
+  name: wooden desk
+  description: A wooden desk for working at.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/Tables/desks.rsi
+    state: desk_wood
+    offset: 0.5, 0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0,0,1,0.45"
+        density: 55
+        mask: # tables should collide with other tables
+        - TableMask
+        layer:
+        - TableLayer
+
+- type: entity
+  parent: N14TableDeskSchool
+  id: N14TableDeskWoodSmall
+  suffix: small
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/64x64_furniture.rsi
+    state: desk_wood_small
+
+- type: entity
+  parent: N14FreeTableBase
+  id: N14TableCounterMetal
+  name: metal counter
+  description: A cold, hard metal counter.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/Tables/counters.rsi
+    state: metal_counter
+
+- type: entity
+  parent: TableWood
+  id: N14TableCounterBar
+  name: bar counter
+  description: An alcohol stained bartop.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/Tables/barcounter.rsi
+  - type: Icon
+    sprite: _Nuclear14/Structures/Furniture/Tables/barcounter.rsi
+  # Claw Command - Construction (graph BarCounter) omitted; inherits TableWood's construction instead.
+
+#endregion
+#region Slanted walls
+
+# Claw Command - source defined this on BaseStructure with a `Wall` tag; this fork marks walls
+# with the Wall component instead (no `Wall` tag exists), so it now builds on vanilla BaseWall,
+# which carries the same wall components (Wall, Airtight, Occluder, RadiationBlocker,
+# BlockWeather, RangedDamageSound, PlacementReplacement). No Damageable = indestructible.
+- type: entity
+  abstract: true
+  parent: BaseWall
+  id: BaseWallIndestructible
+  name: wall
+  description: You will struggle to break this.
+  suffix: indestructible
+
+- type: entity
+  parent: BaseWallIndestructible
+  id: N14BaseWallSlanted
+  suffix: slanted
+  abstract: true
+  components:
+  - type: Damageable
+    damageModifierSet: RockMod
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: N14BaseWallSlanted
+  id: N14BaseWallSlantedWood
+  abstract: true
+  components:
+  - type: Damageable
+    damageModifierSet: WoodMod
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank1:
+            min: 0
+            max: 2
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroyHeavy
+
+- type: entity
+  parent: BaseWallIndestructible
+  id: N14WallBrickSlantedIndestructible
+  name: brick wall
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/brick.rsi
+  - type: Icon
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/brick.rsi
+  - type: IconSmooth
+    key: walls
+    base: slantedbrick
+
+- type: entity
+  parent: [ N14WallBrickSlantedIndestructible, N14BaseWallSlanted ]
+  id: N14WallBrickSlanted
+  name: brick wall
+  suffix: slanted
+
+- type: entity
+  parent: BaseWallIndestructible
+  id: N14WallBrickAltSlantedIndestructible
+  name: brick wall
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/brickalt.rsi
+  - type: Icon
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/brickalt.rsi
+  - type: IconSmooth
+    key: walls
+    base: slantedbrickalt
+
+- type: entity
+  parent: [ N14WallBrickAltSlantedIndestructible, N14BaseWallSlanted ]
+  id: N14WallBrickAltSlanted
+  name: brick wall
+  suffix: slanted
+
+- type: entity
+  parent: BaseWallIndestructible
+  id: N14WallWoodSlantedIndestructible
+  name: wood wall
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/wood.rsi
+  - type: Icon
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/wood.rsi
+  - type: IconSmooth
+    key: walls
+    base: slantedwood
+
+- type: entity
+  parent: [ N14WallWoodSlantedIndestructible, N14BaseWallSlantedWood ]
+  id: N14WallWoodSlanted
+  name: wood wall
+  suffix: slanted
+  # Claw Command - Construction (graph N14WoodWall) omitted; graph not ported.
+
+#endregion
+#region Wells
+
+- type: entity
+  id: N14WellBoarded
+  name: boarded well
+  description: It's a well that's been boarded up. Maybe a crowbar will reveal its secrets.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/well.rsi
+    noRot: true
+    state: well
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Clickable
+  - type: Tag
+    tags:
+    - Structure
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.60,-0.4,0.6,0.7"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+
+# Claw Command - source used SolutionContainerManager with named `tank`/`drainBuffer` solutions.
+# This fork uses solution-entity composition: the well *is* its `tank` solution (SolutionTank),
+# like vanilla StorageTank. The unused drainBuffer was dropped, as was SolutionRegeneration's
+# `solution:` field (it now regenerates the entity's own Solution).
+- type: entity
+  parent: [ N14WellBoarded, SolutionTank ]
+  id: N14WellWaterClean
+  name: water well
+  description: A well. Hopefully it's got some water at the bottom. Let's hope it's clean.
+  suffix: Clean
+  components:
+  - type: Sprite
+    state: wellwheel
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.50,-0.6,0.7,0.55"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+  - type: Solution
+    solution:
+      maxVol: 500
+      reagents:
+      - ReagentId: Water
+        Quantity: 500
+  - type: DrainableSolution
+    solution: tank
+  - type: ReagentTank
+  - type: SolutionRegeneration
+    generated:
+      reagents:
+      - ReagentId: Water
+        Quantity: 1
+
+#endregion
+#region Windows
+
+- type: entity
+  parent: BaseStructure
+  id: N14WindowBase # use for single tile / standalone windows & broken windows
+  description: A window for seeing into places.
+  abstract: true
+  name: window
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: GlassSmash
+  - type: WallMount
+    arc: 360 # interact despite grilles
+  - type: Tag
+    tags:
+    - ForceFixRotations
+    - Window
+    # Claw Command - WeldbotFixableStructure tag dropped (doesn't exist in this fork)
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb {}
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Damageable
+    damageModifierSet: GlassMod
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: ExaminableDamage
+    messages: WindowMessages
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150 #excess damage (nuke?). avoid computational cost of spawning entities.
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ShardGlass:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Appearance
+
+- type: entity
+  parent: N14WindowBase
+  id: N14WindowHouseWoodBroken
+  suffix: wood, broken
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Windows/window_ruins.rsi
+    state: woodwindowbroken
+  - type: Icon
+    sprite: _Nuclear14/Structures/Windows/window_ruins.rsi
+    state: woodwindowbroken
+
+#endregion

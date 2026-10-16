@@ -1,0 +1,504 @@
+# Ported from space/ for the TalonStride map.
+
+# --- _Floof/Entities/Objects/Fun/toys.yml ---
+# Sprites already exist in _Floof/Objects/Fun/floof_plush.rsi.
+- type: entity
+  parent: PlushieHuman
+  id: PlushieArachneNobility
+  name: Arachne Nobility Plushie
+  description: Soft as spider silk, this arachne plushie is here to be of assistance. Do not poke, submit to them poking you instead!
+  components:
+  - type: Sprite
+    sprite: _Floof/Objects/Fun/floof_plush.rsi
+    state: noblearachne
+  - type: UseDelay
+    delay: 3.0
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Voice/Human/womanlaugh.ogg
+      params:
+        volume: 2
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Voice/Arachnid/arachnid_laugh.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Voice/Human/womanlaugh.ogg
+      params:
+        volume: 2
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Voice/Arachnid/arachnid_laugh.ogg
+      params:
+        variation: 0.05
+        volume: 4
+
+# Source used /Audio/_Floof/Voice/Rodentia/Rat_Scream_01.ogg (not in this fork,
+# no attribution in source); substituted with the existing mouse squeak.
+- type: entity
+  parent: PlushieHuman
+  id: PlushieBunnyChiefMedicalOfficer
+  name: bunny chief medical officer
+  description: This plushie smells like carrots and has an aura of non-violence
+  components:
+  - type: Sprite
+    sprite: _Floof/Objects/Fun/floof_plush.rsi
+    state: CMObun
+  - type: UseDelay
+    delay: 3.0
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Items/Toys/mousesqueek.ogg
+      params:
+        volume: 2
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Animals/mouse_squeak.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Items/Toys/mousesqueek.ogg
+      params:
+        volume: 2
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Animals/mouse_squeak.ogg
+      params:
+        variation: 0.05
+        volume: 4
+
+- type: entity
+  parent: PlushieHuman
+  id: PlushieChillHuman
+  name: chill human plushie
+  description: It's just a chill lill dude.
+  components:
+  - type: Sprite
+    sprite: _Floof/Objects/Fun/floof_plush.rsi
+    state: chill
+
+# Source yap path was /Audio/_Floof/Voice/Vulpkanin/yap.ogg; this fork has it at
+# /Audio/Voice/Vulpkanin/yap.ogg.
+- type: entity
+  parent: PlushieHuman
+  id: PlushieERTFox
+  name: ERT fox plushie
+  description: Smells faintly of coffee and sterile surgical tools. She looks tired...
+  components:
+  - type: Sprite
+    sprite: _Floof/Objects/Fun/floof_plush.rsi
+    state: ertfox
+  - type: UseDelay
+    delay: 3.0
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Items/hypospray.ogg
+      params:
+        volume: 2
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Voice/Vulpkanin/yap.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Items/hypospray.ogg
+      params:
+        volume: 2
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Voice/Vulpkanin/yap.ogg
+      params:
+        variation: 0.05
+        volume: 4
+
+- type: entity
+  parent: PlushieHuman
+  id: PlushieGrumpyQuartermaster
+  name: Grumpy Quartermaster plushie
+  description: A plushie of a human cargonian, looks unimpressed. Smells like oak.
+  components:
+  - type: Sprite
+    sprite: _Floof/Objects/Fun/floof_plush.rsi
+    state: grumpyqm
+  - type: UseDelay
+    delay: 3.0
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Items/Lighters/zippo_open.ogg
+      params:
+        volume: 1
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Effects/kaching.ogg
+      params:
+        volume: 1
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Items/Lighters/zippo_open.ogg
+      params:
+        volume: 1
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Effects/kaching.ogg
+      params:
+        volume: 1
+
+- type: entity
+  parent: PlushieHuman
+  id: PlushieHos
+  name: Head of security plushie
+  description: The person under the suit no longer matters, this plushie represents the ideal head of security form.
+  components:
+  - type: Sprite
+    sprite: _Floof/Objects/Fun/floof_plush.rsi
+    state: moss
+  - type: UseDelay
+    delay: 2.0
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Items/drink.ogg
+      params:
+        volume: 1
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Effects/egloves.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Items/drink.ogg
+      params:
+        volume: 1
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Effects/egloves.ogg
+      params:
+        variation: 0.05
+        volume: 4
+
+# --- DeltaV/Entities/Objects/Fun/toys.yml ---
+- type: entity
+  parent: BaseFigurine
+  id: ToyZero
+  name: toy zero
+  description: whirrrrrrrrr taktaktaktaktak BOOM whirrrrrrr
+  components:
+  - type: Sprite
+    sprite: DeltaV/Objects/Fun/Toys/zerotoy.rsi
+    state: icon
+
+# --- Entities/Objects/Fun/prizeticket.yml ---
+# Prize tickets (and their stack/material) are not ported. The prize pool is
+# restricted to entities that exist in this fork plus the plushies ported above.
+- type: entity
+  parent: PresentRandom
+  id: PrizeBall
+  name: prize ball
+  description: I wonder what's inside!
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/prizeticket.rsi
+    layers:
+    - state: prizeball
+  - type: SpawnItemsOnUse
+    items:
+    - id: PresentTrash
+    - id: PlushieMothRandom
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieSteele
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieMothMusician
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieMothBartender
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieBee
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieHampter
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieRouny
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieLamp
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieArachind
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieLizard
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieLizardMirrored
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieSpaceLizard
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieDiona
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieSharkBlue
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieSharkPink
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieSharkGrey
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieCarp
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieMagicarp
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieHolocarp
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieSlime
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieSnake
+      prob: 0.80
+      orGroup: Prize
+    - id: ToyMouse
+      prob: 0.80
+      orGroup: Prize
+    - id: ToyRubberDuck
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieVox
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieAtmosian
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushiePenguin
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieHuman
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieArachne
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieGnome
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieLoveable
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieDeer
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieIpc
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieGrey
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieRedFox
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushiePurpleFox
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushiePinkFox
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieOrangeFox
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieMarbleFox
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieCrimsonFox
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieCoffeeFox
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieBlueFox
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieBlackFox
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieVulp
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieCorgi
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieGirlyCorgi
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieRobotCorgi
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieCatBlack
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieCatGrey
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieCatOrange
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieCatSiames
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieCatTabby
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieCatTuxedo
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieCatWhite
+      prob: 0.80
+      orGroup: Prize
+    - id: ToyAi
+      prob: 0.80
+      orGroup: Prize
+    - id: ToyIan
+      prob: 0.80
+      orGroup: Prize
+    - id: BalloonNT
+      prob: 0.80
+      orGroup: Prize
+    - id: BalloonCorgi
+      prob: 0.80
+      orGroup: Prize
+    - id: CrayonBox
+      prob: 0.80
+      orGroup: Prize
+    - id: PetRock
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieShadowkin
+      prob: 0.80
+      orGroup: Prize
+    - id: PlushieGhost
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieRGBee
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieRatvar
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieNar
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieRainbowCarp
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieXeno
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieJester
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieSlips
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieAbductor
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieTrystan
+      prob: 0.50
+      orGroup: Prize
+    - id: FoamCrossbow
+      prob: 0.50
+      orGroup: Prize
+    - id: RevolverCapGun
+      prob: 0.50
+      orGroup: Prize
+    - id: PonderingOrb
+      prob: 0.50
+      orGroup: Prize
+    - id: ToyAmongPequeno
+      prob: 0.50
+      orGroup: Prize
+    - id: FoamCutlass
+      prob: 0.50
+      orGroup: Prize
+    - id: ToyHammer
+      prob: 0.50
+      orGroup: Prize
+    - id: WhoopieCushion
+      prob: 0.50
+      orGroup: Prize
+    - id: PlasticBanana
+      prob: 0.50
+      orGroup: Prize
+    - id: WeaponWaterPistol
+      prob: 0.50
+      orGroup: Prize
+    - id: WeaponWaterBlaster
+      prob: 0.50
+      orGroup: Prize
+    - id: NewtonCradle
+      prob: 0.50
+      orGroup: Prize
+    - id: SnapPopBox
+      prob: 0.50
+      orGroup: Prize
+    - id: CrazyGlue
+      prob: 0.50
+      orGroup: Prize
+    - id: MrChips
+      prob: 0.50
+      orGroup: Prize
+    - id: MrDips
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieBunnyChiefMedicalOfficer
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieGrumpyQuartermaster
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieHos
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieERTFox
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieArachneNobility
+      prob: 0.50
+      orGroup: Prize
+    - id: PlushieAbductorAgent
+      prob: 0.30
+      orGroup: Prize
+    - id: PlushieNuke
+      prob: 0.30
+      orGroup: Prize
+    - id: ToyNuke
+      prob: 0.30
+      orGroup: Prize
+    - id: FoamBlade
+      prob: 0.30
+      orGroup: Prize
+    - id: BalloonSyn
+      prob: 0.30
+      orGroup: Prize
+    - id: SingularityToy
+      prob: 0.30
+      orGroup: Prize
+    - id: TeslaToy
+      prob: 0.30
+      orGroup: Prize
+    - id: ToySword
+      prob: 0.30
+      orGroup: Prize
+    - id: ThronglerToy
+      prob: 0.30
+      orGroup: Prize
+    - id: BwoinkHammer
+      prob: 0.30
+      orGroup: Prize
+    - id: PlushieHypnoTempCap
+      prob: 0.30
+      orGroup: Prize

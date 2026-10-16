@@ -1,0 +1,90 @@
+# Ported from space/ for the TalonStride map.
+# Paper contents live in Resources/Locale/en-US/_ClawCommand/talonstride/items.ftl
+# (keys prefixed `talonstride-` to avoid clashing with any future upstream port).
+
+# --- _Floof/Entities/Objects/Misc/paperwork.yml ---
+- type: entity
+  abstract: true
+  parent: Paper
+  id: PaperTemplate
+  description: 'Access Authorization'
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: paper
+      color: "#cccccc"
+    - state: paper_words
+      map: ["enum.PaperVisualLayers.Writing"]
+      color: "#cccccc"
+      visible: false
+    - state: paper_stamp-generic
+      map: ["enum.PaperVisualLayers.Stamp"]
+      visible: false
+
+# --- _Floof/Entities/Objects/Misc/head-of-personel.yml ---
+# `escapeFormatting` is not a Paper field in this fork and is dropped.
+- type: entity
+  name: employment application
+  parent: PaperTemplate
+  id: PaperTemplateHopEmploymentApplication
+  description: 'Want a job? Welp gotta fill this out first.'
+  components:
+  - type: Paper
+    contentSize: 10000
+    content: talonstride-paperwork-hop-employment-application
+
+# --- _Floof/Entities/Objects/Misc/logistics.yml ---
+- type: entity
+  name: cargo request
+  parent: PaperTemplate
+  id: PaperTemplateLogisticsCargoRequest
+  description: 'Request something'
+  components:
+  - type: Paper
+    contentSize: 10000
+    content: talonstride-paperwork-logistics-cargo-request
+
+# --- DeltaV/Catalog/Fills/Paper/manuals.yml ---
+- type: entity
+  parent: Paper
+  id: PaperWrittenNoteFromMumGeneric
+  name: note from mom
+  suffix: Lunchbox, Generic
+  components:
+  - type: Paper
+    content: talonstride-book-text-lunchbox-generic
+
+- type: entity
+  parent: PaperWrittenNoteFromMumGeneric
+  id: PaperWrittenNoteFromMumUnhealthy
+  name: note from mom
+  suffix: Lunchbox, Unhealthy
+  components:
+  - type: Paper
+    content: talonstride-book-text-lunchbox-unhealthy
+
+# --- Corvax/Catalog/Fills/Paper/document.yml ---
+- type: entity
+  parent: Paper
+  id: PrintedDocument
+  abstract: true
+  description: Bureaucratic unit. A document printed on a printer.
+  components:
+  - type: Paper
+
+- type: entity
+  parent: PrintedDocument
+  id: PrintedDocumentCertificateAdvancedTraining
+  name: Certificate of advanced training
+  components:
+  - type: Paper
+    content: talonstride-doc-text-printer-certificate-advanced-training
+
+- type: entity
+  parent: PrintedDocument
+  id: PrintedDocumentPermissionToCarryWeapons
+  name: Permission to carry weapons
+  components:
+  - type: Paper
+    content: talonstride-doc-text-printer-permission-to-carry-weapons

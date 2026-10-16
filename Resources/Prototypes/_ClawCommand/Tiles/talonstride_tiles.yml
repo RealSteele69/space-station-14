@@ -1,0 +1,619 @@
+# Ported from space/ (Nuclear14 via Floof) for the TalonStride map.
+# Tiles from _Nuclear14/Tiles/floors.yml, plus the footstep sound collections, floor tile
+# items and tile stacks they reference. Follows the style of glacier_tiles.yml.
+# Textures (Resources/Textures/_Nuclear14/Tiles/...) and audio
+# (Resources/Audio/_Nuclear14/Effects/Footsteps/...) were already present in this fork.
+
+# --- Footstep sound collections (from _Nuclear14/SoundCollections/footsteps.yml) ---
+
+- type: soundCollection
+  id: N14FootstepWood
+  files:
+  - /Audio/_Nuclear14/Effects/Footsteps/Wood/wood1.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/Wood/wood2.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/Wood/wood3.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/Wood/wood4.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/Wood/wood5.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/Wood/wood6.ogg
+
+- type: soundCollection
+  id: N14FootstepConcrete
+  files:
+  - /Audio/_Nuclear14/Effects/Footsteps/Concrete/concrete1.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/Concrete/concrete2.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/Concrete/concrete3.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/Concrete/concrete4.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/Concrete/concrete5.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/Concrete/concrete6.ogg
+
+- type: soundCollection
+  id: N14FootstepConcreteBroken
+  files:
+  - /Audio/_Nuclear14/Effects/Footsteps/ConcreteBroken/concretebroken1.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/ConcreteBroken/concretebroken2.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/ConcreteBroken/concretebroken3.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/ConcreteBroken/concretebroken4.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/ConcreteBroken/concretebroken5.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/ConcreteBroken/concretebroken6.ogg
+
+- type: soundCollection
+  id: N14FootstepMetalSolid
+  files:
+  - /Audio/_Nuclear14/Effects/Footsteps/MetalSolid/metalsolid1.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/MetalSolid/metalsolid2.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/MetalSolid/metalsolid3.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/MetalSolid/metalsolid4.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/MetalSolid/metalsolid5.ogg
+  - /Audio/_Nuclear14/Effects/Footsteps/MetalSolid/metalsolid6.ogg
+
+# --- Coloured metal floors ---
+
+# --- FloorMetalGreen ---
+- type: tile
+  id: FloorMetalGreen
+  name: metal green
+  sprite: /Textures/_Nuclear14/Tiles/metalgreen.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: N14FootstepMetalHollow
+  friction: 0.30
+  itemDrop: FloorTileItemMetalGreen
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMetalGrey ---
+- type: tile
+  id: FloorMetalGrey
+  name: metal grey
+  sprite: /Textures/_Nuclear14/Tiles/metalgrey.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: N14FootstepMetalHollow
+  friction: 0.30
+  itemDrop: FloorTileItemMetalGrey
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMetalPurpleSolid ---
+- type: tile
+  id: FloorMetalPurpleSolid
+  name: metal purple solid
+  sprite: /Textures/_Nuclear14/Tiles/metalpurplesolid.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: N14FootstepMetalSolid
+  friction: 0.30
+  itemDrop: FloorTileItemMetalPurpleSolid
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMetalRedSolid ---
+- type: tile
+  id: FloorMetalRedSolid
+  name: metal red solid
+  sprite: /Textures/_Nuclear14/Tiles/metalredsolid.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: N14FootstepMetalSolid
+  friction: 0.30
+  itemDrop: FloorTileItemMetalRedSolid
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMetalTeal ---
+- type: tile
+  id: FloorMetalTeal
+  name: metal teal
+  sprite: /Textures/_Nuclear14/Tiles/metalteal.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: N14FootstepMetalHollow
+  friction: 0.30
+  itemDrop: FloorTileItemMetalTeal
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMetalWhiteSolid ---
+- type: tile
+  id: FloorMetalWhiteSolid
+  name: metal white solid
+  sprite: /Textures/_Nuclear14/Tiles/metalwhitesolid.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: N14FootstepMetalSolid
+  friction: 0.30
+  itemDrop: FloorTileItemMetalWhiteSolid
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMetalYellow ---
+- type: tile
+  id: FloorMetalYellow
+  name: metal yellow
+  sprite: /Textures/_Nuclear14/Tiles/metalyellow.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: N14FootstepMetalHollow
+  friction: 0.30
+  itemDrop: FloorTileItemMetalYellow
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMetalYellowSolid ---
+- type: tile
+  id: FloorMetalYellowSolid
+  name: metal yellow solid
+  sprite: /Textures/_Nuclear14/Tiles/metalyellowsolid.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: N14FootstepMetalSolid
+  friction: 0.30
+  itemDrop: FloorTileItemMetalYellowSolid
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- MS13 wood ---
+
+# --- FloorMS13WoodFancy ---
+- type: tile
+  id: FloorMS13WoodFancy
+  name: ms13 wood fancy
+  sprite: /Textures/_Nuclear14/Tiles/ms13/Wood/wood_fancy.png
+  variants: 4
+  placementVariants: [0, 1, 2, 3]
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: N14FootstepWood
+  friction: 0.30
+  # itemDrop: FloorTileItemWoodMaple # (commented out in source too; falls back to FloorTileItemSteel)
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false # Vulpstation
+
+# --- FloorMS13WoodMosaic ---
+- type: tile
+  id: FloorMS13WoodMosaic
+  name: ms13 wood mosaic
+  sprite: /Textures/_Nuclear14/Tiles/ms13/Wood/wood_mosaic.png
+  variants: 4
+  placementVariants: [0, 1, 2, 3]
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: N14FootstepWood
+  friction: 0.30
+  # itemDrop: FloorTileItemWoodMaple # (commented out in source too; falls back to FloorTileItemSteel)
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false # Vulpstation
+
+# --- MS13 carpets ---
+
+# --- FloorMS13CarpetRed ---
+- type: tile
+  id: FloorMS13CarpetRed
+  name: ms13 carpet red
+  sprite: /Textures/_Nuclear14/Tiles/ms13/Carpet/carpet_red.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepCarpet
+  friction: 0.30
+  # itemDrop: FloorTileItemCarpetRed # (commented out in source too; falls back to FloorTileItemSteel)
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMS13CarpetBlue ---
+- type: tile
+  id: FloorMS13CarpetBlue
+  name: ms13 carpet blue
+  sprite: /Textures/_Nuclear14/Tiles/ms13/Carpet/carpet_blue.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepCarpet
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMS13CarpetViolet ---
+- type: tile
+  id: FloorMS13CarpetViolet
+  name: ms13 carpet violet
+  sprite: /Textures/_Nuclear14/Tiles/ms13/Carpet/carpet_violet.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepCarpet
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- Concrete / brick / road ---
+
+# --- N14FloorConcreteHexacreteDark ---
+- type: tile
+  id: N14FloorConcreteHexacreteDark
+  name: concrete hexacrete dark
+  sprite: /Textures/_Nuclear14/Tiles/hexacrete_dark.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepConcrete
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMS13BrickVertical ---
+- type: tile
+  id: FloorMS13BrickVertical
+  name: ms13 brick vertical
+  sprite: /Textures/_Nuclear14/Tiles/ms13/Brick/brickvertical.png
+  variants: 9
+  placementVariants: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  baseTurf: Plating #Floofstation
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepConcreteBroken
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMS13Concrete ---
+- type: tile
+  id: FloorMS13Concrete
+  name: ms13 concrete
+  sprite: /Textures/_Nuclear14/Tiles/ms13/Concrete/concrete_big.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: true
+  footstepSounds:
+    collection: N14FootstepConcrete
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- N14FloorRoadInnerMiddle ---
+- type: tile
+  id: N14FloorRoadInnerMiddle
+  name: road inner middle
+  sprite: /Textures/_Nuclear14/Tiles/roadinnermiddle.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepFloor
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- MS13 tiles ---
+
+# --- FloorMS13TileFancy ---
+- type: tile
+  id: FloorMS13TileFancy
+  name: ms13 tile fancy
+  sprite: /Textures/_Nuclear14/Tiles/ms13/fancy.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  footstepSounds:
+    collection: N14FootstepConcrete
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMS13TileBrown ---
+- type: tile
+  id: FloorMS13TileBrown
+  name: ms13 tile brown
+  sprite: /Textures/_Nuclear14/Tiles/ms13/Small/tilebrown.png
+  variants: 8
+  placementVariants: [0, 1, 2, 3, 4, 5, 6, 7]
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepFloor
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMS13TileWhiteLarge ---
+- type: tile
+  id: FloorMS13TileWhiteLarge
+  name: ms13 tile white large
+  sprite: /Textures/_Nuclear14/Tiles/ms13/Large/tilewhitelarge.png
+  variants: 8
+  placementVariants: [0, 1, 2, 3, 4, 5, 6, 7]
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepFloor
+  friction: 0.30
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- Floor tile items for the coloured metal floors (from _Nuclear14/Entities/Objects/Misc/tiles.yml) ---
+
+- type: entity
+  name: metal floor green
+  parent: FloorTileItemBase
+  id: FloorTileItemMetalGreen
+  components:
+  - type: Sprite
+    state: steel
+  - type: Item
+    heldPrefix: steel
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMetalGreen
+  - type: Stack
+    stackType: FloorTileMetalGreen
+
+- type: entity
+  name: metal floor grey
+  parent: FloorTileItemBase
+  id: FloorTileItemMetalGrey
+  components:
+  - type: Sprite
+    state: steel
+  - type: Item
+    heldPrefix: steel
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMetalGrey
+  - type: Stack
+    stackType: FloorTileMetalGrey
+
+- type: entity
+  name: metal floor purple solid
+  parent: FloorTileItemBase
+  id: FloorTileItemMetalPurpleSolid
+  components:
+  - type: Sprite
+    state: steel
+  - type: Item
+    heldPrefix: steel
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMetalPurpleSolid
+  - type: Stack
+    stackType: FloorTileMetalPurpleSolid
+
+- type: entity
+  name: metal floor red solid
+  parent: FloorTileItemBase
+  id: FloorTileItemMetalRedSolid
+  components:
+  - type: Sprite
+    state: steel
+  - type: Item
+    heldPrefix: steel
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMetalRedSolid
+  - type: Stack
+    stackType: FloorTileMetalRedSolid
+
+- type: entity
+  name: metal floor teal
+  parent: FloorTileItemBase
+  id: FloorTileItemMetalTeal
+  components:
+  - type: Sprite
+    state: steel
+  - type: Item
+    heldPrefix: steel
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMetalTeal
+  - type: Stack
+    stackType: FloorTileMetalTeal
+
+- type: entity
+  name: metal floor white solid
+  parent: FloorTileItemBase
+  id: FloorTileItemMetalWhiteSolid
+  components:
+  - type: Sprite
+    state: steel
+  - type: Item
+    heldPrefix: steel
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMetalWhiteSolid
+  - type: Stack
+    stackType: FloorTileMetalWhiteSolid
+
+- type: entity
+  name: metal floor yellow
+  parent: FloorTileItemBase
+  id: FloorTileItemMetalYellow
+  components:
+  - type: Sprite
+    state: steel
+  - type: Item
+    heldPrefix: steel
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMetalYellow
+  - type: Stack
+    stackType: FloorTileMetalYellow
+
+- type: entity
+  name: metal floor yellow solid
+  parent: FloorTileItemBase
+  id: FloorTileItemMetalYellowSolid
+  components:
+  - type: Sprite
+    state: steel
+  - type: Item
+    heldPrefix: steel
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FloorMetalYellowSolid
+  - type: Stack
+    stackType: FloorTileMetalYellowSolid
+
+# --- Tile stacks (from _Nuclear14/Stacks/floor_tile_stacks.yml) ---
+# Claw Command - this fork's stack prototypes take a LocId name and inherit BaseTileStack
+# (icon + maxCount); names live in Locale/en-US/_ClawCommand/talonstride/n14.ftl.
+
+- type: stack
+  parent: BaseTileStack
+  id: FloorTileMetalGreen
+  name: stack-n14-metal-floor-green
+  spawn: FloorTileItemMetalGreen
+
+- type: stack
+  parent: BaseTileStack
+  id: FloorTileMetalGrey
+  name: stack-n14-metal-floor-grey
+  spawn: FloorTileItemMetalGrey
+
+- type: stack
+  parent: BaseTileStack
+  id: FloorTileMetalPurpleSolid
+  name: stack-n14-metal-floor-purple-solid
+  spawn: FloorTileItemMetalPurpleSolid
+
+- type: stack
+  parent: BaseTileStack
+  id: FloorTileMetalRedSolid
+  name: stack-n14-metal-floor-red-solid
+  spawn: FloorTileItemMetalRedSolid
+
+- type: stack
+  parent: BaseTileStack
+  id: FloorTileMetalTeal
+  name: stack-n14-metal-floor-teal
+  spawn: FloorTileItemMetalTeal
+
+- type: stack
+  parent: BaseTileStack
+  id: FloorTileMetalWhiteSolid
+  name: stack-n14-metal-floor-white-solid
+  spawn: FloorTileItemMetalWhiteSolid
+
+- type: stack
+  parent: BaseTileStack
+  id: FloorTileMetalYellow
+  name: stack-n14-metal-floor-yellow
+  spawn: FloorTileItemMetalYellow
+
+- type: stack
+  parent: BaseTileStack
+  id: FloorTileMetalYellowSolid
+  name: stack-n14-metal-floor-yellow-solid
+  spawn: FloorTileItemMetalYellowSolid
+
+# Carpet tiles the map also uses (missed in the first pass; FloorCarpetRed is only a stack id upstream).
+
+# --- FloorCarpetRed ---
+- type: tile
+  id: FloorCarpetRed
+  name: carpet red
+  sprite: /Textures/_Nuclear14/Tiles/carpet.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepCarpet
+  friction: 0.30
+  # itemDrop: FloorTileItemCarpetRed # (doesn't exist here; falls back to FloorTileItemSteel)
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMS13CarpetFancyRed ---
+- type: tile
+  id: FloorMS13CarpetFancyRed
+  name: ms13 carpet fancy red
+  sprite: /Textures/_Nuclear14/Tiles/ms13/Carpet/carpet_fancy_red.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepCarpet
+  friction: 0.30
+  # itemDrop: FloorTileItemCarpetRed # (doesn't exist here; falls back to FloorTileItemSteel)
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMS13CarpetFancyBlue ---
+- type: tile
+  id: FloorMS13CarpetFancyBlue
+  name: ms13 carpet fancy blue
+  sprite: /Textures/_Nuclear14/Tiles/ms13/Carpet/carpet_fancy_blue.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepCarpet
+  friction: 0.30
+  # itemDrop: FloorTileItemCarpetRed # (doesn't exist here; falls back to FloorTileItemSteel)
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation
+
+# --- FloorMS13CarpetFancyGreen ---
+- type: tile
+  id: FloorMS13CarpetFancyGreen
+  name: ms13 carpet fancy green
+  sprite: /Textures/_Nuclear14/Tiles/ms13/Carpet/carpet_fancy_green.png
+  baseTurf: Plating #Floofstation
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepCarpet
+  friction: 0.30
+  # itemDrop: FloorTileItemCarpetRed # (doesn't exist here; falls back to FloorTileItemSteel)
+  thermalConductivity: 0.04
+  heatCapacity: 10000
+  weather: false #floofstation

@@ -1,0 +1,365 @@
+# Ported from space/ for the TalonStride map.
+
+# ---------------------------------------------------------------- Crates
+
+# source: Entities/Structures/Storage/crates.yml
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateFootlocker
+  name: footlocker
+  description: A footlocker for someones equipment.
+  components:
+  - type: Icon
+    sprite: Structures/Storage/Crates/footlocker.rsi
+  - type: Sprite
+    sprite: Structures/Storage/Crates/footlocker.rsi
+
+# source: Catalog/Fills/Crates/npc.yml
+- type: entity
+  id: CrateNPCPibble
+  parent: CrateLivestock
+  name: pitbull crate
+  description: "Note from the shelter: Lab mix. Looking for a home without cats, birds, or children. Anxious when pet."
+  components:
+  - type: StorageFill
+    contents:
+    - id: MobPibble
+
+# source: _Floof/Catalog/Fills/Crates/prizeball.yml
+- type: entity
+  id: CratePrizeBall
+  parent: CrateGenericSteel
+  name: prize ball crate
+  description: For when you really, really suck at arcade games, like gacha games, or if your station does not have a prize vendor.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:EntSelector
+        id: PrizeBall
+        amount: !type:ConstantNumberSelector { value: 10 }
+
+# source: _Floof/Entities/Structures/Storage/lewd_crate.yml
+- type: entity
+  parent: CrateBaseWeldable
+  id: CrateLewd
+  name: lewd crate
+  components:
+  - type: Icon
+    sprite: Structures/Storage/Crates/generic.rsi
+  - type: Sprite
+    sprite: Structures/Storage/Crates/generic.rsi
+  - type: Reflect
+    reflects:
+    - Energy
+    reflectProb: 0.2
+    spread: 90
+
+# source: _Floof/Catalog/Fills/Crates/lewd.yml
+- type: entity
+  id: CrateLewdToys
+  parent: CrateLewd
+  name: sex toys crate
+  description: Improve your station's mood by introducing some fun "toys"! Careful, work may plummet and the station may become a mess.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: TalonStrideLewdImpactPlay
+          rolls: !type:ConstantNumberSelector { value: 4 }
+        - !type:NestedSelector
+          tableId: TalonStrideLewdKinkClothing
+          rolls: !type:ConstantNumberSelector { value: 4 }
+        - !type:NestedSelector
+          tableId: TalonStrideLewdKinkTools
+          rolls: !type:ConstantNumberSelector { value: 5 }
+        - id: Brutepack
+          prob: 0.5
+
+# Pared-down copies of Floof's LewdImpactPlay / LewdKinkClothing / LewdKinkTools tables,
+# keeping only entries that already exist in this fork. Prefixed so a future full Floof
+# lewd port can bring the original table ids without colliding.
+- type: entityTable
+  id: TalonStrideLewdImpactPlay
+  table: !type:GroupSelector
+    children:
+    - id: WhipPink
+    - id: WhipTeal
+    - id: WhipPinkCrotch
+    - id: WhipTealCrotch
+    - id: SpankPinkPaddle
+    - id: SpankTealPaddle
+
+- type: entityTable
+  id: TalonStrideLewdKinkClothing
+  table: !type:GroupSelector
+    children:
+    - id: UniformMaid
+    - id: ClothingUniformClassicalMaidDress
+    - id: ClothingNeckCloakRedHood
+    - id: ClothingUniformDressRed
+    - id: ClothingUniformSwimsuitBlue
+    - id: ClothingMaskSexyClown
+    - id: ClothingMaskSexyMime
+    - !type:GroupSelector
+      children:
+      - id: ClothingNeckCollarBlue
+      - id: ClothingNeckCollarBlack
+      - id: ClothingNeckCollarPink
+      - id: ClothingNeckBellCollar
+    - !type:GroupSelector
+      children:
+      - id: UniformSchoolgirlRed
+      - id: UniformSchoolgirlBlack
+      - id: UniformSchoolgirlBlue
+      - id: UniformSchoolgirlCyan
+      - id: UniformSchoolgirlGreen
+      - id: UniformSchoolgirlOrange
+      - id: UniformSchoolgirlPink
+      - id: UniformSchoolgirlPurple
+      - id: UniformSchoolgirlDusk
+      - id: UniformSchoolgirlBlazerTan
+      - id: ClothingUniformSchoolGakuranBlack
+    - !type:AllSelector
+      children:
+      - id: ClothingShoesBootsPerformer
+      - id: ClothingUniformJumpskirtPerformer
+      - id: FoodMealMemoryleek
+        amount: !type:ConstantNumberSelector { value: 2 }
+    - !type:AllSelector
+      children:
+      - id: ClothingHeadHatHoodNunHood
+      - id: ClothingOuterNunRobe
+    - !type:AllSelector
+      children:
+      - id: ClothingHeadHatHoodCulthood
+      - id: ClothingOuterRobesCult
+    - !type:AllSelector
+      children:
+      - id: ClothingCostumeBunnySuit
+      - id: ClothingHeadHatBunny
+    - !type:AllSelector
+      children:
+      - id: ClothingHeadHatWitch
+      - id: ClothingOuterSuitWitchRobes
+    - !type:AllSelector
+      children:
+      - id: ClothingHeadNurseHat
+      - id: ClothingUniformJumpskirtNurse
+      - id: ClothingMaskSterile
+        prob: 0.5
+      - id: ClothingNeckStethoscope
+        prob: 0.5
+    - !type:AllSelector
+      children:
+      - id: ClothingMaskPlague
+      - id: ClothingOuterPlagueSuit
+    - !type:AllSelector
+      children:
+      - id: ClothingHandsPlainWarmers
+      - id: ClothingUnderSocksPlain
+    - !type:AllSelector
+      children:
+      - id: ClothingHandsBeeWarmers
+      - id: ClothingUnderSocksBee
+    - !type:AllSelector
+      children:
+      - id: ClothingUniformStripedThongWhite
+      - id: ClothingHandsStripeWhiteWarmers
+      - id: ClothingUnderSocksStripedWhite
+
+- type: entityTable
+  id: TalonStrideLewdKinkTools
+  table: !type:GroupSelector
+    children:
+    - id: ClothingMaskGasMuffled
+    - id: ClothingMaskMuzzle
+    - id: ClothingEyesBlindfold
+    - id: Handcuffs
+      weight: 0.5
+    - id: Zipties
+    - id: BoxCandle
+    - id: BoxCandleSmall
+    - id: BoxDarts
+    - id: RemoteSignaller
+
+# ---------------------------------------------------------------- Gun safe
+
+# source: DeltaV/Catalog/Fills/Lockers/security.yml (source GunSafe carried Armory access)
+- type: entity
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunSafePistolUniversal
+  name: mk32 safe
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponPistolUniversal
+      amount: 2
+    - id: MagazineUniversalMagnum
+      amount: 4
+
+# ---------------------------------------------------------------- Lockers
+
+# source: Catalog/Fills/Lockers/service.yml
+- type: entity
+  id: LockerBartenderFilled
+  suffix: Filled
+  parent: LockerBartender
+  components:
+  - type: StorageFill
+    contents:
+    - id: DrinkShaker
+    - id: ClothingEyesHudBeer
+    - id: HandLabeler
+    - id: DrinkBeerBottleFull
+      prob: 0.5
+    - id: DrinkBeerBottleFull
+      prob: 0.5
+    - id: DrinkBeerBottleFull
+      prob: 0.5
+    - id: RagItem
+      amount: 2
+
+# source: Catalog/Fills/Lockers/security.yml (DeltaV corpsman locker).
+# Brigmedic is not a job here: uses existing brigmedic gear and Security/Medical access.
+- type: entity
+  id: LockerBrigmedicFilledHardsuit
+  suffix: Corpsman, Filled, Hardsuit
+  parent: LockerBrigmedic
+  components:
+  - type: AccessReader
+    access: [["Security"], ["Medical"]]
+  - type: StorageFill
+    contents:
+    - id: ClothingEyesHudSecurity
+    - id: WeaponDisabler
+    - id: TrackingImplanter
+      amount: 3
+    - id: ClothingOuterHardsuitBrigmedic
+    - id: ClothingShoesBootsMag
+    - id: ClothingUniformJumpsuitBrigmedic
+    - id: ClothingUniformJumpskirtBrigmedic
+    - id: ClothingLongcoatBrigmedic
+    - id: HandheldGPSBasic
+    - id: MedkitFilled
+    - id: MedkitCombatFilled
+      prob: 0.6
+    - id: MedkitAdvancedFilled
+      prob: 0.4
+    - id: MedkitOxygenFilled
+      prob: 0.3
+    - id: MedkitBruteFilled
+      prob: 0.3
+    - id: MedkitToxinFilled
+      prob: 0.3
+    - id: MedkitBurnFilled
+      prob: 0.7
+
+# source: Catalog/Fills/Lockers/medical.yml
+- type: entity
+  id: LockerParamedicFilledHardsuit
+  suffix: Filled, Hardsuit
+  parent: LockerParamedic
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitVoidParamed
+    - id: ClothingOuterCoatParamedicWB
+    - id: ClothingHeadHatParamedicsoft
+    - id: ClothingOuterWinterPara
+    - id: ClothingUniformJumpsuitParamedic
+    - id: ClothingUniformJumpskirtParamedic
+    - id: ClothingEyesHudMedical
+    - id: ClothingHandsGlovesLatex
+    - id: ClothingHeadsetMedical
+    - id: ClothingMaskSterile
+    - id: ClothingShoesBootsMag
+    - id: ClothingShoesBootsWinterParamedic
+    - id: HandheldGPSBasic
+    - id: MedkitFilled
+      prob: 0.3
+    - id: BodyBagFolded
+      amount: 2
+    - id: PinpointerCrew
+    - id: FlashlightSeclite
+
+# source: _Floof/Catalog/Fills/Lockers/locker.yml
+- type: entity
+  id: LockerJanitorFilled
+  parent: LockerJanitor
+  name: janitor locker
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: MopItem
+      amount: 2
+    - id: BoxMousetrap
+      amount: 2
+    - id: WetFloorSign
+      amount: 3
+    - id: TrashBag
+      amount: 2
+    - id: LightReplacer
+    - id: BoxLightMixed
+    - id: Holoprojector
+    - id: SoapNT
+      amount: 2
+    - id: FlashlightLantern
+      amount: 2
+    - id: Plunger
+      amount: 2
+
+- type: entity
+  id: LockerClownFilled
+  suffix: Clown, Filled
+  parent: LockerClown
+  components:
+  - type: StorageFill
+    contents:
+    - id: FoodCakeClown
+    - id: ToyFigurineClown
+    - id: ClownRecorder
+    - id: ClothingShoesClown
+    - id: ClothingUniformJumpsuitClown
+    - id: ClothingMaskClown
+    - id: RubberStampClown
+    - id: DrinkSpaceGlue
+    - id: DrinkSpaceLube
+    - id: ClothingShoeSlippersDuck
+    - id: RevolverCapGun
+    - id: ClothingMaskSexyClown
+    - id: LauncherCreamPie
+    - id: WhoopieCushion
+    - id: CrayonRainbow
+    - id: ToyHammer
+    - id: HappyHonk
+    - id: ClothingBackpackClown
+    - id: MrDips
+
+- type: entity
+  id: LockerMimeFilled
+  suffix: Mime, Filled
+  parent: LockerMime
+  components:
+  - type: StorageFill
+    contents:
+    - id: FoodTartMime
+    - id: RevolverCapGun
+    - id: ToyFigurineMime
+    - id: ClothingUniformJumpsuitMime
+    - id: ClothingUniformJumpskirtMime
+    - id: ClothingHeadHatMimesoft
+    - id: RubberStampMime
+    - id: HappyHonkMime
+    - id: CrayonMime
+    - id: ClothingMaskMime
+    - id: ClothingBackpackMime
+    - id: MrChips
+    - id: DrinkBottleOfNothingFull
+    - id: FoodBreadBaguette
+    - id: DrinkWineGlass
+    - id: ClothingMaskSadMime
+    - id: ClothingMaskSexyMime
+    - id: ClothingMaskScaredMime

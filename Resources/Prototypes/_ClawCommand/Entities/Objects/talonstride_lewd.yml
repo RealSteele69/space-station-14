@@ -1,0 +1,33 @@
+# Ported from space/ for the TalonStride map.
+
+# --- _Floof/Entities/Objects/Lewd/dildos.yml ---
+# This fork already ported this item as CanineRocketRed
+# (_ClawCommand/Entities/Objects/Cute/redrocket.yml); CanineDildoRed is a thin
+# alias of it so the map id resolves. BaseDildo is not needed and not ported.
+- type: entity
+  parent: CanineRocketRed
+  id: CanineDildoRed
+
+# --- _Floof/Entities/Objects/Lewd/fleshlights.yml ---
+# The source used the removed `Drink` component plus a refillable solution; that
+# behaviour is stripped and these are plain decorative items.
+- type: entity
+  parent: BaseItem
+  id: BaseFleshlight
+  abstract: true
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 100
+  - type: StaticPrice
+    price: 75
+
+- type: entity
+  parent: BaseFleshlight
+  id: LewdFleshlightYellow
+  name: yellow fleshlight
+  description: A yellow fleshlight waiting for something to fill it.
+  components:
+  - type: Sprite
+    sprite: _Floof/Objects/Fun/Lewd/Toys/Fleshlights/fleshlight_yellow.rsi
+    state: icon

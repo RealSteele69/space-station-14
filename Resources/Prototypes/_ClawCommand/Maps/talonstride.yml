@@ -1,0 +1,88 @@
+# TalonStride city — ported from space/ (Resources/Maps/ClawCommand/events/talonstride.yml).
+# Map data: Resources/Maps/talonstride.yml
+# Deliberately NOT in any map pool; load it with `forcemap TalonStride` or a custom pool.
+# Job list adapted to this fork: Blueshield -> ClawCommand, Floof/Nyano quadborgs -> dogborgs,
+# jobs this fork doesn't have (NT rep, admin assistant, boxer, brigmedic, inventory specialist,
+# mail carrier, justice dept) dropped. Librarian/Reporter/ServiceWorker/Prisoner added since the
+# map has spawn points for them.
+
+- type: gameMap
+  id: TalonStride
+  mapName: 'TalonStride'
+  mapPath: /Maps/talonstride.yml
+  planets: [Lavaland] # _ClawCommand: lavaland on this station
+  minPlayers: 0
+  maxPlayers: 500
+  stations:
+    TalonStride:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/_DeltaV/Shuttles/NTES_Delta.yml
+        - type: StationNameSetup
+          mapNameTemplate: '{0} TalonStride City {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'CC'
+        - type: StationJobs
+          availableJobs:
+            Anomaly: [ 8, 8 ] # CLAW COMMAND - Shadekin
+            #command
+            Captain: [ 1, 1 ]
+            ClawCommandOfficer: [ 1, 1 ]
+            ClawCommandMaid: [ 1, 1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            #service
+            Bartender: [ 6, 6 ]
+            Botanist: [ 6, 6 ]
+            Chef: [ 6, 6 ]
+            Clown: [ 4, 4 ]
+            Musician: [ 2, 2 ]
+            Janitor: [ 6, 6 ]
+            Mime: [ 4, 4 ]
+            Librarian: [ 1, 1 ]
+            Reporter: [ 1, 1 ]
+            ServiceWorker: [ 2, 2 ]
+            #engineering
+            ChiefEngineer: [ 2, 2 ]
+            AtmosphericTechnician: [ 6, 6 ]
+            StationEngineer: [ 8, 8 ]
+            TechnicalAssistant: [ 4, 4 ]
+            SeniorEngineer: [ 8, 8 ]
+            #medical
+            ChiefMedicalOfficer: [ 1, 1 ]
+            Chemist: [ 6, 6 ]
+            MedicalDoctor: [ 8, 8 ]
+            MedicalIntern: [ 8, 8 ]
+            Paramedic: [ 8, 8 ]
+            Psychologist: [ 8, 8 ]
+            SeniorPhysician: [ 8, 8 ]
+            #science
+            ResearchDirector: [ 1, 1 ]
+            Chaplain: [ 3, 3 ]
+            ForensicMantis: [ 3, 3 ]
+            Scientist: [ 8, 8 ]
+            ResearchAssistant: [ 8, 8 ]
+            SeniorResearcher: [ 8, 8 ]
+            #security
+            HeadOfSecurity: [ 1, 1 ]
+            Warden: [ 1, 1 ]
+            Detective: [ 4, 4 ]
+            SecurityOfficer: [ 12, 12 ]
+            SecurityCadet: [ 12, 12 ]
+            SeniorOfficer: [ 12, 12 ]
+            Lawyer: [ 6, 6 ]
+            #supply
+            Quartermaster: [ 1, 1 ]
+            SalvageSpecialist: [ 8, 8 ]
+            CargoTechnician: [ 8, 8 ]
+            SeniorCourier: [ 1, 1 ] # Claw Command - stands in for source's MailCarrier
+            #civilian
+            Passenger: [ -1, -1 ]
+            Prisoner: [ 2, 2 ]
+            #silicon
+            Borg: [ 10, 10 ]
+            DogborgMedical: [ 8, 8 ] # source: MedicalBorg + MedicalQuadBorg
+            DogborgService: [ 8, 8 ] # source: ServiceQuadBorg
+            DogborgSecurity: [ 8, 8 ] # source: SecurityQuadBorg
+            DogborgMining: [ 8, 8 ] # source: SalvageQuadBorg

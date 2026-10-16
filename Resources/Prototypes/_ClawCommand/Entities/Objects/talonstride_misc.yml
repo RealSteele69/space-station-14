@@ -1,0 +1,16 @@
+# Ported from space/ for the TalonStride map.
+# Non-entity prototypes needed by the talonstride_*.yml item ports.
+
+# Ammo whitelist for WeaponRifleBB / BulletBB (DeltaV/tags.yml).
+- type: Tag
+  id: BulletBB
+
+# Stack for the Corvax printer paper (SheetPrinter / SheetPrinter1).
+# The Corvax printer machine and its SheetPrinter material are not ported;
+# only the stack is kept so the sheets stack/split like the source.
+- type: stack
+  parent: BaseSheetStack
+  id: SheetPrinter
+  name: stack-paper
+  icon: { sprite: /Textures/Objects/Misc/bureaucracy.rsi, state: paper }
+  spawn: SheetPrinter1

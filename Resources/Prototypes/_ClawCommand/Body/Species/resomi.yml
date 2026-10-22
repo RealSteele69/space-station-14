@@ -300,23 +300,25 @@
   - type: Temperature
     specificHeat: 3600 # Claw Command - rescaled from 50 for the joule-based heat model
   - type: TemperatureDamage
-    coldDamageThreshold: 0 # immune to the cold
-    heatDamageThreshold: 320.15 # suffers past ~47 C, dangerously close to standard atmos
+    coldDamageThreshold: 213.15 # cold-hardy (~-60 C), but space and freezers still kill
+    heatDamageThreshold: 320.15 # suffers past ~47 C
     coldDamage:
       types:
-        Cold: 0
+        Cold: 0.05
     heatDamage:
       types:
         Heat: 3
   - type: TemperatureSpeed
-    thresholds: # no cold slowdown
-      196: 1
+    thresholds: # slows down later than most species
+      233: 0.9
+      213: 0.8
+      193: 0.7
 
 - type: damageModifierSet
   id: ModifierSetResomi
   coefficients:
     Heat: 1.3
-    Cold: 0
+    Cold: 0.7
     Blunt: 1.15
     Slash: 1.15
     Piercing: 1.15

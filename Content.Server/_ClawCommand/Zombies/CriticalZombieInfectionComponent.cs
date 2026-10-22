@@ -38,6 +38,12 @@ public sealed partial class CriticalZombieInfectionComponent : Component
     public TimeSpan NextSymptom;
 
     /// <summary>
+    /// Set while no player controls the entity; the countdown is pushed back by the paused time on return.
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan? PausedAt;
+
+    /// <summary>
     /// Time between symptoms right after going critical.
     /// </summary>
     [DataField]

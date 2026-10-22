@@ -430,6 +430,7 @@
     - WhitelistChameleon
     - GasMask # _ClawCommand - re-listed from ClothingMaskGas (ArmorerRitual); tags don't merge on inheritance
     - Mask # _ClawCommand - re-listed from ClothingMaskGas (MaskOfMadness)
+    - AdvXenoHuggerProof # _ClawCommand - armored face plate stops facehuggers
   - type: HideLayerClothing
     slots:
     - Hair

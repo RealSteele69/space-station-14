@@ -12,3 +12,5 @@ player-tab-reveal = Antag
 player-tab-reveal-button = Reveal
 player-tab-reveal-button-tooltip = Reveal this player's antag status for the round. Logged and announced to all admins.
 player-tab-revealed = Revealed
+player-tab-role-type-hidden = [NOT REVEALED]
+admin-quick-info-role-hidden = Role: \[NOT REVEALED\]

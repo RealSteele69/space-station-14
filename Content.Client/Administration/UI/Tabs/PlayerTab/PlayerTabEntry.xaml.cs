@@ -99,6 +99,14 @@ public sealed partial class PlayerTabEntry : PanelContainer
 
         if (colorRoles)
             RoleTypeLabel.FontColorOverride = rolePrototype?.Color ?? RoleTypePrototype.FallbackColor;
+
+        // Claw Command - role type is withheld server-side until the player is revealed
+        if (!player.AntagRevealed)
+        {
+            RoleTypeLabel.Text = Loc.GetString("player-tab-role-type-hidden");
+            RoleTypeLabel.FontColorOverride = null;
+            RoleTypeLabel.StyleClasses.Add("Disabled");
+        }
         BackgroundColorPanel.PanelOverride = styleBoxFlat;
         OverallPlaytimeLabel.Text = player.PlaytimeString;
 

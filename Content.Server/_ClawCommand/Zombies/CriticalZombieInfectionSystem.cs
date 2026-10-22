@@ -2,6 +2,7 @@ using Content.Server.Chat.Systems;
 using Content.Server.Zombies;
 using Content.Shared._ClawCommand.CCVar;
 using Content.Shared.Examine;
+using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Jittering;
 using Content.Shared.Mobs.Components;
@@ -9,6 +10,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Zombies;
 using Robust.Shared.Configuration;
+using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -19,6 +21,9 @@ namespace Content.Server._ClawCommand.Zombies;
 /// then runs its symptoms and turns them when the timer runs out.
 /// </summary>
 /// <remarks>
+/// Only player-controlled humanoids are eligible: NPCs, uncontrolled bodies and player-controlled animals never go critical,
+/// and an existing critical infection is paused while nobody controls the body.
+/// The first time an eligible entity is infected it rolls once for <see cref="CriticalInfectionResistanceComponent"/>.
 /// Initial infected are skipped, they already pick their own moment with the zombify self action.
 /// </remarks>
 public sealed partial class CriticalZombieInfectionSystem : EntitySystem
@@ -36,6 +41,7 @@ public sealed partial class CriticalZombieInfectionSystem : EntitySystem
 
     private float _chance;
     private float _window;
+    private float _resistChance;
     private TimeSpan _nextRoll;
 
     private readonly List<EntityUid> _toUpdate = new();
@@ -49,6 +55,29 @@ public sealed partial class CriticalZombieInfectionSystem : EntitySystem
 
         Subs.CVar(_cfg, ClawCCVars.ZombieCriticalInfectionChance, value => _chance = value, true);
         Subs.CVar(_cfg, ClawCCVars.ZombieCriticalInfectionWindow, value => _window = value, true);
+        Subs.CVar(_cfg, ClawCCVars.ZombieCriticalInfectionResistChance, value => _resistChance = value, true);
+    }
+
+    /// <summary>
+    /// Critical infections only happen to humanoids a player is currently controlling.
+    /// </summary>
+    public bool IsEligible(EntityUid uid)
+    {
+        return HasComp<ActorComponent>(uid) && HasComp<HumanoidProfileComponent>(uid);
+    }
+
+    /// <summary>
+    /// Whether this entity rolled the one-time resistance. Rolls it now if it never has.
+    /// </summary>
+    private bool IsResistant(EntityUid uid)
+    {
+        if (!TryComp<CriticalInfectionResistanceComponent>(uid, out var resistance))
+        {
+            resistance = AddComp<CriticalInfectionResistanceComponent>(uid);
+            resistance.Resistant = _random.Prob(Math.Clamp(_resistChance, 0f, 1f));
+        }
+
+        return resistance.Resistant;
     }
 
     private void OnMapInit(Entity<CriticalZombieInfectionComponent> ent, ref MapInitEvent args)
@@ -112,7 +141,9 @@ public sealed partial class CriticalZombieInfectionSystem : EntitySystem
             if (_mobState.IsDead(uid, mobState)
                 || HasComp<CriticalZombieInfectionComponent>(uid)
                 || HasComp<IncurableZombieComponent>(uid)
-                || HasComp<ZombieComponent>(uid))
+                || HasComp<ZombieComponent>(uid)
+                || !IsEligible(uid)
+                || IsResistant(uid))
                 continue;
 
             if (_random.Prob(prob))
@@ -137,6 +168,22 @@ public sealed partial class CriticalZombieInfectionSystem : EntitySystem
 
             RemComp(uid, comp);
             return;
+        }
+
+        // Nobody controlling the body: hold the countdown and symptoms until a player is back in it.
+        if (!IsEligible(uid))
+        {
+            comp.PausedAt ??= now;
+            return;
+        }
+
+        if (comp.PausedAt is { } pausedAt)
+        {
+            var paused = now - pausedAt;
+            comp.StartTime += paused;
+            comp.TurnTime += paused;
+            comp.NextSymptom += paused;
+            comp.PausedAt = null;
         }
 
         if (now >= comp.TurnTime)

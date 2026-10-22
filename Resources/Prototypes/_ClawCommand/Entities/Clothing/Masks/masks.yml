@@ -39,6 +39,13 @@
     sprite: Clothing/Mask/gascaptaincombat.rsi
   - type: Clothing
     sprite: Clothing/Mask/gascaptaincombat.rsi
+  - type: Tag # re-lists ClothingMaskGas tags; tags don't merge on inheritance
+    tags:
+    - HamsterWearable
+    - WhitelistChameleon
+    - GasMask
+    - Mask
+    - AdvXenoHuggerProof # armored face plate stops facehuggers
 
 - type: entity
   parent: ClothingMaskNeckGaiter

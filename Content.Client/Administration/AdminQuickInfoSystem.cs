@@ -168,7 +168,12 @@ internal sealed partial class AdminQuickInfoSystem : EntitySystem
 
                 sb.AppendMarkupLine(Loc.GetString("admin-quick-info-job", ("job", _playerInfo.StartingJob)));
 
-                if (_playerInfo.RoleProto is { } roleId && _system.ProtoMan.Resolve(roleId, out var role))
+                // Claw Command - role type is withheld server-side until the player is revealed
+                if (!_playerInfo.AntagRevealed)
+                {
+                    sb.AppendMarkupLine(Loc.GetString("admin-quick-info-role-hidden"));
+                }
+                else if (_playerInfo.RoleProto is { } roleId && _system.ProtoMan.Resolve(roleId, out var role))
                 {
                     var roleColor = role.Color.ToHex();
                     var symbol = _playerInfo.Antag ? role.Symbol : "";

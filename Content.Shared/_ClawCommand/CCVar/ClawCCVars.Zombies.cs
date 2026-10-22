@@ -16,4 +16,10 @@ public sealed partial class ClawCCVars
     /// </summary>
     public static readonly CVarDef<float> ZombieCriticalInfectionWindow =
         CVarDef.Create("zombie.critical_infection_window", 1800f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Chance, rolled once per entity the first time it is infected while eligible, that it can never go critical.
+    /// </summary>
+    public static readonly CVarDef<float> ZombieCriticalInfectionResistChance =
+        CVarDef.Create("zombie.critical_infection_resist_chance", 0.5f, CVar.SERVERONLY);
 }

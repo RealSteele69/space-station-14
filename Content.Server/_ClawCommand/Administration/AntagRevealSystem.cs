@@ -11,7 +11,6 @@ using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
-using Content.Shared.Roles.Components;
 using Robust.Server.Player;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -60,21 +59,6 @@ public sealed partial class AntagRevealSystem : EntitySystem
     public bool IsRevealed(NetUserId user)
     {
         return _ticker.RunLevel == GameRunLevel.PostRound || _revealed.Contains(user);
-    }
-
-    /// <summary>
-    /// The mind's most recent non-antagonist role, i.e. what admins see for a player whose antag status is hidden.
-    /// </summary>
-    public Entity<MindRoleComponent>? GetMaskedRole(MindComponent mind)
-    {
-        Entity<MindRoleComponent>? result = null;
-        foreach (var role in mind.MindRoleContainer.ContainedEntities)
-        {
-            if (TryComp<MindRoleComponent>(role, out var comp) && !comp.Antag && comp.RoleType is not null)
-                result = (role, comp);
-        }
-
-        return result;
     }
 
     /// <summary>

@@ -309,14 +309,14 @@ public sealed partial class AdminSystem : EntitySystem
             antag = _role.MindIsAntagonist(mindId);
             startingRole = _jobs.MindTryGetJobName(mindId);
 
-            // Claw Command - until revealed, an antag is sent to admins exactly as their non-antag roles would show them
-            if (antag && !revealed)
+            // Claw Command - until revealed, antag status and role type are withheld for every player,
+            // antag or not, so a hidden role type can't single anyone out
+            if (!revealed)
             {
                 antag = false;
-                var masked = _antagReveal.GetMaskedRole(mindComp);
-                sortWeight = masked?.Comp.SortWeight ?? 0;
-                roleType = ProtoMan.Index<RoleTypePrototype>(masked?.Comp.RoleType ?? "Neutral");
-                subtype = masked?.Comp.Subtype;
+                sortWeight = 0;
+                roleType = null;
+                subtype = null;
             }
         }
 

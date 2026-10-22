@@ -160,7 +160,7 @@ public sealed partial class BloodCultSpellsSystem : EntitySystem
     {
         if (id.StartsWith(RemovePrefix))
         {
-            if (!NetEntity.TryParse(id[RemovePrefix.Length..], out var netSpell) ||
+            if (!NetEntity.TryParse(id.AsSpan(RemovePrefix.Length), out var netSpell) ||
                 !TryGetEntity(netSpell, out var spell) ||
                 !cultist.Comp.SelectedSpells.Remove(spell.Value))
                 return;

@@ -112,8 +112,9 @@ public sealed partial class BloodSpearRecalledEvent : InstantActionEvent;
 /// </summary>
 public sealed partial class BloodCultPlaceTileEntityEvent : WorldTargetActionEvent
 {
-    [DataField]
-    public EntProtoId? Entity;
+    // Not called Entity: WorldTargetActionEvent already has an Entity field (the hovered entity).
+    [DataField("entity")]
+    public EntProtoId? SpawnedEntity;
 
     [DataField]
     public ProtoId<ContentTileDefinition>? TileId;

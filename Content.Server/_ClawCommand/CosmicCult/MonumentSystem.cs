@@ -11,7 +11,6 @@ using Content.Server.Chat.Systems;
 using Content.Server.Objectives.Components;
 using Content.Server.Polymorph.Components;
 using Content.Shared._ClawCommand.CosmicCult;
-using Content.Shared._ClawCommand.CosmicCult;
 using Content.Shared._ClawCommand.CosmicCult.Components;
 using Content.Shared._ClawCommand.CosmicCult.Prototypes;
 using Content.Server._ClawCommand.CosmicCult.Events;

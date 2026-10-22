@@ -189,7 +189,7 @@ public sealed partial class BloodCultConstructSystem : SharedBloodCultPhaseShift
             Spawn(TileSpawnEffect, args.Target);
         }
 
-        if (args.Entity is { } entity)
+        if (args.SpawnedEntity is { } entity)
             Spawn(entity, args.Target.SnapToGrid(EntityManager));
 
         if (args.Audio is { } audio)

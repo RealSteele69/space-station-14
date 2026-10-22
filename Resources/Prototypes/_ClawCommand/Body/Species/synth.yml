@@ -158,6 +158,7 @@
     state: full
   - type: Puller
     needsHands: false
+  - type: AdvXenoHostImmune # synthetic body, nothing for a facehugger to implant into
   - type: Butcherable
     spawned:
     - id: OrganSynthAppendix

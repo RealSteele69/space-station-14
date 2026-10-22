@@ -18,6 +18,14 @@ namespace Content.Shared._ClawCommand.AdvancedXenos;
 public sealed partial class AdvXenoHiveComponent : Component;
 
 /// <summary>
+/// Cannot host an embryo even though it is a playable humanoid species (synthetic bodies such as the synth).
+/// Facehuggers ignore it entirely: no leap, no damage, no knock-out, no implant. Non-humanoids, non-player
+/// species and mobs with <c>SiliconComponent</c> are already excluded without needing this.
+/// </summary>
+[RegisterComponent, NetworkedComponent]
+public sealed partial class AdvXenoHostImmuneComponent : Component;
+
+/// <summary>
 /// The plasma vessel. Abilities spend plasma; it regenerates slowly, faster on weeds or in plasma gas,
 /// and plasma reagent in the bloodstream tops it up.
 /// </summary>

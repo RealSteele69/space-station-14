@@ -35,6 +35,30 @@ public sealed class AdvXenoTest : GameTest
     }
 
     [Test]
+    public async Task OnlyOrganicPlayerSpeciesCanHost()
+    {
+        var testMap = await Pair.CreateTestMap();
+
+        await Server.WaitAssertion(() =>
+        {
+            var huggers = SEntMan.System<AdvXenoFacehuggerSystem>();
+            foreach (var (proto, expected) in new[]
+                     {
+                         ("MobHuman", true), ("MobMoth", true), ("MobAvali", true),
+                         ("MobIPC", false), ("MobSynth", false), ("BorgChassisGeneric", false),
+                         ("MobCorgi", false), ("MobMonkey", false),
+                     })
+            {
+                var mob = SEntMan.SpawnEntity(proto, testMap.GridCoords);
+                Assert.That(huggers.IsValidHost(mob), Is.EqualTo(expected), $"{proto} host eligibility");
+
+                var hugger = SEntMan.SpawnEntity("AdvXenoFacehugger", testMap.GridCoords);
+                Assert.That(huggers.TryAttach(hugger, mob), Is.EqualTo(expected), $"{proto} hug result");
+            }
+        });
+    }
+
+    [Test]
     public async Task HuggerImplantsAndBursts()
     {
         var pair = Pair;

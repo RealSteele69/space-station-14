@@ -15,6 +15,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Popups;
+using Content.Shared.Humanoid;
 using Content.Shared.Silicon.Components;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.StepTrigger.Systems;
@@ -57,7 +58,6 @@ public sealed partial class AdvXenoFacehuggerSystem : EntitySystem
     public const string HeadSlot = "head";
 
     private static readonly ProtoId<DamageTypePrototype> Blunt = "Blunt";
-    private static readonly ProtoId<DamageTypePrototype> Slash = "Slash";
     private static readonly ProtoId<TagPrototype> HuggerProofTag = "AdvXenoHuggerProof";
 
     // MIN/MAX_IMPREGNATION_TIME and MIN/MAX_ACTIVE_TIME, in seconds
@@ -98,17 +98,31 @@ public sealed partial class AdvXenoFacehuggerSystem : EntitySystem
     #region Who can be hugged
 
     /// <summary>
-    /// /proc/CanHug: something with a face to grab (a mask slot), no hive node, and no sealed helmet.
+    /// /proc/CanHug: a humanoid of a playable species with a face to grab (a mask slot), no hive node, an organic body, and no sealed helmet.
     /// </summary>
     public bool CanHug(EntityUid target)
     {
-        if (!HasComp<MobStateComponent>(target) || HasComp<AdvXenoHiveComponent>(target))
+        if (!HasComp<MobStateComponent>(target) || HasComp<AdvXenoHiveComponent>(target) || !IsValidHost(target))
             return false;
 
         if (!_inventory.HasSlot(target, MaskSlot))
             return false;
 
         return !IsFaceSealed(target);
+    }
+
+    /// <summary>
+    /// Only organic humanoids of a playable species can carry an embryo. Animals, pets, borgs and other
+    /// non-humanoid mobs, non-player species (skeletons, gingerbread) and synthetic bodies (IPC, synth) can't,
+    /// so huggers don't go for them at all.
+    /// </summary>
+    public bool IsValidHost(EntityUid target)
+    {
+        if (!TryComp<HumanoidProfileComponent>(target, out var profile)
+            || !_proto.TryIndex(profile.Species, out var species) || !species.RoundStart)
+            return false;
+
+        return !HasComp<AdvXenoHostImmuneComponent>(target) && !HasComp<SiliconComponent>(target);
     }
 
     /// <summary>
@@ -278,6 +292,14 @@ public sealed partial class AdvXenoFacehuggerSystem : EntitySystem
         if (!HasComp<MobStateComponent>(target) || !_inventory.HasSlot(target, MaskSlot) || HasComp<AdvXenoHiveComponent>(target))
             return false;
 
+        // checked before the damage below: something that can't host takes nothing from a hugger
+        if (!IsValidHost(target))
+        {
+            if (comp.State == AdvXenoHuggerState.Active)
+                _popup.PopupEntity(Loc.GetString("adv-xeno-hugger-synthetic", ("hugger", hugger), ("target", Identity.Entity(target, EntityManager))), target, PopupType.Small);
+            return false;
+        }
+
         if (now < comp.AttachCooldownEnd)
             return false;
         comp.AttachCooldownEnd = now + TimeSpan.FromSeconds(MaxImpregnation);
@@ -311,14 +333,6 @@ public sealed partial class AdvXenoFacehuggerSystem : EntitySystem
             }
 
             _popup.PopupEntity(Loc.GetString("adv-xeno-hugger-tears-mask", ("hugger", hugger), ("target", targetName), ("mask", mask.Value)), target, PopupType.MediumCaution);
-        }
-
-        // isSynthetic(): it tears across the chassis but finds nothing to implant into
-        if (HasComp<SiliconComponent>(target))
-        {
-            _popup.PopupEntity(Loc.GetString("adv-xeno-hugger-synthetic", ("hugger", hugger), ("target", targetName)), target, PopupType.MediumCaution);
-            _damage.TryChangeDamage(target, new DamageSpecifier(_proto.Index(Slash), 20), origin: hugger);
-            return false;
         }
 
         if (_container.TryGetContainingContainer(hugger, out var holder))

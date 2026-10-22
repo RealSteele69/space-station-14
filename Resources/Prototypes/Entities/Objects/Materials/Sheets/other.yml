@@ -55,6 +55,15 @@
   name: plasma
   suffix: Full
   components:
+  # Claw Command start - synth species: synth stomachs can digest raw materials
+  - type: Edible
+    requiresSpecialDigestion: true
+    solution: composite
+  - type: FlavorProfile
+    flavors:
+    - sour
+  - type: BadFood
+  # Claw Command end
   - type: Tag # _ClawCommand - heretic ritual input (ScorchingShark)
     tags:
     # Sheet + ConstructionMaterial are inherited from BaseSheet and MUST be re-listed:
@@ -113,6 +122,15 @@
   name: plastic
   suffix: Full
   components:
+  # Claw Command start - synth species: synth stomachs can digest raw materials
+  - type: Edible
+    requiresSpecialDigestion: true
+    solution: composite
+  - type: FlavorProfile
+    flavors:
+    - bitter
+  - type: BadFood
+  # Claw Command end
   - type: Tag
     tags:
     - Plastic

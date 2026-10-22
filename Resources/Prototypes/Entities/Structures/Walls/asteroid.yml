@@ -1113,6 +1113,8 @@
   parent: [ BaseRockGibtonite, BaseMountainRockVisuals, BaseAsteroidRock ]
   id: MountainRockGibtonite
   components:
+  - type: IconSmooth # Claw Command - mountain_rock_ore.rsi names its corners rock_N, not stoneN
+    base: rock_
   - type: OreVein
     oreChance: 0.20
     oreRarityPrototypeId: RandomOreDistributionHigh

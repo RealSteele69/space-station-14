@@ -101,6 +101,9 @@
   - SolarControlComputerCircuitboard
   - SolarTrackerElectronics
   - EmitterCircuitboard
+  - SupermatterComputerCircuitboard # Claw Command - supermatter
+  - DiodeDiscElectroDisruptive # Claw Command - supermatter
+  - DiodeDiscElectroBehavioural # Claw Command - supermatter
 
 - type: technology
   id: AtmosphericTech
@@ -229,6 +232,7 @@
   cost: 7500
   recipeUnlocks:
   - RPED
+  - AdvancedManipulatorRecipe # Claw Command - advanced modular machine part
   position: 4,0
 
 - type: technology
@@ -294,4 +298,5 @@
   - SuperCapacitorStockPart
   - SuperMatterBinStockPart
   - PicoManipulatorStockPart
+  - SuperManipulatorRecipe # Claw Command - super modular machine part
   position: 7,2

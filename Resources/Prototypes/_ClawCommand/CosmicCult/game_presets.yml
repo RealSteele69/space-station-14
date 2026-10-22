@@ -1,0 +1,34 @@
+# Admin-forceable presets (`setgamepreset cosmic` / `secretcosmic`). Normal Secret rounds roll the
+# cult through SubCosmicCult in the Medium/Hard difficulty tiers instead (GameRules/difficulty.yml).
+- type: gamePreset
+  id: CosmicCult
+  alias:
+    - cosmic
+    - cosmiccult
+  name: cosmiccult-title
+  description: cosmiccult-description
+  showInVote: false
+  rules:
+    - DummyNonAntagChance
+    - CosmicCult
+    - SubGamemodesRuleNoWizard
+    - CCSecretMediumScheduler
+    - CCSecretMediumMeteorScheduler
+    - SpaceTrafficControlEventScheduler
+    - BasicRoundstartVariation
+
+- type: gamePreset # Runs Cosmic Cult but shows "Secret" in the lobby.
+  id: SecretCosmicCult
+  alias:
+    - secretcosmic
+  name: secret-title
+  description: secret-description
+  showInVote: false
+  rules:
+    - DummyNonAntagChance
+    - CosmicCult
+    - SubGamemodesRuleNoWizard
+    - CCSecretMediumScheduler
+    - CCSecretMediumMeteorScheduler
+    - SpaceTrafficControlEventScheduler
+    - BasicRoundstartVariation

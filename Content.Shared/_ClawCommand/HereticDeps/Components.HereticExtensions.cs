@@ -37,7 +37,7 @@ namespace Content.Shared.Body
 {
     public sealed partial class BodyComponent
     {
-        [DataField] public ProtoId<Robust.Shared.Prototypes.EntityPrototype>? Prototype;
+        [DataField] public string? Prototype; // legacy body prototype id; never resolved, so not a ProtoId
         [DataField] public string? BodyType;
     }
 }

@@ -1,0 +1,180 @@
+# Claw Command - blob overmind actions. Costs are shown in the tooltip by the locale and checked in BlobCoreComponent.
+
+- type: entity
+  abstract: true
+  parent: BaseAction
+  id: BaseActionBlob
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    checkCanInteract: false
+    checkConsciousness: false
+    useDelay: 0.5
+  - type: Sprite
+    sprite: _ClawCommand/Blob/Actions/blob.rsi
+
+- type: entity
+  parent: BaseActionBlob
+  id: ActionCreateBlobFactory
+  name: Place Factory Blob (100)
+  description: Turns the chosen normal blob into a factory blob. Next to a node or the core it makes up to 2 spores and one blobbernaut.
+  components:
+  - type: Sprite
+    layers:
+    - state: blobFactory
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 200
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:BlobTransformTileActionEvent
+      transformFrom: Normal
+      tileType: Factory
+
+- type: entity
+  parent: BaseActionBlob
+  id: ActionCreateBlobResource
+  name: Place Resource Blob (70)
+  description: Turns the chosen normal blob into a resource blob, which makes points when it sits next to a node or the core.
+  components:
+  - type: Sprite
+    layers:
+    - state: blobResource
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 200
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:BlobTransformTileActionEvent
+      transformFrom: Normal
+      tileType: Resource
+
+- type: entity
+  parent: BaseActionBlob
+  id: ActionCreateBlobNode
+  name: Place Node Blob (65)
+  description: Turns the chosen normal blob into a node. Nodes power nearby factories and resource blobs, heal nearby blob, sometimes grow on their own, and let you grow further out.
+  components:
+  - type: Sprite
+    layers:
+    - state: blobNode
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 200
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:BlobTransformTileActionEvent
+      transformFrom: Normal
+      tileType: Node
+
+- type: entity
+  parent: BaseActionBlob
+  id: ActionCreateBlobbernaut
+  name: Produce a Blobbernaut (90)
+  description: Grows a blobbernaut on the chosen factory. Each factory can only do this once. Blobbernauts waste away off the blob and heal near nodes.
+  components:
+  - type: Sprite
+    layers:
+    - state: blobBlobbernaut
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 200
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:BlobCreateBlobbernautActionEvent
+
+- type: entity
+  parent: BaseActionBlob
+  id: ActionSplitBlobCore
+  name: Split Core (500)
+  description: Once only. Turns the chosen node into a second, independent core.
+  components:
+  - type: Sprite
+    layers:
+    - state: blobSplit
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 200
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:BlobSplitCoreActionEvent
+
+- type: entity
+  parent: BaseActionBlob
+  id: ActionSwapBlobCore
+  name: Relocate Core (250)
+  description: Swaps the places of your core and the chosen node.
+  components:
+  - type: Sprite
+    layers:
+    - state: blobSwap
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 200
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:BlobSwapCoreActionEvent
+
+- type: entity
+  parent: BaseActionBlob
+  id: ActionTeleportBlobToCore
+  name: Jump to Core
+  description: Moves your view back to your core.
+  components:
+  - type: Sprite
+    layers:
+    - state: blobToCore
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:BlobToCoreActionEvent
+
+- type: entity
+  parent: BaseActionBlob
+  id: ActionSwapBlobChem
+  name: Swap Chemical (90)
+  description: Pick a different chemical for your blob.
+  components:
+  - type: Sprite
+    layers:
+    - state: blobChemSwap
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:BlobSwapChemActionEvent
+
+- type: entity
+  parent: BaseActionBlob
+  id: ActionDowngradeBlob
+  name: Downgrade Blob
+  description: Turns the chosen tile back into a normal blob so it can become something else.
+  components:
+  - type: Sprite
+    layers:
+    - state: blobDowngrade
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 200
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:BlobTransformTileActionEvent
+      transformFrom: Invalid
+      tileType: Normal
+
+# Given to a blob carrier. Ends the carrier and grows a core where it stands.
+- type: entity
+  parent: BaseAction
+  id: ActionTransformToBlob
+  name: Transform into a blob
+  description: Destroys your body at once and grows a blob core in its place. Stand on a floor tile, or you will simply die.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    checkCanInteract: false
+  - type: Sprite
+    sprite: _ClawCommand/Blob/Actions/blob.rsi
+    layers:
+    - state: blobToCore
+      map: ["enum.ActionVisuals.Icon"]
+  - type: ConfirmableAction
+    popup: blob-carrier-transform-confirm
+  - type: InstantAction
+    event: !type:TransformToBlobActionEvent

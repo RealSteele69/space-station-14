@@ -200,11 +200,6 @@
         - id: ChemistryBottleEphedrine
           amount: 2
         - id: ChemistryBottleOmnizine
-        - id: EpinephrineChemistryBottle # Claw Command - alt-ID bottles
-          amount: 2
-        - id: EphedrineChemistryBottle # Claw Command
-          amount: 2
-        - id: OmnizineChemistryBottle # Claw Command
         - id: MedkitCombatFilled
 
 - type: entity

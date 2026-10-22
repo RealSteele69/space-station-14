@@ -1,0 +1,202 @@
+<Document>
+  # Blood Cult
+
+  Even in the far future, some things are never quite understood. There are things that lurk in the darkness of space,
+  unspeakable horrors of ancient power that wish to bring ruin to the universe and shape it in their image. They reach
+  out from the void and turn the minds of mortals in their favor, in the hope that one day they will be brought once
+  more into this plane of existence.
+
+  The Geometer of Blood, Nar'Sie, has sent a number of her followers to the station. As a cultist you have an abundance
+  of cult magic at your disposal, something for every situation. Work with your brethren to summon an avatar of your
+  eldritch goddess!
+
+  The Blood Cult only appears on shifts with at least 15 players.
+
+  ## Objectives
+
+  Every cultist shares two objectives: offer the chosen crew member to Nar'Sie, then summon her.
+
+  - 1. Find a discreet spot and contact your allies. Anything you say starting with [bold]:g[/bold] is heard by every
+  cultist, construct and soul shard.
+  - 2. Pick an area to turn into a base: reachable by the cult, but hidden well enough that security won't find it easily.
+  - 3. Draw a teleport rune so every cultist can reach the base.
+  - 4. Draw an empowering rune, then prepare blood spells. Stun spells are your bread and butter, but EMP, Teleport and
+  Blood Rites will make sure you are ready for anything.
+  - 5. Convert new members, or sacrifice the unconvertable, on the rune of offering. Put the soul shards of the
+  sacrificed into construct shells to raise constructs.
+  - 6. Work together to find your sacrifice target, kill them and offer their body.
+  - 7. Prepare to summon Nar'Sie. She can only be summoned where the veil is thin, and the crew will fight desperately
+  to stop you. Make sure you have enough cultists and equipment to hold out.
+  - 8. Gather ten cultists and constructs on the rune of dimensional rending and invoke it.
+
+  ## The cult reveals itself
+
+  The bigger the cult grows, the harder it is to hide.
+
+  - At [bold]5[/bold] cultists, every cultist's eyes start glowing red.
+  - At [bold]8[/bold] cultists, every cultist gets a blood halo and Nar'Sie chooses a leader.
+
+  ## Ritual Dagger
+
+  <Box>
+    <GuideEntityEmbed Entity="RitualDaggerCult" Caption="Ritual Dagger"/>
+  </Box>
+
+  Your dagger is your most important tool:
+
+  - Use it in hand to draw runes. Drawing a rune cuts you.
+  - Use it on a rune to erase it.
+  - Use it on a cult barrier to dispel it.
+  - It is also a decent weapon, and can be thrown.
+
+  ## Runed Metal
+
+  <Box>
+    <GuideEntityEmbed Entity="RunedMetal" Caption="Runed Metal"/>
+  </Box>
+
+  Use runed metal in hand to build cult structures:
+
+  - [bold]Pylon[/bold]: slowly heals nearby cultists and constructs and turns the floor around it into cult floor.
+  Pylons can't be built close to each other. Click it to turn it on or off.
+  - [bold]Altar[/bold]: makes construct shells and eldritch whetstones.
+  - [bold]Daemon forge[/bold]: makes mirror shields, eldritch longswords, cult armor and flagellant's robes.
+  - [bold]Archives[/bold]: makes cursed orbs, zealot's blindfolds, veil shifters and void torches.
+  - [bold]Runed girder[/bold] and [bold]runed door[/bold]: a second sheet on a girder raises a cult wall.
+
+  Each altar, forge and archive has to recharge for a few minutes between uses. The crew can't use cult items: they
+  get knocked down and drop them.
+
+  ## Minor Runes
+
+  These runes can be drawn anywhere on the station.
+
+  <Box Orientation="Vertical" HorizontalAlignment="Center">
+    <Box>
+      <GuideEntityEmbed Entity="CultRuneOffering" Caption="Rune of Offering"/>
+    </Box>
+    Converts or sacrifices whoever stands on it. One cultist can sacrifice a corpse, two can convert a living person,
+    and three are needed to sacrifice someone alive who can't be converted (the sacrifice target, the chaplain and anyone
+    with a mindshield). Every offering grants the cult another revival. The souls of the sacrificed end up in soul shards.
+
+    <Box>
+      <GuideEntityEmbed Entity="CultRuneEmpower" Caption="Rune of Empowerment"/>
+    </Box>
+    Empowers whoever invokes it. While empowered you can hold four spells instead of one, and drawing runes and preparing
+    spells is twice as fast and costs half the blood. The empowerment fades after a while away from cult floor.
+
+    <Box>
+      <GuideEntityEmbed Entity="CultRuneTeleport" Caption="Rune of Teleportation"/>
+    </Box>
+    Warps everyone standing on it to another teleport rune. You name the rune when you draw it.
+
+    <Box>
+      <GuideEntityEmbed Entity="CultRuneRevive" Caption="Rune of Rejuvenation"/>
+    </Box>
+    Brings a dead cultist lying on it back to life. The cult starts with three revivals and earns one more with every
+    offering, so use them sparingly.
+
+    <Box>
+      <GuideEntityEmbed Entity="CultRuneBarrier" Caption="Rune of Barrier"/>
+    </Box>
+    When invoked, turns into a barrier that blocks passage until it is broken or dispelled with a ritual dagger.
+
+    <Box>
+      <GuideEntityEmbed Entity="CultRuneSummoning" Caption="Rune of Summoning"/>
+    </Box>
+    Two cultists can summon any other cultist to the rune, which then fades. Cultists who are cuffed or being dragged
+    can't be summoned.
+
+    <Box>
+      <GuideEntityEmbed Entity="CultRuneBloodBoil" Caption="Rune of Boiling Blood"/>
+    </Box>
+    Three cultists sap their own health to fire bolts of boiling blood at non-believers who can see the rune, setting
+    them alight.
+  </Box>
+
+  ## Final Runes
+
+  These runes can only be drawn once the sacrifice target is dead and the cult has at least ten members. They also
+  have to be drawn where the veil is thin; your briefing in the character menu tells you where. Each thin spot can only
+  be used once, so don't waste them all on apocalypse runes or you'll never be able to summon Nar'Sie!
+
+  <Box>
+    <GuideEntityEmbed Entity="CultRuneApocalypse" Caption="Rune of Apocalypse"/>
+  </Box>
+
+  A harbinger of the end times, invoked by three cultists. It sets off a massive EMP, a power grid failure and a solar
+  flare. If the cult makes up less than 15% of the players, it also unleashes one of the following:
+  - Immovable rods (x3)
+  - Mimic vending machines (x2)
+  - A mouse migration (x2)
+  - A meteor swarm (x2)
+  - Spider infestations (x3)
+  - Anomalies (x4)
+  - Kudzu growths (x2)
+
+  <Box>
+    <GuideEntityEmbed Entity="CultRuneDimensionalRending" Caption="Rune of Dimensional Rending"/>
+  </Box>
+  Tears apart the barriers between worlds to call forth the Geometer. The whole station is told where it was drawn.
+  Ten cultists and constructs have to stand on the rune to invoke it, and the invoker has to hold still for 40 seconds
+  while the crew tries to stop them. If it succeeds, Nar'Sie rises and every cultist becomes a harvester.
+
+  ## Blood Magic
+
+  Blood spells are limited-use magic that fades once spent. Use the [bold]Blood Magic[/bold] action to prepare a
+  spell, or to dispel one you hold. Without an empowering rune, preparing a spell takes longer, costs blood, and you can
+  only hold one at a time. You can't cast blood spells while muted.
+
+  - [bold]Stun[/bold]: your hand stuns and mutes the next non-cultist you hit.
+  - [bold]Teleport[/bold]: send yourself or another cultist to a teleport rune.
+  - [bold]Electromagnetic Pulse[/bold]: a large EMP centered on you.
+  - [bold]Shadow Shackles[/bold]: your hand binds and mutes victims. Downed victims are bound at once. Four castings.
+  - [bold]Twisted Construction[/bold]: plasteel becomes runed metal, airlocks become runed doors, and cyborg shells or
+  endoskeletons become construct shells.
+  - [bold]Summon Combat Equipment[/bold]: cult armor, a bola and an eldritch longsword.
+  - [bold]Summon Ritual Dagger[/bold]: in case you lost yours.
+  - [bold]Blood Rites[/bold]: your hand soaks up blood from people, puddles and containers, and spends it to heal
+  cultists and constructs you touch. Use it in hand to forge a blood halberd from 300 units of blood.
+
+  A good tip is to always carry a stun and a teleport spell, so you can get out of a risky situation.
+
+  ## Constructs
+
+  Constructs are bound to the cult and must obey their masters. Put a filled soul shard into a construct shell and the
+  soul inside chooses its form. Constructs count as cultists for runes and can hear the cult's mind.
+
+  <Box>
+    <GuideEntityEmbed Entity="ShadeCult" Caption="Shade"/>
+  </Box>
+  Activating a filled soul shard releases its soul as a shade. Shades are fragile, but activating the shard again pulls
+  them back in. Handy if you need someone to help you activate a rune.
+
+  <Box>
+    <GuideEntityEmbed Entity="ConstructArtificer" Caption="Artificer"/>
+  </Box>
+  The cult's builder. It can raise cult floors, walls and doors, and summon new soul shards from Nar'Sie's realm.
+
+  <Box>
+    <GuideEntityEmbed Entity="ConstructWraith" Caption="Wraith"/>
+  </Box>
+  A fast, clawed assassin. Its phase shift lets it slip through walls unseen for a few seconds; attacking ends it early.
+
+  <Box>
+    <GuideEntityEmbed Entity="ConstructJuggernaut" Caption="Juggernaut"/>
+  </Box>
+  Slow, strong and very tough. It tears through walls, throws up shields and fires a devastating gauntlet echo.
+
+  ## Fighting the Cult
+
+  - The chaplain can't be converted, and can erase runes with their bible and bless soul shards so their constructs
+  serve the crew.
+  - Holy water purges the cult from a cultist after about thirty seconds. Sprayed on a rune, it washes the rune away.
+  - Mindshielded crew can't be converted, only sacrificed by three cultists.
+  - Only cultists can tell what a rune is by examining it.
+
+  ## Tips
+
+  - Always be ready to summon a cultist in trouble. You can't summon them once they're cuffed.
+  - Keeping a shade in a soul shard lets you use two-person runes on your own: release the shade, invoke, recall it.
+  - The EMP spell and the apocalypse rune both open doors for you. Don't forget a crowbar!
+</Document>

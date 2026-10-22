@@ -68,4 +68,17 @@ public sealed partial class WeakToHolyComponent : Component
             ["Holy"] = -0.5, // if its less it dont work du to limb damage
         },
     };
+
+    /// <summary>
+    /// Claw Command - the damage container this entity had before it was swapped for one that takes holy damage.
+    /// Restored when this component is removed.
+    /// </summary>
+    [ViewVariables]
+    public Robust.Shared.Prototypes.ProtoId<Content.Shared.Damage.Prototypes.DamageContainerPrototype>? OriginalDamageContainer;
+
+    /// <summary>
+    /// Claw Command - whether the damage container was swapped by the weak-to-holy system.
+    /// </summary>
+    [ViewVariables]
+    public bool SwappedDamageContainer;
 }

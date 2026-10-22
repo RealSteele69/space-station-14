@@ -99,7 +99,7 @@
             - Heretic
             - Ghoul
           guidebookComponentName: reagent-comp-condition-heretic-or-ghoul
-    Poison:
+    Bloodstream:
       effects:
       - !type:Electrocute
         conditions:

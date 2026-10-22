@@ -1,0 +1,19 @@
+bingle-accent-1 = Bingle
+bingle-accent-2 = Bing
+bingle-accent-3 = Bongle
+bingle-accent-4 = Bong
+bingle-accent-5 = BINGLE
+chat-speech-verb-name-bingle = Bingle
+bingle-verb-1 = croaks
+bingle-verb-2 = mumbles
+bingle-verb-3 = harks
+bingle-verb-4 = grumbles
+station-event-bingle-spawn-announcement = Bingle Bingle Bingle
+ghost-role-information-bingle-name = Bingle
+ghost-role-information-bingle-description = The Pit is love. The Pit is life. The Pit must grow. Throw things into the pit to make more bingles.
+bingle-upgrade-success = You feel stronger.
+bingle-pit-grow = The pit grows larger.
+bingle-pit-end-of-round = The Binglepit near {$location} grew to level {$level} and collected {$points} Bingle points.
+tiles-bingle-floor = bingle floor
+stack-bingle-floor = bingle floor
+ghost-role-information-bingle-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with all other bingles. Feed the pit.

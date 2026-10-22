@@ -127,6 +127,7 @@
     solution: food
   - type: Extractable
     grindableSolutionName: food
+  - type: SupermatterImmune # Claw Command - supermatter
 
 - type: entity
   parent: Ash

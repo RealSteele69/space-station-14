@@ -266,6 +266,27 @@ public sealed partial class DragonSystem : EntitySystem
     }
 
     /// <summary>
+    /// Decrement the dragon role's charged rift count after a charged rift is destroyed.
+    /// </summary>
+    public void RiftLost(EntityUid uid, DragonComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp))
+            return;
+
+        if (!_mind.TryGetMind(uid, out _, out var mind))
+            return;
+
+        foreach (var objId in mind.Objectives)
+        {
+            if (_carpRiftsConditionQuery.TryGetComponent(objId, out var obj))
+            {
+                _carpRifts.RiftLost(objId, obj);
+                break;
+            }
+        }
+    }
+
+    /// <summary>
     /// Do everything that needs to happen when a rift gets destroyed by the crew.
     /// </summary>
     public void RiftDestroyed(EntityUid uid, DragonComponent? comp = null)

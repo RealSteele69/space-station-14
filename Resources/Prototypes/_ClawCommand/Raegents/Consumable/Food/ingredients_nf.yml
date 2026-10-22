@@ -14,7 +14,7 @@
   physicalDesc: reagent-physical-desc-powdery
   recognizable: true # "Waiter, there seems to be grounds in my coffee."
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Hunger
@@ -35,7 +35,7 @@
   viscosity: 0.5
   recognizable: true
   metabolisms:
-    Food:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Hunger
@@ -58,7 +58,7 @@
   flavor: nutriment
   color: "#775441"
   metabolisms:
-    Food:
+    Digestion:
       metabolismRate: 0.1
       effects:
       # !type:MovespeedModifier stripped — effect not present in this fork.

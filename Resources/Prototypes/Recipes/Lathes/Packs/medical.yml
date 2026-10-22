@@ -6,6 +6,7 @@
   - Brutepack
   - Ointment
   - Gauze
+  - SynthBloodpack # Claw Command - synth species
 
 - type: latheRecipePack
   id: BasicChemistryStatic

@@ -1,0 +1,320 @@
+# Claw Command - blob faction, radio, damage, roles and other glue.
+
+- type: npcFaction
+  id: Blob
+  hostile:
+  - NanoTrasen
+  - Syndicate
+  - Xeno
+  - PetsNT
+  - Zombie
+  - Dragon
+  - Revolutionary
+  - Heretic
+  - Wizard
+  - Xenoborg
+
+- type: explosion
+  id: Blob
+  damagePerIntensity:
+    types:
+      Blunt: 3
+      Slash: 2
+      Piercing: 2
+  tileBreakChance: [0]
+  tileBreakIntensity: [0]
+  lightColor: Red
+  texturePath: /Textures/Effects/fire.rsi
+  fireStates: 3
+
+- type: Tag
+  id: BlobMob
+
+- type: Tag
+  id: Blobbernaut
+
+# Blob members talk over this. Key :l (or :h for blob members).
+- type: radioChannel
+  id: Blobmind
+  name: chat-radio-blobmind
+  keycode: 'l'
+  frequency: 1914
+  color: "#9a7a1f"
+  longRange: true
+
+# What the crew hears when a blob member speaks out loud.
+- type: accent
+  id: blob
+  fullReplacements:
+  - accent-words-blob-1
+  - accent-words-blob-2
+  - accent-words-blob-3
+  - accent-words-blob-4
+  - accent-words-blob-5
+
+# Delta alert raised when the blob reaches the critical stage.
+- type: alertLevel
+  parent: BaseDelta
+  id: DeltaBlob
+  announcement: alert-level-delta-blob-announcement
+  sound:
+    path: /Audio/Misc/delta.ogg
+    params:
+      volume: -3
+  color: DarkRed
+  emergencyLightColor: Orange
+
+- type: currency
+  id: BlobPoint
+  displayName: store-currency-display-blob-points
+  canWithdraw: false
+
+- type: factionIcon
+  id: BlobFaction
+  priority: 10
+  showTo:
+    components:
+    - ShowAntagIcons
+    - BlobCarrier
+    - BlobObserver
+    - ZombieBlob
+    - Blobbernaut
+  icon:
+    sprite: /Textures/_ClawCommand/Blob/Interface/Misc/antag_icon.rsi
+    state: blob
+
+# ----------------------------------------------------------------------------- damage
+
+- type: damageContainer
+  id: Blob
+  supportedGroups:
+  - Brute
+  - Burn
+
+# Claw Command - every set here takes more brute than the original (0.35 brute on normal blob).
+- type: damageModifierSet
+  id: BaseBlob # Reactive Spines and most other chemicals
+  coefficients:
+    Blunt: 0.5
+    Slash: 0.5
+    Piercing: 0.5
+    Heat: 2.25
+
+- type: damageModifierSet
+  id: ElectromagneticWebBlob
+  coefficients:
+    Blunt: 0.55
+    Slash: 0.55
+    Piercing: 0.55
+    Heat: 2.5
+    Shock: 0.5
+
+- type: damageModifierSet
+  id: ExplosiveLatticeBlob
+  coefficients:
+    Blunt: 0.4
+    Slash: 0.4
+    Piercing: 0.4
+    Heat: 3.0
+    Shock: 1.5
+
+- type: damageModifierSet
+  id: ChainCoatingBlob
+  coefficients:
+    Blunt: 0.3
+    Slash: 0.3
+    Piercing: 0.3
+    Heat: 1.75
+
+- type: damageModifierSet
+  id: SinewyTendonsBlob
+  coefficients:
+    Blunt: 0.6
+    Slash: 0.6
+    Piercing: 0.35
+    Heat: 5
+
+- type: damageModifierSet
+  id: BlobBlobbernautChainCoating
+  coefficients:
+    Blunt: 0.4
+    Slash: 0.4
+    Piercing: 0.4
+    Heat: 1.5
+
+- type: damageModifierSet
+  id: BlobMob # spores and zombies
+  coefficients:
+    Blunt: 1
+    Slash: 1
+    Piercing: 1
+    Heat: 1.5
+
+- type: damageModifierSet
+  id: BlobBlobbernaut
+  coefficients:
+    Blunt: 0.65
+    Slash: 0.65
+    Piercing: 0.65
+    Heat: 1.75
+
+- type: damageModifierSet
+  id: BlobReflective # it bounces lasers, so it shatters under blows
+  coefficients:
+    Blunt: 1
+    Slash: 1
+    Piercing: 1
+    Heat: 1.5
+
+# ----------------------------------------------------------------------------- effects
+
+- type: entity
+  id: EffectBlobHealBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.6
+  - type: Sprite
+    noRot: true
+    drawdepth: Effects
+    sprite: _ClawCommand/Blob/heals.rsi
+    state: single
+  - type: EffectVisuals
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: AnimationPlayer
+
+- type: entity
+  id: EffectHealPlusTripleYellow
+  parent: EffectBlobHealBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.8
+  - type: Sprite
+    state: triple
+    color: yellow
+
+# ----------------------------------------------------------------------------- carriers
+
+- type: entity
+  parent: MobMouse
+  id: MobMouseBlob
+  suffix: Blob
+  components:
+  - type: BlobCarrier
+
+- type: entity
+  id: SpawnPointGhostBlobRat
+  name: blob mouse spawn point
+  suffix: Blob Ghost Role
+  parent: BaseAntagSpawner
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobMouseBlob
+  - type: GhostRole
+    makeSentient: true
+    name: blob-carrier-role-name
+    description: blob-carrier-role-desc
+    rules: blob-carrier-role-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Mobs/Animals/mouse.rsi
+      state: icon-0
+
+# ----------------------------------------------------------------------------- roles and objective
+
+- type: antag
+  id: Blob
+  name: roles-antag-blob-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-blob-objective
+  guides: [ Blob ]
+  tags:
+  - OffStation
+  - Roundstart
+  - Midround
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 5h
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: Blob
+  prefRoles: [ Blob ]
+  allowNonHumans: true
+  jobBlacklist:
+  - Chaplain
+  blacklist:
+    components:
+    - AntagImmune
+  briefing:
+    text: blob-carrier-role-greeting
+    color: Plum
+    sound: /Audio/Announcements/bloblarm.ogg
+  # MindRoleBlob is added by the carrier itself (BlobCarrierSystem), so admin-made and ghost-role carriers get it too.
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleBlob
+  name: Blob Role
+  components:
+  - type: MindRole
+    antagPrototype: Blob
+    exclusiveAntag: true
+    roleType: SoloAntagonist
+    subtype: role-subtype-blob
+  - type: BlobRole
+
+# Crew raised by a spore. Only held while the spore is on their head.
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleBlobZombie
+  name: Blob Zombie Role
+  components:
+  - type: MindRole
+    antagPrototype: Blob
+    roleType: TeamAntagonist
+    subtype: role-subtype-blob-zombie
+  - type: BlobZombieRole
+
+- type: objectiveIssuer
+  id: Blob
+  name: objective-issuer-blob
+
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseBlobObjective
+  components:
+  - type: Objective
+    issuer: Blob
+    unique: true
+    difficulty: 1
+    icon:
+      sprite: _ClawCommand/Blob/Mobs/blob.rsi
+      state: blob_nuke_overlay
+  - type: RoleRequirement
+    roles:
+    - BlobRole
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseBlobObjective
+  id: BlobCaptureObjective
+  components:
+  - type: BlobCaptureCondition
+
+- type: guideEntry
+  id: Blob
+  name: guide-entry-blob
+  text: "/ServerInfo/_ClawCommand/Guidebook/Antagonist/Blob.xml"

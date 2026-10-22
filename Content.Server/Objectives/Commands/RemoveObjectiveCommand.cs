@@ -1,4 +1,5 @@
-﻿using Content.Server.Administration;
+﻿using Content.Server._ClawCommand.Administration;
+using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Systems;
@@ -13,6 +14,7 @@ namespace Content.Server.Objectives.Commands
         [Dependency] private IPlayerManager _players = default!;
         [Dependency] private SharedMindSystem _mind = default!;
         [Dependency] private SharedObjectivesSystem _objectives = default!;
+        [Dependency] private AntagRevealSystem _antagReveal = default!; // Claw Command
 
         public override string Command => "rmobjective";
         public override void Execute(IConsoleShell shell, string argStr, string[] args)
@@ -37,6 +39,10 @@ namespace Content.Server.Objectives.Commands
 
             if (int.TryParse(args[1], out var i))
             {
+                // Claw Command - success/failure tells whether the player has objectives
+                if (session != shell.Player)
+                    _antagReveal.Reveal(shell.Player, session.UserId, Command);
+
                 shell.WriteLine(Loc.GetString(_mind.TryRemoveObjective(mindId, mind, i)
                     ? "cmd-rmobjective-success"
                     : "cmd-rmobjective-failed"));
@@ -60,6 +66,10 @@ namespace Content.Server.Objectives.Commands
 
                 if (!_mind.TryGetMind(session, out var mindId, out var mind))
                     return CompletionResult.Empty;
+
+                // Claw Command - don't list someone's objectives before their antag status is revealed
+                if (session != shell.Player && !_antagReveal.IsRevealed(session.UserId))
+                    return CompletionResult.FromHint(Loc.GetString("cmd-rmobjective-hidden-hint"));
 
                 if (mind.Objectives.Count == 0)
                     return CompletionResult.Empty;

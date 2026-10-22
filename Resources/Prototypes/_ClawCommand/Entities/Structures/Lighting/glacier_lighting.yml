@@ -39,6 +39,4 @@
     state: base
   - type: PoweredLight
     hasLampOnSpawn: ColoredLightTubeRed
-  - type: StaticPrice #DynamicPrice
-    price: 25
 

@@ -26,3 +26,6 @@ reagent-physical-desc-calming = calming
 stack-capacitor = capacitor
 stack-matter-bin = matter bin
 stack-super-manipulator = super manipulator
+fibers-dyed = dyed
+tool-quality-axing-name = Axing
+tool-quality-axing-tool-name = Axe

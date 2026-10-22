@@ -1,0 +1,284 @@
+# Claw Command - supporting prototypes for the advanced xenomorphs.
+
+# ----------------------------------------------------------------------------- alerts (originally shown in the stat panel)
+
+- type: alert
+  id: AdvXenoPlasma
+  icons:
+  - sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/alerts.rsi
+    state: plasma
+  alertViewEntity: AlertAdvXenoPlasmaSpriteView
+  name: alerts-adv-xeno-plasma-name
+  description: alerts-adv-xeno-plasma-desc
+
+- type: entity
+  id: AlertAdvXenoPlasmaSpriteView
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GenericCounterAlert
+    centerGlyph: false
+    hideLeadingZeroes: false
+  - type: Sprite
+    sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/alerts.rsi
+    layers:
+    - map: [ "enum.AlertVisualLayers.Base" ]
+    - map: [ "1" ]
+      sprite: /Textures/Interface/Alerts/essence_counter.rsi
+      offset: 0.25, -0.3
+    - map: [ "10" ]
+      sprite: /Textures/Interface/Alerts/essence_counter.rsi
+      offset: 0.125, -0.3
+    - map: [ "100" ]
+      sprite: /Textures/Interface/Alerts/essence_counter.rsi
+      offset: 0, -0.3
+
+- type: alert
+  id: AdvXenoGrowth
+  icons:
+  - sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/alerts.rsi
+    state: larva
+  alertViewEntity: AlertAdvXenoGrowthSpriteView
+  name: alerts-adv-xeno-growth-name
+  description: alerts-adv-xeno-growth-desc
+
+- type: entity
+  parent: AlertAdvXenoPlasmaSpriteView
+  id: AlertAdvXenoGrowthSpriteView
+  categories: [ HideSpawnMenu ]
+
+# ----------------------------------------------------------------------------- infected hosts, as the hive sees them
+
+- type: factionIcon
+  abstract: true
+  id: AdvXenoInfectedBase
+  priority: 12
+  locationPreference: Right
+  showTo:
+    components:
+    - AdvXenoHive
+    - ShowAntagIcons
+
+- type: factionIcon
+  parent: AdvXenoInfectedBase
+  id: AdvXenoInfected0
+  icon:
+    sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/infected.rsi
+    state: infected0
+
+- type: factionIcon
+  parent: AdvXenoInfectedBase
+  id: AdvXenoInfected1
+  icon:
+    sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/infected.rsi
+    state: infected1
+
+- type: factionIcon
+  parent: AdvXenoInfectedBase
+  id: AdvXenoInfected2
+  icon:
+    sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/infected.rsi
+    state: infected2
+
+- type: factionIcon
+  parent: AdvXenoInfectedBase
+  id: AdvXenoInfected3
+  icon:
+    sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/infected.rsi
+    state: infected3
+
+- type: factionIcon
+  parent: AdvXenoInfectedBase
+  id: AdvXenoInfected4
+  icon:
+    sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/infected.rsi
+    state: infected4
+
+- type: factionIcon
+  parent: AdvXenoInfectedBase
+  id: AdvXenoInfected5
+  icon:
+    sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/infected.rsi
+    state: infected5
+
+# ----------------------------------------------------------------------------- damage
+
+# brute_mod 0.5 (hardened carapace), burn_mod 2 (weak to fire).
+- type: damageModifierSet
+  id: AdvXeno
+  coefficients:
+    Blunt: 0.5
+    Slash: 0.5
+    Piercing: 0.5
+    Heat: 2.0
+
+# armor_legacy_mob: melee 50, bullet 20, laser 30, energy 30
+- type: damageModifierSet
+  id: AdvXenoBreaker
+  coefficients:
+    Blunt: 0.5
+    Slash: 0.5
+    Piercing: 0.8
+    Heat: 0.7
+    Shock: 0.7
+
+# melee 40, bullet 50, laser 30, energy 20
+- type: damageModifierSet
+  id: AdvXenoBerserker
+  coefficients:
+    Blunt: 0.6
+    Slash: 0.6
+    Piercing: 0.5
+    Heat: 0.7
+    Shock: 0.8
+
+# melee 20, bullet 50, laser 50, energy 45
+- type: damageModifierSet
+  id: AdvXenoVanguard
+  coefficients:
+    Blunt: 0.8
+    Slash: 0.8
+    Piercing: 0.5
+    Heat: 0.5
+    Shock: 0.55
+
+# melee 40, bullet 50, laser 15, energy 20
+- type: damageModifierSet
+  id: AdvXenoMonarch
+  coefficients:
+    Blunt: 0.6
+    Slash: 0.6
+    Piercing: 0.5
+    Heat: 0.85
+    Shock: 0.8
+
+# Its body is wreathed in its own blue fire.
+- type: damageModifierSet
+  id: AdvXenoInferno
+  coefficients:
+    Heat: 0.2
+
+# ----------------------------------------------------------------------------- blood
+
+- type: reagent
+  id: AdvXenoBlood
+  name: reagent-name-adv-xeno-blood
+  group: Biological
+  desc: reagent-desc-adv-xeno-blood
+  flavor: acid
+  color: "#05EE05"
+  recognizable: true
+  physicalDesc: reagent-physical-desc-slimy
+
+# ----------------------------------------------------------------------------- tags
+
+# Head gear or masks a facehugger cannot get past, on top of anything airtight or covering the mouth (head slot).
+# On a mask it only counts while the mask is up over the face (welding gas mask).
+- type: Tag
+  id: AdvXenoHuggerProof
+
+# ----------------------------------------------------------------------------- resin material
+
+- type: material
+  id: AdvXenoResin
+  stackEntity: AdvXenoResinBlob1
+  name: materials-adv-xeno-resin
+  unit: materials-unit-adv-xeno-blob
+  icon: { sprite: /Textures/_ClawCommand/Objects/AdvancedXenos/resin.rsi, state: resin }
+  color: "#261438"
+  price: 0
+
+- type: stack
+  parent: BaseMediumStack
+  id: AdvXenoResin
+  name: stack-adv-xeno-resin
+  icon: { sprite: /Textures/_ClawCommand/Objects/AdvancedXenos/resin.rsi, state: resin }
+  spawn: AdvXenoResinBlob1
+
+# /datum/prototype/material/resin/generate_recipes
+- type: constructionGraph
+  id: AdvXenoResinStructures
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity {}
+    edges:
+    - to: nest
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: AdvXenoResin
+        amount: 2
+        doAfter: 2
+    - to: membrane
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: AdvXenoResin
+        amount: 1
+        doAfter: 2
+    - to: node
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: AdvXenoResin
+        amount: 1
+        doAfter: 2
+  - node: nest
+    entity: AdvXenoNest
+  - node: membrane
+    entity: AdvXenoResinMembrane
+  - node: node
+    entity: AdvXenoWeedNode
+
+- type: construction
+  abstract: true
+  id: BaseAdvXenoResinStructure
+  graph: AdvXenoResinStructures
+  category: construction-category-structures
+  placementMode: SnapgridCenter
+  canRotate: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  parent: BaseAdvXenoResinStructure
+  id: AdvXenoNest
+  targetNode: nest
+  category: construction-category-furniture
+
+- type: construction
+  parent: BaseAdvXenoResinStructure
+  id: AdvXenoResinMembrane
+  targetNode: membrane
+
+- type: construction
+  parent: BaseAdvXenoResinStructure
+  id: AdvXenoWeedNode
+  targetNode: node
+  conditions: []
+
+- type: constructionGraph
+  id: AdvXenoResinBandage
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: bandage
+      steps:
+      - material: AdvXenoResin
+        amount: 1
+        doAfter: 2
+  - node: bandage
+    entity: Gauze1
+
+# "crude resin bandage": closest thing this fork has is a strip of gauze.
+- type: construction
+  id: AdvXenoResinBandage
+  graph: AdvXenoResinBandage
+  targetNode: bandage
+  category: construction-category-misc
+  objectType: Item

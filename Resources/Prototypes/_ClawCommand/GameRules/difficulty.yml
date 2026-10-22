@@ -206,6 +206,8 @@
       prob: 0.75
     - id: Thief
       prob: 0.50
+    - id: Devil # Claw Command - roleplay antag, rolls often even on calm shifts
+      prob: 0.60
 
 - type: entity
   parent: BaseGameRule
@@ -214,7 +216,16 @@
   components:
   - type: SubGamemodes
     rules:
-    - prob: 0.32 # nothing
+    - prob: 0.16 # nothing
+      orGroup: major
+    - id: SubCosmicCult # Claw Command - Cosmic Cult (15+ players)
+      prob: 0.06
+      orGroup: major
+    - id: SubBloodCult # Claw Command - Blood Cult (15+ players)
+      prob: 0.06
+      orGroup: major
+    - id: SubBlob # Claw Command - blob (20+ players)
+      prob: 0.04
       orGroup: major
     - id: SubNukeops
       prob: 0.20
@@ -246,6 +257,8 @@
       prob: 0.90
     - id: Thief
       prob: 0.50
+    - id: Devil # Claw Command - roleplay antag, rolls often even on calm shifts
+      prob: 0.60
 
 - type: entity
   parent: BaseGameRule
@@ -254,7 +267,16 @@
   components:
   - type: SubGamemodes
     rules:
-    - prob: 0.12 # nothing
+    - prob: 0.03 # nothing
+      orGroup: major
+    - id: SubCosmicCult # Claw Command - Cosmic Cult (15+ players)
+      prob: 0.05
+      orGroup: major
+    - id: SubBloodCult # Claw Command - Blood Cult (15+ players)
+      prob: 0.05
+      orGroup: major
+    - id: SubBlob # Claw Command - blob (20+ players)
+      prob: 0.04
       orGroup: major
     - id: SubNukeops
       prob: 0.28
@@ -286,3 +308,5 @@
       prob: 1.0
     - id: Thief
       prob: 0.40
+    - id: Devil # Claw Command - roleplay antag, rolls often even on calm shifts
+      prob: 0.60

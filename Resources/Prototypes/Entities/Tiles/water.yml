@@ -66,6 +66,8 @@
     - walls
   - type: PlacementReplacement
     key: tileOverlay
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: FloorCosmicDecay
 
 - type: entity
   parent: FloorWaterEntity

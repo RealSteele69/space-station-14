@@ -30,10 +30,9 @@
     defaultTarget: light roasted coffee
   - type: AtmosExposed # Expose the beans to atmosphere - heats and cools them
   - type: Temperature # Temperature components needed to cook the beans
-    currentTemperature: 290
+    heatCapacity: 15000 # Claw Command - mass x specificHeat, declared so spawning doesn't change it
+    temperature: 290
   - type: InternalTemperature
-    thickness: 0.008 # 8mm (roughly bean sized)
-    area: .2 # essentially a giant sheet of beans
 
 - type: entity
   name: light roasted coffee beans
@@ -63,10 +62,8 @@
     defaultTarget: medium roasted coffee
   - type: AtmosExposed # Expose the beans to atmosphere - heats and cools them
   - type: Temperature # Temperature components needed to cook the beans
+    heatCapacity: 15000 # Claw Command - mass x specificHeat, declared so spawning doesn't change it
   - type: InternalTemperature
-    thickness: 0.008 # 8mm (roughly bean sized)
-    area: .2 # essentially a giant sheet of beans
-    conductivity: 1.5 # Arbitrarily chosen
   - type: Extractable
     grindableSolutionName: food
 

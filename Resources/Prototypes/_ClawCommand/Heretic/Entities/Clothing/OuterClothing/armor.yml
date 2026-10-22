@@ -39,13 +39,14 @@
     - Leg
     - Foot
     - Tail
+    # Claw Command - balance: was 0.5 across the board, far above security armor (0.7) for a table and a gas mask.
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.5
-        Heat: 0.5
-        Caustic: 0.5
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+        Heat: 0.65
+        Caustic: 0.65
         Holy: 1.25
     traumaDeductions:
       Dismemberment: 0.5
@@ -54,7 +55,7 @@
       VeinsDamage: 0.0
       NerveDamage: 0.0
   - type: ExplosionResistance
-    damageCoefficient: 0.25
+    damageCoefficient: 0.5 # Claw Command - balance: was 0.25
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodHeretic
     slot: head
@@ -67,7 +68,7 @@
     delayDelta: 3
     knockdownTimeDelta: -3
   - type: StaminaResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.75 # Claw Command - balance: was 0.5, which halved security's disablers and batons
   - type: HideClothingLayerClothing
     hiddenSlots:
     - jumpsuit
@@ -200,7 +201,7 @@
     delayDelta: 2
     knockdownTimeDelta: -2
   - type: StaminaResistance
-    damageCoefficient: 0.7
+    damageCoefficient: 0.85 # Claw Command - balance: was 0.7
   - type: HideContrabandContent #Goobstation Contraband detector
   - type: UndetectableContraband #Goobstation Contraband detector
   - type: Storage

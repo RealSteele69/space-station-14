@@ -10,17 +10,16 @@
   - type: Item
     sprite: Objects/Storage/Happyhonk/rock_carrier.rsi
     heldPrefix: box
-  - type: StorageFill
-    contents:
-      - id: PetRock
-        prob: 0.8
-        orGroup: Rock
-      - id: PetRockFred
-        prob: 0.1
-        orGroup: Rock
-      - id: PetRockRoxie
-        prob: 0.1
-        orGroup: Rock
+  - type: EntityTableContainerFill # replaces HappyHonk's toy table: one rock, nothing else
+    containers:
+      storagebase: !type:GroupSelector
+        children:
+        - id: PetRock
+          weight: 80
+        - id: PetRockFred
+          weight: 10
+        - id: PetRockRoxie
+          weight: 10
 
 - type: entity
   parent: [BaseItem, MrChips]

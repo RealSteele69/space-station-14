@@ -35,7 +35,7 @@ knowledge-path-flesh-s2-desc =
     My new found desires drove me to greater and greater heights.
 
     Your Mansus Grasp gains the ability to create a ghoul out of corpse with a soul.
-    Ghouls have only 50 health and look like husks to the heathens' eyes.
+    Ghouls have only 50 health and look like husks to the heathens' eyes. You can sustain at most 2 of them at once.
     All ghouls get their own Bloody Blade that cannot be shattered and disappears on ghoul death.
     You are now able to consume raw flesh. Eating meat, organs and body parts will empower and heal you temporarily, the effect scales with your path stage.
     You also become immune to damage from poisons.

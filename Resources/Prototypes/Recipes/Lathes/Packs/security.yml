@@ -82,6 +82,8 @@
   - ShuttleGunFriendshipCircuitboard
   - ShuttleGunPerforatorCircuitboard
   - ShuttleGunSvalinnMachineGunCircuitboard
+  - WeaponEnergyTurretAIMachineCircuitboard # Claw Command - LaserTurrets research
+  - WeaponEnergyTurretAIControlPanelElectronics # Claw Command - LaserTurrets research
 
 - type: latheRecipePack
   parent:

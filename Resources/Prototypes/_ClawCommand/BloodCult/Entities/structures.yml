@@ -1,0 +1,570 @@
+# Blood Cult structures, built from runed metal or raised by artificers.
+
+- type: entity
+  parent: [ BaseWall, StructureHealthWall ]
+  id: WallCult
+  name: cult wall
+  description: Keeps the cult in and the crew out.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/Structures/Walls/cult.rsi
+  - type: Icon
+    sprite: _ClawCommand/BloodCult/Structures/Walls/cult.rsi
+    state: full
+  - type: Damageable
+    damageModifierSet: RockMod
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+      - !type:SpawnEntitiesBehavior
+        offset: 0
+        spawn:
+          CultGirder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: IconSmooth
+    key: walls
+    base: cult
+  - type: Construction
+    graph: CultGirder
+    node: wall
+
+- type: entity
+  parent: [ BaseGirder, StructureHealthBarrier ]
+  id: CultGirder
+  name: runed girder
+  description: Framework made of a strange and shockingly cold metal. It doesn't seem to have any bolts.
+  components:
+  - type: Construction
+    graph: CultGirder
+    node: girder
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/Entities/Structures/cult_girder.rsi
+    state: icon
+  - type: Damageable
+    damageModifierSet: SteelStaticMod
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          RunedMetal1:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseMaterialDoor
+  id: CultDoor
+  name: runed door
+  description: It opens, it closes, and maybe crushes you. This one has a strange glowing rune on it.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/Entities/Structures/cult_airlock.rsi
+    layers:
+    - state: closed
+      map: [ "enum.DoorVisualLayers.Base" ]
+  - type: Door
+    bumpOpen: true
+    occludes: false
+    crushDamage:
+      types:
+        Blunt: 15
+    openSound:
+      path: /Audio/Effects/stonedoor_openclose.ogg
+    closeSound:
+      path: /Audio/Effects/stonedoor_openclose.ogg
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+  - type: Occluder
+    enabled: false
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          RunedMetal1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: GlassSmash
+  - type: RadiationBlocker
+    resistance: 2
+  - type: RCDDeconstructable
+    deconstructable: false
+  - type: BloodCultRunedDoor
+  - type: Construction
+    graph: CultDoor
+    node: door
+
+- type: entity
+  parent: BaseStructure
+  id: BloodCultBarrier
+  name: cult barrier
+  description: A shimmering wall of blood magic. A ritual dagger can dispel it.
+  components:
+  - type: Transform
+    noRot: true
+    anchored: true
+  - type: Sprite
+    layers:
+    - sprite: _ClawCommand/BloodCult/Entities/Structures/barrier.rsi
+      state: barrier
+      shader: unshaded
+  - type: Appearance
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        density: 75
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: PointLight
+    radius: 3
+    color: red
+  - type: BloodCultBarrier
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+
+- type: entity
+  parent: WallForce
+  id: WallForceCult
+  name: glowing wall
+  description: An unholy shield that blocks all attacks.
+  components:
+  - type: TimedDespawn
+    lifetime: 20
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/Entities/Structures/cult_shield.rsi
+    state: icon
+  - type: Icon
+    sprite: _ClawCommand/BloodCult/Entities/Structures/cult_shield.rsi
+    state: icon
+
+# --- Pylon ------------------------------------------------------------------
+
+- type: entity
+  parent: BaseStructure
+  id: CultPylon
+  name: pylon
+  description: A floating crystal that slowly heals those faithful to Nar'Sie and corrupts the floor around it.
+  components:
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      pylonFix:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.4,0.25,0.4"
+        density: 190
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
+  - type: Sprite
+    noRot: true
+    sprite: _ClawCommand/BloodCult/Entities/Structures/pylon.rsi
+    layers:
+    - state: icon
+      map: [ "enum.PylonVisuals.Layer" ]
+  - type: InteractionOutline
+  - type: Damageable
+    damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ShardGlass:
+            min: 1
+            max: 2
+  - type: Appearance
+  - type: BloodCultPylon
+    healing:
+      Brute: -20
+      Burn: -20
+      Toxin: -10
+      Genetic: -5
+      Airloss: -20
+    damageOnInteract:
+      types:
+        Heat: 5
+  - type: PointLight
+    color: "#FF0000"
+    radius: 2
+    energy: 2
+    enabled: true
+  - type: GenericVisualizer
+    visuals:
+      enum.PylonVisuals.Activated:
+        enum.PylonVisuals.Layer:
+          True: { state: icon }
+          False: { state: icon_off }
+  - type: Construction
+    graph: CultPylon
+    node: pylon
+
+# --- Factories --------------------------------------------------------------
+
+- type: entity
+  abstract: true
+  parent: BaseStructure
+  id: CultFactoryBase
+  name: base cult factory
+  description: You can make things here.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/Entities/Structures/altar.rsi
+    layers:
+    - state: icon
+      map: [ "enum.GenericCultVisuals.Layer" ]
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: InteractionOutline
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: Appearance
+  - type: ActivatableUI
+    key: enum.BloodCultUiKey.Factory
+  - type: UserInterface
+    interfaces:
+      enum.BloodCultUiKey.Factory:
+        type: BloodCultRadialBoundUserInterface
+  - type: GenericVisualizer
+    visuals:
+      enum.GenericCultVisuals.State:
+        enum.GenericCultVisuals.Layer:
+          True: { state: icon }
+          False: { state: icon_off }
+
+- type: entity
+  parent: CultFactoryBase
+  id: CultFactoryAltar
+  name: altar
+  description: A bloodstained altar dedicated to Nar'Sie.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/Entities/Structures/altar.rsi
+  - type: TimedFactory
+    entries:
+    - ConstructShell
+    - WhetstoneCult
+  - type: Construction
+    graph: CultFactoryAltar
+    node: altar
+
+- type: entity
+  parent: CultFactoryBase
+  id: CultFactoryForge
+  name: daemon forge
+  description: A forge used in crafting the unholy weapons used by the armies of Nar'Sie.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/Entities/Structures/forge.rsi
+  - type: TimedFactory
+    entries:
+    - MirrorShieldCult
+    - EldritchLongsword
+    - ClothingOuterCultArmor
+    - ClothingOuterRobesCultTrue
+  - type: Construction
+    graph: CultFactoryForge
+    node: forge
+
+- type: entity
+  parent: CultFactoryBase
+  id: CultFactoryArchives
+  name: archives
+  description: A desk covered in arcane manuscripts and tomes in unknown languages. Looking at the text makes your skin crawl.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/Entities/Structures/archives.rsi
+  - type: TimedFactory
+    entries:
+    - ShuttleCurse
+    - ClothingEyeCultBlindfold
+    - VeilShifter
+    - VoidTorch
+  - type: Construction
+    graph: CultFactoryArchives
+    node: archives
+
+# --- Construction -----------------------------------------------------------
+
+- type: construction
+  id: CultPylon
+  category: construction-category-structures
+  hide: true
+  graph: CultPylon
+  startNode: start
+  targetNode: pylon
+  objectType: Structure
+  placementMode: AlignPylonConstruction
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: CultFactoryAltar
+  category: construction-category-structures
+  hide: true
+  graph: CultFactoryAltar
+  startNode: start
+  targetNode: altar
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: CultFactoryForge
+  category: construction-category-structures
+  hide: true
+  graph: CultFactoryForge
+  startNode: start
+  targetNode: forge
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: CultFactoryArchives
+  category: construction-category-structures
+  hide: true
+  graph: CultFactoryArchives
+  startNode: start
+  targetNode: archives
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: CultDoor
+  category: construction-category-structures
+  hide: true
+  graph: CultDoor
+  startNode: start
+  targetNode: door
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: CultGirder
+  category: construction-category-structures
+  hide: true
+  graph: CultGirder
+  startNode: start
+  targetNode: girder
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: CultPylon
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: pylon
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: RunedMetalSheets
+        amount: 4
+        doAfter: 3
+  - node: pylon
+    entity: CultPylon
+
+- type: constructionGraph
+  id: CultFactoryAltar
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: altar
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: RunedMetalSheets
+        amount: 3
+        doAfter: 3
+  - node: altar
+    entity: CultFactoryAltar
+
+- type: constructionGraph
+  id: CultFactoryForge
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: forge
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: RunedMetalSheets
+        amount: 3
+        doAfter: 3
+  - node: forge
+    entity: CultFactoryForge
+
+- type: constructionGraph
+  id: CultFactoryArchives
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: archives
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: RunedMetalSheets
+        amount: 3
+        doAfter: 3
+  - node: archives
+    entity: CultFactoryArchives
+
+- type: constructionGraph
+  id: CultDoor
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: door
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: RunedMetalSheets
+        amount: 1
+        doAfter: 3
+  - node: door
+    entity: CultDoor
+
+- type: constructionGraph
+  id: CultGirder
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: girder
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: RunedMetalSheets
+        amount: 1
+        doAfter: 3
+  - node: girder
+    entity: CultGirder
+    edges:
+    - to: wall
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      conditions:
+      - !type:EntityAnchored { }
+      steps:
+      - material: RunedMetalSheets
+        amount: 1
+        doAfter: 2
+  - node: wall
+    entity: WallCult

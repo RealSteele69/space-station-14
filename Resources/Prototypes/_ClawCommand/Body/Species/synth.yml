@@ -1,0 +1,265 @@
+# _ClawCommand: Synth species.
+# Artificial humanoids built on a lizard-like endoskeleton, kept running by an internal power cell
+# and repair nanites carried in a synthetic blood ("fullerene"). See synth_organs.yml for the body
+# and Content.*/_ClawCommand/Silicons/Synths for the battery, self-repair and shock systems.
+#
+# Tuned down from the original to keep them from being a strict upgrade:
+#   - no Blunt/Slash resistance (brute damage hits them like anyone else);
+#   - self-repair is about a fifth as fast and still burns satiation;
+#   - barotrauma and unarmed damage are the standard species values.
+
+- type: markingsGroup
+  parent: Undergarments
+  id: MarkingsSynth
+  limits:
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 0
+      required: false
+    enum.HumanoidVisualLayers.HeadTop: # antennae; optional, so they aren't added by default here
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.HeadSide:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.Head:
+      limit: 2
+      required: true
+      default: [ SynthVisor, SynthJawComposite ]
+    enum.HumanoidVisualLayers.Snout:
+      limit: 1
+      required: true
+      default: [ SynthSnout ]
+    enum.HumanoidVisualLayers.Chest:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LFoot:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RFoot:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1
+      required: true
+      default: [ SynthTail ]
+    enum.HumanoidVisualLayers.Genital:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Penis:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Breasts:
+      limit: 1
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceSynth
+  categories: [ HideSpawnMenu ]
+  suffix: Claw Command
+  name: synth appearance
+  components:
+  - type: Inventory
+    speciesId: synth # hand-fitted "-synth" clothing states win over the displacement maps
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Synth/displacement.rsi
+            state: jumpsuit
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Synth/displacement.rsi
+            state: outerclothing
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Synth/displacement.rsi
+            state: shoes
+      head:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Synth/displacement.rsi
+            state: head
+      mask:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Synth/displacement.rsi
+            state: mask
+      neck:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Synth/displacement.rsi
+            state: neck
+      gloves:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Synth/displacement.rsi
+            state: gloves
+  - type: InitialBody
+    organs:
+      Torso: OrganSynthTorso
+      Head: OrganSynthHead
+      ArmLeft: OrganSynthArmLeft
+      ArmRight: OrganSynthArmRight
+      HandRight: OrganSynthHandRight
+      HandLeft: OrganSynthHandLeft
+      LegLeft: OrganSynthLegLeft
+      LegRight: OrganSynthLegRight
+      FootLeft: OrganSynthFootLeft
+      FootRight: OrganSynthFootRight
+      Brain: OrganSynthBrain
+      Eyes: OrganSynthEyes
+      Tongue: OrganSynthTongue
+      Ears: OrganSynthEars
+      Lungs: OrganSynthLungs
+      Heart: OrganSynthHeart
+      Stomach: OrganSynthStomach
+      Liver: OrganSynthLiver
+      Kidneys: OrganSynthKidneys
+      PowerCell: OrganSynthPowerCell
+    # Redeclared in full: dictionaries don't merge with the parent's. No appendix; adds the power cell.
+    relationships:
+      Torso: [ Head, ArmLeft, ArmRight, LegLeft, LegRight, Lungs, Heart, Stomach, Liver, Kidneys, PowerCell ]
+      Head: [ Brain, Eyes, Tongue, Ears ]
+      ArmLeft: [ HandLeft ]
+      ArmRight: [ HandRight ]
+      LegLeft: [ FootLeft ]
+      LegRight: [ FootRight ]
+  - type: HumanoidProfile
+    species: SpeciesSynth
+
+- type: entity
+  parent:
+  - AppearanceSynth
+  - BaseSpeciesMobOrganic
+  id: MobSynth
+  name: Urist McBeeper
+  suffix: Claw Command
+  components:
+  - type: Icon
+    sprite: _ClawCommand/Mobs/Species/Synth/parts.rsi
+    state: full
+  - type: Puller
+    needsHands: false
+  - type: Butcherable
+    spawned:
+    - id: OrganSynthAppendix
+      amount: 5
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Borg
+  - type: TypingIndicator
+    proto: robot
+  - type: Vocal
+    emoteSounds: UnisexSilicon
+  - type: BodyEmotes
+    soundsId: ReptilianBodyEmotes
+  - type: Damageable
+    damageModifierSet: ModifierSetSynth
+  - type: RespiratorImmune # they cool themselves with their lungs but don't need to breathe
+  - type: ThermalRegulator
+    metabolismHeat: 500
+    radiatedHeat: 150
+    implicitHeatRegulation: 700
+    sweatHeatRegulation: 1200
+    shiveringHeatRegulation: 400
+    normalBodyTemperature: 310.15
+    thermalRegulationTemperatureThreshold: 4
+  - type: Temperature
+    specificHeat: 2130 # lighter than the default 3000; warms and cools a little faster
+  - type: TemperatureDamage
+    heatDamageThreshold: 360
+    coldDamageThreshold: 220
+    coldDamage:
+      types:
+        Cold: 0.1
+    heatDamage:
+      types:
+        Heat: 1.5
+  - type: TemperatureSpeed
+    thresholds:
+      260: 0.9
+      240: 0.8
+      220: 0.7
+  - type: Bloodstream
+    bloodRefreshAmount: 0 # fullerene is only restored by SynthBloodstream, at the cost of satiation
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: SynthBlood
+        Quantity: 600
+  - type: SynthBloodstream
+    minBloodLevel: 0.3
+    fullEfficiencyBloodLevel: 0.9
+    minBloodEfficiency: 0.1
+    minHunger: 50
+    hungerCostPerRepair: 1.5
+    hungerCostPerBleed: 2
+    bleedReductionAmount: 0.1
+    damage:
+      groups:
+        Brute: -0.25
+        Burn: -0.3
+      types:
+        Bloodloss: -0.1
+        Cellular: -0.035
+    bloodRegeneration:
+      targetBloodLevel: 1
+      bloodRefreshAmount: 0.6
+      hungerCostPerUnit: 0.25
+  - type: SynthBattery
+    drawRate: 0.4
+    nutrimentChargeMultiplier: 2.4
+    batteryLowText: synth-battery-low
+    batteryDeadText: synth-battery-dead
+    warningPercentages: [ 20, 10 ]
+    batteryLowSound:
+      path: /Audio/Machines/twobeep.ogg
+      params:
+        maxDistance: 5
+    batteryDeadSound:
+      path: /Audio/Machines/buzz-two.ogg
+      params:
+        maxDistance: 5
+    empDamage:
+      types:
+        Shock: 10
+        Heat: 10
+  - type: SynthShock
+    batteryChargeMultiplier: 10.8
+    cellularDamageMultiplier: 0.2
+  - type: ZombieImmune
+  - type: Tag
+    tags:
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
+    - AnomalyHost
+    - SiliconEmotes
+    - Synth
+
+- type: damageModifierSet
+  id: ModifierSetSynth
+  coefficients:
+    Heat: 0.85
+    Cold: 0.6
+    Radiation: 0.8
+    Shock: 1.4
+    Piercing: 1.05
+    Asphyxiation: 0

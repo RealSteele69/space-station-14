@@ -367,7 +367,9 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
             Players = players,
         };
 
-        DoAdminAlerts(players, message, impact, handler);
+        // Claw Command - antag-status logs never alert admin chat; they're gated behind the antag reveal
+        if (!Content.Server._ClawCommand.Administration.AntagRevealSystem.HiddenLogTypes.Contains(type))
+            DoAdminAlerts(players, message, impact, handler);
 
         if (preRound)
         {

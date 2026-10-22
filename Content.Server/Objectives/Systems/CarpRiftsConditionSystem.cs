@@ -44,6 +44,18 @@ public sealed partial class CarpRiftsConditionSystem : EntitySystem
     }
 
     /// <summary>
+    /// Decrements RiftsCharged, called after a charged rift gets destroyed.
+    /// </summary>
+    public void RiftLost(EntityUid uid, CarpRiftsConditionComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp))
+            return;
+
+        if (comp.RiftsCharged > 0)
+            comp.RiftsCharged--;
+    }
+
+    /// <summary>
     /// Resets RiftsCharged to 0, called after rifts get destroyed.
     /// </summary>
     public void ResetRifts(EntityUid uid, CarpRiftsConditionComponent? comp = null)

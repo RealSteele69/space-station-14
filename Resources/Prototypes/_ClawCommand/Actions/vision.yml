@@ -7,10 +7,12 @@
   description: Toggle the night-vision overlay on your goggles.
   components:
   - type: Action
-    icon:
-      sprite: _ClawCommand/Clothing/Eyes/Goggles/nightvision.rsi
-      state: icon
     useDelay: 0.5
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/Eyes/Goggles/nightvision.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ToggleNightVisionEvent
 
@@ -21,9 +23,11 @@
   description: Toggle the thermal-vision overlay on your goggles.
   components:
   - type: Action
-    icon:
-      sprite: Clothing/Eyes/Glasses/thermal.rsi
-      state: icon
     useDelay: 0.5
+  - type: Sprite
+    sprite: Clothing/Eyes/Glasses/thermal.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ToggleThermalVisionEvent

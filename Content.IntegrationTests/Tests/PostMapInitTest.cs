@@ -6,6 +6,7 @@ using Content.IntegrationTests.Fixtures;
 using Content.IntegrationTests.Fixtures.Attributes;
 using Content.IntegrationTests.Utility;
 using YamlDotNet.RepresentationModel;
+using Content.Server._ClawCommand.Shadekin;
 using Content.Server.Administration.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Shuttles.Components;
@@ -69,6 +70,17 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml", ["RubberStampSyndicate"]},
             {"/Maps/Shuttles/ShuttleEvent/cruiser.yml", ["ShuttleGunPerforator"]},
             {"/Maps/Shuttles/ShuttleEvent/instigator.yml", ["ShuttleGunFriendship"]},
+            // Claw Command - fork mapping choices that upstream flags as DoNotMap. Listed per map so
+            // anything new still fails; review the station ones if their balance becomes a problem.
+            {"/Maps/edge.yml", ["RubberStampCaptain"]},
+            {"/Maps/glacier.yml", ["ClosetJanitorBombFilled", "ShuttleGunPerforator", "ShuttleGunSvalinnMachineGun"]},
+            {"/Maps/serpentcrest.yml", ["WehMedipen"]},
+            {"/Maps/shoukou.yml", ["ClothingHeadHatCatEars"]},
+            {"/Maps/snowball.yml", ["ClothingHeadHatCatEars"]},
+            {"/Maps/sushi.yml", ["WehMedipen"]},
+            {"/Maps/Shuttles/dignitary.yml", ["BoxFolderCentComThreePapers", "RubberStampCentcom"]},
+            {"/Maps/_ClawCommand/syndieoutpost.yml", ["RubberStampCE", "RubberStampCMO", "RubberStampCaptain", "RubberStampCentcom", "RubberStampChaplain", "RubberStampClown", "RubberStampDetective", "RubberStampHop", "RubberStampHos", "RubberStampLawyer", "RubberStampMime", "RubberStampQm", "RubberStampRd"]},
+            {"/Maps/_ClawCommand/Lavaland/Lavaland/ruin_toyshop.yml", ["ClothingHeadHatCatEars", "GoldenBikeHorn"]},
         };
 
         /// <summary>
@@ -416,7 +428,22 @@ namespace Content.IntegrationTests.Tests
 
                     jobs.ExceptWith(spawnPoints);
 
-                    spawnPoints = entManager.EntityQuery<ContainerSpawnPointComponent>()
+                    // Claw Command - a job marker also serves its AdditionalJobs (senior variants, dogborgs).
+                    jobs.ExceptWith(entManager.EntityQuery<SpawnPointComponent>()
+                        .Where(x => x.SpawnType == SpawnPointType.Job)
+                        .SelectMany(x => x.AdditionalJobs));
+
+                    // Claw Command - jobs whose markers live on the station's generated hideout map
+                    // (the Dark, which DEBUG builds don't load) are served there, not by station markers.
+                    if (entManager.HasComponent<HideoutGeneratorComponent>(station))
+                    {
+                        jobs.ExceptWith(protoManager.EnumeratePrototypes<EntityPrototype>()
+                            .Where(p => p.HasComp<AnomalyJobSpawnComponent>(entManager.ComponentFactory))
+                            .Select(p => p.TryComp<SpawnPointComponent>(out var sp, entManager.ComponentFactory) ? sp.Job : null)
+                            .OfType<ProtoId<JobPrototype>>());
+                    }
+
+                    spawnPoints =entManager.EntityQuery<ContainerSpawnPointComponent>()
                         .Where(x => x.SpawnType is SpawnPointType.Job or SpawnPointType.Unset && x.Job != null)
                         .Select(x => x.Job.Value);
 

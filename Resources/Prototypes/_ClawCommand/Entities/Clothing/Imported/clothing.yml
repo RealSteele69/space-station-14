@@ -603,7 +603,7 @@
     sprite: Imperial/Clothing/Head/Helmets/ops_core.rsi
     quickEquip: true
   - type: Item
-    heldPrefix: false
+    heldPrefix: off
     size: Normal
   - type: Armor
     modifiers:

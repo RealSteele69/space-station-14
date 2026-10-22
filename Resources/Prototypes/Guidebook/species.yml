@@ -14,8 +14,10 @@
   - Kitsunes    # _ClawCommand
   - Moth
   - Reptilian
+  - Resomi      # _ClawCommand
   - Shadowkin   # _ClawCommand
   - SlimePerson
+  - Synth       # _ClawCommand
   - Tajaran     # _ClawCommand
   - Vox
   - Vulpkanin
@@ -101,3 +103,13 @@
   id: Avali
   name: cc-species-name-avali
   text: "/ServerInfo/Guidebook/Mobs/Avali.xml"
+
+- type: guideEntry # _ClawCommand
+  id: Resomi
+  name: cc-species-name-resomi
+  text: "/ServerInfo/Guidebook/Mobs/Resomi.xml"
+
+- type: guideEntry # _ClawCommand
+  id: Synth
+  name: cc-species-name-synth
+  text: "/ServerInfo/Guidebook/Mobs/Synth.xml"

@@ -227,22 +227,7 @@
       - Flash
       - Handcuff
       - Ensnaring
-  - type: ItemMapper
-    mapLayers:
-      flashbang:
-        whitelist:
-          components:
-          - FlashOnTrigger
-      stunbaton:
-        whitelist:
-          tags: # Claw Command - Stunbaton component became a tag upstream
-          - Stunbaton
-      tear_gas_grenade:
-        whitelist:
-          components:
-          - SmokeOnTrigger
-    sprite: Imperial/VlClothes/PurpleChase/Poyas.rsi
-  - type: Appearance
+  # No ItemMapper: Poyas.rsi has no per-item overlay states to show stored gear with.
 
 - type: entity
   id: VlPCSatchel

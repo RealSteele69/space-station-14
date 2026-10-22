@@ -1,0 +1,322 @@
+# _ClawCommand: Resomi species.
+# Small, cold-adapted avians on their own body sheet (_ClawCommand/Mobs/Species/Resomi/parts.rsi).
+# The body is much narrower and shorter than the human rig, so:
+#   - every clothing slot is warped onto it with a displacement map (male and female sets are
+#     identical — a sex that has its own set gets NO fallback to the unsexed one, see ClientClothingSystem);
+#   - clothing that ships a hand-fitted "-resomi" state uses that instead (speciesId: resomi);
+#   - the sprite layer order differs from BaseSpeciesLayers: hands and tail sit under the jumpsuit so
+#     sleeves and suits cover them, and belts draw over outerwear.
+
+- type: markingsGroup
+  id: MarkingsResomi
+  limits:
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+      onlyGroupWhitelisted: true # human hair is drawn for a human head and floats off a Resomi one
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 0
+      required: false
+    enum.HumanoidVisualLayers.Snout:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Head:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 8
+      required: false
+    enum.HumanoidVisualLayers.HeadSide:
+      limit: 8
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 10
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 3 # tail + feathers + the fluffy chest, which lives on this layer
+      required: true
+      default: [ ResomiTail, ResomiTailFeathers ]
+    enum.HumanoidVisualLayers.LArm:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LHand:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.RHand:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LFoot:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RFoot:
+      limit: 2
+      required: false
+    # No nudity defaults: the stock tank top / boxers are human-shaped. Chosen undergarments are
+    # warped with the jumpsuit displacement map (see OrganResomiTorso).
+    enum.HumanoidVisualLayers.UndergarmentTop:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.UndergarmentBottom:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Genital:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Penis:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Breasts:
+      limit: 1
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceResomi
+  categories: [ HideSpawnMenu ]
+  suffix: Claw Command
+  name: resomi appearance
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.HumanoidVisualLayers.TailBehind" ]
+    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Head" ]
+    - map: [ "enum.HumanoidVisualLayers.Snout" ]
+    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    # Hands below the jumpsuit: Resomi jumpsuits are warped wider than the arm, so sleeves read properly.
+    - map: [ "enum.HumanoidVisualLayers.LHand" ]
+    - map: [ "enum.HumanoidVisualLayers.RHand" ]
+    # Tail above limbs but below clothing.
+    - map: [ "enum.HumanoidVisualLayers.Tail" ]
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+    - map: [ "jumpsuit" ]
+    - map: [ "enum.HumanoidVisualLayers.Overlay" ]
+    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+      color: "#ffffff"
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2-resomi
+      visible: false
+    - map: [ "gloves" ]
+    - map: [ "shoes" ]
+    - map: [ "ears" ]
+    - map: [ "outerClothing" ]
+    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ]
+    - map: [ "belt" ] # over outerwear
+    - map: [ "eyes" ]
+    - map: [ "id" ]
+    - map: [ "back" ]
+    - map: [ "neck" ]
+    - map: [ "enum.HumanoidVisualLayers.Genital" ]
+    - map: [ "enum.HumanoidVisualLayers.Penis" ]
+    - map: [ "enum.HumanoidVisualLayers.Breasts" ]
+    - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
+    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+    - map: [ "enum.HumanoidVisualLayers.Hair" ]
+    - map: [ "mask" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+    - map: [ "suitstorage" ]
+    - map: [ "head" ]
+    - map: [ "pocket1" ]
+    - map: [ "pocket2" ]
+    - map: [ "enum.HumanoidVisualLayers.Special" ]
+  - type: Hands
+    handDisplacement:
+      sizeMaps:
+        32:
+          sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+          state: inHand
+  - type: Inventory
+    speciesId: resomi
+    displacements: &resomiDisplacements
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: jumpsuit
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: outerClothing
+      eyes:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: eyes
+      mask:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: mask
+      head:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: head
+      ears:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: ears
+      neck:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: neck
+      back:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: back
+      gloves:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: hands
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: feet
+      belt:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: belt
+      id: # ID cards sit on the belt line
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: belt
+      suitstorage:
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: suitStorage
+    femaleDisplacements: *resomiDisplacements
+    maleDisplacements: *resomiDisplacements
+  - type: InitialBody
+    organs:
+      Torso: OrganResomiTorso
+      Head: OrganResomiHead
+      ArmLeft: OrganResomiArmLeft
+      ArmRight: OrganResomiArmRight
+      HandRight: OrganResomiHandRight
+      HandLeft: OrganResomiHandLeft
+      LegLeft: OrganResomiLegLeft
+      LegRight: OrganResomiLegRight
+      FootLeft: OrganResomiFootLeft
+      FootRight: OrganResomiFootRight
+      Brain: OrganResomiBrain
+      Eyes: OrganResomiEyes
+      Tongue: OrganResomiTongue
+      Appendix: OrganResomiAppendix
+      Ears: OrganResomiEars
+      Lungs: OrganResomiLungs
+      Heart: OrganResomiHeart
+      Stomach: OrganResomiStomach
+      Liver: OrganResomiLiver
+      Kidneys: OrganResomiKidneys
+  - type: HumanoidProfile
+    species: SpeciesResomi
+
+- type: entity
+  parent:
+  - AppearanceResomi
+  - BaseSpeciesMobOrganic
+  id: MobResomi
+  name: Urist McRaptor
+  suffix: Claw Command
+  components:
+  - type: Icon
+    sprite: _ClawCommand/Mobs/Species/Resomi/parts.rsi
+    state: full
+  - type: Speech
+    speechVerb: Parrot
+    speechSounds: MaleAvali
+    allowedEmotes: [ 'Chirp', 'Trill', 'Warble', 'Wurble' ]
+  - type: Vocal
+    emoteSounds: MaleResomi
+  - type: Damageable
+    damageModifierSet: ModifierSetResomi
+  - type: DamageVisuals
+    thresholds: [ 10, 30, 50, 70 ]
+    damageOverlayGroups:
+      Brute:
+        sprite: _ClawCommand/Mobs/Species/Resomi/brute_damage.rsi
+        color: "#C048C2"
+      Burn:
+        sprite: _ClawCommand/Mobs/Species/Resomi/burn_damage.rsi
+  - type: FireVisuals
+    sprite: _ClawCommand/Mobs/Species/Resomi/onfire.rsi
+    normalState: Resomi_minor_burning
+    alternateState: Resomi_burning
+  - type: CreamPied
+    sprite:
+      sprite: _ClawCommand/Mobs/Species/Resomi/creampie.rsi
+      state: creampie_resomi
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 160 # lighter build
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: AmmoniaBlood
+        Quantity: 400 # a third less blood than most species
+  - type: MeleeWeapon
+    soundHit:
+      collection: AlienClaw
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 5
+  - type: Temperature
+    specificHeat: 3600 # Claw Command - rescaled from 50 for the joule-based heat model
+  - type: TemperatureDamage
+    coldDamageThreshold: 0 # immune to the cold
+    heatDamageThreshold: 320.15 # suffers past ~47 C, dangerously close to standard atmos
+    coldDamage:
+      types:
+        Cold: 0
+    heatDamage:
+      types:
+        Heat: 3
+  - type: TemperatureSpeed
+    thresholds: # no cold slowdown
+      196: 1
+
+- type: damageModifierSet
+  id: ModifierSetResomi
+  coefficients:
+    Heat: 1.3
+    Cold: 0
+    Blunt: 1.15
+    Slash: 1.15
+    Piercing: 1.15

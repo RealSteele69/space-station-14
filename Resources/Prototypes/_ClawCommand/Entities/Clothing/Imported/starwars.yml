@@ -20,6 +20,7 @@
   suffix: "звёздные войны, империя"
   components:
   - type: Item
+    heldPrefix: off # the helmet light toggle sets this on spawn
     size: Normal
   - type: Sprite
     sprite: Imperial/StarWars/helmet2.rsi
@@ -42,6 +43,7 @@
   suffix: "звёздные войны, империя"
   components:
   - type: Item
+    heldPrefix: off # the helmet light toggle sets this on spawn
     size: Normal
   - type: Sprite
     sprite: Imperial/StarWars/helmet1.rsi

@@ -1,0 +1,47 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Roundstart Cosmic Cult. Uses the current AntagSelection API (antags: AntagCountSelector[]);
+# who can roll and what they get lives on the CosmicCultist antagSpecifier in antagonists.yml.
+- type: entity
+  parent: BaseGameRule
+  id: CosmicCult
+  components:
+  - type: CosmicCultRule
+  - type: GameRule
+    minPlayers: 15
+    delay:
+      min: 60
+      max: 120
+  - type: AntagObjectives
+    objectives:
+    - CosmicFinalityObjective
+    - CosmicMonumentObjective
+    - CosmicConversionObjective
+    - CosmicEntropyObjective
+  - type: AntagSelection
+    selectionTime: JobsAssigned
+    agentName: cosmiccult-roundend-name
+    antags:
+    - !type:LinearAntagCount
+      proto: CosmicCultist
+      range:
+        min: 2
+        max: 4
+      playerRatio: 12
+  - type: Tag
+    tags:
+    - RoundstartAntag
+
+# Secret-difficulty variant: rolled as a major antag, so being under the population floor
+# just skips it instead of cancelling the preset that rolled it.
+- type: entity
+  parent: CosmicCult
+  id: SubCosmicCult
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GameRule
+    minPlayers: 15
+    cancelPresetOnTooFewPlayers: false
+    delay:
+      min: 60
+      max: 120

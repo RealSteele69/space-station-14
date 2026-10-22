@@ -1,0 +1,67 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Cut from ported Citadel RP sprites: Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/mob/alien.dmi (originally from VOREStation/Polaris (Baystation12 lineage), imported into Citadel RP by deathride58 in f1893fa0a0 (2018); xeno sprites reworked to CM-SS13 versions by Athena148 in Citadel RP PR #6675). Converted from DMI for Claw Command. Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/obj/stacks.dmi (originally from VOREStation/Polaris (Baystation12 lineage), imported into Citadel RP by deathride58 in f1893fa0a0 (2018)). Converted from DMI for Claw Command. Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/obj/doors/material_doors.dmi (originally from VOREStation/Polaris (Baystation12 lineage), imported into Citadel RP by deathride58 in f1893fa0a0 (2018)). Converted from DMI for Claw Command. Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/obj/projectiles.dmi (originally from VOREStation/Polaris (Baystation12 lineage), imported into Citadel RP by deathride58 in f1893fa0a0 (2018)). Converted from DMI for Claw Command. Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/obj/surgery.dmi (originally from VOREStation/Polaris (Baystation12 lineage), imported into Citadel RP by deathride58 in f1893fa0a0 (2018)). Converted from DMI for Claw Command. Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/obj/clothing/masks.dmi (originally from VOREStation/Polaris (Baystation12 lineage), imported into Citadel RP by deathride58 in f1893fa0a0 (2018)). Converted from DMI for Claw Command. evolve_*: south frame of the composited caste bodies (see Mobs/AdvancedXenos/*.rsi).",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "plant_weeds"
+        },
+        {
+            "name": "resin_wall"
+        },
+        {
+            "name": "resin_membrane"
+        },
+        {
+            "name": "resin_nest"
+        },
+        {
+            "name": "resin_blob"
+        },
+        {
+            "name": "resin_door"
+        },
+        {
+            "name": "lay_egg"
+        },
+        {
+            "name": "corrosive_acid"
+        },
+        {
+            "name": "neurotoxin"
+        },
+        {
+            "name": "transfer_plasma"
+        },
+        {
+            "name": "facehugger",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "evolve"
+        },
+        {
+            "name": "evolve_drone"
+        },
+        {
+            "name": "evolve_hunter"
+        },
+        {
+            "name": "evolve_sentinel"
+        },
+        {
+            "name": "evolve_queen"
+        }
+    ]
+}

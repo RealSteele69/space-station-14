@@ -1,0 +1,87 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/mob/biomorphs/drone.dmi (CM-SS13 PvE xenomorph sprites ported into Citadel RP by Athena148 in PRs #6675 (2024-08-27) and #6787 (2024-10-06); CM-SS13 assets are CC-BY-SA-3.0). Converted from DMI for Claw Command.",
+    "size": {
+        "x": 48,
+        "y": 48
+    },
+    "states": [
+        {
+            "name": "drone_walk",
+            "directions": 4
+        },
+        {
+            "name": "drone_run",
+            "directions": 4
+        },
+        {
+            "name": "drone_animations-moving",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "drone_sleep"
+        },
+        {
+            "name": "drone_dead"
+        },
+        {
+            "name": "gibbed-a-small",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "gibbed-a-small-corpse"
+        }
+    ]
+}

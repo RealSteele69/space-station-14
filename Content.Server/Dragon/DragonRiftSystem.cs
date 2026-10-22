@@ -9,7 +9,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Serialization.Manager;
 using System.Numerics;
-using Content.Shared.Damage.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
@@ -62,7 +61,7 @@ public sealed partial class DragonRiftSystem : EntitySystem
                     _dragon.RiftCharged(comp.Dragon.Value);
 
                 comp.Accumulator = comp.MaxAccumulator;
-                RemComp<DamageableComponent>(uid);
+                // Finished rifts stay damageable so the crew can still close them.
                 comp.State = DragonRiftState.Finished;
                 Dirty(uid, comp);
             }
@@ -119,7 +118,18 @@ public sealed partial class DragonRiftSystem : EntitySystem
 
     private void OnShutdown(EntityUid uid, DragonRiftComponent comp, ComponentShutdown args)
     {
-        if (!TryComp<DragonComponent>(comp.Dragon, out var dragon) || dragon.Weakened)
+        if (!TryComp<DragonComponent>(comp.Dragon, out var dragon))
+            return;
+
+        // Rifts removed by DeleteRifts (dragon died) are already cleared from the list.
+        if (!dragon.Rifts.Remove(uid))
+            return;
+
+        // A charged rift that gets destroyed no longer counts towards the objective.
+        if (comp.State == DragonRiftState.Finished)
+            _dragon.RiftLost(comp.Dragon.Value, dragon);
+
+        if (dragon.Weakened)
             return;
 
         _dragon.RiftDestroyed(comp.Dragon.Value, dragon);

@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "https://github.com/Baystation12/Baystation12/tree/17e84546562b97d775cb26790a08e6d87e7f8077. Ported from Goob-Station (https://github.com/Goob-Station/Goob-Station) at commit da08589c83cc4f503c1c8450767e54f85157b951",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "tablet"
+        },
+        {
+            "name": "supermatterconsole",
+            "delays": [
+                [
+                    0.3,
+                    0.3
+                ]
+            ]
+        }
+    ]
+}

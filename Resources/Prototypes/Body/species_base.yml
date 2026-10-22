@@ -161,6 +161,7 @@
     - AnomalyHost
   - type: MovedByPressure # Required for integrated hardsuit thrusters to push the wearer in zero-g
     cutoffTime: 1.0
+  - type: CosmicCenserTarget # Claw Command - Cosmic Cult
 
 - type: entity
   abstract: true

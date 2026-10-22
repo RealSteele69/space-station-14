@@ -49,10 +49,7 @@
     actions:
     - ActionHierophantClubTileMovement
     - ActionHierophantClubBlink
-  - type: ItemActionGrant
-    actions:
-    - ActionHierophantClubTileMovement
-    - ActionHierophantClubBlink
+  - type: ItemActionGrant # grants the ActionGrant list above to the holder
   - type: HeldGrant
     components:
     - type: MegafaunaBlink

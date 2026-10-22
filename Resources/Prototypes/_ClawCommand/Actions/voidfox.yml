@@ -14,9 +14,11 @@
   components:
   - type: Action
     useDelay: 1
-    icon:
-      sprite: Interface/Actions/actions_mecha.rsi
-      state: mech_eject
+  - type: Sprite
+    sprite: Interface/Actions/actions_mecha.rsi
+    layers:
+    - state: mech_eject
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VoidfoxIgniteEvent
 
@@ -28,8 +30,10 @@
   components:
   - type: Action
     useDelay: 5
-    icon:
-      sprite: Interface/Actions/actions_mecha.rsi
-      state: mech_view_stats
+  - type: Sprite
+    sprite: Interface/Actions/actions_mecha.rsi
+    layers:
+    - state: mech_view_stats
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VoidfoxMassScanEvent

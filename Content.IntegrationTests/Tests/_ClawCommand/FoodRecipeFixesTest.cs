@@ -49,7 +49,7 @@ public sealed class FoodRecipeFixesTest : GameTest
     {
         var pair = Pair;
         var server = pair.Server;
-        var recipeManager = server.ResolveDependency<RecipeManager>();
+        var recipeManager = server.System<RecipeManager>();
 
         await server.WaitAssertion(() =>
         {

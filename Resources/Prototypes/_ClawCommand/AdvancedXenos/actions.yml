@@ -1,0 +1,420 @@
+# Claw Command - xenomorph verbs as actions. Names keep the "(cost)" plasma suffix.
+
+- type: entity
+  abstract: true
+  parent: BaseAction
+  id: BaseActionAdvXeno
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    checkCanInteract: false
+
+# ----------------------------------------------------------------------------- building
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoPlantWeeds
+  name: Plant Weeds (50)
+  description: Plant a weed node on your tile. Weeds spread around it, heal the hive and refill plasma.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: plant_weeds
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:AdvXenoPlantWeedsActionEvent
+
+- type: entity
+  abstract: true
+  parent: BaseActionAdvXeno
+  id: BaseActionAdvXenoResin
+  components:
+  - type: TargetAction
+    range: 1.5
+    checkCanAccess: true
+
+- type: entity
+  parent: BaseActionAdvXenoResin
+  id: ActionAdvXenoResinWall
+  name: Secrete Resin Wall (75)
+  description: Vomit up thick purple resin and shape it into a wall next to you.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: resin_wall
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:AdvXenoSecreteResinActionEvent
+      prototype: AdvXenoResinWall
+      shapeName: adv-xeno-resin-wall
+
+- type: entity
+  parent: BaseActionAdvXenoResin
+  id: ActionAdvXenoResinMembrane
+  name: Secrete Resin Membrane (75)
+  description: Shape a resin membrane, thin enough to let light through.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: resin_membrane
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:AdvXenoSecreteResinActionEvent
+      prototype: AdvXenoResinMembrane
+      shapeName: adv-xeno-resin-membrane
+
+- type: entity
+  parent: BaseActionAdvXenoResin
+  id: ActionAdvXenoResinDoor
+  name: Secrete Resin Door (75)
+  description: Shape a resin door that only opens for the hive.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: resin_door
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:AdvXenoSecreteResinActionEvent
+      prototype: AdvXenoResinDoor
+      shapeName: adv-xeno-resin-door
+
+- type: entity
+  parent: BaseActionAdvXenoResin
+  id: ActionAdvXenoResinNest
+  name: Secrete Resin Nest (75)
+  description: Shape a nest to secure hosts in.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: resin_nest
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:AdvXenoSecreteResinActionEvent
+      prototype: AdvXenoNest
+      shapeName: adv-xeno-resin-nest
+
+- type: entity
+  parent: BaseActionAdvXenoResin
+  id: ActionAdvXenoResinBlob
+  name: Secrete Resin Blob (75)
+  description: Vomit up a blob of resin that others can build with.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: resin_blob
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:AdvXenoSecreteResinActionEvent
+      prototype: AdvXenoResinBlob1
+      shapeName: adv-xeno-resin-blob
+      solid: false
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoLayEgg
+  name: Lay Egg (75)
+  description: Lay an egg to produce huggers to impregnate prey with.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: lay_egg
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:AdvXenoLayEggActionEvent
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoCorrosiveAcid
+  name: Corrosive Acid (200)
+  description: Drench an object in acid, destroying it over time.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: corrosive_acid
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:AdvXenoCorrosiveAcidActionEvent
+
+# ----------------------------------------------------------------------------- spit
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoNeurotoxin
+  name: Neurotoxic Spit (20)
+  description: Spit neurotoxin, which paralyzes the target for a short time if they are not wearing protective gear. Stays readied until you stop.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    checkCanInteract: false
+    useDelay: 1
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: neurotoxin
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 60
+    checkCanAccess: false
+    repeat: true
+  - type: WorldTargetAction
+    event: !type:AdvXenoSpitActionEvent
+      projectile: AdvXenoSpitNeurotoxin
+      spitName: adv-xeno-spit-neurotoxin
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoAcidSpit
+  name: Acid Spit (20)
+  description: Spit acid, which burns the target if they are not wearing protective gear. Stays readied until you stop.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    checkCanInteract: false
+    useDelay: 1
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: neurotoxin
+      color: "#a4ff3a"
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 60
+    checkCanAccess: false
+    repeat: true
+  - type: WorldTargetAction
+    event: !type:AdvXenoSpitActionEvent
+      projectile: AdvXenoSpitAcid
+      spitName: adv-xeno-spit-acid
+
+# ----------------------------------------------------------------------------- plasma / evolution
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoTransferPlasma
+  name: Transfer Plasma
+  description: Transfer plasma to another alien.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: transfer_plasma
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - AdvXenoPlasma
+    event: !type:AdvXenoTransferPlasmaActionEvent
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoEvolveQueen
+  name: Evolve (500)
+  description: Produce an internal egg sac capable of spawning children. Only one queen can exist at a time.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: evolve_queen
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:AdvXenoEvolveActionEvent
+      into: MobAdvXenoQueen
+      cost: 500
+      uniqueQueen: true
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoEvolveHunter
+  name: "Evolve: Hunter"
+  description: Hunters are strong and agile, able to hunt away from the hive and rapidly move through ventilation shafts. Hunters generate plasma slowly and have low reserves.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: evolve_hunter
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:AdvXenoEvolveActionEvent
+      into: MobAdvXenoHunter
+      requiresGrowth: true
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoEvolveSentinel
+  name: "Evolve: Sentinel"
+  description: Sentinels are tasked with protecting the hive and are deadly up close and at a range. They are not as physically imposing nor fast as the hunters.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: evolve_sentinel
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:AdvXenoEvolveActionEvent
+      into: MobAdvXenoSentinel
+      requiresGrowth: true
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoEvolveDrone
+  name: "Evolve: Drone"
+  description: Drones are the working class, offering the largest plasma storage and generation. They are the only caste which may evolve again, turning into the dreaded alien queen.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Interface/AdvancedXenos/actions.rsi
+    layers:
+    - state: evolve_drone
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:AdvXenoEvolveActionEvent
+      into: MobAdvXenoDrone
+      requiresGrowth: true
+
+# ----------------------------------------------------------------------------- hunting
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoLeap
+  name: Leap
+  description: Leap at a target and grab them aggressively.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    checkCanInteract: false
+    useDelay: 7.5
+  - type: Sprite
+    sprite: Interface/Actions/jump.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 6
+    checkCanAccess: true
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:AdvXenoLeapActionEvent
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoGut
+  name: Gut
+  description: While grabbing someone aggressively, rip their guts out or tear them apart.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    checkCanInteract: false
+    useDelay: 5
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/harm.png
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:AdvXenoGutActionEvent
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoTackle
+  name: Tackle
+  description: Tackle someone down.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    checkCanInteract: false
+    useDelay: 5
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/disarm.png
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:AdvXenoTackleActionEvent
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoPsychicWhisper
+  name: Psychic Whisper
+  description: Whisper silently to someone over a distance.
+  components:
+  - type: Sprite
+    sprite: Interface/Actions/psionics.rsi
+    layers:
+    - state: assay
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+    checkCanAccess: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:AdvXenoPsychicWhisperActionEvent
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoDevour
+  name: Devour
+  description: Swallow whoever you hold in an aggressive grab. They stay inside, alive, until you regurgitate them or die.
+  components:
+  - type: Sprite
+    sprite: Interface/Actions/devour.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:AdvXenoDevourActionEvent
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoRegurgitate
+  name: Regurgitate
+  description: Empties the contents of your stomach.
+  components:
+  - type: Sprite
+    sprite: Interface/Actions/devour.rsi
+    layers:
+    - state: icon-on
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:AdvXenoRegurgitateActionEvent
+
+- type: entity
+  parent: BaseActionAdvXeno
+  id: ActionAdvXenoHide
+  name: Hide
+  description: Slink down under tables and clutter.
+  components:
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/eyeclose.png
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:AdvXenoHideActionEvent

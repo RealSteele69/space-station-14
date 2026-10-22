@@ -1,0 +1,257 @@
+# Claw Command - blob minions and the blob's camera. All tuned down from the original (health, speed, damage).
+
+# Spore. Comes out of factories, fights, and climbs onto corpses to raise them as blob zombies.
+- type: entity
+  id: MobBlobPod
+  name: blob spore
+  description: A small, pulsing chunk of blob. It hunts for corpses to climb onto.
+  parent: SimpleSpaceMobBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ZombieImmune
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: SmokeOnTrigger
+    duration: 5
+    spreadAmount: 15
+  - type: Damageable
+    damageModifierSet: BlobMob
+  - type: Injurable
+    damageContainer: Blob
+  - type: Clothing
+    quickEquip: false
+    sprite: _ClawCommand/Blob/Mobs/blob_mobs.rsi
+    equippedPrefix: blobPod
+    slots:
+    - HEAD
+  - type: Tag
+    tags:
+    - HidesHair
+    - BlobMob
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: BlobPod
+  - type: DoAfter
+  - type: Physics
+    bodyType: KinematicController
+  - type: InteractionOutline
+  - type: Actions
+  - type: Alerts
+  - type: InputMover
+  - type: Examiner
+  - type: MobMover
+  - type: HTN
+    rootTask:
+      task: BlobPodCompound
+  - type: BlobMob
+  - type: CombatMode
+  - type: NpcFactionMember
+    factions:
+    - Blob
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    angle: 0
+    animation: WeaponArcSmash
+    damage:
+      types:
+        Blunt: 6
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: blobpod
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        density: 10
+        mask:
+        - FlyingBlobMobMask
+        layer:
+        - FlyingBlobMobLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      40: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 3.5
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _ClawCommand/Blob/Mobs/blob_mobs.rsi
+    state: blobpod
+  - type: GuideHelp
+    guides:
+    - Blob
+
+# Blobbernaut. One per factory, a ghost role, and it wastes away off the blob.
+- type: entity
+  id: MobBlobBlobbernaut
+  name: blobbernaut
+  description: A hulking guardian of blob. It weakens quickly when it strays from the blob.
+  parent: SimpleSpaceMobBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ZombieImmune
+  - type: Damageable
+    damageModifierSet: BlobBlobbernaut
+  - type: Injurable
+    damageContainer: Blob
+  - type: Tag
+    tags:
+    - Blobbernaut
+    - BlobMob
+  - type: GhostRole
+    name: ghost-role-information-blobbernaut-name
+    description: ghost-role-information-blobbernaut-description
+    rules: ghost-role-information-blobbernaut-rules
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+    raffle:
+      settings: short
+  - type: GhostTakeoverAvailable
+  - type: Blobbernaut
+  - type: Physics
+  - type: InputMover
+  - type: MobMover
+  - type: BlobMob
+  - type: BlobSpeak
+  - type: Speech
+    speechSounds: Slime
+  - type: CombatMode
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: NpcFactionMember
+    factions:
+    - Blob
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    angle: 0
+    animation: WeaponArcSmash
+    damage:
+      types:
+        Blunt: 10
+        Structural: 40
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: blobbernaut
+      Dead:
+        Base: blobbernaut_dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 200
+        mask:
+        - BlobMobMask
+        layer:
+        - BlobMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.25
+    baseSprintSpeed: 2.75
+  - type: Sprite
+    sprite: _ClawCommand/Blob/Mobs/blob_mobs.rsi
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: blobbernaut
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: nautdamage
+      shader: unshaded
+  - type: NightVision
+  - type: GuideHelp
+    guides:
+    - Blob
+
+# The blob player. A camera that can only drift a few tiles away from blob tiles; it clicks to grow and attack.
+- type: entity
+  id: MobObserverBlob
+  name: blob overmind
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: UserInterface
+    interfaces:
+      enum.BlobChemSwapUiKey.Key:
+        type: BlobChemSwapBoundUserInterface
+  - type: Actions
+  - type: Alerts
+  - type: Hands
+    showInHands: false
+  - type: BlobObserver
+  - type: BlobSpeak
+    radioOnly: true
+  - type: Speech
+    speechVerb: Slime
+  - type: Visibility
+    layer: 2 # Ghost visflag
+  - type: ContentEye
+  - type: MindContainer
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: KinematicController
+    fixedRotation: true
+  - type: GhostRole
+    name: ghost-role-information-blob-name
+    description: ghost-role-information-blob-description
+    rules: ghost-role-information-blob-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+  - type: GhostTakeoverAvailable
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 15
+  - type: InputMover
+  - type: Appearance
+  - type: Eye
+  - type: Input
+    context: "ghost"
+  - type: Examiner
+    skipChecks: true
+  - type: Sprite
+    sprite: _ClawCommand/Blob/Mobs/blob_mobs.rsi
+    color: "#fc8403"
+    state: marker
+    noRot: true
+    drawdepth: Ghosts
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 8
+    baseWalkSpeed: 15
+  - type: MovementIgnoreGravity
+  - type: Tag
+    tags:
+    - BypassInteractionRangeChecks

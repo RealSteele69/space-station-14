@@ -2,6 +2,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Cuffs;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Humanoid;
+using Content.Shared.Inventory;
 using Robust.Client.GameObjects;
 using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
@@ -57,6 +58,18 @@ public sealed partial class CuffableSystem : SharedCuffableSystem
         else
         {
             _sprite.LayerSetRsiState((uid, sprite), HumanoidVisualLayers.Handcuffs, cuffState.IconState);
+        }
+
+        // Claw Command - use a species-fitted cuff overlay ("<state>-<speciesId>") when the cuff RSI has one,
+        // the same convention clothing uses.
+        if (cuffState.IconState != null
+            && TryComp<InventoryComponent>(uid, out var inventory)
+            && inventory.SpeciesId != null
+            && _sprite.TryGetLayer((uid, sprite), HumanoidVisualLayers.Handcuffs, out var layer, false)
+            && layer.ActualRsi is { } rsi
+            && rsi.TryGetState($"{cuffState.IconState}-{inventory.SpeciesId}", out _))
+        {
+            _sprite.LayerSetRsiState((uid, sprite), HumanoidVisualLayers.Handcuffs, $"{cuffState.IconState}-{inventory.SpeciesId}");
         }
     }
 }

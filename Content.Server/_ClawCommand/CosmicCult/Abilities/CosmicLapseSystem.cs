@@ -1,0 +1,65 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Shared._ClawCommand.Religion;
+using Content.Goobstation.Shared.Bible;
+using Content.Goobstation.Shared.Religion; // Bible
+using Content.Server.Polymorph.Systems;
+using Content.Server.Popups;
+using Content.Shared._ClawCommand.CosmicCult;
+using Content.Shared._ClawCommand.CosmicCult.Components;
+using Content.Shared._ClawCommand.CosmicCult.Components.Examine;
+using Content.Shared.Humanoid;
+using Content.Shared.IdentityManagement;
+using Content.Shared.Polymorph;
+using Robust.Shared.Prototypes;
+
+namespace Content.Server._ClawCommand.CosmicCult.Abilities;
+
+public sealed partial class CosmicLapseSystem : EntitySystem
+{
+    [Dependency] private CosmicCultSystem _cult = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private PolymorphSystem _polymorph = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private DivineInterventionSystem _divineIntervention = default!;
+
+    private static readonly ProtoId<PolymorphPrototype> HumanLapse = "CosmicLapseMobHuman";
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<CosmicCultComponent, EventCosmicLapse>(OnCosmicLapse);
+    }
+
+    private void OnCosmicLapse(Entity<CosmicCultComponent> uid, ref EventCosmicLapse action)
+    {
+        if (action.Handled
+            || HasComp<CosmicBlankComponent>(action.Target)
+            || HasComp<CleanseCultComponent>(action.Target))
+        {
+            _popup.PopupEntity(Loc.GetString("cosmicability-generic-fail"), uid, uid);
+            return;
+        }
+
+        if (_divineIntervention.ShouldDeny(action.Target))
+            return;
+
+        action.Handled = true;
+        var tgtpos = Transform(action.Target).Coordinates;
+        Spawn(uid.Comp.LapseVFX, tgtpos);
+        _popup.PopupEntity(Loc.GetString("cosmicability-lapse-success",
+            ("target", Identity.Entity(action.Target, EntityManager))),
+            uid,
+            uid);
+        var species = Comp<HumanoidProfileComponent>(action.Target).Species;
+        var polymorphId = "CosmicLapseMob" + species;
+
+        if (_prototype.HasIndex<PolymorphPrototype>(polymorphId))
+            _polymorph.PolymorphEntity(action.Target, polymorphId);
+        else
+            _polymorph.PolymorphEntity(action.Target, HumanLapse);
+
+        _cult.MalignEcho(uid);
+    }
+}

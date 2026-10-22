@@ -134,6 +134,7 @@
   id: CCHostileMobHeavyTable
   table: !type:AllSelector
     children:
+    - id: BingleSpawn
     - id: KingRatMigration
     - id: RevenantSpawn
     - id: SlimesSpawnHorde
@@ -149,6 +150,7 @@
   table: !type:AllSelector
     children:
     - id: DragonSpawn
+    - id: ColossusSpawn # Claw Command - Cosmic Cult colossus
 
 # Syndicate infiltration. The house style for Extended Irregular: a person with an
 # agenda, not a mob with a hitbox.
@@ -224,6 +226,7 @@
     - id: LoneOpsSpawn
     - id: WizardSpawn
     - id: ZombieOutbreak
+    - id: BlobSpawn # Claw Command - blob (20+ players, once a round)
 
 # ---------------------------------------------------------------------------
 # Extended Irregular pools

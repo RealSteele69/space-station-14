@@ -37,17 +37,21 @@
   markers:
   - RandomTendrilLavaland
   - RandomMobLavaland
-  - OreIron
-  - OreCoal
-  - OreQuartz
-  - OreGold
-  - OreSilver
-  - OrePlasma
-  - OreUranium
-  # OreBananium dropped: fork has no biomeMarkerLayer for it
-  - OreArtifactFragment
-  - OreDiamond
-  # OreBSCrystal dropped: fork has no biomeMarkerLayer for it
+  - RandomLightMobLavaland
+  - RandomEliteLavaland
+  - RandomMegafaunaLavaland
+  # _ClawCommand: Lavaland* ore layers (Procedural/biome_ore_templates.yml) - the shared ones have no basalt veins.
+  - LavalandOreIron
+  - LavalandOreCoal
+  - LavalandOreQuartz
+  - LavalandOreGold
+  - LavalandOreSilver
+  - LavalandOrePlasma
+  - LavalandOreUranium
+  - OreBananium
+  - LavalandOreArtifactFragment
+  - LavalandOreDiamond
+  - OreBSCrystal
   - OreGibtonite
   addComponents:
   - type: FTLDestination

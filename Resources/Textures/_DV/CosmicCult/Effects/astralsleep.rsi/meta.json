@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Take from https://github.com/Skyrat-SS13/Skyrat-tg/blob/92377cd6203bc4d93a6e289d7b857e19bb6cf338/modular_skyrat/modules/indicators/icons/ssd_indicator.dmi and changed by AftrLite(github)",
+    "copyright": "Take from https://github.com/Skyrat-SS13/Skyrat-tg/blob/92377cd6203bc4d93a6e289d7b857e19bb6cf338/modular_skyrat/modules/indicators/icons/ssd_indicator.dmi and changed by AftrLite(github) Ported via Goob-Station (https://github.com/Goob-Station/Goob-Station, master snapshot, commit da08589c83cc4f503c1c8450767e54f85157b951).",
     "size": {
         "x": 8,
         "y": 8

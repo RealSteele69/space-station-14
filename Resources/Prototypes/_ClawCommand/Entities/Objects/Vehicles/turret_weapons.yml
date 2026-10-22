@@ -1,0 +1,199 @@
+# Claw Command - turret guns for the RMC-14 combat vehicle port.
+# A gunner who mans a turret seat (VehicleControlsComponent.turretWeapons) gets one of these put in their
+# hand; it can't be dropped and is deleted when they let go or leave. It fires through the normal gun
+# system from inside the vehicle. Ammo recharges, so there's nothing to reload or refill.
+# Stats are loosely based on the RMC hardpoints, using our own projectiles; RMC's vehicle weapon sounds
+# have no attribution, so stock sounds are used. Icons are RMC/CMSS13 hardpoint sprites (see meta.json).
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: BaseVehicleTurretGun
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Unremoveable
+    deleteOnDrop: true
+  - type: VehicleTurretWeapon
+  - type: Gun
+    minAngle: 2
+    maxAngle: 8
+    angleIncrease: 1
+    angleDecay: 8
+    fireRate: 4
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/lmg.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletRifle
+    capacity: 60
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.25
+  - type: AmmoCounter
+
+# --- APC ---------------------------------------------------------------------
+
+- type: entity
+  parent: BaseVehicleTurretGun
+  id: VehicleTurretAPCDualCannon
+  name: APC dual cannon
+  description: A pair of linked cannons on the APC's main turret.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/Hardpoints/apc.rsi
+    state: dual_cannon
+  - type: Gun
+    fireRate: 2
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/ship_duster.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletHeavyRifle
+    capacity: 40
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.5
+
+- type: entity
+  parent: BaseVehicleTurretGun
+  id: VehicleTurretAPCFrontCannon
+  name: APC frontal cannon
+  description: A hull-mounted cannon covering the APC's front arc.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/Hardpoints/apc.rsi
+    state: front_cannon
+  - type: Gun
+    fireRate: 3.3
+  - type: BasicEntityAmmoProvider
+    proto: BulletLightRifle
+    capacity: 100
+
+- type: entity
+  parent: BaseVehicleTurretGun
+  id: VehicleTurretAPCPortGun
+  name: APC port gun
+  description: A firing-port machine gun for passengers to shoot out of the APC.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/Hardpoints/apc.rsi
+    state: m56_FPW
+  - type: Gun
+    fireRate: 5
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/smg.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletRifle
+    capacity: 100
+
+- type: entity
+  parent: BaseVehicleTurretGun
+  id: VehicleTurretSPPAPCMinigun
+  name: SPP APC minigun
+  description: A rotary gun on the SPP APC's turret.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/Hardpoints/spp_apc.rsi
+    state: apc_minigun
+  - type: Gun
+    fireRate: 8
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/minigun.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletLightRifle
+    capacity: 150
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.1
+
+# --- Tanks -------------------------------------------------------------------
+
+- type: entity
+  parent: BaseVehicleTurretGun
+  id: VehicleTurretTankCannon
+  name: LTB tank cannon
+  description: The tank's main gun. Fires a high-explosive shell.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/Hardpoints/tank.rsi
+    state: ltb_cannon
+  - type: Gun
+    fireRate: 0.3
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletWeakRocket
+    capacity: 1
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 4
+
+- type: entity
+  parent: BaseVehicleTurretGun
+  id: VehicleTurretTankCupola
+  name: M56 cupola
+  description: A roof-mounted machine gun for the tank's commander.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/Hardpoints/tank.rsi
+    state: m56_cupola
+  - type: Gun
+    fireRate: 3.3
+
+- type: entity
+  parent: BaseVehicleTurretGun
+  id: VehicleTurretSPPTankRotary
+  name: P-17702 rotary cannon
+  description: The SPP tank's main gun, a heavy rotary cannon.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/Hardpoints/spp_tank.rsi
+    state: p17702
+  - type: Gun
+    fireRate: 6
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/minigun.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletHeavyRifle
+    capacity: 120
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.15
+
+- type: entity
+  parent: BaseVehicleTurretGun
+  id: VehicleTurretSPPCupola
+  name: T60P3M cupola
+  description: A roof-mounted machine gun.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/Hardpoints/spp_tank.rsi
+    state: t60p3m
+  - type: Gun
+    fireRate: 3.3
+
+# --- Humvee / van ------------------------------------------------------------
+
+- type: entity
+  parent: BaseVehicleTurretGun
+  id: VehicleTurretHumveeCannon
+  name: humvee cannon
+  description: A rotary cannon on the humvee's roof turret.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/Hardpoints/humvee.rsi
+    state: humveecannon
+  - type: Gun
+    fireRate: 5
+  - type: BasicEntityAmmoProvider
+    proto: BulletRifle
+    capacity: 100
+
+- type: entity
+  parent: VehicleTurretSPPCupola
+  id: VehicleTurretSPPVanCannon
+  name: SPP van cannon
+  description: A roof-mounted machine gun on the SPP van.
+  components:
+  - type: Gun
+    fireRate: 6

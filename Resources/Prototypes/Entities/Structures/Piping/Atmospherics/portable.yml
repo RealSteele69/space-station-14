@@ -81,6 +81,9 @@
   - type: GuideHelp
     guides:
     - PortableScrubber
+  - type: CosmicTransmutable # Claw Command - Cosmic Cult
+    transmutesTo: CosmicVacuousSpire
+    requiredGlyphType: CosmicGlyphCessation
 
 - type: entity
   id: SpaceHeater

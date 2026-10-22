@@ -205,8 +205,9 @@
   - type: StorageFill
     contents:
     - id: WeaponLauncherHydra
+    # One full reload. The launcher's 7x4 footprint leaves room for exactly six beside it.
     - id: GrenadeCleanade
-      amount: 8
+      amount: 6
 
 - type: entity
   id: ClothingBackpackMaidBackbow
@@ -312,7 +313,7 @@
   - type: Item
     size: Large
   - type: Storage
-    maxItemSize: Huge
+    maxItemSize: Large # Claw Command - can't hold anything bigger than itself
     grid:
     - "0,0,4,3"
 
@@ -1000,9 +1001,12 @@
     sprite: Imperial/Clothing/OuterClothing/Coats/noirdet.rsi
   # Claw Command - kept: a pipe is flavour, not an advantage. The coat otherwise matches our own
   # ClothingOuterCoatDetective exactly, which is where its storage and armour come from.
-  - type: StorageFill
-    contents:
-    - id: SmokingPipeFilledTobacco
+  # Overrides the parent's fill so the engraved lighter (a steal objective) isn't duplicated here.
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: SmokingPipeFilledTobacco
   - type: Armor
     modifiers:
       coefficients:
@@ -1602,6 +1606,7 @@
   description: "A standard helmet from a bio-engineer's spacesuit."
   components:
   - type: Item
+    heldPrefix: off # the light toggle sets this on spawn
     size: Normal
   - type: Sprite
     sprite: Imperial/Other/Sona/EngSuitTwo.rsi
@@ -2146,3 +2151,87 @@
     tags:
     - ClothMade
 
+# Claw Command - ERT "Alternative" helmets, restored after the 2026-09 merge dropped them. The RSI uses the
+# legacy icon-flash + off-/on-equipped-HELMET states, hence the legacy light mixin listed first.
+
+- type: entity
+  id: ClothingHeadHelmetHardsuitERTEngineerAlternative
+  parent: [ ClawHardsuitHelmetLegacyLightVisuals, BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie ]
+  name: "ERT engineer hardsuit helmet"
+  components:
+  - type: Sprite
+    sprite: Imperial/Other/ErtCall/Hardsuits/Head/ertleader.rsi
+  - type: Clothing
+    sprite: Imperial/Other/ErtCall/Hardsuits/Head/ertleader.rsi
+  - type: PointLight
+    color: "#f4ffad"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+- type: entity
+  id: ClothingHeadHelmetHardsuitERTJanitorAlternative
+  parent: [ ClawHardsuitHelmetLegacyLightVisuals, BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie ]
+  name: "ERT janitor hardsuit helmet"
+  components:
+  - type: Sprite
+    sprite: Imperial/Other/ErtCall/Hardsuits/Head/ertleader.rsi
+  - type: Clothing
+    sprite: Imperial/Other/ErtCall/Hardsuits/Head/ertleader.rsi
+  - type: PointLight
+    color: "#cbadff"
+
+- type: entity
+  id: ClothingHeadHelmetHardsuitERTLeaderAlternative
+  parent: [ ClawHardsuitHelmetLegacyLightVisuals, BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndieCommander ]
+  name: "ERT leader hardsuit helmet"
+  description: "A special hardsuit helmet worn by members of an emergency response team."
+  components:
+  - type: Sprite
+    sprite: Imperial/Other/ErtCall/Hardsuits/Head/ertleader.rsi
+  - type: Clothing
+    sprite: Imperial/Other/ErtCall/Hardsuits/Head/ertleader.rsi
+  - type: PointLight
+    color: "#addbff"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+- type: entity
+  id: ClothingHeadHelmetHardsuitERTMedicalAlternative
+  parent: [ ClawHardsuitHelmetLegacyLightVisuals, BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndieElite ]
+  name: "ERT medic hardsuit helmet"
+  components:
+  - type: Sprite
+    sprite: Imperial/Other/ErtCall/Hardsuits/Head/ertleader.rsi
+  - type: Clothing
+    sprite: Imperial/Other/ErtCall/Hardsuits/Head/ertleader.rsi
+  - type: PointLight
+    color: "#adffec"
+
+- type: entity
+  id: ClothingHeadHelmetHardsuitERTSecurityAlternative
+  parent: [ ClawHardsuitHelmetLegacyLightVisuals, BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie ]
+  name: "ERT security hardsuit helmet"
+  components:
+  - type: Sprite
+    sprite: Imperial/Other/ErtCall/Hardsuits/Head/ertleader.rsi
+  - type: Clothing
+    sprite: Imperial/Other/ErtCall/Hardsuits/Head/ertleader.rsi
+  - type: PointLight
+    color: "#ffadc6"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9

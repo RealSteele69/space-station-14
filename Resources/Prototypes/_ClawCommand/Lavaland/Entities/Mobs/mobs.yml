@@ -21,7 +21,7 @@
         - MobLayer
   - type: NpcFactionMember
     factions:
-    - SimpleHostile
+    - Lavafauna
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
@@ -62,6 +62,7 @@
     damageModifierSet: Hierophant
   - type: Injurable
     damageContainer: Inorganic
+  - type: Fauna
   - type: CombatPower # Goobstation
     factor: 4 # times more dangerous than a crew-member
 
@@ -88,7 +89,7 @@
         - MobLayer
   - type: NpcFactionMember
     factions:
-    - SimpleHostile
+    - Lavafauna
   - type: HTN
     rootTask:
       task: SimpleRangedHostileCompound
@@ -145,6 +146,7 @@
     damageModifierSet: Hierophant
   - type: Injurable
     damageContainer: Inorganic
+  - type: Fauna
   - type: CombatPower # Goobstation
     factor: 4 # times more dangerous than a crew-member
 
@@ -171,7 +173,7 @@
         - MobLayer
   - type: NpcFactionMember
     factions:
-    - SimpleHostile
+    - Lavafauna
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
@@ -212,5 +214,6 @@
     damageModifierSet: Hierophant
   - type: Injurable
     damageContainer: Inorganic
+  - type: Fauna
   - type: CombatPower # Goobstation
     factor: 4 # times more dangerous than a crew-member

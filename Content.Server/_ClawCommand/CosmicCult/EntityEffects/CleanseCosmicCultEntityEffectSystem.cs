@@ -1,0 +1,19 @@
+using Content.Shared._ClawCommand.CosmicCult.EntityEffects;
+using Content.Shared._ClawCommand.CosmicCult.Components;
+using Content.Shared.EntityEffects;
+
+namespace Content.Server._ClawCommand.CosmicCult.EntityEffects;
+
+/// <summary>
+///     Supresses pain based on how much of the pain suppressing reagent is in the system.
+/// </summary>
+/// <inheritdoc cref="EntityEffectSystem{T, TEffect}"/>
+public sealed partial class CleanseCosmicCultEntityEffectSystem : EntityEffectSystem<TransformComponent, CleanseCosmicCult>
+{
+    [Dependency] private EntityManager _ent = default!;
+    protected override void Effect(Entity<TransformComponent> entity, ref EntityEffectEvent<CleanseCosmicCult> args)
+    {
+        if (_ent.HasComponent<CosmicCultComponent>(entity))
+            _ent.EnsureComponent<CleanseCultComponent>(entity); // We just slap them with the component and let the Deconversion system handle the rest.
+    }
+}

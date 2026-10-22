@@ -1,0 +1,251 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/mob/alien.dmi (originally from VOREStation/Polaris (Baystation12 lineage), imported into Citadel RP by deathride58 in f1893fa0a0 (2018); xeno sprites reworked to CM-SS13 versions by Athena148 in Citadel RP PR #6675). Converted from DMI for Claw Command.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "larva0",
+            "directions": 4
+        },
+        {
+            "name": "larva0-moving",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "larva0_sleep",
+            "delays": [
+                [
+                    1.0,
+                    1.0
+                ]
+            ]
+        },
+        {
+            "name": "larva0_stun",
+            "directions": 4,
+            "delays": [
+                [
+                    0.7,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.7
+                ]
+            ]
+        },
+        {
+            "name": "larva0_cuff",
+            "directions": 4
+        },
+        {
+            "name": "larva0_dead"
+        },
+        {
+            "name": "larva1",
+            "directions": 4
+        },
+        {
+            "name": "larva1-moving",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "larva1_sleep",
+            "delays": [
+                [
+                    1.0,
+                    1.0
+                ]
+            ]
+        },
+        {
+            "name": "larva1_stun",
+            "directions": 4,
+            "delays": [
+                [
+                    0.7,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.7
+                ]
+            ]
+        },
+        {
+            "name": "larva1_cuff",
+            "directions": 4
+        },
+        {
+            "name": "larva1_dead"
+        },
+        {
+            "name": "larva2",
+            "directions": 4
+        },
+        {
+            "name": "larva2-moving",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "larva2_sleep",
+            "delays": [
+                [
+                    1.0,
+                    1.0
+                ]
+            ]
+        },
+        {
+            "name": "larva2_stun",
+            "directions": 4,
+            "delays": [
+                [
+                    0.7,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.7
+                ]
+            ]
+        },
+        {
+            "name": "larva2_cuff",
+            "directions": 4
+        },
+        {
+            "name": "larva2_dead"
+        }
+    ]
+}

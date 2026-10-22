@@ -1,0 +1,277 @@
+# _ClawCommand: Synth organs.
+# External organs draw from the synth body sheet; internals use the synth organ sprites and the
+# MetabolizerSynth type. The power cell is an organ of its own (category PowerCell) that
+# SynthBatterySystem looks up through the body.
+
+- type: organCategory
+  id: PowerCell
+
+- type: entity
+  parent: [ OrganBase, SolutionFood, SolutionTiny ]
+  id: OrganSynth
+  abstract: true
+  suffix: Claw Command, Synth
+  components:
+  - type: FlavorProfile
+    flavors:
+    - metallic
+  - type: Edible
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Iron
+        Quantity: 5
+
+- type: entity
+  id: OrganSynthMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ MetabolizerSynth ]
+
+- type: entity
+  parent: OrganSynth
+  id: OrganSynthInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/Species/Synth/organs.rsi
+  - type: Item
+    size: Small
+    heldPrefix: null
+
+- type: entity
+  id: OrganSynthVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _ClawCommand/Mobs/Species/Synth/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: MarkingsSynth
+
+- type: entity
+  parent: [ OrganSynth, OrganSynthVisual ]
+  id: OrganSynthExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/Species/Synth/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorso, OrganSynthExternal ]
+  id: OrganSynthTorso
+  name: synth chassis
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Tail
+    - enum.HumanoidVisualLayers.Genital
+    - enum.HumanoidVisualLayers.Penis
+    - enum.HumanoidVisualLayers.Breasts
+    # Undergarment and genital markings are drawn for the human body; warp them like a jumpsuit.
+    markingsDisplacement:
+      UndergarmentTop: &synthBodyDisplacement
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Synth/displacement.rsi
+            state: jumpsuit
+      UndergarmentBottom: *synthBodyDisplacement
+      Genital: *synthBodyDisplacement
+      Penis: *synthBodyDisplacement
+      Breasts: *synthBodyDisplacement
+
+- type: entity
+  parent: [ OrganBaseHead, OrganSynthExternal ]
+  id: OrganSynthHead
+  name: synth head
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.HeadTop
+    - enum.HumanoidVisualLayers.HeadSide
+    - enum.HumanoidVisualLayers.Snout
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganSynthExternal ]
+  id: OrganSynthArmLeft
+  name: left synth arm
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganSynthExternal ]
+  id: OrganSynthArmRight
+  name: right synth arm
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganSynthExternal ]
+  id: OrganSynthHandLeft
+  name: left synth hand
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganSynthExternal ]
+  id: OrganSynthHandRight
+  name: right synth hand
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganSynthExternal ]
+  id: OrganSynthLegLeft
+  name: left synth leg
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganSynthExternal ]
+  id: OrganSynthLegRight
+  name: right synth leg
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganSynthExternal ]
+  id: OrganSynthFootLeft
+  name: left synth foot
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganSynthExternal ]
+  id: OrganSynthFootRight
+  name: right synth foot
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganSynthInternal ]
+  id: OrganSynthBrain
+  name: synth CCU
+  description: Effectively a synth's brain. It's somehow smoother than yours.
+  components:
+  - type: Sprite
+    layers:
+    - state: brain
+    scale: 0.65, 0.65
+  - type: Item
+    heldPrefix: null
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Iron
+        Quantity: 5
+  - type: BorgBrain # the central computing unit fits a cyborg chassis like a positronic brain
+
+- type: entity
+  parent: [ OrganSynthVisual, OrganBaseEyes, OrganSynthInternal ]
+  id: OrganSynthEyes
+  name: camera gimbal
+  description: A small mechanical gimbal featuring several multi-spectrum cameras, responsible for synth vision.
+  components:
+  - type: Sprite
+    layers:
+    - state: eyes
+    scale: 0.8, 0.8
+  - type: VisualOrgan
+    data:
+      sprite: _ClawCommand/Mobs/Species/Synth/parts.rsi
+      state: eyes
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganSynthInternal ]
+  id: OrganSynthTongue
+  name: synth tongue
+  description: It's a tongue, capable of unspeakable things. It has a small logo on the back of an offensively pink synth. You don't know why you find it offensive.
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganSynthInternal ]
+  id: OrganSynthAppendix
+  name: red brick
+  description: If you see this, it's already too late. I'm sorry.
+  components:
+  - type: Sprite
+    layers:
+    - state: appendix
+    scale: 0.6, 0.6
+
+- type: entity
+  parent: [ OrganBaseEars, OrganSynthInternal ]
+  id: OrganSynthEars
+  name: audio pack
+  description: A sensor pack designed to be installed in a synth. This one contains audio sensors.
+  components:
+  - type: Sprite
+    layers:
+    - state: ears
+    scale: 0.7, 0.7
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganSynthInternal, OrganSynthMetabolizer ]
+  id: OrganSynthLungs
+  name: synth lungs
+  description: Synth lungs simulating organic functions for internal cooling. Not very interesting on their own.
+  components:
+  - type: Sprite
+    layers:
+    - state: lungs
+  - type: Item
+    heldPrefix: null
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganSynthInternal, OrganSynthMetabolizer ]
+  id: OrganSynthHeart
+  name: synth heart
+  description: A synth heart. It circulates fullerene and nanites through the body.
+  components:
+  - type: Sprite
+    layers:
+    - state: heart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganSynthInternal, OrganSynthMetabolizer ]
+  id: OrganSynthStomach
+  name: synth stomach
+  description: A synth stomach. It can convert minerals to nutriment and nutriment to nanites.
+  components:
+  - type: Item
+    heldPrefix: null
+  - type: Stomach
+    specialDigestible:
+      tags:
+      - RawMaterial
+      - ConstructionMaterial
+      - Ore
+    isSpecialDigestibleExclusive: false
+  - type: Metabolizer
+    maxReagents: 5
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganSynthInternal, OrganSynthMetabolizer ]
+  id: OrganSynthLiver
+  name: synth liver
+  description: A synth liver. It prevents poisoning from alcohol and can convert ethanol to nutriment.
+  components:
+  - type: Sprite
+    layers:
+    - state: liver
+    scale: 0.8, 0.8
+  - type: Item
+    heldPrefix: null
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganSynthInternal, OrganSynthMetabolizer ]
+  id: OrganSynthKidneys
+  name: energy coil
+  description: A synth energy coil. It filters out anything the rest of the body has no use for.
+  components:
+  - type: Sprite
+    layers:
+    - state: kidneys
+    scale: 1.1, 1.1
+  - type: Item
+    heldPrefix: null
+
+# No surgery here, so the cell stays in for the life of the synth. It charges from eating,
+# from shocks, and while its owner sits in a cyborg recharging station.
+- type: entity
+  parent: [ PowerCellMedium, OrganBaseChildInternal ]
+  id: OrganSynthPowerCell
+  name: synth power cell
+  description: A rechargeable power cell shaped to fit inside a synth's endoskeleton.
+  suffix: Claw Command, Synth
+  components:
+  - type: Organ
+    category: PowerCell
+  - type: GibbableOrgan
+  - type: SynthPowerCell

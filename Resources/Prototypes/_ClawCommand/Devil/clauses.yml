@@ -1,0 +1,186 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Clauses written on a devil contract as "contractee: <id>" or "contractor: <id>".
+# The ID is what is searched for on the paper. Spaces on the written portion are removed,
+# so keep IDs lowercase and one word.
+# Positive weight costs the signer, negative weight benefits them. A contract can only be signed at weight 0 or more.
+
+- type: clause
+  id: soulownership
+  clauseWeight: 25
+  event: !type:DevilContractSoulOwnershipEvent
+
+- type: clause
+  id: weakness
+  clauseWeight: -35
+  damageModifierSet: DevilDealPositive
+
+- type: clause
+  id: fearoffire
+  clauseWeight: -20
+  damageModifierSet: HellSpawn
+  addedComponents:
+  - type: SpecialHighTempImmunity
+
+- type: clause
+  id: brokeness
+  clauseWeight: -20
+  spawnedItems:
+  - ClothingShoesRealJordansAutographed
+
+- type: clause
+  id: fearofdeath
+  clauseWeight: -25
+  addedComponents:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Critical
+      201: Dead
+
+- type: clause
+  id: fearoflight
+  clauseWeight: -15
+  addedComponents:
+  - type: FlashImmunity
+
+- type: clause
+  id: fearofelectricity
+  clauseWeight: -15
+  addedComponents:
+  - type: Insulated
+
+- type: clause
+  id: gluttony
+  clauseWeight: -10
+  removedComponents:
+  - type: Satiation
+    satiations: {}
+
+- type: clause
+  id: fearofdrowning
+  clauseWeight: -10
+  addedComponents:
+  - type: RespiratorImmune
+
+- type: clause
+  id: fearofclowns
+  clauseWeight: -10
+  addedComponents:
+  - type: NoSlip
+
+- type: clause
+  id: fearofcrushing
+  clauseWeight: -10
+  addedComponents:
+  - type: SpecialPressureImmunity
+
+- type: clause
+  id: fearoffreezing
+  clauseWeight: -10
+  addedComponents:
+  - type: SpecialLowTempImmunity
+
+- type: clause
+  id: greed
+  clauseWeight: -10
+  spawnedItems:
+  - SpaceCash30000
+
+- type: clause
+  id: pain
+  clauseWeight: -5
+  statusEffects:
+  - StatusEffectPainNumbness
+  addedComponents:
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      60: 1
+      80: 1
+
+- type: clause
+  id: chance
+  clauseWeight: -20
+  event: !type:DevilContractChanceEvent
+
+- type: clause
+  id: shadows
+  clauseWeight: -25
+  addedComponents:
+  - type: Stealth
+  - type: StealthOnMove
+
+- type: clause
+  id: humanity
+  clauseWeight: 80
+  polymorph: MobFrogPolymorph
+
+- type: clause
+  id: strength
+  clauseWeight: 30
+  damageModifierSet: DevilDealNegative
+
+- type: clause
+  id: willtofight
+  clauseWeight: 60
+  addedComponents:
+  - type: Pacified
+
+- type: clause
+  id: sight
+  clauseWeight: 60
+  addedComponents:
+  - type: PermanentBlindness
+
+- type: clause
+  id: coherence
+  clauseWeight: 30
+  addedComponents:
+  - type: BackwardsAccent
+  statusEffects:
+  - StatusEffectClumsyClown
+
+- type: clause
+  id: voice
+  clauseWeight: 20
+  statusEffects:
+  - StatusEffectMuted
+
+- type: clause
+  id: awake
+  clauseWeight: 35
+  addedComponents:
+  - type: Narcolepsy
+    maxTimeBetweenIncidents: 600
+    minTimeBetweenIncidents: 300
+    maxDurationOfIncident: 30
+    minDurationOfIncident: 10
+
+- type: clause
+  id: legs
+  clauseWeight: 40
+  addedComponents:
+  - type: LegsParalyzed
+
+- type: clause
+  id: death
+  clauseWeight: -25
+  addedComponents:
+  - type: CheatDeath
+    reviveAmount: 1
+
+- type: clause
+  id: mortality
+  clauseWeight: -135
+  addedComponents:
+  - type: CheatDeath
+    infiniteRevives: true
+
+- type: clause
+  id: time
+  clauseWeight: 150
+  addedComponents:
+  - type: DelayedDeath
+    preventAllRevives: true
+    deathTime: 300
+    deathMessageId: devil-deal-time-ran-out

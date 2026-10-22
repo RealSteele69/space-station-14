@@ -36,6 +36,8 @@
   - ClothingBackpackHolding
   - ClothingBackpackSatchelHolding
   - ClothingBackpackDuffelHolding
+  - ClothingHeadHelmetInsulated # Claw Command - PsionicCountermeasures research
+  - ClothingHeadCage # Claw Command - PsionicCountermeasures research
 
 - type: latheRecipePack
   id: PowerCells
@@ -108,6 +110,8 @@
   - HonkerTargetingElectronics
   - HamtrCentralElectronics
   - HamtrPeripheralsElectronics
+  - ClarkeCentralElectronics # Claw Command - Clarke research
+  - ClarkePeripheralsElectronics # Claw Command - Clarke research
 
 - type: latheRecipePack
   id: ShuttleBoards

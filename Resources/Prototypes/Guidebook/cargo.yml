@@ -16,3 +16,5 @@
   id: Salvage
   name: guide-entry-salvage
   text: "/ServerInfo/Guidebook/Cargo/Salvage.xml"
+  children: # _ClawCommand: lavaland megafauna survival guide
+  - LavalandMegafauna

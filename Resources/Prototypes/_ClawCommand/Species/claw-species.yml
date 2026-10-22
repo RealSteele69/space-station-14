@@ -146,3 +146,52 @@
   voices:
   - MaleAvali
   - FemaleAvali
+
+- type: species
+  id: SpeciesResomi
+  name: cc-species-name-resomi
+  roundStart: true
+  prototype: MobResomi
+  dollPrototype: AppearanceResomi
+  skinColoration: Hues
+  defaultSkinTone: "#faf7f7"
+  maleFirstNames: NamesResomiMale
+  femaleFirstNames: NamesResomiFemale
+  naming: First
+  sexes:
+  - Male
+  - Female
+  - Unsexed
+  defaultSoundsBySex:
+  - MaleResomi
+  - FemaleResomi
+  - MaleResomi
+  voices:
+  - MaleResomi
+  - FemaleResomi
+  # The Resomi sheet breaks up when scaled past its drawn size, so keep the sliders small.
+  minHeight: 0.8
+  maxHeight: 1
+  minWidth: 0.85
+  maxWidth: 1
+  baseWeight: 61 # density 160 over the 0.35 radius body
+  baseHeightCm: 120
+
+- type: species
+  id: SpeciesSynth
+  name: cc-species-name-synth
+  roundStart: true
+  prototype: MobSynth
+  dollPrototype: AppearanceSynth
+  skinColoration: Hues
+  defaultSkinTone: "#ffffff"
+  sexes:
+  - Male
+  - Female
+  - Unsexed
+  defaultSoundsBySex:
+  - UnisexSilicon
+  - UnisexSilicon
+  - UnisexSilicon
+  voices:
+  - UnisexSilicon

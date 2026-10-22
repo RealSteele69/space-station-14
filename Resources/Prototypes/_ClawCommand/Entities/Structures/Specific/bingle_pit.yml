@@ -1,0 +1,66 @@
+# Weaker than the original: 400 health instead of 600, no metal resistances, half the self-repair,
+# and it stops making bingles while a handful are alive (see BinglePitComponent.MaxBingles).
+- type: entity
+  id: BinglePit
+  parent: [ SolutionDrain, SolutionGinormous ]
+  name: binglepit
+  description: Looks hungry.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: BinglePit
+  - type: StepTrigger
+    requiredTriggeredSpeed: 0
+    intersectRatio: 0.4
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+        - WallLayer
+        mask:
+        - ItemMask
+        density: 1000
+        hard: false
+  - type: Sprite
+    drawdepth: FloorTiles
+    layers:
+    - sprite: _ClawCommand/Mobs/Bingle/bingle.rsi
+      state: pit
+  - type: Appearance
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Damageable
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/Weapons/Guns/Gunshots/rocket_launcher.ogg
+  - type: RequireProjectileTarget
+  - type: Drain # eats the liquids around the pit
+    unitsPerSecond: 10
+    unitsDestroyedPerSecond: 10
+  - type: PassiveDamage # slow self-repair
+    damage:
+      types:
+        Heat: -0.5
+        Shock: -0.5
+        Structural: -0.5
+        Blunt: -0.5
+        Slash: -0.5
+        Piercing: -0.5
+  - type: AntiRottingContainer

@@ -13,9 +13,11 @@
     itemIconStyle: BigAction
     priority: -20
     useDelay: 120
-    icon:
-      sprite: _GoobStation/Effects/bluespace_lifeline.rsi
-      state: bluespace_lifeline
+  - type: Sprite
+    sprite: _GoobStation/Effects/bluespace_lifeline.rsi
+    layers:
+    - state: bluespace_lifeline
+      map: ["enum.ActionVisuals.Icon"]
   - type: ConfirmableAction
     popup: bluespace-lifeline-confirm-popup
     confirmDelay: 1

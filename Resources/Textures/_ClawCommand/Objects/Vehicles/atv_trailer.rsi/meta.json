@@ -1,0 +1,19 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/6c1c33919165dd06f61b29d027e82ef3ec91b0d3/icons/obj/vehicles_64x64.dmi (originally from VOREStation (imported into Citadel RP by silicons, 2018-2020)). Converted from DMI for Claw Command.",
+    "size": {
+        "x": 64,
+        "y": 64
+    },
+    "states": [
+        {
+            "name": "vehicle",
+            "directions": 4
+        },
+        {
+            "name": "paint",
+            "directions": 4
+        }
+    ]
+}

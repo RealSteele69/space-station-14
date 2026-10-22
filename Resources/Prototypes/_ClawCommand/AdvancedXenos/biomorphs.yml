@@ -1,0 +1,761 @@
+# Claw Command - NPC xenomorphs ("biomorphs"). Sprites and sounds are the CM-SS13 PvE set (by Athena148).
+# These are AI mobs for the infestation event, not ghost roles.
+# Health is the original maxHealth, damage its melee damage, attack rate 1 / base_attack_cooldown, speed scaled x0.9.
+# Armour (armor_legacy_mob) becomes a damage modifier set: melee -> Blunt/Slash, bullet -> Piercing, laser -> Heat.
+
+- type: entity
+  abstract: true
+  parent: [ SimpleSpaceMobBase, BaseMobDestructible ]
+  id: MobAdvXenoBiomorphBase
+  name: xenomorph
+  description: Something from the dark between the stars, all chitin and teeth.
+  components:
+  - type: AdvXenoBiomorph
+    deathSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/xenomorph_death_hiss.ogg
+  - type: NpcFactionMember
+    factions:
+    - Xeno
+  - type: HTN
+    rootTask:
+      task: XenoCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 1.5
+    useSound:
+      path: /Audio/Items/crowbar.ogg
+  - type: CombatMode
+  - type: Puller
+    needsHands: false # drags with jaws and claws; xenos have no hands
+  - type: NoSlip
+  - type: Insulated
+  - type: Sprite
+    drawdepth: Mobs
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: AdvXenoBlood
+        Quantity: 300
+  - type: TemperatureDamage
+    heatDamageThreshold: 360
+    coldDamageThreshold: -150
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    damage:
+      types:
+        Slash: 20
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatXeno
+      amount: 5
+  - type: TypingIndicator
+    proto: alien
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - FootstepSound
+  - type: Speech
+    speechVerb: AdvXeno
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      9999: 1
+
+- type: entity
+  abstract: true
+  parent: MobAdvXenoBiomorphBase
+  id: MobAdvXenoBiomorphRangedBase
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.9
+  - type: BasicEntityAmmoProvider
+    proto: AdvXenoSpitAcidNpc
+    capacity: 1
+    count: 1
+  - type: Gun
+    fireRate: 1.1
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot: /Audio/Effects/Fluids/splat.ogg
+
+# ----------------------------------------------------------------------------- warrior
+
+- type: entity
+  parent: MobAdvXenoBiomorphBase
+  id: MobAdvXenoBiomorphWarrior
+  name: xenomorph warrior
+  description: A tall beast, dotted with reinforced chitin plates and a pair of razor sharp claws. It looks pretty pissed off.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_warrior.rsi
+    scale: 1.1, 1.1
+    offset: 0, 0.28
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: warrior_animations-moving
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: warrior_animations-moving
+      Dead:
+        Base: warrior_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      450: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    attackRate: 1.1
+    soundHit:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/warrior_attack.ogg
+    damage:
+      types:
+        Slash: 30
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.7
+    baseSprintSpeed: 2.7
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/warrior_move.ogg
+
+# ----------------------------------------------------------------------------- drone
+
+- type: entity
+  parent: MobAdvXenoBiomorphBase
+  id: MobAdvXenoBiomorphDrone
+  name: xenomorph drone
+  description: A creature that stands a bit taller than the average person. Its body is dotted in some sort of odd chitin, moving with some sort of unknown purpose...
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_drone.rsi
+    offset: 0, 0.25
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: drone_run
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: drone_run
+      Dead:
+        Base: drone_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    attackRate: 1.6
+    soundHit:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/drone_attack.ogg
+    damage:
+      types:
+        Slash: 20
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/drone_move.ogg
+
+# ----------------------------------------------------------------------------- sprinter
+
+- type: entity
+  parent: MobAdvXenoBiomorphBase
+  id: MobAdvXenoBiomorphSprinter
+  name: xenomorph sprinter
+  description: A small dog-like creature which never seems to stay still. Its speed is frightening, but otherwise it doesn't look like it could take too many hits.
+  components:
+  - type: AdvXenoBiomorph
+    special: Leap
+    specialMinRange: 2
+    specialMaxRange: 5
+    specialCooldown: 10
+    warmup: 0.5
+    incapacitatedDamageMultiplier: 1.5
+    deathSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/xenomorph_death_hiss.ogg
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_sprinter.rsi
+    offset: 0, 0.5
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: sprinter_run
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: sprinter_run
+      Dead:
+        Base: sprinter_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      130: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    attackRate: 2.5
+    soundHit:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/drone_attack.ogg
+    damage:
+      types:
+        Slash: 15
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 6.3
+    baseSprintSpeed: 6.3
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/drone_move.ogg
+
+# ----------------------------------------------------------------------------- spitters
+
+- type: entity
+  parent: MobAdvXenoBiomorphRangedBase
+  id: MobAdvXenoBiomorphSpitter
+  name: xenomorph spitter
+  description: A lithe and unarmored creature, its crest and chest cavity seems to be filled with a bubbling substance.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_spitter.rsi
+    offset: 0, 0.25
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: basic_spitter_run
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: basic_spitter_run
+      Dead:
+        Base: basic_spitter_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/spitter_attack.ogg
+    damage:
+      types:
+        Slash: 10
+  - type: BasicEntityAmmoProvider
+    proto: AdvXenoSpitNeurotoxinNpc
+    capacity: 1
+    count: 1
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.7
+    baseSprintSpeed: 2.7
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/spitter_move.ogg
+
+- type: entity
+  parent: MobAdvXenoBiomorphRangedBase
+  id: MobAdvXenoBiomorphAcidSpitter
+  name: advanced xenomorph spitter
+  description: A large beast, standing well above the average person. Its body is overflowing with a sizzling substance, a large amount dripping from its mouth. Doesn't help that it's covered in armor, too.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_spitter.rsi
+    scale: 1.1, 1.1
+    offset: 0, 0.3
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: advanced_spitter_run
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: advanced_spitter_run
+      Dead:
+        Base: advanced_spitter_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      250: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/spitter_attack.ogg
+    damage:
+      types:
+        Slash: 20
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 1.2
+  - type: Gun
+    fireRate: 0.83
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot: /Audio/Effects/Fluids/splat.ogg
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/spitter_move.ogg
+
+# ----------------------------------------------------------------------------- line breaker
+
+- type: entity
+  parent: MobAdvXenoBiomorphBase
+  id: MobAdvXenoBiomorphBreaker
+  name: xenomorph line breaker
+  description: Whatever this is, it resembles more of a truck than any kind of beast you've ever seen. Its crest is large and armored, and its four legs could easily crush anything in its way. Better stay away...
+  components:
+  - type: AdvXenoBiomorph
+    special: Charge
+    specialMinRange: 1
+    specialMaxRange: 12
+    specialCooldown: 10
+    warmup: 2
+    chargeObjectDamage: 60
+    chargeState: breaker_charging
+    aliveState: breaker_run
+    heavyClaws: true
+    heavyClawSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/breaker_slam.ogg
+    chargeSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/breaker_charge.ogg
+    chargeHitSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/breaker_charge_hit.ogg
+    deathSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/breaker_death_hiss.ogg
+    deathMessage: adv-xeno-biomorph-death-breaker
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_breaker.rsi
+    scale: 1.3, 1.3
+    offset: 0, 0.7
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: breaker_run
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: breaker_run
+      Dead:
+        Base: breaker_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      800: Dead
+  - type: Damageable
+    damageModifierSet: AdvXenoBreaker
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    attackRate: 0.8
+    soundHit:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/breaker_attack.ogg
+    damage:
+      types:
+        Blunt: 50
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/breaker_walk_stomp.ogg
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 800
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+# ----------------------------------------------------------------------------- berserker
+
+- type: entity
+  parent: MobAdvXenoBiomorphBase
+  id: MobAdvXenoBiomorphBerserker
+  name: xenomorph berserker
+  description: A hulking red beast with scythes the size of a person. Its hide looks tough and burn proof, it also seems EXCEPTIONALLY pissed off at you.
+  components:
+  - type: AdvXenoBiomorph
+    special: Berserk
+    deathSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/xenomorph_death_hiss.ogg
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_berserker.rsi
+    scale: 1.2, 1.2
+    offset: 0, 0.55
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: berserker_run
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: berserker_run
+      Dead:
+        Base: berserker_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      600: Dead
+  - type: Damageable
+    damageModifierSet: AdvXenoBerserker
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/warrior_attack.ogg
+    damage:
+      types:
+        Slash: 40
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/breaker_walk_stomp.ogg
+
+# ----------------------------------------------------------------------------- vanguard
+
+- type: entity
+  parent: MobAdvXenoBiomorphRangedBase
+  id: MobAdvXenoBiomorphVanguard
+  name: xenomorph vanguard
+  description: Serving as the Queen's personal bodyguard, the presence of one usually means the hive's queen is not far behind. Bristling in armor and standing as tall as an exosuit, fit with razor sharp claws and a tail that disables or pierces whatever threatens the Queen.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_vanguard.rsi
+    scale: 1.2, 1.2
+    offset: 0, 0.55
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: vanguard_run
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: vanguard_run
+      Dead:
+        Base: vanguard_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      600: Dead
+  - type: Damageable
+    damageModifierSet: AdvXenoVanguard
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/vanguard_attack.ogg
+    damage:
+      types:
+        Piercing: 30
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.7
+    baseSprintSpeed: 2.7
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/vanguard_move.ogg
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 600
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+# ----------------------------------------------------------------------------- monarch
+
+- type: entity
+  parent: MobAdvXenoBiomorphRangedBase
+  id: MobAdvXenoBiomorphMonarch
+  name: xenomorph monarch
+  description: The perfect organism, and the pinnacle of a xenomorph's evolution. Monarchs lead entire hives under their psychic whim. Attempting to kill her without adequate equipment is a death warrant.
+  components:
+  - type: AdvXenoBiomorph
+    special: Charge
+    specialMinRange: 1
+    specialMaxRange: 12
+    specialCooldown: 15
+    warmup: 2
+    chargeStun: 5
+    chargeKnockdown: 3
+    chargeObjectDamage: 60
+    chargeState: monarch_charge
+    aliveState: monarch_run
+    heavyClaws: true
+    heavyClawSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/breaker_slam.ogg
+    chargeSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/monarch_charge.ogg
+    chargeHitSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/monarch_charge.ogg
+    deathSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/monarch_death_hiss.ogg
+    deathMessage: adv-xeno-biomorph-death-monarch
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_monarch.rsi
+    scale: 1.5, 1.5
+    offset: 0, 0.95
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: monarch_run
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: monarch_run
+      Dead:
+        Base: monarch_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1500: Dead
+  - type: Damageable
+    damageModifierSet: AdvXenoMonarch
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    attackRate: 0.8
+    soundHit:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/monarch_attack.ogg
+    damage:
+      types:
+        Slash: 60
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.8
+    baseSprintSpeed: 1.8
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/monarch_move.ogg
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.48
+        density: 1500
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+# ----------------------------------------------------------------------------- specials
+
+- type: entity
+  parent: MobAdvXenoBiomorphBase
+  id: MobAdvXenoBiomorphBurrower
+  name: xenomorph burrower
+  description: An utter abomination which appears to be some sort of mesh between a spider and a xenomorph.
+  components:
+  - type: AdvXenoBiomorph
+    special: Tunnel
+    specialMinRange: 2
+    specialMaxRange: 6
+    specialCooldown: 10
+    warmup: 0.5
+    deathSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/xenomorph_death_hiss.ogg
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_burrower.rsi
+    scale: 0.7, 0.7
+    offset: 0, 0.2
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: burrow_run
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: burrow_run
+      Dead:
+        Base: burrow_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      300: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Piercing: 37
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 6.3
+    baseSprintSpeed: 6.3
+
+- type: entity
+  parent: MobAdvXenoBiomorphRangedBase
+  id: MobAdvXenoBiomorphMarksman
+  name: xenomorph marksman
+  description: A hulking beast which doesn't resemble any type of xenomorph you've ever seen. It looks sloppily done, genetic strands grafted onto each other, but it seems like it can lob acid pretty far.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_marksman.rsi
+    scale: 1.1, 1.1
+    offset: 0, 0.55
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: marksman_run
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: marksman_run
+      Dead:
+        Base: marksman_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      250: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/spitter_attack.ogg
+    damage:
+      types:
+        Slash: 10
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.8
+    baseSprintSpeed: 1.8
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/spitter_move.ogg
+
+- type: entity
+  parent: MobAdvXenoBiomorphBase
+  id: MobAdvXenoBiomorphBurster
+  name: xenomorph burster
+  description: A peculiar floating amalgamation of different chitin, acid and flesh. It looks like it could burst at any moment! Better stay away.
+  components:
+  - type: AdvXenoBiomorph
+    special: Burst
+    deathSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/xenomorph_death_hiss.ogg
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_burster.rsi
+    offset: 0, 0.5
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: burster_run
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: burster_run
+      Dead:
+        Base: burster_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/spitter_attack.ogg
+    damage:
+      types:
+        Caustic: 15
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.7
+    baseSprintSpeed: 2.7
+
+- type: entity
+  parent: MobAdvXenoBiomorphRangedBase
+  id: MobAdvXenoBiomorphInferno
+  name: xenomorph inferno
+  description: It's hard to believe this... thing is real. Its body squirms and writhes with a dedicated purpose, blue flame bursting from every orifice on its body, giving it an intimidating glow.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/biomorph_inferno.rsi
+    scale: 0.9, 0.9
+    offset: 0, 0.35
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: inferno_run
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: inferno_run
+      Dead:
+        Base: inferno_dead
+  - type: PointLight
+    radius: 2.5
+    energy: 1.2
+    color: "#4d7dff"
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      300: Dead
+  - type: Damageable
+    damageModifierSet: AdvXenoInferno
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/spitter_attack.ogg
+    damage:
+      types:
+        Slash: 10
+        Heat: 10
+  - type: BasicEntityAmmoProvider
+    proto: AdvXenoInfernoEmber
+    capacity: 1
+    count: 1
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 1
+  - type: Gun
+    fireRate: 1
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot: /Audio/Items/welder.ogg
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.7
+    baseSprintSpeed: 2.7
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/_ClawCommand/AdvancedXenos/Biomorphs/spitter_move.ogg

@@ -1,3 +1,4 @@
+using Content.Shared._ClawCommand.Lavaland.Megafauna.Components;
 using Content.IntegrationTests.Fixtures;
 using Content.IntegrationTests.Fixtures.Attributes;
 using Content.IntegrationTests.Utility;
@@ -40,7 +41,8 @@ public sealed class DamageAllPrototypesTest : GameTest
                 try
                 {
                     // Intentionally cannot take damage, ignore it.
-                    if (SEntMan.HasComponent<GodmodeComponent>(entity))
+                    // Claw Command - megafauna godmode also ignores damage that has no player origin, like this test's.
+                    if (SEntMan.HasComponent<GodmodeComponent>(entity) || SEntMan.HasComponent<MegafaunaGodmodeComponent>(entity))
                         continue;
 
                     var canBeDamaged = false;

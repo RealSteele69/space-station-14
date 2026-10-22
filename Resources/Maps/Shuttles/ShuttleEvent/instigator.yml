@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 08/22/2026 17:21:17
-  entityCount: 545
+  entityCount: 543
 maps: []
 grids:
 - 1
@@ -158,26 +158,6 @@ entities:
     - type: TileHistory
       chunkHistory: {}
     - type: ExplosionAirtightGrid
-- proto: ActionToggleInternals
-  entities:
-  - uid: 495
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 493
-    - type: Action
-      container: 493
-- proto: ActionToggleJetpack
-  entities:
-  - uid: 494
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 493
-    - type: Action
-      container: 493
 - proto: AirCanister
   entities:
   - uid: 441
@@ -2914,16 +2894,12 @@ entities:
       parent: 1
       pos: 8.489939,10.312036
     - type: GasTank
-      toggleActionEntity: 495
     - type: Jetpack
-      toggleActionEntity: 494
     - type: ActionsContainer
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 494
-          - 495
+          ents: []
 - proto: LockerSyndicate
   entities:
   - uid: 471

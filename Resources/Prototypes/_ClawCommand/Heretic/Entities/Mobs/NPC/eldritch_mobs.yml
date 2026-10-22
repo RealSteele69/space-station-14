@@ -335,6 +335,8 @@
     rules: ghostrole-ghoul-rules
     raffle:
       settings: short
+    mindRoles: # Claw Command - was missing, so rust walkers didn't register as antags (admin player list, round end)
+    - MindRoleGhoul
   - type: CollectiveMind
     defaultChannel: MansusLink
     channels:

@@ -25,6 +25,15 @@
   name: steel
   suffix: Full
   components:
+  # Claw Command start - synth species: synth stomachs can digest raw materials
+  - type: Edible
+    requiresSpecialDigestion: true
+    solution: composite
+  - type: FlavorProfile
+    flavors:
+    - metallic
+  - type: BadFood
+  # Claw Command end
   - type: Tag # _ClawCommand - heretic ritual input (RustedRitual); re-lists inherited SheetMetalBase tags since TagComponent doesn't merge on inheritance
     tags:
     - Sheet
@@ -88,6 +97,15 @@
   description: A sheet of brass, primarily used by clockwork enthusiasts and the remnants of Ratvarian cults.
   suffix: Full
   components:
+  # Claw Command start - synth species: synth stomachs can digest raw materials
+  - type: Edible
+    requiresSpecialDigestion: true
+    solution: composite
+  - type: FlavorProfile
+    flavors:
+    - metallic
+  - type: BadFood
+  # Claw Command end
   - type: PhysicalComposition
     materialComposition:
       Brass: 100

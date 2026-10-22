@@ -1,0 +1,10 @@
+- files: ["powerloader_buckle.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from cmss13, ported via RMC-14 (https://github.com/RMC-14/RMC-14, Resources/Audio/_RMC14/Mecha)"
+  source: "https://github.com/cmss13-devs/cmss13/blob/183b50b774c6faef054b6f67f57ff40ecc15409f/sound/mecha/powerloader_buckle.ogg"
+
+# RMC-14's attributions.yml lists this under "powerloader_buckle.ogg" by mistake; the source URL is the unbuckle sound.
+- files: ["powerloader_unbuckle.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from cmss13, ported via RMC-14 (https://github.com/RMC-14/RMC-14, Resources/Audio/_RMC14/Mecha)"
+  source: "https://github.com/cmss13-devs/cmss13/blob/562b51dbda5b25012e423779e980a00f303065a5/sound/mecha/powerloader_unbuckle.ogg"

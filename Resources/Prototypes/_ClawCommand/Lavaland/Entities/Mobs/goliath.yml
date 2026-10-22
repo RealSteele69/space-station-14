@@ -14,6 +14,10 @@
         Base: goliath
       Dead:
         Base: goliath_dead
+  - type: NpcFactionMember
+    factions:
+    - Lavafauna
+  - type: Fauna
   - type: HTN
     blackboard:
       VisionRadius: !type:Single # Highly aggressive
@@ -57,6 +61,10 @@
   #  thresholds:
   #    0: Alive
   #    400: Dead
+  - type: NpcFactionMember
+    factions:
+    - Lavafauna
+  - type: Fauna
   - type: HTN
     blackboard:
       VisionRadius: !type:Single # Extremely aggressive
@@ -73,3 +81,36 @@
       amount: 3
     - id: MaterialBones1
       amount: 3
+
+# Young goliath hatched by the broodmother elite.
+- type: entity
+  id: MobLavalandGoliathBrood
+  parent: MobLavalandGoliath
+  name: goliath brood
+  description: A newly hatched goliath. Small, but already very angry.
+  components:
+  - type: Sprite
+    scale: 0.6, 0.6
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      40: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 3
+  - type: MeleeWeapon
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+    angle: 0
+    attackRate: 1
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 5
+        Piercing: 3
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeatGoliath
+      amount: 1
+  - type: TimedDespawn
+    lifetime: 90

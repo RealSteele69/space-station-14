@@ -12,7 +12,7 @@
   flavor: cucumber
   color: "#b1ceb0"
   metabolisms:
-    Drink:
+    Digestion:
       effects:
         - !type:Satiate
           satiationType: Thirst

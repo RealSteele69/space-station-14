@@ -1,0 +1,27 @@
+# Ported from RMC-14 (https://github.com/RMC-14/RMC-14, MIT), Resources/Prototypes/_RMC14/Entities/Objects/Tools/janitor.yml.
+# Decorative only: RMC-specific components (xeno charge/acid, vehicle smashing, minimap, mesons,
+# dropship blocking, construction graphs) were stripped. Sprites are CMSS13/RMC art, credited in each meta.json.
+# Only the entities this port needs were taken from that file.
+
+- type: entity
+  parent: ClothingHeadBase
+  id: CMWarningCone
+  name: warning cone
+  description: This cone is trying to warn you of something!
+  components:
+  - type: StaticPrice # Claw Command - above its 110 plastic
+    price: 25
+  - type: ClothingSpeedModifier
+    walkModifier: 0.5
+    sprintModifier: 0.5
+  - type: Sprite
+    sprite: _RMC14/Objects/Misc/Janitorial/cone.rsi
+    state: cone
+  - type: Item
+    sprite: _RMC14/Objects/Misc/Janitorial/cone.rsi
+    size: Small
+  - type: Clothing
+    sprite: _RMC14/Objects/Misc/Janitorial/cone.rsi
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 110

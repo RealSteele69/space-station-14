@@ -1,0 +1,30 @@
+# Claw Command - spore AI: fight, otherwise look for a corpse to climb onto, otherwise idle.
+- type: htnCompound
+  id: BlobPodCompound
+  branches:
+  - tasks:
+    - !type:HTNCompoundTask
+      task: MeleeCombatCompound
+  - tasks:
+    - !type:HTNCompoundTask
+      task: BlobPodZombifyCompound
+  - tasks:
+    - !type:HTNCompoundTask
+      task: IdleCompound
+
+- type: htnCompound
+  id: BlobPodZombifyCompound
+  branches:
+  - tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:PickBlobPodZombifyTargetOperator
+        targetKey: MovementTarget
+        zombifyKey: ZombifyTarget
+        rangeKey: IdleRange
+    - !type:HTNPrimitiveTask
+      operator: !type:MoveToOperator
+        pathfindInPlanning: false
+        targetKey: MovementTarget
+    - !type:HTNPrimitiveTask
+      operator: !type:BlobPodZombifyOperator
+        zombifyKey: ZombifyTarget

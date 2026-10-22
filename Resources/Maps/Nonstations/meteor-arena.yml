@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 08/12/2026 22:01:24
-  entityCount: 255
+  entityCount: 256
 maps:
 - 1
 grids:
@@ -1136,6 +1136,13 @@ entities:
 - proto: SpawnPointPassenger
   entities:
   - uid: 99
+    components:
+    - type: Transform
+      parent: 2
+      pos: -0.5,-0.5
+- proto: SpawnPointPrisoner
+  entities:
+  - uid: 256
     components:
     - type: Transform
       parent: 2

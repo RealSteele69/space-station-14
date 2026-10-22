@@ -1,0 +1,220 @@
+# claw command
+# Vehicle orders - EVENT MAP ONLY. Deliberately commented out so they never show up in normal rounds.
+# To enable for an event: uncomment the products you want (vehicles spawn straight onto the cargo pad;
+# keyed vehicles also need their key product ordered), then re-comment once the event is over.
+# Vehicles: _ClawCommand/Entities/Objects/Vehicles/{cars,ridden,trailers,rmc_vehicles,rmc_combat_vehicles}.yml
+
+## --- Keys (needed for keyed vehicles) ---
+#- type: cargoProduct
+#  id: VehicleKeyCargoOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/keys.rsi
+#    state: cargo
+#  product: VehicleKeyCargo
+#  cost: 100
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleKeyMedicalOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/keys.rsi
+#    state: medical
+#  product: VehicleKeyMedical
+#  cost: 100
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleKeyQuadbikeOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/keys.rsi
+#    state: atv
+#  product: VehicleKeyQuadbike
+#  cost: 100
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleKeySecurityOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/keys.rsi
+#    state: security
+#  product: VehicleKeySecurity
+#  cost: 100
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleKeyRoverOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/keys.rsi
+#    state: security
+#  product: VehicleKeyRover
+#  cost: 100
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+## --- Open vehicles ---
+#- type: cargoProduct
+#  id: VehicleQuadbikeOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/atv.rsi
+#    state: vehicle
+#  product: VehicleQuadbikeRandom
+#  cost: 1250
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleSpaceBikeOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/space_bike.rsi
+#    state: vehicle
+#  product: VehicleSpaceBikeRandom
+#  cost: 1250
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleGoKartOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/gokart.rsi
+#    state: orange
+#  product: VehicleGoKartRandom
+#  cost: 800
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleBicycleOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/bicycle.rsi
+#    state: vehicle
+#  product: VehicleBicycle
+#  cost: 400
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleCargoTugOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/cargo_tug.rsi
+#    state: vehicle
+#  product: VehicleCargoTug
+#  cost: 1500
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleTrailerCargoOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/trailers.rsi
+#    state: cargo
+#  product: VehicleTrailerCargo
+#  cost: 500
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+## --- Enclosed cars ---
+#- type: cargoProduct
+#  id: VehicleRoverOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/rover.rsi
+#    state: vehicle
+#  product: VehicleRover
+#  cost: 1500
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleDuneBuggyOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/dune_buggy.rsi
+#    state: vehicle
+#  product: VehicleDuneBuggy
+#  cost: 1250
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehiclePickupTruckOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/pickup_truck.rsi
+#    state: vehicle
+#  product: VehiclePickupTruck
+#  cost: 1500
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleQMTruckOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/qm_truck.rsi
+#    state: vehicle
+#  product: VehicleQMTruck
+#  cost: 2000
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleBoxVanOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/box_van.rsi
+#    state: van_base
+#  product: VehicleBoxVan
+#  cost: 2500
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehiclePizzaVanOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/pizza_van.rsi
+#    state: van_base
+#  product: VehiclePizzaVan
+#  cost: 2500
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+## --- Combat vehicles (RMC-14 port) - definitely event only ---
+#- type: cargoProduct
+#  id: VehicleAPCOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/apc.rsi
+#    state: apc_base
+#  product: VehicleAPC
+#  cost: 8000
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleTankOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/tank.rsi
+#    state: tank_base
+#  product: VehicleTank
+#  cost: 12000
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+#- type: cargoProduct
+#  id: VehicleHumveeArmedOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/humvee.rsi
+#    state: humvee_base
+#  product: VehicleHumveeArmed
+#  cost: 5000
+#  category: cargoproduct-category-name-fun
+#  group: market
+#
+## --- Utility ---
+#- type: cargoProduct
+#  id: VehiclePowerLoaderOrder
+#  icon:
+#    sprite: _ClawCommand/Objects/Vehicles/power_loader.rsi
+#    state: powerloader_open
+#  product: VehiclePowerLoader
+#  cost: 2000
+#  category: cargoproduct-category-name-fun
+#  group: market

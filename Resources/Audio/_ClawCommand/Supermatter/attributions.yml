@@ -1,0 +1,14 @@
+- files: ["calm.ogg"]
+  license: "CC-BY-3.0"
+  copyright: "Unknown. Ported from Goob-Station (https://github.com/Goob-Station/Goob-Station) at commit da08589c83cc4f503c1c8450767e54f85157b951"
+  source: "https://forums.goobstation.com"
+
+- files: ["delamming.ogg"]
+  license: "CC-BY-3.0"
+  copyright: "Unknown. Ported from Goob-Station (https://github.com/Goob-Station/Goob-Station) at commit da08589c83cc4f503c1c8450767e54f85157b951"
+  source: "https://forums.goobstation.com"
+
+- files: ["dust.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from tgstation. Originally Goob-Station Audio/_Goobstation/Wizard/supermatter.ogg. Ported from Goob-Station (https://github.com/Goob-Station/Goob-Station) at commit da08589c83cc4f503c1c8450767e54f85157b951"
+  source: "https://github.com/tgstation/tgstation/blob/80ab61c8c7741e1d95e5f168357a9e6e61b38f2c/sound/effects/supermatter.ogg"

@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 08/12/2026 22:00:17
-  entityCount: 1097
+  entityCount: 1113
 maps:
 - 1
 grids:
@@ -4259,6 +4259,88 @@ entities:
       parent: 2
       pos: 30.5,48.5
   - uid: 875
+    components:
+    - type: Transform
+      parent: 2
+      pos: 35.5,47.5
+- proto: SpawnPointPrisoner
+  entities:
+  - uid: 1098
+    components:
+    - type: Transform
+      parent: 2
+      pos: 6.5,35.5
+  - uid: 1099
+    components:
+    - type: Transform
+      parent: 2
+      pos: 9.5,38.5
+  - uid: 1100
+    components:
+    - type: Transform
+      parent: 2
+      pos: 16.5,38.5
+  - uid: 1101
+    components:
+    - type: Transform
+      parent: 2
+      pos: 12.5,33.5
+  - uid: 1102
+    components:
+    - type: Transform
+      parent: 2
+      pos: 4.5,29.5
+  - uid: 1103
+    components:
+    - type: Transform
+      parent: 2
+      pos: 21.5,27.5
+  - uid: 1104
+    components:
+    - type: Transform
+      parent: 2
+      pos: 30.5,27.5
+  - uid: 1105
+    components:
+    - type: Transform
+      parent: 2
+      pos: 28.5,32.5
+  - uid: 1106
+    components:
+    - type: Transform
+      parent: 2
+      pos: 22.5,32.5
+  - uid: 1107
+    components:
+    - type: Transform
+      parent: 2
+      pos: 15.5,57.5
+  - uid: 1108
+    components:
+    - type: Transform
+      parent: 2
+      pos: 33.5,25.5
+  - uid: 1109
+    components:
+    - type: Transform
+      parent: 2
+      pos: 14.5,27.5
+  - uid: 1110
+    components:
+    - type: Transform
+      parent: 2
+      pos: 18.5,49.5
+  - uid: 1111
+    components:
+    - type: Transform
+      parent: 2
+      pos: 20.5,57.5
+  - uid: 1112
+    components:
+    - type: Transform
+      parent: 2
+      pos: 30.5,48.5
+  - uid: 1113
     components:
     - type: Transform
       parent: 2

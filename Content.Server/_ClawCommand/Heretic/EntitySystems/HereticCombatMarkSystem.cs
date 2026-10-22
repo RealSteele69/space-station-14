@@ -116,7 +116,7 @@ public sealed partial class HereticCombatMarkSystem : SharedHereticCombatMarkSys
 
             case "Rust":
                 _vomit.Vomit(target);
-                _stun.KnockdownOrStun(target, TimeSpan.FromSeconds(20), true);
+                _stun.KnockdownOrStun(target, TimeSpan.FromSeconds(5), true); // Claw Command - balance: was 20s, an uncontested execution
                 break;
 
             case "Void":

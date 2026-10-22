@@ -1,0 +1,83 @@
+# Additional stack-size variants of the unprocessed lavaland ores.
+# The base *Unprocessed / *1Unprocessed entities live in _ClawCommand/_ported_deps/entity.yml.
+
+- type: entity
+  parent: SteelOreUnprocessed
+  id: SteelOre60Unprocessed
+  name: unprocessed iron ore
+  suffix: Sixty
+  components:
+  - type: Stack
+    count: 60
+
+- type: entity
+  parent: SteelOreUnprocessed
+  id: SteelOre90Unprocessed
+  name: unprocessed iron ore
+  suffix: Full
+  components:
+  - type: Stack
+    count: 90
+
+- type: entity
+  parent: SpaceQuartzUnprocessed
+  id: SpaceQuartz60Unprocessed
+  name: unprocessed space quartz
+  suffix: Sixty
+  components:
+  - type: Stack
+    count: 60
+
+- type: entity
+  parent: SpaceQuartzUnprocessed
+  id: SpaceQuartz90Unprocessed
+  name: unprocessed space quartz
+  suffix: Full
+  components:
+  - type: Stack
+    count: 90
+
+- type: entity
+  parent: CoalUnprocessed
+  id: Coal5Unprocessed
+  name: unprocessed coal
+  suffix: Five
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: CoalUnprocessed
+  id: Coal10Unprocessed
+  name: unprocessed coal
+  suffix: Ten
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: CoalUnprocessed
+  id: Coal15Unprocessed
+  name: unprocessed coal
+  suffix: Fifteen
+  components:
+  - type: Stack
+    count: 15
+
+- type: entity
+  parent: CoalUnprocessed
+  id: Coal60Unprocessed
+  name: unprocessed coal
+  suffix: Sixty
+  components:
+  - type: Stack
+    count: 60
+
+- type: entity
+  parent: CoalUnprocessed
+  id: Coal90Unprocessed
+  name: unprocessed coal
+  suffix: Full
+  components:
+  - type: Stack
+    count: 90

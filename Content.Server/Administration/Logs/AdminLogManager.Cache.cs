@@ -141,6 +141,13 @@ public sealed partial class AdminLogManager
             query = query.Where(log => log.Players.Length == 0);
         }
 
+        // Claw Command - antag reveal gate; must run before paging
+        if (filter.HiddenTypes != null)
+        {
+            query = query.Where(log => !filter.HiddenTypes.Contains(log.Type) ||
+                                       log.Players.Length > 0 && log.Players.All(p => filter.VisiblePlayers.Contains(p)));
+        }
+
         if (filter.LogsSent != 0)
         {
             query = query.Skip(filter.LogsSent);

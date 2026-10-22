@@ -113,6 +113,9 @@
     inHandsMaxFillLevels: 1
     equippedFillBaseName: -fill-
     equippedMaxFillLevels: 1
+  - type: CosmicTransmutable # Claw Command - Cosmic Cult
+    transmutesTo: SpearCosmicCult
+    requiredGlyphType: CosmicGlyphBlades
 
 - type: entity
   name: reinforced spear

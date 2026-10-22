@@ -341,6 +341,11 @@
     size: Small
   - type: Damageable
     damageModifierSet: SteelMod
+  - type: RCDDeconstructable # CLAW COMMAND: RPD can clear broken pipes (used to come from GasPipeSansLayers).
+    cost: 1
+    delay: 2
+    fx: EffectRCDDeconstruct2
+    rpd: true
   - type: GuideHelp
     guides:
     - Pipes

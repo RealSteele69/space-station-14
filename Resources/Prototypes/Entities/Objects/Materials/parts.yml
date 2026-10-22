@@ -20,6 +20,15 @@
   name: metal rod
   suffix: Full
   components:
+  # Claw Command start - synth species: synth stomachs can digest raw materials
+  - type: Edible
+    requiresSpecialDigestion: true
+    solution: composite
+  - type: FlavorProfile
+    flavors:
+    - metallic
+  - type: BadFood
+  # Claw Command end
   - type: PhysicalComposition
     materialComposition:
       Steel: 50 #Half of a regular steel sheet to reflect the crafting recipe

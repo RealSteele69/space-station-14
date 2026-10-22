@@ -142,6 +142,8 @@ public abstract partial class SharedCrematoriumSystem : EntitySystem
             {
                 var item = ent.Comp2.Contents.ContainedEntities[i];
                 _container.Remove(item, ent.Comp2.Contents);
+                if (HasComp<Content.Shared._ClawCommand.Morgue.CrematoriumImmuneComponent>(item)) // Claw Command - devil contracts, devils
+                    continue;
                 PredictedDel(item);
             }
             PredictedTrySpawnInContainer(ent.Comp1.LeftOverProtoId, ent.Owner, ent.Comp2.Contents.ID, out _);

@@ -38,3 +38,8 @@ gun-upgrade-crusher-sharpness = [bold]sharpness[/bold] blade
 gun-upgrade-crusher-weights = [bold]weighted[/bold] handle
 gun-upgrade-crusher-lightweight = [bold]lightweight[/bold] handle
 gun-upgrade-crusher-range = [bold]long[/bold] handle
+
+# Examine text for the pressure modkits on guns using the shared upgrade container
+gun-upgrade-examine-text-pressure = This has a [color=orangered][bold]pressure[/bold][/color] upgrade.
+gun-upgrade-examine-text-space = This has a [color=#ff00bf][bold]space[/bold][/color] upgrade.
+gun-upgrade-examine-text-vampirism = This has a [color=crimson][bold]vampirism[/bold][/color] upgrade.

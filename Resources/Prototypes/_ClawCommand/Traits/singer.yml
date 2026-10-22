@@ -23,7 +23,10 @@
   components:
   - type: Action
     checkCanInteract: false
-    icon: DeltaV/Interface/Actions/harpy_sing.png
+  - type: Sprite
+    layers:
+    - texture: DeltaV/Interface/Actions/harpy_sing.png
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:OpenUiActionEvent
       key: enum.InstrumentUiKey.Key

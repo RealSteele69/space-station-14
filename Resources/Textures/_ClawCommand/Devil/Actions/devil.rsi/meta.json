@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Sprited by SolsticeOfTheWinter. Ported from Goob-Station (https://github.com/Goob-Station/Goob-Station) at commit da08589c83cc4f503c1c8450767e54f85157b951",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "base-devil-icon"
+        },
+        {
+            "name": "shadow-jaunt"
+        },
+        {
+            "name": "summon-contract"
+        },
+        {
+            "name": "summon-contract-revival"
+        },
+        {
+            "name": "cheat-death"
+        },
+        {
+            "name": "devil-grip"
+        },
+        {
+            "name": "possess"
+        },
+        {
+            "name": "heart-broken"
+        }
+    ]
+}

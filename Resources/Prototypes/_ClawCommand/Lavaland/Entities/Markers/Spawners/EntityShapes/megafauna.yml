@@ -1,0 +1,206 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Shape spawners used by the megafauna area attacks.
+
+- type: entity
+  parent: MarkerBase
+  id: MegafaunaShapeBase
+  abstract: true
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: Sprite
+    state: red
+
+# --- Ash drake ---
+
+# Scattered fireballs raining down around the target, a few waves.
+- type: entity
+  parent: MegafaunaShapeBase
+  id: AshDrakeShapeFireRain
+  name: ash drake fire rain spawner
+  suffix: Anger
+  components:
+  - type: ShapeSpawner
+    spawn: MegafaunaFireTile
+    alignCoords: true
+    shape: !type:BoxRandomEntityShape
+      size: 7
+      filledChance: 0.22
+  - type: ShapeSpawnerCounter
+    spawnPeriod: 0.7
+  - type: AngerShapeSpawner
+    counterRange: 2,5
+  - type: ExpandingShapeSpawner
+
+# Fire shockwave rippling out from where the drake lands.
+- type: entity
+  parent: MegafaunaShapeBase
+  id: AshDrakeShapeLanding
+  name: ash drake landing spawner
+  components:
+  - type: ShapeSpawner
+    spawn: MegafaunaFireTile
+    alignCoords: true
+    shape: !type:NestedEntityShape
+      id: BoxHollow
+      size: 1
+  - type: ShapeSpawnerCounter
+    spawnPeriod: 0.2
+    maxCounter: 3
+  - type: ExpandingShapeSpawner
+    counterSize: 1
+
+# Ever-growing ring of fire around the drake itself.
+- type: entity
+  parent: MegafaunaShapeBase
+  id: AshDrakeShapeFireRing
+  name: ash drake fire ring spawner
+  suffix: Anger
+  components:
+  - type: ShapeSpawner
+    spawn: MegafaunaFireTile
+    alignCoords: true
+    shape: !type:NestedEntityShape
+      id: BoxHollow
+      size: 2
+  - type: ShapeSpawnerCounter
+    spawnPeriod: 0.45
+  - type: AngerShapeSpawner
+    counterRange: 4,8
+  - type: ExpandingShapeSpawner
+    counterSize: 1
+
+# --- Bubblegum ---
+
+# Hands bursting out of the ground around the target.
+- type: entity
+  parent: MegafaunaShapeBase
+  id: BubblegumShapeHandSlams
+  name: bubblegum hand slam spawner
+  suffix: Anger
+  components:
+  - type: ShapeSpawner
+    spawn: MegafaunaBloodHandTile
+    alignCoords: true
+    shape: !type:BoxRandomEntityShape
+      size: 5
+      filledChance: 0.35
+  - type: ShapeSpawnerCounter
+    spawnPeriod: 0.55
+  - type: AngerShapeSpawner
+    counterRange: 2,4
+  - type: ExpandingShapeSpawner
+
+# Pool of grasping hands where bubblegum resurfaces after a blood warp.
+- type: entity
+  parent: MegafaunaShapeBase
+  id: BubblegumShapeWarpArrive
+  name: bubblegum blood warp spawner
+  components:
+  - type: ShapeSpawner
+    spawn: MegafaunaBloodHandTile
+    alignCoords: true
+    shape: !type:NestedEntityShape
+      id: BoxFilled
+      size: 3
+
+# Pool left behind where bubblegum sank into the blood.
+- type: entity
+  parent: MegafaunaShapeBase
+  id: BubblegumShapeWarpLeave
+  name: bubblegum blood pool spawner
+  components:
+  - type: ShapeSpawner
+    spawn: MegafaunaBloodTrail
+    alignCoords: true
+    shape: !type:NestedEntityShape
+      id: BoxFilled
+      size: 3
+
+# --- Colossus ---
+
+# Crystal spikes erupting in a cross under the target.
+- type: entity
+  parent: MegafaunaShapeBase
+  id: ColossusShapeCrystalCross
+  name: colossus crystal cross spawner
+  suffix: Anger
+  components:
+  - type: ShapeSpawner
+    spawn: MegafaunaCrystalTile
+    alignCoords: true
+    shape: !type:NestedEntityShape
+      id: QueenCross
+      size: 6
+  - type: ShapeSpawnerCounter
+    spawnPeriod: 0.8
+  - type: AngerShapeSpawner
+    counterRange: 1,3
+  - type: ExpandingShapeSpawner
+
+# --- Legion ---
+
+- type: entity
+  parent: MegafaunaShapeBase
+  id: LegionShapeSummonSkulls
+  name: legion skull summon spawner
+  components:
+  - type: ShapeSpawner
+    spawn: MobLegionSkull
+    shape: !type:BoxRandomEntityShape
+      size: 3
+      filledChance: 0.45
+
+- type: entity
+  parent: MegafaunaShapeBase
+  id: LegionShapeSummonSkullsSmall
+  name: legion skull small summon spawner
+  components:
+  - type: ShapeSpawner
+    spawn: MobLegionSkull
+    shape: !type:BoxRandomEntityShape
+      size: 3
+      filledChance: 0.25
+
+# --- Goliath broodmother ---
+
+- type: entity
+  parent: MegafaunaShapeBase
+  id: BroodmotherShapeTentacleCross
+  name: broodmother tentacle cross spawner
+  components:
+  - type: ShapeSpawner
+    spawn: EffectGoliathTentacleSpawn
+    alignCoords: true
+    shape: !type:NestedEntityShape
+      id: RookCross
+      size: 3
+
+- type: entity
+  parent: MegafaunaShapeBase
+  id: BroodmotherShapeTentacleField
+  name: broodmother tentacle field spawner
+  suffix: Anger
+  components:
+  - type: ShapeSpawner
+    spawn: EffectGoliathTentacleSpawn
+    alignCoords: true
+    shape: !type:BoxRandomEntityShape
+      size: 5
+      filledChance: 0.3
+  - type: ShapeSpawnerCounter
+    spawnPeriod: 0.8
+  - type: AngerShapeSpawner
+    counterRange: 1,3
+  - type: ExpandingShapeSpawner
+
+- type: entity
+  parent: MegafaunaShapeBase
+  id: BroodmotherShapeSpawnBrood
+  name: broodmother brood spawner
+  components:
+  - type: ShapeSpawner
+    spawn: MobLavalandGoliathBrood
+    shape: !type:BoxRandomEntityShape
+      size: 3
+      filledChance: 0.25

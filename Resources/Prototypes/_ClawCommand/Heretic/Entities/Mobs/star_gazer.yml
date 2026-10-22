@@ -60,7 +60,7 @@
     description: ghostrole-stargazer-desc
     rules: ghostrole-ghoul-rules
     mindRoles:
-    - MindRoleGhostRoleFamiliar
+    - MindRoleGhoul # Claw Command - was MindRoleGhostRoleFamiliar (non-antag); the star gazer serves the heretic
     raffle:
       settings: short
     requirements:

@@ -37,6 +37,7 @@
     - id: FoodSnackBoritos
     - id: FoodSnackCheesie
     - id: FoodSnackChips
+    - id: FoodSnackCoalCrunch # Claw Command - synth species
     - id: FoodSnackChocolate
     - id: FoodSnackChocolateBar
     - id: FoodSnackChowMein

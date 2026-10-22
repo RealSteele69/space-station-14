@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 08/10/2026 20:13:32
-  entityCount: 6071
+  entityCount: 6079
 maps:
 - 1
 grids:
@@ -1889,46 +1889,6 @@ entities:
     - type: ExplosionAirtightGrid
     - type: TileHistory
       chunkHistory: {}
-- proto: ActionStethoscope
-  entities:
-  - uid: 2010
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1036
-    - type: Action
-      originalIconColor: '#FFFFFFFF'
-      container: 1036
-- proto: ActionToggleLight
-  entities:
-  - uid: 1074
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1272
-    - type: Action
-      originalIconColor: '#FFFFFFFF'
-      container: 1272
-  - uid: 1075
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1273
-    - type: Action
-      originalIconColor: '#FFFFFFFF'
-      container: 1273
-  - uid: 1799
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 1890
-    - type: Action
-      originalIconColor: '#FFFFFFFF'
-      container: 1890
 - proto: AirAlarm
   entities:
   - uid: 3
@@ -13950,7 +13910,6 @@ entities:
       parent: 2
       pos: 17.533636,-4.4756966
     - type: Stethoscope
-      actionEntity: 2010
     - type: Physics
       linearDamping: 0
       angularDamping: 0
@@ -13958,8 +13917,7 @@ entities:
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 2010
+          ents: []
 - proto: ClothingOuterHardsuitSalvage
   entities:
   - uid: 1037
@@ -16447,7 +16405,6 @@ entities:
       parent: 2
       pos: -22.504776,5.56539
     - type: HandheldLight
-      toggleActionEntity: 1074
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
@@ -16455,8 +16412,7 @@ entities:
           showEnts: False
           occludes: True
         actions: !type:Container
-          ents:
-          - 1074
+          ents: []
           showEnts: False
           occludes: True
     - type: Physics
@@ -16469,7 +16425,6 @@ entities:
       parent: 2
       pos: -22.582901,5.674765
     - type: HandheldLight
-      toggleActionEntity: 1075
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
@@ -16477,8 +16432,7 @@ entities:
           showEnts: False
           occludes: True
         actions: !type:Container
-          ents:
-          - 1075
+          ents: []
           showEnts: False
           occludes: True
     - type: Physics
@@ -25435,7 +25389,6 @@ entities:
       parent: 2
       pos: 59.5542,-2.2589254
     - type: HandheldLight
-      toggleActionEntity: 1799
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
@@ -25443,8 +25396,7 @@ entities:
           showEnts: False
           occludes: True
         actions: !type:Container
-          ents:
-          - 1799
+          ents: []
           showEnts: False
           occludes: True
     - type: Physics
@@ -26057,8 +26009,7 @@ entities:
     - type: ContainerContainer
       containers:
         mind_roles: !type:Container
-          ents:
-          - invalid
+          ents: []
           showEnts: False
           occludes: True
 - proto: MindRoleObserver
@@ -30581,6 +30532,20 @@ entities:
     - type: Transform
       parent: 2
       pos: 22.5,0.5
+- proto: SpawnPointChiefEngineer
+  entities:
+  - uid: 6074
+    components:
+    - type: Transform
+      parent: 2
+      pos: -20.5,7.5
+- proto: SpawnPointChiefMedicalOfficer
+  entities:
+  - uid: 6076
+    components:
+    - type: Transform
+      parent: 2
+      pos: 15.5,-3.5
 - proto: SpawnPointClawCommandMaid
   entities:
   - uid: 1595
@@ -30602,6 +30567,13 @@ entities:
     - type: Transform
       parent: 2
       pos: -3.5,-6.5
+- proto: SpawnPointDetective
+  entities:
+  - uid: 6081
+    components:
+    - type: Transform
+      parent: 2
+      pos: 34.5,-3.5
 - proto: SpawnPointForensicMantis
   entities:
   - uid: 4771
@@ -30609,6 +30581,13 @@ entities:
     - type: Transform
       parent: 2
       pos: -0.5,11.5
+- proto: SpawnPointHeadOfPersonnel
+  entities:
+  - uid: 6072
+    components:
+    - type: Transform
+      parent: 2
+      pos: 55.5,-3.5
 - proto: SpawnPointHeadOfSecurity
   entities:
   - uid: 2195
@@ -30662,6 +30641,13 @@ entities:
     - type: Transform
       parent: 2
       pos: 39.5,13.5
+- proto: SpawnPointLibrarian
+  entities:
+  - uid: 6073
+    components:
+    - type: Transform
+      parent: 2
+      pos: 16.5,18.5
 - proto: SpawnPointMedicalDoctor
   entities:
   - uid: 2361
@@ -30670,6 +30656,13 @@ entities:
       parent: 2
       pos: 15.5,-3.5
   - uid: 2362
+    components:
+    - type: Transform
+      parent: 2
+      pos: 16.5,-2.5
+- proto: SpawnPointMedicalIntern
+  entities:
+  - uid: 6077
     components:
     - type: Transform
       parent: 2
@@ -30726,6 +30719,13 @@ entities:
     - type: Transform
       parent: 2
       pos: 32.5,9.5
+- proto: SpawnPointQuartermaster
+  entities:
+  - uid: 6083
+    components:
+    - type: Transform
+      parent: 2
+      pos: 13.5,12.5
 - proto: SpawnPointReporter
   entities:
   - uid: 104
@@ -30733,6 +30733,20 @@ entities:
     - type: Transform
       parent: 2
       pos: 16.5,18.5
+- proto: SpawnPointResearchAssistant
+  entities:
+  - uid: 6079
+    components:
+    - type: Transform
+      parent: 2
+      pos: 9.5,8.5
+- proto: SpawnPointResearchDirector
+  entities:
+  - uid: 6078
+    components:
+    - type: Transform
+      parent: 2
+      pos: 9.5,8.5
 - proto: SpawnPointSalvageSpecialist
   entities:
   - uid: 2368
@@ -30747,6 +30761,13 @@ entities:
     - type: Transform
       parent: 2
       pos: 9.5,8.5
+- proto: SpawnPointSecurityCadet
+  entities:
+  - uid: 6082
+    components:
+    - type: Transform
+      parent: 2
+      pos: 47.5,-3.5
 - proto: SpawnPointSecurityOfficer
   entities:
   - uid: 2370
@@ -30786,6 +30807,20 @@ entities:
     - type: Transform
       parent: 2
       pos: -17.5,6.5
+- proto: SpawnPointTechnicalAssistant
+  entities:
+  - uid: 6075
+    components:
+    - type: Transform
+      parent: 2
+      pos: -19.5,6.5
+- proto: SpawnPointWarden
+  entities:
+  - uid: 6080
+    components:
+    - type: Transform
+      parent: 2
+      pos: 33.5,-3.5
 - proto: SprayBottleSpaceCleaner
   entities:
   - uid: 2375
@@ -36657,8 +36692,7 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 2944
-      configurators:
-      - invalid
+      configurators: []
   - uid: 2943
     components:
     - type: Transform
@@ -36667,8 +36701,7 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 2944
-      configurators:
-      - invalid
+      configurators: []
   - uid: 6024
     components:
     - type: Transform
@@ -36677,8 +36710,7 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 2944
-      configurators:
-      - invalid
+      configurators: []
   - uid: 6025
     components:
     - type: Transform
@@ -36687,8 +36719,7 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 2944
-      configurators:
-      - invalid
+      configurators: []
   - uid: 6026
     components:
     - type: Transform
@@ -36697,8 +36728,7 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 2944
-      configurators:
-      - invalid
+      configurators: []
   - uid: 6027
     components:
     - type: Transform
@@ -36707,8 +36737,7 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 2944
-      configurators:
-      - invalid
+      configurators: []
 - proto: WeaponEnergyTurretAIControlPanel
   entities:
   - uid: 2944

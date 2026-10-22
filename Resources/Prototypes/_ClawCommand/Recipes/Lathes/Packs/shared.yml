@@ -12,3 +12,6 @@
   id: SuperPartsPack
   recipes:
   - SuperManipulatorRecipe
+  - SuperCapacitorStockPart # Claw Command - SuperParts research
+  - SuperMatterBinStockPart # Claw Command - SuperParts research
+  - PicoManipulatorStockPart # Claw Command - SuperParts research

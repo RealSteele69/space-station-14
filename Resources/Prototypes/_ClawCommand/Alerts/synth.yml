@@ -1,0 +1,12 @@
+# Claw Command - synth power cell alerts. The cell is an organ, which the client doesn't read,
+# so unlike borgs these are sent from the server.
+
+- type: alert
+  parent: BorgBattery
+  id: SynthBattery
+  clientHandled: false
+
+- type: alert
+  parent: BorgBatteryNone
+  id: SynthBatteryNone
+  clientHandled: false

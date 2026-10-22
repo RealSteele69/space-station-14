@@ -927,6 +927,13 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 query = query.Where(log => log.Players.Count == 0);
             }
 
+            // Claw Command - antag reveal gate
+            if (filter.HiddenTypes != null)
+            {
+                query = query.Where(log => !filter.HiddenTypes.Contains(log.Type) ||
+                                           log.Players.Count > 0 && log.Players.All(p => filter.VisiblePlayers.Contains(p.PlayerUserId)));
+            }
+
             if (filter.LastLogId != null)
             {
                 query = filter.DateOrder switch

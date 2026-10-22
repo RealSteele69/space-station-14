@@ -1,0 +1,233 @@
+# Claw Command - advanced xenomorph game mode, its midround random spawn, and the NPC infestation event.
+# Nothing here is added to the existing event schedulers or secret weights; run the preset or the events
+# directly (setgamepreset AdvancedXenomorph / addgamerule AdvancedXenoInfestation).
+
+# ----------------------------------------------------------------------------- antag / roles
+
+- type: antag
+  id: AdvancedXenomorph
+  name: roles-antag-adv-xenomorph-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-adv-xenomorph-objective
+  guides: [ AdvXenomorphs ]
+  tags:
+  - OffStation
+  - Roundstart
+  - Midround
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: AdvancedXenomorph
+  prefRoles:
+  - AdvancedXenomorph
+  allowNonHumans: true
+  mindRoles:
+  - MindRoleAdvancedXenomorph
+  briefing:
+    text: adv-xeno-briefing
+    color: "#8f4fcf"
+    sound: /Audio/_ClawCommand/AdvancedXenos/Voice/hiss5.ogg
+
+- type: antagSpecifier
+  parent: AdvancedXenomorph
+  id: AdvancedXenomorphMidround
+  pickPlayer: false
+  spawnerPrototype: SpawnPointGhostAdvXenoLarva
+
+# For larvae an admin places by hand: the player is already in the body, so there is no spawner to make.
+- type: antagSpecifier
+  parent: AdvancedXenomorph
+  id: AdvancedXenomorphAdmin
+  pickPlayer: false
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleAdvancedXenomorph
+  name: Advanced Xenomorph Role
+  components:
+  - type: MindRole
+    antagPrototype: AdvancedXenomorph
+    roleType: TeamAntagonist
+    exclusiveAntag: true
+  - type: AdvXenomorphRole
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostAdvXenoLarva
+  components:
+  - type: GhostRole
+    name: ghost-role-information-adv-xeno-larva-name
+    description: ghost-role-information-adv-xeno-larva-description
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleAdvancedXenomorph
+    raffle:
+      settings: short
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _ClawCommand/Mobs/AdvancedXenos/larva.rsi
+      state: larva2
+
+# ----------------------------------------------------------------------------- objectives (survive, escape)
+
+- type: objectiveIssuer
+  id: AdvXenoHive
+  name: objective-issuer-adv-xeno-hive
+
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseAdvXenoObjective
+  components:
+  - type: Objective
+    difficulty: 1
+    issuer: AdvXenoHive
+  - type: RoleRequirement
+    roles:
+    - AdvXenomorphRole
+
+- type: entity
+  parent: [ BaseAdvXenoObjective, BaseSurviveObjective ]
+  id: AdvXenoSurviveObjective
+  name: Survive
+  description: The hive lives as long as you do.
+  components:
+  - type: Objective
+    icon:
+      sprite: _ClawCommand/Mobs/AdvancedXenos/larva.rsi
+      state: larva2
+
+- type: entity
+  parent: [ BaseAdvXenoObjective, BaseLivingObjective ]
+  id: AdvXenoEscapeObjective
+  name: Escape on the shuttle alive and unrestrained.
+  description: Reach Central Command on the escape shuttle and spread beyond this station.
+  components:
+  - type: Objective
+    icon:
+      sprite: Structures/Furniture/chairs.rsi
+      state: shuttle
+  - type: EscapeShuttleCondition
+
+# ----------------------------------------------------------------------------- roundstart mode
+
+# initial_spawn_target 6, hard_cap 5: one larva per eight players, two to five of them.
+- type: entity
+  parent: BaseGameRule
+  id: AdvancedXenomorph
+  components:
+  - type: GameRule
+    minPlayers: 10
+  - type: AdvXenomorphRule
+  - type: AntagSpawner
+    prototype: MobAdvXenoLarva
+  - type: AntagObjectives
+    objectives:
+    - AdvXenoSurviveObjective
+    - AdvXenoEscapeObjective
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    agentName: adv-xeno-round-end-agent-name
+    antags:
+    - !type:LinearAntagCount
+      proto: AdvancedXenomorph
+      playerRatio: 8
+      range:
+        min: 2
+        max: 5
+
+- type: gamePreset
+  id: AdvancedXenomorph
+  alias:
+  - advancedxeno
+  - aliens
+  name: adv-xeno-preset-title
+  description: adv-xeno-preset-description
+  showInVote: false
+  minPlayers: 10
+  rules:
+  - AdvancedXenomorph
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+# ----------------------------------------------------------------------------- midround larvae (ANTAG_RANDSPAWN)
+
+- type: entity
+  parent: BaseGameRule
+  id: AdvancedXenomorphLarvaSpawn
+  components:
+  - type: StationEvent
+    weight: 4
+    earliestStart: 30
+    reoccurrenceDelay: 40
+    minimumPlayers: 20
+    duration: null
+  - type: AdvXenomorphRule
+  - type: AntagSpawner
+    prototype: MobAdvXenoLarva
+  - type: AntagObjectives
+    objectives:
+    - AdvXenoSurviveObjective
+    - AdvXenoEscapeObjective
+  - type: AntagSelection
+    agentName: adv-xeno-round-end-agent-name
+    antags:
+    - !type:LinearAntagCount
+      proto: AdvancedXenomorphMidround
+      playerRatio: 15
+      range:
+        min: 1
+        max: 3
+
+# ----------------------------------------------------------------------------- admin-spawned larvae
+
+# Started by the first MobAdvXenoLarvaAdmin a ghost takes; it never picks anyone by itself.
+# It has no AdvXenomorphRule, so nobody is moved to a vent and Central Command makes no announcement.
+- type: entity
+  parent: BaseGameRule
+  id: AdvancedXenomorphAdmin
+  components:
+  - type: AntagObjectives
+    objectives:
+    - AdvXenoSurviveObjective
+    - AdvXenoEscapeObjective
+  - type: AntagSelection
+    assignmentHandled: true # only ever filled by AdvXenoAdminSpawnSystem; never selects or spawns on its own
+    agentName: adv-xeno-round-end-agent-name
+    antags:
+    - !type:FixedAntagCount
+      proto: AdvancedXenomorphAdmin
+
+# ----------------------------------------------------------------------------- NPC infestation event
+
+- type: entity
+  parent: BaseStationEventShortDelay
+  id: AdvancedXenoInfestation
+  components:
+  - type: StationEvent
+    weight: 5
+    earliestStart: 25
+    reoccurrenceDelay: 30
+    minimumPlayers: 15
+    duration: 60
+  - type: AdvXenoInfestationRule
+
+# /datum/event/xeno_infestation/extreme
+- type: entity
+  parent: AdvancedXenoInfestation
+  id: AdvancedXenoInfestationExtreme
+  components:
+  - type: StationEvent
+    weight: 1
+    earliestStart: 45
+    reoccurrenceDelay: 60
+    minimumPlayers: 30
+    duration: 60
+  - type: AdvXenoInfestationRule
+    strength: 4
+    additionalPlayers: 10

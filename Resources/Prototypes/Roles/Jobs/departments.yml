@@ -20,10 +20,7 @@
   roles:
   - Passenger
   - Visitor
-  - ServiceWorker
   - Prisoner #claw command
-  - DogborgJanitor # _ClawCommand
-  - DogborgService # _ClawCommand
 
 # Please kill this
 - type: department
@@ -110,6 +107,8 @@
   - ResearchDirector
   - Scientist
   - ResearchAssistant
+  - SeniorResearcher # _ClawCommand
+  - ForensicMantis # _ClawCommand - psionics port
 
 - type: department
   id: Security
@@ -146,8 +145,8 @@
   - Reporter
   - ServiceWorker
   - TramDriver
-  - SeniorResearcher # _ClawCommand
-  - ForensicMantis # _ClawCommand - psionics port
+  - DogborgJanitor # _ClawCommand
+  - DogborgService # _ClawCommand
 
 - type: department
   id: Silicon

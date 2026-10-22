@@ -209,3 +209,23 @@
     maxOccurrences: 1 # this event has diminishing returns on interesting-ness, so we cap it
     weight: 5
   - type: MobReplacementRule
+
+# Bingles. A prime bingle ghost role digs a pit somewhere on the station and the pit turns
+# whatever is thrown in into more bingles. Needs a crew big enough to deal with it.
+- type: entity
+  id: BingleSpawn
+  parent: BaseStationEventShortDelay
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-bingle-spawn-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 30
+    weight: 3
+    duration: 50
+    minimumPlayers: 12
+    maxOccurrences: 1
+    occursDuringRoundEnd: false
+  - type: RandomSpawnRule
+    prototype: SpawnPointGhostBinglePrime

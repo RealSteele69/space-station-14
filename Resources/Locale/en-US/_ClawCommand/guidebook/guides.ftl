@@ -36,3 +36,4 @@ guide-entry-loadout-info-security-weapons = Security Weapons
 guide-entry-meat-recipes = Meat Dishes
 guide-entry-sweet-recipes = Sweet Snacks
 guide-entry-candy-recipes = Candy
+guide-entry-lavaland-megafauna = Lavaland Megafauna

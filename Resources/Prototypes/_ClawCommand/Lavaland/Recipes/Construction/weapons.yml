@@ -13,3 +13,43 @@
   category: construction-category-weapons
   targetNode: dagger
   objectType: Item
+
+- type: construction
+  id: WeaponBoneAxeConstruction
+  graph: WeaponBoneAxeConstructionGraph
+  startNode: start
+  category: construction-category-weapons
+  targetNode: axe
+  objectType: Item
+
+- type: construction
+  id: WoodCudgelConstruction
+  graph: WoodenCudgel
+  startNode: start
+  category: construction-category-weapons
+  targetNode: cudgel
+  objectType: Item
+
+- type: construction
+  id: AshwoodCudgelConstruction
+  graph: AshwoodCudgel
+  startNode: start
+  category: construction-category-weapons
+  targetNode: cudgel
+  objectType: Item
+
+- type: construction
+  id: WoodPickaxeConstruction
+  graph: PickaxeWood
+  startNode: start
+  category: construction-category-weapons
+  targetNode: pickaxe
+  objectType: Item
+
+- type: construction
+  id: AshwoodPickaxeConstruction
+  graph: PickaxeAshwood
+  startNode: start
+  category: construction-category-weapons
+  targetNode: pickaxe
+  objectType: Item

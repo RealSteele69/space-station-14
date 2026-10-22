@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from /tg/station 13 at commit https://github.com/tgstation/tgstation/commit/3dbc8c3c121e3ade9158303c2819b47206b0f93d. inhand-left modified by K-Dynamic (github).",
+    "copyright": "Taken from /tg/station 13 at commit https://github.com/tgstation/tgstation/commit/3dbc8c3c121e3ade9158303c2819b47206b0f93d. inhand-left modified by K-Dynamic (github). Resomi-fitted states (equipped-OUTERCLOTHING-resomi) ported from Goob-Station (https://github.com/Goob-Station/Goob-Station) at commit da08589c83cc4f503c1c8450767e54f85157b951, where this RSI is credited as: \"Taken from Yogstation at https://github.com/yogstation13/Yogstation/commit/18ab2203bc47b7590f2c72b5f7969eafa723f033, equipped-OUTERCLOTHING-resomi made by Pofitlo\".",
     "size": {
         "x": 32,
         "y": 32
@@ -20,6 +20,10 @@
         },
         {
             "name": "inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "equipped-OUTERCLOTHING-resomi",
             "directions": 4
         }
     ]

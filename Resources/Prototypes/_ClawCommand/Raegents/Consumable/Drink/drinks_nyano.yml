@@ -13,7 +13,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
@@ -38,7 +38,7 @@
   metamorphicChangeColor: false
 
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
@@ -59,7 +59,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst

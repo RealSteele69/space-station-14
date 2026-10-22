@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: technology
+  id: SuperSalvageEquipment
+  name: research-technology-super-salvage-equipment
+  icon:
+    sprite: _ClawCommand/Lavaland/Objects/Tools/handdrill_super.rsi
+    state: handdrill
+  discipline: Industrial
+  tier: 2
+  cost: 15000
+  position: 3,3
+  recipeUnlocks:
+  - MiningDrillSuper
+  - WeaponSuperPlasmaCutter
+  - PickaxeDiamond
+  technologyPrerequisites:
+  - MassExcavation
+
+- type: technology
+  id: KineticWeaponry
+  name: research-technology-kinetic-weaponry
+  icon:
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Guns/Basic/kinetic_repeater.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 1
+  cost: 7500
+  position: 1,8
+  recipeUnlocks:
+  - WeaponProtoKineticPistol
+  - WeaponProtoKineticRepeater
+  - WeaponProtoKineticShotgun
+  - PKAUpgradeSpace
+  technologyPrerequisites:
+  - SalvageWeapons

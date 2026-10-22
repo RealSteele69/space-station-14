@@ -35,4 +35,13 @@ public sealed class LogFilter
     public int? Limit { get; set; }
 
     public DateOrder DateOrder { get; set; } = DateOrder.Descending;
+
+    // Claw Command start - antag reveal gate
+    /// <summary>
+    /// Logs of these types are excluded unless every player tagged on them is in <see cref="VisiblePlayers"/>.
+    /// </summary>
+    public HashSet<LogType>? HiddenTypes { get; set; }
+
+    public Guid[] VisiblePlayers { get; set; } = [];
+    // Claw Command end
 }

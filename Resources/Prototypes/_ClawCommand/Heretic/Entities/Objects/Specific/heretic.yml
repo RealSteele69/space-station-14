@@ -72,7 +72,7 @@
       canReact: false
       reagents:
       - ReagentId: EldritchEssence
-        Quantity: 100
+        Quantity: 50 # Claw Command - balance: was 100, a near-full heal per water tank
   - type: Tag
     tags:
     - HereticItem

@@ -15,5 +15,6 @@ namespace Content.Shared.Eye
         EldritchInfluenceSpent = 1 << 5, // Drained heretic influences.
         Ethereal = 1 << 6, // CLAW COMMAND - Shadekin phased into the dark plane; visible only to other ethereal entities.
         PsionicInvisibility = 1 << 7, // CLAW COMMAND - hidden by the Psionic Invisibility power; visible only to other psions using it.
+        CosmicCultMonument = 1 << 8, // CLAW COMMAND - Cosmic Cult monument and its placement preview; visible to cultists and ghosts.
     }
 }

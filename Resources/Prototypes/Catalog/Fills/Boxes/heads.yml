@@ -23,6 +23,7 @@
         - id: AlertsComputerCircuitboard
         - id: AtmosMonitoringComputerCircuitboard
         - id: PowerComputerCircuitboard
+        - id: SupermatterComputerCircuitboard # Claw Command - supermatter
         - id: SolarControlComputerCircuitboard
 
 - type: entity

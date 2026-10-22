@@ -11,7 +11,7 @@
   color: "#61a79d"
   physicalDesc: reagent-physical-desc-mystical # was reagent-physical-desc-ethereal in upstream; fork has no such locale key
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         probability: 0.4

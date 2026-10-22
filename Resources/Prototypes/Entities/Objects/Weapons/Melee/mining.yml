@@ -99,6 +99,9 @@
     radius: 4
 
 # Very high burst damage if you land a mark, while also providing a small amount of healing.
+  - type: CosmicTransmutable # Claw Command - Cosmic Cult
+    transmutesTo: ScytheCosmicCult
+    requiredGlyphType: CosmicGlyphBlades
 - type: entity
   parent: [BaseWeaponCrusher, BaseSecurityCargoContraband]
   id: WeaponCrusher

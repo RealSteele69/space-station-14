@@ -1,0 +1,291 @@
+# _ClawCommand: Synth markings. Only offered to the MarkingsSynth group (see Body/Species/synth.yml).
+
+# Antennas
+
+- type: marking
+  id: SynthAntenna
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/antenna.rsi
+    state: antenna_synth
+
+- type: marking
+  id: SynthAntennaCurl
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/antenna.rsi
+    state: antenna_curl
+
+- type: marking
+  id: SynthAntennaCurlSoft
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/antenna.rsi
+    state: antenna_curl_soft
+
+- type: marking
+  id: SynthAntennaLight
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/antenna.rsi
+    state: antenna_light
+
+- type: marking
+  id: SynthAntennaMajestic
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/antenna.rsi
+    state: antenna_majestic
+
+- type: marking
+  id: SynthAntennaSharp
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/antenna.rsi
+    state: antenna_sharp
+
+- type: marking
+  id: SynthAntennaSlash
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/antenna.rsi
+    state: antenna_slash
+
+- type: marking
+  id: SynthAntennaThick
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/antenna.rsi
+    state: antenna_thick
+
+- type: marking
+  id: SynthAntennaTwin
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/antenna.rsi
+    state: antenna_twin
+
+# Arms
+
+- type: marking
+  id: SynthLArmLight
+  bodyPart: LArm
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/arms.rsi
+    state: arm_light_l
+
+- type: marking
+  id: SynthRArmLight
+  bodyPart: RArm
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/arms.rsi
+    state: arm_light_r
+
+- type: marking
+  id: SynthLArmStarPauldron
+  bodyPart: LArm
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/arms.rsi
+    state: star_pauldron_l
+
+- type: marking
+  id: SynthRArmStarPauldron
+  bodyPart: RArm
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/arms.rsi
+    state: star_pauldron_r
+
+# Chest
+
+- type: marking
+  id: SynthChestComposite
+  bodyPart: Chest
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/chest.rsi
+    state: composite
+  - sprite: _ClawCommand/Mobs/Customization/Synth/chest.rsi
+    state: composite_frame
+
+- type: marking
+  id: SynthChestLight
+  bodyPart: Chest
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/chest.rsi
+    state: chest_light
+
+- type: marking
+  id: SynthChestStarCross
+  bodyPart: Chest
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/chest.rsi
+    state: star_cross
+
+# Head
+
+- type: marking
+  id: SynthJawComposite
+  bodyPart: Head
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/head.rsi
+    state: jaw_composite
+
+- type: marking
+  id: SynthVisor
+  bodyPart: Head
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/head.rsi
+    state: visor
+  - sprite: _ClawCommand/Mobs/Customization/Synth/head.rsi
+    state: visor_frame
+  - sprite: _ClawCommand/Mobs/Customization/Synth/head.rsi
+    state: visor_plate
+
+- type: marking
+  id: SynthVisorStarCross
+  bodyPart: Head
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/head.rsi
+    state: visor
+  - sprite: _ClawCommand/Mobs/Customization/Synth/head.rsi
+    state: visor_frame
+  - sprite: _ClawCommand/Mobs/Customization/Synth/head.rsi
+    state: visor_plate_star_cross
+
+# Head Side
+
+- type: marking
+  id: SynthCompositeHood
+  bodyPart: HeadSide
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/headside.rsi
+    state: composite_hood
+
+- type: marking
+  id: SynthCompositeHoodLight
+  bodyPart: HeadSide
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/headside.rsi
+    state: composite_hood_light
+
+- type: marking
+  id: SynthSolarFans
+  bodyPart: HeadSide
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/headside.rsi
+    state: solar_fans
+
+# Legs
+
+- type: marking
+  id: SynthLFootToes
+  bodyPart: LFoot
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/feet.rsi
+    state: toes_l
+
+- type: marking
+  id: SynthLLegLight
+  bodyPart: LLeg
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/legs.rsi
+    state: leg_light_l
+
+- type: marking
+  id: SynthRFootToes
+  bodyPart: RFoot
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/feet.rsi
+    state: toes_r
+
+- type: marking
+  id: SynthRLegLight
+  bodyPart: RLeg
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/legs.rsi
+    state: leg_light_r
+
+# Snout
+
+- type: marking
+  id: SynthSnout
+  bodyPart: Snout
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/snout.rsi
+    state: nose
+  - sprite: _ClawCommand/Mobs/Customization/Synth/snout.rsi
+    state: chin
+
+- type: marking
+  id: SynthSnoutBox
+  bodyPart: Snout
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/snout.rsi
+    state: nose_box
+  - sprite: _ClawCommand/Mobs/Customization/Synth/snout.rsi
+    state: chin
+
+# Tails
+
+- type: marking
+  id: SynthTail
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/tail.rsi
+    state: factory
+  - sprite: _ClawCommand/Mobs/Customization/Synth/tail.rsi
+    state: factory_composite
+
+- type: marking
+  id: SynthTailLarge
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/tail.rsi
+    state: large
+  - sprite: _ClawCommand/Mobs/Customization/Synth/tail.rsi
+    state: large_composite
+
+- type: marking
+  id: SynthTailXenoCurl
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/tail.rsi
+    state: xeno_curl
+
+- type: marking
+  id: SynthTailXenoSpike
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsSynth ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Synth/tail.rsi
+    state: xeno_spike

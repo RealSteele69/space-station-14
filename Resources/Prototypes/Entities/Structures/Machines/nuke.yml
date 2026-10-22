@@ -111,6 +111,7 @@
     follow: true
     location: location-nuclear-bomb
   - type: FTLSmashImmune
+  - type: SupermatterImmune # Claw Command - supermatter
 
 - type: entity
   parent: NuclearBomb

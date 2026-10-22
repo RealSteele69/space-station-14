@@ -1,0 +1,103 @@
+# Claw Command - train trolleys and trailers, as hand-pulled carts.
+# These were originally latched to a tug; there's no towing here, they're pulled like a rollerbed.
+
+- type: entity
+  parent: BaseVehicleTrailerClaw
+  id: VehicleTrailerPrisoner
+  name: prisoner trolley
+  description: A trolley for transporting security personnel or prisoners. Pull it along by hand.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/trailers.rsi
+    layers:
+    - state: prisoner
+  - type: Strap
+    buckleOffset: "0,0.25"
+
+- type: entity
+  parent: BaseVehicleTrailerClaw
+  id: VehicleTrailerMedical
+  name: medical trolley
+  description: A trolley for moving patients lying down. Pull it along by hand.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/trailers.rsi
+    layers:
+    - state: medical
+  - type: Strap
+    position: Down
+    rotation: -90
+    buckleOffset: "0,0.25"
+
+- type: entity
+  parent: BaseVehicleTrailerClaw
+  id: VehicleTrailerCargo
+  name: cargo trolley
+  description: A flatbed trolley for hauling supplies. Pull it along by hand.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/trailers.rsi
+    layers:
+    - state: cargo
+  - type: Storage
+    grid:
+    - 0,0,9,5
+    maxItemSize: Huge
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+
+- type: entity
+  parent: VehicleTrailerCargo
+  id: VehicleTrailerCargoClassic
+  suffix: Classic
+  components:
+  - type: Sprite
+    layers:
+    - state: cargo-classic
+
+- type: entity
+  parent: VehicleTrailerCargo
+  id: VehicleTrailerSecurity
+  name: security equipment trolley
+  description: A trolley for bringing security equipment to a scene. Pull it along by hand.
+  components:
+  - type: Sprite
+    layers:
+    - state: security
+  - type: Storage
+    grid:
+    - 0,0,7,4
+    maxItemSize: Large
+
+# 64x64 art, same draw offset as the ATV it was built for. Seats a passenger.
+- type: entity
+  parent: BaseVehicleTrailerClaw
+  id: VehicleTrailerQuadbike
+  name: all terrain trailer
+  description: A trailer built for the electric ATV. Pull it along by hand.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/atv_trailer.rsi
+    offset: "0,0.5"
+    layers:
+    - state: vehicle
+    - state: paint
+      map: ["paint"]
+      color: "#666666"
+  - type: Strap
+    buckleOffset: "0,0.5"
+
+- type: entity
+  parent: VehicleTrailerQuadbike
+  id: VehicleTrailerQuadbikeRandom
+  suffix: Random paint
+  components:
+  - type: RandomSprite
+    available:
+    - paint:
+        paint: Sixteen

@@ -1,0 +1,45 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/obj/doors/material_doors.dmi (originally from VOREStation/Polaris (Baystation12 lineage), imported into Citadel RP by deathride58 in f1893fa0a0 (2018)). Converted from DMI for Claw Command.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "closed"
+        },
+        {
+            "name": "open"
+        },
+        {
+            "name": "opening",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "closing",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.2,
+                    0.2
+                ]
+            ]
+        }
+    ]
+}

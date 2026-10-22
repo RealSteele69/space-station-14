@@ -1,0 +1,24 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Megafauna are rare and kept far apart from each other.
+- type: biomeMarkerLayer
+  id: RandomMegafaunaLavaland
+  prototype: SpawnerRandomMegafaunaLavaland
+  radius: 128
+  maxCount: 3
+  size: 512
+
+- type: biomeMarkerLayer
+  id: RandomEliteLavaland
+  prototype: SpawnerRandomEliteLavaland
+  radius: 80
+  maxCount: 6
+  size: 512
+
+# Roaming light fauna (watchers, ash whelps, legion monkeys) out in the open, not just inside ruins.
+- type: biomeMarkerLayer
+  id: RandomLightMobLavaland
+  prototype: SpawnerRandomLightMobLavaland
+  radius: 40
+  maxCount: 48
+  size: 256

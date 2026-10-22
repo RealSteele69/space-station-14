@@ -17,6 +17,9 @@
   parent: RestrictedAntag
   id: Changeling
   prefRoles: [ Changeling ]
+  whitelist: # Claw Command - chemicals live in a satiation pool, so species without one (IPC, synth) can't be changelings
+    components:
+    - Satiation
   briefing:
     text: changeling-role-greeting
     color: Red

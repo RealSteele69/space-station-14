@@ -1,4 +1,5 @@
 - type: entity
+  parent: BaseAction
   id: ActionSharkVisionToggle
   name: Toggle Blood in the Water
   description: Enables you to sense blood and those who are bleeding.
@@ -8,9 +9,11 @@
     itemIconStyle: BigAction
     priority: -20
     useDelay: 1
-    icon:
-      sprite: /Textures/Interface/Alerts/bleed.rsi
-      state: bleed10
+  - type: Sprite
+    sprite: /Textures/Interface/Alerts/bleed.rsi
+    layers:
+    - state: bleed10
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ToggleSharkVisionEvent
 

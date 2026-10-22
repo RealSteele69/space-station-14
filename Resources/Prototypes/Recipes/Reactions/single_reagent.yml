@@ -48,16 +48,8 @@
   products:
     Wine: 1
 
-- type: reaction
-  id: WatertoHolyWater
-  impact: Low
-  requiredMixerCategories:
-  - Holy
-  reactants:
-    Water:
-      amount: 1
-  products:
-    Holywater: 1
+# Claw Command - WatertoHolyWater removed: BlessHolyWater (_ClawCommand/.../cocktails_nyano.yml) blesses the
+# same water into HolyWater, which carries the Blood Cult purge, and always won the tie anyway.
 
 - type: reaction
   id: Hivarol

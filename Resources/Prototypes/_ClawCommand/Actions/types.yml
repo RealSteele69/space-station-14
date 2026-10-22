@@ -5,11 +5,17 @@
   description: Transform in or out of your fox form.
   components:
   - type: Action
-    icon: { sprite: _ClawCommand/Mobs/Species/Kitsune/transform.rsi, state: foxform }
-    iconOn: { sprite: _ClawCommand/Mobs/Species/Kitsune/transform.rsi, state: humanform }
     itemIconStyle: NoItem
     useDelay: 10 # emote spam
     checkCanInteract: false
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/Species/Kitsune/transform.rsi
+    layers:
+    - state: foxform
+      map: ["enum.ActionVisuals.Icon"]
+    - state: humanform
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:KitsuneFoxFormActionEvent
 

@@ -1,0 +1,40 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Shared.Actions;
+using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
+
+namespace Content.Shared._ClawCommand.CheatDeath;
+
+/// <summary>
+/// Gives an action that fully revives the entity, a limited (or unlimited) amount of times.
+/// </summary>
+[RegisterComponent, NetworkedComponent]
+public sealed partial class CheatDeathComponent : Component
+{
+    /// <summary>
+    /// How many revives does this entity have remaining.
+    /// </summary>
+    [DataField]
+    public int ReviveAmount = 1;
+
+    /// <summary>
+    /// Self-explanatory.
+    /// </summary>
+    [DataField]
+    public bool InfiniteRevives;
+
+    /// <summary>
+    /// Can this entity heal themselves while not being dead?
+    /// </summary>
+    [DataField]
+    public bool CanCheatStanding;
+
+    [DataField]
+    public EntProtoId ActionCheatDeath = "ActionCheatDeath";
+
+    [DataField]
+    public EntityUid? ActionEntity;
+}
+
+public sealed partial class CheatDeathEvent : InstantActionEvent;

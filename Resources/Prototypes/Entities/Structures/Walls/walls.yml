@@ -134,6 +134,8 @@
   - type: IconSmooth
     key: walls
     base: brick
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WallCosmicCult
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
@@ -261,6 +263,8 @@
   - type: IconSmooth
     key: walls
     base: gold
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WallCosmicCult
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
@@ -294,6 +298,8 @@
     base: plasma
   - type: RadiationBlocker
     resistance: 5
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WallCosmicCult
 
 - type: entity
   parent: BaseWall
@@ -432,6 +438,8 @@
         layer:
         - WallLayer
         density: 2000
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WallCosmicCult
 
 - type: entity
   parent: WallReinforced
@@ -450,6 +458,8 @@
     key: walls
     base: reinf_over
   # Rusted walls should be made weaker through a damage mod status effect.
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WallCosmicCult
 
 - type: entity
   parent: [ WallDiagonalBase, StructureHealthWallStrong ]
@@ -558,6 +568,8 @@
     base: silver
 
 #shuttle walls
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WallCosmicCult
 - type: entity
   parent: [ WallDiagonalBase, StructureHealthWallStrong ]
   id: WallShuttleDiagonal
@@ -663,6 +675,8 @@
         layer:
         - WallLayer
         density: 2000
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WallCosmicCult
 
 - type: entity
   parent: [ BaseWall, StructureHealthWall ]
@@ -697,6 +711,8 @@
   - type: IconSmooth
     key: walls
     base: solid
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WallCosmicCult
 
 - type: entity
   parent: [ WallDiagonalBase, StructureHealthWall ]
@@ -735,6 +751,8 @@
     key: walls
     base: solid
   # Rusted walls should be made weaker through a damage mod status effect.
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WallCosmicCult
 
 - type: entity
   parent: [ BaseWall, StructureHealthWall ]
@@ -873,6 +891,8 @@
     base: uranium
   - type: RadiationBlocker
     resistance: 6
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WallCosmicCult
 
 - type: entity
   parent: [ BaseWall, StructureHealthBarrierStrong ]
@@ -906,6 +926,8 @@
   - type: IconSmooth
     key: walls
     base: wood
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WallCosmicCult
 
 - type: entity
   parent: [ BaseWall, StructureHealthBarrier ]
@@ -964,6 +986,8 @@
     key: walls
     base: mining
   - type: Appearance
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WallCosmicCult
 
 - type: entity
   parent: [ WallDiagonalBase, StructureHealthWall ]

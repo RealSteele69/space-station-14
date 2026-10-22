@@ -1,0 +1,104 @@
+# Claw Command - driver/occupant actions for VehicleControlsComponent.
+
+- type: entity
+  abstract: true
+  parent: BaseAction
+  id: BaseVehicleControlAction
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+
+- type: entity
+  parent: BaseVehicleControlAction
+  id: ActionVehicleCarHorn
+  name: Honk the horn
+  description: Let everyone know you're coming through.
+  components:
+  - type: Action
+    useDelay: 1.5
+  - type: Sprite
+    sprite: _ClawCommand/Interface/Actions/vehicle.rsi
+    layers:
+    - state: horn
+  - type: InstantAction
+    event: !type:VehicleHornActionEvent
+
+- type: entity
+  parent: ActionVehicleCarHorn
+  id: ActionVehicleBicycleBell
+  name: Ring the bell
+  description: Ring-ring!
+  components:
+  - type: Action
+    useDelay: 1
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/bicycle.rsi
+    layers:
+    - state: vehicle
+
+- type: entity
+  parent: BaseVehicleControlAction
+  id: ActionVehicleSiren
+  name: Toggle siren
+  description: Turn the lights and siren on or off.
+  components:
+  - type: Action
+    useDelay: 1
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/ambulance.rsi
+    layers:
+    - state: vehicle
+      map: ["enum.ActionVisuals.Icon"]
+    - state: vehicle-siren
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: InstantAction
+    event: !type:VehicleSirenActionEvent
+
+- type: entity
+  parent: BaseVehicleControlAction
+  id: ActionVehicleManTurret
+  name: Man turret
+  description: Take control of a free turret, or let go of the one you're on. Needs a free hand; the driver can't man one.
+  components:
+  - type: Action
+    useDelay: 1
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/Hardpoints/tank.rsi
+    layers:
+    - state: m56_cupola
+      map: ["enum.ActionVisuals.Icon"]
+    - state: ltb_cannon
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: InstantAction
+    event: !type:VehicleManTurretActionEvent
+
+- type: entity
+  parent: BaseVehicleControlAction
+  id: ActionVehicleExit
+  name: Exit vehicle
+  description: Climb out of the vehicle.
+  components:
+  - type: Action
+    useDelay: 1
+  - type: Sprite
+    sprite: _ClawCommand/Interface/Actions/vehicle.rsi
+    layers:
+    - state: eject
+  - type: InstantAction
+    event: !type:VehicleExitActionEvent
+
+- type: entity
+  parent: BaseVehicleControlAction
+  id: ActionVehicleReverse
+  name: Reverse gear
+  description: Shift between drive and reverse. In reverse, the direction keys back the vehicle that way. Put it on a hotbar key for quick shifting.
+  components:
+  - type: Action
+    useDelay: 0.3
+  - type: Sprite
+    layers:
+    - texture: Interface/VerbIcons/rotate_ccw.svg.192dpi.png
+  - type: InstantAction
+    event: !type:VehicleReverseActionEvent

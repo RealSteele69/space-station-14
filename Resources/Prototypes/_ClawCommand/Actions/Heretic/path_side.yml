@@ -20,9 +20,11 @@
     itemIconStyle: NoItem
     sound:
       path: /Audio/_ClawCommand/Heretic/ice_shovel.ogg
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: ice_spear
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: ice_spear
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:EventHereticIceSpear
   - type: HereticAction
@@ -41,10 +43,12 @@
   - type: Action
     useDelay: 45
     itemIconStyle: NoItem
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: cleave
     checkCanInteract: false
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: cleave
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     checkCanAccess: false
     range: 4

@@ -1,0 +1,94 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: explosion
+  id: Supermatter
+  damagePerIntensity:
+    types:
+      Radiation: 5
+      Heat: 4
+      Blunt: 3
+      Slash: 3
+  tileBreakChance: [0, 0.5, 1]
+  tileBreakIntensity: [0, 10, 30]
+  tileBreakRerollReduction: 20
+  lightColor: Yellow
+  fireColor: Green
+  texturePath: /Textures/Effects/fire_greyscale.rsi
+  fireStates: 3
+
+# Set by a singularity or tesla delamination.
+- type: alertLevel
+  parent: BaseDelta
+  id: DeltaSupermatter
+  announcement: alert-level-delta-supermatter-announcement
+  sound:
+    path: /Audio/Misc/delta.ogg
+    params:
+      volume: -3
+  color: DarkRed
+  emergencyLightColor: Orange
+
+# Steal objective
+
+- type: stealTargetGroup
+  id: SupermatterSliver
+  name: steal-target-groups-cargo-supermatter-sliver
+  sprite:
+    sprite: _ClawCommand/Objects/Misc/supermatter_sliver.rsi
+    state: icon
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseTraitorStealObjective
+  id: StealSupermatterSliverObjective
+  components:
+  - type: Objective
+    difficulty: 3.5
+  - type: StealCondition
+    verifyMapExistence: true
+    stealGroup: SupermatterSliver
+    objectiveNoOwnerText: objective-condition-steal-smsliver-title
+    descriptionText: objective-condition-steal-smsliver-description
+
+# Guidebook
+
+- type: guideEntry
+  id: Supermatter
+  name: guide-entry-sm
+  text: "/ServerInfo/_ClawCommand/Guidebook/Engineering/Supermatter.xml"
+  children:
+  - SMDelamSOP
+
+- type: guideEntry
+  id: SMDelamSOP
+  name: guide-entry-sop-supermatterdelam
+  text: "/ServerInfo/_ClawCommand/Guidebook/Engineering/SupermatterDelam.xml"
+
+# Lathe recipes
+
+- type: latheRecipe
+  parent: [ BaseGoldCircuitboardRecipe, BaseEngineeringComputerRecipeCategory ]
+  id: SupermatterComputerCircuitboard
+  result: SupermatterComputerCircuitboard
+
+- type: latheRecipe
+  abstract: true
+  id: BaseDiodeDiscRecipe
+  categories:
+  - Engineering
+  completetime: 5
+  materials:
+    Glass: 800
+    Steel: 600
+    Plastic: 400
+    Gold: 200
+
+- type: latheRecipe
+  parent: BaseDiodeDiscRecipe
+  id: DiodeDiscElectroDisruptive
+  result: DiodeDiscElectroDisruptive
+
+- type: latheRecipe
+  parent: BaseDiodeDiscRecipe
+  id: DiodeDiscElectroBehavioural
+  result: DiodeDiscElectroBehavioural

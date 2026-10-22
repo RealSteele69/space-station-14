@@ -261,6 +261,7 @@
       components:
       - BorgChassis
       - Silicon
+      - SynthBattery # Claw Command - synth species charge their internal cell here
   - type: Construction
     containers:
     - machine_parts
@@ -305,6 +306,7 @@
       components:
       - BorgChassis
       - Silicon
+      - SynthBattery # Claw Command - synth species charge their internal cell here
   - type: ContainerContainer
     containers:
       entity_storage: !type:Container

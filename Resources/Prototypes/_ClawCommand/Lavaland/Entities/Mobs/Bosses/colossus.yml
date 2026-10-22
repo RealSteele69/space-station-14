@@ -21,7 +21,7 @@
         - LargeMobLayer
   - type: NpcFactionMember
     factions:
-    - SimpleHostile
+    - Lavafauna
   - type: HTN
     rootTask:
       task: SimpleRangedHostileCompound
@@ -86,3 +86,37 @@
     factor: 25 # times more dangerous than a crew-member
   - type: Aggressive # also required component for aggro checking
     forgiveRange: 20.0
+  # Megafauna AI
+  - type: Fauna
+  - type: ActionGrant
+    actions:
+    - ActionColossusShotgun
+    - ActionColossusBlast
+    - ActionColossusSpiral
+    - ActionColossusCrystalCross
+    - ActionColossusJudgement
+  - type: MegafaunaAi
+    actionDelay: 0.6
+    startingDelay: 1.0
+    selector: !type:NestedMegafaunaSelector
+      id: Colossus
+  - type: MegafaunaAggroRadius
+    radius: 10
+  - type: Anger
+    totalHp: 2500
+  - type: AngerPlayerScaling
+    angerScale: 1.1
+    hpScale: 1.2
+  - type: MobPhases
+    phaseThresholds:
+      0: 1
+      1000: 2
+      1900: 3
+  - type: MegafaunaGodmode
+  - type: MegafaunaRejuvenate
+  - type: DamageSquareImmunity
+  - type: SpawnLootOnDeath
+    table: !type:AllSelector
+      children:
+      - id: LavalandCrateNecropolisFilled
+      - id: CrusherUpgradeBladeIceFrost

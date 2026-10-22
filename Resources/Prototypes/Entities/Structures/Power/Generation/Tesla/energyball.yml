@@ -109,6 +109,7 @@
     interactSuccessString: petting-success-tesla
     interactFailureString: petting-failure-tesla
     interactSuccessSpawn: EffectHearts
+  - type: SupermatterImmune # Claw Command - supermatter
   - type: GuideHelp # For the curious among the brave.
     guides:
     - TeslaEngine

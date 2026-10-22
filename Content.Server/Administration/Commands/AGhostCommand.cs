@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._ClawCommand.Administration;
 using Content.Server.GameTicking;
 using Content.Server.Ghost;
 using Content.Server.Mind;
@@ -95,6 +96,9 @@ public sealed partial class AGhostCommand : LocalizedCommands
 
         var canReturn = mind.CurrentEntity != null
                         && !_entities.HasComponent<GhostComponent>(mind.CurrentEntity);
+
+        // ClawCommand: tell admins when someone who was a critical player this round goes into aghost.
+        _entities.System<CriticalPlayerAlertSystem>().AlertAGhost(player!, shell.Player);
 
         if (player!.AttachedEntity == null
             || !transformSystem.TryGetMapOrGridCoordinates(player.AttachedEntity.Value, out var coordinates))

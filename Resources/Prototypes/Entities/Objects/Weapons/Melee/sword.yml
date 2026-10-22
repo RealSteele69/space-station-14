@@ -22,6 +22,9 @@
     - Slicing
 
 #Shortswords
+  - type: CosmicTransmutable # Claw Command - Cosmic Cult
+    transmutesTo: SwordCosmicCult
+    requiredGlyphType: CosmicGlyphBlades
 - type: entity
   name: cutlass
   parent: [ BaseSword, BaseMajorContraband ]

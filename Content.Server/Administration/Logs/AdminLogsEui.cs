@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Content.Server._ClawCommand.Administration;
 using Content.Server.Administration.Managers;
 using Content.Server.EUI;
 using Content.Server.GameTicking;
@@ -50,6 +51,7 @@ public sealed partial class AdminLogsEui : BaseEui
             CancellationToken = _logSendCancellation.Token,
             Limit = _clientBatchSize
         };
+        _e.System<AntagRevealSystem>().ApplyLogMask(_filter); // Claw Command
     }
 
     private int CurrentRoundId => _e.System<GameTicker>().RoundId;
@@ -127,6 +129,7 @@ public sealed partial class AdminLogsEui : BaseEui
                 };
 
                 var roundId = _filter.Round ??= CurrentRoundId;
+                _e.System<AntagRevealSystem>().ApplyLogMask(_filter); // Claw Command
                 await LoadFromDb(roundId);
 
                 SendLogs(true, _filter);

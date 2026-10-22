@@ -1,0 +1,706 @@
+# Claw Command - RMC-14 APCs, tanks, armed humvee/van and power loaders on the upstream vehicle system.
+# RMC runs these on its grid mover with map interiors, hardpoints and rotating turret entities. Here:
+# - crews ride hidden inside (ContainerVehicle); the first in drives
+# - each turret is a gunner seat (VehicleControls.turretWeapons): a passenger uses "Man turret" to get
+#   that seat's gun in hand and fires it through the normal gun system. The driver can't man one.
+# - turret overlays are baked per direction into *_turret.rsi (RMC's offsets) and face the hull's way
+# - like every vehicle here the hull stops bullets and lasers when aimed at (RequireProjectileTarget),
+#   and shots from aboard never hit their own vehicle (VehicleControlsSystem)
+# Fixtures and lights follow RMC's prototypes; armour values are RMC's frame modifier sets.
+
+- type: entity
+  abstract: true
+  parent: BaseVehicleVanClaw
+  id: BaseVehicleArmoredClaw
+  components:
+  - type: Repairable
+    damageValue: -40
+    doAfterDelay: 3
+    fuelCost: 10
+  - type: VehicleControls
+    damagedThreshold: 600
+    criticalThreshold: 960
+  - type: VehicleHandling
+    crashDamage:
+      types:
+        Blunt: 1
+    obstacleDamage:
+      types:
+        Structural: 10
+        Blunt: 5
+    occupantDamage:
+      types:
+        Blunt: 0.3
+    runOverDamage:
+      types:
+        Blunt: 5
+  - type: Vehicle
+    transferDamageModifier:
+      coefficients:
+        Blunt: 0.2
+        Slash: 0.2
+        Piercing: 0.2
+        Heat: 0.2
+        Structural: 0.2
+  - type: Damageable
+    damageModifierSet: ArmoredVehicleAPC
+  - type: PointLight
+    radius: 12
+    energy: 2.5
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1200
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetPlasteel1:
+            min: 4
+            max: 8
+          SheetSteel1:
+            min: 6
+            max: 10
+          PartRodMetal1:
+            min: 1
+            max: 2
+          CableApcStack1:
+            min: 1
+            max: 1
+          PuddleOilVehicleWreck:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ExplodeBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 40
+    intensitySlope: 5
+    maxIntensity: 8
+    maxTileBreak: 0 # no hull breaches from a wreck
+    canCreateVacuum: false
+
+# --- APCs --------------------------------------------------------------------
+
+- type: entity
+  abstract: true
+  parent: BaseVehicleArmoredClaw
+  id: BaseVehicleAPCClaw
+  components:
+  - type: VehicleHandling
+    runOverSpeedLoss: 0.05
+    coasting: 2.5
+    grip: 13
+    turnRate: 110
+    turnRateAtTopSpeed: 50
+    acceleration: 2
+    speedingAcceleration: 0.5
+    topSpeedMultiplier: 1.3
+    braking: 5
+    bumperBounds: "-1.15,-1.85,1.15,1.85"
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/apc.rsi
+    layers:
+    - state: apc_base
+      map: ["base"]
+    - state: damaged_frame
+      map: ["wear"]
+      visible: false
+    - state: wheels_1
+      map: ["wheels"]
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1,-1.7,1,1.7"
+        density: 1200
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - TableLayer
+
+- type: entity
+  parent: BaseVehicleAPCClaw
+  id: VehicleAPC
+  name: armored personnel carrier
+  description: A rugged armored personnel carrier outfitted for battlefield support. Crewed by a driver, a turret gunner, a front gunner and two port gunners.
+  components:
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysSecurity
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysSecurity
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      vehicle_occupants: !type:Container
+      key_slot: !type:ContainerSlot
+  - type: Sprite
+    layers:
+    - state: apc_base
+      map: ["base"]
+    - state: damaged_frame
+      map: ["wear"]
+      visible: false
+    - state: frontalcannon_0
+    - state: dualcannon_0
+    - state: wheels_1
+      map: ["wheels"]
+  - type: VehicleControls
+    maxOccupants: 10
+    turretWeapons:
+    - VehicleTurretAPCDualCannon
+    - VehicleTurretAPCFrontCannon
+    - VehicleTurretAPCPortGun
+    - VehicleTurretAPCPortGun
+
+- type: entity
+  parent: BaseVehicleAPCClaw
+  id: VehicleAPCMedical
+  name: armored personnel carrier (medical)
+  description: A medical-configured APC with triage markings. Unarmed.
+  components:
+  - type: Sprite
+    layers:
+    - state: apc_base_med
+      map: ["base"]
+    - state: damaged_frame
+      map: ["wear"]
+      visible: false
+    - state: wheels_1
+      map: ["wheels"]
+  - type: VehicleControls
+    maxOccupants: 8
+    sirenAction: ActionVehicleSiren
+  - type: AmbientSound
+    enabled: false
+    volume: -2
+    range: 14
+    sound:
+      path: /Audio/Effects/Vehicle/ambulancesiren.ogg
+
+- type: entity
+  parent: BaseVehicleAPCClaw
+  id: VehicleAPCCommand
+  name: armored personnel carrier (command)
+  description: A command-configured APC bristling with sensors and comms gear, with a single turret gunner.
+  components:
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysSecurity
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysSecurity
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      vehicle_occupants: !type:Container
+      key_slot: !type:ContainerSlot
+  - type: Sprite
+    layers:
+    - state: apc_base_com
+      map: ["base"]
+    - state: damaged_frame
+      map: ["wear"]
+      visible: false
+    - state: dualcannon_0
+    - state: wheels_1
+      map: ["wheels"]
+  - type: VehicleControls
+    maxOccupants: 8
+    turretWeapons:
+    - VehicleTurretAPCDualCannon
+
+- type: entity
+  parent: BaseVehicleAPCClaw
+  id: VehicleSPPAPC
+  name: SPP armored personnel carrier
+  description: An armored personnel carrier configured for SPP forces, with a minigun turret.
+  components:
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysSecurity
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysSecurity
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      vehicle_occupants: !type:Container
+      key_slot: !type:ContainerSlot
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/spp_apc.rsi
+    layers:
+    - state: sppapc_base
+      map: ["base"]
+    - state: damaged_frame
+      map: ["wear"]
+      visible: false
+    - state: wheels_1
+      map: ["wheels"]
+    - sprite: _ClawCommand/Objects/Vehicles/spp_apc_turret.rsi
+      state: turret
+  - type: VehicleControls
+    maxOccupants: 10
+    turretWeapons:
+    - VehicleTurretSPPAPCMinigun
+
+# --- Tanks -------------------------------------------------------------------
+
+- type: entity
+  abstract: true
+  parent: BaseVehicleArmoredClaw
+  id: BaseVehicleTankClaw
+  components:
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysSecurity
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysSecurity
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      vehicle_occupants: !type:Container
+      key_slot: !type:ContainerSlot
+  - type: VehicleControls
+    damagedThreshold: 800
+    criticalThreshold: 1280
+  - type: VehicleHandling
+    pivotSpeed: 1.5
+    runOverSpeedLoss: 0
+    cornerDrag: 0.5
+    coasting: 5
+    grip: 30
+    turnRate: 85
+    turnRateAtTopSpeed: 40
+    acceleration: 1.4
+    speedingAcceleration: 0.35
+    topSpeedMultiplier: 1.3
+    braking: 4
+    crashMinSpeedLoss: 2.5
+    bumperBounds: "-1.35,-1.75,1.35,1.75"
+    obstacleDamage:
+      types:
+        Structural: 15
+        Blunt: 8
+    runOverDamage:
+      types:
+        Blunt: 7
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/tank.rsi
+    layers:
+    - state: tank_base
+      map: ["base"]
+    - state: damaged_frame
+      map: ["wear"]
+      visible: false
+    - state: wheels_1
+      map: ["wheels"]
+    - state: tank_turret_0
+  - type: Damageable
+    damageModifierSet: ArmoredVehicleTank
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 3.5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.2,-1.6,1.2,1.6"
+        density: 1500
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - TableLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1600
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetPlasteel1:
+            min: 6
+            max: 10
+          SheetSteel1:
+            min: 8
+            max: 12
+          PartRodMetal1:
+            min: 1
+            max: 2
+          CableApcStack1:
+            min: 1
+            max: 1
+          PuddleOilVehicleWreck:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ExplodeBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseVehicleTankClaw
+  id: VehicleTank
+  name: tank
+  description: A heavy armored tank built for battlefield dominance. Crewed by a driver, a gunner on the main cannon and a commander on the cupola.
+  components:
+  - type: VehicleControls
+    maxOccupants: 3
+    turretWeapons:
+    - VehicleTurretTankCannon
+    - VehicleTurretTankCupola
+
+- type: entity
+  parent: BaseVehicleTankClaw
+  id: VehicleSPPTank
+  name: SPP tank
+  description: A heavy SPP battle tank with a rotary main gun and a roof cupola.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/spp_tank.rsi
+    layers:
+    - state: tank_base
+      map: ["base"]
+    - state: damaged_frame
+      map: ["wear"]
+      visible: false
+    - state: wheels_1
+      map: ["wheels"]
+    - sprite: _ClawCommand/Objects/Vehicles/spp_tank_turret.rsi
+      state: turret
+  - type: VehicleControls
+    maxOccupants: 3
+    turretWeapons:
+    - VehicleTurretSPPTankRotary
+    - VehicleTurretSPPCupola
+
+- type: entity
+  parent: VehicleSPPTank
+  id: VehicleSPPTankCommand
+  name: SPP command tank
+  description: A heavy SPP command tank, with room for a commander alongside the crew.
+  components:
+  - type: VehicleControls
+    maxOccupants: 4
+
+# --- Armed humvee / van ------------------------------------------------------
+
+- type: entity
+  parent: VehicleHumvee
+  id: VehicleHumveeArmed
+  name: humvee (armed)
+  description: A fast armored utility vehicle with a roof turret for a gunner.
+  components:
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysSecurity
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysSecurity
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      vehicle_occupants: !type:Container
+      key_slot: !type:ContainerSlot
+  - type: Sprite
+    layers:
+    - state: humvee_base
+      map: ["base"]
+    - state: damaged_frame
+      map: ["wear"]
+      visible: false
+    - state: wheels_1
+      map: ["wheels"]
+    - sprite: _ClawCommand/Objects/Vehicles/humvee_turret.rsi
+      state: turret
+  - type: VehicleControls
+    turretWeapons:
+    - VehicleTurretHumveeCannon
+
+- type: entity
+  parent: VehicleSPPVan
+  id: VehicleSPPVanArmed
+  name: SPP van (armed)
+  description: An SPP van fitted with a roof-mounted weapon for a gunner.
+  components:
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysSecurity
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysSecurity
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      vehicle_occupants: !type:Container
+      key_slot: !type:ContainerSlot
+  - type: Sprite
+    layers:
+    - state: sppvant_base
+      map: ["base"]
+    - state: damaged_frame
+      map: ["wear"]
+      visible: false
+    - state: wheels_1
+      map: ["wheels"]
+    - sprite: _ClawCommand/Objects/Vehicles/spp_van_turret.rsi
+      state: turret
+  - type: VehicleControls
+    turretWeapons:
+    - VehicleTurretSPPVanCannon
+
+# --- Power loaders -----------------------------------------------------------
+# Ridden: the loader frame (powerloader_overlay) draws over its pilot. The cargo claws aren't ported.
+
+- type: entity
+  parent: BaseVehicleRiddenClaw
+  id: VehiclePowerLoader
+  name: LU-50 power loader
+  description: An old design refurbished by Weston-Yamada used in warehouses, constructions and military ships everywhere.
+  components:
+  - type: VehicleHandling
+    runOverSpeedLoss: 0.2
+    braking: 12
+    coasting: 10
+    grip: 35
+    turnRate: 220
+    turnRateAtTopSpeed: 160
+    acceleration: 2.5
+    topSpeedMultiplier: 1.2
+    ejectSpeedLoss: null
+    obstacleDamage:
+      types:
+        Structural: 6
+        Blunt: 4
+    runOverDamage:
+      types:
+        Blunt: 3
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/power_loader.rsi
+    drawdepth: OverMobs
+    layers:
+    - state: powerloader_open
+      map: ["buckledLayer"]
+  - type: GenericVisualizer
+    visuals:
+      enum.StrapVisuals.State:
+        buckledLayer:
+          True: { state: powerloader_overlay }
+          False: { state: powerloader_open }
+  - type: VehicleControls
+    criticalThreshold: 320
+    damagedThreshold: 200
+    hornAction: null
+  - type: Strap
+    modifyBuckleDrawDepth: false
+    buckleSound:
+      path: /Audio/_ClawCommand/Effects/Vehicle/powerloader_buckle.ogg
+      params:
+        variation: 0.1
+    unbuckleSound:
+      path: /Audio/_ClawCommand/Effects/Vehicle/powerloader_unbuckle.ogg
+      params:
+        variation: 0.1
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 2
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          VehiclePowerLoaderWreck:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: VehiclePowerLoader
+  id: VehiclePowerLoaderGreen
+  name: LU-43 power loader
+  description: A really old but trusted design used in warehouses, constructions and military ships everywhere.
+  components:
+  - type: Sprite
+    layers:
+    - state: powerloader_open_jd
+      map: ["buckledLayer"]
+  - type: GenericVisualizer
+    visuals:
+      enum.StrapVisuals.State:
+        buckledLayer:
+          True: { state: powerloader_overlay_jd }
+          False: { state: powerloader_open_jd }
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          VehiclePowerLoaderWreckGreen:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: VehiclePowerLoader
+  id: VehiclePowerLoaderBlue
+  name: LU-52 power loader
+  description: A modernized design made to outdo the older models, once used in fancy ports and facilities.
+  components:
+  - type: Sprite
+    layers:
+    - state: powerloader_open_ft
+      map: ["buckledLayer"]
+  - type: GenericVisualizer
+    visuals:
+      enum.StrapVisuals.State:
+        buckledLayer:
+          True: { state: powerloader_overlay_ft }
+          False: { state: powerloader_open_ft }
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          VehiclePowerLoaderWreckBlue:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseStructureDynamic
+  id: VehiclePowerLoaderWreck
+  name: power loader wreck
+  description: What's left of a power loader. Good for scrap.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/power_loader.rsi
+    state: wreck
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 2
+            max: 4
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: VehiclePowerLoaderWreck
+  id: VehiclePowerLoaderWreckGreen
+  components:
+  - type: Sprite
+    state: wreck_jd
+
+- type: entity
+  parent: VehiclePowerLoaderWreck
+  id: VehiclePowerLoaderWreckBlue
+  components:
+  - type: Sprite
+    state: wreck_ft

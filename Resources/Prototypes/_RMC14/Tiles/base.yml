@@ -1,0 +1,35 @@
+# Base tiles for the RMC-14 road/industrial tile port. IDs match RMC-14
+# (Resources/Prototypes/_RMC14/Tiles/base.yml and Tiles/Planet/base.yml) so RMC-derived maps resolve,
+# but the fields are adapted to this fork: plain Plating/steel tile instead of RMC's CM plating and tile item,
+# no RMC dig/weed fields.
+
+- type: tile
+  abstract: true
+  id: CMTileBase
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+  friction: 1
+
+- type: tile
+  abstract: true
+  parent: CMTileBase
+  id: CMTileBaseUnpryable
+  deconstructTools: [ ]
+
+# Outdoor ground. RMC uses grass footsteps here; roads/cement/sidewalks are the only children in this port,
+# so they use the fork's existing concrete footsteps instead.
+- type: tile
+  abstract: true
+  id: CMPlanetBase
+  isSubfloor: true
+  deconstructTools: [ ]
+  footstepSounds:
+    collection: N14FootstepConcrete
+  heatCapacity: 10000
+  weather: true
+  indestructible: true

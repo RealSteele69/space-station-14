@@ -26,6 +26,9 @@
     - Slicing
     useSound:
       path: /Audio/Items/Culinary/chop.ogg
+  - type: CosmicTransmutable # Claw Command - Cosmic Cult
+    transmutesTo: SwordCosmicCult
+    requiredGlyphType: CosmicGlyphBlades
 
 - type: entity
   parent: BaseKnife

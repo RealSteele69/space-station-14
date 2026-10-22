@@ -45,6 +45,7 @@ public enum StationEventMusicType : byte
 {
     Nuke,
     VoidAscended,
+    CosmicCult, // CLAW COMMAND - Cosmic Cult finale music
 }
 
 /// <summary>

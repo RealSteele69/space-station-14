@@ -13,6 +13,7 @@
 
 - type: reaction
   id: CreateNormalityCrystal
+  priority: 1 # Claw Command - contains Lye's water + ash; must win over it
   impact: Low
   quantized: true
   minTemp: 400

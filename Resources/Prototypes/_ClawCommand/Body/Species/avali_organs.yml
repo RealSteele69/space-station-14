@@ -1,9 +1,9 @@
 # _ClawCommand: Avali organs.
-# Body sheet: deliberately Human/parts.rsi. The canonical Avali silhouette is tiny and
-# four-legged — neither Resomi (too small, head reads as transparent at humanoid scale)
-# nor Harpy (wrong shape) maps cleanly onto our humanoid rig without proper Avali-drawn
-# sprites + species scaling + reworked clothing displacements. Until those exist we lean
-# on the AvaliEars + tail/feather/fluff markings on a Human body to carry the species look.
+# Body sheet: _ClawCommand/Mobs/Species/Avali/parts.rsi, a dedicated Avali body drawn on the human
+# frame (same height and head size), with the wing feathers built into the arm/hand parts. It is
+# greyscale and tinted by the skin colour. Ears and tail come from the AvaliEarsBase/AvaliTailBase
+# markings (avali_markings.yml); eyes are a moth-shaped state of the same sheet, which is why the
+# appearance uses moth eyewear variants.
 #
 # Metabolizer type: Avali internal organs MUST carry a metabolizer-type allow-listed by the Oxygen
 # reagent (Oxygenate effect — Reagents/gases.yml line ~19), or Avali physically can't be oxygenated
@@ -37,10 +37,10 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Mobs/Species/Human/parts.rsi
+    sprite: _ClawCommand/Mobs/Species/Avali/parts.rsi
   - type: VisualOrgan
     data:
-      sprite: Mobs/Species/Human/parts.rsi
+      sprite: _ClawCommand/Mobs/Species/Avali/parts.rsi
   - type: VisualOrganMarkings
     markingData:
       group: MarkingsAvali
@@ -54,9 +54,12 @@
   id: OrganAvaliHead
   components:
   - type: VisualOrganMarkings
-    hideableLayers:
+    hideableLayers: # crests and ears poke through helmets otherwise
     - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.HeadTop
+    - enum.HumanoidVisualLayers.HeadSide
     - enum.HumanoidVisualLayers.Snout
+    - enum.HumanoidVisualLayers.FacialHair
 
 - type: entity
   parent: [ OrganBaseArmLeft, OrganAvaliExternal ]
@@ -97,10 +100,12 @@
 - type: entity
   parent: [ OrganBaseEyes, OrganAvaliInternal, OrganAvaliExternal ]
   id: OrganAvaliEyes
+  description: They seem as if they're looking at something far away...
   components:
   - type: VisualOrgan
     data:
-      sprite: Mobs/Customization/eyes.rsi
+      sprite: _ClawCommand/Mobs/Species/Avali/parts.rsi
+      state: eyes
 
 - type: entity
   parent: [ OrganBaseTongue, OrganAvaliInternal ]
@@ -127,10 +132,10 @@
   id: OrganAvaliStomach
   components:
   - type: Stomach
-    specialDigestible:
+    specialDigestible: # fruit and meat (raw is fine), no vegetables
       tags:
+      - Fruit
       - Meat
-      - Vegetable
       - Pill
       - TagNutribrick
       - TagIceCream

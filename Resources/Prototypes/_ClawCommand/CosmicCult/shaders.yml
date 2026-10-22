@@ -1,0 +1,13 @@
+# Used by the monument placement preview overlay (client).
+- type: shader
+  id: SaturationShuffle
+  kind: source
+  path: "/Textures/_DV/Shaders/saturation_shuffle.swsl"
+  params:
+    tileSize: 32, 32
+    hsv: 1.0, 1.0, 1.0
+
+- type: shader
+  id: MonumentPulse
+  kind: source
+  path: "/Textures/_DV/Shaders/monument_pulse.swsl"

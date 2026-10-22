@@ -1,0 +1,9 @@
+# Claw Command - synth medical supplies. Unlocked through the TopicalsStatic pack.
+
+- type: latheRecipe
+  id: SynthBloodpack
+  result: SynthBloodpack1
+  completetime: 1
+  materials:
+    Plastic: 25
+    Diamond: 10

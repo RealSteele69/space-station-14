@@ -1,0 +1,231 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Which actions a devil unlocks at each power level (every second soul).
+- type: devilBranchPrototype
+  id: BaseDevilBranch
+  powerActions:
+    Weak:
+    - ActionCreateRevivalContract
+    Moderate:
+    - ActionDevilPossess
+
+- type: antag
+  id: Devil
+  name: roles-antag-devil-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-devil-description
+  guides: [ Devil ]
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 36000 # 10h - it's a roleplay antag, keep it open to most players
+
+# Claw Command - antagSpecifier for the post-merge AntagSelection system.
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: Devil
+  prefRoles:
+  - Devil
+  # Chaplain is obvious, mime can't write. Command (CE/RD/QM...) and security are already restricted.
+  jobBlacklist:
+  - Chaplain
+  - Mime
+  mindRoles:
+  - DevilMindRole
+  startingGear: DevilStartingGear
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: DevilMindRole
+  name: Devil Role
+  components:
+  - type: MindRole
+    antag: true # flags them in the admin player list
+    antagPrototype: Devil
+    exclusiveAntag: true
+    roleType: SoloAntagonist
+    subtype: role-subtype-devil
+  - type: DevilRole
+
+- type: startingGear
+  id: DevilStartingGear
+  storage:
+    back:
+    - GuidebookCodexUmbra
+    - PenDevil
+    - ClothingEyesGlassesSunglasses
+
+- type: objectiveIssuer
+  id: Devil
+  name: objective-issuer-devil
+
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseDevilObjective
+  components:
+  - type: Objective
+    difficulty: 1.5
+    issuer: Devil
+
+- type: entity
+  parent: BaseDevilObjective
+  id: DevilContractObjective
+  components:
+  - type: Objective
+    icon:
+      sprite: _ClawCommand/Devil/devil_contract.rsi
+      state: icon
+  - type: NumberObjective
+    min: 7
+    max: 9
+    title: objective-condition-contract-title
+    description: objective-condition-contract-description
+  - type: SignContractCondition
+
+- type: entity
+  parent: BaseDevilObjective
+  id: DevilWeightObjective
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Economy/cash.rsi
+      state: cash_5000
+  - type: NumberObjective
+    min: 150
+    max: 200
+    title: objective-condition-weight-title
+    description: objective-condition-weight-description
+  - type: MeetContractWeightCondition
+
+# Game rule. Rolled as a sub-gamemode (see the station antag tables), so it never cancels a preset.
+- type: entity
+  parent: BaseGameRule
+  id: Devil
+  components:
+  - type: DevilRule
+  - type: GameRule
+    minPlayers: 5
+    cancelPresetOnTooFewPlayers: false
+  - type: AntagObjectives
+    objectives:
+    - DevilContractObjective
+    - DevilWeightObjective
+  - type: AntagSelection
+    selectionTime: JobsAssigned
+    agentName: devil-roundend-name
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: Devil
+      range:
+        min: 1
+        max: 1
+      playerRatio: 20
+  - type: Tag
+    tags:
+    - CalmAntag
+
+- type: npcFaction
+  id: DevilFaction
+  hostile:
+  - NanoTrasen
+  - Syndicate
+  - Zombie
+  - Revolutionary
+  - Heretic
+  - Wizard
+
+- type: damageModifierSet
+  id: DevilDealPositive
+  coefficients:
+    Blunt: 0.50
+    Slash: 0.50
+    Piercing: 0.50
+    Cold: 0.50
+    Heat: 0.50
+    Bloodloss: 0.50
+    Poison: 0.50
+    Radiation: 0.50
+    Holy: 1.50
+
+- type: damageModifierSet
+  id: DevilDealNegative
+  coefficients:
+    Blunt: 2
+    Slash: 2
+    Piercing: 2
+    Cold: 2
+    Bloodloss: 2
+    Poison: 2
+    Radiation: 2
+    Holy: 2
+
+- type: dataset
+  id: names_devil_first
+  values:
+  - Malakar
+  - Vexaron
+  - Kaelthos
+  - Nyxara
+  - Vorgath
+  - Xalvador
+  - Mephistra
+  - Zynkor
+  - Drakoth
+  - Vrothmog
+  - Karnak
+  - Zarthax
+  - Vermos
+  - Zulrak
+  - Xaphan
+  - Mordek
+  - Zerakel
+  - Valkaroth
+  - Naberius
+  - Belial
+  - Sargatan
+  - Raziel
+  - Molochar
+  - Thalzaron
+  - Xyrath
+
+- type: dataset
+  id: names_devil_last
+  values:
+  - Aamon
+  - Abaddon
+  - Astaroth
+  - Lucifer
+  - Agares
+  - Asmodeus
+  - Azazal
+  - Abigor
+  - Abraxas
+  - Abyzou
+  - Belphegor
+  - Mammon
+  - Marbas
+  - Foras
+  - Adralmech
+  - Akuma
+  - Alastair
+  - Alastor
+  - Apollyon
+  - Arioch
+  - Bael
+  - Diablo
+  - Scarlet
+  - Withers
+
+- type: guideEntry
+  id: Devil
+  name: guide-entry-devil
+  text: "/ServerInfo/_ClawCommand/Guidebook/Antagonist/Devil.xml"
+  children:
+  - DevilClauses
+
+- type: guideEntry
+  id: DevilClauses
+  name: guide-entry-devil-clauses
+  text: "/ServerInfo/_ClawCommand/Guidebook/Antagonist/DevilClauses.xml"

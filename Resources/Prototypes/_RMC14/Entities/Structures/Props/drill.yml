@@ -1,0 +1,23 @@
+# Ported from RMC-14 (https://github.com/RMC-14/RMC-14, MIT), Resources/Prototypes/_RMC14/Entities/Structures/Props/drill.yml.
+# Decorative only: RMC-specific components (xeno charge/acid, vehicle smashing, minimap, mesons,
+# dropship blocking, construction graphs) were stripped. Sprites are CMSS13/RMC art, credited in each meta.json.
+
+- type: entity
+  parent: RMCPropBase
+  id: RMCDrill
+  name: mining drill
+  description: An old mining drill, seemingly used for mining. And possibly drilling.
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,1.5"
+        density: 190
+        layer:
+        - MobMask
+  - type: Sprite
+    sprite: _RMC14/Structures/drill.rsi
+    state: drill
+    offset: 0, 1

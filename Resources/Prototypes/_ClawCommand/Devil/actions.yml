@@ -1,0 +1,139 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseAction
+  id: ActionCreateContract
+  name: Summon infernal contract
+  description: Creates an infernal contract in the Devil's hand.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 10
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: _ClawCommand/Devil/Actions/devil.rsi
+    layers:
+    - state: summon-contract
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:CreateContractEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionCreateRevivalContract
+  name: Summon revival contract
+  description: Creates a revival contract in the Devil's hand. Use it on a corpse to offer its soul a second chance.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 30
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: _ClawCommand/Devil/Actions/devil.rsi
+    layers:
+    - state: summon-contract-revival
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:CreateRevivalContractEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionShadowJaunt
+  name: Shadow jaunt
+  description: Melt into the shadows. Slips any restraints.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 40 # Stop running you cowardly fucks.
+    itemIconStyle: NoItem
+    checkCanInteract: false
+    checkConsciousness: false
+  - type: Sprite
+    sprite: _ClawCommand/Devil/Actions/devil.rsi
+    layers:
+    - state: shadow-jaunt
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:ShadowJauntEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionDevilPossess
+  name: Possess target
+  description: Temporarily possess someone who sold you their soul.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 70
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: _ClawCommand/Devil/Actions/devil.rsi
+    layers:
+    - state: possess
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:DevilPossessionEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionEndPossession
+  name: End possession
+  description: Cancel this possession early.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    checkCanInteract: false
+    checkConsciousness: false
+  - type: Sprite
+    sprite: _ClawCommand/Devil/Actions/devil.rsi
+    layers:
+    - state: possess
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:EndPossessionEarlyEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionDevilGrip
+  name: Devils Grip
+  description: What little fraction of your power remains in this realm, channeled into your hands.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: _ClawCommand/Devil/Actions/devil.rsi
+    layers:
+    - state: devil-grip
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:DevilGripEvent {}
+
+# Deals
+
+- type: entity
+  parent: BaseAction
+  id: ActionCheatDeath
+  name: Cheat Death
+  description: Laugh in the Grim Reapers face. You've still got time.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 250
+    checkCanInteract: false
+    checkConsciousness: false
+  - type: Sprite
+    sprite: _ClawCommand/Devil/Actions/devil.rsi
+    layers:
+    - state: cheat-death
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:CheatDeathEvent {}

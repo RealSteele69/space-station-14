@@ -9,6 +9,7 @@
   name: entropic plume
   categories: [ HideSpawnMenu ]
   components:
+  - type: GravityAffected
   - type: MovementIgnoreGravity
   - type: Sprite
     sprite: _ClawCommand/Heretic/Effects/effects160x160.rsi

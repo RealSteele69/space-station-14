@@ -1,0 +1,16 @@
+- type: damageModifierSet
+  id: EntropicColossus
+  coefficients:
+    Blunt: 0.5
+    Slash: 0.5
+    Piercing: 0.5
+    Heat: 0.65
+    Holy: 4 # probally Should had this added a while back
+
+# Metal body that can still be hurt by holy damage (Entropic Colossus).
+- type: damageContainer
+  id: InorganicMetaphysical
+  supportedGroups:
+  - Brute
+  - Burn
+  - Metaphysical

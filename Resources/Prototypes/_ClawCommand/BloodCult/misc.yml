@@ -1,0 +1,139 @@
+- type: npcFaction
+  id: GeometerOfBlood
+  hostile:
+  - NanoTrasen
+  - SimpleHostile
+  - Xeno
+  - PetsNT
+  - Zombie
+
+# The cult's hive chat (:g). Long range, like the other antag minds.
+- type: radioChannel
+  id: BloodCult
+  name: chat-radio-blood-cult
+  keycode: 'g'
+  frequency: 1915
+  color: "#b51b1b"
+  longRange: true
+
+- type: alert
+  id: CultEmpowered
+  icons:
+  - sprite: /Textures/_ClawCommand/BloodCult/Entities/Runes/regular.rsi
+    state: strength
+  name: alerts-blood-cult-empowered-name
+  description: alerts-blood-cult-empowered-desc
+
+- type: factionIcon
+  id: BloodCultMember
+  isShaded: false
+  priority: 11
+  locationPreference: Left
+  showTo:
+    components:
+    - BloodCultist
+    - BloodCultConstruct
+    - ShowAntagIcons
+  icon:
+    sprite: /Textures/_ClawCommand/BloodCult/cult_hud.rsi
+    state: cult_member
+
+- type: factionIcon
+  id: BloodCultLeader
+  isShaded: false
+  priority: 11
+  locationPreference: Left
+  showTo:
+    components:
+    - BloodCultist
+    - BloodCultConstruct
+    - ShowAntagIcons
+  icon:
+    sprite: /Textures/_ClawCommand/BloodCult/cult_hud.rsi
+    state: cult_leader
+
+- type: tile
+  id: CultFloor
+  parent: BaseStationTile
+  name: tiles-cult-floor
+  sprite: /Textures/_ClawCommand/BloodCult/Tiles/cult_tile/cult.png
+  itemDrop: FloorTileItemSteel
+
+# Not placed by anything yet; kept for mappers and future concealment magic.
+- type: tile
+  id: CultFloorConcealed
+  parent: BaseStationTile
+  name: tiles-steel-floor
+  sprite: /Textures/_ClawCommand/BloodCult/Tiles/cult_tile/concealed.png
+  variants: 3
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemSteel
+
+# --- Rune menu --------------------------------------------------------------
+
+- type: bloodCultRune
+  id: CultRuneOffering
+  prototype: CultRuneOffering
+  order: 0
+
+- type: bloodCultRune
+  id: CultRuneEmpower
+  prototype: CultRuneEmpower
+  order: 1
+
+- type: bloodCultRune
+  id: CultRuneTeleport
+  prototype: CultRuneTeleport
+  order: 2
+
+- type: bloodCultRune
+  id: CultRuneRevive
+  prototype: CultRuneRevive
+  order: 3
+
+- type: bloodCultRune
+  id: CultRuneBarrier
+  prototype: CultRuneBarrier
+  order: 4
+
+- type: bloodCultRune
+  id: CultRuneSummoning
+  prototype: CultRuneSummoning
+  order: 5
+
+- type: bloodCultRune
+  id: CultRuneBloodBoil
+  prototype: CultRuneBloodBoil
+  order: 6
+
+- type: bloodCultRune
+  id: CultRuneApocalypse
+  prototype: CultRuneApocalypse
+  requireTargetDead: true
+  requiredTotalCultists: 10
+  drawTime: 40
+  drawDamage:
+    types:
+      Slash: 20
+  order: 7
+
+- type: bloodCultRune
+  id: CultRuneDimensionalRending
+  prototype: CultRuneDimensionalRending
+  requireTargetDead: true
+  requiredTotalCultists: 10
+  drawTime: 40
+  drawDamage:
+    types:
+      Slash: 50
+  order: 8
+
+# --- Guidebook --------------------------------------------------------------
+
+- type: guideEntry
+  id: BloodCult
+  name: guide-entry-blood-cult
+  text: "/ServerInfo/_ClawCommand/Guidebook/Antagonist/BloodCult.xml"

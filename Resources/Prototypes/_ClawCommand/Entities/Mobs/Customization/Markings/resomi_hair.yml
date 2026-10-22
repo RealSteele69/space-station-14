@@ -1,0 +1,146 @@
+# _ClawCommand: Resomi hairstyles, drawn for the Resomi head (_ClawCommand/Mobs/Customization/Resomi/hair.rsi).
+# Separate from the Avali hair set, which uses an older copy of these sprites placed for a human head.
+
+- type: marking
+  id: HairResomiBackstrafe
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiBackstrafe
+
+- type: marking
+  id: HairResomiBurstShort
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiBurstShort
+
+- type: marking
+  id: HairResomiDefault
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiDefault
+
+- type: marking
+  id: HairResomiDroopy
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiDroopy
+
+- type: marking
+  id: HairResomiEars
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiEars
+
+- type: marking
+  id: HairResomiFluffymohawk
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiFluffymohawk
+
+- type: marking
+  id: HairResomiHedge
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiHedge
+
+- type: marking
+  id: HairResomiLongway
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiLongway
+
+- type: marking
+  id: HairResomiMane
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiMane
+
+- type: marking
+  id: HairResomiManeBeardless
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiManeBeardless
+
+- type: marking
+  id: HairResomiMohawk
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiMohawk
+
+- type: marking
+  id: HairResomiMushroom
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiMushroom
+
+- type: marking
+  id: HairResomiNotree
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiNotree
+
+- type: marking
+  id: HairResomiSpiky
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiSpiky
+
+- type: marking
+  id: HairResomiPointy
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiPointy
+
+- type: marking
+  id: HairResomiTwies
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiTwies
+
+- type: marking
+  id: HairResomiUpright
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiUpright
+
+- type: marking
+  id: HairResomiLong
+  bodyPart: Hair
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/hair.rsi
+    state: ResomiLong

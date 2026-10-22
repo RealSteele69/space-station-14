@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: guideEntry
+  id: LavalandMegafauna
+  name: guide-entry-lavaland-megafauna
+  text: "/ServerInfo/_ClawCommand/Guidebook/Cargo/LavalandMegafauna.xml"
+  filterEnabled: True

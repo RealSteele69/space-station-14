@@ -240,6 +240,46 @@ namespace Content.Server.RoundEnd
             }
         }
 
+        // Claw Command - blood cult shuttle curse
+        /// <summary>
+        /// Pushes back the arrival of an already called emergency shuttle.
+        /// </summary>
+        /// <returns>False if no shuttle is on its way.</returns>
+        public bool DelayShuttle(TimeSpan delay)
+        {
+            if (_countdownTokenSource == null || ExpectedCountdownEnd is not { } end)
+                return false;
+
+            var remaining = end - _gameTiming.CurTime + delay;
+            if (remaining < TimeSpan.Zero)
+                remaining = delay;
+
+            _countdownTokenSource.Cancel();
+            _countdownTokenSource = new();
+
+            ExpectedCountdownEnd = _gameTiming.CurTime + remaining;
+            Timer.Spawn(remaining, _shuttle.DockEmergencyShuttle, _countdownTokenSource.Token);
+            RaiseLocalEvent(RoundEndSystemChangedEvent.Default);
+
+            var shuttle = _shuttle.GetShuttle();
+            if (shuttle != null && TryComp<DeviceNetworkComponent>(shuttle, out var net))
+            {
+                var payload = new ScreenShuttlePayload
+                {
+                    Shuttle = shuttle,
+                    SourceMap = GetCentcomm(),
+                    DestinationMap = GetStation(),
+                    ShuttleTime = remaining,
+                    SourceTime = remaining + TimeSpan.FromSeconds(_shuttle.TransitTime + _cfg.GetCVar(CCVars.EmergencyShuttleDockTime)),
+                    DestinationTime = remaining,
+                };
+                _deviceNetworkSystem.SendPacket(shuttle.Value, null, ref payload, net.TransmitFrequency);
+            }
+
+            return true;
+        }
+        // Claw Command end
+
         public void CancelRoundEndCountdown(EntityUid? requester = null, EntityUid? machine = null, bool forceRecall = false)
         {
             if (_gameTicker.RunLevel != GameRunLevel.InRound)

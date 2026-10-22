@@ -39,6 +39,18 @@ public sealed partial class LavalandGridRuinPrototype : IPrototype
     [DataField(required: true)]
     public ResPath Path { get; private set; }
 
+    /// <summary>
+    /// Overrides the pool's MinDistance for this specific ruin.
+    /// </summary>
+    [DataField]
+    public int? MinDistance;
+
+    /// <summary>
+    /// Overrides the pool's MaxDistance for this specific ruin.
+    /// </summary>
+    [DataField]
+    public int? MaxDistance;
+
     [DataField]
     public int SpawnAttempts = 8;
 

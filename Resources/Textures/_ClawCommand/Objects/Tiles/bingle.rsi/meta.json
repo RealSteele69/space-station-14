@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "george gimmi self antag extrodinare. Added to Goob Station by fishbait in Goob-Station/Goob-Station PR #1830 (commit 512b5decbff2dee764451800f7b026eeea49087f). Ported via Claw-Command14/space (commit 53c4ffa359).",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "bingletile"
+        }
+    ]
+}

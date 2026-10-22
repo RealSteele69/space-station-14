@@ -122,7 +122,7 @@
     baseWalkSpeed: 2.7
     baseSprintSpeed: 4.5
   - type: Temperature
-    specificHeat: 46
+    specificHeat: 3300 # Claw Command - rescaled from 46 for the joule-based heat model
   - type: TemperatureDamage
     heatDamageThreshold: 330
     coldDamageThreshold: 195

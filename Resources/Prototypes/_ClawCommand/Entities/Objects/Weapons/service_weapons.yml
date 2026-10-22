@@ -621,8 +621,8 @@
   - type: PhysicalComposition
     materialComposition:
       Brass: 1000
-  - type: StaticPrice
-    price: 300 # Ensures these can be sold and have a reasonable vending value.
+  - type: StaticPrice # Claw Command - above its 1000 brass
+    price: 320 # Ensures these can be sold and have a reasonable vending value.
 
 # ---------------------------------------------------------------------------
 # from Resources/Prototypes/_Goobstation/Entities/Objects/Weapons/Guns/Battery/battery_guns.yml

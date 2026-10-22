@@ -1,0 +1,104 @@
+<Document>
+# Blob
+
+[color=#ff0000]Confirmed outbreak of a level 5 biohazard aboard the station. All personnel must contain the outbreak.[/color]
+
+The blob is a fast-growing space organism that tries to take over the whole station. It only shows up on stations with at least 20 crew.
+
+<Box>
+  <GuideEntityEmbed Entity="CoreBlobTile" Caption="Blob core"/>
+  <GuideEntityEmbed Entity="MobMouseBlob" Caption="Blob carrier"/>
+</Box>
+
+A blob starts as a [color=#a4885c]carrier[/color]: a crewmember at the start of the round, or a mouse that crawls out of a vent later. The carrier has 10 minutes to find a quiet spot before it bursts into a blob core. It can also burst early on purpose. If the carrier dies, it bursts where it falls.
+
+## The core
+
+The [color=#a4885c]core[/color] is the heart of the blob. Destroy it and every other blob tile dies and turns white.
+
+The blob player is not a body. They are a camera that floats near their blob tiles and can't drift more than a few tiles away from them. They see everything near their blob, but not in the dark beyond it.
+
+The core can be [color=#a4885c]relocated[/color] by swapping it with a node, or [color=#a4885c]split[/color] once, which turns a node into a second, independent core.
+
+## Growing
+
+- Click an empty floor tile next to the blob to grow onto it. The blob can only grow within 7 tiles of a node or the core.
+- Click something solid next to the blob to attack it. Walls, doors and machines all wear down over time.
+- Growing over open space costs four times as much and lays plating underneath.
+- Nodes sometimes grow on their own for free, but only every so often.
+
+## Tiles
+
+<Box>
+  <GuideEntityEmbed Entity="NormalBlobTile" Caption="Normal blob"/>
+  <GuideEntityEmbed Entity="StrongBlobTile" Caption="Strong blob"/>
+  <GuideEntityEmbed Entity="ReflectiveBlobTile" Caption="Reflective blob"/>
+</Box>
+
+- [color=#a4885c]Normal blob[/color] (8 points) is weak and dies to a few hits. Alt-click it to make it strong.
+- [color=#a4885c]Strong blob[/color] (20 points) is a wall that stops air and blows, but still burns well. Alt-click it to make it reflective.
+- [color=#a4885c]Reflective blob[/color] (20 points) bounces some lasers back, but breaks easily under blows.
+
+<Box>
+  <GuideEntityEmbed Entity="NodeBlobTile" Caption="Node"/>
+  <GuideEntityEmbed Entity="ResourceBlobTile" Caption="Resource blob"/>
+  <GuideEntityEmbed Entity="FactoryBlobTile" Caption="Factory blob"/>
+</Box>
+
+- [color=#a4885c]Nodes[/color] (65 points) pulse every few seconds. A pulse heals nearby blob and minions, and powers the resource blob and factory placed next to it. They must be at least 6 tiles apart.
+- [color=#a4885c]Resource blobs[/color] (70 points) make points on every pulse. Each node or core powers one.
+- [color=#a4885c]Factories[/color] (100 points) grow up to 2 spores and can grow one blobbernaut (90 points). Each node or core powers one.
+
+Downgrading a tile back to normal blob is free.
+
+## Minions
+
+<Box>
+  <GuideEntityEmbed Entity="MobBlobPod" Caption="Blob spore"/>
+  <GuideEntityEmbed Entity="MobBlobBlobbernaut" Caption="Blobbernaut"/>
+</Box>
+
+- [color=#a4885c]Spores[/color] fight the crew and climb onto corpses to raise them as blob zombies. They burst into a cloud of the blob's chemical when they die.
+- [color=#a4885c]Blobbernauts[/color] are played by ghosts. They hit hard but waste away when they leave the blob or lose their factory.
+- [color=#a4885c]Blob zombies[/color] are raised crew. They can use their hands and melee weapons, but not guns. Pull the spore off a zombie's head while it is down to free the body.
+
+Everyone on the blob's side talks over the [color=#a4885c]Blobmind[/color] with :l. Out loud they only manage blob noises.
+
+## Chemicals
+
+The blob can swap its chemical (90 points). The chemical decides the damage it deals, the spores' death cloud, and some special rules.
+
+- [color=#a4885c]Reactive Spines[/color]: brute damage. The default.
+- [color=#a4885c]Blazing Oil[/color]: burn damage and sets targets on fire.
+- [color=#a4885c]Regenerative Materia[/color]: toxin damage, resource blobs make an extra point.
+- [color=#a4885c]Explosive Lattice[/color]: small blasts on attack, spores explode, the blob ignores explosions but burns even faster.
+- [color=#a4885c]Electromagnetic Web[/color]: shock damage and the odd EMP, dying tiles sometimes let out an EMP.
+- [color=#a4885c]Comatose Fiber[/color]: suffocation damage, cheaper growth over space.
+- [color=#a4885c]Chain Coating[/color]: tough against blows, but slow and poor.
+- [color=#a4885c]Sinewy Tendons[/color]: mends what it hits, pulses faster, more spores.
+- [color=#a4885c]Corrosive Slime[/color]: eats walls very quickly, expensive nodes.
+- [color=#a4885c]Cryogenic Poison[/color]: cold damage.
+
+## How the round goes
+
+1. [color=#a4885c]Hidden[/color]: nobody knows about the blob yet.
+2. [color=#a4885c]Detected[/color] at 30 tiles: the station is told and goes to red alert.
+3. [color=#a4885c]Lockdown[/color] at 75 tiles: an evacuation shuttle that has not docked yet is recalled. Cut the blob back below 75 tiles and you can call it again.
+4. [color=#a4885c]Critical[/color] at 450 tiles: delta alert, and the nuke codes are sent to the station.
+5. [color=#a4885c]Critical mass[/color] at 1000 tiles: the blob wins and the round ends.
+
+Once the last core dies, the station goes back to green.
+
+## Fighting the blob
+
+The blob is tough against blows, but [color=#a4885c]fire and lasers[/color] hurt it a lot. Lasers, welders, incendiary rounds and flamethrowers are your friends. Reflective blob bounces some lasers, so beat those tiles down with blunt weapons instead.
+
+<Box>
+  <GuideEntityEmbed Entity="WeaponLaserCarbine" Caption="Laser rifle"/>
+  <GuideEntityEmbed Entity="Welder" Caption="Welder"/>
+  <GuideEntityEmbed Entity="MagazineBoxPistolIncendiary" Caption="Incendiary rounds"/>
+</Box>
+
+- Kill the nodes first. Without them the blob can't grow far, its factories and resource blobs stop, and its tiles stop healing.
+- Guard the nuclear disk. If the blob reaches the critical stage, the nuke may be the only way out.
+</Document>

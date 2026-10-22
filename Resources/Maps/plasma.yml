@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 05/28/2026 23:11:00
-  entityCount: 26509
+  entityCount: 26506
 maps:
 - 1
 grids:
@@ -9928,37 +9928,6 @@ entities:
     - type: Transform
       pos: -131.49832,-18.377594
       parent: 2
-- proto: ActionToggleInternals
-  entities:
-  - uid: 6670
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 4309
-    - type: Action
-      originalIconColor: '#FFFFFFFF'
-      container: 4309
-  - uid: 23594
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 23345
-    - type: Action
-      originalIconColor: '#FFFFFFFF'
-      container: 23345
-- proto: ActionToggleLight
-  entities:
-  - uid: 3278
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 9170
-    - type: Action
-      originalIconColor: '#FFFFFFFF'
-      container: 9170
 - proto: AirAlarm
   entities:
   - uid: 192
@@ -127689,7 +127658,6 @@ entities:
       pos: -100.47148,-27.318197
       parent: 2
     - type: HandheldLight
-      toggleActionEntity: 3278
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
@@ -127699,8 +127667,7 @@ entities:
         actions: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - 3278
+          ents: []
     - type: Physics
       canCollide: True
     - type: ActionsContainer
@@ -130047,15 +130014,13 @@ entities:
     - type: Transform
       parent: 3274
     - type: GasTank
-      toggleActionEntity: 23594
     - type: Physics
       canCollide: False
     - type: ActionsContainer
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 23594
+          ents: []
     - type: InsideEntityStorage
   - uid: 25883
     components:
@@ -131345,13 +131310,11 @@ entities:
       pos: -73.858475,-4.3700285
       parent: 2
     - type: GasTank
-      toggleActionEntity: 6670
     - type: ActionsContainer
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 6670
+          ents: []
 - proto: PlasmaTankFilled
   entities:
   - uid: 24490

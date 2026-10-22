@@ -118,6 +118,8 @@
   - type: Occluder
   - type: StaticPrice
     price: 70
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WindowCosmicCult
 
 - type: entity
   abstract: true

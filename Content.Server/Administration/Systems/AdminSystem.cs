@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._ClawCommand.Administration;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
@@ -53,6 +54,7 @@ public sealed partial class AdminSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private StationRecordsSystem _stationRecords = default!;
     [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private AntagRevealSystem _antagReveal = default!; // Claw Command
 
     private readonly Dictionary<NetUserId, PlayerInfo> _playerList = new();
 
@@ -144,6 +146,51 @@ public sealed partial class AdminSystem : EntitySystem
         return value ?? null;
     }
 
+    // Claw Command start - antag reveal gate
+    /// <summary>
+    ///     Rebuilds and resends one player's entry, including players who are disconnected.
+    /// </summary>
+    public void RefreshPlayerInfo(NetUserId userId)
+    {
+        if (_playerManager.TryGetSessionById(userId, out var session))
+        {
+            UpdatePlayerList(session);
+            return;
+        }
+
+        if (!_playerManager.TryGetPlayerData(userId, out var data))
+            return;
+
+        _playerList[userId] = GetPlayerInfo(data, null);
+        var ev = new PlayerInfoChangedEvent { PlayerInfo = _playerList[userId] };
+        foreach (var admin in _adminManager.ActiveAdmins)
+        {
+            RaiseNetworkEvent(ev, admin.Channel);
+        }
+    }
+
+    /// <summary>
+    ///     Rebuilds every entry and resends the full list to all admins.
+    /// </summary>
+    public void RefreshAllPlayerInfo()
+    {
+        foreach (var id in _playerList.Keys.ToList())
+        {
+            if (!_playerManager.TryGetPlayerData(id, out var data))
+                continue;
+
+            _playerManager.TryGetSessionById(id, out var session);
+            _playerList[id] = GetPlayerInfo(data, session);
+        }
+
+        var ev = new FullPlayerListEvent { PlayersInfo = _playerList.Values.ToList() };
+        foreach (var admin in _adminManager.ActiveAdmins)
+        {
+            RaiseNetworkEvent(ev, admin.Channel);
+        }
+    }
+    // Claw Command end
+
     private void OnIdentityChanged(Entity<ActorComponent> ent, ref IdentityChangedEvent ev)
     {
         UpdatePlayerList(ent.Comp.PlayerSession);
@@ -153,6 +200,20 @@ public sealed partial class AdminSystem : EntitySystem
     {
         if (!ev.RoleTypeUpdate || !_playerManager.TryGetSessionById(ev.Mind.UserId, out var session))
             return;
+
+        // Claw Command start - a masked antag role change looks identical to admins; don't send a no-op update,
+        // its timing alone would reveal when someone was made an antag.
+        var updated = GetPlayerInfo(session.Data, session);
+        if (GetCachedPlayerInfo(session.UserId) is { } old &&
+            (old.Username, old.CharacterName, old.IdentityName, old.StartingJob, old.Antag, old.RoleProto, old.Subtype,
+                old.SortWeight, old.NetEntity, old.Connected, old.ActiveThisRound, old.AntagRevealed) ==
+            (updated.Username, updated.CharacterName, updated.IdentityName, updated.StartingJob, updated.Antag, updated.RoleProto, updated.Subtype,
+                updated.SortWeight, updated.NetEntity, updated.Connected, updated.ActiveThisRound, updated.AntagRevealed))
+        {
+            _playerList[session.UserId] = updated;
+            return;
+        }
+        // Claw Command end
 
         UpdatePlayerList(session);
     }
@@ -227,6 +288,7 @@ public sealed partial class AdminSystem : EntitySystem
         }
 
         var antag = false;
+        var revealed = _antagReveal.IsRevealed(data.UserId); // Claw Command
 
         // Starting role, antagonist status and role type
         RoleTypePrototype? roleType = null;
@@ -246,6 +308,16 @@ public sealed partial class AdminSystem : EntitySystem
 
             antag = _role.MindIsAntagonist(mindId);
             startingRole = _jobs.MindTryGetJobName(mindId);
+
+            // Claw Command - until revealed, an antag is sent to admins exactly as their non-antag roles would show them
+            if (antag && !revealed)
+            {
+                antag = false;
+                var masked = _antagReveal.GetMaskedRole(mindComp);
+                sortWeight = masked?.Comp.SortWeight ?? 0;
+                roleType = ProtoMan.Index<RoleTypePrototype>(masked?.Comp.RoleType ?? "Neutral");
+                subtype = masked?.Comp.Subtype;
+            }
         }
 
         // Connection status and playtime
@@ -275,7 +347,8 @@ public sealed partial class AdminSystem : EntitySystem
             data.UserId,
             connected,
             _roundActivePlayers.Contains(data.UserId),
-            overallPlaytime);
+            overallPlaytime,
+            revealed); // Claw Command
     }
 
     private void OnPanicBunkerChanged(bool enabled)

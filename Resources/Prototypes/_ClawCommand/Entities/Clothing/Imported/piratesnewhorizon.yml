@@ -84,7 +84,7 @@
   parent:
   - ClothingEyesBase
   - ClothingHeadEyeBaseFlippable
-  - BaseRestrictedContraband
+  - BaseEngineeringContraband # Claw Command - restricted needs a department
   name: "engineering eyepatch"
   description: "An eyepatch, capable of protecting your eyes while welding."
   components:
@@ -99,7 +99,7 @@
   parent:
   - ClothingEyesBase
   - ClothingHeadEyeBaseFlippable
-  - BaseRestrictedContraband
+  - BaseSecurityContraband # Claw Command - restricted needs a department
   name: "flashproof eyepatch"
   description: "An eyepatch, capable of protecting your eyes from flashes."
   components:
@@ -116,7 +116,7 @@
   parent:
   - ClothingEyesBase
   - ClothingHeadEyeBaseFlippable
-  - BaseRestrictedContraband
+  - BaseMedicalContraband # Claw Command - restricted needs a department
   name: "chemical hud eyepatch"
   description: "A heads-up display that can scan the chemical composition of a solution."
   components:
@@ -132,7 +132,7 @@
   - ClothingEyesBase
   - ShowSecurityIcons
   - ShowMedicalIcons
-  - BaseRestrictedContraband
+  - BaseCommandContraband # Claw Command - restricted needs a department
   - ClothingHeadEyeBaseFlippable
   name: "the all seeing eyepatch"
   description: "An eyepatch, capable of everything."

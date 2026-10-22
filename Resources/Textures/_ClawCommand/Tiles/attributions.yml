@@ -1,0 +1,4 @@
+- files: ["binglefloortile.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Added to Goob Station by fishbait in Goob-Station/Goob-Station PR #1830 (commit 512b5decbff2dee764451800f7b026eeea49087f); Goob Station media defaults to CC-BY-SA-3.0. Ported via Claw-Command14/space (commit 53c4ffa359)."
+  source: "https://github.com/Goob-Station/Goob-Station/pull/1830"

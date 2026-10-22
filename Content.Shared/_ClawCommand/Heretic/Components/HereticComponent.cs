@@ -144,6 +144,12 @@ public sealed partial class HereticComponent : Component
     public List<HereticKnowledgeEvent> KnowledgeEvents = new();
 
     /// <summary>
+    ///     Claw Command - how many living ghouls a Flesh heretic can keep raised through mansus grasp at once.
+    /// </summary>
+    [DataField]
+    public int MaxGraspGhouls = 2;
+
+    /// <summary>
     /// Minions summoned by this heretic
     /// </summary>
     [DataField, AutoNetworkedField]

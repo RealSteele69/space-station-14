@@ -14,6 +14,7 @@ using Content.Server.Heretic.Components;
 using Content.Shared.Heretic.Prototypes;
 using Content.Shared.Heretic;
 using Content.Shared.Interaction;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
 using Robust.Shared.Audio;
@@ -40,6 +41,7 @@ public sealed partial class HereticRitualSystem : EntitySystem
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private SharedStackSystem _stack = default!;
     [Dependency] private GhoulSystem _ghoul = default!;
+    [Dependency] private MobStateSystem _mobState = default!; // Claw Command
 
     public SoundSpecifier RitualSuccessSound = new SoundPathSpecifier("/Audio/_ClawCommand/Heretic/castsummon.ogg");
 
@@ -74,8 +76,9 @@ public sealed partial class HereticRitualSystem : EntitySystem
 
         if (limited != null)
         {
+            // Claw Command - dead summons free their slot; a ghoul corpse no longer counts toward the limit.
             if (exists)
-                limited.RemoveAll(x => !Exists(x));
+                limited.RemoveAll(x => !Exists(x) || _mobState.IsDead(x));
 
             if (limited.Count >= rit.Limit)
             {

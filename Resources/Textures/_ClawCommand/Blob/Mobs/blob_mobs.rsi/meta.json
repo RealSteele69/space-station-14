@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Upstream credit: \"Created by Unknown, blobbernaut_flex.png created from blobbernaut.png by Ilya246\". Part of the blob antagonist that Goob-Station ported from Backmen (https://github.com/Rxup/space-station-14; Goob-Station PR #975), which grew out of VigersRay's space-wizards/space-station-14 PR #18800. Ported from Goob-Station (https://github.com/Goob-Station/Goob-Station, Resources/Textures/_Goobstation/Blob) at commit da08589c83cc4f503c1c8450767e54f85157b951.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "blobpod",
+      "delays": [
+        [
+          1,
+          0.3,
+          0.5,
+          0.3
+        ]
+      ]
+    },
+    {
+      "name": "blobPod-equipped-HELMET",
+      "directions": 4
+    },
+    {
+      "name": "blobbernaut_produce",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.15,
+          0.15,
+          0.15,
+          0.15
+        ]
+      ]
+    },
+    {
+      "name": "blobbernaut",
+      "directions": 4
+    },
+    {
+      "name": "blobbernaut_death",
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.15,
+          0.15,
+          0.15,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "blobbernaut_flex",
+      "directions": 1,
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ]
+      ]
+    },
+    {
+      "name": "blobbernaut_flex_damage",
+      "directions": 1,
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ]
+      ]
+    },
+    {
+      "name": "blobbernaut_dead"
+    },
+    {
+      "name": "nautdamage",
+      "directions": 4,
+      "delays": [
+        [
+          0.075,
+          0.075,
+          0.075,
+          0.075,
+          0.2,
+          0.075,
+          0.075,
+          0.075,
+          0.075
+        ],
+        [
+          0.075,
+          0.075,
+          0.075,
+          0.075,
+          0.2,
+          0.075,
+          0.075,
+          0.075,
+          0.075
+        ],
+        [
+          0.075,
+          0.075,
+          0.075,
+          0.075,
+          0.2,
+          0.075,
+          0.075,
+          0.075,
+          0.075
+        ],
+        [
+          0.075,
+          0.075,
+          0.075,
+          0.075,
+          0.2,
+          0.075,
+          0.075,
+          0.075,
+          0.075
+        ]
+      ]
+    },
+    {
+      "name": "marker",
+      "delays": [
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

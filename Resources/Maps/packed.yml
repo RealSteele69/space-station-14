@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 07/27/2026 21:14:14
-  entityCount: 17013
+  entityCount: 17009
 maps:
 - 1
 grids:
@@ -7246,57 +7246,6 @@ entities:
     - type: Transform
       pos: 12.501018,-34.058125
       parent: 2
-- proto: ActionToggleInternals
-  entities:
-  - uid: 7
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 6
-    - type: Action
-      container: 6
-      originalIconColor: '#FFFFFFFF'
-- proto: ActionToggleJetpack
-  entities:
-  - uid: 8
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 6
-    - type: Action
-      container: 6
-      originalIconColor: '#FFFFFFFF'
-- proto: ActionToggleLight
-  entities:
-  - uid: 10
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 9
-    - type: Action
-      container: 9
-      originalIconColor: '#FFFFFFFF'
-  - uid: 12
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 11
-    - type: Action
-      container: 11
-      originalIconColor: '#FFFFFFFF'
-  - uid: 14
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 13
-    - type: Action
-      container: 13
-      originalIconColor: '#FFFFFFFF'
 - proto: AdvMopItem
   entities:
   - uid: 12782
@@ -43395,7 +43344,6 @@ entities:
       pos: 62.767895,19.108147
       parent: 2
     - type: HandheldLight
-      toggleActionEntity: 14
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
@@ -43405,8 +43353,7 @@ entities:
         actions: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - 14
+          ents: []
     - type: ActionsContainer
   - uid: 6571
     components:
@@ -53474,7 +53421,6 @@ entities:
       pos: 86.53047,10.639359
       parent: 2
     - type: HandheldLight
-      toggleActionEntity: 10
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
@@ -53484,8 +53430,7 @@ entities:
         actions: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - 10
+          ents: []
     - type: ActionsContainer
   - uid: 7981
     components:
@@ -76969,16 +76914,12 @@ entities:
       pos: 8.488525,-9.353134
       parent: 2
     - type: GasTank
-      toggleActionEntity: 7
     - type: Jetpack
-      toggleActionEntity: 8
     - type: ActionsContainer
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 8
-          - 7
+          ents: []
   - uid: 11391
     components:
     - type: Transform
@@ -77118,7 +77059,6 @@ entities:
       pos: 69.31397,39.02177
       parent: 2
     - type: HandheldLight
-      toggleActionEntity: 12
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
@@ -77128,8 +77068,7 @@ entities:
         actions: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - 12
+          ents: []
     - type: Physics
       canCollide: True
     - type: ActionsContainer
@@ -91430,6 +91369,13 @@ entities:
     - type: Transform
       pos: 58.5,38.5
       parent: 2
+- proto: SpawnPointForensicMantis
+  entities:
+  - uid: 17014
+    components:
+    - type: Transform
+      parent: 2
+      pos: 55.5,23.5
 - proto: SpawnPointHeadOfPersonnel
   entities:
   - uid: 13579

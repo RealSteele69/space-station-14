@@ -1,0 +1,10 @@
+# Claw Command - the invisible carrier a vent crawler rides in while inside the pipes (see VentCrawlSystem).
+- type: entity
+  id: VentCrawlDuct
+  name: ventilation duct
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: VentCrawlDuct
+  - type: Transform
+    noRot: true

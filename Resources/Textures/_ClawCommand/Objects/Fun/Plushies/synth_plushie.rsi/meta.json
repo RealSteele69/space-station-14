@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "by GitHub ItsDzordz / Discord dzordz (310775535984836609) Ported via Goob-Station (https://github.com/Goob-Station/Goob-Station, master snapshot, _Afterlight).",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "icon-unshaded"
+        }
+    ]
+}

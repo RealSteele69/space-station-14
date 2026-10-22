@@ -37,6 +37,9 @@
   id: GunUpgradePressure
 
 - type: Tag
+  id: GunUpgradeVampirism # GunUpgrade tag for LavalandVampirismCrystal
+
+- type: Tag
   id: LavalandGateway
 
 - type: Tag

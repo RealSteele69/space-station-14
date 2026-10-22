@@ -10,7 +10,7 @@
       - ReagentId: Anisette
         Quantity: 100
   - type: Label
-    currentLabel: anisette
+    localizedLabel: reagent-name-anisette
   - type: Sprite
     sprite: _Floof/Objects/Consumable/Drinks/anisettebottle.rsi
   - type: Sealable
@@ -27,7 +27,7 @@
       - ReagentId: Eggnog
         Quantity: 100
   - type: Label
-    currentLabel: eggnog
+    localizedLabel: reagent-name-eggnog
   - type: Sprite
     sprite: _Floof/Objects/Consumable/Drinks/syndicate_eggnog_bottle.rsi
   - type: Sealable
@@ -47,7 +47,7 @@
       - ReagentId: SyndicateEggnog
         Quantity: 100
   - type: Label
-    currentLabel: syndicate eggnog
+    localizedLabel: reagent-name-syndicate-eggnog
   - type: Sprite
     sprite: _Floof/Objects/Consumable/Drinks/syndicate_eggnog_bottle.rsi
   - type: Sealable
@@ -68,7 +68,7 @@
       - ReagentId: ReagentDrinkClawtail
         Quantity: 120
   - type: Label
-    currentLabel: clawtail
+    localizedLabel: reagent-name-clawtail
   - type: Sprite
     sprite: _ClawCommand/Objects/Consumable/Drinks/clawtailbottle.rsi
   - type: Sealable

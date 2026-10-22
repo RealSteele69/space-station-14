@@ -19,6 +19,15 @@
   color: "#22282b"
   boilingPoint: 4200.0
   meltingPoint: 3550.0
+  metabolisms: # Claw Command - synth species rebuild their fullerene blood from carbon
+    Bloodstream:
+      metabolismRate: 0.1
+      effects:
+      - !type:ModifyBloodLevel
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+        amount: 0.81
 
 - type: reagent
   id: Chlorine
@@ -159,9 +168,15 @@
       - !type:ModifyBloodLevel
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Arachnid ]
+          type: [ Arachnid, MetabolizerSynth ] # Claw Command - synth species
           inverted: true
         amount: 0.4
+      - !type:AdjustReagent # Claw Command - synth species turn iron into nutriment
+        reagent: Nutriment
+        amount: 0.2
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
 
 - type: reagent
   id: Lithium

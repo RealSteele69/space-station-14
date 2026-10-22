@@ -442,8 +442,8 @@
     materialComposition:
       Steel: 500
       Plastic: 150
-  - type: StaticPrice
-    price: 100
+  - type: StaticPrice # Claw Command - above its steel + plastic
+    price: 110
 
 - type: entity
   id: RPDEmpty

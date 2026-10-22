@@ -12,6 +12,7 @@
   components:
   - type: Sprite
     noRot: true
+    snapCardinals: false # directional (4-dir) states, the machine is rotatable
     sprite: Structures/Machines/VendingMachines/fitness.rsi
     layers:
     - state: "off"
@@ -26,6 +27,7 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: VendingMachine
     pack: FitnessVendInventory
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -52,6 +54,7 @@
   components:
   - type: Sprite
     noRot: true
+    snapCardinals: false # directional (4-dir) states, the machine is rotatable
     sprite: Structures/Machines/VendingMachines/hotfood.rsi
     layers:
     - state: "off"
@@ -64,6 +67,7 @@
     - state: heater
   - type: VendingMachine
     pack: HotfoodInventory
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -87,6 +91,7 @@
   components:
   - type: Sprite
     noRot: true
+    snapCardinals: false # directional (4-dir) states, the machine is rotatable
     sprite: Structures/Machines/VendingMachines/solsnack.rsi
     layers:
     - state: "off"
@@ -98,6 +103,7 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: VendingMachine
     pack: SolsnackInventory
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -123,6 +129,7 @@
   components:
   - type: Sprite
     noRot: true
+    snapCardinals: false # directional (4-dir) states, the machine is rotatable
     sprite: Structures/Machines/VendingMachines/weeb.rsi
     layers:
     - state: "off"
@@ -135,6 +142,7 @@
     - state: fan
   - type: VendingMachine
     pack: WeebVendInventory
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -164,11 +172,12 @@
   components:
   - type: VendingMachine
     pack: BoozeOMatUnlockedInventory
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
     denyState: deny-unshaded
-    loopDeny: false
+    loopDenyAnimation: false
   - type: DatasetVocalizer
     dataset: BoozeOMatAds
   - type: SpeakOnUIClosed
@@ -197,6 +206,7 @@
   components:
   - type: VendingMachine
     pack: ChefvendInventory
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -229,6 +239,7 @@
   components:
   - type: VendingMachine
     pack: DinnerwareInventory
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -261,15 +272,18 @@
   components:
   - type: VendingMachine
     pack: HappyHonkDispenserInventory
-    dispenseOnHitChance: 0.25
-    dispenseOnHitThreshold: 2
+    initialStockQuality: 1.0 # Nobody knows how Honk does it, but their vending machines always seem well-stocked...
+  - type: VendingMachineDispenseOnHit
+    chance: 0.25
+    threshold: 2
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
     denyState: deny-unshaded
+  - type: VendingMachineEject
     ejectDelay: 1.9
     soundVend: /Audio/Items/bikehorn.ogg
-    initialStockQuality: 1.0 # Nobody knows how Honk does it, but their vending machines always seem well-stocked...
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/happyhonk.rsi
     layers:

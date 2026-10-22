@@ -1,0 +1,13 @@
+# _ClawCommand: Resomi name pools. Strings live in Resources/Locale/en-US/_ClawCommand/datasets/names/resomi.ftl.
+
+- type: localizedDataset
+  id: NamesResomiMale
+  values:
+    prefix: names-resomi-male-dataset-
+    count: 50
+
+- type: localizedDataset
+  id: NamesResomiFemale
+  values:
+    prefix: names-resomi-female-dataset-
+    count: 50

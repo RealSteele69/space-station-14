@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from Monkestation at https://github.com/Monkestation/Monkestation2.0",
+  "copyright": "Taken from Monkestation at https://github.com/Monkestation/Monkestation2.0. Ported via Goob-Station (https://github.com/Goob-Station/Goob-Station)",
   "size": {
     "x": 32,
     "y": 32
@@ -9,6 +9,9 @@
   "states": [
     {
         "name": "icon"
+    },
+    {
+        "name": "incomplete"
     },
     {
         "name": "inhand-left",

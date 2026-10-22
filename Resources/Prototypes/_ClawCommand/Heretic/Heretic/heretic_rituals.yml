@@ -233,6 +233,7 @@
     Lungs: 1
   output:
     MobGhoulStalker: 1
+  limit: 2 # Claw Command - balance: was unlimited
 
 - type: hereticRitual
   id: AscensionFlesh
@@ -377,6 +378,7 @@
       Blade: ClothingOuterArmorHereticBlade
       Cosmos: ClothingOuterArmorHereticCosmos
       Rust: ClothingOuterArmorHeretic
+  limit: 2 # Claw Command - balance: was unlimited; enough for the heretic and one minion
 
 - type: hereticRitual
   id: PriestRitual
@@ -418,6 +420,7 @@
     WinterCoat: 1
   output:
     ClothingOuterArmorCloakVoid: 1
+  limit: 2 # Claw Command - balance: was unlimited
 
 - type: hereticRitual
   id: ScorchingShark
@@ -432,7 +435,7 @@
     SheetPlasma: 3
   output:
     MobGhoulFireShark: 3
-  limit: 15
+  limit: 6 # Claw Command - balance: was 15
 
 ## stage 6
 
@@ -451,6 +454,7 @@
     CableCoil: 15
   output:
     MobGhoulRustWalker: 1
+  limit: 3 # Claw Command - balance: was unlimited for 10 steel + 15 cable
 
 - type: hereticRitual
   id: CarvingKnife

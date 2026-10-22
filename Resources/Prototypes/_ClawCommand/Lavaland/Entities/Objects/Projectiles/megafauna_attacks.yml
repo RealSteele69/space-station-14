@@ -1,0 +1,327 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Projectiles, telegraphed damage tiles and cosmetic effects used by the lavaland megafauna attacks.
+
+# ---------------------------------------------------------------------------
+# Projectiles
+# ---------------------------------------------------------------------------
+
+- type: entity
+  parent: BaseBullet
+  id: MegafaunaProjectileBase
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    impactEffect: null
+    soundHit: null
+    damage:
+      types:
+        Heat: 10
+  - type: TimedDespawn
+    lifetime: 5
+
+- type: entity
+  parent: MegafaunaProjectileBase
+  id: MegafaunaProjectileAshDrakeFlame
+  name: dragon flame
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: Effects/fire.rsi
+    layers:
+    - state: fire
+      shader: unshaded
+  - type: PointLight
+    color: "#E25822"
+    radius: 1.5
+    energy: 3.0
+  - type: Projectile
+    damage:
+      types:
+        Heat: 7
+  - type: IgniteOnCollide
+    fireStacks: 0.3
+  - type: TimedDespawn
+    lifetime: 0.9 # short range breath
+
+- type: entity
+  parent: MegafaunaProjectileBase
+  id: MegafaunaProjectileAshDrakeFireball
+  name: dragon fireball
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: fireball
+      shader: unshaded
+  - type: PointLight
+    color: "#E25822"
+    radius: 2.0
+    energy: 4.0
+  - type: Projectile
+    damage:
+      types:
+        Heat: 14
+        Blunt: 4
+  - type: IgniteOnCollide
+    fireStacks: 0.5
+  - type: TimedDespawn
+    lifetime: 4
+
+- type: entity
+  parent: MegafaunaProjectileBase
+  id: MegafaunaProjectileColossusBolt
+  name: colossus bolt
+  description: A spike of crystallised judgement.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_cyan
+      shader: unshaded
+  - type: PointLight
+    color: "#7FD8FF"
+    radius: 1.5
+    energy: 2.0
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 6
+        Heat: 6
+  - type: TimedDespawn
+    lifetime: 3
+
+- type: entity
+  parent: MegafaunaProjectileColossusBolt
+  id: MegafaunaProjectileColossusBoltHeavy
+  name: colossus judgement
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_red
+      shader: unshaded
+  - type: PointLight
+    color: "#FF5050"
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 10
+        Heat: 10
+
+- type: entity
+  parent: MegafaunaProjectileBase
+  id: MegafaunaProjectileHeraldBolt
+  name: herald's light
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_yellow
+      shader: unshaded
+  - type: PointLight
+    color: "#FFE680"
+    radius: 1.5
+    energy: 2.0
+  - type: Projectile
+    damage:
+      types:
+        Heat: 8
+        Blunt: 4
+  - type: TimedDespawn
+    lifetime: 3
+
+- type: entity
+  parent: MegafaunaProjectileBase
+  id: MegafaunaProjectileLegionBile
+  name: legion bile
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_green
+      shader: unshaded
+  - type: Projectile
+    damage:
+      types:
+        Caustic: 6
+        Blunt: 4
+  - type: TimedDespawn
+    lifetime: 3
+
+# ---------------------------------------------------------------------------
+# Telegraphed damage tiles. The sprite shows up first, damage lands after damageDelay.
+# ---------------------------------------------------------------------------
+
+- type: entity
+  id: MegafaunaDamageTileBase
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    drawdepth: Effects
+  - type: TimedDespawn
+    lifetime: 1.2
+  - type: DamageSquare
+    damageDelay: 0.8
+    damage:
+      types:
+        Blunt: 10
+    damageWhitelist:
+      components:
+      - MobState
+    damageBlacklist:
+      components:
+      - Fauna
+
+- type: entity
+  parent: MegafaunaDamageTileBase
+  id: MegafaunaFireTile
+  name: dragonfire
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Effects/fire.rsi
+    layers:
+    - state: fire
+      shader: unshaded
+  - type: PointLight
+    color: "#E25822"
+    radius: 1.5
+    energy: 2.5
+  - type: TimedDespawn
+    lifetime: 1.4
+  - type: DamageSquare
+    damageDelay: 0.9
+    damage:
+      types:
+        Heat: 15
+    sound:
+      path: /Audio/Effects/fire.ogg
+      params:
+        volume: -4
+
+- type: entity
+  parent: MegafaunaDamageTileBase
+  id: MegafaunaBloodHandTile
+  name: bloody grasp
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Fluids/splatter.rsi
+    layers:
+    - state: splatter-2
+      color: "#9b0000"
+  - type: TimedDespawn
+    lifetime: 1.1
+  - type: DamageSquare
+    damageDelay: 0.7
+    damage:
+      types:
+        Slash: 10
+        Blunt: 8
+    sound:
+      path: /Audio/Effects/demon_attack1.ogg
+      params:
+        volume: -4
+
+- type: entity
+  parent: MegafaunaDamageTileBase
+  id: MegafaunaCrystalTile
+  name: crystal shard
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: magicm_cyan
+      shader: unshaded
+  - type: PointLight
+    color: "#7FD8FF"
+    radius: 1.2
+    energy: 2.0
+  - type: DamageSquare
+    damageDelay: 0.8
+    damage:
+      types:
+        Piercing: 12
+    sound:
+      path: /Audio/Effects/glass_break1.ogg
+      params:
+        volume: -6
+
+# ---------------------------------------------------------------------------
+# Cosmetics
+# ---------------------------------------------------------------------------
+
+- type: entity
+  id: MegafaunaAshDrakeShadow
+  name: looming shadow
+  description: Something huge is about to land here. Move!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: FloorObjects
+    sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+    layers:
+    - state: dragon_shadow
+  - type: TimedDespawn
+    lifetime: 8 # safety net, the swoop deletes it on landing
+
+- type: entity
+  id: MegafaunaBloodTrail
+  name: blood trail
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: false
+  - type: Sprite
+    drawdepth: FloorObjects
+    sprite: Fluids/smear.rsi
+    layers:
+    - state: smear-2
+      color: "#8a0000"
+  - type: TimedDespawn
+    lifetime: 10
+
+- type: entity
+  id: MegafaunaWindUpEffect
+  name: wind-up
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    sprite: Effects/emp.rsi
+    layers:
+    - state: emp_pulse
+      shader: unshaded
+      color: "#ff3030"
+  - type: TimedDespawn
+    lifetime: 0.6
+
+- type: entity
+  id: MegafaunaLandingEffect
+  name: impact
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    sprite: Effects/gravityPulse.rsi
+    layers:
+    - state: gravityPulse
+      shader: unshaded
+      color: "#ffa040"
+  - type: TimedDespawn
+    lifetime: 0.6

@@ -365,6 +365,7 @@
   parent: [SolutionFood, SolutionTiny, SimpleMobBase, BaseSlicingRefinable, MobNightVision]
   id: BaseCockroach
   components:
+  - type: VentCrawler # Claw Command - roaches ventcrawl (mothroaches too)
   - type: Sprite
     drawdepth: SmallMobs
   - type: Item
@@ -1739,6 +1740,7 @@
   - type: StatusIcon
     bounds: -0.5,-0.5,0.5,0.5
   - type: JobStatus # marks them as crew
+  - type: CosmicCenserTarget # Claw Command - Cosmic Cult
 
 - type: entity
   name: monkey
@@ -1746,6 +1748,7 @@
   parent: MobBaseAncestor
   description: New church of neo-darwinists actually believe that EVERY animal evolved from a monkey. Tastes like pork, and killing them is both fun and relaxing.
   components:
+  - type: VentCrawler # Claw Command - monkeys ventcrawl; they must strip first
   - type: NameIdentifier
     group: Monkey
   - type: Speech
@@ -1773,6 +1776,7 @@
   description: New church of neo-darwinists actually believe that EVERY animal evolved from a monkey. Tastes like pork, and killing them is both fun and relaxing.
   suffix: syndicate base
   components:
+  - type: VentCrawler # Claw Command - monkeys ventcrawl; they must strip first
   - type: NameIdentifier
     group: Monkey
   - type: SentienceTarget
@@ -1822,6 +1826,7 @@
   description: Cousins to the sentient race of lizard people, kobolds blend in with their natural habitat and are as nasty as monkeys; ready to pull out your hair and stab you to death.
   abstract: true
   components:
+  - type: VentCrawler # Claw Command - kobolds ventcrawl like monkeys
   - type: NameIdentifier
     group: Kobold
   - type: LizardAccent
@@ -1975,6 +1980,7 @@
   id: MobMouse
   description: Squeak!
   components:
+  - type: VentCrawler # Claw Command - mice ventcrawl
   - type: GhostRole
     makeSentient: true
     allowSpeech: true
@@ -3015,6 +3021,7 @@
   id: MobRaccoon
   description: Trash panda!
   components:
+  - type: VentCrawler # Claw Command - raccoons ventcrawl
   - type: Sprite
     drawdepth: Mobs
     sprite: Mobs/Animals/raccoon.rsi

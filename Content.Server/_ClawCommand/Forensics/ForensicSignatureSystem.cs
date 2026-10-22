@@ -1,4 +1,6 @@
 using Content.Shared._ClawCommand.Forensics;
+using Content.Shared.Body.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Forensics;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Forensics.Systems;
@@ -17,8 +19,10 @@ namespace Content.Server._ClawCommand.Forensics;
 ///     spawning renames the mob through MetaDataSystem.SetEntityName, and so does anything else
 ///     that renames a creature mid-round, so the signature follows the name for the whole shift.
 /// </summary>
-public sealed class ForensicSignatureSystem : EntitySystem
+public sealed partial class ForensicSignatureSystem : EntitySystem
 {
+    [Dependency] private SharedSolutionContainerSystem _solutions = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -59,7 +63,13 @@ public sealed class ForensicSignatureSystem : EntitySystem
         dna.DNA = signature;
         Dirty(ent.Owner, dna);
 
-        // Bloodstream caches the DNA string for the solution it hands out, so it has to be told.
+        // Bloodstream caches the DNA string for the solution it hands out, so it has to be told. Some
+        // mobs are renamed during their own MapInit, before the bloodstream has made its solution; skip
+        // those, since OnMapInit runs after the bloodstream and tells it then.
+        if (TryComp<BloodstreamComponent>(ent, out var bloodstream)
+            && !_solutions.TryGetSolution(ent.Owner, bloodstream.BloodSolutionName, out _))
+            return;
+
         var ev = new GenerateDnaEvent { Owner = ent.Owner, DNA = signature };
         RaiseLocalEvent(ent.Owner, ref ev);
     }

@@ -22,7 +22,7 @@ public sealed partial class ChemRemovePsionic : EntityEffectBase<ChemRemovePsion
     public override bool Scaling => false;
 
     public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("reagent-effect-guidebook-chem-remove-psionic", ("chance", Probability));
+        => Loc.GetString("entity-effect-guidebook-chem-remove-psionic", ("chance", Probability));
 }
 
 /// <summary>
@@ -39,5 +39,5 @@ public sealed partial class ChemRerollPsionic : EntityEffectBase<ChemRerollPsion
     public float BonusMuliplier = 1f;
 
     public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("reagent-effect-guidebook-chem-reroll-psionic", ("chance", Probability));
+        => Loc.GetString("entity-effect-guidebook-chem-reroll-psionic", ("chance", Probability));
 }

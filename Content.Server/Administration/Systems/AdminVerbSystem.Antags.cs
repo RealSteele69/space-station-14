@@ -32,6 +32,7 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId ParadoxCloneRuleId = "ParadoxCloneSpawn";
     private static readonly EntProtoId DefaultWizardRule = "Wizard";
     private static readonly EntProtoId DefaultNinjaRule = "NinjaSpawn";
+    private static readonly EntProtoId DefaultDevilRule = "Devil"; // Claw Command - devil
     private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
 
     // All antag verbs have names so invokeverb works.
@@ -222,6 +223,22 @@ public sealed partial class AdminVerbSystem
             Message = string.Join(": ", ninjaName, Loc.GetString("admin-verb-make-space-ninja")),
         };
         args.Verbs.Add(ninja);
+
+        // Claw Command - devil
+        var devilName = Loc.GetString("admin-verb-text-make-devil");
+        Verb devil = new()
+        {
+            Text = devilName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/_ClawCommand/Devil/Actions/devil.rsi"), "summon-contract"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<Content.Server._ClawCommand.Devil.GameTicking.Rules.DevilRuleComponent>(targetPlayer, DefaultDevilRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", devilName, Loc.GetString("admin-verb-make-devil")),
+        };
+        args.Verbs.Add(devil);
 
         if (HasComp<HumanoidProfileComponent>(args.Target)) // only humanoids can be cloned
             args.Verbs.Add(paradox);

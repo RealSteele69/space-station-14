@@ -22,6 +22,7 @@
     - HighRiskItem
   - type: StealTarget
     stealGroup: NukeDisk
+  - type: SupermatterImmune # Claw Command - supermatter
 
 - type: entity
   name: nuclear authentication disk

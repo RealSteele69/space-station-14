@@ -1,0 +1,4 @@
+- type: lightMask
+  id: CosmicCult
+  maskPath: /Textures/_DV/CosmicCult/LightMasks/cosmic.png
+  lightCones: []

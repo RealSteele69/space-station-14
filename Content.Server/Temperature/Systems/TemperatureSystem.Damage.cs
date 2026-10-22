@@ -1,3 +1,4 @@
+using Content.Shared._ClawCommand.CosmicCult.Components; // CLAW COMMAND
 using Content.Server.Administration.Logs;
 using Content.Server.Body.Components;
 using Content.Server.Temperature.Components;
@@ -177,6 +178,9 @@ public sealed partial class TemperatureSystem
 
     private void EnqueueDamage(Entity<TemperatureDamageComponent> ent, ref TemperatureChangedEvent args)
     {
+        if (HasComp<TemperatureImmunityComponent>(ent)) // CLAW COMMAND - Cosmic Cult temperature immunity
+            return;
+
         if (ShouldUpdateDamage.Add(ent) && !ent.Comp.TakingDamage)
             ent.Comp.LastUpdate = _gameTiming.CurTime;
     }

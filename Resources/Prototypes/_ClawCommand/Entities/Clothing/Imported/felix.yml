@@ -1041,7 +1041,7 @@
   - type: Item
     size: Large
   - type: Storage
-    maxItemSize: Huge
+    maxItemSize: Large # Claw Command - can't hold anything bigger than itself
     grid:
     - "0,0,5,3"
 

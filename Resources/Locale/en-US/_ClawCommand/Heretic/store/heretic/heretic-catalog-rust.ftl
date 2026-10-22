@@ -34,7 +34,7 @@ knowledge-path-rust-s2-name = Grasp of Rust
 knowledge-path-rust-s2-desc =
     On the ceiling of the Mansus, rust grows as moss does on a stone.
 
-    Your Mansus Grasp will deal massive damage to non-living matter and rust any surface it touches.
+    Your Mansus Grasp will deal massive damage to non-living matter, cripple silicons, and rust any surface it touches.
     Already rusted surfaces are destroyed.
     Standing on Rusted tiles heals, purges chems off your body and grants you resistance to batons.
     Allows you to rust basic iron walls and floors.

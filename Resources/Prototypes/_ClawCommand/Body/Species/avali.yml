@@ -1,12 +1,12 @@
 # _ClawCommand: Avali species.
-# Port intent (from space):
-#   - Space ships Avali voice/emote infrastructure (MaleAvali/FemaleAvali speech + emote bundles)
-#     but never wires a full SpeciesAvali entry — the bundles are reused by Resomi.
-#   - The "gameplay-as-played" Avali in space is Resomi's stat-line (small, cold-tolerant,
-#     ammonia-blooded, claws, faster in zero-g) wearing the Avali voice.
-#   - We therefore implement Avali as a first-class Claw Command species that adopts those
-#     Resomi-derived stats but follows our fork's species convention (human body sprites,
-#     custom markings, sex-aware speech, Felinid-style organ wiring).
+# Avali are drawn on their own body sheet (_ClawCommand/Mobs/Species/Avali/parts.rsi): human height and
+# head size with feathered wing-arms, a beaked head and a long tail, tinted by the skin colour. Because the
+# frame matches the human one, normal clothing fits without per-item sprites. What does need adjusting:
+#   - eyes sit higher (moth-shaped), so the Inventory uses the moth eyewear variants (speciesId: moth);
+#   - masks get a small profile displacement for the beak;
+#   - the torso is the same shape for both sexes, so the human female jumpsuit displacement is not used.
+# Gameplay: cold-adapted ammonia-blooded pack hunters, fragile to blunt force and heat, weak in melee,
+# with preenable feathers (Preenable, see Content.Shared/_ClawCommand/Body/Preening).
 
 - type: markingsGroup
   parent: Undergarments
@@ -19,50 +19,49 @@
       limit: 1
       required: false
     enum.HumanoidVisualLayers.Head:
-      limit: 2
+      limit: 3
       required: false
     enum.HumanoidVisualLayers.Chest:
-      limit: 2
+      limit: 3
       required: false
     enum.HumanoidVisualLayers.Snout:
       limit: 1
       required: false
-    enum.HumanoidVisualLayers.HeadTop:
-      limit: 1
-      required: true
-      default: [ AvaliEars ]
-    enum.HumanoidVisualLayers.LArm:
+    enum.HumanoidVisualLayers.HeadTop: # crests
       limit: 2
+      required: false
+    enum.HumanoidVisualLayers.HeadSide: # ears; the patterned sets include the base ears
+      limit: 2
+      required: true
+      default: [ AvaliEarsBase ]
+    enum.HumanoidVisualLayers.LArm:
+      limit: 3
       required: false
     enum.HumanoidVisualLayers.RArm:
-      limit: 2
+      limit: 3
       required: false
     enum.HumanoidVisualLayers.LHand:
-      limit: 2
-      required: true
-      default: [ AvaliLArmFeathers ]
+      limit: 3
+      required: false
     enum.HumanoidVisualLayers.RHand:
-      limit: 2
-      required: true
-      default: [ AvaliRArmFeathers ]
+      limit: 3
+      required: false
     enum.HumanoidVisualLayers.LLeg:
-      limit: 2
+      limit: 3
       required: false
     enum.HumanoidVisualLayers.RLeg:
-      limit: 2
+      limit: 3
       required: false
     enum.HumanoidVisualLayers.LFoot:
       limit: 2
-      required: true
-      default: [ AvaliLLegFeathers ]
+      required: false
     enum.HumanoidVisualLayers.RFoot:
       limit: 2
+      required: false
+    enum.HumanoidVisualLayers.Tail: # the patterned sets include the base tail
+      limit: 2
       required: true
-      default: [ AvaliRLegFeathers ]
-    enum.HumanoidVisualLayers.Tail:
-      limit: 6
-      required: true
-      default: [ AvaliTail, AvaliTailFeathers ]
+      default: [ AvaliTailBase ]
     enum.HumanoidVisualLayers.UndergarmentTop:
       limit: 1
       required: false
@@ -86,16 +85,15 @@
   suffix: Claw Command
   name: avali appearance
   components:
-  # No custom clothing displacements — body is currently Human-sheet sized (see
-  # avali_organs.yml), so default Human displacements fit. Keep only the female jumpsuit
-  # override that ships with the base port.
   - type: Inventory
-    femaleDisplacements:
-      jumpsuit:
+    speciesId: moth # same eye placement as moths, so moth eyewear variants line up
+    displacements:
+      # No head displacement: shifting headwear forward over the beak clips large hardsuit helmets.
+      mask:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Human/displacement.rsi
-            state: jumpsuit-female
+            sprite: _ClawCommand/Mobs/Species/Avali/displacement.rsi
+            state: mask
   - type: InitialBody
     organs:
       Torso: OrganAvaliTorso
@@ -129,25 +127,62 @@
   name: Urist McChirp
   suffix: Claw Command
   components:
-  # Voice — uses the ported Avali speech + emote sound profiles (MaleAvali / FemaleAvali).
+  - type: Icon
+    sprite: _ClawCommand/Mobs/Species/Avali/parts.rsi
+    state: full
+  # Voice — Avali speech + emote sound profiles (MaleAvali / FemaleAvali, picked per sex on the species).
   - type: Vocal
     emoteSounds: MaleAvali # Claw Command - was a sex-keyed 'sounds' dict, removed by the WizDen rebase
   - type: Speech
     speechSounds: MaleAvali
     speechVerb: Parrot
-  # Resomi-derived gameplay: cold-loving, ammonia bloodstream, claw melee, zero-g specialists.
+    allowedEmotes: [ 'Chirp', 'Trill', 'Warble', 'Purr', 'Growl' ]
+  - type: Damageable
+    damageModifierSet: ModifierSetAvali
+  - type: Fixtures # light, hollow-boned build
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 160
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
   - type: Bloodstream
-    bloodReagent: AmmoniaBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: AmmoniaBlood
+        Quantity: 300 # half the blood of most species
+  # Cold-adapted: a cooler resting temperature, low heat capacity (temperature swings faster), suffers from
+  # heat early and badly, and is barely slowed by the cold.
   - type: Temperature
+    temperature: 296.15
+    specificHeat: 1800 # Claw Command - rescaled from 25 for the joule-based heat model
   - type: TemperatureDamage
-    coldDamageThreshold: 195.4   # cold-tolerant (ammonia freezing point ~ -77 C)
-    heatDamageThreshold: 320.15  # heat-fragile (47 C)
+    coldDamageThreshold: 223
+    heatDamageThreshold: 310
     coldDamage:
       types:
         Cold: 0.05
     heatDamage:
       types:
-        Heat: 3
+        Heat: 5
+  - type: ThermalRegulator
+    metabolismHeat: 400
+    radiatedHeat: 100
+    implicitHeatRegulation: 500
+    sweatHeatRegulation: 2000
+    shiveringHeatRegulation: 2000
+    normalBodyTemperature: 296.15
+    thermalRegulationTemperatureThreshold: 10
+  - type: TemperatureSpeed
+    thresholds:
+      279: 0.95
+      265: 0.9
+      240: 0.85
   - type: MovementSpeedModifier
     weightlessAcceleration: 2.5  # pack-hunter zero-g advantage
   - type: MeleeWeapon
@@ -156,10 +191,24 @@
     animation: WeaponArcClaw
     soundHit:
       collection: AlienClaw
-    damage:
+    damage: # evens out to about 5 slash after BonusMeleeDamage
       types:
-        Slash: 5
+        Slash: 6
+  - type: BonusMeleeDamage # significantly weaker in melee
+    damageModifierSet:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.85
+  - type: Preenable
+    featherPrototype: AvaliFeather
   - type: Butcherable
     spawned:
     - id: FoodMeatHuman
       amount: 2
+
+- type: damageModifierSet
+  id: ModifierSetAvali
+  coefficients:
+    Blunt: 1.3
+    Piercing: 1.1
+    Slash: 1.1

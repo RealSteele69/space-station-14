@@ -38,7 +38,7 @@ public sealed partial class MindshieldImplantSystem : EntitySystem
         {
             if (_mind.TryGetMind(uid, out var mindId, out _))
             {
-                _log.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(uid)} was deconverted due to being implanted with a Mindshield.");
+                _log.Add(LogType.MindRole, LogImpact.Medium, $"{ToPrettyString(uid)} was deconverted due to being implanted with a Mindshield."); // Claw Command - was LogType.Mind (antag reveal gate)
 
                 if (_role.MindHasRole<RevolutionaryRoleComponent>(mindId))
                     _role.MindRemoveRole<RevolutionaryRoleComponent>(mindId);

@@ -159,6 +159,9 @@
   - type: HideLayerClothing
     slots:
     - Tail
+  - type: CosmicTransmutable # Claw Command - Cosmic Cult
+    transmutesTo: ClothingOuterHardsuitCosmicCult
+    requiredGlyphType: CosmicGlyphWarding
 
 - type: entity
   abstract: true
@@ -195,6 +198,9 @@
     tags:
     - Hardsuit
     - WhitelistChameleon
+  - type: CosmicTransmutable # Claw Command - Cosmic Cult
+    transmutesTo: ClothingOuterHardsuitCosmicCult
+    requiredGlyphType: CosmicGlyphWarding
 
 - type: entity
   parent: ClothingOuterEVASuitBase

@@ -1,3 +1,4 @@
+using Content.Shared._ClawCommand.CosmicCult.Components; // CLAW COMMAND
 using System.Linq;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
@@ -46,20 +47,36 @@ public abstract partial class SharedTemperatureSystem : EntitySystem
         var mass = CompOrNull<PhysicsComponent>(entity)?.FixturesMass ?? 1f;
 
         // TODO: This assumes this is temperature for the whole body, but ideally we want it split into surface and internal temperature!
-        entity.Comp.HeatCapacity = MathF.Max(mass, MinimumHeatMass) * entity.Comp.SpecificHeat; // Claw Command
+        entity.Comp.HeatCapacity = HeatMass(mass) * entity.Comp.SpecificHeat; // Claw Command
     }
 
     private void OnMassDataChanged(Entity<TemperatureComponent> entity, ref MassDataChangedEvent args)
     {
-        entity.Comp.HeatCapacity = MathF.Max(args.NewMass, MinimumHeatMass) * entity.Comp.SpecificHeat; // Claw Command
+        entity.Comp.HeatCapacity = HeatMass(args.NewMass) * entity.Comp.SpecificHeat; // Claw Command
     }
 
     // Claw Command - sub-kilogram entities (small clothing, paper, etc.) shouldn't get their heat capacity scaled
     // toward zero; that produces nonsense temperatures when atmos pushes them around. Port: EE Physics-Based Air Throws (#342).
-    private const float MinimumHeatMass = 1f;
+    // Kept tiny: a 1 kg floor overrode tuned values like raw meat's 750 J/K (0.25 kg), making food cook 4x slower.
+    private const float MinimumHeatMass = 0.01f;
+
+    // Massless entities (no physics mass yet, e.g. before init) keep upstream's zero instead of the floor.
+    private static float HeatMass(float mass) => mass > 0f ? MathF.Max(mass, MinimumHeatMass) : 0f;
 
     private void OnTemperatureChanged(Entity<TemperatureSpeedComponent> ent, ref TemperatureChangedEvent args)
     {
+        // CLAW COMMAND - no temperature slowdown for Cosmic Cultists with temperature immunity
+        if (HasComp<TemperatureImmunityComponent>(ent))
+        {
+            if (ent.Comp.CurrentSpeedModifier != null)
+            {
+                ent.Comp.CurrentSpeedModifier = null;
+                ent.Comp.NextSlowdownUpdate = _timing.CurTime;
+                Dirty(ent);
+            }
+            return;
+        }
+
         foreach (var (threshold, modifier) in ent.Comp.Thresholds)
         {
             if (args.CurrentTemperature < threshold && args.LastTemperature > threshold ||

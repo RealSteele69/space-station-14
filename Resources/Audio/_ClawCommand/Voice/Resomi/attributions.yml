@@ -1,0 +1,9 @@
+- files: ["trill.ogg", "warble.ogg", "wurble.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Taken from 'FD-NewBay' - Other places link to freesound.org. warble.ogg converted to mono by @deltanedas (github). Ported from Goob-Station (https://github.com/Goob-Station/Goob-Station) at commit da08589c83cc4f503c1c8450767e54f85157b951"
+  source: "https://github.com/RepoStash/FD-NewBay/tree/dev-sierra/mods/_fd/resomi_fd/sound"
+
+- files: ["resomi_chirp1.ogg", "resomi_chirp2.ogg", "resomi_chirp3.ogg", "resomi_chirp4.ogg", "resomi_chirp5.ogg"]
+  license: "CC0-1.0"
+  copyright: "Bird Chirps by whiskeyecho, Taken from https://freesound.org/. Ported from Goob-Station (https://github.com/Goob-Station/Goob-Station) at commit da08589c83cc4f503c1c8450767e54f85157b951"
+  source: "https://freesound.org/s/727256/"

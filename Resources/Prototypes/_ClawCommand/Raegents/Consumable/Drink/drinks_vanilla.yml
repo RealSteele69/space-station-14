@@ -29,7 +29,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
@@ -53,7 +53,7 @@
     - !type:PlantAdjustWater
       amount: 0.9
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst

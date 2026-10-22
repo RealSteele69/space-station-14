@@ -28,12 +28,14 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon:
-      sprite: _ClawCommand/Lavaland/Objects/Specific/Lavaland/loot.rsi
-      state: cursed_heart
     checkCanInteract: false
     checkConsciousness: false
     itemIconStyle: BigAction
     useDelay: 1
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Objects/Specific/Lavaland/loot.rsi
+    layers:
+    - state: cursed_heart
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:PumpHeartActionEvent

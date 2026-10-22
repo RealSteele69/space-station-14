@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/77cff42b6c514e73881a885036be4b4dd2949f62 recolored by Github user Dutch-VanDerLinde, CAP edited by Skarletto (github), equipped-OUTERCLOTHING-vox states taken from /vg/station at commit https://github.com/vgstation-coders/vgstation13/commit/31d6576ba8102135d058ef49c3cb6ecbe8db8a79 and repaletted to match by Flareguy, grayscale layering & armor by IProduceWidgets (Github)",
+  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/77cff42b6c514e73881a885036be4b4dd2949f62 recolored by Github user Dutch-VanDerLinde, CAP edited by Skarletto (github), equipped-OUTERCLOTHING-vox states taken from /vg/station at commit https://github.com/vgstation-coders/vgstation13/commit/31d6576ba8102135d058ef49c3cb6ecbe8db8a79 and repaletted to match by Flareguy, grayscale layering & armor by IProduceWidgets (Github). Resomi-fitted states (ATMOS-equipped-OUTERCLOTHING-resomi, BAR-equipped-OUTERCLOTHING-resomi, CARGO-equipped-OUTERCLOTHING-resomi, CE-equipped-OUTERCLOTHING-resomi, CENTCOM-equipped-OUTERCLOTHING-resomi, CHEF-equipped-OUTERCLOTHING-resomi, CHEM-equipped-OUTERCLOTHING-resomi, CMO-equipped-OUTERCLOTHING-resomi, ENGI-equipped-OUTERCLOTHING-resomi, GENE-equipped-OUTERCLOTHING-resomi, HOP-equipped-OUTERCLOTHING-resomi, HOS-equipped-OUTERCLOTHING-resomi, HYDRO-equipped-OUTERCLOTHING-resomi, JANI-equipped-OUTERCLOTHING-resomi, MED-equipped-OUTERCLOTHING-resomi, MIME-equipped-OUTERCLOTHING-resomi, MINER-equipped-OUTERCLOTHING-resomi, PARA-equipped-OUTERCLOTHING-resomi, QM-equipped-OUTERCLOTHING-resomi, RD-equipped-OUTERCLOTHING-resomi, ROBO-equipped-OUTERCLOTHING-resomi, SCI-equipped-OUTERCLOTHING-resomi, SEC-equipped-OUTERCLOTHING-resomi, SYNDIE-equipped-OUTERCLOTHING-resomi, SYNDIECAP-equipped-OUTERCLOTHING-resomi, VIRO-equipped-OUTERCLOTHING-resomi, WARD-equipped-OUTERCLOTHING-resomi, WEB-equipped-OUTERCLOTHING-resomi, equipped-OUTERCLOTHING-resomi) ported from Goob-Station (https://github.com/Goob-Station/Goob-Station) at commit da08589c83cc4f503c1c8450767e54f85157b951, where this RSI is credited as: \"Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/77cff42b6c514e73881a885036be4b4dd2949f62. equipped-OUTERCLOTHING-vox state taken from /vg/station at commit https://github.com/vgstation-coders/vgstation13/commit/31d6576ba8102135d058ef49c3cb6ecbe8db8a79, equipped-OUTERCLOTHING-resomi made by Pofitlo\". Resomi-fitted states (CAP-equipped-OUTERCLOTHING-resomi) ported from Claw-Command14/space (https://github.com/Claw-Command14/space) at commit 366c723d6d4dfea1aa1fdfd34385f054d24fb762, where this RSI is credited as: \"Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/77cff42b6c514e73881a885036be4b4dd2949f62, edited by Skarletto (github). equipped-OUTERCLOTHING-vox state taken from /vg/station at commit https://github.com/vgstation-coders/vgstation13/commit/31d6576ba8102135d058ef49c3cb6ecbe8db8a79 and repaletted to match with the default state, equipped-OUTERCLOTHING-resomi made by Pofitlo\".",
   "size": {
     "x": 32,
     "y": 32
@@ -581,6 +581,126 @@
     },
 	{
       "name": "ARMOR-icon"
+    },
+    {
+      "name": "equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "ATMOS-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "BAR-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "CAP-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "CARGO-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "CE-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "CENTCOM-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "CHEF-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "CHEM-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "CMO-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "ENGI-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "GENE-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "HOP-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "HOS-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "HYDRO-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "JANI-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "MED-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "MIME-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "MINER-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "PARA-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "QM-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "RD-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "ROBO-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "SCI-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "SEC-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "VIRO-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "WARD-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "WEB-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "SYNDIECAP-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
+    },
+    {
+      "name": "SYNDIE-equipped-OUTERCLOTHING-resomi",
+      "directions": 4
     }
   ]
 }

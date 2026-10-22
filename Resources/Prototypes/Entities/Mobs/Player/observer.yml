@@ -114,6 +114,11 @@
   id: MobObserver
   components:
   - type: Spectral
+  - type: UserInterface # Claw Command - devil revival contract offer
+    interfaces:
+      enum.RevivalContractUiKey.Key:
+        type: RevivalContractBoundUserInterface
+        requireInputValidation: false
   - type: Tag
     tags:
     - AllowGhostShownByEvent

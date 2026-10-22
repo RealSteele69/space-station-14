@@ -305,8 +305,8 @@
     angle: 80.5
     soundHit:
       path: "/Audio/Weapons/click.ogg"
-  - type: StaticPrice
-    price: 10
+  - type: StaticPrice # Claw Command - above its 100 plastic
+    price: 25
 
 - type: entity
   parent: LunchboxGeneric

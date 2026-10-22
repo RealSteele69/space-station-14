@@ -22,10 +22,17 @@
         - MobLayer
   - type: NpcFactionMember
     factions:
-    - SimpleHostile
+    - Lavafauna
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        8
+      AggroVisionRadius: !type:Single
+        12
+      NavSmash: !type:Bool
+        true
   - type: Sprite
     drawdepth: Mobs
     sprite: _ClawCommand/Lavaland/Mobs/Elites/32x64.rsi
@@ -65,6 +72,14 @@
     forgiveRange: 20.0
   - type: CombatPower # Goobstation
     factor: 8 # times more dangerous than a crew-member
+  - type: Fauna
+  - type: SpawnLootOnDeath
+    table: !type:AllSelector
+      children:
+      - !type:NestedSelector
+        tableId: CrusherUpgradesHandle
+      - !type:NestedSelector
+        tableId: LavalandMaterialRare
 
 - type: entity
   name: Legionnaire
@@ -117,6 +132,29 @@
     damageModifierSet: Hierophant
   - type: Injurable
     damageContainer: Inorganic
+  - type: ActionGrant
+    actions:
+    - ActionLegionnaireCharge
+    - ActionLegionnaireSummonSkulls
+  - type: MegafaunaAi
+    actionDelay: 0.6
+    startingDelay: 1.0
+    selector: !type:NestedMegafaunaSelector
+      id: EliteLegionnaire
+  - type: MegafaunaAggroRadius
+    radius: 7
+  - type: Anger
+    totalHp: 1000
+  - type: AngerPlayerScaling
+    angerScale: 1.1
+    hpScale: 1.15
+  - type: MobPhases
+    phaseThresholds:
+      0: 1
+      500: 2
+  - type: MegafaunaGodmode
+  - type: MegafaunaRejuvenate
+  - type: DamageSquareImmunity
 
 - type: entity
   id: LavalandElitePandora #Just a hierophant resprite, all of these are templates anyway.
@@ -189,6 +227,40 @@
   - type: BossMusic
     soundId: Hierophant
   - type: Fauna
+  - type: ActionGrant
+    actions:
+    - ActionHierophantBox
+    - ActionHierophantCrosses
+    - ActionHierophantBlink
+  - type: MegafaunaAi
+    actionDelay: 0.8
+    startingDelay: 1.0
+    selector: !type:NestedMegafaunaSelector
+      id: ElitePandora
+  - type: MegafaunaBlink
+    spawnOnTarget: HierophantShapeBlink
+    spawnOnUsed: HierophantShapeBlink
+  - type: MegafaunaAggroRadius
+    radius: 7
+  - type: Anger
+    totalHp: 1000
+  - type: AngerPlayerScaling
+    angerScale: 1.1
+    hpScale: 1.15
+  - type: MobPhases
+    phaseThresholds:
+      0: 1
+      500: 2
+  - type: MegafaunaGodmode
+  - type: MegafaunaRejuvenate
+  - type: DamageSquareImmunity
+  - type: SpawnLootOnDeath
+    table: !type:AllSelector
+      children:
+      - !type:NestedSelector
+        tableId: CrusherUpgradesMain
+      - !type:NestedSelector
+        tableId: LavalandMaterialRare
 
 - type: entity
   name: Herald
@@ -258,6 +330,33 @@
     damageModifierSet: Hierophant
   - type: Injurable
     damageContainer: Inorganic
+  - type: ActionGrant
+    actions:
+    - ActionHeraldShotgun
+    - ActionHeraldRing
+    - ActionHeraldSpiral
+    - ActionHeraldTeleport
+  - type: MegafaunaAi
+    actionDelay: 0.6
+    startingDelay: 1.0
+    selector: !type:NestedMegafaunaSelector
+      id: EliteHerald
+  - type: MegafaunaBlink
+    delay: 0.6
+  - type: MegafaunaAggroRadius
+    radius: 7
+  - type: Anger
+    totalHp: 1000
+  - type: AngerPlayerScaling
+    angerScale: 1.1
+    hpScale: 1.15
+  - type: MobPhases
+    phaseThresholds:
+      0: 1
+      500: 2
+  - type: MegafaunaGodmode
+  - type: MegafaunaRejuvenate
+  - type: DamageSquareImmunity
 
 - type: entity
   name: Broodmother
@@ -267,7 +366,7 @@
   components:
   - type: HTN
     rootTask:
-      task: SimpleRangedHostileCompound
+      task: SimpleHostileCompound
   - type: Sprite
     drawdepth: Mobs
     sprite: _ClawCommand/Lavaland/Mobs/Elites/64x64.rsi
@@ -308,7 +407,30 @@
       1000: Dead
   - type: Damageable
     damageModifierSet: Hierophant
-
-
   - type: Injurable
     damageContainer: Inorganic
+  - type: ActionGrant
+    actions:
+    - ActionBroodmotherTentacleCross
+    - ActionBroodmotherTentacleField
+    - ActionBroodmotherSpawnBrood
+    - ActionBroodmotherRage
+  - type: MegafaunaAi
+    actionDelay: 0.6
+    startingDelay: 1.0
+    selector: !type:NestedMegafaunaSelector
+      id: EliteBroodmother
+  - type: MegafaunaAggroRadius
+    radius: 7
+  - type: Anger
+    totalHp: 1000
+  - type: AngerPlayerScaling
+    angerScale: 1.1
+    hpScale: 1.15
+  - type: MobPhases
+    phaseThresholds:
+      0: 1
+      500: 2
+  - type: MegafaunaGodmode
+  - type: MegafaunaRejuvenate
+  - type: DamageSquareImmunity

@@ -773,6 +773,7 @@
     - WhitelistChameleon
     - GasMask # _ClawCommand - re-listed from ClothingMaskGas (ArmorerRitual); tags don't merge on inheritance
     - Mask # _ClawCommand - re-listed from ClothingMaskGas (MaskOfMadness)
+    - AdvXenoHuggerProof # _ClawCommand - face shield stops facehuggers
   - type: ImageOverlay
     pathToOverlayImage: "/Textures/Clothing/Head/Welding/weldingTexture.png"
     additionalColorOverlay: "#00000050"

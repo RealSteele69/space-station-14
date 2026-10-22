@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 07/29/2026 01:59:36
-  entityCount: 20155
+  entityCount: 20153
 maps:
 - 1
 grids:
@@ -7076,39 +7076,6 @@ entities:
       rot: -69.11503837897548 rad
       pos: 43.424816,64.62023
       parent: 2
-- proto: ActionToggleInternals
-  entities:
-  - uid: 7
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 6
-    - type: Action
-      container: 6
-      originalIconColor: '#FFFFFFFF'
-- proto: ActionToggleJetpack
-  entities:
-  - uid: 8
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 6
-    - type: Action
-      container: 6
-      originalIconColor: '#FFFFFFFF'
-- proto: ActionToggleLight
-  entities:
-  - uid: 10
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 9
-    - type: Action
-      container: 9
-      originalIconColor: '#FFFFFFFF'
 - proto: AirAlarm
   entities:
   - uid: 11
@@ -91515,16 +91482,12 @@ entities:
       pos: 56.438934,91.54873
       parent: 2
     - type: GasTank
-      toggleActionEntity: 7
     - type: Jetpack
-      toggleActionEntity: 8
     - type: ActionsContainer
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 8
-          - 7
+          ents: []
 - proto: JetpackMiniFilled
   entities:
   - uid: 13310
@@ -91653,7 +91616,6 @@ entities:
       pos: 80.18765,38.748634
       parent: 2
     - type: HandheldLight
-      toggleActionEntity: 10
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
@@ -91663,8 +91625,7 @@ entities:
         actions: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - 10
+          ents: []
     - type: Physics
       canCollide: True
     - type: ActionsContainer
@@ -104275,6 +104236,13 @@ entities:
     - type: Transform
       pos: 46.5,43.5
       parent: 2
+- proto: SpawnPointForensicMantis
+  entities:
+  - uid: 20156
+    components:
+    - type: Transform
+      parent: 2
+      pos: 19.5,86.5
 - proto: SpawnPointHeadOfPersonnel
   entities:
   - uid: 15219

@@ -792,6 +792,9 @@
   description: "It has small body armor, a built-in “Bark” body armor, and a camouflage hood. Camouflage color from leaves."
   suffix: "DeadSector"
   components:
+  - type: ContainerContainer # Claw Command - declared so spawning doesn't add it
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
   - type: Item
     size: Huge
     shape:
@@ -846,6 +849,9 @@
   description: "A helmet fitted with dated night-vision optics. Holds up well against blunt force."
   suffix: "DeadSector"
   components:
+  - type: ContainerContainer # Claw Command - declared so spawning doesn't add it
+    containers:
+      cell_slot: !type:ContainerSlot {}
   - type: Sprite
     sprite: Imperial/DeadSector/head/DawnVisor.rsi
     state: icon
@@ -873,6 +879,9 @@
   description: "A modern visored helmet that tags living lifeforms. Holds up well against blunt force."
   suffix: "DeadSector"
   components:
+  - type: ContainerContainer # Claw Command - declared so spawning doesn't add it
+    containers:
+      cell_slot: !type:ContainerSlot {}
   - type: Sprite
     sprite: Imperial/DeadSector/head/GorkaVisor.rsi
     state: icon
@@ -1277,6 +1286,8 @@
           SheetSteel1:
             min: 3
             max: 5
+  - type: StaticPrice # same as a vanilla light post; covers the steel it drops
+    price: 75
   - type: Pullable
   - type: Appearance
   - type: GenericVisualizer

@@ -1,0 +1,234 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Contracts
+
+- type: entity
+  id: BaseDevilContract
+  parent: [ BaseItem, BaseMagicalContraband, SolutionFood ]
+  abstract: true
+  name: contract from below
+  description: A devilish piece of black parchment detailing a contract. All ink that touches the page seems to turn to blood.
+  components:
+  - type: PaperLabelType
+  - type: Paper
+  - type: ActivatableUI
+    key: enum.PaperUiKey.Key
+    requiresComplex: false
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_blood_red.svg.96dpi.png"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 16.0, 16.0, 16.0, 16.0
+    defaultTextColor: "#dbe1e8"
+  - type: UserInterface
+    interfaces:
+      enum.PaperUiKey.Key:
+        type: PaperBoundUserInterface
+  - type: Item
+    sprite: _ClawCommand/Devil/devil_contract.rsi
+    size: Small
+  - type: Sprite
+    sprite: _ClawCommand/Devil/devil_contract.rsi
+    state: icon
+  - type: CrematoriumImmune # Dude. You're burning the paper from *hell*? Really?
+  - type: SupermatterImmune # Nope.
+  - type: PreventChasmFalling # Nope.
+    deleteOnUse: false
+  - type: CargoSellBlacklist # Nope.
+  - type: ArrivalsBlacklist # Nope.
+  - type: FTLSmashImmune # Nope.
+  - type: FaxableObject
+  - type: Edible
+    requiresSpecialDigestion: true
+    delay: 12 # contracts take slightly longer to eat so people can't weaponize the explosions
+    forceFeedDelay: 12
+  - type: BadFood
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 1
+  - type: FlavorProfile
+    flavors:
+    - paper
+    ignoreReagents:
+    - Fiber
+  - type: Tag
+    tags:
+    - Document
+    - Paper
+
+- type: entity
+  id: PaperDevilContractBlank
+  suffix: Blank
+  parent: BaseDevilContract
+  components:
+  - type: DevilContract
+
+- type: entity
+  id: PaperDevilContract
+  suffix: Devil Contract
+  parent: BaseDevilContract
+  components:
+  - type: DevilContract
+  - type: Paper
+    content: default-contract-content
+
+- type: entity
+  id: PaperDevilContractRevival
+  suffix: Devil Contract, Revival
+  parent: BaseDevilContract
+  name: contract from the depths
+  description: A devilish piece of black parchment detailing a contract of revival. All ink that touches the page seems to turn to blood.
+  components:
+  - type: RevivalContract
+  - type: Paper
+    editingDisabled: true
+    content: default-contract-content
+
+# Devil's grip
+
+- type: entity
+  id: DevilGrip
+  name: devils grip
+  description: What little fraction of your power remains in this realm, channeled into your hands.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Unremoveable
+  - type: Item
+    sprite: _ClawCommand/Devil/devil_grip.rsi
+  - type: UnholyItem
+  - type: DevilGrip
+    blacklist:
+      components:
+      - Puddle
+  - type: Sprite
+    sprite: _ClawCommand/Devil/devil_grip.rsi
+    state: icon
+  - type: Appearance
+  - type: PointLight
+    enabled: true
+    radius: 2
+    energy: 1
+    color: "#8B0000"
+
+# Starting gear
+
+- type: entity
+  name: devilish pen
+  parent: [ BaseAdvancedPen, BaseMagicalContraband ]
+  id: PenDevil
+  description: A devilishly sharp pen with a strangely warm body. Not quite as sharp as a devils tongue, nor as silver coated.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Devil/pen_devil.rsi
+    state: pen_devil
+  - type: Item
+    sprite: _ClawCommand/Devil/pen_devil.rsi
+    heldPrefix: pen_devil
+  - type: CrematoriumImmune
+  - type: MeleeWeapon
+    wideAnimationRotation: -45
+    damage:
+      types:
+        Piercing: 15
+        Heat: 5
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+
+- type: entity
+  parent: [ BaseGuidebook, BaseMagicalContraband ]
+  id: GuidebookCodexUmbra
+  suffix: guidebook
+  name: Codex Umbra
+  description: An old book tightly wound in dark leather. It details various contracts and their effects.
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+    - state: cover_base
+      color: black
+    - state: decor_wingette
+      color: "#7e0100"
+  - type: Tag
+    tags:
+    - Book
+    - Paper
+  - type: GuideHelp
+    openOnActivation: true
+    guides:
+    - DevilClauses
+
+- type: entity
+  parent: ClothingUniformJumpsuitLawyerBlack # Not contraband. It's just a suit, dude.
+  id: ClothingUniformJumpsuitDevil
+  name: devilish suit
+  description: A stylish black suit made of materials not from this dimension. Warm to the touch.
+  components:
+  - type: CrematoriumImmune
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.70
+        Heat: 0.75
+
+# Clause rewards
+
+- type: entity
+  parent: [ ClothingShoesBootsMagBase, BaseMajorContraband ]
+  id: ClothingShoesRealJordansAutographed
+  suffix: Devil
+  name: air jordans
+  description: These aren't just any Jordans, these were signed by Michael Jordan himself. These must be worth a FORTUNE.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Devil/jordans.rsi
+    state: icon
+  - type: Clothing
+    sprite: _ClawCommand/Devil/jordans.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1.2
+    sprintModifier: 1.2
+  - type: StaticPrice
+    price: 8000
+  - type: Damageable # Claw Command - Injurable alone holds no damage, so the Destructible could never fire
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200 # good luck creasing these
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Items/bow_pull.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ClothingShoesCreasedJordans:
+            min: 1
+            max: 1
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesCreasedJordans
+  name: creased air jordans
+  description: No wait... this can't be.... THEY'RE CREASED!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Devil/jordans.rsi
+    state: icon-creased
+  - type: Clothing
+    sprite: _ClawCommand/Devil/jordans.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.7
+    sprintModifier: 0.7
+  - type: StaticPrice # Claw Command - above the cloth they butcher into
+    price: 5

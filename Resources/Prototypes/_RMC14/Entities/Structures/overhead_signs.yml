@@ -354,3 +354,17 @@
   components:
   - type: Sprite
     offset: -0.07,0.45
+
+# --- Added later from RMC-14 (same file), RMC-only components stripped ---
+
+# Signs
+
+- type: entity
+  parent: RMCOverheadSign
+  id: RMCOverheadSignBarCrow
+  name: The Drowning Crow Bar
+  description: A sign for 'The Drowning Crow' bar. The sign is old and delapitated.
+  components:
+  - type: Sprite
+    state: crow_bar
+    offset: -0.15,0.75

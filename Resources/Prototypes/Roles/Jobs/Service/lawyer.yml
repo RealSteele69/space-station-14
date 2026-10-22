@@ -14,6 +14,11 @@
   - Lawyer
   - Brig
   - Maintenance
+  special: # Claw Command - devil: their soul is already spoken for
+  - !type:AddComponentSpecial
+    components:
+    - type: Condemned
+      soulOwnedNotDevil: true
 
 - type: startingGear
   id: LawyerGear

@@ -6,6 +6,10 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: ContainerContainer # Claw Command - declared so spawning doesn't add it
+    containers:
+      mech-equipment-container: !type:Container
+      mech-battery-slot: !type:ContainerSlot {}
   - type: Transform
     anchored: false
     noRot: true

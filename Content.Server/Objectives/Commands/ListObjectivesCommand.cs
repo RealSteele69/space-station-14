@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._ClawCommand.Administration;
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Mind;
@@ -37,6 +38,10 @@ namespace Content.Server.Objectives.Commands
                 shell.WriteError(LocalizationManager.GetString("shell-target-entity-does-not-have-message", ("missing", "mind")));
                 return;
             }
+
+            // Claw Command - looking up someone else's objectives reveals their antag status
+            if (player != shell.Player)
+                _entities.System<AntagRevealSystem>().Reveal(shell.Player, player.UserId, Command);
 
             shell.WriteLine($"Objectives for player {player.UserId}:");
             var objectives = mind.Objectives.ToList();

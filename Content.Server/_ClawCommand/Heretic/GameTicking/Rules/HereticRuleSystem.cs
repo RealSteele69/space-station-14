@@ -89,7 +89,10 @@ public sealed partial class HereticRuleSystem : GameRuleSystem<HereticRuleCompon
         if (!_mind.TryGetMind(target, out var mindId, out var mind))
             return false;
 
-        _role.MindAddRole(mindId, MindRole.Id, mind, true);
+        // Claw Command - AntagSelection already adds MindRoleHeretic via the antagSpecifier's mindRoles;
+        // adding it again left two heretic roles on the mind.
+        if (!_role.MindHasRole<HereticRoleComponent>(mindId))
+            _role.MindAddRole(mindId, MindRole.Id, mind, true);
 
         // briefing
         if (HasComp<MetaDataComponent>(target))
@@ -112,7 +115,9 @@ public sealed partial class HereticRuleSystem : GameRuleSystem<HereticRuleCompon
             store.Categories.Add(category);
         }
         store.CurrencyWhitelist.Add(Currency);
-        store.Balance.Add(Currency, 2);
+        // Claw Command - balance: was 2. The first grasp upgrade now has to be earned from an influence,
+        // giving the crew an early window before the heretic is combat-ready.
+        store.Balance.Add(Currency, 1);
 
         rule.Minds.Add(mindId);
 

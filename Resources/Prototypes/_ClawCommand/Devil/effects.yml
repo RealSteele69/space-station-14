@@ -1,0 +1,120 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: Pentagram
+  name: pentagram
+  parent: Acidifier
+  description: A devilish summoning circle.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ClawCommand/Devil/Effects/pentagram.rsi
+    drawdepth: BelowMobs
+    noRot: true
+    layers:
+    - state: pentagram
+      shader: unshaded
+  - type: Transform
+    anchored: False
+  - type: TimedDespawn
+    lifetime: 5
+  - type: PointLight
+    color: Red
+    radius: 3
+    energy: 2
+    netsync: false
+
+- type: entity
+  id: HellHand
+  parent: Pentagram
+  name: hell hand
+  description: A hellish hand from below!
+  components:
+  - type: Sprite
+    sprite: /Textures/_ClawCommand/Devil/Effects/hellhand.rsi
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - state: hellhand
+      shader: unshaded
+  - type: TimedDespawn
+    lifetime: 1
+
+- type: entity
+  id: FireEffect
+  name: fire
+  parent: Acidifier
+  description: A burst of flames!
+  components:
+  - type: Sprite
+    sprite: /Textures/Effects/fire.rsi
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - state: fire
+      shader: unshaded
+  - type: Transform
+    anchored: False
+  - type: TimedDespawn
+    lifetime: 0.2 # purposefully low so it doesnt lag behind you too hard
+  - type: PointLight
+    color: Orange
+    radius: 3
+    energy: 2
+    netsync: false
+
+- type: entity
+  id: PolymorphShadowJauntAnimation
+  name: Unknown
+  description: You can't figure out what that is.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _ClawCommand/Devil/Effects/shadow_jaunt.rsi
+      state: shadow_jaunt
+  - type: TimedDespawn
+    lifetime: 1
+
+- type: entity
+  id: PolymorphShadowJaunt
+  name: Unknown
+  description: You can't figure out what that is.
+  parent: BaseMobJaunt
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 12
+    baseWalkSpeed: 8
+
+# Polymorphs
+
+- type: polymorph
+  id: ShadowJaunt
+  configuration:
+    entity: PolymorphShadowJaunt
+    forced: true
+    duration: 4
+    attachToGridOrMap: true
+
+- type: polymorph
+  id: ShadowJauntPermanent
+  configuration:
+    entity: PolymorphShadowJaunt
+    forced: true
+    attachToGridOrMap: true
+
+- type: polymorph
+  id: ShadowJaunt180
+  configuration:
+    entity: PolymorphShadowJaunt
+    forced: true
+    duration: 180
+    attachToGridOrMap: true
+
+- type: polymorph
+  id: MobFrogPolymorph
+  configuration:
+    entity: MobFrog
+    forced: true
+    inventory: Transfer
+    transferName: true

@@ -85,7 +85,7 @@ public sealed partial class TeleportLocationsSystem : SharedTeleportLocationsSys
             if (xform.MapUid is { } map && centcommMaps.Contains(map))
                 continue;
 
-            ent.Comp.AvailableWarps.Add(new TeleportPoint(warpPointComp.Location, GetNetEntity(warpEnt)));
+            ent.Comp.AvailableWarps.Add(new TeleportPoint(Loc.GetString(warpPointComp.Location), GetNetEntity(warpEnt)));
         }
 
         Dirty(ent);

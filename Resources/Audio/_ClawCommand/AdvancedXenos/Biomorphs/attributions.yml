@@ -1,0 +1,4 @@
+- files: ["breaker_attack.ogg", "breaker_charge.ogg", "breaker_charge_hit.ogg", "breaker_charging.ogg", "breaker_death_hiss.ogg", "breaker_slam.ogg", "breaker_walk_stomp.ogg", "drone_attack.ogg", "drone_move.ogg", "monarch_attack.ogg", "monarch_charge.ogg", "monarch_death_hiss.ogg", "monarch_move.ogg", "spitter_attack.ogg", "spitter_move.ogg", "vanguard_attack.ogg", "vanguard_move.ogg", "warrior_attack.ogg", "warrior_move.ogg", "xenomorph_death_hiss.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "CM-SS13 PvE / TerraGov Marine Corps xenomorph audio, ported into Citadel-Station-13-RP by Athena148 in PR #6675 (5fb4e3886b, 'Xenomorph Code and Sprite Rehaul'). Downmixed to mono for Claw Command."
+  source: "https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/sound/mobs/biomorphs"

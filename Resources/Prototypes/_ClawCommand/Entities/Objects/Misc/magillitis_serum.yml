@@ -121,9 +121,11 @@
     checkCanInteract: false
     itemIconStyle: BigAction
     priority: -20
-    icon:
-      sprite: Actions/Implants/implants.rsi
-      state: gorilla_rampage
+  - type: Sprite
+    sprite: Actions/Implants/implants.rsi
+    layers:
+    - state: gorilla_rampage
+      map: ["enum.ActionVisuals.Icon"]
 
 # --- The subdermal implant. Fork trigger-effect flow: activate action -> ActivateImplantEvent ->
 #     TriggerOnActivateImplant raises a trigger (user = implantee) -> PolymorphOnTrigger polymorphs the

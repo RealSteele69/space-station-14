@@ -1,0 +1,387 @@
+# Claw Command - playable advanced xenomorphs (larva, drone, hunter, sentinel, queen).
+# Stats follow the original species datums: total_health, movement_base_speed (tiles/s, scaled to SS14's
+# 4.5 sprint for a 5-speed human), brute_mod 0.5 / burn_mod 2, claws 20 (queen 25), plasma vessels per caste.
+
+- type: entity
+  abstract: true
+  save: false
+  parent:
+  - BaseMob
+  - MobCombat
+  - MobDamageable
+  - MobAtmosExposed
+  - MobFlammable
+  - MobBloodstream
+  - BaseMobDestructible
+  id: MobAdvXenoBase
+  name: alien
+  description: What IS that?
+  components:
+  - type: AdvXenoHive
+  - type: VentCrawler # castes must carry nothing, as human-bodied xenos
+  - type: NpcFactionMember
+    factions:
+    - Xeno
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: alive
+  - type: StandingState
+  - type: Crawler
+  - type: Buckle
+  - type: Puller
+    needsHands: false # drags with jaws and claws; xenos have no hands
+  - type: Climbing
+  - type: NoSlip
+  - type: Insulated # siemens_coefficient = 0
+  - type: TemperatureDamage # cold_level_2 = -1: never freezes. Hot rooms still hurt.
+    heatDamageThreshold: 360
+    coldDamageThreshold: -150
+    heatDamage:
+      types:
+        Heat: 1.5
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: AdvXenoBlood
+        Quantity: 300
+  - type: Damageable
+    damageModifierSet: AdvXeno
+  - type: StatusEffects
+    allowed:
+    - Electrocution
+    - Pacified
+    - Flashed
+    - Adrenaline
+  - type: IntrinsicRadioReceiver # the hivemind; AdvXenoSpeechSystem sends to it and hisses everything said aloud
+  - type: ActiveRadio
+    channels:
+    - AdvXenoHivemind
+  - type: Speech
+    speechVerb: AdvXeno
+    speechSounds: AdvXeno
+  - type: Vocal
+    emoteSounds: AdvXeno
+  - type: Emoting
+  - type: TypingIndicator
+    proto: alien
+  - type: Grammar
+    attributes:
+      gender: neuter
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - FootstepSound
+    - CannotSuicide
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    soundHit:
+      collection: AlienClaw
+    damage:
+      types:
+        Slash: 20
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatXeno
+      amount: 5
+  - type: MobPrice
+    price: 2000
+
+# ----------------------------------------------------------------------------- larva
+
+- type: entity
+  parent: MobAdvXenoBase
+  id: MobAdvXenoLarva
+  name: alien larva
+  description: Known colloquially as 'chestbursters', xenomorph larvae are the second stage of the xenomorph life cycle. Spotting one means that at best there are eggs active in the area, and at worst, that there is a functioning hive nearby.
+  components:
+  - type: AdvXenoLarva
+  - type: AdvXenoHider
+  - type: VentCrawler # /mob/living/carbon/alien/ventcrawl_carry() always passes
+    allowHeldItems: true
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/larva.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: larva0
+  - type: RotationVisuals # the larva has its own lying sprites
+    defaultRotation: 0
+    horizontalRotation: 0
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      25: Dead
+  - type: TemperatureDamage # /mob/living/carbon/alien/handle_environment: hurts above 66C
+    heatDamageThreshold: 339
+    coldDamageThreshold: -150
+    heatDamage:
+      types:
+        Heat: 1.5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 30
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 4
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Piercing: 2
+  - type: Pullable # restrained() always returns 0 for carbon aliens: no cuffs, no strip menu
+  - type: ActionGrant
+    actions:
+    - ActionAdvXenoHide
+    - ActionAdvXenoEvolveHunter
+    - ActionAdvXenoEvolveSentinel
+    - ActionAdvXenoEvolveDrone
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatXeno
+      amount: 1
+
+# What a chestburster or a midround spawn leaves behind: a ghost takes it.
+# Hidden from the spawn menu; admins spawn MobAdvXenoLarvaAdmin instead.
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: MobAdvXenoLarva
+  id: MobAdvXenoLarvaGhostRole
+  suffix: Ghost role
+  components:
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: ghost-role-information-adv-xeno-larva-name
+    description: ghost-role-information-adv-xeno-larva-description
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleAdvancedXenomorph
+    raffle:
+      settings: short
+  - type: GhostTakeoverAvailable
+
+# For admins to spawn mid-round: the ghost that takes it also gets the briefing, objectives and
+# round-end listing (rule AdvancedXenomorphAdmin), and it stays where it was placed.
+- type: entity
+  parent: MobAdvXenoLarvaGhostRole
+  id: MobAdvXenoLarvaAdmin
+  suffix: Ghost role
+  components:
+  - type: AdvXenoAdminSpawn
+
+# ----------------------------------------------------------------------------- castes
+
+- type: entity
+  abstract: true
+  parent: MobAdvXenoBase
+  id: MobAdvXenoCasteBase
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: alive
+    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+      color: "#ffffff"
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      visible: false
+  - type: Hands
+  - type: ComplexInteraction
+  - type: Cuffable
+  - type: AdvXenoStomach
+  - type: ThermalVision # vision_flags = SEE_MOBS
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Critical
+    - Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Critical:
+        Base: alive
+      Dead:
+        Base: alive
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      60: 0.8
+      90: 0.6
+
+- type: entity
+  parent: MobAdvXenoCasteBase
+  id: MobAdvXenoDrone
+  name: alien drone
+  description: The working class of the hive, with the largest plasma storage and generation. The only caste that may become a queen.
+  components:
+  - type: AdvXenoCaste
+    caste: drone
+  - type: AdvXenoPlasma
+    plasma: 200
+    maxPlasma: 500
+    weedsPlasmaRate: 15
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/drone.rsi
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Critical
+      200: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 4.95
+  - type: ActionGrant
+    actions:
+    - ActionAdvXenoPlantWeeds
+    - ActionAdvXenoResinWall
+    - ActionAdvXenoResinMembrane
+    - ActionAdvXenoResinDoor
+    - ActionAdvXenoResinNest
+    - ActionAdvXenoResinBlob
+    - ActionAdvXenoCorrosiveAcid
+    - ActionAdvXenoNeurotoxin
+    - ActionAdvXenoAcidSpit
+    - ActionAdvXenoTransferPlasma
+    - ActionAdvXenoEvolveQueen
+    - ActionAdvXenoDevour
+    - ActionAdvXenoRegurgitate
+
+- type: entity
+  parent: MobAdvXenoCasteBase
+  id: MobAdvXenoHunter
+  name: alien hunter
+  description: Strong and agile, able to hunt away from the hive and rapidly move through ventilation shafts. Hunters generate plasma slowly and have low reserves.
+  components:
+  - type: AdvXenoCaste
+    caste: hunter
+  - type: AdvXenoPlasma
+    plasma: 100
+    maxPlasma: 150
+    weedsPlasmaRate: 5
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/hunter.rsi
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Critical
+      250: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 7.5
+  - type: ActionGrant
+    actions:
+    - ActionAdvXenoLeap
+    - ActionAdvXenoTackle
+    - ActionAdvXenoGut
+    - ActionAdvXenoPsychicWhisper
+    - ActionAdvXenoTransferPlasma
+    - ActionAdvXenoDevour
+    - ActionAdvXenoRegurgitate
+
+- type: entity
+  parent: MobAdvXenoCasteBase
+  id: MobAdvXenoSentinel
+  name: alien sentinel
+  description: Tasked with protecting the hive, deadly up close and at a range. Not as physically imposing nor as fast as the hunters.
+  components:
+  - type: AdvXenoCaste
+    caste: sentinel
+  - type: AdvXenoPlasma
+    plasma: 100
+    maxPlasma: 250
+    weedsPlasmaRate: 10
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/sentinel.rsi
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Critical
+      300: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.6
+    baseSprintSpeed: 6
+  - type: ActionGrant
+    actions:
+    - ActionAdvXenoTackle
+    - ActionAdvXenoCorrosiveAcid
+    - ActionAdvXenoNeurotoxin
+    - ActionAdvXenoAcidSpit
+    - ActionAdvXenoTransferPlasma
+    - ActionAdvXenoDevour
+    - ActionAdvXenoRegurgitate
+
+- type: entity
+  parent: MobAdvXenoCasteBase
+  id: MobAdvXenoQueen
+  name: alien queen
+  description: The mother of the hive. Lays the eggs that carry its young.
+  components:
+  - type: AdvXenoCaste
+    caste: queen
+    queen: true
+  - type: AdvXenoPlasma
+    plasma: 200
+    maxPlasma: 500
+    weedsPlasmaRate: 20
+    weedsHealRate: 5
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/queen.rsi
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      250: Critical
+      350: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2.7
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    soundHit:
+      collection: AlienClaw
+    damage:
+      types:
+        Slash: 25
+  - type: ActionGrant
+    actions:
+    - ActionAdvXenoLayEgg
+    - ActionAdvXenoPlantWeeds
+    - ActionAdvXenoResinWall
+    - ActionAdvXenoResinMembrane
+    - ActionAdvXenoResinDoor
+    - ActionAdvXenoResinNest
+    - ActionAdvXenoResinBlob
+    - ActionAdvXenoCorrosiveAcid
+    - ActionAdvXenoNeurotoxin
+    - ActionAdvXenoAcidSpit
+    - ActionAdvXenoPsychicWhisper
+    - ActionAdvXenoTransferPlasma
+    - ActionAdvXenoDevour
+    - ActionAdvXenoRegurgitate

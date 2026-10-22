@@ -88,6 +88,8 @@
             max: 1
   - type: StaticPrice
     price: 66
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WindowCosmicCult
 
 - type: entity
   parent: PlasmaReinforcedWindowDirectional

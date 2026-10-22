@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 08/05/2026 03:17:05
-  entityCount: 12965
+  entityCount: 12966
 maps:
 - 1
 grids:
@@ -69809,6 +69809,13 @@ entities:
     - type: Transform
       parent: 2
       pos: -24.5,-28.5
+- proto: SpawnPointLibrarian
+  entities:
+  - uid: 12966
+    components:
+    - type: Transform
+      parent: 2
+      pos: -18.5,-15.5
 - proto: SpawnPointMedicalDoctor
   entities:
   - uid: 10548

@@ -1,0 +1,27 @@
+# Ported from RMC-14 (https://github.com/RMC-14/RMC-14, MIT), Resources/Prototypes/_RMC14/Entities/Structures/Props/base.yml.
+# Decorative only: RMC-specific components (xeno charge/acid, vehicle smashing, minimap, mesons,
+# dropship blocking, construction graphs) were stripped. Sprites are CMSS13/RMC art, credited in each meta.json.
+
+- type: entity
+  abstract: true
+  id: RMCPropBase
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Clickable
+
+- type: entity
+  abstract: true
+  id: RMCPropBaseUnbreakable
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Clickable

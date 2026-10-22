@@ -1,0 +1,47 @@
+<Document>
+  # Synths
+
+  <Box>
+    <GuideEntityEmbed Entity="AppearanceSynth" Caption=""/>
+  </Box>
+
+  [color=#ffa500]Synths play quite differently from other species and aren't recommended for new players.[/color]
+
+  Synths are artificial humanoids loosely resembling bipedal lizards. They are kept running by a mix of complex machinery and organic maintenance: an internal power cell, a small bioreactor for a stomach, and a dark, fullerene-based blood that carries their repair nanites.
+
+  ## Power
+
+  - Synths run off an internal power cell that slowly drains. If it runs flat they [color=#ffa500]move at half speed[/color] until it's recharged. They're warned at 20% and 10% charge.
+  - The cell recharges [color=#1e90ff]whenever they eat[/color], while they sit in a [color=#1e90ff]cyborg recharging station[/color], and whenever they take Shock damage.
+  - The cell can't be swapped out.
+  - EMPs [color=#ec3a3a]drain the cell[/color] and deal Shock and Heat damage.
+
+  ## Diet and Self-Repair
+
+  - Synths can eat raw materials such as coal, diamonds, metal rods and sheets of steel, brass, plasma or plastic. Raw organs don't upset their stomachs, and alcohol won't poison them.
+  - While they're well fed and their fullerene levels are healthy, their nanites [color=#1e90ff]slowly repair Brute, Burn, Bloodloss and Cellular damage[/color] and seal wounds. This [color=#ffa500]uses up satiation[/color] and stops once they're starving.
+  - Fullerene regenerates slowly at the cost of satiation. Saline does nothing for it; carbon, synth blood, nanites and [color=#1e90ff]synth blood packs[/color] (printed at a medical techfab with diamonds) do. As fullerene runs low, self-repair slows down.
+  - They don't need to breathe.
+
+  ## Resistances
+
+  - They take [color=#8147ff]40% more Shock damage[/color] and [color=#ffa500]5% more Piercing damage[/color].
+  - They take [color=#B9BF93]15% less Heat damage[/color], [color=#1e90ff]40% less Cold damage[/color] and [color=#B9BF93]20% less Radiation damage[/color].
+  - Shock damage [color=#1e90ff]recharges their power cell[/color] but [color=#ec3a3a]also causes Cellular damage[/color].
+  - They're immune to zombification.
+  - They tolerate a wider temperature range than most species, but get slower as they cool down.
+
+  <Box>
+    <GuideEntityEmbed Entity="OrganSynthBrain" Scale="5" Caption=""/>
+  </Box>
+
+  ## Central Computing Unit
+
+  - A synth's CCU works like a positronic brain and can be [color=#1e90ff]inserted directly into a cyborg chassis[/color].
+
+  ## Nanites
+
+  - Nanites are the most effective treatment for synth injuries, but [color=#ec3a3a]overdose above 10.5u[/color]. They're made in an [color=#1e90ff]electrolysis[/color] machine from carbon, copper, fersilicite, hydrogen, oxygen and sulfuric acid.
+  - [color=#ec3a3a]Nanites tear organic species apart from the inside. Handle with care![/color]
+
+</Document>

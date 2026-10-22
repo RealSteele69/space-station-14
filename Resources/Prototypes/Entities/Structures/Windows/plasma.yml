@@ -40,6 +40,8 @@
     price: 100
   - type: RadiationBlocker
     resistance: 2
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WindowCosmicCult
 
 - type: entity
   id: PlasmaWindowDirectional

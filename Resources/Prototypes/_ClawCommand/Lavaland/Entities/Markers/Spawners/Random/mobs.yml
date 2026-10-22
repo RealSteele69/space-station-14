@@ -14,6 +14,8 @@
         weight: 99
       - id: MobLavalandGoliathAncient
         weight: 1
+    - id: LavalandMobBrimdemon
+      weight: 0.5
 
 - type: entityTable
   id: LavalandLightMobs
@@ -25,6 +27,12 @@
       - id: MobWatcherLavaland
       - id: MobWatcherMagmawing
       - id: MobWatcherIcewing
+    - !type:GroupSelector
+      weight: 0.6
+      children:
+      - id: LavalandMobAshWhelp
+        weight: 2
+      - id: LavalandMobLegionMonkey
 
 - type: entity
   name: lavaland heavy mob spawner

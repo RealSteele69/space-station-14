@@ -1,8 +1,9 @@
 # Lavaland mining loot spawners + EntityTables ported from Goob (_Lavaland/Entities/Objects/Weapons).
 # Fork already defines CrusherUpgrades and SecondaryKineticWeapons. We add the
 # missing CrusherWeapons, ProtoKineticWeapons[Space], ProtoKineticUpgrades, and
-# the LavalandWeapons composite. Tables reference vanilla fork weapons where
-# available; missing weapon references just produce silent runtime misses.
+# the LavalandWeapons composite. The crusher axe/glaive entries are the shared
+# (non-upgradeable) crushers; hammer/halberd and the extra PKAs live in
+# Weapons/crushers.yml and Weapons/Guns/Basic/pka.yml.
 
 # --- EntityTables ---
 
@@ -11,40 +12,66 @@
   table: !type:GroupSelector
     children:
     - id: WeaponCrusher
+    - id: WeaponCrusherGlaive
+    - id: WeaponCrusherHammer
+    - id: WeaponCrusherHalberd
 
 - type: entityTable
   id: ProtoKineticWeapons
   table: !type:GroupSelector
     children:
     - id: WeaponProtoKineticAccelerator
+    - id: WeaponProtoKineticShotgun
+    - id: WeaponProtoKineticRepeater
+    - id: WeaponProtoKineticPistol
 
 - type: entityTable
   id: ProtoKineticWeaponsSpace
   table: !type:GroupSelector
     children:
-    - id: WeaponProtoKineticAccelerator
+    - id: WeaponProtoKineticAcceleratorSpace
+    - id: WeaponProtoKineticShotgunSpace
+    - id: WeaponProtoKineticRepeaterSpace
+    - id: WeaponProtoKineticPistolSpace
 
 - type: entityTable
   id: ProtoKineticUpgrades
   table: !type:GroupSelector
     children:
-    - id: WeaponProtoKineticAccelerator # placeholder; replace when PKA upgrade items are ported
+    - id: PKAUpgradeDamage
+    - id: PKAUpgradeRange
+    - id: PKAUpgradeFireRate
+    - id: PKAUpgradeSpace
+      weight: 0.6 # Not that useful
 
 - type: entityTable
   id: LavalandWeapons
   table: !type:GroupSelector
     children:
+    # Crusher stuff
+    - !type:GroupSelector
+      children:
+      - !type:NestedSelector
+        tableId: CrusherWeapons
+      - !type:NestedSelector
+        tableId: CrusherUpgrades
+        weight: 2
+    # PKA stuff
+    - !type:GroupSelector
+      children:
+      - !type:NestedSelector
+        tableId: ProtoKineticWeapons
+        weight: 0.8
+      - !type:NestedSelector
+        tableId: ProtoKineticWeaponsSpace
+        weight: 0.2
+      - !type:NestedSelector
+        tableId: ProtoKineticUpgrades
+        weight: 2
+    # Secondary stuff
     - !type:NestedSelector
-      tableId: CrusherWeapons
-    - !type:NestedSelector
-      tableId: CrusherUpgrades
-      weight: 2
-    - !type:NestedSelector
-      tableId: ProtoKineticWeapons
-      weight: 0.8
-    - !type:NestedSelector
-      tableId: SecondaryKineticWeapons
       weight: 0.5
+      tableId: SecondaryKineticWeapons
 
 # --- Spawner entities (referenced by Lavaland ruin maps) ---
 
@@ -88,7 +115,7 @@
   - type: Sprite
     layers:
     - state: red
-    - sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+    - sprite: _ClawCommand/Lavaland/Objects/Weapons/Guns/Basic/kinetic_repeater.rsi
       state: icon
   - type: EntityTableSpawner
     offset: 0
@@ -104,8 +131,10 @@
   - type: Sprite
     layers:
     - state: red
-    - sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+    - sprite: _ClawCommand/Lavaland/Objects/Weapons/Guns/Basic/kinetic_repeater.rsi
       state: icon
+    - sprite: _ClawCommand/Lavaland/Objects/Weapons/Guns/Basic/kinetic_repeater.rsi
+      state: upgrade-space
   - type: EntityTableSpawner
     offset: 0
     table: !type:NestedSelector
@@ -120,8 +149,8 @@
   - type: Sprite
     layers:
     - state: red
-    - sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
-      state: icon
+    - sprite: _ClawCommand/Lavaland/Objects/Weapons/upgrade.rsi
+      state: base
   - type: EntityTableSpawner
     table: !type:NestedSelector
       tableId: ProtoKineticUpgrades
@@ -135,7 +164,7 @@
   - type: Sprite
     layers:
     - state: red
-    - sprite: Objects/Weapons/Melee/crusher.rsi
+    - sprite: _ClawCommand/Lavaland/Objects/Weapons/Secondary/kinetic_machete.rsi
       state: icon
   - type: EntityTableSpawner
     offset: 0
@@ -152,6 +181,8 @@
     layers:
     - state: red
     - sprite: Objects/Weapons/Melee/crusher.rsi
+      state: icon
+    - sprite: _ClawCommand/Lavaland/Objects/Weapons/Guns/Basic/kinetic_repeater.rsi
       state: icon
   - type: EntityTableSpawner
     offset: 0

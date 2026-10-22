@@ -38,6 +38,12 @@ public sealed partial class GhoulComponent : Component
     [DataField]
     public bool GiveBlade;
 
+    /// <summary>
+    ///     Claw Command - raised by a Flesh mansus grasp; counts toward <see cref="HereticComponent.MaxGraspGhouls"/>.
+    /// </summary>
+    [DataField]
+    public bool FromGrasp;
+
     [DataField]
     public LocId? ExamineMessage = "examine-system-cant-see-entity";
 

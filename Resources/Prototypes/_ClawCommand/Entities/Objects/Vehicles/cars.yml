@@ -1,0 +1,332 @@
+# Claw Command - enclosed cars.
+# The trucks and ambulance were originally sprites only; given behaviour here.
+
+- type: entity
+  parent: BaseVehicleEnclosedClaw
+  id: VehicleQMTruck
+  name: cargo truck
+  description: A boxy delivery truck with a QM logo on the side. Seats a driver and one passenger.
+  components:
+  - type: VehicleHandling
+    grip: 8
+    acceleration: 2.6
+    speedingAcceleration: 0.6
+    topSpeedMultiplier: 1.35
+    turnRate: 170
+    turnRateAtTopSpeed: 70
+    braking: 7
+    coasting: 2
+    cornerDrag: 0.4
+    runOverSpeedLoss: 0.12
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/qm_truck.rsi
+    layers:
+    - state: vehicle
+      map: ["movement"]
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: vehicle-moving
+    noMovementLayers:
+      movement:
+        state: vehicle
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysCargo
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysCargo
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      vehicle_occupants: !type:Container
+      key_slot: !type:ContainerSlot
+
+- type: entity
+  parent: BaseVehicleEnclosedClaw
+  id: VehiclePickupTruck
+  name: pickup truck
+  description: A dependable little pickup truck. The keys are already in it. Seats a driver and one passenger.
+  components:
+  - type: VehicleHandling
+    grip: 8.5
+    acceleration: 4.2
+    speedingAcceleration: 1.1
+    topSpeedMultiplier: 1.55
+    turnRate: 220
+    turnRateAtTopSpeed: 90
+    cornerDrag: 0.3
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/pickup_truck.rsi
+    layers:
+    - state: vehicle
+      map: ["movement"]
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: vehicle-moving
+    noMovementLayers:
+      movement:
+        state: vehicle
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 6.5
+
+- type: entity
+  parent: BaseVehicleEnclosedClaw
+  id: VehicleMonsterTruck
+  name: monster truck
+  description: A pickup truck jacked up on enormous tyres. Completely impractical, completely awesome.
+  components:
+  - type: VehicleControls
+    damagedThreshold: 300
+    criticalThreshold: 480
+  - type: VehicleHandling
+    runOverSpeedLoss: 0.05
+    coasting: 1.8
+    topSpeedMultiplier: 1.5
+    speedingAcceleration: 1
+    acceleration: 3.6
+    grip: 4
+    turnRate: 170
+    turnRateAtTopSpeed: 60
+    cornerDrag: 0.45
+    obstacleDamage:
+      types:
+        Structural: 9
+        Blunt: 4
+    runOverDamage:
+      types:
+        Blunt: 5
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/monster_truck.rsi
+    layers:
+    - state: vehicle
+      map: ["movement"]
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: vehicle-moving
+    noMovementLayers:
+      movement:
+        state: vehicle
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 6.5
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 3
+            max: 6
+          PartRodMetal1:
+            min: 1
+            max: 2
+          CableApcStack1:
+            min: 1
+            max: 1
+          PuddleOilVehicleWreck:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ExplodeBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseVehicleEnclosedClaw
+  id: VehicleAmbulance
+  name: ambulance
+  description: A boxy emergency ambulance with lights and a siren. Seats a driver and two others.
+  components:
+  - type: VehicleHandling
+    grip: 9.5
+    acceleration: 3.9
+    speedingAcceleration: 1
+    topSpeedMultiplier: 1.5
+    turnRate: 205
+    turnRateAtTopSpeed: 85
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/ambulance.rsi
+    layers:
+    - state: vehicle
+      map: ["base"]
+  - type: GenericVisualizer
+    visuals:
+      enum.VehicleSirenVisuals.On:
+        base:
+          True: { state: vehicle-siren }
+          False: { state: vehicle }
+  - type: VehicleControls
+    sirenAction: ActionVehicleSiren
+    maxOccupants: 3
+  - type: AmbientSound
+    enabled: false
+    volume: -2
+    range: 12
+    sound:
+      path: /Audio/Effects/Vehicle/ambulancesiren.ogg
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 6.5
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysMedical
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysMedical
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      vehicle_occupants: !type:Container
+      key_slot: !type:ContainerSlot
+
+# The legacy "rover" train engine. 48x48 art, centred by its original -8,-8 pixel offset.
+- type: entity
+  parent: BaseVehicleEnclosedClaw
+  id: VehicleRover
+  name: NT humvee
+  description: The NT version of the UF T-41LV, a Federation recon vehicle used as personal transport. Seats four.
+  components:
+  - type: VehicleHandling
+    topSpeedMultiplier: 1.45
+    speedingAcceleration: 1
+    grip: 10
+    turnRate: 230
+    turnRateAtTopSpeed: 100
+    acceleration: 4.3
+    bumperRadius: 0.75
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/rover.rsi
+    layers:
+    - state: vehicle
+  - type: VehicleControls
+    criticalThreshold: 480
+    damagedThreshold: 300
+    maxOccupants: 4
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5
+    baseSprintSpeed: 7
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.6
+        density: 800
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - TableLayer
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysRover
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysRover
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      vehicle_occupants: !type:Container
+      key_slot: !type:ContainerSlot
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 3
+            max: 6
+          PartRodMetal1:
+            min: 1
+            max: 2
+          CableApcStack1:
+            min: 1
+            max: 1
+          PuddleOilVehicleWreck:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ExplodeBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: VehicleRover
+  id: VehicleDuneBuggy
+  name: research dune buggy
+  description: A dune buggy developed for asteroid exploration and transport. A sticker reminds you to wear an EVA suit if you take it into space.
+  components:
+  - type: VehicleHandling
+    coasting: 2
+    topSpeedMultiplier: 1.55
+    speedingAcceleration: 1.3
+    grip: 4.5
+    turnRate: 280
+    turnRateAtTopSpeed: 125
+    acceleration: 5
+    cornerDrag: 0.12
+    bumperRadius: 0.65
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/dune_buggy.rsi
+    layers:
+    - state: vehicle
+  - type: VehicleControls
+    maxOccupants: 2
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5.5
+    baseSprintSpeed: 7.5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 500
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - TableLayer

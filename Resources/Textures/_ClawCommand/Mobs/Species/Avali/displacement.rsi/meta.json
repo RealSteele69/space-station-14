@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "by Zeyria + TiniestShark. Ported from Panta-Rhei (https://github.com/Floof-Station/Panta-Rhei) at commit 5d6133ebffb7e6eec71479cce5d0eb58f9f3dda4",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "load": {
+        "srgb": false
+    },
+    "states": [
+        {
+            "name": "head",
+            "directions": 4
+        },
+        {
+            "name": "mask",
+            "directions": 4
+        }
+    ]
+}

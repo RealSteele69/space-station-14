@@ -1,0 +1,60 @@
+# Ore-vein variants of basalt, the rock that makes up most of lavaland's walls.
+# Built on the shared BaseVein* parents from Entities/Structures/Walls/asteroid.yml, the same way the
+# snow/sand/chromite variants are, so they drop the standard ores. Mapped onto WallRockBasalt by the
+# Lavaland* ore marker layers in Procedural/biome_ore_templates.yml.
+
+- type: entity
+  parent: [ BaseVeinCoal, WallRockBasalt ]
+  id: WallRockBasaltCoal
+
+- type: entity
+  parent: [ BaseVeinGold, WallRockBasalt ]
+  id: WallRockBasaltGold
+
+- type: entity
+  parent: [ BaseVeinDiamond, WallRockBasalt ]
+  id: WallRockBasaltDiamond
+
+- type: entity
+  parent: [ BaseVeinPlasma, WallRockBasalt ]
+  id: WallRockBasaltPlasma
+
+- type: entity
+  parent: [ BaseVeinQuartz, WallRockBasalt ]
+  id: WallRockBasaltQuartz
+
+- type: entity
+  parent: [ BaseVeinSilver, WallRockBasalt ]
+  id: WallRockBasaltSilver
+
+- type: entity
+  parent: [ BaseVeinSteel, WallRockBasalt ]
+  id: WallRockBasaltTin
+
+- type: entity
+  parent: [ BaseVeinUranium, WallRockBasalt ]
+  id: WallRockBasaltUranium
+
+- type: entity
+  parent: [ BaseVeinArtifactFragment, WallRockBasalt ]
+  id: WallRockBasaltArtifactFragment
+
+- type: entity
+  parent: [ BaseVeinSalt, WallRockBasalt ]
+  id: WallRockBasaltSalt
+
+# There is no shared bananium vein parent, so this one carries its own vein + overlay.
+- type: entity
+  parent: WallRockBasalt
+  id: WallRockBasaltBananium
+  suffix: Bananium
+  description: An ore vein rich with bananium.
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreBananium
+  - type: Sprite
+    layers:
+    - state: rock_bananium
+      sprite: Structures/Walls/rock.rsi
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]

@@ -1,0 +1,4 @@
+- files: ["fuel_pump_idle.ogg"]
+  license: "CC-BY-SA-4.0"
+  copyright: "Recorded and mixed by exincore. Ported via RMC-14 (https://github.com/RMC-14/RMC-14, Resources/Audio/_RMC14/Machines/fuel_pump_idle.ogg)."
+  source: "https://github.com/RMC-14/RMC-14/pull/6056"

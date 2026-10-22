@@ -1,0 +1,58 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Random megafauna and elite spawns scattered across lavaland by biome markers
+# (see Procedural/megafauna_markers.yml). The hierophant keeps its own arena ruin.
+
+- type: entityTable
+  id: LavalandMegafauna
+  table: !type:GroupSelector
+    children:
+    - id: LavalandBossAshDrake
+      weight: 3
+    - id: LavalandBossBubblegum
+      weight: 2
+    - id: LavalandBossColossus
+      weight: 2
+    - id: LavalandBossMegaLegion
+      weight: 3
+
+- type: entityTable
+  id: LavalandElites
+  table: !type:GroupSelector
+    children:
+    - id: LavalandEliteLegionnaire
+    - id: LavalandEliteHerald
+    - id: LavalandEliteGoliathBroodmother
+    - id: LavalandElitePandora
+
+- type: entity
+  name: lavaland megafauna spawner
+  id: SpawnerRandomMegafaunaLavaland
+  parent: ProximitySpawnerBase
+  suffix: Lavaland, Proximity
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+      state: dragon
+      scale: 0.33, 0.33
+  - type: SpawnTableOnTrigger
+    table: !type:NestedSelector
+      tableId: LavalandMegafauna
+
+- type: entity
+  name: lavaland elite spawner
+  id: SpawnerRandomEliteLavaland
+  parent: ProximitySpawnerBase
+  suffix: Lavaland, Proximity
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _ClawCommand/Lavaland/Mobs/Elites/32x64.rsi
+      state: legionnaire
+      scale: 0.5, 0.5
+  - type: SpawnTableOnTrigger
+    table: !type:NestedSelector
+      tableId: LavalandElites

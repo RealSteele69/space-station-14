@@ -493,4 +493,20 @@ public enum LogType
     /// Claw Command - A psionic power was used.
     /// </summary>
     Psionics = 106,
+
+    /// <summary>
+    /// Claw Command - Supermatter activation, consumption, tampering and events.
+    /// </summary>
+    Supermatter = 107,
+
+    /// <summary>
+    /// Claw Command - An admin revealed a player's (masked) antagonist status.
+    /// </summary>
+    AntagReveal = 108,
+
+    /// <summary>
+    /// Claw Command - Mind role, role type, objective and antag conversion changes.
+    /// Hidden from the admin log viewer during a round until the involved players are antag-revealed.
+    /// </summary>
+    MindRole = 109,
 }

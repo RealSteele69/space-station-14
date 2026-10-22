@@ -62,6 +62,7 @@ namespace Content.Server.Heretic.EntitySystems.PathSpecific;
 public sealed partial class AristocratSystem : EntitySystem
 {
     private static readonly ProtoId<TagPrototype> WindowTag = "Window";
+    private static readonly EntProtoId WaltzWeather = "WeatherSnowfallHeavy";
 
     [Dependency] private TileSystem _tile = default!;
     [Dependency] private IRobustRandom _rand = default!;
@@ -229,10 +230,9 @@ public sealed partial class AristocratSystem : EntitySystem
             ent.Comp.VoidsEmbrace,
             StationEventMusicType.VoidAscended);
 
-        // the fog (snow) is coming. Fork uses entity prototypes for weather; SnowfallMagic
-        // must exist as an entity prototype to take effect, otherwise the snow is skipped.
+        // the fog (snow) is coming.
         var xform = Transform(ent);
-        _weather.TrySetWeather(xform.MapID, "SnowfallMagic", out _, null);
+        _weather.TrySetWeather(xform.MapID, WaltzWeather, out _, null);
     }
 
     private void EndWaltz(Entity<AristocratComponent> ent)

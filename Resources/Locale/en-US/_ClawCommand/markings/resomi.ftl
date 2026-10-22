@@ -24,3 +24,13 @@ marking-ResomiFluffHead = Resomi head fluff
 
 marking-ResomiFluffHeadUp-fluff_head_up = Resomi head fluff (up)
 marking-ResomiFluffHeadUp = Resomi head fluff (up)
+
+marking-ResomiFeathersBig = Big tail feathers
+marking-ResomiFeathersBig-tail = Resomi tail
+marking-ResomiFeathersBig-resomibigtail = Big tail feathers
+
+marking-ResomiEars = Big ears
+marking-ResomiEars-resomi_ears = Big ears
+
+marking-ResomiFluffyChest = Big puffy chest
+marking-ResomiFluffyChest-resomifluffchest = Big puffy chest

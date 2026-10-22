@@ -20,18 +20,30 @@
   suffix: "ClawCmd stub"
   name: advanced retractor
   description: Stub placeholder. (Shitmed surgery not ported.)
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Objects/Specific/Medical/Surgery/scissors.rsi
+    state: retractor
 - type: entity
   parent: BaseItem
   id: BoneGel
   suffix: "ClawCmd stub"
   name: bone gel
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Objects/Specific/Medical/medical.rsi
+    state: ointment
 - type: entity
   parent: BaseItem
   id: EnergyCautery
   suffix: "ClawCmd stub"
   name: energy cautery
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Objects/Specific/Medical/Surgery/cautery.rsi
+    state: cautery
 
 - type: entity
   parent: BaseItem
@@ -39,6 +51,10 @@
   suffix: "ClawCmd stub"
   name: energy scalpel
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Objects/Specific/Medical/Surgery/scalpel.rsi
+    state: laser
 
 - type: entity
   parent: BaseItem
@@ -46,12 +62,20 @@
   suffix: "ClawCmd stub"
   name: medical biofabricator
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Objects/Misc/module.rsi
+    state: blank_mod
 - type: entity
   parent: BaseItem
   id: MedicalCyberneticEyes
   suffix: "ClawCmd stub"
   name: cybernetic eyes
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Clothing/Eyes/Hud/med.rsi
+    state: icon
 
 # --- Shitmed implants
 - type: entity
@@ -60,12 +84,20 @@
   suffix: "ClawCmd stub"
   name: nutriment implanter
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Objects/Specific/Medical/implanter.rsi
+    state: implanter0
 - type: entity
   parent: BaseItem
   id: SmokeImplanter
   suffix: "ClawCmd stub"
   name: smoke implanter
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Objects/Specific/Medical/syndi_implanter.rsi
+    state: implanter0
 
 # --- ShaftMiner job (we use SalvageSpecialist) — substitute with fork's vanilla locker
 - type: entity
@@ -78,11 +110,7 @@
   parent: WallReinforced
   id: WallHierophantArena
   suffix: "ClawCmd stub"
-- type: entity
-  parent: DefaultStationBeacon
-  id: DefaultStationBeaconRuinHierophantArena
-  suffix: "ClawCmd stub"
-  name: Hierophant Arena
+# DefaultStationBeaconRuinHierophantArena is now a real ruin beacon in Entities/Objects/Devices/station_beacon.yml.
 # Hierophant spawner — fully ported from Goob _Lavaland/Entities/Markers/Spawners/megafauna.yml.
 # MobHierophant already exists at _ClawCommand/Lavaland/Entities/Mobs/Bosses/hierophant.yml.
 - type: entity
@@ -99,20 +127,7 @@
     - MobHierophant
 
 # --- Mining outpost vendors / equipment
-- type: entity
-  parent: VendingMachine
-  id: VendingMachineMiningDrobe
-  suffix: "ClawCmd stub"
-  name: MiningDrobe
-  components:
-  - type: Sprite
-    sprite: Structures/Machines/VendingMachines/cargodrobe.rsi
-- type: entity
-  parent: BaseItem
-  id: PKAUpgradePressure
-  suffix: "ClawCmd stub"
-  name: PKA pressure mod
-  description: Stub placeholder.
+# VendingMachineMiningDrobe is now a real vendor in Entities/Structures/Machines/vending_machines.yml.
 
 # --- Syndicate ruin items
 - type: entity
@@ -121,24 +136,40 @@
   suffix: "ClawCmd stub"
   name: syndicate card box
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: EstacaoPirata/Objects/Misc/cards.rsi
+    state: black_box
 - type: entity
   parent: BaseItem
   id: MedkitCombatBlueFilled
   suffix: "ClawCmd stub"
   name: combat medkit (blue)
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Objects/Specific/Medical/firstaidkits.rsi
+    state: firstaid
 - type: entity
   parent: BaseItem
   id: WeaponDisablerSyndicate
   suffix: "ClawCmd stub"
   name: syndicate disabler
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Objects/Weapons/Guns/Battery/disabler.rsi
+    state: base
 - type: entity
   parent: BaseItem
   id: WeaponRifleM90
   suffix: "ClawCmd stub"
   name: M90 rifle
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Objects/Weapons/Guns/Rifles/ak.rsi
+    state: icon
 
 # --- Other miscellaneous
 - type: entity
@@ -147,12 +178,20 @@
   suffix: "ClawCmd stub"
   name: uranium vial
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Objects/Specific/Chemistry/vial.rsi
+    state: vial
 - type: entity
   parent: BaseItem
   id: TelecomTransmitter
   suffix: "ClawCmd stub"
   name: telecom transmitter
   description: Stub placeholder.
+  components:
+  - type: Sprite # visual placeholder only
+    sprite: Objects/Misc/module.rsi
+    state: blank_mod
 
 # --- Office chair spawners (DM placeholder)
 - type: entity

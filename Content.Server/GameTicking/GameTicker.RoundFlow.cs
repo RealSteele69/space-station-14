@@ -5,6 +5,7 @@ using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
 using Content.Server.Maps;
 using Content.Server.Roles;
+using Content.Shared._ClawCommand.CCVar;
 using Content.Shared.CCVar;
 using Content.Shared.Voting;
 using Content.Shared.Database;
@@ -682,8 +683,11 @@ namespace Content.Server.GameTicking
                 UpdateInfoText();
 
                 // Auto-start map and preset votes when lobby begins.
-                _voteManager.CreateStandardVote(null, StandardVoteType.Preset);
-                _voteManager.CreateStandardVote(null, StandardVoteType.Map);
+                if (_cfg.GetCVar(ClawCCVars.VoteAutoLobbyVotes))
+                {
+                    _voteManager.CreateStandardVote(null, StandardVoteType.Preset);
+                    _voteManager.CreateStandardVote(null, StandardVoteType.Map);
+                }
 
                 ReqWindowAttentionAll();
             }

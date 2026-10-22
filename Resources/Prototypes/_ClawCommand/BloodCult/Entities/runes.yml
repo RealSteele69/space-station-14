@@ -1,0 +1,188 @@
+# Cult runes. Only the cult (and the dead) can examine them; holy water, a chaplain's bible or a ritual dagger erases them.
+
+- type: entity
+  abstract: true
+  id: CultRuneBase
+  name: rune
+  description: A rune drawn in blood.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      rune:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        hard: false
+        mask:
+        - ItemMask
+        layer:
+        - SlipLayer
+  - type: Physics
+    bodyType: Static
+  - type: Clickable
+  - type: Sprite
+    drawdepth: FloorObjects
+    sprite: _ClawCommand/BloodCult/Entities/Runes/regular.rsi
+    state: offering
+  - type: Appearance
+
+- type: entity
+  parent: CultRuneBase
+  id: CultRuneOffering
+  name: rune of offering
+  description: Offers a non-cultist standing on it to Nar'Sie. One cultist sacrifices the dead, two convert the living, and three are needed to sacrifice the living who cannot be converted.
+  components:
+  - type: Sprite
+    state: offering
+  - type: CultRuneBase
+    invokePhrase: "Mah'weyh pleggh at e'ntrath!"
+  - type: CultRuneOffering
+
+- type: entity
+  parent: CultRuneBase
+  id: CultRuneEmpower
+  name: rune of empowerment
+  description: Lets cultists prepare more blood magic at far less of a cost, for as long as they stay near cult floor.
+  components:
+  - type: Sprite
+    state: strength
+  - type: CultRuneBase
+    invokePhrase: "Qu'laris ver'don, thal'sorin mik'thar!"
+  - type: CultRuneEmpower
+
+- type: entity
+  parent: CultRuneBase
+  id: CultRuneTeleport
+  name: rune of teleportation
+  description: Warps everyone standing on it to another teleport rune of your choice.
+  components:
+  - type: Sprite
+    state: teleport
+  - type: CultRuneBase
+    invokePhrase: "Sas'so c'arta forbici!"
+  - type: CultRuneTeleport
+  - type: UserInterface
+    interfaces:
+      enum.BloodCultUiKey.RuneTeleport:
+        type: BloodCultListBoundUserInterface
+      enum.BloodCultUiKey.RuneName:
+        type: BloodCultNameSelectorBoundUserInterface
+
+- type: entity
+  parent: CultRuneBase
+  id: CultRuneRevive
+  name: rune of rejuvenation
+  description: Brings a dead cultist lying on it back to life. Each offering made to Nar'Sie grants another revival.
+  components:
+  - type: Sprite
+    state: revive
+  - type: CultRuneBase
+    invokePhrase: "Pasnar val'keriam usinar. Savrae ines amutan. Yam'toth remium il'tarat!"
+  - type: CultRuneRevive
+
+- type: entity
+  parent: CultRuneBase
+  id: CultRuneBarrier
+  name: rune of barrier
+  description: When invoked, turns into a barrier that blocks passage. A ritual dagger dispels it.
+  components:
+  - type: Sprite
+    state: barrier
+  - type: CultRuneBase
+    invokePhrase: "Khari'd! Eske'te tannin!"
+    runeActivationRange: 1.5
+    activationDamage:
+      types:
+        Slash: 5
+  - type: CultRuneBarrier
+
+- type: entity
+  parent: CultRuneBase
+  id: CultRuneSummoning
+  name: rune of summoning
+  description: Summons a single cultist to the rune, then fades. Needs two invokers and fails on cultists who are cuffed or being pulled.
+  components:
+  - type: Sprite
+    state: summon
+  - type: CultRuneBase
+    requiredInvokers: 2
+    invokePhrase: "N'ath reth sh'yro eth d'rekkathnor!"
+  - type: CultRuneSummon
+  - type: UserInterface
+    interfaces:
+      enum.BloodCultUiKey.Summon:
+        type: BloodCultListBoundUserInterface
+
+- type: entity
+  parent: CultRuneBase
+  id: CultRuneBloodBoil
+  name: rune of boiling blood
+  description: Boils the blood of every non-believer who can see the rune, setting them alight. Needs three invokers and saps their health.
+  components:
+  - type: Sprite
+    state: blood_boil
+  - type: CultRuneBase
+    invokePhrase: "N'Dedo ol'btoh!"
+    requiredInvokers: 3
+    activationDamage:
+      types:
+        Slash: 35
+  - type: CultRuneBloodBoil
+
+- type: entity
+  parent: CultRuneBase
+  id: CultRuneApocalypse
+  name: rune of apocalypse
+  description: Harbinger of the end times. Grows in strength with the cult's desperation, at the risk of side effects. Needs three invokers.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/Entities/Runes/apocalypse.rsi
+    layers:
+    - state: icon
+      map: [ "enum.ApocalypseRuneVisuals.Layer" ]
+  - type: CultRuneBase
+    requiredInvokers: 3
+    invokePhrase: "Ta'gh fara'qha fel d'amar det!"
+    triggerRendingMarkers: true
+    canBeErased: false
+    activationDamage:
+      types:
+        Slash: 35
+  - type: CultRuneApocalypse
+  - type: GenericVisualizer
+    visuals:
+      enum.ApocalypseRuneVisuals.Used:
+        enum.ApocalypseRuneVisuals.Layer:
+          True: { color: "#696969" }
+          False: { color: "#FFFFFF" }
+
+- type: entity
+  parent: CultRuneBase
+  id: CultRuneDimensionalRending
+  name: rune of dimensional rending
+  description: Tears apart the barriers between worlds to call forth the Geometer of Blood. Needs ten invokers.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/Entities/Runes/dimensional_rending.rsi
+    layers:
+    - state: rune
+      map: [ "enum.RendingRuneVisuals.Layer" ]
+  - type: CultRuneBase
+    requiredInvokers: 10
+    runeActivationRange: 1.5
+    invokeChatType: Speak
+    invokePhrase: "TOK-LYR RQA-NAP G'OLT-ULOFT!!!"
+    triggerRendingMarkers: true
+    canBeErased: false
+  - type: CultRuneRending
+  - type: GenericVisualizer
+    visuals:
+      enum.RendingRuneVisuals.Active:
+        enum.RendingRuneVisuals.Layer:
+          True: { state: rune_animated }
+          False: { state: rune }

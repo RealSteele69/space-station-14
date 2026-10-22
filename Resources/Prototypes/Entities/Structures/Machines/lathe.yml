@@ -139,7 +139,6 @@
     - PowerCellsStatic
     - ElectronicsStatic
     dynamicPacks:
-    - MicroPartsPack # _ClawCommand: micro modular machine parts (vanilla)
     - AdvancedPartsPack # _ClawCommand: advanced modular machine parts
     - SuperPartsPack # _ClawCommand: super modular machine parts
   - type: EmagLatheRecipes
@@ -210,7 +209,9 @@
     - ScienceClothing
     - PowerCells
     - ScienceWeapons
+    - KineticWeaponsLavaland # _ClawCommand: lavaland kinetic weapons
     - Mining
+    - MiningLavaland # _ClawCommand: lavaland mining tools
     - AtmosTools
     - EngineeringWeapons
     - Chemistry
@@ -407,6 +408,7 @@
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
+    - KineticWeaponsLavaland # _ClawCommand: lavaland kinetic weapons
     - SecurityEquipment
     - SecurityBoards
     - SecurityExplosives

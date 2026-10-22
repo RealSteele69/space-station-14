@@ -1,0 +1,53 @@
+<Document>
+  # Xenomorphs
+
+  <Box>
+    [color=#999999][italic]"Unidentified lifesigns detected coming aboard the station. Secure any exterior access, including ducting and ventilation."[/italic][/color]
+  </Box>
+  <Box>
+    <GuideEntityEmbed Entity="MobAdvXenoLarva" Caption="Larva"/>
+    <GuideEntityEmbed Entity="MobAdvXenoDrone" Caption="Drone"/>
+    <GuideEntityEmbed Entity="MobAdvXenoHunter" Caption="Hunter"/>
+    <GuideEntityEmbed Entity="MobAdvXenoSentinel" Caption="Sentinel"/>
+    <GuideEntityEmbed Entity="MobAdvXenoQueen" Caption="Queen"/>
+  </Box>
+
+  A handful of [color=#a855f7]alien larvae[/color] crawl aboard through the station's vents. They are weak, but they grow, and a grown hive can turn the whole crew into hosts.
+
+  ## The life cycle
+  - A [bold]larva[/bold] grows on its own. On alien weeds or in plasma gas it grows twice as fast and heals. Once it reaches 200 growth it picks a caste with one of its [bold]Evolve[/bold] actions. A larva can hide under tables and crawl through vents.
+  - A [bold]drone[/bold] builds the hive: weeds, resin walls, membranes, doors and nests. Only a drone can become the [bold]queen[/bold], at a cost of 500 plasma, and only while no other queen is alive.
+  - The [bold]queen[/bold] lays [bold]eggs[/bold]. After three to five minutes an egg is ready. It opens when a possible host comes within a few tiles and releases a [bold]facehugger[/bold].
+  - The facehugger leaps onto a face and knocks its host out for about fifty seconds. If nobody pulls it off within ten to fifteen seconds, it implants an [bold]embryo[/bold].
+  - The embryo grows through five stages. It brings sneezing, coughing, a sore throat, aches and stomach pain, and in the end a chestburster tears its way out. The new larva is handed to a ghost and the host is gibbed.
+
+  ## Plasma and weeds
+  Every caste has a plasma vessel, shown as a counter on the HUD. Abilities spend plasma, and the vessel refills a little every couple of seconds. On [bold]weeds[/bold], or in plasma gas, a wounded xenomorph heals instead (three times faster when lying down). An unhurt one refills plasma quickly instead. Plasma reagent in the bloodstream also tops it up.
+
+  <Box>
+    <GuideEntityEmbed Entity="AdvXenoWeedNode" Caption="Weed node"/>
+    <GuideEntityEmbed Entity="AdvXenoResinWall" Caption="Resin wall"/>
+    <GuideEntityEmbed Entity="AdvXenoNest" Caption="Nest"/>
+    <GuideEntityEmbed Entity="AdvXenoEggGrown" Caption="Egg"/>
+    <GuideEntityEmbed Entity="AdvXenoFacehugger" Caption="Facehugger"/>
+  </Box>
+
+  ## Abilities
+  - [bold]Drone:[/bold] Plant Weeds (50), Secrete Resin wall, membrane, door, nest or blob (75), Corrosive Acid (200), Neurotoxic and Acid Spit (20 a spit), Transfer Plasma, Evolve into a queen (500).
+  - [bold]Hunter:[/bold] Leap at someone up to four tiles away to stun and grab them, Tackle, Gut someone you hold in an aggressive grab, and Psychic Whisper. Hunters are very fast but carry little plasma.
+  - [bold]Sentinel:[/bold] Tackle, Corrosive Acid, and Neurotoxic and Acid Spit.
+  - [bold]Queen:[/bold] Lay Egg (75), every drone ability except evolving, and Psychic Whisper.
+  - [bold]Every caste:[/bold] can devour someone held in an aggressive grab, then regurgitate them later. Every caste can crawl through the vents (see below), sees living things through walls, and speaks on the hivemind with [bold]:a[/bold].
+
+  Xenomorphs take half damage from brute force and double damage from fire. They do not breathe, freeze, slip or get shocked, and their claws cannot work a gun. A hive member can melt its own resin walls by touching them, and resin doors only open for the hive.
+
+  ## Vent crawling
+  Alt-click an open vent or scrubber next to you. After four and a half seconds you are inside the pipes, and your movement keys follow the ducts one segment at a time, through bends, manifolds and junctions, onto whichever pipe layer the duct runs on. Crawl into another vent or scrubber, or push out of an open pipe end, to climb out. Welded vents are shut. Inside you see the pipework around you, lit up, and nothing blocks your view, but anyone standing near the pipe you are in hears something scrabbling through the ducts. Grown castes need empty hands to fit; larvae squeeze in with anything.
+
+  ## Fighting back
+  - A sealed helmet stops facehuggers outright: hardsuit and EVA helmets, a riot helmet with the visor down, or a welding mask (the head one, or the welding gas mask worn up over the face). Any other mask, gas masks included, just gets torn off. A mask that cannot be removed makes the hugger bounce off and die. Synthetics have nothing to implant into.
+  - Facehuggers die to any hit, any bullet or any real heat. A thrown hugger is stunned for a few seconds when it lands.
+  - A friend can pull the hugger off your face before it finishes. Captives in a nest need two minutes to struggle free, but anyone else can pull them out at once.
+  - An implanted embryo can be cut out. Lay the patient down or buckle them in, hold a scalpel or anything else that slices, and use [bold]Explore chest cavity[/bold] on them. It takes ten seconds and hurts.
+  - Weeds burn, and the whole hive is weak to fire. Welding the vents keeps them from crawling through.
+</Document>

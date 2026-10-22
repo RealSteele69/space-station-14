@@ -1,0 +1,41 @@
+{
+    "version": 1,
+    "copyright": "Upstream credit: \"Made by kirillcas\". Part of the blob antagonist that Goob-Station ported from Backmen (https://github.com/Rxup/space-station-14; Goob-Station PR #975), which grew out of VigersRay's space-wizards/space-station-14 PR #18800. Ported from Goob-Station (https://github.com/Goob-Station/Goob-Station, Resources/Textures/_Goobstation/Blob) at commit da08589c83cc4f503c1c8450767e54f85157b951.",
+    "license": "CC-BY-SA-3.0",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "single",
+            "directions": 1,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "triple",
+            "directions": 1,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        }
+    ]
+}

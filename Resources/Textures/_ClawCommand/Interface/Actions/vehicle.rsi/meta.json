@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/bf62a62bab85af2e92a45dc4fd5ed40f79ff30f1/icons/screen/actions/vehicles.dmi (added to Citadel RP by silicons (2022)). Converted from DMI for Claw Command.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "horn"
+        },
+        {
+            "name": "eject"
+        }
+    ]
+}

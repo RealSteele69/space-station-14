@@ -15,9 +15,11 @@
     checkCanInteract: false
     useDelay: 8
     itemIconStyle: NoItem
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: construction
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: construction
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     checkCanAccess: false
     repeat: true
@@ -41,9 +43,11 @@
     itemIconStyle: NoItem
     sound:
       path: /Audio/Items/welder.ogg
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: aggressive_spread
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: aggressive_spread
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:EventHereticAggressiveSpread
   - type: HereticAction
@@ -68,9 +72,11 @@
     itemIconStyle: NoItem
     sound:
       path: /Audio/_ClawCommand/Wizard/smoke.ogg
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: entropic_plume
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: entropic_plume
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:EventHereticEntropicPlume
   - type: HereticAction
@@ -89,9 +95,11 @@
     checkCanInteract: false
     useDelay: 45
     itemIconStyle: NoItem
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: rust_charge
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: rust_charge
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 0
     checkCanAccess: false
@@ -113,9 +121,11 @@
     itemIconStyle: NoItem
     sound:
       path: /Audio/Items/welder.ogg
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: rust_wave
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: rust_wave
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 0
     checkCanAccess: false

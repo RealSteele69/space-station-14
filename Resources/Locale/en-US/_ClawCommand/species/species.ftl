@@ -4,3 +4,5 @@ cc-species-name-kitsunes = Kitsune
 cc-species-name-shadekin = Shadekin
 cc-species-name-tajaran = Tajaran
 cc-species-name-avali = Avali
+cc-species-name-resomi = Resomi
+cc-species-name-synth = Synth

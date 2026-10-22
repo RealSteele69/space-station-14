@@ -159,7 +159,7 @@
   - type: EntityStorageVisuals
     stateDoorClosed: door-closed
     openDrawDepth: 0
-    closedDrawDepth: 4
+    closedDrawDepth: 5 # Claw Command - Items, shifted by the fork's HighWallMountedItems draw depth
   - type: Construction
     containers:
     - machine_board

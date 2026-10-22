@@ -58,7 +58,7 @@
   playTimeTracker: JobClawCommandMaid
   requirements:
     - !type:DepartmentTimeRequirement
-      department: Civilian
+      department: Service # Claw Command - service jobs moved out of Civilian upstream
       time: 3h
     - !type:DepartmentTimeRequirement
       department: Command

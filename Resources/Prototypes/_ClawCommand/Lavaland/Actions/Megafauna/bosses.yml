@@ -1,0 +1,645 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Attacks used by the lavaland megafauna and elite AI.
+# Every action is both entity- and world-targeted, so attacks can track the picked target.
+
+- type: entity
+  parent: BaseAction
+  id: ActionBaseMegafaunaAttack
+  name: megafauna attack
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    priority: -21
+    useDelay: 4
+    checkCanInteract: false
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+    layers:
+    - state: dragon
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    checkCanAccess: false
+    range: 40
+  - type: EntityTargetAction
+  - type: WorldTargetAction
+
+# ---------------------------------------------------------------------------
+# Ash drake
+# ---------------------------------------------------------------------------
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionAshDrakeFireBreath
+  name: Fire Breath
+  description: Breathe a cone of fire at the target.
+  components:
+  - type: Action
+    useDelay: 5
+    sound:
+      path: /Audio/Animals/space_dragon_breath.ogg
+  - type: WorldTargetAction
+    event: !type:MegafaunaProjectileActionEvent
+      projectile: MegafaunaProjectileAshDrakeFlame
+      count: 3
+      spread: 30
+      jitter: 6
+      volleys: 12
+      volleyDelay: 0.07
+      projectileSpeed: 11
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionAshDrakeFireballs
+  name: Fireball Volley
+  description: Spit a fan of fireballs.
+  components:
+  - type: Action
+    useDelay: 6
+    sound:
+      path: /Audio/Magic/fireball.ogg
+  - type: WorldTargetAction
+    event: !type:MegafaunaProjectileActionEvent
+      projectile: MegafaunaProjectileAshDrakeFireball
+      count: 5
+      spread: 50
+      volleys: 2
+      volleyDelay: 0.5
+      projectileSpeed: 9
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionAshDrakeSwoop
+  name: Swoop
+  description: Take to the sky and crash down on the target.
+  components:
+  - type: Action
+    useDelay: 14
+  - type: AngerDelayAction
+    minDelay: 7
+    maxDelay: 14
+    inverse: true
+  - type: WorldTargetAction
+    event: !type:MegafaunaSwoopActionEvent
+      shadow: MegafaunaAshDrakeShadow
+      landSpawn: AshDrakeShapeLanding
+      trackTime: 1.8
+      lockTime: 0.7
+      shadowSpeed: 8
+      landRadius: 1.8
+      knockbackDistance: 4
+      knockdownTime: 1.5
+      landDamage:
+        types:
+          Blunt: 25
+      takeoffSound:
+        path: /Audio/Animals/space_dragon_roar.ogg
+      landSound:
+        path: /Audio/_ClawCommand/Lavaland/Effects/meteorimpact.ogg
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionAshDrakeFireRain
+  name: Fire Rain
+  description: Rain fire around the target.
+  components:
+  - type: Action
+    useDelay: 10
+    sound:
+      path: /Audio/Animals/space_dragon_roar.ogg
+  - type: WorldTargetAction
+    event: !type:SpawnEntityActionEvent
+      spawn: AshDrakeShapeFireRain
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionAshDrakeFireRing
+  name: Lava Ring
+  description: Surround yourself with an expanding ring of fire.
+  components:
+  - type: Action
+    useDelay: 16
+    sound:
+      path: /Audio/Magic/fireball.ogg
+  - type: WorldTargetAction
+    event: !type:SpawnEntityActionEvent
+      spawn: AshDrakeShapeFireRing
+      spawnAtUser: true
+
+# ---------------------------------------------------------------------------
+# Bubblegum
+# ---------------------------------------------------------------------------
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionBubblegumCharge
+  name: Charge
+  description: Charge at the target.
+  components:
+  - type: Action
+    useDelay: 5
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+    layers:
+    - state: bubblegum
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaChargeActionEvent
+      windUp: 0.7
+      chargeSpeed: 15
+      overshoot: 3
+      maxDistance: 14
+      hitRadius: 1.4
+      knockbackDistance: 3
+      knockdownTime: 1
+      windUpSpawn: MegafaunaWindUpEffect
+      trailSpawn: MegafaunaBloodTrail
+      damage:
+        types:
+          Blunt: 20
+          Slash: 10
+      windUpSound:
+        path: /Audio/Effects/demon_attack1.ogg
+      hitSound:
+        path: /Audio/Weapons/smash.ogg
+
+- type: entity
+  parent: ActionBubblegumCharge
+  id: ActionBubblegumTripleCharge
+  name: Triple Charge
+  description: Charge at the target three times in a row.
+  components:
+  - type: Action
+    useDelay: 10
+  - type: WorldTargetAction
+    event: !type:MegafaunaChargeActionEvent
+      windUp: 0.6
+      chainWindUp: 0.35
+      charges: 3
+      chargeSpeed: 17
+      overshoot: 3
+      maxDistance: 14
+      hitRadius: 1.4
+      knockbackDistance: 3
+      knockdownTime: 1
+      windUpSpawn: MegafaunaWindUpEffect
+      trailSpawn: MegafaunaBloodTrail
+      damage:
+        types:
+          Blunt: 18
+          Slash: 8
+      windUpSound:
+        path: /Audio/Effects/demon_attack1.ogg
+      hitSound:
+        path: /Audio/Weapons/smash.ogg
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionBubblegumHandSlams
+  name: Hand Slams
+  description: Grasping hands burst from the ground around the target.
+  components:
+  - type: Action
+    useDelay: 7
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+    layers:
+    - state: bubblegum
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:SpawnEntityActionEvent
+      spawn: BubblegumShapeHandSlams
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionBubblegumBloodWarp
+  name: Blood Warp
+  description: Sink into the blood and resurface next to the target.
+  components:
+  - type: Action
+    useDelay: 12
+    sound:
+      path: /Audio/Effects/demon_consume.ogg
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+    layers:
+    - state: bubblegum
+      map: ["enum.ActionVisuals.Icon"]
+  - type: AngerDelayAction
+    minDelay: 6
+    maxDelay: 12
+    inverse: true
+  - type: WorldTargetAction
+    event: !type:MegafaunaBlinkActionEvent
+
+# ---------------------------------------------------------------------------
+# Colossus
+# ---------------------------------------------------------------------------
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionColossusShotgun
+  name: Shotgun Blast
+  description: Fire a spread of bolts at the target.
+  components:
+  - type: Action
+    useDelay: 3
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+    layers:
+    - state: eva
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaProjectileActionEvent
+      projectile: MegafaunaProjectileColossusBolt
+      count: 7
+      spread: 50
+      volleys: 3
+      volleyDelay: 0.35
+      projectileSpeed: 14
+      volleySound:
+        path: /Audio/Weapons/plasma_cutter.ogg
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionColossusSpiral
+  name: Spiral Shots
+  description: Fire bolts in a rotating spiral.
+  components:
+  - type: Action
+    useDelay: 12
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+    layers:
+    - state: eva_attack
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaProjectileActionEvent
+      projectile: MegafaunaProjectileColossusBolt
+      radial: true
+      count: 6
+      volleys: 30
+      volleyDelay: 0.12
+      volleyRotation: 9
+      trackTarget: false
+      projectileSpeed: 10
+      shout: colossus-shout-spiral
+      volleySound:
+        path: /Audio/Effects/magic_missile_1.ogg
+        params:
+          volume: -8
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionColossusBlast
+  name: Alternating Blast
+  description: Fire rings of bolts that alternate between straight and diagonal lines.
+  components:
+  - type: Action
+    useDelay: 8
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+    layers:
+    - state: eva_attack
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaProjectileActionEvent
+      projectile: MegafaunaProjectileColossusBolt
+      radial: true
+      count: 8
+      volleys: 6
+      volleyDelay: 0.45
+      volleyRotation: 22.5
+      trackTarget: false
+      projectileSpeed: 12
+      volleySound:
+        path: /Audio/Weapons/plasma_cutter.ogg
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionColossusCrystalCross
+  name: Crystal Spikes
+  description: Crystal spikes erupt in a cross under the target.
+  components:
+  - type: Action
+    useDelay: 9
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+    layers:
+    - state: eva_attack
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:SpawnEntityActionEvent
+      spawn: ColossusShapeCrystalCross
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionColossusJudgement
+  name: Judgement
+  description: A storm of crimson bolts in every direction.
+  components:
+  - type: Action
+    useDelay: 20
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+    layers:
+    - state: eva_attack
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaProjectileActionEvent
+      projectile: MegafaunaProjectileColossusBoltHeavy
+      radial: true
+      count: 12
+      volleys: 40
+      volleyDelay: 0.1
+      volleyRotation: -7
+      trackTarget: false
+      projectileSpeed: 9
+      shout: colossus-shout-judgement
+      volleySound:
+        path: /Audio/Effects/magic_missile_2.ogg
+        params:
+          volume: -8
+
+# ---------------------------------------------------------------------------
+# Legion
+# ---------------------------------------------------------------------------
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionLegionSummonSkulls
+  name: Summon Skulls
+  description: Release a swarm of skulls.
+  components:
+  - type: Action
+    useDelay: 8
+    sound:
+      path: /Audio/_ClawCommand/Lavaland/Mobs/legion_spawn.ogg
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/legion.rsi
+    layers:
+    - state: legion-skull
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:SpawnEntityActionEvent
+      spawn: LegionShapeSummonSkulls
+      spawnAtUser: true
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionLegionCharge
+  name: Legion Charge
+  description: Rush the target.
+  components:
+  - type: Action
+    useDelay: 7
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+    layers:
+    - state: mega_legion
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaChargeActionEvent
+      windUp: 0.6
+      chargeSpeed: 13
+      overshoot: 2
+      maxDistance: 12
+      hitRadius: 1.0
+      knockbackDistance: 2
+      knockdownTime: 0.5
+      windUpSpawn: MegafaunaWindUpEffect
+      damage:
+        types:
+          Blunt: 20
+      hitSound:
+        path: /Audio/Weapons/smash.ogg
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionLegionBileSpray
+  name: Bile Spray
+  description: Spray corrosive bile around you.
+  components:
+  - type: Action
+    useDelay: 9
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
+    layers:
+    - state: mega_legion
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaProjectileActionEvent
+      projectile: MegafaunaProjectileLegionBile
+      radial: true
+      count: 10
+      volleys: 3
+      volleyDelay: 0.4
+      volleyRotation: 18
+      trackTarget: false
+      projectileSpeed: 8
+
+# ---------------------------------------------------------------------------
+# Elites
+# ---------------------------------------------------------------------------
+
+- type: entity
+  parent: ActionLegionCharge
+  id: ActionLegionnaireCharge
+  name: Legionnaire Charge
+  components:
+  - type: Action
+    useDelay: 6
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Elites/32x64.rsi
+    layers:
+    - state: legionnaire
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaChargeActionEvent
+      windUp: 0.5
+      chargeSpeed: 14
+      overshoot: 2
+      maxDistance: 10
+      hitRadius: 0.9
+      knockbackDistance: 3
+      knockdownTime: 1
+      windUpSpawn: MegafaunaWindUpEffect
+      damage:
+        types:
+          Blunt: 15
+          Slash: 5
+      hitSound:
+        path: /Audio/Weapons/smash.ogg
+
+- type: entity
+  parent: ActionLegionSummonSkulls
+  id: ActionLegionnaireSummonSkulls
+  components:
+  - type: Action
+    useDelay: 10
+  - type: WorldTargetAction
+    event: !type:SpawnEntityActionEvent
+      spawn: LegionShapeSummonSkullsSmall
+      spawnAtUser: true
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionHeraldShotgun
+  name: Herald Spread
+  components:
+  - type: Action
+    useDelay: 3
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Elites/64x64.rsi
+    layers:
+    - state: herald
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaProjectileActionEvent
+      projectile: MegafaunaProjectileHeraldBolt
+      count: 5
+      spread: 40
+      volleys: 2
+      volleyDelay: 0.4
+      projectileSpeed: 12
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionHeraldRing
+  name: Herald Ring
+  components:
+  - type: Action
+    useDelay: 7
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Elites/64x64.rsi
+    layers:
+    - state: herald_enraged
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaProjectileActionEvent
+      projectile: MegafaunaProjectileHeraldBolt
+      radial: true
+      count: 12
+      volleys: 3
+      volleyDelay: 0.5
+      volleyRotation: 15
+      trackTarget: false
+      projectileSpeed: 9
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionHeraldSpiral
+  name: Herald Spiral
+  components:
+  - type: Action
+    useDelay: 12
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Elites/64x64.rsi
+    layers:
+    - state: herald_enraged
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaProjectileActionEvent
+      projectile: MegafaunaProjectileHeraldBolt
+      radial: true
+      count: 4
+      volleys: 24
+      volleyDelay: 0.12
+      volleyRotation: 12
+      trackTarget: false
+      projectileSpeed: 9
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionHeraldTeleport
+  name: Herald Teleport
+  components:
+  - type: Action
+    useDelay: 10
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Elites/64x64.rsi
+    layers:
+    - state: herald_ghost
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaBlinkActionEvent
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionBroodmotherTentacleCross
+  name: Tentacle Cross
+  components:
+  - type: Action
+    useDelay: 4
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Elites/64x64.rsi
+    layers:
+    - state: broodmother
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:SpawnEntityActionEvent
+      spawn: BroodmotherShapeTentacleCross
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionBroodmotherTentacleField
+  name: Tentacle Field
+  components:
+  - type: Action
+    useDelay: 9
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Elites/64x64.rsi
+    layers:
+    - state: broodmother
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:SpawnEntityActionEvent
+      spawn: BroodmotherShapeTentacleField
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionBroodmotherSpawnBrood
+  name: Spawn Brood
+  components:
+  - type: Action
+    useDelay: 15
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Elites/64x64.rsi
+    layers:
+    - state: egg_sac
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:SpawnEntityActionEvent
+      spawn: BroodmotherShapeSpawnBrood
+      spawnAtUser: true
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionBroodmotherRage
+  name: Rage
+  components:
+  - type: Action
+    useDelay: 8
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Mobs/Elites/64x64.rsi
+    layers:
+    - state: broodmother
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaChargeActionEvent
+      windUp: 0.8
+      chargeSpeed: 12
+      overshoot: 1
+      maxDistance: 10
+      hitRadius: 1.2
+      knockbackDistance: 3
+      knockdownTime: 1.5
+      windUpSpawn: MegafaunaWindUpEffect
+      damage:
+        types:
+          Blunt: 15
+          Piercing: 10
+      hitSound:
+        path: /Audio/Weapons/smash.ogg

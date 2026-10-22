@@ -1,0 +1,71 @@
+# Claw Command - vehicle keys.
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: BaseVehicleKeyClaw
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/keys.rsi
+  - type: Item
+    size: Tiny
+
+- type: entity
+  parent: BaseVehicleKeyClaw
+  id: VehicleKeyCargo
+  name: cargo vehicle keys
+  description: A keyring with a small steel key and a yellow fob reading "CHOO CHOO!".
+  components:
+  - type: Sprite
+    state: cargo
+  - type: Tag
+    tags:
+    - VehicleKeysCargo
+
+- type: entity
+  parent: BaseVehicleKeyClaw
+  id: VehicleKeyMedical
+  name: medical vehicle keys
+  description: The key used to start the medical cart and ambulance.
+  components:
+  - type: Sprite
+    state: medical
+  - type: Tag
+    tags:
+    - VehicleKeysMedical
+
+- type: entity
+  parent: BaseVehicleKeyClaw
+  id: VehicleKeyQuadbike
+  name: ATV keys
+  description: A keyring with a small steel key, and a blue fob reading "ZOOM!".
+  components:
+  - type: Sprite
+    state: atv
+  - type: Tag
+    tags:
+    - VehicleKeysQuadbike
+
+- type: entity
+  parent: BaseVehicleKeyClaw
+  id: VehicleKeySecurity
+  name: security cart keys
+  description: The key used to start the security cart and any armed vehicle.
+  components:
+  - type: Sprite
+    state: security
+  - type: Tag
+    tags:
+    - VehicleKeysSecurity
+
+- type: entity
+  parent: BaseVehicleKeyClaw
+  id: VehicleKeyRover
+  name: rover keys
+  description: The key used to start the NT humvee and the research dune buggy.
+  components:
+  - type: Sprite
+    state: security
+  - type: Tag
+    tags:
+    - VehicleKeysRover

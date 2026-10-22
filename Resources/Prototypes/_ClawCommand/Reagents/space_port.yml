@@ -71,7 +71,7 @@
   - !type:PlantAdjustToxins
     amount: 40
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         probability: 0.4
@@ -97,16 +97,16 @@
   color: "#FFBF00"
   physicalDesc: reagent-physical-desc-overpowering
   metabolisms:
-    Narcotic:
+    Bloodstream:
       metabolismRate: 0.2
       effects:
       - !type:ModifyStatusEffect # Claw Command - old SeeingRainbows status key removed upstream
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 5
-      - !type:GenericStatusEffect
-        key: Stutter
-        component: ScrambledAccent
+      - !type:ModifyStatusEffect # Claw Command - legacy Stutter key does nothing on humanoids
+        effectProto: StatusEffectScrambled
+        type: Update
       # Claw Command - restored by the psionics port. A big enough dose buys one extra roll at psionic
       # powers, at four times the usual odds. This is the intended non-antag route into psionics.
       - !type:ChemRerollPsionic

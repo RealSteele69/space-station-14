@@ -13,3 +13,12 @@
   - cc-chat-speech-verb-feroxi-1
   - cc-chat-speech-verb-feroxi-2
   - cc-chat-speech-verb-feroxi-3
+
+- type: speechVerb
+  id: Bingle
+  name: chat-speech-verb-name-bingle
+  speechVerbStrings:
+  - bingle-verb-1
+  - bingle-verb-2
+  - bingle-verb-3
+  - bingle-verb-4

@@ -582,7 +582,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             return;
 
         Log.Debug($"Pre-selected {player.Name} as antagonist: {ToPrettyString(gameRule)}, {protoId}");
-        _adminLogger.Add(LogType.AntagSelection, $"Pre-selected {player.Name} as antagonist: {ToPrettyString(gameRule)}, {protoId}");
+        _adminLogger.Add(LogType.AntagSelection, $"Pre-selected {player:player} as antagonist: {ToPrettyString(gameRule)}, {protoId}"); // Claw Command - tag the player (antag reveal gate)
     }
 
     /// <summary>
@@ -618,7 +618,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
         // Not an error because player could've disconnected or died or something.
         Log.Debug($"De-selected {player.Name} as antagonist: {ToPrettyString(gameRule)}, {protoId}");
-        _adminLogger.Add(LogType.AntagSelection, $"De-selected {player.Name} as antagonist: {ToPrettyString(gameRule)}, {protoId}");
+        _adminLogger.Add(LogType.AntagSelection, $"De-selected {player:player} as antagonist: {ToPrettyString(gameRule)}, {protoId}"); // Claw Command - tag the player (antag reveal gate)
     }
 
     /// <summary>

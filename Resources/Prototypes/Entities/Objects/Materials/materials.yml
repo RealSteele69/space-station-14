@@ -325,6 +325,15 @@
   name: refined diamond
   suffix: Full
   components:
+  # Claw Command start - synth species: synth stomachs can digest raw materials
+  - type: Edible
+    requiresSpecialDigestion: true
+    solution: composite
+  - type: FlavorProfile
+    flavors:
+    - nothing
+  - type: BadFood
+  # Claw Command end
   - type: Stack
     stackType: Diamond
     baseLayer: base

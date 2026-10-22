@@ -294,8 +294,8 @@
   - type: Construction
     graph: N14Seat
     node: N14ChairPlastic
-  - type: StaticPrice # Floof - apparently it's expensive when deconstructed
-    price: 20
+  - type: StaticPrice # Claw Command - the two plastic sheets it's built from and deconstructs into
+    price: 40
 
 # from Resources/Prototypes/_Nuclear14/Entities/Structures/Furniture/chairs.yml
 - type: entity

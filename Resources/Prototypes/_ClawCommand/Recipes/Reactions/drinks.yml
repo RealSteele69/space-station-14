@@ -1,13 +1,13 @@
 - type: reaction
   id: ReactionClawtail
+  # Claw Command - was iron 2 + lime + whiskey, which always collided with Beepsky Smash (iron + lime + whiskey).
+  # Chained from Beepsky instead: same total ingredients, no ambiguity.
   requiredMixerCategories:
   - Shake
   reactants:
-    Iron:
+    BeepskySmash:
       amount: 2
-    JuiceLime:
-      amount: 1
-    Whiskey:
+    Iron:
       amount: 1
   products:
     ReagentDrinkClawtail: 2

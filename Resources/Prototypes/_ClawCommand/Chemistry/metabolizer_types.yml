@@ -13,3 +13,7 @@
 - type: metabolizerType
   id: MetabolizerKitsune
   name: cc-metabolizer-type-kitsune
+
+- type: metabolizerType
+  id: MetabolizerSynth
+  name: cc-metabolizer-type-synth

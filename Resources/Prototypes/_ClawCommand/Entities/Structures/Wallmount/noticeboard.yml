@@ -60,5 +60,5 @@
     tags:
     - Wooden
   - type: Construction
-    graph: NoticeBoard
+    graph: WallBoard
     node: noticeBoard

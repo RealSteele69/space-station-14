@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "by GitHub NotLivyathan / Discord livyathan (298907041198637067), xeno tails originally by GitHub Mspaintwizard / Discord 426969028796350485, modified by NotLivyathan Ported via Goob-Station (https://github.com/Goob-Station/Goob-Station, master snapshot, _Afterlight).",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "factory",
+            "directions": 4
+        },
+        {
+            "name": "factory_composite",
+            "directions": 4
+        },
+        {
+            "name": "large",
+            "directions": 4
+        },
+        {
+            "name": "large_composite",
+            "directions": 4
+        },
+        {
+            "name": "xeno_curl",
+            "directions": 4
+        },
+        {
+            "name": "xeno_spike",
+            "directions": 4
+        }
+    ]
+}

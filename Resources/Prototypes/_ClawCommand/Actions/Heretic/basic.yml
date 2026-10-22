@@ -18,9 +18,11 @@
   components:
   - type: Action
     itemIconStyle: NoItem
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: open_store
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: open_store
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:EventHereticOpenStore {}
   - type: HereticAction
@@ -35,9 +37,11 @@
   components:
   - type: Action
     itemIconStyle: NoItem
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: mansus_grasp
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: mansus_grasp
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:EventHereticMansusGrasp {}
   - type: HereticAction
@@ -53,9 +57,11 @@
   - type: Action
     useDelay: 2
     itemIconStyle: NoItem
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: living_heart
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: living_heart
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:EventHereticLivingHeart {}
   - type: HereticAction
@@ -71,9 +77,11 @@
   - type: Action
     useDelay: 10
     itemIconStyle: NoItem
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: mansus_link
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: mansus_link
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:EventHereticMansusLink {}
@@ -93,9 +101,11 @@
     checkCanInteract: false
     useDelay: 6
     itemIconStyle: NoItem
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: shadowcloak
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: shadowcloak
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:EventHereticCloak
       status: ShadowCloakStatusEffect
@@ -116,9 +126,11 @@
   - type: Action
     useDelay: 10
     itemIconStyle: NoItem
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: shapeshift
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: shapeshift
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:EventHereticShapeshift
   - type: ShapeshiftAction

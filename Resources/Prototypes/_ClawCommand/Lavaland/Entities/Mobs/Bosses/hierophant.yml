@@ -106,7 +106,7 @@
     table: !type:AllSelector
       children:
       - id: LavalandHierophantClub
-      # - id: CrusherUpgradeMainMarker # Phase 6: crusher upgrade not yet ported
+      - id: CrusherUpgradeMainMarker
     deleteOnDeath: true
   - type: MegafaunaAi
     actionDelay: 0.5

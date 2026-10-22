@@ -716,6 +716,10 @@
           satiationType: Thirst
           factor: 6
         - !type:ModifyBloodLevel
+          conditions: # Claw Command - synth species need fullerene, not saline
+          - !type:MetabolizerTypeCondition
+            type: [ MetabolizerSynth ]
+            inverted: true
           amount: 6
 
 - type: reagent

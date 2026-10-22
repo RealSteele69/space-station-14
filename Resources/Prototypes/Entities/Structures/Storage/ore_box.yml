@@ -69,3 +69,8 @@
         - MachineMask
         layer:
         - MachineLayer
+  - type: Construction # Claw Command - lavaland ore box crafting graph
+    graph: OreBox
+    node: crate
+    containers:
+    - storagebase

@@ -1,0 +1,35 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Fits the shared PKA upgrade container (BasePKAUpgrade / UpgradeableGun); heals the shooter on hits.
+- type: entity
+  id: LavalandVampirismCrystal
+  parent: BasePKAUpgrade
+  name: a red crystal
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Objects/Specific/Lavaland/loot.rsi
+    state: crystal
+  - type: GunUpgrade
+    tags: [ GunUpgradeVampirism ]
+    examineText: gun-upgrade-examine-text-vampirism
+  - type: GunUpgradeVampirism
+    damageOnHit:
+      types:
+        Slash: -1.5
+        Piercing: -1.5
+        Blunt: -1.5
+
+- type: entity
+  id: CrusherUpgradeFrame
+  parent: BaseItem
+  name: crusher upgrade frame
+  description: An empty frame for the main crusher upgrade, can hold essence of dying lavaland creatures to use their energy for upgrades.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Upgrades/crusher.rsi
+    state: base
+  - type: Item
+    size: Small
+  - type: Tag
+    tags:
+    - CrusherUpgradeFrame

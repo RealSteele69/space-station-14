@@ -260,6 +260,15 @@
   name: coal
   suffix: Full
   components:
+  # Claw Command start - synth species: synth stomachs can digest raw materials
+  - type: Edible
+    requiresSpecialDigestion: true
+    solution: composite
+  - type: FlavorProfile
+    flavors:
+    - bitter
+  - type: BadFood
+  # Claw Command end
   - type: Stack
     stackType: Coal
   - type: Sprite

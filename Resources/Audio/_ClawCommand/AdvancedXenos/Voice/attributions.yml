@@ -1,0 +1,16 @@
+# Claw Command - Citadel RP xenomorph voices. All downmixed to mono for positional playback.
+
+- files: ["hiss1.ogg", "hiss2.ogg", "hiss3.ogg", "hiss4.ogg", "hiss5.ogg", "hiss6.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from Citadel-Station-13-RP (sound/voice/hissN.ogg), originally from VOREStation/Polaris (Baystation12 lineage), imported into Citadel RP by deathride58 in f1893fa0a0 (2018). Downmixed to mono for Claw Command."
+  source: "https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/sound/voice/hiss1.ogg"
+
+- files: ["alien_growl1.ogg", "alien_hiss3.ogg", "alien_roar1.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Sounds from TerraGov Marine Corps (TGMC), added to Citadel-Station-13-RP by TheLordME (Felix) in PR #4374 (5d8e9cb71f). Downmixed to mono for Claw Command."
+  source: "https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/sound/voice/xenos/alien_hiss3.ogg"
+
+- files: ["xhiss1.ogg", "xhiss2.ogg", "xhiss3.ogg", "xhiss4.ogg", "xhiss5.ogg", "xhiss6.ogg", "xroar1.ogg", "xroar2.ogg", "xroar3.ogg", "xtalk1.ogg", "xtalk2.ogg", "xtalk3.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Added to Citadel-Station-13-RP by Athena148 in PR #6676 (84e0b1fbf3, 'Additional Xenohybrid Noises'); the PR does not name an earlier source. Downmixed to mono for Claw Command."
+  source: "https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/sound/voice/xenos/xhiss1.ogg"

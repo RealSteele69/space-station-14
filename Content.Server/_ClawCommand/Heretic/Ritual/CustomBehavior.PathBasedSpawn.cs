@@ -29,9 +29,11 @@ public sealed partial class RitualPathBasedSpawnBehavior : RitualCustomBehavior
 
         var coords = args.EntityManager.GetComponent<TransformComponent>(args.Platform).Coordinates;
 
-        if (heretic.CurrentPath != null && SpawnedEntities.TryGetValue(heretic.CurrentPath, out var toSpawn))
-            args.EntityManager.SpawnEntity(toSpawn, coords);
-        else
-            args.EntityManager.SpawnEntity(FallbackEntity, coords);
+        var spawned = heretic.CurrentPath != null && SpawnedEntities.TryGetValue(heretic.CurrentPath, out var toSpawn)
+            ? args.EntityManager.SpawnEntity(toSpawn, coords)
+            : args.EntityManager.SpawnEntity(FallbackEntity, coords);
+
+        // Claw Command - count toward the ritual's limit, like regular ritual output does.
+        args.Limited?.Add(spawned);
     }
 }

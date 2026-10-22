@@ -1,0 +1,102 @@
+# Claw Command - xenomorph voice: speech_sounds hiss1-4 at 100%, the xenomorph emotes
+# and the hivemind language (as a radio channel).
+
+- type: soundCollection
+  id: AdvXenoSpeech
+  files:
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/hiss1.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/hiss2.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/hiss3.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/hiss4.ogg
+
+- type: soundCollection
+  id: AdvXenoHiss
+  files:
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/alien_hiss3.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/xhiss1.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/xhiss2.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/xhiss3.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/xhiss4.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/xhiss5.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/xhiss6.ogg
+
+- type: soundCollection
+  id: AdvXenoRoar
+  files:
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/alien_roar1.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/xroar1.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/xroar2.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/xroar3.ogg
+
+- type: soundCollection
+  id: AdvXenoTalk
+  files:
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/xtalk1.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/xtalk2.ogg
+  - /Audio/_ClawCommand/AdvancedXenos/Voice/xtalk3.ogg
+
+- type: speechSounds
+  id: AdvXeno
+  saySound:
+    collection: AdvXenoSpeech
+  askSound:
+    collection: AdvXenoSpeech
+  exclaimSound:
+    collection: AdvXenoSpeech
+
+- type: speechVerb
+  id: AdvXeno
+  name: chat-speech-verb-name-adv-xeno
+  speechVerbStrings:
+  - chat-speech-verb-adv-xeno
+
+- type: emoteSounds
+  id: AdvXeno
+  params:
+    variation: 0.1
+  sounds:
+    AdvXenoHiss:
+      collection: AdvXenoHiss
+    AdvXenoRoar:
+      collection: AdvXenoRoar
+    Scream:
+      collection: AdvXenoRoar
+    Growl:
+      path: /Audio/_ClawCommand/AdvancedXenos/Voice/alien_growl1.ogg
+    Chitter:
+      collection: AdvXenoTalk
+
+- type: emote
+  id: AdvXenoHiss
+  name: chat-emote-name-adv-xeno-hiss
+  category: Vocal
+  icon: Interface/Emotes/scream.png
+  whitelist:
+    components:
+    - AdvXenoHive
+  chatMessages: ["chat-emote-msg-adv-xeno-hiss"]
+  chatTriggers: # original bindings; plain "hiss" belongs to the cat emote
+  - xhiss
+  - xeno-hiss
+
+- type: emote
+  id: AdvXenoRoar
+  name: chat-emote-name-adv-xeno-roar
+  category: Vocal
+  icon: Interface/Emotes/scream.png
+  whitelist:
+    components:
+    - AdvXenoHive
+  chatMessages: ["chat-emote-msg-adv-xeno-roar"]
+  chatTriggers:
+  - xroar
+  - xeno-roar
+
+# The hivemind: everyone with a hive node hears it, nobody else does. Key :a
+- type: radioChannel
+  id: AdvXenoHivemind
+  name: chat-radio-adv-xeno-hivemind
+  keycode: 'a'
+  frequency: 1913
+  color: "#a855f7"
+  longRange: true

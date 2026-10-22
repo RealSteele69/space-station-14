@@ -49,6 +49,15 @@
     back:
     - Flash
 
+- type: chameleonOutfit
+  id: SeniorOfficerChameleonOutfit
+  job: SeniorOfficer
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatBeretSecurity
+    mask: ClothingMaskGasSecurity
+    neck: Dinkystar
+
 # Engineering
 - type: job
   id: SeniorEngineer
@@ -75,6 +84,17 @@
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineering
 
+- type: chameleonOutfit
+  id: SeniorEngineerChameleonOutfit
+  job: SeniorEngineer
+  equipment:
+    head: ClothingHeadHatHardhatYellow
+    mask: ClothingMaskBreath
+    neck: ClothingNeckScarfStripedOrange
+    outerClothing: ClothingOuterWinterEngi
+    gloves: ClothingHandsGlovesColorYellow
+    shoes: ClothingShoesBootsMag
+
 # Medical
 - type: job
   id: SeniorPhysician
@@ -100,6 +120,17 @@
   equipment:
     ears: ClothingHeadsetMedical
 
+- type: chameleonOutfit
+  id: SeniorPhysicianChameleonOutfit
+  job: SeniorPhysician
+  equipment:
+    head: ClothingHeadHatBeretSeniorPhysician
+    eyes: ClothingEyesHudMedical
+    mask: ClothingMaskSterile
+    neck: ClothingNeckStethoscope
+    outerClothing: ClothingOuterCoatLabSeniorPhysician
+    gloves: ClothingHandsGlovesLatex
+
 # Science
 - type: job
   id: SeniorResearcher
@@ -121,6 +152,17 @@
   id: SeniorResearcherGear
   equipment:
     ears: ClothingHeadsetScience
+
+- type: chameleonOutfit
+  id: SeniorResearcherChameleonOutfit
+  job: SeniorResearcher
+  equipment:
+    head: ClothingHeadBandSkull
+    eyes: ClothingEyesGlassesCheapSunglasses
+    mask: ClothingMaskGas
+    neck: ClothingNeckTieSci
+    outerClothing: ClothingOuterCoatLabSeniorResearcher
+    gloves: ClothingHandsGlovesLatex
 
 # Cargo
 - type: job
@@ -145,3 +187,14 @@
   equipment:
     ears: ClothingHeadsetCargo
     pocket1: AppraisalTool
+
+- type: chameleonOutfit
+  id: SeniorCourierChameleonOutfit
+  job: SeniorCourier
+  equipment:
+    head: ClothingHeadHatCargosoft
+    eyes: ClothingEyesGlassesCheapSunglasses
+    mask: ClothingMaskBreath
+    outerClothing: ClothingOuterWinterCargo
+    neck: ClothingNeckScarfStripedBrown
+    gloves: ClothingHandsGlovesFingerless

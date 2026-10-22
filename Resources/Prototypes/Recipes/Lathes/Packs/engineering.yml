@@ -63,6 +63,8 @@
   - JawsOfLife
   - Fulton
   - FultonBeacon
+  - RPD # Claw Command - research unlock had no lathe
+  - RPED # Claw Command - research unlock had no lathe
 
 - type: latheRecipePack
   id: AtmosTools
@@ -87,6 +89,9 @@
   - PortableGeneratorSuperPacmanMachineCircuitboard
   - PortableGeneratorJrPacmanMachineCircuitboard
   - EmitterCircuitboard
+  - SupermatterComputerCircuitboard # Claw Command - supermatter
+  - DiodeDiscElectroDisruptive # Claw Command - supermatter
+  - DiodeDiscElectroBehavioural # Claw Command - supermatter
   - TelecomServerCircuitboard
   - SMESAdvancedMachineCircuitboard
   - HolopadMachineCircuitboard

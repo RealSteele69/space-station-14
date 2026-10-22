@@ -1,0 +1,214 @@
+# Claw Command - xenomorph items: the facehugger, the removed embryo, resin blobs and the spit projectiles.
+
+# ----------------------------------------------------------------------------- facehugger
+
+- type: entity
+  parent: ClothingMaskBase
+  id: AdvXenoFacehugger
+  name: alien
+  description: It has some sort of a tube at the end of its tail.
+  components:
+  - type: AdvXenoFacehugger
+  - type: Sprite
+    sprite: _ClawCommand/Objects/AdvancedXenos/facehugger.rsi
+    layers:
+    - state: icon
+      map: [ "enum.AdvXenoHuggerVisuals.State" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AdvXenoHuggerVisuals.State:
+        enum.AdvXenoHuggerVisuals.State:
+          Active: { state: icon }
+          Idle: { state: inactive }
+          Dead: { state: dead }
+          Impregnated: { state: impregnated }
+          Thrown: { state: thrown }
+  - type: Clothing
+    sprite: _ClawCommand/Objects/AdvancedXenos/facehugger.rsi
+    slots: [ mask ]
+  - type: Item
+    size: Normal # w_class 3: aliens can pick it up
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: MeleeWeapon
+    hidden: true
+    damage:
+      types:
+        Blunt: 0
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Biological
+  - type: Temperature
+    heatCapacity: 15750 # Claw Command - mass x specificHeat, declared so spawning doesn't change it
+  - type: TemperatureDamage # fire_act above T0C+80
+    heatDamageThreshold: 353
+    heatDamage:
+      types:
+        Heat: 1
+  - type: AtmosExposed
+  - type: StepTrigger
+    intersectRatio: 0.2
+    requiredTriggeredSpeed: 0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 20
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+      slips:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        hard: false
+        layer:
+        - SlipLayer
+  - type: StaticPrice
+    price: 300
+
+- type: entity
+  parent: AdvXenoFacehugger
+  id: AdvXenoFacehuggerSterile
+  suffix: Sterile
+  description: It has some sort of a tube at the end of its tail. It looks like the proboscis has been removed.
+  components:
+  - type: AdvXenoFacehugger
+    sterile: true
+
+- type: entity
+  parent: BaseItem
+  id: AdvXenoEmbryoRemains
+  name: alien embryo
+  description: All slimy and yuck.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/AdvancedXenos/embryo.rsi
+    state: embryo
+  - type: Item
+    size: Small
+  - type: StaticPrice
+    price: 500
+
+# ----------------------------------------------------------------------------- resin blobs
+
+- type: entity
+  parent: BaseItem
+  id: AdvXenoResinBlob
+  name: resin
+  description: Thick, sticky purple resin. It sets hard enough to build with.
+  suffix: Full
+  components:
+  - type: Stack
+    stackType: AdvXenoResin
+    count: 30
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      AdvXenoResin: 100
+  - type: Sprite
+    sprite: _ClawCommand/Objects/AdvancedXenos/resin.rsi
+    state: resin
+    color: "#9a74c7"
+  - type: Item
+    size: Normal
+  - type: Tag
+    tags:
+    - RawMaterial
+
+- type: entity
+  parent: AdvXenoResinBlob
+  id: AdvXenoResinBlob1
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: AdvXenoResin
+    count: 1
+
+# ----------------------------------------------------------------------------- spit
+
+# /obj/projectile/energy/neurotoxin: 5 bio-acid, 23 agony
+- type: entity
+  parent: BaseBullet
+  id: AdvXenoSpitNeurotoxin
+  name: neurotoxic spit
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Caustic: 5
+    soundHit:
+      path: /Audio/Effects/Fluids/splat.ogg
+  - type: StaminaDamageOnCollide
+    damage: 23
+  - type: Sprite
+    sprite: _ClawCommand/Objects/AdvancedXenos/spit.rsi
+    layers:
+    - state: neurotoxin
+      shader: unshaded
+  - type: Ammo
+    muzzleFlash: null
+
+# /obj/projectile/energy/acid: 40 burn (acid armour), 10 agony
+- type: entity
+  parent: AdvXenoSpitNeurotoxin
+  id: AdvXenoSpitAcid
+  name: acidic spit
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Caustic: 40
+    soundHit:
+      path: /Audio/Effects/Fluids/splat.ogg
+  - type: StaminaDamageOnCollide
+    damage: 10
+  - type: Sprite
+    sprite: _ClawCommand/Objects/AdvancedXenos/spit.rsi
+    color: "#a4ff3a"
+    layers:
+    - state: neurotoxin
+      shader: unshaded
+
+# The NPC biomorphs fire the same spit.
+- type: entity
+  parent: AdvXenoSpitNeurotoxin
+  id: AdvXenoSpitNeurotoxinNpc
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: AdvXenoSpitAcid
+  id: AdvXenoSpitAcidNpc
+  categories: [ HideSpawnMenu ]
+
+# /obj/projectile/potent_fire: no damage, sets you alight.
+- type: entity
+  parent: BaseBullet
+  id: AdvXenoInfernoEmber
+  name: ember
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Heat: 1
+  - type: IgniteOnCollide
+    fireStacks: 2
+  - type: Sprite
+    sprite: _ClawCommand/Objects/AdvancedXenos/spit.rsi
+    color: "#4d7dff"
+    layers:
+    - state: neurotoxin
+      shader: unshaded
+  - type: PointLight
+    radius: 1.5
+    energy: 1
+    color: "#4d7dff"
+  - type: Ammo
+    muzzleFlash: null

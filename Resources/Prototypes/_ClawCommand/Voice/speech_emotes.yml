@@ -94,6 +94,29 @@
   chatTriggers:
     - wurble
 
+# Resomi emotes (unlocked through Speech.allowedEmotes)
+- type: emote
+  id: Trill
+  name: cc-chat-emote-name-trill
+  category: Vocal
+  available: false
+  icon: _ClawCommand/Interface/Emotes/caw.png
+  chatMessages: [cc-chat-emote-msg-trill]
+  chatTriggers:
+    - trill
+    - trills
+
+- type: emote
+  id: Warble
+  name: cc-chat-emote-name-warble
+  category: Vocal
+  available: false
+  icon: _ClawCommand/Interface/Emotes/caw.png
+  chatMessages: [cc-chat-emote-msg-warble]
+  chatTriggers:
+    - warble
+    - warbles
+
 # IPC Emotes
 - type: emote
   id: Boop

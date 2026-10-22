@@ -2398,52 +2398,6 @@ entities:
     - type: Transform
       pos: 90.81531,21.154408
       parent: 2
-- proto: ActionBibleSummon
-  entities:
-  - uid: 7281
-    components:
-    - type: Transform
-      parent: 7280
-    - type: InstantAction
-      container: 7280
-- proto: ActionToggleInternals
-  entities:
-  - uid: 4024
-    components:
-    - type: Transform
-      parent: 6297
-    - type: InstantAction
-      container: 6297
-  - uid: 6114
-    components:
-    - type: Transform
-      parent: 6298
-    - type: InstantAction
-      container: 6298
-  - uid: 6118
-    components:
-    - type: Transform
-      parent: 6299
-    - type: InstantAction
-      container: 6299
-  - uid: 6634
-    components:
-    - type: Transform
-      parent: 6294
-    - type: InstantAction
-      container: 6294
-  - uid: 6910
-    components:
-    - type: Transform
-      parent: 6295
-    - type: InstantAction
-      container: 6295
-  - uid: 10175
-    components:
-    - type: Transform
-      parent: 6296
-    - type: InstantAction
-      container: 6296
 - proto: AirAlarm
   entities:
   - uid: 8316
@@ -5166,7 +5120,6 @@ entities:
       pos: 56.485397,97.79149
       parent: 2
     - type: Summonable
-      summonActionEntity: 7281
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
@@ -5176,8 +5129,7 @@ entities:
         actions: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - 7281
+          ents: []
     - type: Physics
       angularDamping: 0
       linearDamping: 0
@@ -30097,7 +30049,6 @@ entities:
       pos: 2.551463,42.582962
       parent: 2
     - type: GasTank
-      toggleActionEntity: 4024
     - type: Physics
       angularDamping: 0
       linearDamping: 0
@@ -30105,15 +30056,13 @@ entities:
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 4024
+          ents: []
   - uid: 6298
     components:
     - type: Transform
       pos: 2.342674,42.654167
       parent: 2
     - type: GasTank
-      toggleActionEntity: 6114
     - type: Physics
       angularDamping: 0
       linearDamping: 0
@@ -30121,15 +30070,13 @@ entities:
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 6114
+          ents: []
   - uid: 6299
     components:
     - type: Transform
       pos: 2.3830473,42.607292
       parent: 2
     - type: GasTank
-      toggleActionEntity: 6118
     - type: Physics
       angularDamping: 0
       linearDamping: 0
@@ -30137,8 +30084,7 @@ entities:
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 6118
+          ents: []
 - proto: DresserCaptainFilled
   entities:
   - uid: 6365
@@ -30826,7 +30772,6 @@ entities:
       pos: 2.4899685,42.669125
       parent: 2
     - type: GasTank
-      toggleActionEntity: 6634
     - type: Physics
       angularDamping: 0
       linearDamping: 0
@@ -30834,15 +30779,13 @@ entities:
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 6634
+          ents: []
   - uid: 6295
     components:
     - type: Transform
       pos: 2.4587185,42.6535
       parent: 2
     - type: GasTank
-      toggleActionEntity: 6910
     - type: Physics
       angularDamping: 0
       linearDamping: 0
@@ -30850,15 +30793,13 @@ entities:
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 6910
+          ents: []
   - uid: 6296
     components:
     - type: Transform
       pos: 2.447171,42.502766
       parent: 2
     - type: GasTank
-      toggleActionEntity: 10175
     - type: Physics
       angularDamping: 0
       linearDamping: 0
@@ -30866,8 +30807,7 @@ entities:
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 10175
+          ents: []
 - proto: ExtinguisherCabinetFilled
   entities:
   - uid: 6334

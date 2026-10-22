@@ -1,0 +1,635 @@
+# Claw Command - open (ridden) vehicles. The rider sits on top.
+
+# --- Department carts --------------------------------------------------------
+
+- type: entity
+  parent: BaseVehicleRiddenMotorClaw
+  id: VehicleSecurityCart
+  name: security cart
+  description: A rideable electric cart for personal transport, with a rotating beacon and siren.
+  components:
+  - type: VehicleHandling
+    grip: 13
+    acceleration: 4.2
+    speedingAcceleration: 1
+    topSpeedMultiplier: 1.4
+    turnRate: 250
+    turnRateAtTopSpeed: 110
+    cornerDrag: 0.3
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/security_cart.rsi
+    layers:
+    - state: vehicle
+      map: ["base"]
+  - type: GenericVisualizer
+    visuals:
+      enum.VehicleSirenVisuals.On:
+        base:
+          True: { state: vehicle-siren }
+          False: { state: vehicle }
+  - type: VehicleControls
+    sirenAction: ActionVehicleSiren
+  - type: AmbientSound
+    enabled: false
+    volume: -2
+    range: 12
+    sound:
+      path: /Audio/Effects/Vehicle/policesiren.ogg
+  - type: Strap
+    buckleOffset: "0,0.22"
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysSecurity
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysSecurity
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      key_slot: !type:ContainerSlot
+
+- type: entity
+  parent: BaseVehicleRiddenMotorClaw
+  id: VehicleMedicalCart
+  name: medical cart
+  description: A rideable electric cart for getting to emergencies in a hurry.
+  components:
+  - type: VehicleHandling
+    grip: 13
+    acceleration: 4.5
+    speedingAcceleration: 1
+    topSpeedMultiplier: 1.45
+    turnRate: 250
+    turnRateAtTopSpeed: 115
+    cornerDrag: 0.3
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/medical_cart.rsi
+    layers:
+    - state: vehicle
+  - type: Strap
+    buckleOffset: "0,0.22"
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysMedical
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysMedical
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      key_slot: !type:ContainerSlot
+
+- type: entity
+  parent: BaseVehicleRiddenMotorClaw
+  id: VehicleCargoTug
+  name: cargo train tug
+  description: A rideable electric tug built for hauling cargo around the station.
+  components:
+  - type: VehicleHandling
+    runOverSpeedLoss: 0.15
+    cornerDrag: 0.4
+    braking: 7
+    coasting: 4
+    speedingAcceleration: 0.5
+    grip: 15
+    turnRate: 180
+    turnRateAtTopSpeed: 85
+    acceleration: 2.4
+    topSpeedMultiplier: 1.25
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/cargo_tug.rsi
+    layers:
+    - state: vehicle
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 5.5
+  - type: Strap
+    buckleOffset: "0,0.22"
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysCargo
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysCargo
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      key_slot: !type:ContainerSlot
+
+- type: entity
+  parent: VehicleCargoTug
+  id: VehicleCargoTugClassic
+  suffix: Classic
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/cargo_tug.rsi
+    layers:
+    - state: vehicle-classic
+
+# --- ATV ---------------------------------------------------------------------
+# 64x64 art. The original per-direction pixel shift is baked into the RSI; this offset does the rest.
+
+- type: entity
+  parent: BaseVehicleRiddenMotorClaw
+  id: VehicleQuadbike
+  name: electric all terrain vehicle
+  description: A rideable electric ATV designed for all terrain. Except space.
+  components:
+  - type: VehicleHandling
+    runOverSpeedLoss: 0.35
+    coasting: 2.5
+    topSpeedMultiplier: 1.5
+    speedingAcceleration: 1.1
+    grip: 5.5
+    turnRate: 300
+    turnRateAtTopSpeed: 140
+    acceleration: 5
+    cornerDrag: 0.12
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/atv.rsi
+    offset: "0,0.3125"
+    layers:
+    - state: vehicle
+      map: ["movement"]
+    - state: paint
+      map: ["paint"]
+      color: "#666666"
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: vehicle-moving
+    noMovementLayers:
+      movement:
+        state: vehicle
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 6.5
+  - type: Strap
+    buckleOffset: "0,0.22"
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - VehicleKeysQuadbike
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          tags:
+          - VehicleKeysQuadbike
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      key_slot: !type:ContainerSlot
+
+- type: entity
+  parent: VehicleQuadbike
+  id: VehicleQuadbikeRandom
+  suffix: Random paint
+  components:
+  - type: RandomSprite
+    available:
+    - paint:
+        paint: Sixteen
+
+# --- Bikes -------------------------------------------------------------------
+
+- type: entity
+  parent: BaseVehicleRiddenMotorClaw
+  id: VehicleSpaceBike
+  name: space-bike
+  description: Space wheelies! Woo! This one doesn't seem to fly.
+  components:
+  - type: VehicleHandling
+    runOverSpeedLoss: 0.45
+    coasting: 2
+    cornerDrag: 0.3
+    topSpeedMultiplier: 1.6
+    grip: 9
+    turnRate: 320
+    turnRateAtTopSpeed: 120
+    acceleration: 5.5
+    speedingAcceleration: 1.4
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/space_bike.rsi
+    offset: "0.03125,0.0625"
+    layers:
+    - state: vehicle
+      map: ["base"]
+    - state: paint
+      map: ["paint"]
+  - type: GenericVisualizer
+    visuals:
+      enum.VehicleVisuals.HasOperator:
+        base:
+          True: { state: vehicle-on }
+          False: { state: vehicle }
+        paint:
+          True: { state: paint-on }
+          False: { state: paint }
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5
+    baseSprintSpeed: 7
+  - type: Strap
+    buckleOffset: "0,0.15"
+
+- type: entity
+  parent: VehicleSpaceBike
+  id: VehicleSpaceBikeRandom
+  suffix: Random paint
+  components:
+  - type: RandomSprite
+    available:
+    - paint:
+        paint: Sixteen
+
+- type: entity
+  parent: BaseVehicleRiddenClaw
+  id: VehicleBicycle
+  name: bicycle
+  description: Two wheels, two pedals, zero emissions.
+  components:
+  - type: VehicleHandling
+    runOverSpeedLoss: 0.6
+    braking: 7
+    coasting: 1.5
+    grip: 16
+    turnRate: 300
+    turnRateAtTopSpeed: 160
+    acceleration: 2.8
+    speedingAcceleration: 0.5
+    topSpeedMultiplier: 1.25
+    ejectSpeedLoss: 4
+    bumperRadius: 0.5
+    engineSound: null # pedal power
+    crashDamage:
+      types:
+        Blunt: 1
+    obstacleDamage:
+      types:
+        Blunt: 1
+    runOverDamage:
+      types:
+        Blunt: 1
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/bicycle.rsi
+    layers:
+    - state: vehicle
+  - type: VehicleControls
+    criticalThreshold: 80
+    damagedThreshold: 50
+    hornAction: ActionVehicleBicycleBell
+    hornSound:
+      path: /Audio/Effects/Vehicle/bicyclebell.ogg
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 5
+  - type: Strap
+    buckleOffset: "0,0.15"
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+# --- Go-karts (by MonaraMir) ---------------------------------------------
+# The kart draws over its driver so they sit down inside it.
+
+- type: entity
+  parent: BaseVehicleRiddenClaw
+  id: VehicleGoKart
+  name: go-kart
+  description: Moves fast. Built for smooth, purpose-built raceways.
+  components:
+  - type: VehicleHandling
+    runOverSpeedLoss: 0.5
+    braking: 12
+    coasting: 4
+    grip: 22
+    turnRate: 380
+    turnRateAtTopSpeed: 200
+    acceleration: 7
+    speedingAcceleration: 1.8
+    topSpeedMultiplier: 1.45
+    cornerDrag: 0.15
+    ejectSpeedLoss: 7
+    bumperRadius: 0.5
+    crashDamage:
+      types:
+        Blunt: 1
+    obstacleDamage:
+      types:
+        Structural: 1
+        Blunt: 1
+    runOverDamage:
+      types:
+        Blunt: 1.2
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Vehicles/gokart.rsi
+    drawdepth: OverMobs
+    layers:
+    - state: orange
+      map: ["base"]
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5
+    baseSprintSpeed: 7
+  - type: Strap
+    buckleOffset: "0,0"
+    modifyBuckleDrawDepth: false
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartRandom
+  suffix: Random colour
+  components:
+  - type: RandomSprite
+    available:
+    - base:
+        orange: ""
+        black: ""
+        blue: ""
+        red: ""
+        yellow: ""
+        purple: ""
+        brown: ""
+        pink: ""
+        white: ""
+        cyan: ""
+        lime: ""
+        green: ""
+        rainbow: ""
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartBlack
+  suffix: Black
+  components:
+  - type: Sprite
+    layers:
+    - state: black
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartBlue
+  suffix: Blue
+  components:
+  - type: Sprite
+    layers:
+    - state: blue
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartRed
+  suffix: Red
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartYellow
+  suffix: Yellow
+  components:
+  - type: Sprite
+    layers:
+    - state: yellow
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartPurple
+  suffix: Purple
+  components:
+  - type: Sprite
+    layers:
+    - state: purple
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartBrown
+  suffix: Brown
+  components:
+  - type: Sprite
+    layers:
+    - state: brown
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartPink
+  suffix: Pink
+  components:
+  - type: Sprite
+    layers:
+    - state: pink
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartWhite
+  suffix: White
+  components:
+  - type: Sprite
+    layers:
+    - state: white
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartCyan
+  suffix: Cyan
+  components:
+  - type: Sprite
+    layers:
+    - state: cyan
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartLime
+  suffix: Lime
+  components:
+  - type: Sprite
+    layers:
+    - state: lime
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartGreen
+  suffix: Green
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartRainbow
+  suffix: Rainbow
+  components:
+  - type: Sprite
+    layers:
+    - state: rainbow
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartDecoy
+  name: go-kart
+  suffix: Decoy driver
+  description: Moves fast. Someone has propped a cardboard driver in the seat.
+  components:
+  - type: Sprite
+    layers:
+    - state: orangedecoy
+      map: ["base"]
+
+# Themed karts from the Spring Ball event.
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartBlu
+  suffix: BLU
+  components:
+  - type: Sprite
+    layers:
+    - state: blu
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartWoaa
+  suffix: WOAA
+  components:
+  - type: Sprite
+    layers:
+    - state: woaa
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartDee
+  suffix: DEE
+  components:
+  - type: Sprite
+    layers:
+    - state: dee
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartQueen
+  suffix: QUEEN
+  components:
+  - type: Sprite
+    layers:
+    - state: queen
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartSpam
+  suffix: SPAM
+  components:
+  - type: Sprite
+    layers:
+    - state: spam
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartTeak
+  suffix: TEAK
+  components:
+  - type: Sprite
+    layers:
+    - state: teak
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartShift
+  suffix: SHIFT
+  components:
+  - type: Sprite
+    layers:
+    - state: shift
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartBlood
+  suffix: BLOOD
+  components:
+  - type: Sprite
+    layers:
+    - state: blood
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartCog
+  suffix: COG
+  components:
+  - type: Sprite
+    layers:
+    - state: cog
+      map: ["base"]
+
+- type: entity
+  parent: VehicleGoKart
+  id: VehicleGoKartHonk
+  suffix: HONK
+  components:
+  - type: Sprite
+    layers:
+    - state: honk
+      map: ["base"]

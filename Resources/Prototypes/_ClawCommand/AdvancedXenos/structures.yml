@@ -1,0 +1,422 @@
+# Claw Command - alien structures, the alien nest and the resin material door. Integrity values become damage thresholds.
+# The original still multiplies weeds/resin by its old purple colours; the CM-SS13 sprites are already
+# coloured, so that tint is left off here (it would turn them black). The greyscale material door keeps it.
+
+# ----------------------------------------------------------------------------- weeds
+
+- type: entity
+  id: AdvXenoWeeds
+  name: weeds
+  description: Weird purple weeds.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: AdvXenoWeeds
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Sprite
+    sprite: _ClawCommand/Structures/AdvancedXenos/weeds.rsi
+    drawdepth: FloorObjects
+    layers:
+    - state: weeds
+      map: [ "base" ]
+    - map: [ "enum.EdgeLayer.South" ]
+      state: weeds_side_n
+    - map: [ "enum.EdgeLayer.East" ]
+      state: weeds_side_w
+    - map: [ "enum.EdgeLayer.North" ]
+      state: weeds_side_s
+    - map: [ "enum.EdgeLayer.West" ]
+      state: weeds_side_e
+  - type: RandomSprite
+    available:
+    - base:
+        weeds: ""
+        weeds1: ""
+        weeds2: ""
+  - type: SmoothEdge
+  - type: IconSmooth
+    mode: NoSprite
+    key: advxenoweeds
+  - type: Damageable
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Temperature
+    heatCapacity: 3000 # Claw Command - mass x specificHeat, declared so spawning doesn't change it
+  - type: TemperatureDamage # fire_act above 300C
+    heatDamageThreshold: 573
+    heatDamage:
+      types:
+        Heat: 5
+  - type: AtmosExposed
+  - type: Appearance
+
+- type: entity
+  parent: AdvXenoWeeds
+  id: AdvXenoWeedNode
+  name: purple sac
+  description: Weird purple octopus-like thing.
+  components:
+  - type: Construction # resin blob recipe
+    graph: AdvXenoResinStructures
+    node: node
+  - type: AdvXenoWeedNode
+  - type: Sprite
+    sprite: _ClawCommand/Structures/AdvancedXenos/weeds.rsi
+    drawdepth: FloorObjects
+    layers:
+    - state: weednode
+      map: [ "base" ]
+    - map: [ "enum.EdgeLayer.South" ]
+      state: weeds_side_n
+    - map: [ "enum.EdgeLayer.East" ]
+      state: weeds_side_w
+    - map: [ "enum.EdgeLayer.North" ]
+      state: weeds_side_s
+    - map: [ "enum.EdgeLayer.West" ]
+      state: weeds_side_e
+  - type: RandomSprite
+    available:
+    - base:
+        weednode: ""
+  - type: PointLight # light_range = NODERANGE
+    radius: 3
+    energy: 0.8
+    color: "#b28ad1"
+
+# ----------------------------------------------------------------------------- resin
+
+- type: entity
+  abstract: true
+  parent: BaseStructure
+  id: AdvXenoResinBase
+  components:
+  - type: AdvXenoResin
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: Airtight
+  - type: Damageable
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path: /Audio/_ClawCommand/AdvancedXenos/Effects/attackblob.ogg
+  - type: Temperature
+    heatCapacity: 3000000 # Claw Command - mass x specificHeat, declared so spawning doesn't change it
+  - type: TemperatureDamage
+    heatDamageThreshold: 573 # resin melting_point = T0C+300
+    heatDamage:
+      types:
+        Heat: 5
+  - type: AtmosExposed
+  - type: Appearance
+
+- type: entity
+  parent: AdvXenoResinBase
+  id: AdvXenoResinWall
+  name: resin wall
+  description: Purple slime solidified into a wall.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Structures/AdvancedXenos/resin_wall.rsi
+    drawdepth: Walls
+    state: wall0
+  - type: Icon
+    sprite: _ClawCommand/Structures/AdvancedXenos/resin_wall.rsi
+    state: resinwall
+  - type: IconSmooth
+    mode: CardinalFlags
+    key: advxenoresinwall
+    base: wall
+  - type: Occluder
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_ClawCommand/AdvancedXenos/Effects/attackblob.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: AdvXenoResinBase
+  id: AdvXenoResinMembrane
+  name: resin membrane
+  description: Purple slime just thin enough to let light pass through.
+  components:
+  - type: Construction # resin blob recipe
+    graph: AdvXenoResinStructures
+    node: membrane
+  - type: Sprite
+    sprite: _ClawCommand/Structures/AdvancedXenos/resin_membrane.rsi
+    drawdepth: Walls
+    state: membrane0
+  - type: Icon
+    sprite: _ClawCommand/Structures/AdvancedXenos/resin_membrane.rsi
+    state: resinmembrane
+  - type: IconSmooth
+    mode: CardinalFlags
+    key: advxenoresinmembrane
+    base: membrane
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 120
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_ClawCommand/AdvancedXenos/Effects/attackblob.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+# /obj/structure/simple_door/resin: the material door, opens only for the hive.
+- type: entity
+  parent: BaseMaterialDoor
+  id: AdvXenoResinDoor
+  name: resin door
+  description: A slab of hardened resin that peels aside for its makers and nobody else.
+  components:
+  - type: AdvXenoResinDoor
+  - type: Sprite
+    sprite: _ClawCommand/Structures/AdvancedXenos/resin_door.rsi
+    color: "#261438"
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Door
+    bumpOpen: true
+    clickOpen: true
+    canCrush: false
+    closeTimeOne: 0.2
+    closeTimeTwo: 0.6
+    openTimeOne: 0.6
+    openTimeTwo: 0.2
+    openingAnimationTime: 1.1
+    closingAnimationTime: 1.1
+    openSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Effects/attackblob.ogg
+    closeSound:
+      path: /Audio/_ClawCommand/AdvancedXenos/Effects/attackblob.ogg
+  - type: Damageable
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_ClawCommand/AdvancedXenos/Effects/attackblob.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: IconSmooth
+    key: advxenoresinwall
+    mode: NoSprite
+  - type: PlacementReplacement
+    key: advxenoresin
+
+# ----------------------------------------------------------------------------- nest
+
+- type: entity
+  parent: BaseStructure
+  id: AdvXenoNest
+  name: alien nest
+  description: It's a gruesome pile of thick, sticky resin shaped like a nest.
+  components:
+  - type: Construction # resin blob recipe
+    graph: AdvXenoResinStructures
+    node: nest
+  - type: AdvXenoNest
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.05"
+        density: 190
+        mask:
+        - TableMask
+  - type: Sprite
+    sprite: _ClawCommand/Structures/AdvancedXenos/nest.rsi
+    state: nest
+    noRot: true
+  - type: Strap
+    position: Down
+    rotation: -90
+  - type: Damageable
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path: /Audio/_ClawCommand/AdvancedXenos/Effects/attackblob.ogg
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_ClawCommand/AdvancedXenos/Effects/attackblob.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+# ----------------------------------------------------------------------------- egg
+
+- type: entity
+  parent: BaseStructure
+  id: AdvXenoEgg
+  name: egg
+  description: It looks like a weird egg.
+  components:
+  - type: AdvXenoEgg
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Sprite
+    sprite: _ClawCommand/Structures/AdvancedXenos/egg.rsi
+    drawdepth: SmallObjects
+    noRot: true
+    layers:
+    - state: egg_growing
+      map: [ "enum.AdvXenoEggVisuals.Status" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AdvXenoEggVisuals.Status:
+        enum.AdvXenoEggVisuals.Status:
+          Growing: { state: egg_growing }
+          Grown: { state: egg }
+          Bursting: { state: egg_opening }
+          Burst: { state: egg_opened }
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Biological
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 140
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_ClawCommand/AdvancedXenos/Effects/attackblob.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Temperature
+    heatCapacity: 145800 # Claw Command - mass x specificHeat, declared so spawning doesn't change it
+  - type: TemperatureDamage # fire_act above 500C
+    heatDamageThreshold: 773
+    heatDamage:
+      types:
+        Heat: 5
+  - type: AtmosExposed
+  - type: InteractionOutline
+
+# An egg that is ready to hatch, for mapping and admins.
+- type: entity
+  parent: AdvXenoEgg
+  id: AdvXenoEggGrown
+  suffix: Grown
+  components:
+  - type: AdvXenoEgg
+    status: Grown
+
+# ----------------------------------------------------------------------------- acid
+
+- type: entity
+  id: AdvXenoAcid
+  name: acid
+  description: Burbling corrosive stuff. I wouldn't want to touch it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AdvXenoAcid
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    sprite: _ClawCommand/Structures/AdvancedXenos/acid.rsi
+    state: acid
+    drawdepth: Effects
+  - type: Clickable
+  - type: PointLight
+    radius: 1.2
+    energy: 0.5
+    color: "#4cff2e"
+
+# ----------------------------------------------------------------------------- chestburst
+
+- type: entity
+  id: AdvXenoChestburstEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    noRot: false
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/burst.rsi
+    state: burst_stand
+    drawdepth: OverMobs
+  - type: TimedDespawn
+    lifetime: 1.2
+
+- type: entity
+  parent: AdvXenoChestburstEffect
+  id: AdvXenoChestburstEffectLying
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/AdvancedXenos/burst.rsi
+    state: burst_lie
+    drawdepth: OverMobs

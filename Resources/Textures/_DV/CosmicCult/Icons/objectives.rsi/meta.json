@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Sprites by AftrLite(Github).",
+    "copyright": "Sprites by AftrLite(Github). Ported via Goob-Station (https://github.com/Goob-Station/Goob-Station, master snapshot, commit da08589c83cc4f503c1c8450767e54f85157b951).",
     "size": {
         "x": 32,
         "y": 32
@@ -18,6 +18,12 @@
         },
         {
             "name": "infection"
+        },
+        {
+            "name": "colossus"
+        },
+        {
+            "name": "effigy"
         }
     ]
 }

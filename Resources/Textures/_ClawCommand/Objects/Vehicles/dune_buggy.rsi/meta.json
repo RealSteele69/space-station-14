@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/f1893fa0a0f6443db1ab61ffc2f70861bfad4b74/icons/vore/rover_vr.dmi (originally from VOREStation (imported into Citadel RP by deathride58, 2018)). Converted from DMI for Claw Command.",
+    "size": {
+        "x": 48,
+        "y": 48
+    },
+    "states": [
+        {
+            "name": "vehicle",
+            "directions": 4
+        }
+    ]
+}

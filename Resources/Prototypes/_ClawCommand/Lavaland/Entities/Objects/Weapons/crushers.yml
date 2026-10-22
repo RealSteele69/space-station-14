@@ -1,0 +1,262 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Crushers that take the lavaland crusher upgrades (Upgrades/crusher_upgrades.yml) through ItemSlots:
+# a main capsule (kinetic marker, rude buster), a blade and a handle. The plain crusher axe / glaive /
+# dagger are the shared ones in Entities/Objects/Weapons/Melee/mining.yml and are left as they are; the
+# *FilledRandom loot variants below are upgradeable versions of them.
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: BaseWeaponCrusherUpgradeable
+  name: crusher
+  description: An early design of the proto-kinetic accelerator.
+  components:
+  - type: Appearance
+  - type: Item
+    size: Ginormous
+  - type: MegafaunaWeaponLooter # TODO reconsider this component entirely
+  - type: Tool
+    qualities:
+    - Slicing
+  - type: Execution
+    doAfterDuration: 4.0
+  - type: DisarmMalus
+  - type: Prying
+  - type: MeleeWeapon
+    range: 2 # Enough range so if you're skilled enough you can avoid being hit by a slow enemy
+    attackRate: 1
+    animationRotation: -135
+    wideAnimationRotation: -135
+    soundHit:
+      collection: MetalThud
+  - type: PressureDamageChange
+  - type: Wieldable
+  - type: GunRequiresWield
+  - type: UseDelayBlockMelee
+  - type: UseDelay
+    delay: 1
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: ItemUpgradeable
+  - type: ContainerContainer
+    containers:
+      flashlight: !type:ContainerSlot
+      upgrade_slot_main: !type:ContainerSlot
+      upgrade_slot_blade: !type:ContainerSlot
+      upgrade_slot_handle: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      flashlight:
+        name: weapon-upgrade-slot-name-flashlight
+        priority: 6
+        ejectOnBreak: true
+        whitelist:
+          components:
+          - GunUpgradeFlashlight
+      # Main upgrade is attached to the central part and is used to add actions
+      upgrade_slot_main:
+        name: weapon-upgrade-slot-name-main
+        swap: false
+        priority: 5
+        whitelist:
+          tags:
+          - CrusherUpgradeMain
+      # Handle Secondary upgrade improves damage stats
+      upgrade_slot_handle:
+        name: weapon-upgrade-slot-name-handle
+        swap: false
+        priority: 3
+        whitelist:
+          tags:
+          - CrusherUpgradeHandle
+      # Blade Special upgrade applies some effects to attacked enemies
+      upgrade_slot_blade:
+        name: weapon-upgrade-slot-name-blade
+        swap: false
+        priority: 4
+        whitelist:
+          tags:
+          - CrusherUpgradeBlade
+  - type: ItemMapper
+    mapLayers:
+      flashlight:
+        whitelist:
+          components:
+          - GunUpgradeFlashlight
+      upgrade-marker:
+        whitelist:
+          tags:
+          - CrusherUpgradeMainMarker
+      upgrade-rude-buster:
+        whitelist:
+          tags:
+          - CrusherUpgradeMainRudeBuster
+      upgrade-lava-aspect:
+        whitelist:
+          tags:
+          - CrusherUpgradeBladeLavaAspect
+      upgrade-ice-frost:
+        whitelist:
+          tags:
+          - CrusherUpgradeBladeIceFrost
+      upgrade-sharpness:
+        whitelist:
+          tags:
+          - CrusherUpgradeBladeSharpness
+      upgrade-handle-weights:
+        whitelist:
+          tags:
+          - CrusherUpgradeHandleWeights
+      upgrade-handle-lightweight:
+        whitelist:
+          tags:
+          - CrusherUpgradeHandleLightweight
+      upgrade-handle-range:
+        whitelist:
+          tags:
+          - CrusherUpgradeHandleRange
+  - type: Tag
+    tags:
+    - Pickaxe
+
+- type: entity
+  parent: [ BaseWeaponCrusherUpgradeable, BaseSalvageContraband ]
+  id: WeaponCrusherHammer
+  name: crusher hammer
+  description: A beefy, two-handed weapon that inflicts heavier damage than a crusher.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Crushers/crusher_hammer.rsi
+    state: icon
+  - type: MeleeWeapon # Slower attack speed but higher damage makes it more risky and rewarding to use
+    attackRate: 0.6
+    damage:
+      types:
+        Blunt: 12
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 13
+        Structural: 15 # Breaks weak rocks effectively
+  - type: Item
+    size: Ginormous
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Crushers/crusher_hammer-inhands.rsi
+  # Claw Command: no Hammering tool quality in this fork, so the hammer keeps the base crusher Tool.
+
+- type: entity
+  parent: [ BaseWeaponCrusherUpgradeable, BaseSalvageContraband ]
+  id: WeaponCrusherHalberd
+  name: crusher halberd
+  description: A universal weapon that combines the power of a crusher and the range of a spear.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Crushers/crusher_halberd.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Crushers/crusher_halberd-inhands.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Crushers/crusher_halberd.rsi
+  # Basically a crusher but better
+  - type: MeleeWeapon
+    range: 2.2
+    damage:
+      types:
+        Slash: 6
+        Blunt: 5
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 3
+        Slash: 3
+        Structural: 15 # Breaks weak rocks effectively
+
+# Random upgrades
+- type: entity
+  id: CrusherRandomUpgradesFill
+  suffix: Random Upgrades
+  abstract: true
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      flashlight:
+        id: FlashlightSeclite
+        prob: 0.5
+      upgrade_slot_main: !type:NestedSelector
+        tableId: CrusherUpgradesMain
+        prob: 0.67
+      upgrade_slot_blade: !type:NestedSelector
+        tableId: CrusherUpgradesBlade
+        prob: 0.75
+      upgrade_slot_handle: !type:NestedSelector
+        tableId: CrusherUpgradesHandle
+        prob: 0.75
+
+# Upgradeable crusher axe (lavaland crusher axe look and stats) with random upgrades.
+- type: entity
+  parent: [ CrusherRandomUpgradesFill, BaseWeaponCrusherUpgradeable, BaseSalvageContraband ]
+  id: WeaponCrusherFilledRandom
+  name: crusher axe
+  description: An early design of the proto-kinetic accelerator.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Crushers/crusher.rsi
+    layers:
+    - state: icon
+  - type: Item
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Crushers/crusher-inhands.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Crushers/crusher.rsi
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 6
+        Blunt: 5
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 4
+        Structural: 8
+
+# Upgradeable crusher glaive with random upgrades.
+- type: entity
+  parent: [ CrusherRandomUpgradesFill, BaseWeaponCrusherUpgradeable, BaseSalvageContraband ]
+  id: WeaponCrusherGlaiveFilledRandom
+  name: crusher glaive
+  description: An early design of the proto-kinetic accelerator, in glaive form. Provides better healing in exchange for less charged damage.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Crushers/crusher_glaive.rsi
+    state: icon
+  - type: Item
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Crushers/crusher_glaive-inhands.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Lavaland/Objects/Weapons/Crushers/crusher_glaive.rsi
+  - type: MeleeWeapon
+    attackRate: 1.1
+    range: 2.5
+    animation: WeaponArcThrust
+    angle: 0
+    animationRotation: -135
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Piercing: 5
+        Slash: 4
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 3
+        Structural: 8
+
+- type: entity
+  parent: [ CrusherRandomUpgradesFill, WeaponCrusherHammer ]
+  id: WeaponCrusherHammerFilledRandom
+
+- type: entity
+  parent: [ CrusherRandomUpgradesFill, WeaponCrusherHalberd ]
+  id: WeaponCrusherHalberdFilledRandom

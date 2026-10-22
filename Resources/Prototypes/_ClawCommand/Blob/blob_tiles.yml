@@ -1,0 +1,326 @@
+# Claw Command - blob tiles. Every tile has less health than in the original, see the guidebook entry for the numbers.
+
+- type: entity
+  id: BaseBlob
+  abstract: true
+  name: base blob
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: ZombieImmune
+  - type: Reactive
+    groups:
+      Flammable: [Touch]
+      Extinguish: [Touch]
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: FireVisuals
+    sprite: Effects/fire.rsi
+    normalState: 1
+  - type: Damageable
+    damageModifierSet: BaseBlob
+  - type: Injurable
+    damageContainer: Blob
+  - type: Appearance
+  - type: Physics
+  - type: Clickable
+  - type: Transform
+    anchored: true
+  - type: BlockTeleport
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+        - BlobTileLayer
+        density: 1000
+  - type: GuideHelp
+    guides:
+    - Blob
+
+# Held by the observer so its clicks reach the blob. Never dropped, never seen in the world.
+- type: entity
+  id: MobObserverBlobController
+  name: blob tendril
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Blob/Mobs/blob.rsi
+    state: blob
+  - type: Item
+    size: Ginormous
+  - type: Unremoveable
+    deleteOnDrop: true
+
+- type: entity
+  id: SpawnPointGhostBlob
+  name: Blob
+  suffix: DONTMAP, spawner
+  parent: MarkerBase
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: CoreBlobTile
+  - type: GhostRole
+    name: ghost-role-information-blob-name
+    description: ghost-role-information-blob-description
+    rules: ghost-role-information-blob-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: _ClawCommand/Blob/Mobs/blob.rsi
+      state: blob_nuke_overlay
+
+- type: entity
+  abstract: true
+  parent: BaseBlob
+  id: BaseBlobFlammable
+  components:
+  - type: Temperature
+    heatCapacity: 3000000 # Claw Command - mass x specificHeat, declared so spawning doesn't change it
+  - type: TemperatureDamage
+    heatDamage:
+      types:
+        Heat: 5
+    coldDamage: {}
+    coldDamageThreshold: 0
+  - type: Flammable
+    fireSpread: true
+    damage:
+      types:
+        Heat: 1
+
+- type: entity
+  parent: BaseBlobFlammable
+  id: CoreBlobTile
+  name: blob core
+  description: The most important organ of the blob. Destroy it and the whole infection dies.
+  save: false
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: BlobTile
+    blobTileType: Core
+  - type: Store
+    currencyWhitelist:
+    - BlobPoint
+  - type: BlobCore
+    actionPrototypes:
+    - ActionSwapBlobChem
+    - ActionTeleportBlobToCore
+    - ActionCreateBlobFactory
+    - ActionCreateBlobResource
+    - ActionCreateBlobNode
+    - ActionCreateBlobbernaut
+    - ActionSplitBlobCore
+    - ActionSwapBlobCore
+    - ActionDowngradeBlob
+  - type: BlobNode
+  - type: BlobResource
+    pointsPerPulsed: 3 # Claw Command - 5 in the original
+  - type: Sprite
+    sprite: _ClawCommand/Blob/Mobs/blob.rsi
+    drawdepth: HighFloorObjects
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: blob_core
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: blob_core_glow
+    - state: blob_core_overlay
+  - type: WarpPoint
+    location: blob-warp-core
+  - type: GhostRole
+    prob: 1
+    name: ghost-role-information-blob-name
+    description: ghost-role-information-blob-description
+    rules: ghost-role-information-blob-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    reregister: false
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+
+- type: entity
+  parent: BaseBlobFlammable
+  id: NormalBlobTile
+  name: blob
+  categories: [ HideSpawnMenu ]
+  description: A pulsing mass of the blob. Weak on its own, but it can be grown into tougher tiles.
+  components:
+  - type: BlobTile
+    blobTileType: Normal
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Sprite
+    sprite: _ClawCommand/Blob/Mobs/blob.rsi
+    drawdepth: HighFloorObjects
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: blob
+
+- type: entity
+  parent: BaseBlobFlammable
+  id: FactoryBlobTile
+  name: factory blob
+  description: Spits out blob spores, and once a blobbernaut. Only works next to a node or the core.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: BlobTile
+    blobTileType: Factory
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: BlobFactory
+  - type: Sprite
+    sprite: _ClawCommand/Blob/Mobs/blob.rsi
+    drawdepth: HighFloorObjects
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: blob_special
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: blob_glow_special
+
+- type: entity
+  parent: BaseBlobFlammable
+  id: ResourceBlobTile
+  name: resource blob
+  description: Feeds the blob. Only works next to a node or the core.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: BlobTile
+    blobTileType: Resource
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: BlobResource
+    pointsPerPulsed: 2 # Claw Command - 3 in the original
+  - type: Sprite
+    sprite: _ClawCommand/Blob/Mobs/blob.rsi
+    drawdepth: HighFloorObjects
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: blob_special
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: blob_glow_special
+    - state: blob_resource_overlay
+
+- type: entity
+  parent: BaseBlobFlammable
+  id: NodeBlobTile
+  name: blob node
+  description: A smaller core. It heals nearby blob, powers factories and resource blobs next to it, and lets the blob grow further.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: BlobTile
+    blobTileType: Node
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: BlobNode
+  - type: Sprite
+    sprite: _ClawCommand/Blob/Mobs/blob.rsi
+    drawdepth: HighFloorObjects
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: blob_node
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: blob_node_glow
+    - state: blob_node_overlay
+
+- type: entity
+  parent: BaseBlob
+  id: StrongBlobTile
+  name: strong blob
+  description: A hardened wall of blob. It holds back air and shrugs off blows, but fire still hurts it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Airtight
+  - type: BlobTile
+    blobTileType: Strong
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 120
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Sprite
+    sprite: _ClawCommand/Blob/Mobs/blob.rsi
+    drawdepth: HighFloorObjects
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: blob_shield
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: blob_glow
+
+- type: entity
+  parent: BaseBlob
+  id: ReflectiveBlobTile
+  name: reflective blob
+  description: A glossy blob wall that bounces some lasers back, but breaks easily under blows.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Airtight
+  - type: BlobTile
+    blobTileType: Reflective
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Damageable
+    damageModifierSet: BlobReflective
+  - type: Reflect
+    reflectProb: 0.6 # Claw Command - always reflected in the original
+    spread: 30
+    reflects:
+    - Energy
+  - type: Sprite
+    sprite: _ClawCommand/Blob/Mobs/blob.rsi
+    drawdepth: HighFloorObjects
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: blob_shield
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: blob_glow
+      shader: unshaded

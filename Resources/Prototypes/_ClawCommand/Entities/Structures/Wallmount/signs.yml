@@ -97,6 +97,7 @@
   - type: Sprite
     state: exit
     noRot: true
+    snapCardinals: false # the exit state is 4-directional
 
 # 64x32
 - type: entity

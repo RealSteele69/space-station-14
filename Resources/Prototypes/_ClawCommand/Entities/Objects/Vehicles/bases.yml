@@ -1,0 +1,306 @@
+# Claw Command - shared bases for the ported wheeled vehicles.
+# Open vehicles seat the driver on top (strap); enclosed vehicles hide driver + passengers inside a container.
+
+# Open vehicle: rider is buckled on top. Unbuckle to get off.
+# Sprite keeps the default Objects depth so the rider draws over it; the fork's BuckleSystem raises
+# the vehicle over the rider while it faces north (Strap.modifyBuckleDrawDepth).
+- type: entity
+  abstract: true
+  parent: BaseVehicleStrap
+  id: BaseVehicleRiddenClaw
+  components:
+  - type: RequireProjectileTarget
+  - type: Repairable
+    damageValue: -20
+    doAfterDelay: 1
+    fuelCost: 3
+    allowSelfRepair: false
+  - type: Appearance
+  - type: VehicleHandBlocker
+  - type: VehicleControls
+    criticalThreshold: 160
+    damagedThreshold: 100
+    exitAction: null
+  # Car handling, crashes and run-overs (VehicleHandlingController). Open vehicles: the rider takes the
+  # vehicle's full crash damage through damage transfer, and gets thrown off in big crashes.
+  - type: VehicleHandling
+    runOverSpeedLoss: 0.3
+    coasting: 3
+    grip: 12
+    crashDamage:
+      types:
+        Blunt: 1.5
+    obstacleDamage:
+      types:
+        Structural: 3
+        Blunt: 2
+    occupantDamage:
+      types:
+        Blunt: 1.5
+    runOverDamage:
+      types:
+        Blunt: 2.5
+    ejectSpeedLoss: 5
+  - type: GravityAffected
+  - type: Damageable
+    damageModifierSet: VehicleFrameLight
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 3
+          PartRodMetal1:
+            min: 1
+            max: 2
+          CableApcStack1:
+            min: 1
+            max: 1
+          PuddleOilVehicleWreck:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+# Open vehicle with an engine: headlights, and it goes up in a (floor-safe) fireball when wrecked.
+- type: entity
+  abstract: true
+  parent: BaseVehicleRiddenClaw
+  id: BaseVehicleRiddenMotorClaw
+  components:
+  - type: UnpoweredFlashlight
+  - type: PointLight
+    enabled: false
+    radius: 3.5
+    softness: 2
+    lightMask: ConeSingle
+    autoRot: true
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 12
+    intensitySlope: 4
+    maxIntensity: 4
+    maxTileBreak: 0
+    canCreateVacuum: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 3
+          PartRodMetal1:
+            min: 1
+            max: 2
+          CableApcStack1:
+            min: 1
+            max: 1
+          PuddleOilVehicleWreck:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:ExplodeBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+# Enclosed car: driver and passengers ride hidden inside. Enter by drag-drop or the Enter verb,
+# leave with the Exit vehicle action; anyone outside can pull the driver out with a do-after.
+- type: entity
+  abstract: true
+  id: BaseVehicleEnclosedClaw
+  components:
+  - type: RequireProjectileTarget
+  - type: Repairable
+    damageValue: -25
+    doAfterDelay: 2
+    fuelCost: 5
+    allowSelfRepair: false
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+  - type: InputMover
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Appearance
+  - type: Physics
+    bodyType: KinematicController
+  - type: Vehicle
+    canAttack: false
+    transferDamageModifier:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.4
+        Heat: 0.4
+  - type: ContainerVehicle
+    containerId: vehicle_occupants
+  - type: ContainerVehicleEntry
+    entryDelay: 2
+    exitDelay: 4
+  - type: VehicleControls
+    criticalThreshold: 320
+    damagedThreshold: 200
+    maxOccupants: 2
+  # Car handling, crashes and run-overs (VehicleHandlingController). Occupants are shielded: the driver gets
+  # 40% through damage transfer, passengers a little each.
+  - type: VehicleHandling
+    runOverSpeedLoss: 0.2
+    coasting: 2.5
+    grip: 9
+    turnRate: 200
+    turnRateAtTopSpeed: 80
+    acceleration: 3.5
+    crashDamage:
+      types:
+        Blunt: 2
+    obstacleDamage:
+      types:
+        Structural: 5
+        Blunt: 3
+    occupantDamage:
+      types:
+        Blunt: 0.6
+    runOverDamage:
+      types:
+        Blunt: 3.5
+    ejectSpeedLoss: null
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 20
+    intensitySlope: 4
+    maxIntensity: 6
+    maxTileBreak: 0
+    canCreateVacuum: false
+  - type: ContainerContainer
+    containers:
+      vehicle_occupants: !type:Container
+  - type: MovementSpeedModifier
+    weightlessModifier: 0
+    acceleration: 2
+    friction: 2
+    frictionNoInput: 6
+    baseWalkSpeed: 4
+    baseSprintSpeed: 6
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 600
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - TableLayer
+  - type: UnpoweredFlashlight
+  - type: PointLight
+    enabled: false
+    radius: 5
+    softness: 2
+    lightMask: ConeSingle
+    autoRot: true
+  - type: GravityAffected
+  - type: Damageable
+    damageModifierSet: VehicleFrameCar
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 2
+            max: 5
+          PartRodMetal1:
+            min: 1
+            max: 2
+          CableApcStack1:
+            min: 1
+            max: 1
+          PuddleOilVehicleWreck:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ExplodeBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+
+# Unpowered trailer/trolley: pulled by hand (existing pull + strap prediction), no towing.
+- type: entity
+  abstract: true
+  id: BaseVehicleTrailerClaw
+  components:
+  - type: Repairable
+    damageValue: -20
+    doAfterDelay: 1
+    fuelCost: 2
+  - type: Sprite
+    noRot: true
+    drawdepth: Objects
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Appearance
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.4
+        density: 200
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - TableLayer
+  - type: Pullable
+  - type: Damageable
+    damageModifierSet: VehicleFrameLight
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

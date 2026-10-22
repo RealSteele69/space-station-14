@@ -65,7 +65,7 @@
     sprite: Objects/Consumable/Food/Baked/pizza.rsi
     state: margherita
   product: CrateFoodPizzaLarge
-  cost: 1800
+  cost: 4000 # Claw Command - was 1800; 16 pizzas sold for ~3800 (arbitrage)
   category: cargoproduct-category-name-food
   group: market
 

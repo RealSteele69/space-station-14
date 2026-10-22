@@ -1,0 +1,55 @@
+# Ported from RMC-14 (https://github.com/RMC-14/RMC-14, MIT), Resources/Prototypes/_RMC14/Entities/Structures/rmc_fuel_pump.yml.
+# Decorative only: RMC-specific components (xeno charge/acid, vehicle smashing, minimap, mesons,
+# dropship blocking, construction graphs) were stripped. Sprites are CMSS13/RMC art, credited in each meta.json.
+
+- type: entity
+  id: RMCFuelPump
+  name: fuel pump
+  description: It is a machine that pumps fuel around the ship.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-2.49,-0.49,1.49,0.49"
+        density: 100
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: InteractionOutline
+  - type: Clickable
+  # RMC's fuel pump drives its evacuation event (EvacuationPump); here it's set dressing that
+  # animates and hums while it has APC power.
+  - type: ApcPowerReceiver
+    powerLoad: 200
+  - type: Sprite
+    sprite: _RMC14/Structures/Power/fuel_pump.rsi
+    offset: -0.5,0
+    layers:
+    - state: fuelpump_off
+    - state: fuelpump_100
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+      visible: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    enabled: true
+    sound:
+      path: /Audio/_RMC14/Machines/fuel_pump_idle.ogg
+    range: 12
+    volume: -3

@@ -1,4 +1,5 @@
 #nullable enable
+using Content.Shared._ClawCommand.CCVar;
 using Content.Shared.CCVar;
 
 namespace Content.IntegrationTests;
@@ -36,5 +37,10 @@ public static partial class PoolManager
         (CCVars.InteractionRateLimitPeriod.Name, "0.1"),
         (CCVars.MovementMobPushing.Name, "false"),
         (CCVars.ResourceUploadingStoreDeletionDays.Name, "0"),
+        (ClawCCVars.VoteAutoLobbyVotes.Name, "false"), // Claw Command - dummy test sessions can't receive vote updates
+        (CCVars.WalkByDefault.Name, "false"), // Claw Command - fork defaults to walking; movement tests assume upstream run speed
+        (CCVars.MoodIncreasesSpeed.Name, "false"), // Claw Command - a fed, fresh mob starts above neutral mood, which speeds it up
+        (CCVars.MoodDecreasesSpeed.Name, "false"), // Claw Command - keep mood out of movement-speed assertions
+        (CCVars.SpaceWind.Name, "false"), // Claw Command - the ported space wind throws mobs while freshly built test tiles settle
     };
 }

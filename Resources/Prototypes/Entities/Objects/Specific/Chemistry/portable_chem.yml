@@ -52,10 +52,10 @@
           - Bottle
           - PillCanister
 
-  - type: SolutionContainerManager
-    solutions:
-      buffer:
-        maxVol: 100
+  - type: Solution # Claw Command - SolutionContainerManager extra solutions are wiped on map init now
+    id: buffer
+    solution:
+      maxVol: 100
 
   - type: DumpableSolution
     solution: buffer

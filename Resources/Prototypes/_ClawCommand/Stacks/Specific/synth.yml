@@ -1,0 +1,8 @@
+# Claw Command - synth medical stacks.
+
+- type: stack
+  parent: BaseSmallStack
+  id: SynthBloodpack
+  name: stack-synthbloodpack
+  icon: { sprite: "/Textures/_ClawCommand/Objects/Specific/Medical/synthpack.rsi", state: synthpack }
+  spawn: SynthBloodpack

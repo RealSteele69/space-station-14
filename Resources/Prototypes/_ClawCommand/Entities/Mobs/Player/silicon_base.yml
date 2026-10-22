@@ -66,9 +66,7 @@
         1: 0.45
         0: 0.00
     - type: Temperature
-      currentTemperature: 310.15
-      specificHeat: 42
-      atmosTemperatureTransferEfficiency: 0.05
+      thermalConductivity: 75 # half the default exchange rate, as before the heat model rewrite
     - type: TemperatureDamage
       heatDamageThreshold: 1800
       coldDamageThreshold: 260

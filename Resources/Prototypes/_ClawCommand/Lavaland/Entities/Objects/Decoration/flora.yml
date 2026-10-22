@@ -77,14 +77,9 @@
         sprout4: ""
         sprout5: ""
         sprout6: ""
-  #- type: Gatherable # TODO add proper loot
-  #  toolWhitelist:
-  #    components:
-  #    - Hands
-  #  loot:
-  #    All: !type:GroupSelector
-  #      children:
-  #      - id: FoodSpaceshroom
+  - type: Harvestable
+    delay: 2
+    loot: MaterialFlowersAsh1
 
 - type: entity
   name: pale sprouts
@@ -106,17 +101,12 @@
         sprout4: ""
         sprout5: ""
         sprout6: ""
-  #- type: Gatherable # TODO add proper loot
-  #  toolWhitelist:
-  #    components:
-  #    - Hands
-  #  loot:
-  #    All: !type:GroupSelector
-  #      children:
-  #      - id: FoodSpaceshroom
+  - type: Harvestable
+    delay: 2
+    loot: MaterialFlowersPale1
 
 - type: entity
-  name: pale sprouts
+  name: yellow flowers
   id: FloraAshYellowFlowers
   parent: BaseLavalandFlora
   description: A group of yellow flowers. They look weak, and yet still manage to survive in this place.
@@ -132,11 +122,6 @@
         flowers1: ""
         flowers2: ""
         flowers3: ""
-  #- type: Gatherable # TODO add proper loot
-  #  toolWhitelist:
-  #    components:
-  #    - Hands
-  #  loot:
-  #    All: !type:GroupSelector
-  #      children:
-  #      - id: FoodSpaceshroom
+  - type: Harvestable
+    delay: 2
+    loot: MaterialFlowersPale1

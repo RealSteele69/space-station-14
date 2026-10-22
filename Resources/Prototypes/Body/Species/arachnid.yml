@@ -149,6 +149,8 @@
     sprite:
       sprite: Effects/creampie.rsi
       state: creampie_arachnid
+  - type: CosmicMarkVisuals # Claw Command - Cosmic Cult
+    subtleState: arachnid
 
 - type: entity
   parent: OrganBaseOrganic

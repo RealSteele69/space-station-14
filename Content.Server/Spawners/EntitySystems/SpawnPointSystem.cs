@@ -1,4 +1,5 @@
-﻿using Content.Server.GameTicking;
+﻿using Content.Server._ClawCommand.Shadekin;
+using Content.Server.GameTicking;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Systems;
 using Robust.Shared.Map;
@@ -27,10 +28,20 @@ public sealed partial class SpawnPointSystem : EntitySystem
         var points = EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
         var possiblePositions = new List<EntityCoordinates>();
 
+        // _ClawCommand: the station's generated hideout maps (the Dark) are not station grids, but
+        // explicit job markers on them (the Anomaly spawner) still belong to this station.
+        TryComp<HideoutGeneratorComponent>(args.Station, out var hideout);
+
         while (points.MoveNext(out var uid, out var spawnPoint, out var xform))
         {
             if (args.Station != null && _stationSystem.GetOwningStation(uid, xform) != args.Station)
-                continue;
+            {
+                if (hideout == null
+                    || !hideout.Generated.Contains(xform.MapID)
+                    || spawnPoint.Job == null
+                    || spawnPoint.Job != args.Job)
+                    continue;
+            }
 
             // _ClawCommand: spawn point accepts the player if no job constraint, or the
             // primary job matches, or the requested job is in AdditionalJobs (lets the

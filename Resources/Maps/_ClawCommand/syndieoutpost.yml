@@ -2004,13 +2004,11 @@ entities:
   - uid: 129
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 8.5,10.5
       parent: 1
   - uid: 137
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 9.5,10.5
       parent: 1
   - uid: 186
@@ -2046,7 +2044,6 @@ entities:
   - uid: 310
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 9.5,11.5
       parent: 1
   - uid: 328
@@ -2062,7 +2059,6 @@ entities:
   - uid: 331
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 8.5,11.5
       parent: 1
   - uid: 383
@@ -5136,7 +5132,6 @@ entities:
     - type: DeviceLinkSink
       links:
       - 46
-    - type: Timer
   - uid: 770
     components:
     - type: Transform
@@ -5155,7 +5150,6 @@ entities:
     - type: DeviceLinkSink
       links:
       - 46
-    - type: Timer
   - uid: 772
     components:
     - type: Transform
@@ -5174,7 +5168,6 @@ entities:
     - type: DeviceLinkSink
       links:
       - 46
-    - type: Timer
   - uid: 774
     components:
     - type: Transform

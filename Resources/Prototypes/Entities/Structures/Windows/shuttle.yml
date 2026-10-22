@@ -44,6 +44,8 @@
       sprite: Structures/Windows/cracks.rsi
   - type: StaticPrice
     price: 150
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: WindowCosmicCult
 
 - type: entity
   parent: ShuttleWindow

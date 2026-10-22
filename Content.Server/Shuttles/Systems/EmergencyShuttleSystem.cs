@@ -1,3 +1,4 @@
+using Content.Server._ClawCommand.CosmicCult.Events; // CLAW COMMAND
 using System.Linq;
 using System.Numerics;
 using System.Threading;
@@ -441,6 +442,8 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
 
         _consoleAccumulator = ConfigManager.GetCVar(CCVars.EmergencyShuttleDockTime);
         EmergencyShuttleArrived = true;
+
+        RaiseLocalEvent(new EvacShuttleDockedEvent()); // CLAW COMMAND - stops the Cosmic Cult finale once evac docks
 
         var query = AllEntityQuery<StationEmergencyShuttleComponent>();
 

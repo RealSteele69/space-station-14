@@ -28,8 +28,7 @@
   name: permanent prisoner ID card
   description: A prisoner ID card for long-term inmates. This card does not expire.
   components:
-  - type: ExpireIdCard
-    permanent: true
+  - type: ExpireIdCard # No expire time means it never expires; if one is ever set, expiring still grants nothing.
     expiredAccess: []
 
 - type: chameleonOutfit

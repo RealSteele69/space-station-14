@@ -1,3 +1,4 @@
+using Content.Shared._ClawCommand.CosmicCult.Components; // CLAW COMMAND
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Components;
@@ -127,6 +128,10 @@ public sealed partial class RespiratorSystem : EntitySystem
                         ignoreActionBlocker: true);
                 }
 
+                // CLAW COMMAND - empowered Cosmic Cultists still gasp in vacuum but don't asphyxiate while conscious.
+                if (TryComp<CosmicCultComponent>(uid, out var cult) && !cult.Respiration && !_mobState.IsIncapacitated(uid))
+                    continue;
+
                 TakeSuffocationDamage((uid, respirator));
                 respirator.SuffocationCycles += 1;
                 continue;
@@ -239,7 +244,8 @@ public sealed partial class RespiratorSystem : EntitySystem
     /// <returns>Returns true only if the gas mixture is not toxic, and it wouldn't suffocate.</returns>
     public bool CanMetabolizeInhaledAir(Entity<RespiratorComponent?> ent, GasMixture gas)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        // Claw Command - quiet like the overload above; species without a respirator (shadowkin) still have internals.
+        if (!Resolve(ent, ref ent.Comp, false))
             return false;
 
         var ev = new CanMetabolizeGasEvent(gas);

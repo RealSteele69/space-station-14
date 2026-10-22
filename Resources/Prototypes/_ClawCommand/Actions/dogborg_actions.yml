@@ -15,8 +15,11 @@
   components:
   - type: Action
     useDelay: 1
-    icon: Interface/Actions/scream.png
     checkCanInteract: false
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/scream.png
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:DogborgSitActionEvent
 
@@ -28,8 +31,11 @@
   components:
   - type: Action
     useDelay: 1
-    icon: Interface/Actions/scream.png
     checkCanInteract: false
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/scream.png
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:DogborgRestActionEvent
 
@@ -41,7 +47,10 @@
   components:
   - type: Action
     useDelay: 1
-    icon: Interface/Actions/scream.png
     checkCanInteract: false
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/scream.png
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:DogborgBellyUpActionEvent

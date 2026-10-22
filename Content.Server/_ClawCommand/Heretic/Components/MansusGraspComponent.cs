@@ -18,20 +18,24 @@ namespace Content.Server.Heretic.Components;
 [RegisterComponent, Access(typeof(MansusGraspSystem))]
 public sealed partial class MansusGraspComponent : Component
 {
+    // Claw Command - balance: was 10s.
     [DataField]
-    public TimeSpan CooldownAfterUse = TimeSpan.FromSeconds(10);
+    public TimeSpan CooldownAfterUse = TimeSpan.FromSeconds(15);
 
     [DataField]
     public EntityWhitelist Blacklist = new();
 
+    // Claw Command - balance: was 5s knockdown + 80 stamina, which stamcrit a target off any follow-up hit.
+    // A grasp is now an opener that still needs a fight, not a free kill.
     [DataField]
-    public TimeSpan KnockdownTime = TimeSpan.FromSeconds(5f);
+    public TimeSpan KnockdownTime = TimeSpan.FromSeconds(3f);
 
     [DataField]
-    public float StaminaDamage = 80f;
+    public float StaminaDamage = 50f;
 
+    // Claw Command - balance: was 10s; victims get to call for help sooner.
     [DataField]
-    public TimeSpan SpeechTime = TimeSpan.FromSeconds(10f);
+    public TimeSpan SpeechTime = TimeSpan.FromSeconds(6f);
 
     [DataField]
     public TimeSpan AffectedTime = TimeSpan.FromMinutes(5);

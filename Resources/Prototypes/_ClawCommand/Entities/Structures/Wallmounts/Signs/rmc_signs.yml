@@ -1,0 +1,79 @@
+# Wall signs for states in the RMC-14 decals.rsi (CMSS13 art, credited in its meta.json) that RMC itself
+# never gave an entity. Written for the RMC industrial/road prop port; the rest of that port lives in
+# Resources/Prototypes/_RMC14.
+
+- type: entity
+  abstract: true
+  parent: BaseSign
+  id: BaseSignRMCDecal
+  components:
+  - type: Sprite
+    sprite: _RMC14/Structures/decals.rsi
+
+- type: entity
+  parent: BaseSignRMCDecal
+  id: SignRMCTraffic
+  name: traffic sign
+  description: A round blue road sign with two arrows. Traffic goes both ways.
+  components:
+  - type: Sprite
+    state: arcturian_stop_sign
+
+- type: entity
+  parent: BaseSignRMCDecal
+  id: SignRMCFireHazard
+  name: fire hazard sign
+  description: A sign warning of flammable materials nearby.
+  components:
+  - type: Sprite
+    state: fire
+
+- type: entity
+  parent: BaseSignRMCDecal
+  id: SignRMCNoSmoking
+  name: no smoking sign
+  description: A warning sign which reads 'NO SMOKING'.
+  components:
+  - type: Sprite
+    state: nosmoking
+
+- type: entity
+  parent: SignRMCNoSmoking
+  id: SignRMCNoSmoking2
+  components:
+  - type: Sprite
+    state: nosmoking2
+
+- type: entity
+  parent: BaseSignRMCDecal
+  id: SignRMCCaution
+  name: caution sign
+  description: A yellow warning triangle. Whatever is past here, be careful.
+  components:
+  - type: Sprite
+    state: securearea
+
+- type: entity
+  parent: BaseSignRMCDecal
+  id: SignRMCHighVoltage
+  name: high voltage sign
+  description: A sign warning of high voltage. Don't touch.
+  components:
+  - type: Sprite
+    state: shock
+
+- type: entity
+  parent: SignRMCHighVoltage
+  id: SignRMCHighVoltageSmall
+  suffix: Small
+  components:
+  - type: Sprite
+    state: shockytiny
+
+- type: entity
+  parent: SignRMCHighVoltage
+  id: SignRMCHighVoltagePanel
+  name: high voltage warning panel
+  components:
+  - type: Sprite
+    state: shockybig

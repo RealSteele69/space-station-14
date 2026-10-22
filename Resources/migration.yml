@@ -1109,18 +1109,19 @@ WallRockChromiteBananium: WallRockChromite
 WallRockSandBananium: WallRockSand
 WallRockSnowBananium: WallRockSnow
 MeteorRockBananium: AsteroidRock
-WallRockBasalt: WallRock
-WallRockBasaltCoal: WallRockCoal
-WallRockBasaltGold: WallRockGold
-WallRockBasaltDiamond: WallRockDiamond
-WallRockBasaltPlasma: WallRockPlasma
-WallRockBasaltQuartz: WallRockQuartz
-WallRockBasaltSilver: WallRockSilver
-WallRockBasaltBananium: WallRock
-WallRockBasaltTin: WallRockTin
-WallRockBasaltUranium: WallRockUranium
-WallRockBasaltArtifactFragment: WallRockArtifactFragment
-WallRockBasaltSalt: WallRockSalt
+# _ClawCommand: lavaland keeps its basalt rock and basalt ore walls (Prototypes/_ClawCommand/Lavaland/Entities/Structures/Walls), so these upstream respriting migrations stay disabled.
+# WallRockBasalt: WallRock
+# WallRockBasaltCoal: WallRockCoal
+# WallRockBasaltGold: WallRockGold
+# WallRockBasaltDiamond: WallRockDiamond
+# WallRockBasaltPlasma: WallRockPlasma
+# WallRockBasaltQuartz: WallRockQuartz
+# WallRockBasaltSilver: WallRockSilver
+# WallRockBasaltBananium: WallRock
+# WallRockBasaltTin: WallRockTin
+# WallRockBasaltUranium: WallRockUranium
+# WallRockBasaltArtifactFragment: WallRockArtifactFragment
+# WallRockBasaltSalt: WallRockSalt
 WallRockAndesite: WallRock
 WallRockAndesiteCoal: WallRockCoal
 WallRockAndesiteGold: WallRockGold

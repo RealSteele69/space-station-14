@@ -163,7 +163,7 @@ public sealed partial class RevolutionaryRuleSystem : GameRuleSystem<Revolutiona
 
         if (ev.User != null)
         {
-            _adminLogManager.Add(LogType.Mind,
+            _adminLogManager.Add(LogType.MindRole, // Claw Command - was LogType.Mind (antag reveal gate)
                 LogImpact.Medium,
                 $"{ToPrettyString(ev.User.Value)} converted {ToPrettyString(ev.Target)} into a Revolutionary");
 
@@ -243,7 +243,7 @@ public sealed partial class RevolutionaryRuleSystem : GameRuleSystem<Revolutiona
                 _stun.TryUpdateParalyzeDuration(uid, stunTime);
                 RemCompDeferred<RevolutionaryComponent>(uid);
                 _popup.PopupEntity(Loc.GetString("rev-break-control", ("name", Identity.Entity(uid, EntityManager))), uid);
-                _adminLogManager.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(uid)} was deconverted due to all Head Revolutionaries dying.");
+                _adminLogManager.Add(LogType.MindRole, LogImpact.Medium, $"{ToPrettyString(uid)} was deconverted due to all Head Revolutionaries dying."); // Claw Command - was LogType.Mind (antag reveal gate)
 
                 if (!_mind.TryGetMind(uid, out var mindId, out var mind, mc))
                     continue;

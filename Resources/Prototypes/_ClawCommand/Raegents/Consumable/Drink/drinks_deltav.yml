@@ -13,7 +13,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
@@ -52,7 +52,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
@@ -60,7 +60,7 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.133
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         conditions:
@@ -82,7 +82,7 @@
   metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
@@ -105,7 +105,7 @@
   metamorphicMaxFillLevels: 5
   metamorphicFillBaseName: fill-
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
@@ -129,7 +129,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
@@ -137,7 +137,7 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.08
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         conditions:
@@ -167,7 +167,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
@@ -191,7 +191,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
@@ -199,6 +199,6 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.126
-    Poison:
+    Bloodstream:
       effects:
       - !type:Jitter

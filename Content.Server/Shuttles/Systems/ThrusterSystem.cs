@@ -177,7 +177,8 @@ public sealed partial class ThrusterSystem : EntitySystem
 
     private void UpdatePowerLoad(Entity<ThrusterComponent> ent, ApcPowerReceiverComponent? apcPowerReceiver = null)
     {
-        if (!Resolve(ent, ref apcPowerReceiver))
+        // Claw Command - some thrusters (cosmic cult) deliberately run without a power receiver.
+        if (!Resolve(ent, ref apcPowerReceiver, false))
             return;
 
         apcPowerReceiver.Load = ent.Comp.BasePowerLoad * GetInertiaThresholdScale(ent);

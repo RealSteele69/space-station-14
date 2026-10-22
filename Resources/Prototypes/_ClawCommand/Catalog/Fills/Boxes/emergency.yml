@@ -3,7 +3,15 @@
   id: BoxSurvivalWaterVapor
   suffix: Claw Command, Water Vapor
   components:
+  # Larger than upstream's survival box so the food and water still fit.
+  - type: Item
+    shape:
+    - 0,0,3,2
+  - type: Storage
+    grid:
+    - 0,0,3,2
   - type: EntityTableContainerFill
+    sort: true
     containers:
       storagebase: !type:AllSelector
         children:
@@ -25,7 +33,15 @@
   description: It's a box with basic internals inside. This one is labelled to contain an extended-capacity tank.
   suffix: Claw Command, Extended, Water Vapor
   components:
+  # Larger than upstream's survival box so the food and water still fit.
+  - type: Item
+    shape:
+    - 0,0,3,2
+  - type: Storage
+    grid:
+    - 0,0,3,2
   - type: EntityTableContainerFill
+    sort: true
     containers:
       storagebase: !type:AllSelector
         children:
@@ -45,7 +61,15 @@
   id: BoxSurvivalMedicalWaterVapor
   suffix: Claw Command, Medical, Water Vapor
   components:
+  # Larger than upstream's survival box so the food and water still fit.
+  - type: Item
+    shape:
+    - 0,0,3,2
+  - type: Storage
+    grid:
+    - 0,0,3,2
   - type: EntityTableContainerFill
+    sort: true
     containers:
       storagebase: !type:AllSelector
         children:
@@ -66,7 +90,15 @@
   id: BoxSurvivalSecurityWaterVapor
   suffix: Claw Command, Security, Water Vapor
   components:
+  # Larger than upstream's survival box so the food and water still fit.
+  - type: Item
+    shape:
+    - 0,0,3,2
+  - type: Storage
+    grid:
+    - 0,0,3,2
   - type: EntityTableContainerFill
+    sort: true
     containers:
       storagebase: !type:AllSelector
         children:
@@ -87,7 +119,15 @@
   id: BoxSurvivalMimeWaterVapor
   suffix: Claw Command, Mime
   components:
+  # Larger than upstream's survival box so the food and water still fit.
+  - type: Item
+    shape:
+    - 0,0,3,2
+  - type: Storage
+    grid:
+    - 0,0,3,2
   - type: EntityTableContainerFill
+    sort: true
     containers:
       storagebase: !type:AllSelector
         children:
@@ -103,7 +143,15 @@
   id: BoxHugWaterVapor
   suffix: Claw Command, Clown, Water Vapor
   components:
+  # Larger than upstream's survival box so the food and water still fit.
+  - type: Item
+    shape:
+    - 0,0,3,2
+  - type: Storage
+    grid:
+    - 0,0,3,2
   - type: EntityTableContainerFill
+    sort: true
     containers:
       storagebase: !type:AllSelector
         children:
@@ -114,7 +162,7 @@
         - id: FoodSnackNutribrick
         - id: DrinkWaterBottleFull
   - type: Label
-    currentLabel: reagent-name-nitrogen
+    localizedLabel: reagent-name-nitrogen
 
 - type: entity
   parent: BoxCardboard

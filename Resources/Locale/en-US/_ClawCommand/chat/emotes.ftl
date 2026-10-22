@@ -19,3 +19,7 @@ cc-chat-emote-name-boop = Boop
 cc-chat-emote-msg-boop = boops.
 cc-chat-emote-name-whirr = Whirr
 cc-chat-emote-msg-whirr = whirrs.
+cc-chat-emote-name-trill = Trill
+cc-chat-emote-msg-trill = trills!
+cc-chat-emote-name-warble = Warble
+cc-chat-emote-msg-warble = warbles!

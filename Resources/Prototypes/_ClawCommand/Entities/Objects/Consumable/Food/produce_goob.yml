@@ -89,7 +89,7 @@
   - type: Item
     heldPrefix: produce
   - type: Produce
-    plantId: BlueTomatoPlants
+    plantId: BluespaceTomatoPlants
   - type: Extractable
     grindableSolutionName: food
     juiceSolution:

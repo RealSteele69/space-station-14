@@ -98,11 +98,7 @@ namespace Content.Goobstation.Common.Body.Components
     [RegisterComponent] public sealed partial class SpecialBreathingImmunityComponent : Component;
 }
 
-// --- Goob Supermatter ---
-namespace Content.Goobstation.Shared.Supermatter.Components
-{
-    [RegisterComponent] public sealed partial class SupermatterImmuneComponent : Component;
-}
+// Goob Supermatter: SupermatterImmuneComponent is real now, see Content.Shared/_ClawCommand/Supermatter.
 
 // --- Goob Flammability ---
 namespace Content.Goobstation.Common.Flammability

@@ -19,7 +19,8 @@ public sealed record PlayerInfo(
     NetUserId SessionId,
     bool Connected,
     bool ActiveThisRound,
-    TimeSpan? OverallPlaytime)
+    TimeSpan? OverallPlaytime,
+    bool AntagRevealed = false) // Claw Command - antag status is masked until an admin reveals it
 {
     private string? _playtimeString;
 

@@ -71,6 +71,7 @@ namespace Content.Server.Administration.Systems
         [Dependency] private IPlayerManager _playerManager = default!;
         [Dependency] private SiliconLawSystem _siliconLawSystem = default!;
         [Dependency] private AfkConfirmSystem _afkConfirm = default!;
+        [Dependency] private Content.Server._ClawCommand.Administration.AntagRevealSystem _antagReveal = default!; // Claw Command
 
         private readonly Dictionary<ICommonSession, List<EditSolutionsEui>> _openSolutionUis = new();
 
@@ -243,7 +244,13 @@ namespace Content.Server.Administration.Systems
                         Text = Loc.GetString("inspect-mind-verb-get-data-text"),
                         Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/sentient.svg.192dpi.png")),
                         Category = VerbCategory.Debug,
-                        Act = () => _console.RemoteExecuteCommand(player, $"vv {GetNetEntity(mindId)}"),
+                        Act = () =>
+                        {
+                            // Claw Command - the mind's roles and objectives expose antag status
+                            if (mindComp.UserId is { } userId && userId != player.UserId)
+                                _antagReveal.Reveal(player, userId, Loc.GetString("antag-reveal-source-inspect-mind"));
+                            _console.RemoteExecuteCommand(player, $"vv {GetNetEntity(mindId)}");
+                        },
                     });
                 }
 
@@ -418,6 +425,7 @@ namespace Content.Server.Administration.Systems
                             {
                                 return;
                             }
+                            _antagReveal.RevealIfAntag(session, target.Value, Loc.GetString("antag-reveal-source-laws")); // Claw Command - subverted laws expose antag status
                             _euiManager.OpenEui(ui, session);
                             ui.UpdateLaws(lawBoundComponent, target.Value);
                         },

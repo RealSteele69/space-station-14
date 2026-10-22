@@ -16,7 +16,7 @@
   flavor: bitter
   color: "#FAF9F6"
   metabolisms:
-    Poison:
+    Bloodstream:
       metabolismRate: 0.05
       effects:
       - !type:Vomit

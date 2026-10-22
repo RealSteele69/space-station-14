@@ -1,0 +1,16 @@
+# Claw Command - vehicle key tags. Each gates GenericKeyedVehicle.keyWhitelist + the key_slot ItemSlot.
+
+- type: Tag
+  id: VehicleKeysCargo # VehicleCargoTug, VehicleCargoTugClassic, VehicleQMTruck
+
+- type: Tag
+  id: VehicleKeysMedical # VehicleMedicalCart, VehicleAmbulance
+
+- type: Tag
+  id: VehicleKeysQuadbike # VehicleQuadbike
+
+- type: Tag
+  id: VehicleKeysRover # VehicleRover, VehicleDuneBuggy
+
+- type: Tag
+  id: VehicleKeysSecurity # VehicleSecurityCart

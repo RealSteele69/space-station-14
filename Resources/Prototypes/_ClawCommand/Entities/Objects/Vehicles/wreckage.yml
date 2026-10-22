@@ -1,0 +1,12 @@
+# Claw Command - what a wrecked vehicle leaves behind. Wrecks drop rods, cut cable and an oil splat.
+
+- type: entity
+  id: PuddleOilVehicleWreck
+  parent: PuddleTemporary
+  suffix: Vehicle oil
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Oil
+        Quantity: 15

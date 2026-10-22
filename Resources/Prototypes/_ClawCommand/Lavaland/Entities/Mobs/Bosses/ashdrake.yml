@@ -21,10 +21,17 @@
         - LargeMobLayer
   - type: NpcFactionMember
     factions:
-    - SimpleHostile
+    - Lavafauna
   - type: HTN
     rootTask:
-      task: SimpleRangedHostileCompound
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        10
+      AggroVisionRadius: !type:Single
+        14
+      NavSmash: !type:Bool
+        true
   - type: Sprite
     drawdepth: Mobs
     sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
@@ -37,22 +44,13 @@
         Base: dragon
       Dead:
         Base: dragon_dead
-  - type: BatteryAmmoProvider
-    proto: ProjectileFireball
-    fireCost: 50
-  - type: BatterySelfRecharger
-    autoRechargeRate: 50
-  - type: Battery
-    maxCharge: 1000
-    startingCharge: 1000
-  - type: Gun
-    projectileSpeed: 10
-    fireRate: 0.3
-    useKey: false
-    selectedMode: SemiAuto
-    availableModes:
-    - SemiAuto
-    soundGunshot: /Audio/Magic/fireball.ogg
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MegafaunaVisuals.Airborne:
+        enum.DamageStateVisualLayers.Base:
+          True: { visible: false }
+          False: { visible: true }
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
@@ -86,3 +84,37 @@
     forgiveRange: 20.0
   - type: CombatPower # Goobstation
     factor: 25 # times more dangerous than a crew-member
+  # Megafauna AI
+  - type: Fauna
+  - type: ActionGrant
+    actions:
+    - ActionAshDrakeFireBreath
+    - ActionAshDrakeFireballs
+    - ActionAshDrakeSwoop
+    - ActionAshDrakeFireRain
+    - ActionAshDrakeFireRing
+  - type: MegafaunaAi
+    actionDelay: 0.6
+    startingDelay: 1.0
+    selector: !type:NestedMegafaunaSelector
+      id: AshDrake
+  - type: MegafaunaAggroRadius
+    radius: 9
+  - type: Anger
+    totalHp: 2500
+  - type: AngerPlayerScaling
+    angerScale: 1.1
+    hpScale: 1.2
+  - type: MobPhases
+    phaseThresholds:
+      0: 1
+      1000: 2
+      1800: 3
+  - type: MegafaunaGodmode
+  - type: MegafaunaRejuvenate
+  - type: DamageSquareImmunity
+  - type: SpawnLootOnDeath
+    table: !type:AllSelector
+      children:
+      - id: LavalandCrateNecropolisFilled
+      - id: CrusherUpgradeBladeLavaAspect

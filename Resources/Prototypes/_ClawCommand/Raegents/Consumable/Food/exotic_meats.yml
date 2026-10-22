@@ -16,7 +16,7 @@
   flavor: mindful
   color: "#915E48"
   metabolisms:
-    Poison:
+    Bloodstream:
       metabolismRate: 0.25
       effects:
       - !type:PopupMessage
@@ -38,7 +38,7 @@
   flavor: bitter
   color: "#1a6ac1"
   metabolisms:
-    Poison:
+    Bloodstream:
       metabolismRate: 0.05
       effects:
       - !type:PopupMessage

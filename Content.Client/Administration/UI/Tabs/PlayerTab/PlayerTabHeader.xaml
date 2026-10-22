@@ -39,5 +39,13 @@
                Text="{Loc player-tab-playtime}"
                MouseFilter="Pass"
                ToolTip="{Loc player-tab-entry-tooltip}"/>
+        <!-- Claw Command - antag reveal -->
+        <cc:VSeparator/>
+        <Label Name="RevealLabel"
+               SizeFlagsStretchRatio="1"
+               HorizontalExpand="True"
+               ClipText="True"
+               Text="{Loc player-tab-reveal}"
+               MouseFilter="Pass"/>
     </BoxContainer>
 </Control>

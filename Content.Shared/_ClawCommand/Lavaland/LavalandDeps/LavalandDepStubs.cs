@@ -12,6 +12,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
+using Content.Shared.Actions.Events;
 using Robust.Shared.GameObjects;
 using Robust.Shared.GameStates;
 using Robust.Shared.IoC;
@@ -141,6 +142,24 @@ namespace Content.Shared._ClawCommand.Lavaland.LavalandDeps
 
             var action = new Entity<ActionComponent>(actionEnt, actionComp);
             if (!actions.ValidAction(action))
+                return false;
+
+            // Mirror the private request pipeline: the attempt event lets systems veto the action,
+            // and the validate event is what writes the requested target entity/coordinates into
+            // the action's event. Skipping it leaves world-target actions aimed at default coords.
+            var attemptEv = new ActionAttemptEvent(user);
+            entMan.EventBus.RaiseLocalEvent(actionEnt, ref attemptEv);
+            if (attemptEv.Cancelled)
+                return false;
+
+            var validateEv = new ActionValidateEvent
+            {
+                Input = ev,
+                User = user,
+                Provider = actionComp.Container ?? user,
+            };
+            entMan.EventBus.RaiseLocalEvent(actionEnt, ref validateEv);
+            if (validateEv.Invalid)
                 return false;
 
             actions.PerformAction(user, action);

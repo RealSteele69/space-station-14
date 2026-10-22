@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 05/28/2026 23:02:57
-  entityCount: 23886
+  entityCount: 23885
 maps:
 - 5350
 grids:
@@ -7597,17 +7597,6 @@ entities:
     - type: Transform
       pos: -0.39634466,12.638008
       parent: 30
-- proto: ActionToggleInternals
-  entities:
-  - uid: 9163
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 23311
-    - type: Action
-      originalIconColor: '#FFFFFFFF'
-      container: 23311
 - proto: AirAlarm
   entities:
   - uid: 682
@@ -108429,13 +108418,11 @@ entities:
       pos: 4.3357787,-46.395798
       parent: 30
     - type: GasTank
-      toggleActionEntity: 9163
     - type: ActionsContainer
     - type: ContainerContainer
       containers:
         actions: !type:Container
-          ents:
-          - 9163
+          ents: []
 - proto: NitrousOxideCanister
   entities:
   - uid: 7289

@@ -1,0 +1,4 @@
+# Claw Command - synth species. Nanites only spare entities with this tag on contact.
+
+- type: Tag
+  id: Synth

@@ -11,6 +11,20 @@ public sealed partial class TemperatureProtectionComponent : Component
     /// </summary>
     [DataField]
     public float Coefficient = 1.0f;
+
+    // Claw Command start - one-way insulation, e.g. winter gear that keeps cold out but still lets heat in.
+    /// <summary>
+    ///     Overrides <see cref="Coefficient"/> while the entity is gaining heat.
+    /// </summary>
+    [DataField]
+    public float? HeatingCoefficient;
+
+    /// <summary>
+    ///     Overrides <see cref="Coefficient"/> while the entity is losing heat.
+    /// </summary>
+    [DataField]
+    public float? CoolingCoefficient;
+    // Claw Command end
 }
 
 /// <summary>

@@ -8,3 +8,26 @@
     allowRepeatedMorphs: true
     revertOnCrit: true
     revertOnDeath: true
+
+- type: polymorph
+  id: Bingle
+  configuration:
+    entity: MobBingle
+    forced: true
+    transferName: false
+    transferHumanoidAppearance: false
+    inventory: Drop
+    revertOnDeath: false
+    revertOnCrit: false
+
+# Granted to bingles when their pit levels up.
+- type: polymorph
+  id: BinglePolymorph
+  configuration:
+    entity: MobBingleUpgraded
+    forced: true
+    transferName: true
+    transferHumanoidAppearance: false
+    inventory: Drop
+    revertOnDeath: false
+    revertOnCrit: false

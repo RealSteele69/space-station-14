@@ -1,0 +1,45 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Body: Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/mob/species/xenomorph/drone.dmi (Citadel RP xenomorph bodyset, standardized by Zandario in PR #4223; originally from VOREStation/Polaris (Baystation12 lineage)). Converted from DMI for Claw Command. Tail: Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/mob/bodysets/organic/xenomorph/sprite_accessories.dmi (added by silicons in b1388fe5c3). Converted from DMI for Claw Command. Limbs and tail composited into one body sprite for Claw Command. classic_* states: Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/mob/alien.dmi (originally from VOREStation/Polaris (Baystation12 lineage), imported into Citadel RP by deathride58 in f1893fa0a0 (2018); xeno sprites reworked to CM-SS13 versions by Athena148 in Citadel RP PR #6675). Converted from DMI for Claw Command.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "alive",
+            "directions": 4
+        },
+        {
+            "name": "husk",
+            "directions": 4
+        },
+        {
+            "name": "classic",
+            "directions": 4
+        },
+        {
+            "name": "classic_running",
+            "directions": 4
+        },
+        {
+            "name": "classic_sleep",
+            "delays": [
+                [
+                    1.5,
+                    1.5
+                ]
+            ]
+        },
+        {
+            "name": "classic_unconscious"
+        },
+        {
+            "name": "classic_dead"
+        },
+        {
+            "name": "classic_lying"
+        }
+    ]
+}

@@ -178,7 +178,7 @@ public abstract partial class SharedRoleSystem : EntitySystem
         var name = Loc.GetString(protoEnt.Name);
         if (mind.OwnedEntity is not null)
         {
-            _adminLogger.Add(LogType.Mind,
+            _adminLogger.Add(LogType.MindRole, // Claw Command - was LogType.Mind (antag reveal gate)
                 LogImpact.Low,
                 $"{name} added to mind of {ToPrettyString(mind.OwnedEntity)}");
         }
@@ -187,7 +187,7 @@ public abstract partial class SharedRoleSystem : EntitySystem
             //TODO: This is not tied to the player on the Admin Log filters.
             //Probably only happens when Job Role is added on initial spawn, before the mind entity is put in a mob
             Log.Error($"{ToPrettyString(mindId)} does not have an OwnedEntity!");
-            _adminLogger.Add(LogType.Mind,
+            _adminLogger.Add(LogType.MindRole, // Claw Command - was LogType.Mind (antag reveal gate)
                 LogImpact.Low,
                 $"{name} added to {ToPrettyString(mindId)}");
         }
@@ -264,14 +264,16 @@ public abstract partial class SharedRoleSystem : EntitySystem
         if (comp.OwnedEntity is null)
         {
             Log.Error($"{ToPrettyString(mind)} does not have an OwnedEntity!");
-            _adminLogger.Add(LogType.Mind,
+            _adminLogger.Add(LogType.MindRole, // Claw Command - was LogType.Mind (antag reveal gate)
                 LogImpact.Medium,
                 $"Role Type of {ToPrettyString(mind)} changed to {roleTypeId}, {subtype}");
             return;
         }
 
-        _adminLogger.Add(LogType.Mind,
-            LogImpact.High,
+        // Claw Command - was High, which pushed "changed to SoloAntagonist" into admin chat for newer players
+        // and bypassed the antag reveal gate. Still in the admin logs.
+        _adminLogger.Add(LogType.MindRole, // Claw Command - was LogType.Mind (antag reveal gate)
+            LogImpact.Medium,
             $"Role Type of {ToPrettyString(comp.OwnedEntity)} changed to {roleTypeId}, {subtype}");
     }
 
@@ -410,7 +412,7 @@ public abstract partial class SharedRoleSystem : EntitySystem
         var message = new RoleRemovedEvent(mind.Owner, mind.Comp, update);
         RaiseLocalEvent(mind, message, true);
 
-        _adminLogger.Add(LogType.Mind,
+        _adminLogger.Add(LogType.MindRole, // Claw Command - was LogType.Mind (antag reveal gate)
             LogImpact.Low,
             $"All roles of type {logName} removed from mind of {ToPrettyString(mind.Comp.OwnedEntity)}");
 

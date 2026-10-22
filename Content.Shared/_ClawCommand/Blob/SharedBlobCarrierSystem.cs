@@ -1,0 +1,40 @@
+using Content.Shared._ClawCommand.Blob.Components;
+using Content.Shared.Popups;
+using Robust.Shared.Timing;
+
+namespace Content.Shared._ClawCommand.Blob;
+
+public abstract partial class SharedBlobCarrierSystem : EntitySystem
+{
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var blobFactoryQuery = EntityQueryEnumerator<BlobCarrierComponent>();
+        while (blobFactoryQuery.MoveNext(out var ent, out var comp))
+        {
+            if (!comp.HasMind)
+                continue;
+
+            comp.TransformationTimer += frameTime;
+
+            if (_gameTiming.CurTime < comp.NextAlert)
+                continue;
+
+            var remainingTime = Math.Round(comp.TransformationDelay - comp.TransformationTimer, 0);
+            _popup.PopupEntity(Loc.GetString("carrier-blob-alert", ("second", remainingTime)), ent, ent, PopupType.LargeCaution);
+
+            comp.NextAlert = _gameTiming.CurTime + TimeSpan.FromSeconds(comp.AlertInterval);
+
+            if (!(comp.TransformationTimer >= comp.TransformationDelay))
+                continue;
+
+            TransformToBlob((ent, comp));
+        }
+    }
+
+    protected abstract void TransformToBlob(Entity<BlobCarrierComponent> ent);
+}

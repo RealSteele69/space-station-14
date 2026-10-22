@@ -50,7 +50,7 @@
 - type: marking
   id: ResomiFluff
   bodyPart: Chest
-  groupWhitelist: [ MarkingsAvali ]
+  groupWhitelist: [ MarkingsAvali, MarkingsResomi ]
   sprites:
   - sprite: _ClawCommand/Mobs/Customization/resomi_parts.rsi
     state: fluff
@@ -58,7 +58,7 @@
 - type: marking
   id: ResomiFluffHead
   bodyPart: Head
-  groupWhitelist: [ MarkingsAvali ]
+  groupWhitelist: [ MarkingsAvali, MarkingsResomi ]
   sprites:
   - sprite: _ClawCommand/Mobs/Customization/resomi_parts.rsi
     state: fluff_head
@@ -66,7 +66,34 @@
 - type: marking
   id: ResomiFluffHeadUp
   bodyPart: Head
-  groupWhitelist: [ MarkingsAvali ]
+  groupWhitelist: [ MarkingsAvali, MarkingsResomi ]
   sprites:
   - sprite: _ClawCommand/Mobs/Customization/resomi_parts.rsi
     state: fluff_head_up
+
+# Resomi-only extras, drawn for the Resomi body sheet.
+- type: marking
+  id: ResomiFeathersBig
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/resomi_parts.rsi
+    state: tail
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/tail.rsi
+    state: resomibigtail
+
+- type: marking
+  id: ResomiEars
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/headtop.rsi
+    state: resomi_ears
+
+- type: marking
+  id: ResomiFluffyChest
+  bodyPart: Tail # drawn on the tail layer so it sits over the arms
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Resomi/chest.rsi
+    state: resomifluffchest

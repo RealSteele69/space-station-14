@@ -59,7 +59,7 @@
   - type: Item
     size: Large
   - type: Storage
-    maxItemSize: Huge
+    maxItemSize: Large # can't hold anything bigger than itself
     grid:
     - "0,0,5,3"
 
@@ -69,6 +69,9 @@
   name: "Special Forces gloves"
   description: "Thanks to them, your hands are safe. Probably..."
   components:
+  - type: ContainerContainer # Claw Command - declared so spawning doesn't add it
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
   - type: Sprite
     sprite: Imperial/VlClothes/DSO/Modsuit/Hands.rsi
   - type: Clothing

@@ -1,3 +1,4 @@
+using Content.Server._ClawCommand.CosmicCult.Events; // CLAW COMMAND
 using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Chat.Managers;
@@ -320,6 +321,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
                 Dirty(update, crewIconComp);
             }
             SetLaws(lawset.Laws, update, provider.LawUploadSound);
+            RaiseLocalEvent(new AILawUpdatedEvent(update, provider.Laws)); // CLAW COMMAND - Cosmic Cult malign fragmentation
         }
     }
 
@@ -392,9 +394,13 @@ public sealed partial class LawsCommand : ToolshedCommand
     }
 
     [CommandImplementation("get")]
-    public IEnumerable<string> Get([PipedArgument] EntityUid lawbound)
+    public IEnumerable<string> Get(IInvocationContext ctx, [PipedArgument] EntityUid lawbound) // Claw Command - ctx for antag reveal
     {
         _law ??= GetSys<SiliconLawSystem>();
+
+        // Claw Command - subverted laws expose antag status
+        GetSys<Content.Server._ClawCommand.Administration.AntagRevealSystem>()
+            .RevealIfAntag(ctx.Session, lawbound, Loc.GetString("antag-reveal-source-laws"));
 
         foreach (var law in _law.GetLaws(lawbound).Laws)
         {

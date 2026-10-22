@@ -172,6 +172,7 @@
     - id: ClothingLongcoatCE # Claw Command - Floof longcoat
     - id: DoorRemoteEngineering
     - id: BoxCECircuitboards
+    - id: BaseHandheldStationMapSupermatterCe # Claw Command - supermatter
     - id: RCD
     - id: RCDAmmo
     - id: RPD

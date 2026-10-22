@@ -63,6 +63,13 @@
   - HamtrLLeg
   - HamtrRLeg
   - VimHarness
+  - ClarkeHarness # Claw Command - Clarke / Ripley MK-II research
+  - ClarkeHead # Claw Command - Clarke / Ripley MK-II research
+  - ClarkeLArm # Claw Command - Clarke / Ripley MK-II research
+  - ClarkeRArm # Claw Command - Clarke / Ripley MK-II research
+  - ClarkeTreads # Claw Command - Clarke / Ripley MK-II research
+  - RipleyMKIIHarness # Claw Command - Clarke / Ripley MK-II research
+  - RipleyUpgradeKit # Claw Command - Clarke / Ripley MK-II research
 
 - type: latheRecipePack
   id: MechEquipment

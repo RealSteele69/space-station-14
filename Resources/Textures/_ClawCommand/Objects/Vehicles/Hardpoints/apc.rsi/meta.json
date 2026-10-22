@@ -1,0 +1,21 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from cmss13 at https://github.com/cmss13-devs/cmss13/blob/master/icons/obj/vehicles/hardpoints/apc.dmi Ported via RMC-14 (https://github.com/RMC-14/RMC-14, Resources/Textures/_RMC14/Structures/Vehicles/hardpoints/apc.rsi).",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "front_cannon"
+        },
+        {
+            "name": "dual_cannon"
+        },
+        {
+            "name": "m56_FPW",
+            "directions": 4
+        }
+    ]
+}

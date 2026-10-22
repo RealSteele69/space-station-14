@@ -1,0 +1,158 @@
+# _ClawCommand: Synth reagents.
+# Blood-level amounts are doubled from the original: bodies here hold 600u of blood instead of 300u.
+
+- type: reagent
+  parent: Blood
+  id: SynthBlood
+  name: reagent-name-synth-blood
+  group: Biological
+  desc: reagent-desc-synth-blood
+  flavor: metallic
+  color: "#3F1B66"
+  recognizable: true
+  physicalDesc: reagent-physical-desc-reflective
+  metabolisms:
+    Digestion:
+      metabolismRate: 1
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 0.25
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 0.25
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+          inverted: true
+      - !type:ModifyBloodLevel
+        amount: 0.9
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+    Bloodstream: # someone else's fullerene in your veins doesn't agree with you
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 0.2
+
+# Repair nanites: the best treatment for synths, and very bad news for everyone else.
+- type: reagent
+  id: Nanites
+  name: reagent-name-nanites
+  group: Medicine
+  desc: reagent-desc-nanites
+  physicalDesc: reagent-physical-desc-glowing
+  contrabandSeverity: Minor
+  flavor: metallic
+  color: "#8AFFFd"
+  recognizable: true
+  worksOnTheDead: true
+  reactiveEffects:
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        ignoreResistances: false
+        conditions:
+        - !type:TagCondition
+          inverted: true
+          tag: Synth
+        damage:
+          types:
+            Slash: 0.15
+            Piercing: 0.1
+            Blunt: 0.05
+      - !type:Emote
+        emote: Scream
+        probability: 0.1
+  metabolisms:
+    Bloodstream:
+      effects:
+      # Synths: repairs, overdose above 10.5u.
+      - !type:EvenHealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+        - !type:ReagentCondition
+          reagent: Nanites
+          max: 10.5
+        damage:
+          Brute: -3
+          Burn: -4
+          Toxin: -3
+      - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+        - !type:ReagentCondition
+          reagent: Nanites
+          max: 10.5
+        damage:
+          types:
+            Bloodloss: -0.9
+            Cellular: -1.5
+      - !type:ModifyBleed
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+        - !type:ReagentCondition
+          reagent: Nanites
+          max: 10.5
+        amount: -0.375
+      - !type:ModifyBloodLevel
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+        - !type:ReagentCondition
+          reagent: Nanites
+          max: 10.5
+        amount: 3
+      - !type:EvenHealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+        - !type:ReagentCondition
+          reagent: Nanites
+          min: 10.5
+        damage:
+          Brute: 0.75
+      - !type:ModifyBleed
+        conditions:
+        - !type:ReagentCondition
+          reagent: Nanites
+          min: 10.5
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+        amount: 0.15
+      - !type:Jitter
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+        - !type:ReagentCondition
+          reagent: Nanites
+          min: 10.5
+      # Everyone else: shredded from the inside.
+      - !type:EvenHealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+          inverted: true
+        damage:
+          Brute: 3
+      - !type:Emote
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+          inverted: true
+        emote: Scream
+        probability: 0.2
+  footstepSound:
+    collection: FootstepBlood
+    params:
+      volume: 6

@@ -79,7 +79,7 @@ public sealed partial class MansusGraspSystem : SharedMansusGraspSystem
 
     public static readonly LocId DefaultInvocation = "heretic-speech-mansusgrasp";
 
-    public static readonly TimeSpan DefaultCooldown = TimeSpan.FromSeconds(10);
+    public static readonly TimeSpan DefaultCooldown = TimeSpan.FromSeconds(15); // Claw Command - balance: was 10s, matches MansusGraspComponent
 
     public override void Initialize()
     {

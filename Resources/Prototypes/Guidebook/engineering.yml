@@ -323,6 +323,7 @@
   - TEG
   - RTG
   - SolarPanels
+  - Supermatter # Claw Command
 
 - type: guideEntry
   id: AME

@@ -1,0 +1,342 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# AI selector trees for the lavaland megafauna and elites.
+# Each root picks a target (PickTargetSimple, see hierophant.yml) and then one available attack.
+# Attacks unlock with phases (MobPhases on the mob) and get faster with anger.
+
+# ---------------------------------------------------------------------------
+# Ash drake
+# ---------------------------------------------------------------------------
+
+- type: megafaunaSelector
+  id: AshDrake
+  selector: !type:AllMegafaunaSelector
+    children:
+    - id: PickTargetSimple
+    - id: AshDrakeActions
+
+- type: megafaunaSelector
+  id: AshDrakeActions
+  selector: !type:GroupMegafaunaSelector
+    children:
+    - !type:PerformActionSelector
+      actionId: ActionAshDrakeFireBreath
+      weight: 3
+      delay: !type:AngerNumberSelector
+        range: 1.2,2.5
+        inverse: true
+      conditions:
+      - !type:ActionAvailableCondition
+        actionId: ActionAshDrakeFireBreath
+    - !type:PerformActionSelector
+      actionId: ActionAshDrakeFireballs
+      weight: 2
+      delay: !type:AngerNumberSelector
+        range: 1.2,2.5
+        inverse: true
+      conditions:
+      - !type:ActionAvailableCondition
+        actionId: ActionAshDrakeFireballs
+    - !type:PerformActionSelector
+      actionId: ActionAshDrakeSwoop
+      weight: 2
+      delay: 3.0
+      conditions:
+      - !type:ActionAvailableCondition
+        actionId: ActionAshDrakeSwoop
+    - !type:PerformActionSelector
+      actionId: ActionAshDrakeFireRain
+      weight: 2
+      delay: !type:AngerNumberSelector
+        range: 1.0,2.0
+        inverse: true
+      conditions:
+      - !type:PhaseMegafaunaCondition
+        phases: [ 2, 3 ]
+      - !type:ActionAvailableCondition
+        actionId: ActionAshDrakeFireRain
+    - !type:PerformActionSelector
+      actionId: ActionAshDrakeFireRing
+      weight: 1
+      delay: 2.5
+      conditions:
+      - !type:PhaseMegafaunaCondition
+        phases: [ 3 ]
+      - !type:ActionAvailableCondition
+        actionId: ActionAshDrakeFireRing
+
+# ---------------------------------------------------------------------------
+# Bubblegum
+# ---------------------------------------------------------------------------
+
+- type: megafaunaSelector
+  id: Bubblegum
+  selector: !type:AllMegafaunaSelector
+    children:
+    - id: PickTargetSimple
+    - id: BubblegumActions
+
+- type: megafaunaSelector
+  id: BubblegumActions
+  selector: !type:GroupMegafaunaSelector
+    children:
+    - !type:PerformActionSelector
+      actionId: ActionBubblegumCharge
+      weight: 3
+      delay: !type:AngerNumberSelector
+        range: 1.6,2.6
+        inverse: true
+      conditions:
+      - !type:PhaseMegafaunaCondition
+        phases: [ 1 ]
+      - !type:ActionAvailableCondition
+        actionId: ActionBubblegumCharge
+    - !type:PerformActionSelector
+      actionId: ActionBubblegumTripleCharge
+      weight: 3
+      delay: 3.5
+      conditions:
+      - !type:PhaseMegafaunaCondition
+        phases: [ 2, 3 ]
+      - !type:ActionAvailableCondition
+        actionId: ActionBubblegumTripleCharge
+    - !type:PerformActionSelector
+      actionId: ActionBubblegumHandSlams
+      weight: 2
+      delay: !type:AngerNumberSelector
+        range: 1.0,2.0
+        inverse: true
+      conditions:
+      - !type:ActionAvailableCondition
+        actionId: ActionBubblegumHandSlams
+    - !type:PerformActionSelector
+      actionId: ActionBubblegumBloodWarp
+      weight: 2
+      delay: 1.5
+      conditions:
+      - !type:PhaseMegafaunaCondition
+        phases: [ 2, 3 ]
+      - !type:ActionAvailableCondition
+        actionId: ActionBubblegumBloodWarp
+
+# ---------------------------------------------------------------------------
+# Colossus
+# ---------------------------------------------------------------------------
+
+- type: megafaunaSelector
+  id: Colossus
+  selector: !type:AllMegafaunaSelector
+    children:
+    - id: PickTargetSimple
+    - id: ColossusActions
+
+- type: megafaunaSelector
+  id: ColossusActions
+  selector: !type:GroupMegafaunaSelector
+    children:
+    - !type:PerformActionSelector
+      actionId: ActionColossusShotgun
+      weight: 3
+      delay: !type:AngerNumberSelector
+        range: 1.0,2.0
+        inverse: true
+      conditions:
+      - !type:ActionAvailableCondition
+        actionId: ActionColossusShotgun
+    - !type:PerformActionSelector
+      actionId: ActionColossusBlast
+      weight: 2
+      delay: 3.0
+      conditions:
+      - !type:ActionAvailableCondition
+        actionId: ActionColossusBlast
+    - !type:PerformActionSelector
+      actionId: ActionColossusSpiral
+      weight: 2
+      delay: 4.0
+      conditions:
+      - !type:PhaseMegafaunaCondition
+        phases: [ 2, 3 ]
+      - !type:ActionAvailableCondition
+        actionId: ActionColossusSpiral
+    - !type:PerformActionSelector
+      actionId: ActionColossusCrystalCross
+      weight: 2
+      delay: !type:AngerNumberSelector
+        range: 1.0,2.0
+        inverse: true
+      conditions:
+      - !type:PhaseMegafaunaCondition
+        phases: [ 2, 3 ]
+      - !type:ActionAvailableCondition
+        actionId: ActionColossusCrystalCross
+    - !type:PerformActionSelector
+      actionId: ActionColossusJudgement
+      weight: 2
+      delay: 5.0
+      conditions:
+      - !type:PhaseMegafaunaCondition
+        phases: [ 3 ]
+      - !type:ActionAvailableCondition
+        actionId: ActionColossusJudgement
+
+# ---------------------------------------------------------------------------
+# Legion
+# ---------------------------------------------------------------------------
+
+- type: megafaunaSelector
+  id: Legion
+  selector: !type:AllMegafaunaSelector
+    children:
+    - id: PickTargetSimple
+    - id: LegionActions
+
+- type: megafaunaSelector
+  id: LegionActions
+  selector: !type:GroupMegafaunaSelector
+    children:
+    - !type:PerformActionSelector
+      actionId: ActionLegionSummonSkulls
+      weight: 3
+      delay: !type:AngerNumberSelector
+        range: 1.5,3.0
+        inverse: true
+      conditions:
+      - !type:ActionAvailableCondition
+        actionId: ActionLegionSummonSkulls
+    - !type:PerformActionSelector
+      actionId: ActionLegionCharge
+      weight: 2
+      delay: 2.0
+      conditions:
+      - !type:ActionAvailableCondition
+        actionId: ActionLegionCharge
+    - !type:PerformActionSelector
+      actionId: ActionLegionBileSpray
+      weight: 2
+      delay: 2.0
+      conditions:
+      - !type:PhaseMegafaunaCondition
+        phases: [ 2, 3 ]
+      - !type:ActionAvailableCondition
+        actionId: ActionLegionBileSpray
+
+# ---------------------------------------------------------------------------
+# Elites
+# ---------------------------------------------------------------------------
+
+- type: megafaunaSelector
+  id: EliteLegionnaire
+  selector: !type:AllMegafaunaSelector
+    children:
+    - id: PickTargetSimple
+    - !type:GroupMegafaunaSelector
+      children:
+      - !type:PerformActionSelector
+        actionId: ActionLegionnaireCharge
+        weight: 2
+        delay: !type:AngerNumberSelector
+          range: 1.5,3.0
+          inverse: true
+        conditions:
+        - !type:ActionAvailableCondition
+          actionId: ActionLegionnaireCharge
+      - !type:PerformActionSelector
+        actionId: ActionLegionnaireSummonSkulls
+        weight: 1
+        delay: 2.0
+        conditions:
+        - !type:ActionAvailableCondition
+          actionId: ActionLegionnaireSummonSkulls
+
+- type: megafaunaSelector
+  id: EliteHerald
+  selector: !type:AllMegafaunaSelector
+    children:
+    - id: PickTargetSimple
+    - !type:GroupMegafaunaSelector
+      children:
+      - !type:PerformActionSelector
+        actionId: ActionHeraldShotgun
+        weight: 3
+        delay: !type:AngerNumberSelector
+          range: 1.0,2.0
+          inverse: true
+        conditions:
+        - !type:ActionAvailableCondition
+          actionId: ActionHeraldShotgun
+      - !type:PerformActionSelector
+        actionId: ActionHeraldRing
+        weight: 2
+        delay: 2.0
+        conditions:
+        - !type:ActionAvailableCondition
+          actionId: ActionHeraldRing
+      - !type:PerformActionSelector
+        actionId: ActionHeraldSpiral
+        weight: 1
+        delay: 3.5
+        conditions:
+        - !type:PhaseMegafaunaCondition
+          phases: [ 2 ]
+        - !type:ActionAvailableCondition
+          actionId: ActionHeraldSpiral
+      - !type:PerformActionSelector
+        actionId: ActionHeraldTeleport
+        weight: 1
+        delay: 1.5
+        conditions:
+        - !type:ActionAvailableCondition
+          actionId: ActionHeraldTeleport
+
+- type: megafaunaSelector
+  id: EliteBroodmother
+  selector: !type:AllMegafaunaSelector
+    children:
+    - id: PickTargetSimple
+    - !type:GroupMegafaunaSelector
+      children:
+      - !type:PerformActionSelector
+        actionId: ActionBroodmotherTentacleCross
+        weight: 3
+        delay: !type:AngerNumberSelector
+          range: 1.0,2.0
+          inverse: true
+        conditions:
+        - !type:ActionAvailableCondition
+          actionId: ActionBroodmotherTentacleCross
+      - !type:PerformActionSelector
+        actionId: ActionBroodmotherTentacleField
+        weight: 2
+        delay: 2.0
+        conditions:
+        - !type:ActionAvailableCondition
+          actionId: ActionBroodmotherTentacleField
+      - !type:PerformActionSelector
+        actionId: ActionBroodmotherSpawnBrood
+        weight: 1
+        delay: 1.5
+        conditions:
+        - !type:ActionAvailableCondition
+          actionId: ActionBroodmotherSpawnBrood
+      - !type:PerformActionSelector
+        actionId: ActionBroodmotherRage
+        weight: 2
+        delay: 2.0
+        conditions:
+        - !type:PhaseMegafaunaCondition
+          phases: [ 2 ]
+        - !type:ActionAvailableCondition
+          actionId: ActionBroodmotherRage
+
+# Pandora is a lesser hierophant and reuses its attacks.
+- type: megafaunaSelector
+  id: ElitePandora
+  selector: !type:AllMegafaunaSelector
+    children:
+    - id: PickTargetSimple
+    - !type:GroupMegafaunaSelector
+      children:
+      - id: ActionHierophantBox
+      - id: ActionHierophantCrosses
+      - id: ActionHierophantBlink

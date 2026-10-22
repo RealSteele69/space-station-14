@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Item: Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/obj/clothing/masks.dmi (originally from VOREStation/Polaris (Baystation12 lineage), imported into Citadel RP by deathride58 in f1893fa0a0 (2018)). Converted from DMI for Claw Command. Worn: Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/mob/clothing/mask.dmi (originally from VOREStation/Polaris (Baystation12 lineage), imported into Citadel RP by deathride58 in f1893fa0a0 (2018)). Converted from DMI for Claw Command.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "inactive"
+        },
+        {
+            "name": "dead"
+        },
+        {
+            "name": "thrown"
+        },
+        {
+            "name": "impregnated"
+        },
+        {
+            "name": "equipped-MASK",
+            "directions": 4
+        },
+        {
+            "name": "inactive-equipped-MASK",
+            "directions": 4
+        },
+        {
+            "name": "dead-equipped-MASK",
+            "directions": 4
+        },
+        {
+            "name": "impregnated-equipped-MASK",
+            "directions": 4
+        }
+    ]
+}

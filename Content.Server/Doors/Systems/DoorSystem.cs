@@ -59,7 +59,9 @@ public sealed partial class DoorSystem : SharedDoorSystem
             // the open state multiple times (map init, then runtime toggle), and
             // AddComp throws "already occupied" on the second call, crashing the
             // round.
-            if (door.BlockOpenAtmos && collidable == false)
+            // The 1s delay is for doors opening in play; doors spawning open (firelocks) just open.
+            if (door.BlockOpenAtmos && collidable == false
+                && MetaData(uid).EntityLifeStage >= EntityLifeStage.MapInitialized)
             {
                 EnsureComp<AirlockAtmosBlockOpenComponent>(uid);
             }

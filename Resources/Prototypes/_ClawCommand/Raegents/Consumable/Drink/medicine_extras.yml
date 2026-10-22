@@ -22,13 +22,14 @@
           types:
             Holy: 0.5
   metabolisms: #Could nullify debuffs of feeding.
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
         factor: 3
-    Medicine:
+    Bloodstream:
       effects:
+      - !type:PurifyBloodCult # Claw Command - Blood Cult: purges the blood pact over time
       - !type:ModifyBloodLevel
         amount: 0.1
       - !type:HealthChange

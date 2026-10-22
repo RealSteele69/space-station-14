@@ -28,5 +28,13 @@
                SizeFlagsStretchRatio="1"
                HorizontalExpand="True"
                ClipText="True"/>
+        <!-- Claw Command - antag reveal -->
+        <customControls:VSeparator/>
+        <Button Name="RevealButton"
+                SizeFlagsStretchRatio="1"
+                HorizontalExpand="True"
+                ClipText="True"
+                Text="{Loc player-tab-reveal-button}"
+                ToolTip="{Loc player-tab-reveal-button-tooltip}"/>
     </BoxContainer>
 </PanelContainer>

@@ -1,0 +1,72 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/db254a45e84676b7d1f32e3386c65453253bc6c5/icons/mob/biomorphs/burster.dmi (CM-SS13 PvE xenomorph sprites ported into Citadel RP by Athena148 in PRs #6675 (2024-08-27) and #6787 (2024-10-06); CM-SS13 assets are CC-BY-SA-3.0). Converted from DMI for Claw Command.",
+    "size": {
+        "x": 64,
+        "y": 64
+    },
+    "states": [
+        {
+            "name": "burster_walk",
+            "directions": 4,
+            "delays": [
+                [
+                    0.7,
+                    0.3,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.3,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.3,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.3,
+                    0.7
+                ]
+            ]
+        },
+        {
+            "name": "burster_run",
+            "directions": 4,
+            "delays": [
+                [
+                    0.7,
+                    0.3,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.3,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.3,
+                    0.7
+                ],
+                [
+                    0.7,
+                    0.3,
+                    0.7
+                ]
+            ]
+        },
+        {
+            "name": "burster_rest"
+        },
+        {
+            "name": "burster_stun"
+        },
+        {
+            "name": "burster_dead"
+        }
+    ]
+}

@@ -126,6 +126,10 @@
     Bloodstream:
       effects:
       - !type:HealthChange
+        conditions: # Claw Command - synth species
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+          inverted: true
         damage:
           types:
             Cellular: 1 #it's a carcinogen, reckon this is fine

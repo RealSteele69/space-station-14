@@ -167,8 +167,7 @@
       types:
         Piercing: 7
   - type: Temperature
-    currentTemperature: 310.15
-    specificHeat: 38
+    specificHeat: 2700 # Claw Command - rescaled from 38 for the joule-based heat model
   - type: TemperatureProtection
     coolingCoefficient: 0.9
   - type: Wagging # TODO: Need to add the wagging sprites.

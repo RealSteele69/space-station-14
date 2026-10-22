@@ -1,0 +1,154 @@
+# _ClawCommand: Resomi organs.
+# External organs draw from the Resomi body sheet; internals reuse the human organ sprites.
+# Internals use the Animal metabolizer (like Vulpkanin) so Resomi can digest raw meat and are
+# still oxygenated by the Oxygen reagent.
+
+- type: entity
+  parent: OrganBaseOrganic
+  id: OrganResomi
+  abstract: true
+  suffix: Claw Command, Resomi
+
+- type: entity
+  id: OrganResomiMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Animal ]
+
+- type: entity
+  parent: OrganResomi
+  id: OrganResomiInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  id: OrganResomiVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _ClawCommand/Mobs/Species/Resomi/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: MarkingsResomi
+
+- type: entity
+  parent: [ OrganResomi, OrganResomiVisual ]
+  id: OrganResomiExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/Species/Resomi/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganResomiExternal ]
+  id: OrganResomiTorso
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Tail
+    - enum.HumanoidVisualLayers.Genital
+    - enum.HumanoidVisualLayers.Penis
+    - enum.HumanoidVisualLayers.Breasts
+    # Undergarment and genital markings are drawn for the human body; warp them like a jumpsuit.
+    markingsDisplacement:
+      UndergarmentTop: &resomiBodyDisplacement
+        sizeMaps:
+          32:
+            sprite: _ClawCommand/Mobs/Species/Resomi/displacement.rsi
+            state: jumpsuit
+      UndergarmentBottom: *resomiBodyDisplacement
+      Genital: *resomiBodyDisplacement
+      Penis: *resomiBodyDisplacement
+      Breasts: *resomiBodyDisplacement
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganResomiExternal ]
+  id: OrganResomiHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.HeadTop
+    - enum.HumanoidVisualLayers.HeadSide
+    - enum.HumanoidVisualLayers.Snout
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganResomiExternal ]
+  id: OrganResomiArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganResomiExternal ]
+  id: OrganResomiArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganResomiExternal ]
+  id: OrganResomiHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganResomiExternal ]
+  id: OrganResomiHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganResomiExternal ]
+  id: OrganResomiLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganResomiExternal ]
+  id: OrganResomiLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganResomiExternal ]
+  id: OrganResomiFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganResomiExternal ]
+  id: OrganResomiFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganSpriteHumanInternal, OrganResomiInternal ]
+  id: OrganResomiBrain
+
+- type: entity
+  parent: [ OrganResomiVisual, OrganBaseEyes, OrganResomiInternal ]
+  id: OrganResomiEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _ClawCommand/Mobs/Species/Resomi/eyes.rsi
+      state: eyes
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganResomiInternal ]
+  id: OrganResomiTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganSpriteHumanInternal, OrganResomiInternal ]
+  id: OrganResomiAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganSpriteHumanInternal, OrganResomiInternal ]
+  id: OrganResomiEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganResomiInternal, OrganResomiMetabolizer ]
+  id: OrganResomiLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganResomiInternal, OrganResomiMetabolizer ]
+  id: OrganResomiHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganResomiInternal, OrganResomiMetabolizer ]
+  id: OrganResomiStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganSpriteHumanInternal, OrganResomiInternal, OrganResomiMetabolizer ]
+  id: OrganResomiLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganSpriteHumanInternal, OrganResomiInternal, OrganResomiMetabolizer ]
+  id: OrganResomiKidneys

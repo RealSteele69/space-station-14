@@ -1,0 +1,168 @@
+# Blood Cult: the antag, its rule, its mind role and its admin-forceable presets.
+# Normal Secret rounds roll the cult through SubBloodCult in the Medium/Hard tiers (GameRules/difficulty.yml).
+
+- type: antag
+  id: BloodCultist
+  name: roles-antag-blood-cultist-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-blood-cultist-objective
+  guides: [ BloodCult ]
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 36000 # 10h - team antag with a lot of mechanics, read the guidebook first
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: BloodCultist
+  prefRoles:
+  - BloodCultist
+  # The chaplain is the cult's natural enemy. Command, security and silicons come from RestrictedAntag.
+  jobBlacklist:
+  - Chaplain
+  blacklist:
+    components:
+    - BibleUser
+  startingGear: BloodCultistGear
+  mindRoles:
+  - MindRoleBloodCultist
+  briefing:
+    text: blood-cult-role-greeting
+    color: DarkRed
+    sound: /Audio/_ClawCommand/BloodCult/bloodcult_gain.ogg
+
+- type: startingGear
+  id: BloodCultistGear
+  storage:
+    back:
+    - RitualDaggerCult
+    - RunedMetal20
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleBloodCultist
+  name: Blood Cultist Role
+  components:
+  - type: MindRole
+    antag: true # flags them in the admin player list
+    antagPrototype: BloodCultist
+    exclusiveAntag: true
+    roleType: TeamAntagonist
+    subtype: role-subtype-blood-cultist
+  - type: BloodCultRole
+
+- type: entity
+  parent: BaseGameRule
+  id: BloodCult
+  components:
+  - type: BloodCultRule
+  - type: GameRule
+    minPlayers: 15
+    delay:
+      min: 30
+      max: 60
+  - type: AntagSelection
+    selectionTime: JobsAssigned
+    agentName: blood-cult-roundend-name
+    antags:
+    - !type:LinearAntagCount
+      proto: BloodCultist
+      range:
+        min: 2
+        max: 4
+      playerRatio: 15
+  - type: Tag
+    tags:
+    - RoundstartAntag
+
+# Secret-difficulty variant: rolled as a major antag, so being under the population floor
+# just skips it instead of cancelling the preset that rolled it.
+- type: entity
+  parent: BloodCult
+  id: SubBloodCult
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GameRule
+    minPlayers: 15
+    cancelPresetOnTooFewPlayers: false
+    delay:
+      min: 30
+      max: 60
+
+# Admin-forceable presets (`setgamepreset bloodcult` / `secretbloodcult`).
+- type: gamePreset
+  id: BloodCult
+  alias:
+  - bloodcult
+  - cult
+  name: blood-cult-title
+  description: blood-cult-description
+  showInVote: false
+  rules:
+  - DummyNonAntagChance
+  - BloodCult
+  - SubGamemodesRuleNoWizard
+  - CCSecretMediumScheduler
+  - CCSecretMediumMeteorScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset # Runs the Blood Cult but shows "Secret" in the lobby.
+  id: SecretBloodCult
+  alias:
+  - secretbloodcult
+  name: secret-title
+  description: secret-description
+  showInVote: false
+  rules:
+  - DummyNonAntagChance
+  - BloodCult
+  - SubGamemodesRuleNoWizard
+  - CCSecretMediumScheduler
+  - CCSecretMediumMeteorScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+# --- Objectives -------------------------------------------------------------
+
+- type: objectiveIssuer
+  id: BloodCult
+  name: objective-issuer-blood-cult
+
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseBloodCultObjective
+  components:
+  - type: Objective
+    issuer: BloodCult
+    unique: true
+  - type: RoleRequirement
+    roles:
+    - BloodCultRole
+
+- type: entity
+  parent: BaseBloodCultObjective
+  id: KillTargetCultObjective
+  description: This one must be offered to the Geometer of Blood. Kill them and place their body on a rune of offering.
+  components:
+  - type: Objective
+    difficulty: 3
+    icon:
+      sprite: Objects/Weapons/Melee/cult_dagger.rsi
+      state: icon
+  - type: KillTargetCult
+    title: objective-condition-blood-cult-sacrifice-title
+
+- type: entity
+  parent: BaseBloodCultObjective
+  id: SummonNarsieObjective
+  name: Summon Nar'Sie
+  description: Once the offering is made, gather nine others on the rune of dimensional rending and tear open the veil.
+  components:
+  - type: Objective
+    difficulty: 5
+    icon:
+      sprite: _ClawCommand/BloodCult/Entities/Runes/dimensional_rending.rsi
+      state: rune
+  - type: SummonNarsieCondition

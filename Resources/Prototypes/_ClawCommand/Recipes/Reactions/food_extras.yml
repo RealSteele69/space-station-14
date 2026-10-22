@@ -7,6 +7,7 @@
 # Frosting — ported from space/_Floof. Butter + Sugar -> a stack of frosting.
 - type: reaction
   id: CreateFrosting
+  priority: -1 # Claw Command - butter + sugar is part of cake batter and pie dough; those must win
   impact: Low
   quantized: true
   conserveEnergy: false

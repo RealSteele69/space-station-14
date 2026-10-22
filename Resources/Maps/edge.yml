@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 08/05/2026 03:18:36
-  entityCount: 17470
+  entityCount: 17468
 maps:
 - 1
 grids:
@@ -6527,26 +6527,6 @@ entities:
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
     - type: SurveillanceCameraMap
-- proto: ActionToggleLight
-  entities:
-  - uid: 4
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 3
-    - type: Action
-      originalIconColor: '#FFFFFFFF'
-      container: 3
-  - uid: 6
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 5
-    - type: Action
-      originalIconColor: '#FFFFFFFF'
-      container: 5
 - proto: AirAlarm
   entities:
   - uid: 7
@@ -49051,7 +49031,6 @@ entities:
       parent: 2
       pos: -30.760239,-10.514392
     - type: HandheldLight
-      toggleActionEntity: 4
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
@@ -49059,8 +49038,7 @@ entities:
           showEnts: False
           occludes: True
         actions: !type:Container
-          ents:
-          - 4
+          ents: []
           showEnts: False
           occludes: True
     - type: ActionsContainer
@@ -78812,7 +78790,6 @@ entities:
       parent: 2
       pos: -24.508362,43.974926
     - type: HandheldLight
-      toggleActionEntity: 6
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
@@ -78820,8 +78797,7 @@ entities:
           showEnts: False
           occludes: True
         actions: !type:Container
-          ents:
-          - 6
+          ents: []
           showEnts: False
           occludes: True
     - type: Physics
@@ -108260,8 +108236,7 @@ entities:
       deviceLists:
       - 16972
       - 16973
-      configurators:
-      - invalid
+      configurators: []
   - uid: 16966
     components:
     - type: Transform
@@ -108272,8 +108247,7 @@ entities:
       deviceLists:
       - 16972
       - 16973
-      configurators:
-      - invalid
+      configurators: []
   - uid: 16967
     components:
     - type: Transform
@@ -108284,8 +108258,7 @@ entities:
       deviceLists:
       - 16972
       - 16973
-      configurators:
-      - invalid
+      configurators: []
   - uid: 16968
     components:
     - type: Transform
@@ -108296,8 +108269,7 @@ entities:
       deviceLists:
       - 16972
       - 16973
-      configurators:
-      - invalid
+      configurators: []
   - uid: 16969
     components:
     - type: Transform
@@ -108308,8 +108280,7 @@ entities:
       deviceLists:
       - 16972
       - 16973
-      configurators:
-      - invalid
+      configurators: []
   - uid: 16970
     components:
     - type: Transform
@@ -108320,8 +108291,7 @@ entities:
       deviceLists:
       - 16972
       - 16973
-      configurators:
-      - invalid
+      configurators: []
   - uid: 16971
     components:
     - type: Transform
@@ -108332,8 +108302,7 @@ entities:
       deviceLists:
       - 16972
       - 16973
-      configurators:
-      - invalid
+      configurators: []
 - proto: WeaponEnergyTurretCommandControlPanel
   entities:
   - uid: 16972

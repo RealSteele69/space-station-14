@@ -1,6 +1,7 @@
 # _ClawCommand: Avali emote sound bindings.
-# Adapted from space/Resources/Prototypes/_Floof/Voice/avali_emote_sounds.yml. Bindings to sound
-# collections the fork doesn't ship (ResomiChirps, HarpyCoos) are omitted rather than left dangling.
+# Avali-specific audio lives in Resources/Audio/_ClawCommand/Voice/Avali (see attributions.yml there).
+# Bird calls reuse the Resomi chirp/trill/warble collections; the emotes themselves are unlocked for
+# Avali through Speech.allowedEmotes on MobAvali. AvaliScreams/AvaliLaughs are shared with Resomi.
 
 - type: soundCollection
   id: AvaliScreams
@@ -12,8 +13,19 @@
   files:
   - /Audio/_ClawCommand/Voice/Avali/avali_laugh.ogg
 
+- type: soundCollection
+  id: AvaliCries
+  files:
+  - /Audio/_ClawCommand/Voice/Avali/avali_cry.ogg
+
+- type: soundCollection
+  id: AvaliWhistles
+  files:
+  - /Audio/_ClawCommand/Voice/Avali/avali_whistle.ogg
+
 - type: emoteSounds
   id: MaleAvali
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -21,6 +33,16 @@
       collection: AvaliScreams
     Laugh:
       collection: AvaliLaughs
+    Chirp:
+      collection: ResomiChirps
+    Trill:
+      collection: ResomiTrills
+    Warble:
+      collection: ResomiWarbles
+    Purr:
+      collection: FelinidPurrs
+    Growl:
+      collection: VulpkaninGrowls
     Sneeze:
       collection: MaleSneezes
     Cough:
@@ -42,14 +64,19 @@
     Sigh:
       collection: MaleSigh
     Crying:
-      collection: MaleCry
+      collection: AvaliCries
     Whistle:
-      collection: Whistles
+      collection: AvaliWhistles
     Weh:
       collection: Weh
+    Gasp:
+      collection: MaleGasp
+    DefaultDeathgasp:
+      collection: MaleDeathGasp
 
 - type: emoteSounds
   id: FemaleAvali
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
@@ -57,6 +84,16 @@
       collection: AvaliScreams
     Laugh:
       collection: AvaliLaughs
+    Chirp:
+      collection: ResomiChirps
+    Trill:
+      collection: ResomiTrills
+    Warble:
+      collection: ResomiWarbles
+    Purr:
+      collection: FelinidPurrs
+    Growl:
+      collection: VulpkaninGrowls
     Sneeze:
       collection: FemaleSneezes
     Cough:
@@ -78,8 +115,12 @@
     Sigh:
       collection: FemaleSigh
     Crying:
-      collection: FemaleCry
+      collection: AvaliCries
     Whistle:
-      collection: Whistles
+      collection: AvaliWhistles
     Weh:
       collection: Weh
+    Gasp:
+      collection: FemaleGasp
+    DefaultDeathgasp:
+      collection: FemaleDeathGasp

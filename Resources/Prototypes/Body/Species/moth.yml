@@ -201,6 +201,8 @@
       289: 0.9
       275: 0.8
       250: 0.7
+  - type: CosmicMarkVisuals # Claw Command - Cosmic Cult
+    subtleState: moth
 
 - type: entity
   parent: OrganBaseOrganic

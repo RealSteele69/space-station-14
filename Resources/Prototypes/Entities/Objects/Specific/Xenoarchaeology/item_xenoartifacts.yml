@@ -141,6 +141,7 @@
     price: 0
   - type: Stack
     stackType: ArtifactFragment
+  - type: Material # Claw Command - stack entity of the lavaland ArtifactFragment material
   - type: GuideHelp
     guides:
     - Xenoarchaeology

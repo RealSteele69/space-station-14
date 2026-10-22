@@ -18,6 +18,7 @@ using Content.Shared.Heretic.Components;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Silicons.Borgs.Components;
@@ -57,6 +58,7 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedStarMarkSystem _starMark = default!;
+    [Dependency] private MobStateSystem _mobState = default!; // Claw Command
 
     private static readonly ProtoId<TagPrototype> BladeBladeTag = "HereticBladeBlade";
     private static readonly ProtoId<TagPrototype> CatwalkTag = "Catwalk";
@@ -64,6 +66,7 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
     private static readonly ProtoId<TagPrototype> BotTag = "Bot";
     private static readonly ProtoId<DamageTypePrototype> SlashDamage = "Slash";
     private static readonly ProtoId<DamageGroupPrototype> BruteDamage = "Brute";
+    private const float SiliconGraspDamage = 150f; // Claw Command
 
     public bool TryApplyGraspEffectAndMark(EntityUid user,
         HereticComponent hereticComp,
@@ -185,10 +188,20 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
                         break;
                     }
 
+                    // Claw Command - balance: grasp ghouls were uncapped, so every kill became another bladed fighter.
+                    if (CountGraspGhouls(heretic) >= heretic.MaxGraspGhouls)
+                    {
+                        if (_net.IsServer)
+                            _popup.PopupEntity(Loc.GetString("heretic-ability-fail-ghoul-limit",
+                                ("max", heretic.MaxGraspGhouls)), performer, performer);
+                        break;
+                    }
+
                     EnsureComp<HereticMinionComponent>(target).BoundHeretic = performer;
 
                     var ghoul = _compFactory.GetComponent<GhoulComponent>();
                     ghoul.GiveBlade = true;
+                    ghoul.FromGrasp = true; // Claw Command
 
                     AddComp(target, ghoul);
                     applyMark = false;
@@ -219,8 +232,11 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
                           HasComp<BorgChassisComponent>(target) ||
                           _tag.HasTag(target, BotTag))) // Check for ingorganic target
                 {
+                    // Claw Command - balance: 500 armor-ignoring brute one-shot every borg and synthetic crew member.
+                    // Objects still get shredded; silicon mobs are crippled (crit) instead of destroyed.
+                    var amount = HasComp<MobStateComponent>(target) ? SiliconGraspDamage : 500;
                     _damage.TryChangeDamage(target,
-                        new DamageSpecifier(_proto.Index(BruteDamage), 500),
+                        new DamageSpecifier(_proto.Index(BruteDamage), amount),
                         ignoreResistances: true,
                         origin: performer
                         );
@@ -240,5 +256,18 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
         }
 
         return true;
+    }
+
+    // Claw Command - living ghouls this heretic raised with grasp (ritual ghouls and summons have their own limits).
+    private int CountGraspGhouls(HereticComponent heretic)
+    {
+        var count = 0;
+        foreach (var minion in heretic.Minions)
+        {
+            if (TryComp(minion, out GhoulComponent? ghoul) && ghoul.FromGrasp && !_mobState.IsDead(minion))
+                count++;
+        }
+
+        return count;
     }
 }

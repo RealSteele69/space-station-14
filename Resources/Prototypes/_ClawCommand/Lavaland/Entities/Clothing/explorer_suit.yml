@@ -59,7 +59,7 @@
     damageCoefficient: 0.6
   - type: ContainerContainer
     containers:
-      toggleable-clothing: !type:Container {}
+      toggleable-clothing: !type:ContainerSlot {}
   - type: ToggleableClothing
     clothingPrototype: LavalandEquipmentExplorerHood
   - type: Construction

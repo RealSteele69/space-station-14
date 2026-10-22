@@ -25,7 +25,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Label
-    currentLabel: reagent-name-nutriment
+    localizedLabel: reagent-name-nutriment
   - type: Solution
     solution:
       reagents:
@@ -89,7 +89,7 @@
   suffix: Pax, 5
   components:
   - type: Label
-    currentLabel: Pax 10u
+    localizedLabel: label-pill-canister-pax
   - type: StorageFill
     contents:
     - id: PillPax
@@ -101,7 +101,7 @@
   suffix: Space Drugs, 5
   components:
   - type: Label
-    currentLabel: LSD 15u
+    localizedLabel: label-pill-canister-space-drugs
   - type: StorageFill
     contents:
     - id: PillSpaceDrugs
@@ -151,7 +151,7 @@
 
 - type: entity
   id: RPDExperimental
-  parent: RCDExperimental
+  parent: RPD
   suffix: Admeme
   name: experimental RPD
   description: A bluespace-enhanced rapid piping device that passively generates its own compressed matter.

@@ -9,12 +9,12 @@
   recognizable: true
   viscosity: 0.15
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
         factor: 2
-    Medicine:
+    Bloodstream:
       metabolismRate : 0.5
       effects:
       - !type:PopupMessage
@@ -47,23 +47,21 @@
   recognizable: false
   viscosity: 0.15
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:Satiate
         satiationType: Thirst
         factor: 2
-    Narcotic:
+    Bloodstream:
       effects:
-      - !type:GenericStatusEffect
-        key: Stutter
-        component: StutteringAccent
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectStutter
+        type: Update
       - !type:Jitter
       - !type:ModifyStatusEffect # Claw Command - old Drowsiness status key no longer exists
         effectProto: StatusEffectDrowsiness
         time: 10
         type: Remove
-    Medicine:
-      effects:
       - !type:ResetNarcolepsy
         conditions:
         - !type:ReagentCondition

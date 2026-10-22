@@ -8,8 +8,10 @@
   - type: Action
     useDelay: 10
     itemIconStyle: NoItem
-    icon:
-      sprite: _ClawCommand/Heretic/abilities_heretic.rsi
-      state: rune_break
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/abilities_heretic.rsi
+    layers:
+    - state: rune_break
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:DeleteAllCarvingsEvent

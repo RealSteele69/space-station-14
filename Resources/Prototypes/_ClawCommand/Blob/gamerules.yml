@@ -1,0 +1,69 @@
+# Claw Command - blob game rules. Nothing here rolls below 20 players.
+#
+# BlobRule        - stage tracker (announcements, red/delta alert, shuttle recall, round end). Started on demand.
+# BlobGameMode    - roundstart: one crewmember becomes a blob carrier (preset "Blob", or SubBlob inside Secret).
+# BlobSpawn       - midround: a ghost-role mouse carrier crawls out of a vent (Secret's high-impact pool).
+
+- type: entity
+  id: BlobRule
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: BlobRule
+
+- type: entity
+  id: BlobGameMode
+  parent: [ BaseGameRule, BaseRoundstartAntagRule ]
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GameRule
+    minPlayers: 20
+  - type: BlobRule
+  - type: AntagSelection
+    selectionTime: RuleStarted
+    antags:
+    - !type:FixedAntagCount
+      proto: Blob
+
+# Used by the Secret tiers. Skips quietly instead of cancelling the round when there are too few players.
+- type: entity
+  parent: BlobGameMode
+  id: SubBlob
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GameRule
+    minPlayers: 20
+    cancelPresetOnTooFewPlayers: false
+
+- type: entity
+  id: BlobSpawn
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationEvent
+    weight: 1
+    duration: 1
+    earliestStart: 50
+    reoccurrenceDelay: 60
+    minimumPlayers: 20
+    maxOccurrences: 1
+  - type: BlobSpawnRule
+    carrierBlobProtos:
+    - SpawnPointGhostBlobRat
+    playersPerCarrierBlob: 40
+    maxCarrierBlob: 1
+
+- type: gamePreset
+  id: Blob
+  alias:
+  - blob
+  - blab
+  name: blob-title
+  description: blob-description
+  showInVote: false
+  minPlayers: 20
+  rules:
+  - BlobGameMode
+  - SubDummyNonAntagChance
+  - BasicStationEventScheduler
+  - BasicRoundstartVariation

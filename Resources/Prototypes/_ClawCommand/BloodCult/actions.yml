@@ -1,0 +1,378 @@
+# Blood Cult actions: the blood magic menu, the blood spells it prepares, and construct abilities.
+
+- type: entity
+  abstract: true
+  parent: BaseAction
+  id: BaseBloodCultAction
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/actions.rsi
+    layers:
+    - state: blood_spells
+      map: [ "enum.ActionVisuals.Icon" ]
+
+# --- Blood magic menu -------------------------------------------------------
+
+- type: entity
+  parent: BaseBloodCultAction
+  id: ActionBloodCultPrepareSpells
+  name: Blood Magic
+  description: Prepare blood spells, or dispel the ones you hold. Without an empowering rune, preparing a spell costs blood and you can only hold one.
+  components:
+  - type: Action
+    priority: -10
+    useDelay: 1
+  - type: InstantAction
+    event: !type:BloodCultPrepareSpellsEvent
+
+# --- Blood spells -----------------------------------------------------------
+
+- type: entity
+  abstract: true
+  parent: BaseBloodCultAction
+  id: BaseBloodCultSpell
+  components:
+  - type: Action
+    temporary: true
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: BloodCultSpell
+
+- type: entity
+  parent: BaseBloodCultSpell
+  id: ActionBloodCultStun
+  name: Stun
+  description: Empowers your hand to stun and mute a victim on contact.
+  components:
+  - type: Action
+    useDelay: 3
+  - type: Sprite
+    layers:
+    - state: stun
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:BloodCultSummonEquipmentEvent
+      prototypes:
+        hand: StunAura
+      force: false
+
+- type: entity
+  parent: BaseBloodCultSpell
+  id: ActionBloodCultTeleport
+  name: Teleport
+  description: Teleport yourself or another cultist to a teleport rune.
+  components:
+  - type: Sprite
+    layers:
+    - state: teleport
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: TargetAction
+    checkCanAccess: false
+    range: 3
+    interactOnMiss: false
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - BloodCultist
+    event: !type:BloodCultTeleportEvent
+      speech: "Sas'so c'arta forbici!"
+
+- type: entity
+  parent: BaseBloodCultSpell
+  id: ActionBloodCultEmp
+  name: Electromagnetic Pulse
+  description: Emits a large electromagnetic pulse.
+  components:
+  - type: Sprite
+    layers:
+    - state: create_emp
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:BloodCultEmpEvent
+      speech: "Ta'gh fara'qha fel d'amar det!"
+
+- type: entity
+  parent: BaseBloodCultSpell
+  id: ActionBloodCultShadowShackles
+  name: Shadow Shackles
+  description: Empowers your hand to bind a victim on contact, and mute them if it works. Downed victims are bound at once. Holds four castings.
+  components:
+  - type: Action
+    useDelay: 3
+  - type: LimitedCharges
+    maxCharges: 4
+  - type: Sprite
+    layers:
+    - state: shackles
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:BloodCultSummonEquipmentEvent
+      prototypes:
+        hand: ShadowShacklesAura
+      force: false
+
+- type: entity
+  parent: BaseBloodCultSpell
+  id: ActionBloodCultTwistedConstruction
+  name: Twisted Construction
+  description: Corrupts certain metallic objects. Plasteel becomes runed metal, airlocks become runed doors, cyborg shells and endoskeletons become construct shells.
+  components:
+  - type: Sprite
+    layers:
+    - state: transmute
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: TargetAction
+    checkCanAccess: false
+    range: 3
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:BloodCultTwistedConstructionEvent
+      speech: "Ethra p'ni dedol!"
+      recipes:
+      - stackType: Plasteel
+        replacement: RunedMetal1
+      - whitelist:
+          components:
+          - Airlock
+        replacement: CultDoor
+        delay: 10
+      - whitelist:
+          components:
+          - BorgChassis
+        replacement: ConstructShell
+      - prototypes:
+        - CyborgEndoskeleton
+        replacement: ConstructShell
+        delay: 5
+
+- type: entity
+  parent: BaseBloodCultSpell
+  id: ActionBloodCultSummonCombatEquipment
+  name: Summon Combat Equipment
+  description: Summons cult armor, a cult bola and an eldritch longsword.
+  components:
+  - type: Sprite
+    layers:
+    - state: summon_combat_equipment
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:BloodCultSummonEquipmentEvent
+      speech: "Wur d'dai leev'mai k'sagan!"
+      prototypes:
+        outerClothing: ClothingOuterCultArmor
+        hand1: EldritchLongsword
+        hand2: CultBola
+
+- type: entity
+  parent: BaseBloodCultSpell
+  id: ActionBloodCultSummonRitualDagger
+  name: Summon Ritual Dagger
+  description: Summons a ritual dagger, in case you lost the one you were given.
+  components:
+  - type: Sprite
+    layers:
+    - state: summon_dagger
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:BloodCultSummonEquipmentEvent
+      speech: "Wur d'dai leev'mai k'sagan!"
+      prototypes:
+        hand: RitualDaggerCult
+
+- type: entity
+  parent: BaseBloodCultSpell
+  id: ActionBloodCultBloodRites
+  name: Blood Rites
+  description: Empowers your hand to absorb blood for advanced rites, or to heal a cultist on contact. Use the aura in hand to cast an advanced rite.
+  components:
+  - type: Action
+    useDelay: 3
+  - type: Sprite
+    layers:
+    - state: blood_rites
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:BloodCultSummonEquipmentEvent
+      speech: "Fel'th Dol Ab'orod!"
+      prototypes:
+        hand: BloodRitesAura
+      force: false
+
+# --- Items ------------------------------------------------------------------
+
+- type: entity
+  parent: BaseBloodCultAction
+  id: ActionBloodSpearRecall
+  name: Recall Halberd
+  description: Recalls your blood halberd back to your hand.
+  components:
+  - type: Action
+    useDelay: 30
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/Entities/Items/Weapons/cult_spear.rsi
+    layers:
+    - state: icon
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:BloodSpearRecalledEvent
+
+# --- Constructs -------------------------------------------------------------
+
+- type: entity
+  abstract: true
+  parent: BaseBloodCultAction
+  id: BaseBloodCultConstructAction
+  components:
+  - type: TargetAction
+    range: 5
+    checkCanAccess: false
+
+- type: entity
+  parent: BaseBloodCultConstructAction
+  id: ActionSummonCultFloor
+  name: Summon Cult Floor
+  description: Turns the targeted floor into cult floor.
+  components:
+  - type: Action
+    useDelay: 10
+  - type: Sprite
+    layers:
+    - state: create_cult_floor
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: WorldTargetAction
+    event: !type:BloodCultPlaceTileEntityEvent
+      tileId: CultFloor
+      audio: !type:SoundPathSpecifier
+        path: /Audio/_ClawCommand/Heretic/curse.ogg
+
+- type: entity
+  parent: BaseBloodCultConstructAction
+  id: ActionLesserConstruction
+  name: Lesser Construction
+  description: Raises a cult wall.
+  components:
+  - type: Action
+    useDelay: 20
+  - type: Sprite
+    layers:
+    - state: lesser_construct
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: WorldTargetAction
+    event: !type:BloodCultPlaceTileEntityEvent
+      entity: WallCult
+      audio: !type:SoundPathSpecifier
+        path: /Audio/_ClawCommand/Heretic/curse.ogg
+
+- type: entity
+  parent: BaseBloodCultConstructAction
+  id: ActionSummonCultDoor
+  name: Summon Cult Door
+  description: Raises a runed door.
+  components:
+  - type: Action
+    useDelay: 30
+  - type: Sprite
+    layers:
+    - state: lesser_construct
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: WorldTargetAction
+    event: !type:BloodCultPlaceTileEntityEvent
+      entity: CultDoor
+      audio: !type:SoundPathSpecifier
+        path: /Audio/_ClawCommand/Heretic/curse.ogg
+
+- type: entity
+  parent: BaseBloodCultConstructAction
+  id: ActionSummonSoulStone
+  name: Summon Soulshard
+  description: Reaches into Nar'Sie's realm and pulls out one of the legendary fragments, a soul shard waiting for a spirit.
+  components:
+  - type: Action
+    useDelay: 240
+  - type: Sprite
+    layers:
+    - state: create_soul_stone
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: WorldTargetAction
+    event: !type:BloodCultPlaceTileEntityEvent
+      entity: SoulShardGhost
+      audio: !type:SoundPathSpecifier
+        path: /Audio/_ClawCommand/Heretic/curse.ogg
+
+- type: entity
+  parent: BaseBloodCultConstructAction
+  id: ActionSummonSoulStoneHoly
+  name: Summon Holy Soulshard
+  description: Calls forth a blessed soul shard waiting for a spirit.
+  components:
+  - type: Action
+    useDelay: 240
+  - type: Sprite
+    layers:
+    - state: create_soul_stone
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: WorldTargetAction
+    event: !type:BloodCultPlaceTileEntityEvent
+      entity: SoulShardHolyGhost
+      audio: !type:SoundPathSpecifier
+        path: /Audio/_ClawCommand/Heretic/curse.ogg
+
+- type: entity
+  parent: BaseBloodCultAction
+  id: ActionForceWallCult
+  name: Shield
+  description: Creates a temporary forcefield to shield yourself and your allies from incoming fire.
+  components:
+  - type: Action
+    useDelay: 40
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/forcewall.ogg
+  - type: Sprite
+    layers:
+    - state: summon_force_wall
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:InstantSpawnSpellEvent
+      prototype: WallForceCult
+      posData: !type:TargetInFront
+
+- type: entity
+  parent: BaseBloodCultAction
+  id: ActionPhaseShift
+  name: Phase Shift
+  description: Slip into the veil for a few seconds, passing through walls unseen. Attacking ends it early.
+  components:
+  - type: Action
+    useDelay: 30
+  - type: Sprite
+    layers:
+    - state: phase_shift
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:BloodCultPhaseShiftEvent
+
+- type: entity
+  parent: BaseBloodCultAction
+  id: ActionGauntletEcho
+  name: Gauntlet Echo
+  description: Channels energy into your gauntlet, firing its essence forward in a slow but devastating blow.
+  components:
+  - type: Magic
+  - type: Action
+    useDelay: 30
+    raiseOnUser: true
+    sound: !type:SoundPathSpecifier
+      path: /Audio/_ClawCommand/Heretic/demon_attack1.ogg
+  - type: Sprite
+    layers:
+    - state: gauntlet_echo
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: TargetAction
+    range: 15
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:ProjectileSpellEvent
+      prototype: ProjectileGauntlet

@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 05/28/2026 23:08:29
-  entityCount: 31160
+  entityCount: 31159
 maps:
 - 1
 grids:
@@ -10087,17 +10087,6 @@ entities:
     - type: Transform
       pos: 19.476593,-4.469906
       parent: 21002
-- proto: ActionToggleLight
-  entities:
-  - uid: 18422
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 2671
-    - type: Action
-      originalIconColor: '#FFFFFFFF'
-      container: 2671
 - proto: AirAlarm
   entities:
   - uid: 505
@@ -138664,7 +138653,7 @@ entities:
       parent: 2
     - type: AtmosPipeColor
       color: '#03FCD3FF'
-- proto: Gateway
+- proto: GatewayLavalandStation
   entities:
   - uid: 3678
     components:
@@ -148956,7 +148945,6 @@ entities:
       pos: 29.392466,20.981281
       parent: 2
     - type: HandheldLight
-      toggleActionEntity: 18422
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
@@ -148966,8 +148954,7 @@ entities:
         actions: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - 18422
+          ents: []
     - type: Physics
       canCollide: True
     - type: ActionsContainer

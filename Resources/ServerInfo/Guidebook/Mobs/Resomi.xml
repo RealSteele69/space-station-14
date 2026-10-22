@@ -1,0 +1,31 @@
+<Document>
+  # Resomi
+
+  <Box>
+    <GuideEntityEmbed Entity="AppearanceResomi" Caption=""/>
+  </Box>
+
+  Resomi are a small, feathered, avian-like species that hail from an icy world. Their slight frame means most clothing is tailored down to fit them.
+
+  ## Diet
+
+  - Like most other non-human species, Resomi can digest raw meat and other uncooked animal proteins.
+
+  ## Benefits
+
+  - Thanks to their frozen home world and ammonia-based blood, Resomi are [color=#1e90ff]immune to cold damage and are not slowed by the cold.[/color]
+  - Their unarmed attack deals [color=#ec3a3a]Slash[/color] damage.
+
+  ## Drawbacks
+
+  - Temperatures most species find comfortable are close to unbearable for them; they [color=#ffa500]start burning up at around 47°C.[/color]
+  - They [color=#ffa500]take 30% more Heat damage and 15% more Blunt, Slash and Piercing damage.[/color]
+  - Resomi have [color=#ffa500]a third less blood[/color] than most species, so blood loss catches up with them much sooner.
+  - Their ammonia-based blood means standard blood transfusions won't help them.
+  - They weigh less than most species.
+
+  ## Voice
+
+  Resomi speak in clicks and chirps, and can [color=#1e90ff]*chirp*, *trill*, *warble* and *wurble*.[/color]
+
+</Document>

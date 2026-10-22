@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Content.Server._ClawCommand.Administration;
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Mind;
@@ -14,6 +15,7 @@ namespace Content.Server.Mind.Commands
         [Dependency] private IPlayerManager _playerManager = default!;
         [Dependency] private SharedRoleSystem _roles = default!;
         [Dependency] private SharedMindSystem _minds = default!;
+        [Dependency] private AntagRevealSystem _antagReveal = default!; // Claw Command
 
         public override string Command => "mindinfo";
 
@@ -36,6 +38,10 @@ namespace Content.Server.Mind.Commands
                 shell.WriteLine(Loc.GetString($"cmd-mindinfo-mind-not-found"));
                 return;
             }
+
+            // Claw Command - mind roles include antag roles
+            if (session != shell.Player)
+                _antagReveal.Reveal(shell.Player, session.UserId, Command);
 
             var builder = new StringBuilder();
             builder.AppendFormat("player: {0}, mob: {1}\nroles: ", mind.UserId, mind.OwnedEntity);

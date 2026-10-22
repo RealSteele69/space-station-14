@@ -1,6 +1,7 @@
 - type: npcFaction
   id: Dragon
   hostile:
+  - Blob # Claw Command - blob
   - NanoTrasen
   - Syndicate
   - Xeno
@@ -17,6 +18,7 @@
 - type: npcFaction
   id: NanoTrasen
   hostile:
+  - Blob # Claw Command - blob
   - SimpleHostile
   - Syndicate
   - Xeno
@@ -45,6 +47,7 @@
   friendly:
   - NanoTrasen
   hostile:
+  - Blob # Claw Command - blob
   - Mouse
   - SimpleHostile
   - Zombie
@@ -59,6 +62,7 @@
   friendly:
   - AnimalFriend # Claw Command
   hostile:
+  - Blob # Claw Command - blob
   - NanoTrasen
   - Syndicate
   - Passive
@@ -79,6 +83,7 @@
 - type: npcFaction
   id: Syndicate
   hostile:
+  - Blob # Claw Command - blob
   - NanoTrasen
   - SimpleHostile
   - Xeno
@@ -94,6 +99,7 @@
 - type: npcFaction
   id: Xeno
   hostile:
+  - Blob # Claw Command - blob
   - NanoTrasen
   - Syndicate
   - Passive
@@ -110,6 +116,7 @@
 - type: npcFaction
   id: Zombie
   hostile:
+  - Blob # Claw Command - blob
   - NanoTrasen
   - SimpleNeutral
   - SimpleHostile
@@ -127,6 +134,7 @@
 - type: npcFaction
   id: Revolutionary
   hostile:
+  - Blob # Claw Command - blob
   - NanoTrasen
   - Zombie
   - SimpleHostile
@@ -140,6 +148,7 @@
 - type: npcFaction
   id: AllHostile
   hostile:
+  - Blob # Claw Command - blob
   - NanoTrasen
   - Dragon
   - Mouse
@@ -158,6 +167,7 @@
 - type: npcFaction
   id: Wizard
   hostile:
+  - Blob # Claw Command - blob
   - NanoTrasen
   - Dragon
   - Mouse
@@ -179,6 +189,7 @@
 - type: npcFaction
   id: Xenoborg
   hostile:
+  - Blob # Claw Command - blob
   # they have brains
   - NanoTrasen
   - Syndicate
@@ -221,6 +232,7 @@
   friendly:
   - AnimalFriend
   hostile:
+  - Blob # Claw Command - blob
   - NanoTrasen
   - Syndicate
   - SimpleHostile

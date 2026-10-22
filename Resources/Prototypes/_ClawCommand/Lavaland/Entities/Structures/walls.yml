@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseWall
+  id: WallNecropolisIndestructible
+  name: stone wall
+  suffix: Indestructible
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Structures/Walls/necropolis.rsi
+  - type: Icon
+    sprite: _ClawCommand/Lavaland/Structures/Walls/necropolis.rsi
+  - type: IconSmooth
+    key: walls
+    base: necropolis
+  - type: Destructible

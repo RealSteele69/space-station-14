@@ -43,6 +43,7 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Temperature
+    heatCapacity: 21000 # Claw Command - mass x specificHeat, declared so spawning doesn't change it
   - type: TemperatureDamage
     coldDamageThreshold: 293 # Doesn't survive room temperature
     heatDamage: { }

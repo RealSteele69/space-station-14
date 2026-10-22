@@ -147,8 +147,6 @@
     yield: 4
     potency: 10
     growthStages: 5
-  - type: PlantHarvest
-    harvestRepeat: Repeat
   - type: PlantChemicals
     chemicals:
       Nutriment:
@@ -364,6 +362,9 @@
     potency: 20
   - type: PlantHarvest
     harvestRepeat: Repeat
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288 # 15°C
+    highHeatTolerance: 308 # 35°C
   - type: PlantChemicals
     chemicals:
       CapsaicinOil:
@@ -403,6 +404,9 @@
     potency: 20
   - type: PlantHarvest
     harvestRepeat: Repeat
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288 # 15°C
+    highHeatTolerance: 308 # 35°C
   - type: PlantChemicals
     chemicals:
       CapsaicinOil:

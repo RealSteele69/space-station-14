@@ -1,0 +1,57 @@
+# _ClawCommand: a preened (or torn-out) Avali feather. PreenableSystem tints it with the Avali's skin colour
+# and, for torn-out feathers, the blood colour. Works as a quill and can be worn behind an ear or in a hat.
+- type: entity
+  parent: BaseItem
+  id: AvaliFeather
+  name: feather
+  description: Probably not ethically sourced.
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Misc/feather.rsi
+    layers:
+    - state: feather
+      map: [ "enum.FeatherVisualLayers.Feather" ]
+    - state: featherblood
+      color: "#FFFFFF00"
+      map: [ "enum.FeatherVisualLayers.Blood" ]
+  - type: Feather
+  - type: Flammable
+    fireSpread: true
+    alwaysCombustible: true
+    damage:
+      types:
+        Heat: 1
+  - type: FireVisuals
+    sprite: Effects/fire.rsi
+    normalState: fire
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Injurable
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Item
+    size: Tiny
+  - type: Clothing
+    sprite: _ClawCommand/Objects/Misc/feather.rsi
+    clothingVisuals:
+      ears:
+      - state: equipped-EARS
+        map: [ "feather" ]
+      head:
+      - state: equipped-HELMET
+        map: [ "feather" ]
+    slots:
+    - ears
+    - head
+  - type: Tag
+    tags:
+    - Write # like a quill
+    - Pen
+    - Trash

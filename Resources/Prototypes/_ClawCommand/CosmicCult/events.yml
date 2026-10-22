@@ -1,0 +1,27 @@
+# Midround: a lone Entropic Colossus ghost role drops in from space. Pooled with the dragon in
+# CCHostileMobBossTable (event_pools.yml), so it only appears where boss mobs can.
+- type: entity
+  parent: BaseAntagGhostRoleRule
+  id: ColossusSpawn
+  components:
+  - type: StationEvent
+    weight: 1.5 # rarer than the dragon
+    earliestStart: 30
+    reoccurrenceDelay: 40
+    minimumPlayers: 20
+    duration: null
+    occursDuringRoundEnd: false
+  - type: SpaceSpawnRule
+  - type: AntagSpawner
+    prototype: MobCosmicColossusLone
+  - type: AntagObjectives
+    objectives:
+    - ColossusSurviveObjective
+    - ColossusEffigyObjective
+  - type: AntagSelection
+    agentName: role-subtype-colossus
+    antags:
+    - !type:FixedAntagCount
+      proto: CosmicColossus
+  - type: DynamicRuleCost
+    cost: 75

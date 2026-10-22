@@ -13,6 +13,8 @@
   - !type:AddComponentSpecial
     components:
     - type: BibleUser #Lets them heal with bibles
+    - type: Condemned # Claw Command - devil: their soul is already spoken for
+      soulOwnedNotDevil: true
 
 - type: startingGear
   id: ChaplainGear
@@ -23,6 +25,7 @@
   storage:
     back:
     - RubberStampChaplain
+    - CosmicCenser # Claw Command - Cosmic Cult counterplay
 
 - type: chameleonOutfit
   id: ChaplainChameleonOutfit

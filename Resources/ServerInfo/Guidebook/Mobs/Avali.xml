@@ -5,26 +5,40 @@
     <GuideEntityEmbed Entity="AppearanceAvali" Caption=""/>
   </Box>
 
-  Avali are a small, feathered, pack-living species hailing from a frigid world. They are quick, talkative, and surprisingly capable in low-gravity environments — though life on a temperate station is a constant balancing act.
+  Avali are lightweight, feathered, raptor-like humanoids from a frigid world: pack hunters with wing-like arms, a long tail and big ears. Their ammonia-based biology makes them comfortable in the cold and miserable in the heat.
 
   ## Diet
 
-  - Omnivore. Their stomach handles raw meat, vegetables, and pills without issue.
+  - Eats fruit and meat, but not vegetables.
+  - Theobromine (chocolate, tea, coffee) and allicin (onion, garlic) are poisonous to them.
 
   ## Benefits
 
-  - [color=#1e90ff]Cold-adapted[/color]: an ammonia-based bloodstream lets them tolerate temperatures down to around -77 C.
-  - [color=#1e90ff]Light cold damage[/color]: they take very little Cold damage even when overexposed.
+  - [color=#1e90ff]Cold-adapted[/color]: they take very little Cold damage and are slowed less by the cold than other species.
   - [color=#1e90ff]Zero-G specialists[/color]: pack-hunter instincts give Avali noticeably better acceleration when weightless.
-  - [color=#1e90ff]Claws[/color]: their unarmed attack deals Slash damage with the sound of an alien claw strike.
+
+  ## Special
+
+  - Their claws deal Slash damage.
+  - Lighter than other species, with a lower natural body temperature.
+  - Ammonia-based blood, and only half as much of it as most species, so standard blood transfusions won't help.
 
   ## Drawbacks
 
-  - [color=#ffa500]Heat-fragile[/color]: temperatures above roughly 47 C burn them quickly and they take significantly more Heat damage than humans.
-  - [color=#ffa500]Specialised blood[/color]: their ammonia-based blood means standard transfusion reagents won't help — find another Avali in a pinch.
+  - [color=#ffa500]Heat-fragile[/color]: they start taking Heat damage at a lower temperature and take much more of it. Because of this, [color=red]Leporazine is highly dangerous[/color] and can be lethal at higher doses.
+  - As a lightweight species they are frail, taking [color=#ffa500]30% more Blunt damage[/color] and [color=#ffa500]10% more Slash and Piercing damage[/color].
+  - For the same reason they lack muscle, [color=#ffa500]dealing 35% less Blunt damage[/color] and [color=#ffa500]15% less Slash damage[/color] in melee.
+
+  ## Feathers
+
+  <Box>
+    <GuideEntityEmbed Entity="AvaliFeather" Caption=""/>
+  </Box>
+
+  A heavy hit can tear out one of an Avali's feathers, which hurts and gives them a [color=#1e90ff]short burst of adrenaline[/color]. An Avali can lose up to three feathers, which slowly grow back. Feathers can also be [color=#1e90ff]preened[/color] out by hand from the context menu, either by the Avali or by someone else. A feather takes on its owner's colour, works as a quill, and can be worn behind an ear or in a hat.
 
   ## Voice
 
-  Avali speech is a stream of clicks, chirps and trills. In-game this comes through as the Parrot speech verb backed by the Avali voice profile, and emotes like *scream*, *laugh*, *honk*, *whistle*, and *weh* play the Avali-specific sound bank.
+  Avali speech comes through as chirps and trills with the Parrot speech verb. Besides the usual emotes, they can *chirp*, *trill*, *warble*, *purr* and *growl*, and have their own scream, laugh, cry and whistle.
 
 </Document>

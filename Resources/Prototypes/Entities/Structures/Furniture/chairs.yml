@@ -143,6 +143,8 @@
   components:
   - type: Sprite
     state: chair-greyscale
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: CosmicChair
 
 - type: entity
   parent: [ ChairBase, StructureHealthFurniture ]
@@ -195,6 +197,8 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           SheetBrass1: *Min0Max1
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: CosmicChair
 
 - type: entity
   parent: [ OfficeChairVehicleBase, StructureHealthFurniture ]
@@ -237,6 +241,8 @@
     damageModifierSet: SteelMod
   - type: Destructible
     thresholds: *ThresholdsFurnitureNormalSteel
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: CosmicChair
 
 - type: entity
   parent: [ ChairBase, StructureHealthFurniture ]
@@ -253,6 +259,8 @@
     damageModifierSet: SteelMod
   - type: Destructible
     thresholds: *ThresholdsFurnitureNormalSteel
+  - type: CosmicCorruptible # Claw Command - Cosmic Cult
+    convertTo: CosmicChair
 
 - type: entity
   parent: [ UnanchoredChairBase, StructureHealthFurniture ]

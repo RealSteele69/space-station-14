@@ -231,6 +231,9 @@
     price: 75 # These are limited supply items.
   - type: TrashOnSolutionEmpty
     solution: hypospray
+  - type: CosmicTransmutable # Claw Command - Cosmic Cult
+    transmutesTo: CosmicMedipen
+    requiredGlyphType: CosmicGlyphBlades # Well I mean it DOES have a needle in it
 
 - type: entity
   parent: ChemicalMedipen
@@ -759,17 +762,16 @@
     maxFillLevels: 1
     changeColor: false
     emptySpriteName: morphen_empty
-  - type: SolutionContainerManager
-    solutions:
-      hypospray: # _ClawCommand fix: was "pen" — Injector/Spillable/Visualizer all read solution "hypospray", so the pen rendered empty and injected 0u
-        maxVol: 40
-        reagents:
-        - ReagentId: Tricordrazine
-          Quantity: 30
-        - ReagentId: Saline
-          Quantity: 5
-        - ReagentId: TranexamicAcid
-          Quantity: 5
+  - type: Solution # Claw Command - the inherited "hypospray" solution, sized up for the 40u dose
+    solution:
+      maxVol: 40
+      reagents:
+      - ReagentId: Tricordrazine
+        Quantity: 30
+      - ReagentId: Saline
+        Quantity: 5
+      - ReagentId: TranexamicAcid
+        Quantity: 5
 
 - type: entity
   parent: BaseHypospray
@@ -796,10 +798,13 @@
         color: "#439822"
       - state: base-colorB-inhand-right
     size: Tiny
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 15
+  - type: Solution # Claw Command - SolutionContainerManager extra solutions are wiped on map init now
+    id: drink
+    solution:
+      maxVol: 15
+  - type: Spillable
+    solution: drink
+    spillWhenThrown: false
   - type: ExaminableSolution
     solution: drink
   - type: Injector

@@ -21,10 +21,17 @@
         - LargeMobLayer
   - type: NpcFactionMember
     factions:
-    - SimpleHostile
+    - Lavafauna
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        10
+      AggroVisionRadius: !type:Single
+        14
+      NavSmash: !type:Bool
+        true
   - type: Sprite
     drawdepth: Mobs
     sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
@@ -71,3 +78,43 @@
     forgiveRange: 20.0
   - type: CombatPower # Goobstation
     factor: 25 # times more dangerous than a crew-member
+  # Megafauna AI
+  - type: Fauna
+  - type: ActionGrant
+    actions:
+    - ActionBubblegumCharge
+    - ActionBubblegumTripleCharge
+    - ActionBubblegumHandSlams
+    - ActionBubblegumBloodWarp
+  - type: MegafaunaAi
+    actionDelay: 0.5
+    startingDelay: 1.0
+    selector: !type:NestedMegafaunaSelector
+      id: Bubblegum
+  - type: MegafaunaAggroRadius
+    radius: 9
+  - type: MegafaunaBlink
+    delay: 0.8
+    spawnOnUsed: BubblegumShapeWarpLeave
+    spawnOnTarget: BubblegumShapeWarpArrive
+    sound:
+      path: /Audio/Effects/demon_consume.ogg
+  - type: Anger
+    totalHp: 2500
+  - type: AngerPlayerScaling
+    angerScale: 1.1
+    hpScale: 1.2
+  - type: MobPhases
+    phaseThresholds:
+      0: 1
+      900: 2
+      1800: 3
+  - type: MegafaunaGodmode
+  - type: MegafaunaRejuvenate
+  - type: DamageSquareImmunity
+  - type: SpawnLootOnDeath
+    table: !type:AllSelector
+      children:
+      - id: LavalandCrateNecropolisFilled
+      - id: CrusherUpgradeHandleWeights
+      - id: LavalandCursedHeart

@@ -425,6 +425,12 @@
   greet:
     !type:Custom
     text: holiday-custom-festive-season
+  celebrate: # Claw Command - presents piled around the station's christmas trees at round start
+    !type:TreeGiftsCelebrate
+    trees:
+    - FloraTreeChristmas01
+    - FloraTreeChristmas02
+    - FloraTreeChristmas03
 
 - type: holiday
   id: BoxingDay

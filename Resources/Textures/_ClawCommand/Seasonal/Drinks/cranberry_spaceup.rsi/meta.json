@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from Citadel-Station-13/Citadel-Station-13-RP at commit db254a45e84676b7d1f32e3386c65453253bc6c5 (icons/obj/drinks.dmi). icons/obj/drinks.dmi was imported from VOREStation (Polaris lineage) in 2018; contributors to that file include: AlphaM01, timothyteakettle, CharlesWedge, Captain277, BlueWildrose, nik707, Shadowtail117, CrystalClearCC, yourdoom9898, AllSmilesAndGrins, Jaybirdnerd, Mount0, Saisni, silicons, TheKnightofAura, thestubborn, avabee, deathride58.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "icon_open"
+    }
+  ]
+}

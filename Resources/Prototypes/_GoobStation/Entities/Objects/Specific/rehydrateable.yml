@@ -1,6 +1,6 @@
 # Claw Command - cube spawns retargeted from Goob's Mob*Random variants to this fork's own
 # species mobs; the fork has no random-appearance variants. Cubes for species the fork does
-# not have at all (Harpy, Rodentia, Yowie, Chitinid) are removed rather than left pointing at nothing.
+# not have at all (Harpy, Yowie, Chitinid) are removed rather than left pointing at nothing.
 # SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Armok <155400926+ARMOKS@users.noreply.github.com>
@@ -65,6 +65,15 @@
   - type: Rehydratable
     possibleSpawns:
     - MobDwarf
+
+- type: entity
+  parent: MonkeyCube
+  id: RodentiaCube
+  name: rodentia cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobRodentia
 
 - type: entity
   parent: MonkeyCube

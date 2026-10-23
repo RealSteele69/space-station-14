@@ -1,0 +1,454 @@
+# Limited-edition holiday consumables. Most of these are only sold during their holiday - see
+# the HolidayVendingStock component on the vending machines.
+
+# ----------------------------------------------------------------------------- cans
+
+- type: entity
+  parent: DrinkCanBaseFull
+  id: DrinkCinnamonColaCan
+  name: Space Cola Cinnamon
+  description: The classic taste of Space Cola with a hint of warm cinnamon flavor. Happy Holidays!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Drinks/cinnamon_cola.rsi
+  - type: Item
+    sprite: Objects/Consumable/Drinks/cola.rsi
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CinnamonCola
+        Quantity: 40
+
+- type: entity
+  parent: DrinkCanBaseFull
+  id: DrinkSpaceUpCranberryCan
+  name: Space-Up Cranberry
+  description: Space-Up with a cranberry and spice twist. Happy Holidays!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Drinks/cranberry_spaceup.rsi
+  - type: Item
+    sprite: Objects/Consumable/Drinks/cola.rsi
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: SpaceUpCranberry
+        Quantity: 40
+
+- type: entity
+  parent: DrinkCanBaseFull
+  id: DrinkPeppermintMochaCan
+  name: Robust Express Peppermint Mocha
+  description: Delicious caffeine infused with creamy vanilla and peppermint flavor. It's pleasantly warm to the touch.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Drinks/peppermint_mocha.rsi
+  - type: Item
+    sprite: Objects/Consumable/Drinks/cola.rsi
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: PeppermintMocha
+        Quantity: 30
+
+- type: entity
+  parent: DrinkCanBaseFull
+  id: DrinkLicoriceColaCan
+  name: Space Cola Licorice
+  description: The classic taste of Space Cola infused with red and black licorice mix. Happy Halloween!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Drinks/licorice_cola.rsi
+  - type: Item
+    sprite: Objects/Consumable/Drinks/cola.rsi
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: LicoriceCola
+        Quantity: 40
+
+- type: entity
+  parent: DrinkCanBaseFull
+  id: DrinkDrGibbMysteryCan
+  name: Dr. Gibb Mystery
+  description: A mysterious seasonal variant of Dr. Gibb. Happy Halloween!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Drinks/drgibb_mystery.rsi
+  - type: Item
+    sprite: Objects/Consumable/Drinks/cola.rsi
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: DrGibbMystery
+        Quantity: 40
+
+- type: entity
+  parent: DrinkCanBaseFull
+  id: DrinkPumpkinLatteCan
+  name: Robust Express Pumpkin Latte
+  description: Delicious caffeine infused with pumpkin pie flavor and autumnal spices. It's pleasantly warm to the touch.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Drinks/pumpkin_latte.rsi
+  - type: Item
+    sprite: Objects/Consumable/Drinks/cola.rsi
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: PumpkinSpiceLatte
+        Quantity: 30
+
+# ----------------------------------------------------------------------------- bottles
+
+- type: entity
+  abstract: true
+  parent: [ DrinkVisualsOpenable, DrinkBottleGlassBaseFull ]
+  id: DrinkSeasonalBottleBase
+  components:
+  - type: Item
+    sprite: Objects/Consumable/Drinks/alco-bottle.rsi
+
+- type: entity
+  parent: DrinkSeasonalBottleBase
+  id: DrinkCaramelWhiskeyBottleFull
+  name: Al-Karamil whiskey liqueur
+  description: A limited-edition bottle of decadent caramel-flavored whiskey.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Drinks/caramel_whiskey.rsi
+  - type: Label
+    localizedLabel: reagent-name-caramel-whiskey
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CaramelWhiskey
+        Quantity: 100
+
+- type: entity
+  parent: DrinkSeasonalBottleBase
+  id: DrinkPeppermintSchnappsBottleFull
+  name: Knight & Weiss peppermint schnapps
+  description: A very refined-looking bottle of imported mint liqueur.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Drinks/peppermint_schnapps.rsi
+  - type: Label
+    localizedLabel: reagent-name-peppermint-schnapps
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: PeppermintSchnapps
+        Quantity: 100
+
+- type: entity
+  parent: DrinkSeasonalBottleBase
+  id: DrinkSourAppleSchnappsBottleFull
+  name: Lich King Emerald
+  description: "Notice: Unapologetically evil neon-green liqueur inside. Imbibe at your own risk. Sour apple flavoured schnapps."
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Drinks/sourapple_schnapps.rsi
+  - type: Label
+    localizedLabel: reagent-name-sour-apple-schnapps
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: SourAppleSchnapps
+        Quantity: 100
+
+- type: entity
+  parent: DrinkSeasonalBottleBase
+  id: DrinkCandyCornVodkaBottleFull
+  name: Goopy's candy corn vodka
+  description: The fruit of some unholy promotional crossover, it has a drawing of a clumsy ghost girl with untied shoelaces on the label.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Drinks/candycorn_vodka.rsi
+  - type: Label
+    localizedLabel: reagent-name-candy-corn-vodka
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CandyCornVodka
+        Quantity: 100
+
+# ----------------------------------------------------------------------------- snacks
+
+- type: entity
+  abstract: true
+  parent: FoodBakedBase
+  id: FoodGingerbreadCookieBase
+  name: gingerbread cookie
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Food/holiday_snacks.rsi
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Sugar
+        Quantity: 2
+  - type: FlavorProfile
+    flavors:
+    - sweet
+    - spicy
+  - type: Tag
+    tags:
+    - GingerbreadCookie
+
+- type: entity
+  parent: FoodGingerbreadCookieBase
+  id: FoodGingerbreadCookiePerson
+  description: A gingerbread individual. You struggle to ascertain their gender.
+  components:
+  - type: Sprite
+    state: gingerbread_person
+
+- type: entity
+  parent: FoodGingerbreadCookieBase
+  id: FoodGingerbreadCookieCane
+  description: A gingerbread cane with stripes drawn in icing.
+  components:
+  - type: Sprite
+    state: gingerbread_cane
+
+- type: entity
+  parent: FoodGingerbreadCookieBase
+  id: FoodGingerbreadCookieTree
+  description: A small conifer of the gingerbread species.
+  components:
+  - type: Sprite
+    state: gingerbread_tree
+
+- type: entity
+  parent: FoodGingerbreadCookieBase
+  id: FoodGingerbreadCookieStar
+  description: A gingerbread star. Presumably of the astronomical rather than marine variety, but you're not sure.
+  components:
+  - type: Sprite
+    state: gingerbread_star
+
+- type: entity
+  parent: FoodBakedBase
+  id: FoodStroopwafel
+  name: stroopwafel
+  description: A pair of thin wafers glued together with thick, syrupy caramel. Delicious.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Food/holiday_snacks.rsi
+    state: stroopwafel
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Sugar
+        Quantity: 3
+  - type: FlavorProfile
+    flavors:
+    - sweet
+    - caramel
+  - type: Tag
+    tags:
+    - Stroopwafel
+
+- type: entity
+  parent: BoxBaseSmall
+  id: FoodBoxGingerbreadCookies
+  name: Centauri gingerbread cookies
+  description: Just like mom used to make. Assuming your mom was a trans-stellar food corporation, that is.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Food/holiday_snacks.rsi
+    state: gingerbread_box
+  - type: Storage
+    whitelist:
+      tags:
+      - GingerbreadCookie
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: FoodGingerbreadCookiePerson
+          amount: 2
+        - id: FoodGingerbreadCookieCane
+          amount: 2
+        - id: FoodGingerbreadCookieTree
+          amount: 2
+        - id: FoodGingerbreadCookieStar
+          amount: 2
+
+- type: entity
+  parent: BoxBaseSmall
+  id: FoodBoxStroopwafels
+  name: Van Thyssen's stroopwafels
+  description: A hexagonal box of imported holiday treats. Best served with coffee.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Food/holiday_snacks.rsi
+    state: stroopwafel_box
+  - type: Storage
+    whitelist:
+      tags:
+      - Stroopwafel
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: FoodStroopwafel
+        amount: 4
+
+# A cookie with a paper slip inside; the slip is left behind once it's eaten.
+- type: entity
+  parent: FoodBakedBase
+  id: FoodFortuneCookie
+  name: fortune cookie
+  description: A true prophecy in each cookie!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Food/holiday_snacks.rsi
+    state: fortune_cookie
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Sugar
+        Quantity: 1
+  - type: FlavorProfile
+    flavors:
+    - sweet
+  - type: Edible
+    trash:
+    - PaperFortune
+
+- type: entity
+  parent: Paper
+  id: PaperFortune
+  name: fortune
+  description: A thin slip of paper.
+  components:
+  - type: RandomPaperContent
+    dataset: CookieFortunes
+
+# ----------------------------------------------------------------------------- crackers
+
+- type: entity
+  parent: BaseItem
+  id: ChristmasCracker
+  name: christmas cracker
+  description: "Directions for use: requires two people, one to pull each end."
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Objects/cracker.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: ChristmasCracker
+
+- type: entity
+  parent: BaseItem
+  id: ChristmasCrackerHalfLeft
+  name: christmas cracker
+  suffix: Popped
+  description: Half of a christmas cracker that has already been pulled.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Objects/cracker.rsi
+    state: left_half
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Trash
+  - type: SpaceGarbage
+
+- type: entity
+  parent: ChristmasCrackerHalfLeft
+  id: ChristmasCrackerHalfRight
+  components:
+  - type: Sprite
+    state: right_half
+
+- type: entity
+  parent: Paper
+  id: PaperCrackerJoke
+  name: joke
+  description: A tiny folded slip of paper.
+  components:
+  - type: RandomPaperContent
+    dataset: CrackerJokes
+
+# ----------------------------------------------------------------------------- cigarettes
+
+- type: entity
+  abstract: true
+  parent: [ BaseStorageItem, BaseBagOpenClose ]
+  id: CigPackSeasonalBase
+  name: cigarette pack
+  components:
+  - type: Sprite
+    layers:
+    - state: closed
+      map: ["closeLayer"]
+    - state: open
+      map: ["openLayer"]
+      visible: false
+  - type: Tag
+    tags:
+    - CigPack
+    - Trash
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 50
+  - type: SpaceGarbage
+  - type: Item
+    size: Tiny
+    shape:
+    - 0,0,0,1
+    sprite: Objects/Consumable/Smokeables/Cigarettes/Packs/green.rsi
+  - type: Storage
+    grid:
+    - 0,0,4,1
+  - type: Appearance
+
+- type: entity
+  parent: Cigarette
+  id: CigaretteVanilla
+  name: vanilla cigarette
+  description: A limited-edition cigarette with a sweet vanilla aroma.
+
+- type: entity
+  parent: Cigarette
+  id: CigaretteCherry
+  name: cherry cigarette
+  description: The black paper smells pleasantly sweet.
+
+- type: entity
+  parent: CigPackSeasonalBase
+  id: CigPackVanilla
+  name: pack of Temperamento Vanillas
+  description: A packet of limited-edition, vanilla flavoured Temperamentos. These are outlawed in several territories, but not frontier space!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Smokeables/vanilla_pack.rsi
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigaretteVanilla
+        amount: 6
+
+- type: entity
+  parent: CigPackSeasonalBase
+  id: CigPackCherry
+  name: pack of Kaiju Cherries
+  description: A packet of limited-edition, cherry flavoured Kaiju cigarettes. A favourite of edgy goths across the frontier.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Smokeables/cherry_pack.rsi
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: CigaretteCherry
+        amount: 6

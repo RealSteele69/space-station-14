@@ -1,7 +1,7 @@
 - type: marking
   id: ScarEyeRight
   bodyPart: Head
-  groupWhitelist: [Human, MarkingsFelinid, MarkingsKitsune, MarkingsAvali] # CC14 - Added Felinids and Kitsunes
+  groupWhitelist: [Human, MarkingsFelinid, MarkingsKitsune, MarkingsAvali, MarkingsRodentia] # CC14 - Added Felinids and Kitsunes
   sprites:
   - sprite: Mobs/Customization/scars.rsi
     state: scar_eye_right
@@ -14,7 +14,7 @@
 - type: marking
   id: ScarEyeLeft
   bodyPart: Head
-  groupWhitelist: [Human, MarkingsFelinid, MarkingsKitsune, MarkingsAvali] # CC14 - Added Felinids and Kitsunes
+  groupWhitelist: [Human, MarkingsFelinid, MarkingsKitsune, MarkingsAvali, MarkingsRodentia] # CC14 - Added Felinids and Kitsunes
   sprites:
   - sprite: Mobs/Customization/scars.rsi
     state: scar_eye_left

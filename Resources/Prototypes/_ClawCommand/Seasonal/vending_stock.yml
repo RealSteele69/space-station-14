@@ -1,0 +1,80 @@
+# Limited-edition stock added to vending machines during the holidays (HolidayVendingStock component).
+# The winter batch runs through December into New Year's Day; the Halloween batch runs all of October.
+
+# ----------------------------------------------------------------------------- winter
+
+- type: holidayVendingStock
+  id: WinterSodaStock
+  holidays: [ FestiveSeason, NewYear ]
+  items:
+    DrinkCinnamonColaCan: 10
+    DrinkSpaceUpCranberryCan: 10
+
+- type: holidayVendingStock
+  id: WinterHotDrinksStock
+  holidays: [ FestiveSeason, NewYear ]
+  items:
+    DrinkPeppermintMochaCan: 10
+
+- type: holidayVendingStock
+  id: WinterCigaretteStock
+  holidays: [ FestiveSeason, NewYear ]
+  items:
+    CigPackVanilla: 5
+
+- type: holidayVendingStock
+  id: WinterBoozeStock
+  holidays: [ FestiveSeason, NewYear ]
+  items:
+    DrinkCaramelWhiskeyBottleFull: 5
+    DrinkPeppermintSchnappsBottleFull: 5
+
+- type: holidayVendingStock
+  id: WinterSnackStock
+  holidays: [ FestiveSeason, NewYear ]
+  items:
+    FoodBoxGingerbreadCookies: 3
+    FoodBoxStroopwafels: 3
+    ChristmasCracker: 6
+
+- type: holidayVendingStock
+  id: WinterCostumeStock
+  holidays: [ FestiveSeason, NewYear ]
+  items:
+    ClothingHeadHatHolidayRed: 2
+    ClothingHeadHatHolidayGreen: 2
+    ClothingOuterCoatHolidayRed: 2
+    ClothingOuterCoatHolidayGreen: 2
+    ClothingShoesBootsHolidayRed: 2
+    ClothingShoesBootsHolidayGreen: 2
+    ClothingHeadHatReindeerAntlers: 2
+    ClothingHeadHatSnowman: 1
+    ClothingOuterSnowmanSuit: 1
+
+# ----------------------------------------------------------------------------- halloween
+
+- type: holidayVendingStock
+  id: HalloweenSodaStock
+  holidays: [ SpookySeason, Halloween ]
+  items:
+    DrinkLicoriceColaCan: 10
+    DrinkDrGibbMysteryCan: 10
+
+- type: holidayVendingStock
+  id: HalloweenHotDrinksStock
+  holidays: [ SpookySeason, Halloween ]
+  items:
+    DrinkPumpkinLatteCan: 10
+
+- type: holidayVendingStock
+  id: HalloweenCigaretteStock
+  holidays: [ SpookySeason, Halloween ]
+  items:
+    CigPackCherry: 5
+
+- type: holidayVendingStock
+  id: HalloweenBoozeStock
+  holidays: [ SpookySeason, Halloween ]
+  items:
+    DrinkSourAppleSchnappsBottleFull: 5
+    DrinkCandyCornVodkaBottleFull: 5

@@ -1,5 +1,7 @@
-﻿using Content.Shared.Examine;
+﻿using Content.Shared._ClawCommand.Mousetrap; // Claw Command
+using Content.Shared.Examine;
 using Content.Shared.Inventory;
+using Content.Shared.Mousetrap; // Claw Command
 using Content.Shared.StepTrigger.Components;
 
 namespace Content.Shared.StepTrigger.Systems;
@@ -17,6 +19,10 @@ public sealed partial class StepTriggerImmuneSystem : EntitySystem
 
     private void OnStepTriggerClothingAttempt(Entity<PreventableStepTriggerComponent> ent, ref StepTriggerAttemptEvent args)
     {
+        // Claw Command - shoes don't save rodents from mousetraps.
+        if (HasComp<MousetrapComponent>(ent) && HasComp<AlwaysTriggerMousetrapComponent>(args.Tripper))
+            return;
+
         if (HasComp<ProtectedFromStepTriggersComponent>(args.Tripper) || _inventory.TryGetInventoryEntity<ProtectedFromStepTriggersComponent>(args.Tripper, out _))
         {
             args.Cancelled = true;

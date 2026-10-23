@@ -1,0 +1,282 @@
+# Claw Command - mixing recipes for the seasonal and novelty bar drinks.
+# The bottled/canned seasonal drinks (caramel whiskey, schnapps, candy corn vodka, limited-edition sodas, lattes)
+# have no recipe; they are only sold.
+
+# Christmas
+
+- type: reaction
+  id: CaramelWhiteRussian
+  reactants:
+    CoffeeLiqueur:
+      amount: 1
+    CaramelWhiskey:
+      amount: 1
+    Cream:
+      amount: 1
+  products:
+    CaramelWhiteRussian: 3
+
+- type: reaction
+  id: PeppermintMartini
+  reactants:
+    PeppermintSchnapps:
+      amount: 1
+    Vodka:
+      amount: 1
+    Cream:
+      amount: 1
+  products:
+    PeppermintMartini: 3
+
+- type: reaction
+  id: Stinger
+  reactants:
+    PeppermintSchnapps:
+      amount: 1
+    Cognac:
+      amount: 3
+  products:
+    Stinger: 4
+
+- type: reaction
+  id: NaughtyGirlScout
+  reactants:
+    PeppermintSchnapps:
+      amount: 1
+    CoffeeLiqueur:
+      amount: 1
+    IrishCream:
+      amount: 1
+  products:
+    NaughtyGirlScout: 3
+
+# Halloween
+
+- type: reaction
+  id: Appletini
+  reactants:
+    Vodka:
+      amount: 2
+    SourAppleSchnapps:
+      amount: 1
+    JuiceLemon:
+      amount: 1
+  products:
+    Appletini: 4
+
+- type: reaction
+  id: SourAppleMimosa
+  reactants:
+    SourAppleSchnapps:
+      amount: 1
+    Champagne:
+      amount: 2
+  products:
+    SourAppleMimosa: 3
+
+- type: reaction
+  id: SourAppleFizz
+  reactants:
+    SourAppleSchnapps:
+      amount: 1
+    JuiceLime:
+      amount: 1
+    SodaWater:
+      amount: 2
+  products:
+    SourAppleFizz: 4
+
+- type: reaction
+  id: CandyCornMartini
+  reactants:
+    CandyCornVodka:
+      amount: 1
+    JuicePineapple:
+      amount: 1
+    Cream:
+      amount: 1
+  products:
+    CandyCornMartini: 3
+
+- type: reaction
+  id: HalloweenPunch
+  reactants:
+    CandyCornVodka:
+      amount: 1
+    JuicePineapple:
+      amount: 1
+    JuiceOrange:
+      amount: 1
+  products:
+    HalloweenPunch: 3
+
+# Angel ichor line
+
+- type: reaction
+  id: AngelIchor
+  reactants:
+    JuiceGrape:
+      amount: 5
+    Gold:
+      amount: 5
+    Holywater:
+      amount: 5
+      catalyst: true
+  products:
+    AngelIchor: 10
+
+- type: reaction
+  id: HolyMary
+  reactants:
+    Vodka:
+      amount: 2
+    AngelIchor:
+      amount: 3
+    JuiceLime:
+      amount: 1
+  products:
+    HolyMary: 6
+
+- type: reaction
+  id: AngelsKiss
+  reactants:
+    AngelIchor:
+      amount: 1
+    CoffeeLiqueur:
+      amount: 1
+    Rum:
+      amount: 1
+  products:
+    AngelsKiss: 3
+
+- type: reaction
+  id: AngelsWrath
+  reactants:
+    Rum:
+      amount: 1
+    SpaceMountainWind:
+      amount: 2
+    AngelIchor:
+      amount: 1
+    DrGibb:
+      amount: 2
+  products:
+    AngelsWrath: 6
+
+- type: reaction
+  id: IchorMead
+  reactants:
+    AngelIchor:
+      amount: 1
+    Mead:
+      amount: 1
+  products:
+    IchorMead: 2
+
+- type: reaction
+  id: OriginalSin
+  reactants:
+    AngelIchor:
+      amount: 1
+    JuiceApple:
+      amount: 1
+      catalyst: true
+  products:
+    OriginalSin: 1
+
+- type: reaction
+  id: GodsSake
+  reactants:
+    Sake:
+      amount: 2
+    Holywater:
+      amount: 1
+  products:
+    GodsSake: 3
+
+# Holy water is both consumed and a catalyst in the original mix; a reactant map can only list it once,
+# so the consumed unit is kept and enzyme remains the catalyst.
+- type: reaction
+  id: Godka
+  reactants:
+    Vodka:
+      amount: 1
+    Holywater:
+      amount: 1
+    Ethanol:
+      amount: 1
+    Dylovene:
+      amount: 1
+    Enzyme:
+      amount: 5
+      catalyst: true
+  products:
+    Godka: 1
+
+# Engine-room oddities
+
+- type: reaction
+  id: OilSlick
+  reactants:
+    Oil:
+      amount: 2
+    Honey:
+      amount: 1
+  products:
+    OilSlick: 3
+
+- type: reaction
+  id: NuclearWasteRadium
+  reactants:
+    OilSlick:
+      amount: 1
+    Radium:
+      amount: 1
+    JuiceLime:
+      amount: 1
+  products:
+    NuclearWaste: 2
+
+- type: reaction
+  id: NuclearWasteUranium
+  reactants:
+    OilSlick:
+      amount: 2
+    Uranium:
+      amount: 1
+  products:
+    NuclearWaste: 3
+
+# Odd cocktails
+
+- type: reaction
+  id: SpaceBulldog
+  reactants:
+    WhiteRussian:
+      amount: 4
+    Cola:
+      amount: 1
+  products:
+    SpaceBulldog: 4
+
+- type: reaction
+  id: NegroniSbagliato
+  reactants:
+    Wine:
+      amount: 1
+    Vermouth:
+      amount: 1
+    SodaWater:
+      amount: 1
+  products:
+    NegroniSbagliato: 3
+
+- type: reaction
+  id: ItalianCrisis
+  reactants:
+    SpaceBulldog:
+      amount: 1
+    NegroniSbagliato:
+      amount: 1
+  products:
+    ItalianCrisis: 2

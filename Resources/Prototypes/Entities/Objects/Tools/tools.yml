@@ -577,6 +577,7 @@
   - type: StaticPrice
     price: 25
   - type: Shovel
+  - type: SnowScoop # Claw Command - scoop snowballs off snowy tiles
 
 - type: entity
   parent: BaseItem

@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Sprites by arraydeess (discord). Ported via Goob-Station (https://github.com/Goob-Station/Goob-Station) at commit 70909c704c663f255a6e876b918b6c6409bdd875",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "rope"
+        }
+    ]
+}

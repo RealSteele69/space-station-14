@@ -15,6 +15,7 @@
   - Moth
   - Reptilian
   - Resomi      # _ClawCommand
+  - Rodentia    # _ClawCommand
   - Shadowkin   # _ClawCommand
   - SlimePerson
   - Synth       # _ClawCommand
@@ -108,6 +109,11 @@
   id: Resomi
   name: cc-species-name-resomi
   text: "/ServerInfo/Guidebook/Mobs/Resomi.xml"
+
+- type: guideEntry # _ClawCommand
+  id: Rodentia
+  name: cc-species-name-rodentia
+  text: "/ServerInfo/Guidebook/Mobs/Rodentia.xml"
 
 - type: guideEntry # _ClawCommand
   id: Synth

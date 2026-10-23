@@ -1,0 +1,151 @@
+# Winter holiday costumes. Sold by the AutoDrobe during the festive season.
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatReindeerAntlers
+  name: reindeer antlers
+  description: A set of costume antlers with a glowing red nose, an Old Earth favorite. Use it to toggle the nose.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Clothing/Head/reindeer_antlers.rsi
+    layers:
+    - state: icon
+    - state: icon-nose
+      map: [ "nose" ]
+      shader: unshaded
+      visible: false
+  - type: Clothing
+    sprite: _ClawCommand/Seasonal/Clothing/Head/reindeer_antlers.rsi
+  - type: Item
+    sprite: Clothing/Head/Hats/xmascrown.rsi
+  - type: Appearance
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Machines/button.ogg
+    soundDeactivate:
+      path: /Audio/Machines/button.ogg
+  - type: ToggleableVisuals
+    spriteLayer: nose
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET-nose
+        shader: unshaded
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    netsync: false
+    radius: 1.5
+    energy: 1.5
+    color: "#ff2b2b"
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHolidayRed
+  name: red holiday hat
+  description: A floppy, fur-lined cap. Made famous by an Old Earth mythical figure.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Clothing/Head/holiday_hat_red.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Seasonal/Clothing/Head/holiday_hat_red.rsi
+  - type: Item
+    sprite: Clothing/Head/Hats/santahat.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHolidayGreen
+  name: green holiday hat
+  description: A floppy, fur-lined cap. Made famous by a cabal of toy-crafting elves.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Clothing/Head/holiday_hat_green.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Seasonal/Clothing/Head/holiday_hat_green.rsi
+  - type: Item
+    sprite: Clothing/Head/Hats/santahat.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSnowman
+  name: snowman head
+  description: A chilly pile of reinforced ice, fashioned to look like a snowman's head.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Clothing/Head/snowman_head.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Seasonal/Clothing/Head/snowman_head.rsi
+  - type: Item
+    sprite: Clothing/Head/Hats/xmascrown.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      FacialHair: HEAD
+      Snout: HEAD
+      HeadTop: HEAD
+      HeadSide: HEAD
+  - type: IdentityBlocker
+
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterCoatHolidayRed
+  name: holiday coat
+  description: A fur-lined red coat. Wearing this makes you feel slightly more charitable.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Clothing/OuterClothing/holiday_coat_red.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Seasonal/Clothing/OuterClothing/holiday_coat_red.rsi
+  - type: Item
+    sprite: Clothing/OuterClothing/Misc/santa.rsi
+  - type: TemperatureProtection
+    coefficient: 0.5
+
+- type: entity
+  parent: ClothingOuterCoatHolidayRed
+  id: ClothingOuterCoatHolidayGreen
+  name: green holiday coat
+  description: A fur-lined green coat. Wearing this makes you feel slightly more charitable.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Clothing/OuterClothing/holiday_coat_green.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Seasonal/Clothing/OuterClothing/holiday_coat_green.rsi
+
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterSnowmanSuit
+  name: snowman suit
+  description: A hollowed-out snowman, capable of being worn, if you don't mind the chill.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Clothing/OuterClothing/snowman_suit.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Seasonal/Clothing/OuterClothing/snowman_suit.rsi
+  - type: Item
+    sprite: Clothing/OuterClothing/Misc/santa.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesBootsHolidayRed
+  name: holiday shoes
+  description: These red, fur-lined boots keep you warm inside and out.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Clothing/Shoes/holiday_boots_red.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Seasonal/Clothing/Shoes/holiday_boots_red.rsi
+  - type: Item
+    sprite: Clothing/Shoes/Boots/winterboots.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesBootsHolidayGreen
+  name: green holiday shoes
+  description: The tips of these fur-lined boots curl slightly, lending them a whimsical flair.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Clothing/Shoes/holiday_boots_green.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Seasonal/Clothing/Shoes/holiday_boots_green.rsi
+  - type: Item
+    sprite: Clothing/Shoes/Boots/winterboots.rsi

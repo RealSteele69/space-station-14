@@ -1,0 +1,156 @@
+# Claw Command - flavour profiles for the seasonal and novelty bar drinks.
+
+- type: flavor
+  id: cinnamoncola
+  flavorType: Complex
+  description: flavor-complex-cinnamoncola
+
+- type: flavor
+  id: cranberrysoda
+  flavorType: Complex
+  description: flavor-complex-cranberrysoda
+
+- type: flavor
+  id: peppermintmocha
+  flavorType: Complex
+  description: flavor-complex-peppermintmocha
+
+- type: flavor
+  id: caramelwhiskey
+  flavorType: Complex
+  description: flavor-complex-caramelwhiskey
+
+- type: flavor
+  id: peppermintschnapps
+  flavorType: Complex
+  description: flavor-complex-peppermintschnapps
+
+- type: flavor
+  id: caramelwhiterussian
+  flavorType: Complex
+  description: flavor-complex-caramelwhiterussian
+
+- type: flavor
+  id: peppermintmartini
+  flavorType: Complex
+  description: flavor-complex-peppermintmartini
+
+- type: flavor
+  id: stinger
+  flavorType: Complex
+  description: flavor-complex-stinger
+
+- type: flavor
+  id: naughtygirlscout
+  flavorType: Complex
+  description: flavor-complex-naughtygirlscout
+
+- type: flavor
+  id: licoricecola
+  flavorType: Complex
+  description: flavor-complex-licoricecola
+
+- type: flavor
+  id: drgibbmystery
+  flavorType: Complex
+  description: flavor-complex-drgibbmystery
+
+- type: flavor
+  id: pumpkinspicelatte
+  flavorType: Complex
+  description: flavor-complex-pumpkinspicelatte
+
+- type: flavor
+  id: sourappleschnapps
+  flavorType: Complex
+  description: flavor-complex-sourappleschnapps
+
+- type: flavor
+  id: candycornvodka
+  flavorType: Complex
+  description: flavor-complex-candycornvodka
+
+- type: flavor
+  id: appletini
+  flavorType: Complex
+  description: flavor-complex-appletini
+
+- type: flavor
+  id: sourapplemimosa
+  flavorType: Complex
+  description: flavor-complex-sourapplemimosa
+
+- type: flavor
+  id: sourapplefizz
+  flavorType: Complex
+  description: flavor-complex-sourapplefizz
+
+- type: flavor
+  id: candycornmartini
+  flavorType: Complex
+  description: flavor-complex-candycornmartini
+
+- type: flavor
+  id: halloweenpunch
+  flavorType: Complex
+  description: flavor-complex-halloweenpunch
+
+- type: flavor
+  id: angelichor
+  flavorType: Complex
+  description: flavor-complex-angelichor
+
+- type: flavor
+  id: holymary
+  flavorType: Complex
+  description: flavor-complex-holymary
+
+- type: flavor
+  id: angelswrath
+  flavorType: Complex
+  description: flavor-complex-angelswrath
+
+- type: flavor
+  id: angelskiss
+  flavorType: Complex
+  description: flavor-complex-angelskiss
+
+- type: flavor
+  id: ichormead
+  flavorType: Complex
+  description: flavor-complex-ichormead
+
+- type: flavor
+  id: originalsin
+  flavorType: Complex
+  description: flavor-complex-originalsin
+
+- type: flavor
+  id: godssake
+  flavorType: Complex
+  description: flavor-complex-godssake
+
+- type: flavor
+  id: godka
+  flavorType: Complex
+  description: flavor-complex-godka
+
+- type: flavor
+  id: nuclearwaste
+  flavorType: Complex
+  description: flavor-complex-nuclearwaste
+
+- type: flavor
+  id: spacebulldog
+  flavorType: Complex
+  description: flavor-complex-spacebulldog
+
+- type: flavor
+  id: negronisbagliato
+  flavorType: Complex
+  description: flavor-complex-negronisbagliato
+
+- type: flavor
+  id: italiancrisis
+  flavorType: Complex
+  description: flavor-complex-italiancrisis

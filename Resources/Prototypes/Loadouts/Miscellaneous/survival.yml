@@ -25,6 +25,7 @@
     - SpeciesShadowkin # CC14 - Added Shadowkin (oxygen breather, was missing)
     - SpeciesAvali # CC14 - Added Avali (oxygen breather, was missing)
     - SpeciesResomi # CC14 - Added Resomi (oxygen breather)
+    - SpeciesRodentia # CC14 - Added Rodentia (oxygen breather)
 
 - type: loadoutEffectGroup
   id: EffectSpeciesVox

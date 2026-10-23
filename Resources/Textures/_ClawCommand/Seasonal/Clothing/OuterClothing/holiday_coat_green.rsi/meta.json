@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from Citadel-Station-13/Citadel-Station-13-RP at commit db254a45e84676b7d1f32e3386c65453253bc6c5 (icons/obj/clothing/suits.dmi, icons/mob/clothing/suits.dmi). icons/obj/clothing/suits.dmi was imported from VOREStation (Polaris lineage) in 2018; contributors to that file include: MarsM0nd, MonaraMir, Captain277, timothyteakettle, LordPapalus, FreeStylaLT, pastelli-games, silicons, Zandario, Jaybirdnerd, CommissarCorg, Trilbyspaceclone, drofoljaelisglis, KasparoVy, Nethaufer, Hatterhat, thestubborn, Enzo-Leon, KillianKirilenko, deathride58. icons/mob/clothing/suits.dmi was split out of the older worn-sprite sheets in 2022; contributors to that file include: MarsM0nd, AlphaM01, SpartanKadence, timothyteakettle, MonaraMir, Captain277, LordPapalus, pastelli-games, FreeStylaLT, Keekenox, Shadowtail117, silicons, Zandario.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-OUTERCLOTHING",
+      "directions": 4
+    }
+  ]
+}

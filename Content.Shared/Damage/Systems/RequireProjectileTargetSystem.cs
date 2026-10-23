@@ -1,3 +1,4 @@
+using Content.Shared._ClawCommand.Abilities; // Claw Command
 using Content.Shared.Damage.Components;
 using Content.Shared.Projectiles;
 using Content.Shared.Standing;
@@ -33,6 +34,10 @@ public sealed partial class RequireProjectileTargetSystem : EntitySystem
             // Prevents shooting out of while inside of crates
             var shooter = projectile.Shooter;
             if (!shooter.HasValue)
+                return;
+
+            // Claw Command - a mob sneaking under a table can't shoot out over it; its shots hit the table.
+            if (TryComp<CrawlUnderObjectsComponent>(shooter, out var crawl) && crawl.Enabled)
                 return;
 
             // ProjectileGrenades delete the entity that's shooting the projectile,

@@ -1,0 +1,15 @@
+# Claw Command - mobs answering a MobCallSource call (e.g. Rodentia calling mice).
+# MobCallSystem writes the caller's position to the CallTarget blackboard key; walk to it, then forget it.
+- type: htnCompound
+  id: MoveCallTargetCompound
+  branches:
+  - tasks:
+    - !type:HTNPrimitiveTask
+      preconditions:
+      - !type:KeyExistsPrecondition
+        key: CallTarget
+      operator: !type:MoveToOperator
+        pathfindInPlanning: true
+        targetKey: CallTarget
+        rangeKey: MeleeRange
+        removeKeyOnFinish: true

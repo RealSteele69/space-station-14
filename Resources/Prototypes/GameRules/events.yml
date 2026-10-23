@@ -42,6 +42,7 @@
     - id: SpiderSpawn # Claw Command
     - id: SpiderSpawnHorde
     - id: VentClog
+    - id: GravityFailure # Claw Command
 
 - type: entityTable
   id: BasicAntagEventsTable
@@ -68,6 +69,8 @@
     - id: SpaceChangelingSpawn
     - id: SyndieOutpostSpawn #claw command
     - id: XenoVents # Claw Command
+    - !type:NestedSelector # Claw Command - NPC cult invasion, gated on Security being staffed
+      tableId: CCCultInvasionTable
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
 

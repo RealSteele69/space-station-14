@@ -1981,6 +1981,7 @@
   description: Squeak!
   components:
   - type: VentCrawler # Claw Command - mice ventcrawl
+  - type: MobCallable # Claw Command - comes when a Rodentia calls
   - type: GhostRole
     makeSentient: true
     allowSpeech: true

@@ -1,0 +1,44 @@
+- type: Tag
+  id: GingerbreadCookie
+
+- type: Tag
+  id: Stroopwafel
+
+- type: Tag
+  id: Snowball
+
+# The whole run-up to Halloween, so the seasonal vending stock is around for more than one day.
+- type: holiday
+  id: SpookySeason
+  name: holiday-name-spooky-season
+  beginDay: 1
+  beginMonth: October
+  endDay: 2
+  endMonth: November
+  greet:
+    !type:Custom
+    text: holiday-custom-spooky-season
+
+- type: localizedDataset
+  id: CookieFortunes
+  values:
+    prefix: cookie-fortune-
+    count: 24
+
+- type: localizedDataset
+  id: CrackerJokes
+  values:
+    prefix: cracker-joke-
+    count: 9
+
+- type: microwaveMealRecipe
+  id: RecipeFortuneCookie
+  name: fortune cookie recipe
+  result: FoodFortuneCookie
+  time: 5
+  group: BarsAndCookies
+  reagents:
+    Sugar: 5
+  solids:
+    FoodDoughSlice: 1
+    Paper: 1

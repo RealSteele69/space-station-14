@@ -1,0 +1,287 @@
+# Claw Command - seasonal holiday drinks (christmas and halloween).
+# Alcohol strength follows Ethanol metabolite ~= proof / 200.
+
+# Christmas - bottled and canned
+
+- type: reagent
+  id: CinnamonCola
+  name: reagent-name-cinnamon-cola
+  parent: BaseSoda
+  desc: reagent-desc-cinnamon-cola
+  physicalDesc: reagent-physical-desc-fizzy
+  flavor: cinnamoncola
+  color: "#6c2828"
+  recognizable: true
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectDrowsiness
+        time: 1
+        type: Remove
+
+- type: reagent
+  id: SpaceUpCranberry
+  name: reagent-name-space-up-cranberry
+  parent: BaseSoda
+  desc: reagent-desc-space-up-cranberry
+  physicalDesc: reagent-physical-desc-fizzy
+  flavor: cranberrysoda
+  color: "#c21e26"
+  recognizable: true
+
+- type: reagent
+  id: PeppermintMocha
+  name: reagent-name-peppermint-mocha
+  parent: BaseDrink
+  desc: reagent-desc-peppermint-mocha
+  physicalDesc: reagent-physical-desc-aromatic
+  flavor: peppermintmocha
+  color: "#9C714C"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Theobromine: 0.1
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectDrowsiness
+        time: 2
+        type: Remove
+
+- type: reagent
+  id: CaramelWhiskey
+  name: reagent-name-caramel-whiskey
+  parent: BaseAlcohol
+  desc: reagent-desc-caramel-whiskey
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: caramelwhiskey
+  color: "#AB5A11"
+  recognizable: true
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.3
+
+- type: reagent
+  id: PeppermintSchnapps
+  name: reagent-name-peppermint-schnapps
+  parent: BaseAlcohol
+  desc: reagent-desc-peppermint-schnapps
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: peppermintschnapps
+  color: "#dddddd"
+  recognizable: true
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.5
+
+# Christmas - cocktails
+
+- type: reagent
+  id: CaramelWhiteRussian
+  name: reagent-name-caramel-white-russian
+  parent: BaseAlcohol
+  desc: reagent-desc-caramel-white-russian
+  physicalDesc: reagent-physical-desc-creamy
+  flavor: caramelwhiterussian
+  color: "#A68340"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.17
+
+- type: reagent
+  id: PeppermintMartini
+  name: reagent-name-peppermint-martini
+  parent: BaseAlcohol
+  desc: reagent-desc-peppermint-martini
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: peppermintmartini
+  color: "#dddddd"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.3
+
+- type: reagent
+  id: Stinger
+  name: reagent-name-stinger
+  parent: BaseAlcohol
+  desc: reagent-desc-stinger
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: stinger
+  color: "#683913"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.42
+
+- type: reagent
+  id: NaughtyGirlScout
+  name: reagent-name-naughty-girl-scout
+  parent: BaseAlcohol
+  desc: reagent-desc-naughty-girl-scout
+  physicalDesc: reagent-physical-desc-creamy
+  flavor: naughtygirlscout
+  color: "#35210b"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.32
+
+# Halloween - bottled and canned
+
+- type: reagent
+  id: LicoriceCola
+  name: reagent-name-licorice-cola
+  parent: BaseSoda
+  desc: reagent-desc-licorice-cola
+  physicalDesc: reagent-physical-desc-fizzy
+  flavor: licoricecola
+  color: "#6c2828"
+  recognizable: true
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectDrowsiness
+        time: 1
+        type: Remove
+
+- type: reagent
+  id: DrGibbMystery
+  name: reagent-name-dr-gibb-mystery
+  parent: BaseSoda
+  desc: reagent-desc-dr-gibb-mystery
+  physicalDesc: reagent-physical-desc-fizzy
+  flavor: drgibbmystery
+  color: "#102000"
+  recognizable: true
+
+- type: reagent
+  id: PumpkinSpiceLatte
+  name: reagent-name-pumpkin-spice-latte
+  parent: BaseDrink
+  desc: reagent-desc-pumpkin-spice-latte
+  physicalDesc: reagent-physical-desc-aromatic
+  flavor: pumpkinspicelatte
+  color: "#ad6322"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Theobromine: 0.1
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectDrowsiness
+        time: 2
+        type: Remove
+
+- type: reagent
+  id: SourAppleSchnapps
+  name: reagent-name-sour-apple-schnapps
+  parent: BaseAlcohol
+  desc: reagent-desc-sour-apple-schnapps
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: sourappleschnapps
+  color: "#009619"
+  recognizable: true
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.3
+
+- type: reagent
+  id: CandyCornVodka
+  name: reagent-name-candy-corn-vodka
+  parent: BaseAlcohol
+  desc: reagent-desc-candy-corn-vodka
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: candycornvodka
+  color: "#ff7b00"
+  recognizable: true
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.36
+
+# Halloween - cocktails
+
+- type: reagent
+  id: Appletini
+  name: reagent-name-appletini
+  parent: BaseAlcohol
+  desc: reagent-desc-appletini
+  physicalDesc: reagent-physical-desc-tart
+  flavor: appletini
+  color: "#9be720"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.28
+
+- type: reagent
+  id: SourAppleMimosa
+  name: reagent-name-sour-apple-mimosa
+  parent: BaseAlcohol
+  desc: reagent-desc-sour-apple-mimosa
+  physicalDesc: reagent-physical-desc-bubbly
+  flavor: sourapplemimosa
+  color: "#119400"
+  fizziness: 0.4
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.17
+
+- type: reagent
+  id: SourAppleFizz
+  name: reagent-name-sour-apple-fizz
+  parent: BaseAlcohol
+  desc: reagent-desc-sour-apple-fizz
+  physicalDesc: reagent-physical-desc-fizzy
+  flavor: sourapplefizz
+  color: "#2bf32b"
+  fizziness: 0.5
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.08
+
+- type: reagent
+  id: CandyCornMartini
+  name: reagent-name-candy-corn-martini
+  parent: BaseAlcohol
+  desc: reagent-desc-candy-corn-martini
+  physicalDesc: reagent-physical-desc-creamy
+  flavor: candycornmartini
+  color: "#ee8b19"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.13
+
+- type: reagent
+  id: HalloweenPunch
+  name: reagent-name-halloween-punch
+  parent: BaseAlcohol
+  desc: reagent-desc-halloween-punch
+  physicalDesc: reagent-physical-desc-tangy
+  flavor: halloweenpunch
+  color: "#ff9c00"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.13

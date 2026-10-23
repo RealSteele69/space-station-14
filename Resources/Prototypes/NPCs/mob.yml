@@ -27,6 +27,9 @@
   branches:
     - tasks:
         - !type:HTNCompoundTask
+          task: MoveCallTargetCompound # Claw Command - answer a Rodentia's mousecall
+    - tasks:
+        - !type:HTNCompoundTask
           task: FoodCompound
     - tasks:
         - !type:HTNCompoundTask

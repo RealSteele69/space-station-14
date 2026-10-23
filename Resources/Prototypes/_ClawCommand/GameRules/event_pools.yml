@@ -32,6 +32,7 @@
     - id: RandomSentience
     - id: SolarFlare
     - id: VentClog
+    - id: GravityFailure
     # Claw Command - NoosphericStorm lives here rather than with the other glimmer events because it
     # is the injector, not a symptom: it is the only one that ADDS glimmer (+65-85). CCGlimmerEventsTable
     # is fired by CCGlimmerScheduler, which needs 200 glimmer before it does anything, so if the storm
@@ -143,6 +144,19 @@
     - id: SpiderSpawnHorde
     - id: SpiderClownSpawnHorde
     - id: XenoVents
+    - !type:NestedSelector
+      tableId: CCCultInvasionTable
+
+# NPC cultists warping in. Only while somebody in Security is alive to answer it.
+- type: entityTable
+  id: CCCultInvasionTable
+  table: !type:AllSelector
+    children:
+    - id: CultInvasion
+      conditions:
+      - !type:DepartmentCrewCondition
+        departments: [ Security ]
+        min: 1
 
 # Hostile mob spawns - boss. Round-defining.
 - type: entityTable

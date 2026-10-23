@@ -22,3 +22,12 @@
   - bingle-verb-2
   - bingle-verb-3
   - bingle-verb-4
+
+- type: speechVerb
+  id: SpeechRodentia
+  name: cc-chat-speech-verb-name-rodentia
+  speechVerbStrings:
+  - cc-chat-speech-verb-rodentia-1
+  - cc-chat-speech-verb-rodentia-2
+  - cc-chat-speech-verb-rodentia-3
+  - cc-chat-speech-verb-rodentia-4

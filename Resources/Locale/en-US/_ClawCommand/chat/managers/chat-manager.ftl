@@ -10,3 +10,9 @@ cc-chat-speech-verb-name-feroxi = Feroxi
 cc-chat-speech-verb-feroxi-1 = gnaws
 cc-chat-speech-verb-feroxi-2 = growls
 cc-chat-speech-verb-feroxi-3 = grunts
+
+cc-chat-speech-verb-name-rodentia = Rodentia
+cc-chat-speech-verb-rodentia-1 = squeaks
+cc-chat-speech-verb-rodentia-2 = pieps
+cc-chat-speech-verb-rodentia-3 = chatters
+cc-chat-speech-verb-rodentia-4 = squeals

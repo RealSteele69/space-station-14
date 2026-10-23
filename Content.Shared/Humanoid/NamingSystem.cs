@@ -28,6 +28,7 @@ namespace Content.Shared.Humanoid
 
         // CC: Added 'FirstDashLast'
         // CC: Added 'FirstTheLast'
+        // CC: Added 'LastFirst'
         switch (speciesProto.Naming)
         {
             case SpeciesNaming.First:
@@ -49,6 +50,10 @@ namespace Content.Shared.Humanoid
                 return Loc.GetString("namepreset-firstthelast",
                     ("first", GetFirstName(speciesProto, gender)),
                     ("last", GetLastName(speciesProto)));
+            case SpeciesNaming.LastFirst: // Claw Command
+                return Loc.GetString("namepreset-lastfirst",
+                    ("last", GetLastName(speciesProto)),
+                    ("first", GetFirstName(speciesProto, gender)));
             case SpeciesNaming.FirstLast:
             default:
                 return Loc.GetString("namepreset-firstlast",

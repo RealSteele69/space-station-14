@@ -168,6 +168,7 @@ public sealed partial class SpeciesPrototype : IPrototype
 // !! CLAW COMMAND MODIFIED !! //
 // CC : Added 'FirstDashLast'
 // CC : Added 'FirstTheLast'
+// CC : Added 'LastFirst'
 public enum SpeciesNaming : byte
 {
     First,
@@ -176,4 +177,5 @@ public enum SpeciesNaming : byte
     TheFirstofLast,
     FirstDashLast,
     FirstTheLast,
+    LastFirst, // Claw Command - Rodentia: "<last> <first>"
 }

@@ -1,0 +1,8 @@
+# Claw Command - fork satiation tunings, replacing per-species overrides of the retired Hunger component.
+
+# Rodentia have a fast rodent metabolism and get hungry a third faster than most species:
+# NormalSatiationHunger's -0.01666... change rate, times 1.333.
+- type: satiation
+  id: RodentiaSatiationHunger
+  parent: NormalSatiationHunger
+  baseChangeRate: -0.02222222222

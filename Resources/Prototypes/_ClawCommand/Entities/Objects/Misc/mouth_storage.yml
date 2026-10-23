@@ -1,0 +1,27 @@
+# Claw Command - Rodentia cheek pouch. Spawned inside the mob by MouthStorage; never placed in the world.
+
+- type: entity
+  id: CheekStorage
+  name: cheek storage
+  description: The cheeks of an animal, capable of storing small objects.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    clickInsert: false
+    grid:
+    - 0,0,1,1
+    maxItemSize: Small
+    blacklist:
+      tags:
+      - Knife # nothing sharp in the mouth
+      components:
+      - MindContainer
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: [ ]
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: Dumpable

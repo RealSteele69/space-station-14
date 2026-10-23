@@ -1,0 +1,516 @@
+# Hostile NPC blood cultists and constructs that warp in through the vents during the cult invasion event.
+# They are not the blood cult antagonist: no runes, no conversion, no ghost roles. Each one crumbles to
+# remains when it dies.
+
+- type: entity
+  abstract: true
+  parent: [ SimpleSpaceMobBase, BaseMobDestructible ]
+  id: MobInvasionCultistBase
+  name: cultist
+  description: A fanatical zealot.
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: NpcFactionMember
+    factions:
+    - GeometerOfBlood
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _ClawCommand/CultInvasion/cultists.rsi
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: Damageable
+    damageModifierSet: InvasionCultRobes
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcSlash
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    damage:
+      types:
+        Slash: 15
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 3.5
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      60: 0.8
+  - type: Stamina
+    baseCritThreshold: 150
+  - type: Speech
+    speechVerb: Default
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - CannotSuicide
+  - type: Grammar
+    attributes:
+      gender: epicene
+  # They don't leave a body behind.
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: SpawnOnTrigger
+    proto: MaterialBones1
+  - type: PopupOnTrigger
+    text: cult-invasion-crumble
+    otherText: cult-invasion-crumble
+    popupType: Medium
+    predicted: false
+  - type: DeleteOnTrigger
+
+# Ranged cultists keep their distance and fire beams of inverted light.
+- type: entity
+  abstract: true
+  parent: MobInvasionCultistBase
+  id: MobInvasionCultistCasterBase
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 1.5
+  - type: BasicEntityAmmoProvider
+    proto: BulletCultInversion
+    capacity: 1
+    count: 1
+  - type: Gun
+    fireRate: 0.6
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot: /Audio/Weapons/Guns/Gunshots/Magic/staff_animation.ogg
+
+- type: entity
+  parent: MobInvasionCultistBase
+  id: MobInvasionCultist
+  name: cultist
+  description: A fanatical zealot armed with a darkly colored sword.
+  components:
+  - type: Sprite
+    layers:
+    - state: cultist
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 20
+  - type: PopupOnTrigger
+    text: cult-invasion-crumble-laugh
+    otherText: cult-invasion-crumble-laugh
+
+- type: entity
+  parent: MobInvasionCultistBase
+  id: MobInvasionCultistInitiate
+  name: blood initiate
+  description: A novice amongst its betters, it still seems determined to slice you to bits.
+  components:
+  - type: Sprite
+    layers:
+    - state: initiate
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      120: Dead
+  - type: PopupOnTrigger
+    text: cult-invasion-crumble-scream
+    otherText: cult-invasion-crumble-scream
+
+# Small, quick and hard to pin down, but fragile.
+- type: entity
+  parent: MobInvasionCultistBase
+  id: MobInvasionCultistSmall
+  name: cultist
+  description: A sinister-looking hooded figure, small and quick, armed with a curved knife.
+  components:
+  - type: Sprite
+    layers:
+    - state: cultist_small
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      75: Dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 120
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 4.5
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 12
+  - type: Damageable
+    damageModifierSet: InvasionCultRobesLight
+  - type: SpawnOnTrigger
+    proto: Ash
+  - type: PopupOnTrigger
+    text: cult-invasion-crumble-dust
+    otherText: cult-invasion-crumble-dust
+
+# Two knives, double the stabbing. Slower, but very tough.
+- type: entity
+  parent: MobInvasionCultistBase
+  id: MobInvasionCultistLizard
+  name: cultist
+  description: With a knife in each hand, this lizard looks ready to dissect you.
+  components:
+  - type: Sprite
+    layers:
+    - state: cultist_lizard
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 3
+  - type: MeleeWeapon
+    attackRate: 1.5
+    damage:
+      types:
+        Slash: 10
+  - type: Damageable
+    damageModifierSet: InvasionCultRobesHeavy
+  - type: PopupOnTrigger
+    text: cult-invasion-crumble-hiss
+    otherText: cult-invasion-crumble-hiss
+
+- type: entity
+  parent: MobInvasionCultistCasterBase
+  id: MobInvasionBloodMage
+  name: blood mage
+  description: A robed individual whose hands pulsate with unnatural power.
+  components:
+  - type: Sprite
+    layers:
+    - state: blood_mage
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      120: Dead
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 10
+  - type: PopupOnTrigger
+    text: cult-invasion-crumble-melt
+    otherText: cult-invasion-crumble-melt
+
+- type: entity
+  parent: MobInvasionCultistCasterBase
+  id: MobInvasionBloodMageSmall
+  name: blood mage
+  description: This small hooded figure seems to have forsaken weapons for unfathomable power.
+  components:
+  - type: Sprite
+    layers:
+    - state: blood_mage_small
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      75: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 4.5
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 1
+  - type: Gun
+    fireRate: 0.9
+  - type: Damageable
+    damageModifierSet: InvasionCultRobesLight
+  - type: SpawnOnTrigger
+    proto: Ash
+  - type: PopupOnTrigger
+    text: cult-invasion-crumble-burn
+    otherText: cult-invasion-crumble-burn
+
+# Mirror shield: bounces back half of all shots.
+- type: entity
+  parent: MobInvasionCultistBase
+  id: MobInvasionCultistElite
+  name: elite cultist
+  description: A heavily armed cultist with a mirror shield that hurts to look at.
+  components:
+  - type: Sprite
+    layers:
+    - state: elite
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 20
+  - type: Reflect
+    reflectProb: 0.5
+  - type: SpawnOnTrigger
+    proto: ShardGlass
+  - type: PopupOnTrigger
+    text: cult-invasion-crumble-shatter
+    otherText: cult-invasion-crumble-shatter
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: GlassBreak
+
+- type: entity
+  parent: MobInvasionCultistCasterBase
+  id: MobInvasionBloodMagus
+  name: blood magus
+  description: A leader of the bloody cult and master of the forbidden arts, wielding powers beyond that of mortal men.
+  components:
+  - type: Sprite
+    layers:
+    - state: magus
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      250: Dead
+  - type: Damageable
+    damageModifierSet: InvasionCultRobesHeavy
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 20
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.75
+  - type: Gun
+    fireRate: 1.5
+  - type: PopupOnTrigger
+    text: cult-invasion-crumble-dark-laugh
+    otherText: cult-invasion-crumble-dark-laugh
+
+# Constructs: animated shells of runed metal.
+- type: entity
+  abstract: true
+  parent: MobInvasionCultistBase
+  id: MobInvasionConstructBase
+  components:
+  - type: Damageable
+    damageModifierSet: InvasionConstruct
+  - type: MovementIgnoreGravity
+  - type: SpawnOnTrigger
+    proto: RunedMetal1
+  - type: PopupOnTrigger
+    text: cult-invasion-crumble-construct
+    otherText: cult-invasion-crumble-construct
+  - type: MeleeWeapon
+    animation: WeaponArcSmash
+    soundHit:
+      collection: MetalThud
+    damage:
+      types:
+        Blunt: 15
+        Structural: 30
+
+- type: entity
+  parent: MobInvasionConstructBase
+  id: MobInvasionArtificer
+  name: artificer
+  description: A bulbous construct of runed metal. It's not the strongest of the bunch, but that doesn't mean it can't hurt you.
+  components:
+  - type: Sprite
+    layers:
+    - state: artificer
+    - state: artificer_eyes
+      shader: unshaded
+
+- type: entity
+  parent: [ MobInvasionCultistCasterBase, MobInvasionConstructBase ]
+  id: MobInvasionArtificerCaster
+  name: artificer
+  description: A bulbous construct of runed metal, crackling with inverted light.
+  components:
+  - type: Sprite
+    layers:
+    - state: caster_artificer
+
+- type: entity
+  parent: MobInvasionConstructBase
+  id: MobInvasionWraith
+  name: wraith
+  description: A wicked, clawed shell built to assassinate enemies and sow chaos behind enemy lines.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/mobs.rsi
+    layers:
+    - state: wraith
+    - state: glow_wraith_cult
+      shader: unshaded
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 5
+  - type: MeleeWeapon
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    damage:
+      types:
+        Slash: 25
+
+- type: entity
+  parent: MobInvasionCultistBase
+  id: MobInvasionShade
+  name: shade
+  description: A bound spirit, drifting with hateful purpose.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/mobs.rsi
+    layers:
+    - state: shade_cult
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: Damageable
+    damageModifierSet: ManifestedSpirit
+  - type: MovementIgnoreGravity
+  - type: MeleeWeapon
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/Effects/hit_kick.ogg
+    damage:
+      types:
+        Cold: 10
+  - type: SpawnOnTrigger
+    proto: Ectoplasm
+  - type: PopupOnTrigger
+    text: cult-invasion-crumble-shade
+    otherText: cult-invasion-crumble-shade
+
+- type: entity
+  parent: MobInvasionCultistBase
+  id: MobInvasionAbomination
+  name: abomination
+  description: A sanity-destroying otherthing, bound to the cult's will.
+  components:
+  - type: Sprite
+    layers:
+    - state: abomination
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      160: Dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 300
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Damageable
+    damageModifierSet: InvasionConstruct
+  - type: MeleeWeapon
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Piercing: 18
+  - type: SpawnOnTrigger
+    proto: FoodMeatRotten
+  - type: PopupOnTrigger
+    text: cult-invasion-crumble-gibber
+    otherText: cult-invasion-crumble-gibber
+
+# ---------------------------------------------------------------------------
+
+- type: entity
+  parent: BaseBullet
+  id: BulletCultInversion
+  name: inversion beam
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/BloodCult/Effects/blood_boil.rsi
+    state: bullet
+  - type: Projectile
+    damage:
+      types:
+        Heat: 15
+  - type: PointLight
+    enabled: true
+    color: "#9a0000"
+    radius: 2.0
+    energy: 3.0
+
+# ---------------------------------------------------------------------------
+
+# Cult robes: tough against blades and bullets, weaker against lasers.
+- type: damageModifierSet
+  id: InvasionCultRobes
+  coefficients:
+    Blunt: 0.6
+    Slash: 0.6
+    Piercing: 0.6
+    Heat: 0.8
+
+- type: damageModifierSet
+  id: InvasionCultRobesLight
+  coefficients:
+    Blunt: 0.75
+    Slash: 0.75
+    Piercing: 0.75
+    Heat: 0.85
+
+- type: damageModifierSet
+  id: InvasionCultRobesHeavy
+  coefficients:
+    Blunt: 0.5
+    Slash: 0.5
+    Piercing: 0.5
+    Heat: 0.7
+
+- type: damageModifierSet
+  id: InvasionConstruct
+  coefficients:
+    Blunt: 0.6
+    Slash: 0.6
+    Piercing: 0.6
+    Heat: 0.8
+    Cold: 0
+    Poison: 0
+    Radiation: 0
+    Asphyxiation: 0
+    Bloodloss: 0
+    Cellular: 0

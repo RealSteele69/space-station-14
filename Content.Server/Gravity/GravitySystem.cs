@@ -1,3 +1,4 @@
+using Content.Server._ClawCommand.StationEvents.Components; // Claw Command
 using Content.Shared.Gravity;
 using JetBrains.Annotations;
 using Robust.Shared.Map.Components;
@@ -35,6 +36,10 @@ namespace Content.Server.Gravity
                 break;
             }
 
+            // Claw Command - gravity failure event holds the grid weightless while it runs
+            if (HasComp<GravitySuppressedComponent>(uid))
+                enabled = false;
+
             if (enabled != gravity.Enabled)
             {
                 gravity.Enabled = enabled;
@@ -65,6 +70,10 @@ namespace Content.Server.Gravity
                 return;
 
             if (gravity.Enabled || gravity.Inherent)
+                return;
+
+            // Claw Command - gravity failure event
+            if (HasComp<GravitySuppressedComponent>(uid))
                 return;
 
             gravity.Enabled = true;

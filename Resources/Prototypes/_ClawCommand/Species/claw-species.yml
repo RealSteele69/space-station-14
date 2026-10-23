@@ -195,3 +195,30 @@
   - UnisexSilicon
   voices:
   - UnisexSilicon
+
+- type: species
+  id: SpeciesRodentia
+  name: cc-species-name-rodentia
+  roundStart: true
+  prototype: MobRodentia
+  dollPrototype: AppearanceRodentia
+  skinColoration: Hues
+  defaultSkinTone: "#747474"
+  maleFirstNames: NamesRodentiaMale
+  femaleFirstNames: NamesRodentiaFemale
+  lastNames: NamesRodentiaLast
+  naming: LastFirst
+  defaultSoundsBySex:
+  - MaleRodentia
+  - FemaleRodentia
+  - MaleRodentia
+  voices:
+  - MaleRodentia
+  - FemaleRodentia
+  # The body sheet is drawn on the human frame; Rodentia are meant to run small, so the sliders
+  # reach well below human size. Kept at most slightly above it, where the sheet still reads.
+  minHeight: 0.8
+  maxHeight: 1.15
+  minWidth: 0.8
+  maxWidth: 1.1
+  baseWeight: 54 # density 140 over the 0.35 radius body

@@ -1,0 +1,61 @@
+# Gravity failure: a feedback surge drops artificial gravity across the station for a short while.
+# Weightless crew, flying loose items, and the grid shake on the way down and back up.
+- type: entity
+  id: GravityFailure
+  parent: BaseStationEventShortDelay
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationEvent
+    weight: 5
+    startAnnouncement: station-event-gravity-failure-start-announcement
+    endAnnouncement: station-event-gravity-failure-end-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 10
+    reoccurrenceDelay: 20
+    minimumPlayers: 5
+    duration: 60
+    maxDuration: 240
+  - type: GravityFailureRule
+
+# Cult invasion: hostile NPC cultists and constructs warp in through a vent. Not the blood cult antagonist.
+# Only eligible while Security is staffed - see CCCultInvasionTable in event_pools.yml.
+- type: entity
+  id: CultInvasion
+  parent: BaseStationEventShortDelay
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-cult-invasion-announcement
+    startAnnouncementColor: "#ff4d4d"
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 30
+    reoccurrenceDelay: 40
+    minimumPlayers: 15
+    weight: 3
+    duration: 10
+    maxDuration: 30
+  - type: VentHordeRule
+    table: !type:AllSelector
+      children:
+      - !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 3, 6
+        children:
+        - id: MobInvasionCultist
+        - id: MobInvasionCultistInitiate
+        - id: MobInvasionCultistSmall
+        - id: MobInvasionCultistLizard
+        - id: MobInvasionBloodMageSmall
+        - id: MobInvasionAbomination
+        - id: MobInvasionArtificer
+        - id: MobInvasionShade
+      - !type:GroupSelector
+        prob: 0.6
+        children:
+        - id: MobInvasionCultistElite
+        - id: MobInvasionBloodMage
+        - id: MobInvasionBloodMagus
+        - id: MobInvasionArtificerCaster
+        - id: MobInvasionWraith

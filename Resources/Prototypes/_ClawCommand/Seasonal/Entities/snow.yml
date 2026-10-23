@@ -1,0 +1,48 @@
+# Snowballs. Scoop one off a snowy tile with a shovel, then throw it at your friends.
+# Use a loose snowball in hand to pack it into a harder (slightly painful) one.
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: SnowballBase
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Objects/snowball.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+    sprite: _ClawCommand/Seasonal/Objects/snowball.rsi
+  # Bursts on whatever it is thrown into.
+  - type: TriggerOnThrowDoHit
+  - type: PopupOnTrigger
+    text: snowball-burst
+    otherText: snowball-burst
+    predicted: false
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: FootstepSnow
+  - type: DeleteOnTrigger
+  - type: Tag
+    tags:
+    - Snowball
+
+- type: entity
+  parent: SnowballBase
+  id: Snowball
+  name: loose packed snowball
+  description: A fun snowball. Throw it at your friends!
+  components:
+  - type: PackableSnowball
+
+- type: entity
+  parent: SnowballBase
+  id: SnowballPacked
+  name: snowball
+  description: A well-formed and fun snowball. It looks kind of dangerous.
+  components:
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 3
+  - type: StaminaDamageOnCollide
+    damage: 8

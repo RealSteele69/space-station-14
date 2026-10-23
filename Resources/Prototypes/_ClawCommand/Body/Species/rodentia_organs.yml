@@ -1,0 +1,136 @@
+# _ClawCommand: Rodentia organs.
+# External organs draw from the Rodentia body sheet; internals reuse the human organ sprites.
+# Heart, stomach and liver use the Animal metabolizer, so Rodentia can digest raw meat and are
+# poisoned by theobromine (chocolate, tea, coffee) and allicin (onion, garlic). Lungs and kidneys stay human.
+
+- type: entity
+  parent: OrganBaseOrganic
+  id: OrganRodentia
+  abstract: true
+  suffix: Claw Command, Rodentia
+
+- type: entity
+  id: OrganRodentiaMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Animal ]
+
+- type: entity
+  parent: OrganRodentia
+  id: OrganRodentiaInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  id: OrganRodentiaVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: DeltaV/Mobs/Species/Rodentia/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: MarkingsRodentia
+
+- type: entity
+  parent: [ OrganRodentia, OrganRodentiaVisual ]
+  id: OrganRodentiaExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: DeltaV/Mobs/Species/Rodentia/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganRodentiaExternal ]
+  id: OrganRodentiaTorso
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganRodentiaExternal ]
+  id: OrganRodentiaHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Snout
+    - enum.HumanoidVisualLayers.HeadTop
+    - enum.HumanoidVisualLayers.HeadSide
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.FacialHair
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganRodentiaExternal ]
+  id: OrganRodentiaArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganRodentiaExternal ]
+  id: OrganRodentiaArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganRodentiaExternal ]
+  id: OrganRodentiaHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganRodentiaExternal ]
+  id: OrganRodentiaHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganRodentiaExternal ]
+  id: OrganRodentiaLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganRodentiaExternal ]
+  id: OrganRodentiaLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganRodentiaExternal ]
+  id: OrganRodentiaFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganRodentiaExternal ]
+  id: OrganRodentiaFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganSpriteHumanInternal, OrganRodentiaInternal ]
+  id: OrganRodentiaBrain
+
+- type: entity
+  parent: [ OrganRodentiaVisual, OrganBaseEyes, OrganRodentiaInternal ]
+  id: OrganRodentiaEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganRodentiaInternal ]
+  id: OrganRodentiaTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganSpriteHumanInternal, OrganRodentiaInternal ]
+  id: OrganRodentiaAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganSpriteHumanInternal, OrganRodentiaInternal ]
+  id: OrganRodentiaEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganRodentiaInternal, OrganHumanMetabolizer ]
+  id: OrganRodentiaLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganRodentiaInternal, OrganRodentiaMetabolizer ]
+  id: OrganRodentiaHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganRodentiaInternal, OrganRodentiaMetabolizer ]
+  id: OrganRodentiaStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganSpriteHumanInternal, OrganRodentiaInternal, OrganRodentiaMetabolizer ]
+  id: OrganRodentiaLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganSpriteHumanInternal, OrganRodentiaInternal, OrganHumanMetabolizer ]
+  id: OrganRodentiaKidneys

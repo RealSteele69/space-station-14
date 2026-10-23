@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from Citadel-Station-13/Citadel-Station-13-RP at commit db254a45e84676b7d1f32e3386c65453253bc6c5 (icons/obj/weapons.dmi). icons/obj/weapons.dmi was imported from VOREStation (Polaris lineage) in 2018; contributors to that file include: CharlesWedge, silicons, Captain277, FreeStylaLT, CrystalClearCC, Hatterhat, Greenjoe12345, BlackMajor, AnalWerewolf, deathride58.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    }
+  ]
+}

@@ -14,3 +14,9 @@ public sealed partial class SnowScoopDoAfterEvent : SimpleDoAfterEvent;
 /// </summary>
 [Serializable, NetSerializable]
 public sealed partial class SnowballPackDoAfterEvent : SimpleDoAfterEvent;
+
+/// <summary>
+/// Scooping a snowball off a snowy tile with bare hands.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed partial class BareHandSnowScoopDoAfterEvent : SimpleDoAfterEvent;

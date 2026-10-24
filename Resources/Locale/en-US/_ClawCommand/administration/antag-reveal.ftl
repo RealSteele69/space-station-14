@@ -1,4 +1,4 @@
-antag-reveal-admin-alert = [Reveal] {$admin} → {$player}{$character}: {$result} ({$source})
+antag-reveal-admin-alert = [Reveal] {$admin} → {$player}{$character} ({$source})
 antag-reveal-character = {" "}({$name})
 antag-reveal-none = not antag
 antag-reveal-console = Console

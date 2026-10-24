@@ -95,11 +95,12 @@ public sealed partial class AntagRevealSystem : EntitySystem
         _adminLog.Add(LogType.AntagReveal, LogImpact.High,
             $"{adminName} revealed antag status of {playerName} ({target}) via {source}: {result}");
 
+        // Chat is broadcast to every admin, so the result itself stays out of it; the admin log entry
+        // above (and the now-unmasked player panel) is where the actual status lives.
         _chat.SendAdminAlert(Loc.GetString("antag-reveal-admin-alert",
             ("admin", adminName),
             ("player", playerName),
             ("character", character == string.Empty ? string.Empty : Loc.GetString("antag-reveal-character", ("name", character))),
-            ("result", result),
             ("source", source)));
 
         if (_revealed.Add(target))

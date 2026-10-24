@@ -268,7 +268,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
 
             rule.TotalConverted++;
             if (converter != null)
-                _adminLog.Add(LogType.Mind, LogImpact.High, $"{ToPrettyString(converter.Value):player} converted {ToPrettyString(target):player} into a blood cultist");
+                _adminLog.Add(LogType.MindRole, LogImpact.High, $"{ToPrettyString(converter.Value):player} converted {ToPrettyString(target):player} into a blood cultist");
 
             return true;
         }

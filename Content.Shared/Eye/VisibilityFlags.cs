@@ -16,5 +16,6 @@ namespace Content.Shared.Eye
         Ethereal = 1 << 6, // CLAW COMMAND - Shadekin phased into the dark plane; visible only to other ethereal entities.
         PsionicInvisibility = 1 << 7, // CLAW COMMAND - hidden by the Psionic Invisibility power; visible only to other psions using it.
         CosmicCultMonument = 1 << 8, // CLAW COMMAND - Cosmic Cult monument and its placement preview; visible to cultists and ghosts.
+        VentCrawlPipe = 1 << 9, // CLAW COMMAND - subfloor pipes, narrower than Subfloor: lets a vent-crawler's eye pull in piping over PVS without also networking hidden cables/wires/disposal tubes.
     }
 }

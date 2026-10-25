@@ -1,3 +1,4 @@
+using Content.Shared.Atmos.Components;
 using Content.Shared.Audio;
 using Content.Shared.Construction.Components;
 using Content.Shared.Explosion;
@@ -27,6 +28,8 @@ namespace Content.Shared.SubFloor
         [Dependency] protected SharedPopupSystem _popup = default!;
 
         [Dependency] private EntityQuery<SubFloorHideComponent> _hideQuery = default!;
+        [Dependency] private EntityQuery<PipeAppearanceComponent> _pipeAppearanceQuery = default!;
+        [Dependency] private EntityQuery<AtmosPipeLayersComponent> _pipeLayersQuery = default!;
 
         public override void Initialize()
         {
@@ -156,7 +159,19 @@ namespace Content.Shared.SubFloor
         private void SetUnderCover(Entity<SubFloorHideComponent> entity, bool value)
         {
             // If it's not undercover or it always has visible layers then normal visibility.
-            _visibility.SetLayer(entity.Owner, value && entity.Comp.VisibleLayers.Count == 0 ? (ushort) VisibilityFlags.Subfloor : (ushort) VisibilityFlags.Normal);
+            var layer = (ushort) VisibilityFlags.Normal;
+            if (value && entity.Comp.VisibleLayers.Count == 0)
+            {
+                layer = (ushort) VisibilityFlags.Subfloor;
+
+                // Claw Command - pipes also get the narrower vent-crawl flag, so a crawler's eye can pull in
+                // every bit of piping over PVS (matching what a t-ray/ShowSubfloor would reveal) without also
+                // networking every hidden cable, wire and disposal tube along the way.
+                if (_pipeAppearanceQuery.HasComp(entity.Owner) || _pipeLayersQuery.HasComp(entity.Owner))
+                    layer |= (ushort) VisibilityFlags.VentCrawlPipe;
+            }
+
+            _visibility.SetLayer(entity.Owner, layer);
 
             if (entity.Comp.IsUnderCover == value)
                 return;

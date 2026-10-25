@@ -123,6 +123,10 @@
     baseSprintSpeed: 5.5
   - type: Strap
     buckleOffset: "0,0.22"
+  # Right-click a nearby trailer and "Hitch to" this to couple it into a train - see VehicleHitchSystem.
+  - type: Puller
+    needsHands: false
+  - type: VehicleHitch
   - type: GenericKeyedVehicle
     containerId: key_slot
     keyWhitelist:

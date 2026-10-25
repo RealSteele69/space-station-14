@@ -254,7 +254,9 @@
     tags:
     - DoorBumpOpener
 
-# Unpowered trailer/trolley: pulled by hand (existing pull + strap prediction), no towing.
+# Unpowered trailer/trolley: pulled by hand (existing pull + strap prediction). A right-click "Hitch to"
+# also lets a tug (or another trailer already in a train) pull it with a plain pull joint - see
+# VehicleHitchSystem - so trailers chain into a train the same way the original engine car did.
 - type: entity
   abstract: true
   id: BaseVehicleTrailerClaw
@@ -283,6 +285,9 @@
         layer:
         - TableLayer
   - type: Pullable
+  - type: Puller
+    needsHands: false
+  - type: VehicleHitch
   - type: Damageable
     damageModifierSet: VehicleFrameLight
   - type: Injurable

@@ -1,5 +1,6 @@
-# Claw Command - train trolleys and trailers, as hand-pulled carts.
-# These were originally latched to a tug; there's no towing here, they're pulled like a rollerbed.
+# Claw Command - train trolleys and trailers. Hand-pulled carts by default; right-click one next to
+# the cargo tug (or another already-hitched trailer) and "Hitch to" it to couple into a train instead
+# (BaseVehicleTrailerClaw / VehicleHitchSystem).
 
 - type: entity
   parent: BaseVehicleTrailerClaw

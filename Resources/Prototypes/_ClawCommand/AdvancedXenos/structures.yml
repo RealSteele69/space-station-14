@@ -20,7 +20,7 @@
     canCollide: false
   - type: Sprite
     sprite: _ClawCommand/Structures/AdvancedXenos/weeds.rsi
-    drawdepth: FloorObjects
+    drawdepth: FloorTiles # Claw Command - a floor covering, not a floor object: keep it below vents/pipes/other fixtures so weeds don't hide them
     layers:
     - state: weeds
       map: [ "base" ]
@@ -75,7 +75,7 @@
   - type: AdvXenoWeedNode
   - type: Sprite
     sprite: _ClawCommand/Structures/AdvancedXenos/weeds.rsi
-    drawdepth: FloorObjects
+    drawdepth: FloorTiles # Claw Command - see AdvXenoWeeds
     layers:
     - state: weednode
       map: [ "base" ]

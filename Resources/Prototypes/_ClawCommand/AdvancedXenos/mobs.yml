@@ -136,9 +136,12 @@
         - SmallMobMask
         layer:
         - SmallMobLayer
+  # larva has no species datum in the original source, so its move delay fell through to a
+  # dev safety-net fallback (quadruple human speed) meant only to flag a misconfigured mob, not
+  # real tuning; we give it the plain human baseline instead of porting that debug artifact.
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.5
-    baseSprintSpeed: 4
+    baseSprintSpeed: 4.5
   - type: MeleeWeapon
     altDisarm: false
     angle: 0
@@ -291,9 +294,12 @@
       0: Alive
       150: Critical
       250: Dead
+  # /datum/species/xenos/hunter: movement_base_speed = 10 (human baseline is 5), scaled by the
+  # same 0.9 factor as the other castes (10 * 0.9 = 9); was ported as 7.5, under hunter's true
+  # relative speed advantage over sentinel/drone.
   - type: MovementSpeedModifier
-    baseWalkSpeed: 4.5
-    baseSprintSpeed: 7.5
+    baseWalkSpeed: 5.4
+    baseSprintSpeed: 9
   - type: ActionGrant
     actions:
     - ActionAdvXenoLeap

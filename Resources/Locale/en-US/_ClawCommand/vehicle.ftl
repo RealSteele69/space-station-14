@@ -27,3 +27,8 @@ vehicle-examine-key-missing = [color=yellow]There are no keys in the ignition.[/
 vehicle-examine-hotwired = [color=red]Its ignition has been hotwired.[/color]
 vehicle-gear-reverse = You shift {THE($vehicle)} into reverse.
 vehicle-gear-drive = You shift {THE($vehicle)} into drive.
+vehicle-hitch-verb = Hitch to {THE($target)}
+vehicle-hitch-done = You hitch this to {THE($target)}.
+vehicle-hitch-fail = It won't hitch to {THE($target)} right now.
+vehicle-unhitch-verb = Unhitch from {THE($target)}
+vehicle-unhitch-done = You unhitch this from {THE($target)}.

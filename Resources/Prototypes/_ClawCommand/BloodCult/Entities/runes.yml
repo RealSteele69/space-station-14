@@ -35,13 +35,14 @@
   parent: CultRuneBase
   id: CultRuneOffering
   name: rune of offering
-  description: Offers a non-cultist standing on it to Nar'Sie. One cultist sacrifices the dead, two convert the living, and three are needed to sacrifice the living who cannot be converted.
+  description: Offers a non-cultist standing on it to Nar'Sie. One cultist sacrifices the dead or converts the living, and three are needed to sacrifice the living who cannot be converted.
   components:
   - type: Sprite
     state: offering
   - type: CultRuneBase
     invokePhrase: "Mah'weyh pleggh at e'ntrath!"
   - type: CultRuneOffering
+    convertInvokersAmount: 1
 
 - type: entity
   parent: CultRuneBase

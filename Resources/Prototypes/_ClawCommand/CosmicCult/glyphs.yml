@@ -76,7 +76,7 @@
         map: ["base"]
   - type: CosmicGlyphConversion
   - type: CosmicGlyph
-    requiredCultists: 2 # Claw Command: conversion takes two cultists (was 1)
+    requiredCultists: 1
     activationDamage:
       types:
         Asphyxiation: 10

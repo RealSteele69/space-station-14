@@ -13,3 +13,11 @@
     initialDuration: 15
     joinExtendsDurationBy: 0
     maxDuration: 15
+
+# Claw Command - advanced xenomorph larvae: plentiful and time-sensitive, so don't sit in the raffle long
+- type: ghostRoleRaffleSettings
+  id: advXenoShort
+  settings:
+    initialDuration: 5
+    joinExtendsDurationBy: 0
+    maxDuration: 5

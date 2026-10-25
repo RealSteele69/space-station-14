@@ -63,7 +63,6 @@ public sealed class FancyResearchConsoleBoundUserInterface : BoundUserInterface
             return;
         if (!_consoleMenu.List.SequenceEqual(castState.Researches))
             _consoleMenu.UpdatePanels(castState.Researches);
-        if (_consoleMenu.Points != castState.Points)
-            _consoleMenu.UpdateInformationPanel(castState.Points);
+        _consoleMenu.UpdateInformationPanel(castState.Points);
     }
 }

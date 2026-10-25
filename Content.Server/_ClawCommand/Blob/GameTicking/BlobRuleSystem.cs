@@ -15,6 +15,7 @@ using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.AlertLevel;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Nuke;
 using Content.Shared.Objectives.Components;
 using Robust.Server.Player;
 using Robust.Shared.Player;
@@ -109,6 +110,24 @@ public sealed partial class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
         return true;
     }
 
+    /// <summary>
+    /// Whether an armed self-destruct belongs to the given station.
+    /// </summary>
+    private bool IsNukeArmedForStation(EntityUid station)
+    {
+        var nukeQuery = EntityQueryEnumerator<NukeComponent, TransformComponent>();
+        while (nukeQuery.MoveNext(out var nukeUid, out var nuke, out var nukeXform))
+        {
+            if (nuke.Status != NukeStatus.ARMED)
+                continue;
+
+            if (_stationSystem.GetOwningStation(nukeUid, nukeXform) == station)
+                return true;
+        }
+
+        return false;
+    }
+
     private static readonly ProtoId<AlertLevelPrototype> StationAlertCritical = "DeltaBlob";
     private static readonly ProtoId<AlertLevelPrototype> StationAlertDetected = "Red";
 
@@ -122,7 +141,10 @@ public sealed partial class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
         var stationName = Name(stationUid);
 
         var shuttleLock = stationUid.Comp?.ShuttleLock ?? StationBlobConfigComponent.DefaultShuttleLock;
+        var nukeArmed = IsNukeArmedForStation(stationUid);
+
         if (blobTilesCount >= shuttleLock
+            && !nukeArmed
             && _roundEndSystem.ExpectedCountdownEnd != null
             && !_emergency.EmergencyShuttleArrived)
         {
@@ -145,6 +167,28 @@ public sealed partial class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
                 false,
                 null,
                 Color.OrangeRed);
+        }
+
+        // Self-destruct armed: the shuttle lock no longer applies, and we auto-call evac
+        // on a short fuse so people actually have a chance to get off before it goes off.
+        if (nukeArmed)
+        {
+            if (!blobRuleComp.NukeArmedShuttleCalled)
+            {
+                blobRuleComp.NukeArmedShuttleCalled = true;
+
+                if (_roundEndSystem.ExpectedCountdownEnd != null)
+                    _roundEndSystem.CancelRoundEndCountdown(forceRecall: true);
+
+                _roundEndSystem.RequestRoundEnd(TimeSpan.FromSeconds(5),
+                    checkCooldown: false,
+                    text: "blob-alert-nuke-armed-evac",
+                    name: "blob-announcement-sender");
+            }
+        }
+        else
+        {
+            blobRuleComp.NukeArmedShuttleCalled = false;
         }
 
         switch (blobRuleComp.Stage)

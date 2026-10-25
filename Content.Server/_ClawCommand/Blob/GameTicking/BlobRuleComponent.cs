@@ -27,6 +27,13 @@ public sealed partial class BlobRuleComponent : Component
     /// </summary>
     [ViewVariables]
     public bool ShuttleArrivedAnnounced;
+
+    /// <summary>
+    /// Set once the self-destruct has been armed and the emergency shuttle auto-called because of it,
+    /// so we don't keep re-calling it every check. Reset if the nuke gets disarmed again.
+    /// </summary>
+    [ViewVariables]
+    public bool NukeArmedShuttleCalled;
 }
 
 

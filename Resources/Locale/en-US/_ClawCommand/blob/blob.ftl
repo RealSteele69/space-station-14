@@ -92,6 +92,7 @@ blob-alert-detect = Confirmed outbreak of a level 5 biohazard aboard the station
 blob-alert-critical = Biohazard level critical. Nuclear authentication codes have been sent to the station. Central Command orders any remaining personnel to activate the self-destruct.
 blob-alert-critical-NoNukeCode = Biohazard level critical. Central Command orders any remaining personnel to seek shelter and wait for rescue.
 blob-alert-shuttle-arrived = Biohazard detected on board. All personnel must evacuate immediately.
+blob-alert-nuke-armed-evac = Self-destruct armed. The emergency shuttle has been called to evacuate remaining personnel.
 
 ## Verbs
 

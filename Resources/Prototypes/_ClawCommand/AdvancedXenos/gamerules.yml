@@ -64,7 +64,7 @@
     mindRoles:
     - MindRoleAdvancedXenomorph
     raffle:
-      settings: short
+      settings: advXenoShort
   - type: Sprite
     layers:
     - state: green

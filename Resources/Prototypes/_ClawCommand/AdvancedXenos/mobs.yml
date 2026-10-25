@@ -181,7 +181,7 @@
     mindRoles:
     - MindRoleAdvancedXenomorph
     raffle:
-      settings: short
+      settings: advXenoShort
   - type: GhostTakeoverAvailable
 
 # For admins to spawn mid-round: the ghost that takes it also gets the briefing, objectives and

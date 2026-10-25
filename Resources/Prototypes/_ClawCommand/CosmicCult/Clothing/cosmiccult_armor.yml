@@ -99,6 +99,9 @@
     - state: icon-helmet
   - type: Clothing
     sprite: _DV/CosmicCult/Clothing/cosmiccult_armor.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000

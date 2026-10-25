@@ -258,7 +258,33 @@ public sealed partial class ActionUIController : UIController, IOnStateChanged<G
         if (_actions.Contains(action))
             return;
 
-        _actions.Add(action);
+        if (!action.Comp.AutoPopulate)
+        {
+            _actions.Add(action);
+            return;
+        }
+
+        // Auto-populated actions (e.g. combat mode) can arrive across multiple separate network
+        // updates on spawn, so insert in priority order instead of blindly appending - otherwise
+        // whichever action happens to replicate last ends up stuck in a later slot.
+        var insertIndex = _actions.Count;
+        for (var i = 0; i < _actions.Count; i++)
+        {
+            if (_actions[i] is not {} existingId ||
+                _actionsSystem.GetAction(existingId) is not {} existingAction ||
+                !existingAction.Comp.AutoPopulate)
+            {
+                continue;
+            }
+
+            if (ActionComparer(action, existingAction) < 0)
+            {
+                insertIndex = i;
+                break;
+            }
+        }
+
+        _actions.Insert(insertIndex, action);
     }
 
     private void OnActionRemoved(EntityUid actionId)

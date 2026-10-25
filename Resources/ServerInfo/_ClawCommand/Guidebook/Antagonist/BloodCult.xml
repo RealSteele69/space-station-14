@@ -82,8 +82,9 @@
     <Box>
       <GuideEntityEmbed Entity="CultRuneEmpower" Caption="Rune of Empowerment"/>
     </Box>
-    Empowers whoever invokes it. While empowered you can hold four spells instead of one, and drawing runes and preparing
-    spells is twice as fast and costs half the blood. The empowerment fades after a while away from cult floor.
+    Empowers whoever invokes it. While empowered you can hold four spells instead of one, drawing runes is twice as
+    fast and costs half the blood, and preparing spells is twice as fast too. The empowerment fades after a while away
+    from cult floor.
 
     <Box>
       <GuideEntityEmbed Entity="CultRuneTeleport" Caption="Rune of Teleportation"/>
@@ -144,7 +145,7 @@
   ## Blood Magic
 
   Blood spells are limited-use magic that fades once spent. Use the [bold]Blood Magic[/bold] action to prepare a
-  spell, or to dispel one you hold. Without an empowering rune, preparing a spell takes longer, costs blood, and you can
+  spell, or to dispel one you hold. Without an empowering rune, preparing a spell takes longer and you can
   only hold one at a time. You can't cast blood spells while muted.
 
   - [bold]Stun[/bold]: your hand stuns and mutes the next non-cultist you hit.

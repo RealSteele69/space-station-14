@@ -31,13 +31,13 @@ public sealed partial class BloodCultSpellsHolderComponent : Component
     public int DefaultMaxSpells = 1;
 
     [DataField]
-    public TimeSpan SpellCreationTime = TimeSpan.FromSeconds(4);
+    public TimeSpan SpellCreationTime = TimeSpan.FromSeconds(2);
 
     /// <summary>
     /// Preparing magic without an empowering rune costs blood.
     /// </summary>
     [DataField]
-    public DamageSpecifier SpellCreationDamage = new() { DamageDict = new() { ["Slash"] = 8 } };
+    public DamageSpecifier SpellCreationDamage = new();
 
     [ViewVariables]
     public int ExtraSpells;

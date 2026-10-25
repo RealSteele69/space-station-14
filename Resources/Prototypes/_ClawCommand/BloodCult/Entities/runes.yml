@@ -105,12 +105,12 @@
   parent: CultRuneBase
   id: CultRuneSummoning
   name: rune of summoning
-  description: Summons a single cultist to the rune, then fades. Needs two invokers and fails on cultists who are cuffed or being pulled.
+  description: Summons a single cultist to the rune, then fades. Needs three invokers and fails on cultists who are cuffed or being pulled.
   components:
   - type: Sprite
     state: summon
   - type: CultRuneBase
-    requiredInvokers: 2
+    requiredInvokers: 3
     invokePhrase: "N'ath reth sh'yro eth d'rekkathnor!"
   - type: CultRuneSummon
   - type: UserInterface

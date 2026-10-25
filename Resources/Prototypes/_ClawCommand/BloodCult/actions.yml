@@ -19,7 +19,7 @@
   parent: BaseBloodCultAction
   id: ActionBloodCultPrepareSpells
   name: Blood Magic
-  description: Prepare blood spells, or dispel the ones you hold. Without an empowering rune, preparing a spell costs blood and you can only hold one.
+  description: Prepare blood spells, or dispel the ones you hold. Without an empowering rune, you can only hold one.
   components:
   - type: Action
     priority: -10
@@ -291,7 +291,7 @@
   description: Reaches into Nar'Sie's realm and pulls out one of the legendary fragments, a soul shard waiting for a spirit.
   components:
   - type: Action
-    useDelay: 240
+    useDelay: 30
   - type: Sprite
     layers:
     - state: create_soul_stone
@@ -309,7 +309,7 @@
   description: Calls forth a blessed soul shard waiting for a spirit.
   components:
   - type: Action
-    useDelay: 240
+    useDelay: 30
   - type: Sprite
     layers:
     - state: create_soul_stone

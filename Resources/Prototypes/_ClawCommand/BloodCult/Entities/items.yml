@@ -58,7 +58,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 18
+        Slash: 24
   - type: EmbeddableProjectile
   - type: ThrowingAngle
     angle: 225
@@ -179,7 +179,8 @@
   - type: BloodCultItem
   - type: BloodCultPassThroughCult
   - type: StunOnCollide
-    knockdownAmount: 3
+    stunAmount: 5
+    knockdownAmount: 5
   - type: Reflect
     reflectProb: 0.75
     reflects:
@@ -481,6 +482,8 @@
   - type: ShowHealthIcons
     damageContainers:
     - Biological
+  - type: NightVision
+    relayOverlay: true
   - type: BloodCultItem
 
 # --- Hand auras -------------------------------------------------------------

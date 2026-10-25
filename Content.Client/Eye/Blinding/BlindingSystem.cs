@@ -32,6 +32,10 @@ public sealed partial class BlindingSystem : EntitySystem
 
     private void OnPlayerAttached(EntityUid uid, BlindableComponent component, LocalPlayerAttachedEvent args)
     {
+        // Reset any stale light-manager state left behind by a previous entity/connection so it
+        // can't leak into this one; the overlay will immediately re-disable it if this entity is
+        // actually blind.
+        _lightManager.Enabled = true;
         _overlayMan.AddOverlay(_overlay);
     }
 
@@ -44,7 +48,10 @@ public sealed partial class BlindingSystem : EntitySystem
     private void OnBlindInit(EntityUid uid, BlindableComponent component, ComponentInit args)
     {
         if (_player.LocalEntity == uid)
+        {
+            _lightManager.Enabled = true;
             _overlayMan.AddOverlay(_overlay);
+        }
     }
 
     private void OnBlindShutdown(EntityUid uid, BlindableComponent component, ComponentShutdown args)
@@ -52,6 +59,7 @@ public sealed partial class BlindingSystem : EntitySystem
         if (_player.LocalEntity == uid)
         {
             _overlayMan.RemoveOverlay(_overlay);
+            _lightManager.Enabled = true;
         }
     }
 

@@ -438,6 +438,12 @@ entity-effect-guidebook-innoculate-zombie-infection =
         *[other] cure
     } an ongoing zombie infection, and provides immunity to future infections
 
+entity-effect-guidebook-cure-adv-xeno-embryo =
+    { $chance ->
+        [1] Cures
+        *[other] cure
+    } an implanted alien embryo, provided it has not started bursting out yet
+
 entity-effect-guidebook-reduce-rotting =
     { $chance ->
         [1] Regenerates

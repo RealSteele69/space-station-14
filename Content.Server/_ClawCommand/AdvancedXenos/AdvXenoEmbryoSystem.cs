@@ -1,16 +1,21 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
+using Content.Server.Ghost.Roles.Components;
 using Content.Shared._ClawCommand.AdvancedXenos;
+using Content.Shared._ClawCommand.AdvancedXenos.EntityEffects;
 using Content.Shared.Buckle;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
+using Content.Shared.EntityEffects;
 using Content.Shared.Gibbing;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
+using Content.Shared.Mind;
 using Content.Shared.Popups;
+using Content.Shared.Roles;
 using Content.Shared.Standing;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Verbs;
@@ -40,10 +45,14 @@ public sealed partial class AdvXenoEmbryoSystem : EntitySystem
     [Dependency] private GibbingSystem _gibbing = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedRoleSystem _role = default!;
     [Dependency] private SharedToolSystem _tool = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private StandingStateSystem _standing = default!;
+
+    private static readonly List<EntProtoId> XenomorphMindRoles = new() { "MindRoleAdvancedXenomorph" };
 
     private static readonly ProtoId<DamageTypePrototype> Poison = "Poison";
     private static readonly ProtoId<DamageTypePrototype> Blunt = "Blunt";
@@ -165,9 +174,23 @@ public sealed partial class AdvXenoEmbryoSystem : EntitySystem
     private void FinishBurst(Entity<AdvXenoEmbryoComponent> ent)
     {
         var coords = _transform.GetMapCoordinates(ent);
+        var hasMind = _mind.TryGetMind(ent.Owner, out var mindId, out var mind);
+
         var larva = Spawn(ent.Comp.Larva, coords);
         _audio.PlayPvs(BurstSound, larva, AudioParams.Default.WithVolume(4f));
         _adminLog.Add(LogType.Gib, LogImpact.High, $"{ToPrettyString(ent):target} burst open, releasing alien larva {ToPrettyString(larva)}");
+
+        // the host was an actual player, not an SSD body or an NPC: they become the larva at once,
+        // rather than leaving it up as a ghost role for someone else to take.
+        if (hasMind)
+        {
+            RemComp<GhostRoleComponent>(larva);
+            RemComp<GhostTakeoverAvailableComponent>(larva);
+            _mind.TransferTo(mindId, larva, mind: mind);
+            _role.MindAddRoles(mindId, XenomorphMindRoles, mind);
+            _popup.PopupEntity(Loc.GetString("adv-xeno-embryo-burst-takeover"), larva, larva, PopupType.LargeCaution);
+            _adminLog.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(ent):target}'s mind took over the burst larva {ToPrettyString(larva)}");
+        }
 
         RemComp<AdvXenoEmbryoComponent>(ent);
         _gibbing.Gib(ent);
@@ -235,4 +258,23 @@ public sealed partial class AdvXenoEmbryoSystem : EntitySystem
     }
 
     #endregion
+}
+
+/// <summary>
+/// Chemistry's answer to the embryo: a parasiticide cures it before it starts bursting.
+/// </summary>
+public sealed partial class CureAdvXenoEmbryoEntityEffectSystem : EntityEffectSystem<AdvXenoEmbryoComponent, CureAdvXenoEmbryo>
+{
+    [Dependency] private IAdminLogManager _adminLog = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+
+    protected override void Effect(Entity<AdvXenoEmbryoComponent> entity, ref EntityEffectEvent<CureAdvXenoEmbryo> args)
+    {
+        if (entity.Comp.BurstAt != null)
+            return;
+
+        RemComp<AdvXenoEmbryoComponent>(entity);
+        _popup.PopupEntity(Loc.GetString("adv-xeno-embryo-cured"), entity, entity, PopupType.LargeCaution);
+        _adminLog.Add(LogType.Action, LogImpact.Medium, $"An alien embryo in {ToPrettyString(entity):target} was cured by chemistry");
+    }
 }

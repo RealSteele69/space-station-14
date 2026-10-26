@@ -19,7 +19,7 @@
   - A [bold]drone[/bold] builds the hive: weeds, resin walls, membranes, doors and nests. Only a drone can become the [bold]queen[/bold], at a cost of 500 plasma, and only while no other queen is alive.
   - The [bold]queen[/bold] lays [bold]eggs[/bold]. After three to five minutes an egg is ready. It opens when a possible host comes within a few tiles and releases a [bold]facehugger[/bold].
   - The facehugger leaps onto a face and knocks its host out for about fifty seconds. If nobody pulls it off within ten to fifteen seconds, it implants an [bold]embryo[/bold].
-  - The embryo grows through five stages. It brings sneezing, coughing, a sore throat, aches and stomach pain, and in the end a chestburster tears its way out. The new larva is handed to a ghost and the host is gibbed.
+  - The embryo grows through five stages. It brings sneezing, coughing, a sore throat, aches and stomach pain, and in the end a chestburster tears its way out. The host's own mind takes over the new larva instantly, and the gutted body is gibbed.
 
   ## Plasma and weeds
   Every caste has a plasma vessel, shown as a counter on the HUD. Abilities spend plasma, and the vessel refills a little every couple of seconds. On [bold]weeds[/bold], or in plasma gas, a wounded xenomorph heals instead (three times faster when lying down). An unhurt one refills plasma quickly instead. Plasma reagent in the bloodstream also tops it up.
@@ -47,7 +47,13 @@
   ## Fighting back
   - A sealed helmet stops facehuggers outright: hardsuit and EVA helmets, a riot helmet with the visor down, or a welding mask (the head one, or the welding gas mask worn up over the face). Any other mask, gas masks included, just gets torn off. A mask that cannot be removed makes the hugger bounce off and die. Synthetics have nothing to implant into.
   - Facehuggers die to any hit, any bullet or any real heat. A thrown hugger is stunned for a few seconds when it lands.
-  - A friend can pull the hugger off your face before it finishes. Captives in a nest need two minutes to struggle free, but anyone else can pull them out at once.
+  - A friend can pull a latched hugger off your face in strip mode, same as removing a mask - it just takes a good while, since it is gripping on tight. Captives in a nest need two minutes to struggle free, but anyone else can pull them out at once.
   - An implanted embryo can be cut out. Lay the patient down or buckle them in, hold a scalpel or anything else that slices, and use [bold]Explore chest cavity[/bold] on them. It takes ten seconds and hurts.
+  - An implanted embryo can also be cured with chemistry, as long as it has not started bursting out yet.
+
+  <Box>
+    <GuideReagentEmbed Reagent="Parasiticide"/>
+  </Box>
+
   - Weeds burn, and the whole hive is weak to fire. Welding the vents keeps them from crawling through.
 </Document>

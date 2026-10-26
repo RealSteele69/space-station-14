@@ -130,6 +130,8 @@ adv-xeno-surgery-verb-desc = Open the patient's chest and feel around for anythi
 adv-xeno-surgery-start = {CAPITALIZE(THE($user))} starts cutting into {THE($target)}'s chest!
 adv-xeno-surgery-success = {CAPITALIZE(THE($user))} pulls a writhing alien embryo out of {THE($target)}'s chest!
 adv-xeno-surgery-nothing = You find nothing unusual.
+adv-xeno-embryo-cured = You feel a wrenching nausea, and then... nothing. Whatever was growing inside you is gone.
+adv-xeno-embryo-burst-takeover = Hiss! Your mind surges into the newborn larva as your old body is torn open behind you.
 
 ## NPC biomorphs
 adv-xeno-biomorph-death = {CAPITALIZE(THE($xeno))} lets out a waning guttural screech, green blood bubbling from its maw...
@@ -178,6 +180,8 @@ chat-radio-adv-xeno-hivemind = Hivemind
 ## Materials
 reagent-name-adv-xeno-blood = xeno blood
 reagent-desc-adv-xeno-blood = It's green and acidic. It looks like... blood?
+reagent-name-parasiticide = parasiticide
+reagent-desc-parasiticide = A thick, oily medicine brewed to kill parasitic organisms lodged in the body - including an alien embryo, if caught before it starts bursting out.
 materials-adv-xeno-resin = resin
 materials-unit-adv-xeno-blob = blob
 stack-adv-xeno-resin = {$amount ->

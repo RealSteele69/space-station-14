@@ -1,0 +1,37 @@
+# Claw Command - a chemistry cure for the alien embryo: medium-difficulty recipe, same tier as ambuzol.
+
+- type: reagent
+  id: Parasiticide
+  name: reagent-name-parasiticide
+  group: Medicine
+  desc: reagent-desc-parasiticide
+  physicalDesc: reagent-physical-desc-oily
+  flavor: medicine
+  color: "#4a7c3f"
+  metabolisms:
+    Bloodstream:
+      effects:
+        - !type:CureAdvXenoEmbryo
+          conditions:
+            - !type:ReagentCondition
+              reagent: Parasiticide
+              min: 10
+    Digestion:
+      effects:
+        - !type:CureAdvXenoEmbryo
+          conditions:
+            - !type:ReagentCondition
+              reagent: Parasiticide
+              min: 10
+
+- type: reaction
+  id: Parasiticide
+  reactants:
+    Dylovene:
+      amount: 1
+    Iodine:
+      amount: 1
+    Ethanol:
+      amount: 1
+  products:
+    Parasiticide: 3

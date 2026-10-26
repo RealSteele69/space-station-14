@@ -27,6 +27,7 @@
   - type: Clothing
     sprite: _ClawCommand/Objects/AdvancedXenos/facehugger.rsi
     slots: [ mask ]
+    stripDelay: 6 # on top of the mask slot's base strip time, so prying it off takes a good while
   - type: Item
     size: Normal # w_class 3: aliens can pick it up
   - type: IngestionBlocker

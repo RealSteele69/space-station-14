@@ -61,18 +61,22 @@ public sealed partial class DrunkOverlay : Overlay
 
     protected override void FrameUpdate(FrameEventArgs args)
     {
-
         var playerEntity = _playerManager.LocalEntity;
 
-        if (playerEntity == null)
-            return;
-
-        if (!_statusEffectsSystem.TryGetMaxTime<DrunkStatusEffectComponent>(playerEntity.Value, out var status))
-            return;
-
-        var time = status.Item2;
-
-        var power = time == null ? MaxBoozePower : (float)Math.Min((time - _timing.CurTime).Value.TotalSeconds, MaxBoozePower);
+        // Claw Command - decay toward 0 instead of freezing CurrentBoozePower at its last value
+        // when there's no active drunk-type status. Previously this just returned here, so if the
+        // DrunkSystem event that's supposed to zero it out and remove the overlay ever got missed
+        // (e.g. a networked status removal the client didn't predict locally, common right after a
+        // crit/death), the sway/double-vision effect would stay stuck indefinitely - even across a
+        // respawn - until a full reconnect rebuilt client state from scratch. Polling the real
+        // status here every frame means we self-correct regardless of whether that event fired.
+        var power = 0f;
+        if (playerEntity != null &&
+            _statusEffectsSystem.TryGetMaxTime<DrunkStatusEffectComponent>(playerEntity.Value, out var status))
+        {
+            var time = status.Item2;
+            power = time == null ? MaxBoozePower : (float)Math.Min((time - _timing.CurTime).Value.TotalSeconds, MaxBoozePower);
+        }
 
         CurrentBoozePower += BoozePowerScale * (power - CurrentBoozePower) * args.DeltaSeconds / (power + 1);
     }

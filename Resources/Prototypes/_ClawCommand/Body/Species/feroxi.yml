@@ -149,7 +149,7 @@
   - type: Speech
     speechSounds: Tenor
     speechVerb: SpeechVerbFeroxi
-    allowedEmotes: ['Gnash', 'Thump']
+    allowedEmotes: ['Gnash', 'Thump', 'Growl', 'Purr', 'Yip']
   - type: TypingIndicator
     proto: Feroxi
   - type: Vocal

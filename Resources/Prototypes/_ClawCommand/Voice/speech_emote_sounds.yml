@@ -562,6 +562,14 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Gnash: # Claw Command: Feroxi *gnashes* vocal emote sound
+      collection: FeroxiGnashes
+    Growl:
+      collection: VulpkaninGrowls
+    Purr:
+      collection: FelinidPurrs
+    Yip:
+      collection: VulpkaninYips
 
 - type: emoteSounds
   id: EmoteSoundsFemaleFeroxi
@@ -605,3 +613,11 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Gnash: # Claw Command: Feroxi *gnashes* vocal emote sound
+      collection: FeroxiGnashes
+    Growl:
+      collection: VulpkaninGrowls
+    Purr:
+      collection: FelinidPurrs
+    Yip:
+      collection: VulpkaninYips

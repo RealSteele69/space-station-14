@@ -309,6 +309,25 @@
   storage:
     back:
     - SpeedLoaderRifleHeavyRubber
+# Claw Command - .38 special, for Fitz/K38Master. No rubber variant: their nonlethal
+# (CCIssued) versions are re-chambered to draw from CartridgeMagnumRubber instead, so they're
+# already covered by CCServiceEquipSpeedLoaderMagnumRubber above.
+- type: loadout
+  id: CCServiceEquipSpeedLoaderSpecial
+  effects:
+  - !type:PointsCostLoadoutEffect
+    cost: 2
+  storage:
+    back:
+    - SpeedLoaderSpecial
+- type: loadout
+  id: CCServiceEquipSpeedLoaderSpecialSpare
+  effects:
+  - !type:PointsCostLoadoutEffect
+    cost: 2
+  storage:
+    back:
+    - SpeedLoaderSpecial
 
 # ---------------------------------------------------------------------------
 # Bar defence - one pick, always free
@@ -398,6 +417,8 @@
   - CCServiceEquipSpeedLoaderRifleHeavySpare
   - CCServiceEquipSpeedLoaderRifleHeavyRubber
   - CCServiceEquipSpeedLoaderRifleHeavyRubberSpare
+  - CCServiceEquipSpeedLoaderSpecial
+  - CCServiceEquipSpeedLoaderSpecialSpare
 
 - type: loadoutGroup
   id: BarkeepWeapon

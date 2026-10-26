@@ -37,6 +37,11 @@
       Danger: fire_2
       Emagged: fire_emagged
     hideOnDepowered: [ "fireAlarmState" ]
+    # Normal/Warning aren't worth covering the alert level indicator for - hide this layer
+    # instead so the AlertLevelDisplay layer underneath shows through when nothing's wrong.
+    hiddenAlarmTypes:
+      - Normal
+      - Warning
   - type: Tag
     tags:
       - FireAlarm
@@ -74,6 +79,11 @@
     layers:
     - state: base
       map: ["fireAlarmBase"]
+    - state: fire_0
+      # Pre-declared here (below fireAlarmState) so AlertLevelDisplay reuses this layer
+      # instead of appending a new one on top, which would permanently mask the real
+      # alarm state (fireAlarmState) whenever the station alert level is Green.
+      map: [ "enum.AlertLevelDisplay.Layer" ]
     - state: fire_0
       map: ["fireAlarmState"]
     - state: panel

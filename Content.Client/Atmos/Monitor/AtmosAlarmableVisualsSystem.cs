@@ -38,10 +38,19 @@ public sealed partial class AtmosAlarmableVisualsSystem : VisualizerSystem<Atmos
 
         if (args.AppearanceData.TryGetValue(AtmosMonitorVisuals.AlarmType, out var alarmTypeObject)
             && alarmTypeObject is AtmosAlarmType alarmType
-            && powered
-            && component.AlarmStates.TryGetValue(alarmType, out var state))
+            && powered)
         {
-            SpriteSystem.LayerSetRsiState((uid, args.Sprite), layer, new RSI.StateId(state));
+            if (component.HiddenAlarmTypes != null && component.HiddenAlarmTypes.Contains(alarmType))
+            {
+                // Nothing worth drawing attention to right now - hide this layer so whatever
+                // is underneath (e.g. a station alert level indicator) isn't permanently masked.
+                SpriteSystem.LayerSetVisible((uid, args.Sprite), layer, false);
+            }
+            else if (component.AlarmStates.TryGetValue(alarmType, out var state))
+            {
+                SpriteSystem.LayerSetVisible((uid, args.Sprite), layer, true);
+                SpriteSystem.LayerSetRsiState((uid, args.Sprite), layer, new RSI.StateId(state));
+            }
         }
     }
 }

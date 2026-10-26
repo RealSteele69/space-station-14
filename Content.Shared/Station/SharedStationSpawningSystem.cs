@@ -136,10 +136,16 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
                 if (!string.IsNullOrEmpty(customName)) // Claw Command
                     _metadata.SetEntityName(inhandEntity, customName);
 
-                if (_handsSystem.TryGetEmptyHand((entity, handsComponent), out var emptyHand))
+                if (_handsSystem.TryGetEmptyHand((entity, handsComponent), out var emptyHand) &&
+                    _handsSystem.TryPickup(entity, inhandEntity, emptyHand, checkActionBlocker: false, handsComp: handsComponent))
                 {
-                    _handsSystem.TryPickup(entity, inhandEntity, emptyHand, checkActionBlocker: false, handsComp: handsComponent);
+                    continue;
                 }
+
+                // Claw Command - no free hand to take it: try stowing it somewhere instead of
+                // just leaving it unclaimed at our feet with no record of why.
+                if (!TryStowOverflowGear(entity, inhandEntity))
+                    Log.Warning($"Starting gear item {prototype} had no free hand or storage space on {ToPrettyString(entity)} and was left on the floor.");
             }
         }
 
@@ -165,7 +171,13 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
                         if (!string.IsNullOrEmpty(customName)) // Claw Command
                             _metadata.SetEntityName(spawnedEntity, customName);
 
-                        _storage.Insert(slotEnt.Value, spawnedEntity, out _, storageComp: storage, playSound: false);
+                        if (_storage.Insert(slotEnt.Value, spawnedEntity, out _, storageComp: storage, playSound: false))
+                            continue;
+
+                        // Claw Command - the intended slot (e.g. a full backpack) had no room left.
+                        // Try a free hand or any other equipped storage before giving up on it.
+                        if (!TryStowOverflowGear(entity, spawnedEntity))
+                            Log.Warning($"Loadout item {entProto} for slot \"{slotName}\" didn't fit anywhere on {ToPrettyString(entity)} and was left on the floor.");
                     }
                 }
             }
@@ -176,6 +188,39 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
             var ev = new StartingGearEquippedEvent(entity);
             RaiseLocalEvent(entity, ref ev);
         }
+    }
+
+    /// <summary>
+    /// Claw Command - last-resort placement for a piece of starting/loadout gear that didn't fit in its
+    /// intended spot (usually a full backpack): tries any free hand, then any other equipped container
+    /// with room, before giving up. Returns false if neither worked, in which case the item is left where
+    /// it was spawned (on the ground at the entity's feet) instead of silently vanishing into nowhere.
+    /// </summary>
+    private bool TryStowOverflowGear(EntityUid entity, EntityUid item)
+    {
+        if (_handsQuery.TryComp(entity, out var hands) &&
+            _handsSystem.TryGetEmptyHand((entity, hands), out var emptyHand) &&
+            _handsSystem.TryPickup(entity, item, emptyHand, checkActionBlocker: false, handsComp: hands))
+        {
+            return true;
+        }
+
+        if (InventorySystem.TryGetSlots(entity, out var slotDefinitions))
+        {
+            foreach (var slot in slotDefinitions)
+            {
+                if (!InventorySystem.TryGetSlotEntity(entity, slot.Name, out var slotEnt) ||
+                    !_storageQuery.TryComp(slotEnt, out var storage))
+                {
+                    continue;
+                }
+
+                if (_storage.Insert(slotEnt.Value, item, out _, storageComp: storage, playSound: false))
+                    return true;
+            }
+        }
+
+        return false;
     }
 
     /// <summary>

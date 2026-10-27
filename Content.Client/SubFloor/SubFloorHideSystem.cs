@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Content.Client.UserInterface.Systems.Sandbox;
 using Content.Shared.SubFloor;
 using Robust.Client.GameObjects;
@@ -13,6 +14,16 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
     [Dependency] private IUserInterfaceManager _ui = default!;
 
     private bool _showAll;
+
+    /// <summary>
+    /// Claw Command - entities a client-local system (e.g. vent crawling) wants drawn as if revealed by a
+    /// t-ray scanner, without going through <see cref="SharedAppearanceSystem.SetData"/>. That call writes into
+    /// the networked <see cref="AppearanceComponent"/> dictionary, which the server fully overwrites on every
+    /// state update for that component (pipes get those often, e.g. atmos recoloring) - wiping out a client-only
+    /// flag almost as soon as it's set and causing the reveal to flicker or drop. This set lives only on the
+    /// client, so it survives server state application.
+    /// </summary>
+    private readonly HashSet<EntityUid> _ventCrawlRevealed = new();
 
     [ViewVariables(VVAccess.ReadWrite)]
     public bool ShowAll
@@ -47,6 +58,22 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
         ShowAll = false;
     }
 
+    /// <summary>
+    /// Claw Command - reveal (or stop revealing) an entity for a client-local reason, e.g. vent crawling.
+    /// Unlike <see cref="SharedAppearanceSystem.SetData"/> with <see cref="SubFloorVisuals.ScannerRevealed"/>,
+    /// this never touches the networked appearance data, so a server state update for this entity (which pipes
+    /// get often) can't silently reset it.
+    /// </summary>
+    public void SetVentCrawlRevealed(EntityUid uid, bool revealed)
+    {
+        var changed = revealed ? _ventCrawlRevealed.Add(uid) : _ventCrawlRevealed.Remove(uid);
+        if (!changed)
+            return;
+
+        if (TryComp<AppearanceComponent>(uid, out var appearance))
+            _appearance.QueueUpdate(uid, appearance);
+    }
+
     private void OnRequestReceived(ShowSubfloorRequestEvent ev)
     {
         // When client receives request Queue an update on all vis.
@@ -60,8 +87,11 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
 
         _appearance.TryGetData<bool>(uid, SubFloorVisuals.Covered, out var covered, args.Component);
         _appearance.TryGetData<bool>(uid, SubFloorVisuals.ScannerRevealed, out var scannerRevealed, args.Component);
+        var ventCrawlRevealed = _ventCrawlRevealed.Contains(uid);
 
         scannerRevealed &= !ShowAll; // no transparency for show-subfloor mode.
+        // Claw Command - a vent crawler sees it the same way a t-ray scanner would.
+        scannerRevealed |= ventCrawlRevealed && !ShowAll;
 
         var revealed = !covered || ShowAll || scannerRevealed;
 

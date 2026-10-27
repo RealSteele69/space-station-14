@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client.SubFloor;
 using Content.Shared._ClawCommand.VentCrawl;
 using Content.Shared.Atmos.Components;
 using Content.Shared.SubFloor;
@@ -20,7 +21,7 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IOverlayManager _overlays = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SubFloorHideSystem _subFloorHide = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
     private const float Range = 14f;
@@ -62,13 +63,6 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
 
         if (!_overlays.HasOverlay<VentCrawlOverlay>())
             _overlays.AddOverlay(_overlay);
-
-        // server states reset client-only appearance data, so keep insisting
-        foreach (var uid in _revealed.Keys)
-        {
-            if (!_appearance.TryGetData<bool>(uid, SubFloorVisuals.ScannerRevealed, out var revealed) || !revealed)
-                _appearance.SetData(uid, SubFloorVisuals.ScannerRevealed, true);
-        }
 
         _accumulator += frameTime;
         if (_accumulator < 0.25f)
@@ -120,7 +114,7 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
         }
 
         _revealed[uid] = saved;
-        _appearance.SetData(uid, SubFloorVisuals.ScannerRevealed, true);
+        _subFloorHide.SetVentCrawlRevealed(uid, true);
     }
 
     private void Unreveal(EntityUid uid)
@@ -128,7 +122,7 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
         if (!_revealed.Remove(uid, out var saved) || TerminatingOrDeleted(uid))
             return;
 
-        _appearance.SetData(uid, SubFloorVisuals.ScannerRevealed, false);
+        _subFloorHide.SetVentCrawlRevealed(uid, false);
         if (!TryComp<SpriteComponent>(uid, out var sprite))
             return;
 

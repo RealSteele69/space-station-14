@@ -4,16 +4,42 @@
 # eggs spawn as inert props. Spawn markers point at the fork's existing
 # MobXeno* entities at Entities/Mobs/NPCs/xeno.yml.
 
-# Spawn markers — wire Goob's IDs to the fork's existing xeno mobs.
+# NPC-only xeno variants for Lavaland — the shared MobXenoDrone/Praetorian/Queen
+# are ghost roles everywhere else (salvage megafauna, vanilla xeno events), so
+# instead of touching those, Lavaland gets its own variants with the ghost
+# role rolled out at MapInit via prob: 0 (see GhostRoleSystem.OnMapInit).
+# They stay plain HTN-driven NPCs, same as the base mob.
+- type: entity
+  parent: MobXenoDrone
+  id: MobXenoDroneLavaland
+  components:
+  - type: GhostRole
+    prob: 0
+
+- type: entity
+  parent: MobXenoPraetorian
+  id: MobXenoPraetorianLavaland
+  components:
+  - type: GhostRole
+    prob: 0
+
+- type: entity
+  parent: MobXenoQueen
+  id: MobXenoQueenLavaland
+  components:
+  - type: GhostRole
+    prob: 0
+
+# Spawn markers — wire Goob's IDs to the fork's NPC-only xeno variants.
 - type: entity
   parent: MarkerBase
   id: SpawnMobXenomorphDrone
-  name: ghost role spawn point
+  name: xeno spawn point
   suffix: xeno drone
   components:
   - type: ConditionalSpawner
     prototypes:
-    - MobXenoDrone
+    - MobXenoDroneLavaland
   - type: Sprite
     sprite: Markers/jobs.rsi
     layers:
@@ -24,12 +50,12 @@
 - type: entity
   parent: MarkerBase
   id: SpawnMobXenomorphPraetorian
-  name: ghost role spawn point
+  name: xeno spawn point
   suffix: xeno praetorian
   components:
   - type: ConditionalSpawner
     prototypes:
-    - MobXenoPraetorian
+    - MobXenoPraetorianLavaland
   - type: Sprite
     sprite: Markers/jobs.rsi
     layers:
@@ -40,12 +66,12 @@
 - type: entity
   parent: MarkerBase
   id: SpawnMobXenomorphQueen
-  name: ghost role spawn point
+  name: xeno spawn point
   suffix: xeno queen
   components:
   - type: ConditionalSpawner
     prototypes:
-    - MobXenoQueen
+    - MobXenoQueenLavaland
   - type: Sprite
     sprite: Markers/jobs.rsi
     layers:

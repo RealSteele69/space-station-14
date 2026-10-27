@@ -37,6 +37,17 @@ public sealed partial class ChasmSystem : EntitySystem
             if (_timing.CurTime < chasm.NextDeletionTime)
                 continue;
 
+            // Lavaland Change start: Jaunter
+            var jauntEvent = new _ClawCommand.Lavaland.Chasm.BeforeChasmFallingEvent(uid);
+            RaiseLocalEvent(uid, ref jauntEvent);
+            if (jauntEvent.Cancelled)
+            {
+                RemComp<ChasmFallingComponent>(uid);
+                _blocker.UpdateCanMove(uid);
+                continue;
+            }
+            // Lavaland Change end: Jaunter
+
             var chasmEvent = new EntityCompletedFallingIntoChasmEvent((uid, chasm));
             RaiseLocalEvent(chasm.FallingInto, ref chasmEvent);
             if (_chasmQuery.TryComp(chasm.FallingInto, out var chasmComp))

@@ -119,7 +119,7 @@ public sealed partial class ShuttleSystem : SharedShuttleSystem
             Enable(uid, component: physicsComponent, shuttle: component);
         }
 
-        component.DampingModifier = component.BodyModifier;
+        component.DampingModifier = GetDampingModifier(component);
     }
 
     public void Toggle(EntityUid uid, ShuttleComponent component)
@@ -180,6 +180,6 @@ public sealed partial class ShuttleSystem : SharedShuttleSystem
 
     private void OnFTLCompleted(Entity<ShuttleComponent> ent, ref FTLCompletedEvent args)
     {
-        ent.Comp.DampingModifier = ent.Comp.BodyModifier;
+        ent.Comp.DampingModifier = GetDampingModifier(ent.Comp);
     }
 }

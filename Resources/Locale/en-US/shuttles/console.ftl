@@ -29,6 +29,10 @@ shuttle-console-nav-cargo-dock = Cargo Docks
 shuttle-console-nav-arrivals-dock = Arrivals Docks
 shuttle-console-iff-toggle = Show IFF
 
+shuttle-console-dampener-Off = Dampener: Off
+shuttle-console-dampener-Dampened = Dampener: Assisted
+shuttle-console-dampener-Anchored = Dampener: Brake
+
 # MAP
 
 shuttle-console-ftl-label = FTL Status

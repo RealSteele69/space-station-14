@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared.Shuttles.Events;
 
 namespace Content.Server.Shuttles.Components
 {
@@ -75,5 +76,11 @@ namespace Content.Server.Shuttles.Components
         /// </summary>
         [DataField]
         public TimeSpan? FTLCooldownOverride = null;
+
+        /// <summary>
+        /// The pilot-selected inertial dampener mode. Dampened is the default assisted flight mode.
+        /// </summary>
+        [ViewVariables]
+        public InertiaDampeningMode DampeningMode = InertiaDampeningMode.Dampened;
     }
 }

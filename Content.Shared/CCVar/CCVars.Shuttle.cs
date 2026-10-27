@@ -193,6 +193,20 @@ public sealed partial class CCVars
 
     // claw command
     /// <summary>
+    ///     Damping modifier applied to a shuttle when its inertial dampeners are set to Off (full Newtonian flight, no assist).
+    /// </summary>
+    public static readonly CVarDef<float> ShuttleDampeningOffStrength =
+        CVarDef.Create("shuttle.dampening_off_strength", 0f, CVar.SERVERONLY);
+
+    // claw command
+    /// <summary>
+    ///     Damping modifier applied to a shuttle when its inertial dampeners are set to Anchored (hard brake, rapidly kills drift).
+    /// </summary>
+    public static readonly CVarDef<float> ShuttleDampeningAnchoredStrength =
+        CVarDef.Create("shuttle.dampening_anchored_strength", 20f, CVar.SERVERONLY);
+
+    // claw command
+    /// <summary>
     ///     Whether to initiate a crew vote instead of auto-calling the shuttle.
     /// </summary>
     public static readonly CVarDef<bool> EmergencyShuttleDoEvacVotes =

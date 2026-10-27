@@ -1,3 +1,4 @@
+using Content.Shared.Shuttles.Events;
 using Robust.Shared.Map;
 using Robust.Shared.Serialization;
 
@@ -22,16 +23,23 @@ public sealed class NavInterfaceState
 
     public bool RotateWithEntity = true;
 
+    /// <summary>
+    /// The shuttle's current inertial dampener mode.
+    /// </summary>
+    public InertiaDampeningMode DampeningMode;
+
     public NavInterfaceState(
         float maxRange,
         NetCoordinates? coordinates,
         Angle? angle,
-        Dictionary<NetEntity, List<DockingPortState>> docks)
+        Dictionary<NetEntity, List<DockingPortState>> docks,
+        InertiaDampeningMode dampeningMode = InertiaDampeningMode.Dampened)
     {
         MaxRange = maxRange;
         Coordinates = coordinates;
         Angle = angle;
         Docks = docks;
+        DampeningMode = dampeningMode;
     }
 }
 

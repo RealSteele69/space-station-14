@@ -55,6 +55,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         {
             subs.Event<ShuttleConsoleFTLBeaconMessage>(OnBeaconFTLMessage);
             subs.Event<ShuttleConsoleFTLPositionMessage>(OnPositionFTLMessage);
+            subs.Event<SetInertiaDampeningRequest>(OnSetInertiaDampening);
             subs.Event<BoundUIClosedEvent>(OnConsoleUIClose);
         });
 
@@ -152,6 +153,14 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         AfterActivatableUIOpenEvent args)
     {
         TryPilot(args.User, uid);
+    }
+
+    private void OnSetInertiaDampening(EntityUid uid, ShuttleConsoleComponent component, SetInertiaDampeningRequest args)
+    {
+        if (!TryComp(uid, out TransformComponent? xform) || xform.GridUid is not { } gridUid)
+            return;
+
+        _shuttle.SetInertiaDampening(gridUid, args.Mode);
     }
 
     private void OnConsoleAnchorChange(EntityUid uid, ShuttleConsoleComponent component,
@@ -406,7 +415,8 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             entity.Comp1.MaxRange,
             GetNetCoordinates(coordinates),
             angle,
-            docks);
+            docks,
+            _shuttle.GetInertiaDampeningMode(entity.Owner));
     }
 
     /// <summary>

@@ -26,6 +26,15 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
         _window.RequestBeaconFTL += OnFTLBeaconRequest;
         _window.DockRequest += OnDockRequest;
         _window.UndockRequest += OnUndockRequest;
+        _window.SetDampeningMode += OnSetDampeningMode;
+    }
+
+    private void OnSetDampeningMode(InertiaDampeningMode mode)
+    {
+        SendMessage(new SetInertiaDampeningRequest
+        {
+            Mode = mode,
+        });
     }
 
     private void OnUndockRequest(NetEntity entity)

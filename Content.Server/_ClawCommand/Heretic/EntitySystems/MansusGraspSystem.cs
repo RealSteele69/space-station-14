@@ -131,7 +131,16 @@ public sealed partial class MansusGraspSystem : SharedMansusGraspSystem
         }
 
         if (!_ability.TryMakeRustWall(args.Target.Value, (mind, heretic)))
+        {
+            // Claw Command - not a rustable structure, so this is just a normal grasp on a
+            // person/object. Previously this fell through and relied on the separate
+            // MansusGraspComponent/AfterInteractEvent subscription to apply the grasp effect
+            // and combat mark, but which of the two subscriptions on this entity runs first
+            // isn't guaranteed - so the mark could silently fail to apply depending on dispatch
+            // order. Every other path only has the one subscription and never hit this.
+            args.Handled = GraspTarget((uid, grasp), args.User, args.Target.Value);
             return;
+        }
 
         args.Handled = true;
         InvokeGrasp(args.User, (uid, grasp));
@@ -238,6 +247,11 @@ public sealed partial class MansusGraspSystem : SharedMansusGraspSystem
 
     private void OnAfterInteract(Entity<MansusGraspComponent> ent, ref AfterInteractEvent args)
     {
+        // Claw Command - a RustGraspComponent on the same entity may have already applied the
+        // grasp (see OnRustInteract); don't double it up regardless of dispatch order.
+        if (args.Handled)
+            return;
+
         if (!args.CanReach)
             return;
 

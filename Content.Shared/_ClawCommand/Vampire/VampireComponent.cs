@@ -266,4 +266,57 @@ public sealed partial class VampireComponent : Component
 
     [DataField]
     public ProtoId<AlertPrototype> BloodAlert = "VampireBlood";
+
+    // Weaknesses and counters.
+
+    /// <summary>
+    /// Burn damage at which fire takes a vampire past torpor into final death.
+    /// </summary>
+    [DataField]
+    public float FinalDeathBurn = 300f;
+
+    /// <summary>
+    /// Multiplier on <see cref="RegenRate"/> while in torpor. Burns heal too, but only outside Sol.
+    /// </summary>
+    [DataField]
+    public float TorporRegenMultiplier = 2f;
+
+    /// <summary>
+    /// Whether the body had a brain/heart when it turned. Losing either afterwards is final death;
+    /// species that never had one aren't punished for it.
+    /// </summary>
+    [ViewVariables]
+    public bool HadBrain;
+
+    [ViewVariables]
+    public bool HadHeart;
+
+    /// <summary>
+    /// Garlic in the system: no healing and no powers until this time passes.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan GarlicUntil;
+
+    /// <summary>
+    /// Seconds of garlic sickness per unit of allicin swallowed.
+    /// </summary>
+    [DataField]
+    public float GarlicSecondsPerUnit = 20f;
+
+    /// <summary>
+    /// Cooldowns for the toggled powers. They start when the power is switched off, so it can always be
+    /// switched off right away.
+    /// </summary>
+    [DataField]
+    public TimeSpan FeedCooldown = TimeSpan.FromSeconds(30);
+
+    [DataField]
+    public TimeSpan MasqueradeCooldown = TimeSpan.FromSeconds(50);
+
+    // Per-Sol warning flags, reset when a flare starts.
+    [ViewVariables]
+    public bool WarnedSolOpen;
+
+    [ViewVariables]
+    public bool WarnedSolLocker;
 }

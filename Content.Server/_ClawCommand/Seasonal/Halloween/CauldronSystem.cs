@@ -1,4 +1,11 @@
 using Content.Shared.Interaction;
+using Content.Shared.Interaction.Components;
+using Content.Shared.Mind.Components;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Nuke;
+using Content.Shared.Objectives.Components;
+using Content.Shared.Silicons.Borgs.Components;
+using Content.Shared.Storage;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
@@ -31,6 +38,14 @@ public sealed partial class CauldronSystem : EntitySystem
         if (HasComp<Content.Shared.PDA.PdaComponent>(args.Used) || HasComp<Content.Shared.Access.Components.IdCardComponent>(args.Used))
             return;
 
+        // Nor anything the round depends on, anything with someone inside, or a bag full of other things.
+        if (IsProtected(args.Used))
+        {
+            _popup.PopupEntity(Loc.GetString("halloween-cauldron-refuse", ("item", args.Used)), ent, args.User);
+            args.Handled = true;
+            return;
+        }
+
         args.Handled = true;
 
         var (uid, comp) = ent;
@@ -54,5 +69,21 @@ public sealed partial class CauldronSystem : EntitySystem
 
         _audio.PlayPvs(comp.RewardSound, uid);
         _popup.PopupEntity(Loc.GetString("halloween-cauldron-reward"), uid, args.User);
+    }
+
+    private bool IsProtected(EntityUid used)
+    {
+        if (HasComp<UnremoveableComponent>(used)          // borg modules, implants, cursed gear
+            || HasComp<StealTargetComponent>(used)        // objective items
+            || HasComp<NukeDiskComponent>(used)
+            || HasComp<BorgModuleComponent>(used)
+            || HasComp<MobStateComponent>(used))          // held mice and other critters
+            return true;
+
+        // Brains, positronics, pAIs.
+        if (TryComp<MindContainerComponent>(used, out var mind) && mind.HasMind)
+            return true;
+
+        return TryComp<StorageComponent>(used, out var storage) && storage.Container.ContainedEntities.Count > 0;
     }
 }

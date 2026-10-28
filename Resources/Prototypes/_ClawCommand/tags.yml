@@ -87,3 +87,7 @@
 # Biscuit tin item counter.
 - type: Tag
   id: SimpleBiscuit
+
+# Garlic bulbs, for the vampire-warding garlic necklace recipe.
+- type: Tag
+  id: Garlic

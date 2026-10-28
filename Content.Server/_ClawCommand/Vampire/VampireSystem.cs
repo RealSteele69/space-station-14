@@ -59,6 +59,8 @@ public sealed partial class VampireSystem : EntitySystem
         InitializeMesmerize();
         InitializeVassal();
         InitializeStake();
+        InitializeSunlight();
+        InitializeWeakness();
     }
 
     public override void Update(float frameTime)
@@ -66,6 +68,7 @@ public sealed partial class VampireSystem : EntitySystem
         base.Update(frameTime);
 
         var now = _timing.CurTime;
+        UpdateSol(now);
 
         var query = EntityQueryEnumerator<VampireComponent>();
         while (query.MoveNext(out var uid, out var vampire))
@@ -111,12 +114,17 @@ public sealed partial class VampireSystem : EntitySystem
                 vampire.Comp.ActionEntities.Add(action);
         }
 
+        SetupWeakness(vampire);
         UpdateBloodAlert(vampire);
     }
 
     private void OnShutdown(Entity<VampireComponent> vampire, ref ComponentShutdown args)
     {
         _alerts.ClearAlert(vampire.Owner, vampire.Comp.BloodAlert);
+
+        // De-vampired (admin or otherwise): death is permanent again.
+        if (!TerminatingOrDeleted(vampire))
+            _mobThreshold.SetAllowRevives(vampire, false);
     }
 
     /// <summary>

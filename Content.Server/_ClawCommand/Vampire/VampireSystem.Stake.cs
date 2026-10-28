@@ -1,15 +1,19 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._ClawCommand.Vampire;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
+using Content.Shared.Standing;
 
 namespace Content.Server._ClawCommand.Vampire;
 
 public sealed partial class VampireSystem
 {
     private static readonly TimeSpan StakedDuration = TimeSpan.FromSeconds(60);
+
+    [Dependency] private StandingStateSystem _standing = default!;
 
     private void InitializeStake()
     {
@@ -26,6 +30,13 @@ public sealed partial class VampireSystem
             return;
 
         args.Handled = true;
+
+        // It only goes in while they're down - nobody holds still for this on their feet.
+        if (!_standing.IsDown(target) && !_mobState.IsIncapacitated(target))
+        {
+            _popup.PopupEntity(Loc.GetString("vampire-stake-fail-standing", ("target", target)), args.User, args.User);
+            return;
+        }
 
         var doAfterArgs = new DoAfterArgs(EntityManager, args.User, stake.Comp.StakeDuration,
             new VampireStakeDoAfterEvent(), stake, target, stake)
@@ -47,13 +58,15 @@ public sealed partial class VampireSystem
 
         args.Handled = true;
 
-        if (_mobState.IsIncapacitated(target))
+        // Through the heart of one who can't fight back - asleep, out cold, in torpor or bled dry - it's the end.
+        if (_mobState.IsIncapacitated(target) || HasComp<SleepingComponent>(target) || vampireComp.BloodPoints <= 0f)
         {
-            vampireComp.FinalDeath = true;
             _damageable.TryChangeDamage(target, stake.Comp.FinalDeathDamage, ignoreResistances: true, interruptsDoAfters: false);
-            _popup.PopupEntity(Loc.GetString("vampire-stake-final-death", ("target", target)), target, PopupType.LargeCaution);
+            TriggerFinalDeath((target, vampireComp), "vampire-stake-final-death");
             return;
         }
+
+        _popup.PopupEntity(Loc.GetString("vampire-stake-missed-heart", ("target", target)), args.User, args.User, PopupType.MediumCaution);
 
         var staked = EnsureComp<VampireStakedComponent>(target);
         staked.ExpiresAt = _timing.CurTime + StakedDuration * stake.Comp.StakedDurationMultiplier;

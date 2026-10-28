@@ -41,7 +41,6 @@ vampire-rankup-verb-stats = Grow in power
 vampire-rankup-verb-power = Grow in power: learn {$power}
 vampire-rankup-success = Your blood thickens. You are now a rank {$level} vampire.
 
-vampire-sunlight-warning = The light sears your unnatural flesh! Get out of it, or find somewhere dark and enclosed!
 
 vampire-mesmerize-fail-target = That won't work on them.
 vampire-mesmerize-fail-no-blood = You don't have the blood to spare to mesmerize anyone.
@@ -71,6 +70,37 @@ vampire-stake-start = You drive the stake toward {$target}'s heart...
 vampire-stake-final-death = The stake finds its mark. {$target} goes still - this time, for good.
 vampire-stake-disabled = The stake sinks into your chest. Your power drains away as long as it stays there.
 
+## Sol - the solar flare cycle
+vampire-sol-warn-early = Solar flares will bombard the station with dangerous UV in about a minute and a half. Prepare to seek cover in a coffin or closet.
+vampire-sol-warn-final = Solar flares are about to bombard the station! You have 25 seconds to find cover!
+vassal-sol-warn-final = In 25 seconds your master will be at risk of a solar flare. Make sure they find cover!
+vampire-sol-warn-imminent = Seek cover, for Sol rises!
+vampire-sol-start = Solar flares bombard the station with deadly UV light! Stay in cover for the next minute or risk final death!
+vassal-sol-start = Solar flares bombard the station with UV light!
+vampire-sol-end = The solar flare has ended, and the daylight danger has passed... for now.
+vampire-sol-locker = Your skin sizzles. This doesn't protect well against the UV bombardment.
+vampire-sol-burn = The solar flare sets your skin ablaze!
+vampire-sol-burn-fledgling = The solar flare scalds your neophyte skin!
 
+## Ranks
+vampire-rankup-gained = You have grown more ancient! Sleep in a coffin you have claimed to thicken your blood and become more powerful.
+vampire-rankup-gained-coffin = You have grown more ancient! Right-click yourself while resting here to grow in power.
+vampire-rankup-gained-no-coffin = You have grown more ancient, but you have no coffin to rest in. Close yourself inside any closet or crate to claim it - you can always build one from wooden planks.
 
+## Torpor and final death
+vampire-torpor-begin = Your immortal body will not yet relinquish your soul to the abyss. You enter torpor, and your wounds slowly close.
+vampire-torpor-end = You have recovered from torpor.
+vampire-final-death-fire = {CAPITALIZE(THE($target))} burns past the point of any return.
+vampire-final-death-organs = {CAPITALIZE(THE($target))} goes still. Without a heart and a mind, there is nothing left to return.
 
+## Garlic
+vampire-garlic-ingested = Garlic! It churns in your gut and smothers your power.
+vampire-power-fail-garlic = Garlic in your blood is interfering with your powers!
+vampire-power-fail-garlic-necklace = The necklace on your neck is interfering with your powers!
+
+## Stakes
+vampire-stake-fail-standing = You can't stake {THE($target)} while they're on their feet! They have to be lying down.
+vampire-stake-missed-heart = You missed {THE($target)}'s heart! It would be easier if they weren't struggling so much.
+
+construction-graph-tag-garlic = garlic
+construction-graph-tag-candle = candle

@@ -208,6 +208,8 @@
       prob: 0.50
     - id: Devil # Claw Command - roleplay antag, rolls often even on calm shifts
       prob: 0.60
+    - id: Vampire # Claw Command - 20+ players, about as rare as nukies
+      prob: 0.13
 
 - type: entity
   parent: BaseGameRule
@@ -259,6 +261,8 @@
       prob: 0.50
     - id: Devil # Claw Command - roleplay antag, rolls often even on calm shifts
       prob: 0.60
+    - id: Vampire # Claw Command - 20+ players, about as rare as nukies
+      prob: 0.20
 
 - type: entity
   parent: BaseGameRule
@@ -310,3 +314,5 @@
       prob: 0.40
     - id: Devil # Claw Command - roleplay antag, rolls often even on calm shifts
       prob: 0.60
+    - id: Vampire # Claw Command - 20+ players, about as rare as nukies
+      prob: 0.28

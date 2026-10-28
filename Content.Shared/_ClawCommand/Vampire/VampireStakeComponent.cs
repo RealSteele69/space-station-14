@@ -5,14 +5,15 @@ using Content.Shared.Damage;
 namespace Content.Shared._ClawCommand.Vampire;
 
 /// <summary>
-/// A wooden stake. Driven through a helpless vampire's heart, it ends them for good; driven through a
-/// conscious one, it just locks their powers away until it's pulled free.
+/// A stake. Only goes in while the target is lying down. Driven through the heart of a vampire who is
+/// asleep, unconscious, in torpor or out of blood, it ends them for good; a conscious one just has their
+/// powers locked away for a while. Better stakes go in faster and hold longer.
 /// </summary>
 [RegisterComponent]
 public sealed partial class VampireStakeComponent : Component
 {
     [DataField]
-    public TimeSpan StakeDuration = TimeSpan.FromSeconds(10);
+    public TimeSpan StakeDuration = TimeSpan.FromSeconds(12);
 
     [DataField]
     public DamageSpecifier FinalDeathDamage = new()

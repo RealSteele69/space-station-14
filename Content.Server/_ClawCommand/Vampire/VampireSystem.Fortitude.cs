@@ -28,11 +28,8 @@ public sealed partial class VampireSystem
             return;
         }
 
-        if (IsStaked(vampire))
-        {
-            _popup.PopupEntity(Loc.GetString("vampire-power-fail-staked"), vampire, vampire);
+        if (PowersBlocked(vampire)) // stake or garlic
             return;
-        }
 
         if (vampire.Comp.BloodPoints < vampire.Comp.FortitudeActivationCost)
         {

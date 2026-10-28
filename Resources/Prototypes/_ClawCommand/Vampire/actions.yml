@@ -8,7 +8,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 30
     itemIconStyle: NoItem
   - type: Sprite
     sprite: Interface/Actions/changeling.rsi
@@ -35,7 +34,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 50
     itemIconStyle: NoItem
   - type: Sprite
     sprite: Interface/Actions/changeling.rsi

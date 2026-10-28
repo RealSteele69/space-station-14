@@ -21,16 +21,14 @@ public sealed partial class VampireSystem
         {
             RemComp<VampireMasqueradeComponent>(vampire);
             _actions.SetToggled(args.Action.Owner, false);
+            _actions.SetUseDelay(args.Action.Owner, vampire.Comp.MasqueradeCooldown); // cooldown starts on switching off
             _popup.PopupEntity(Loc.GetString("vampire-masquerade-off"), vampire, vampire);
             args.Handled = true;
             return;
         }
 
-        if (IsStaked(vampire))
-        {
-            _popup.PopupEntity(Loc.GetString("vampire-power-fail-staked"), vampire, vampire);
+        if (PowersBlocked(vampire)) // stake or garlic
             return;
-        }
 
         if (vampire.Comp.BloodPoints < vampire.Comp.MasqueradeActivationCost)
         {
@@ -41,6 +39,7 @@ public sealed partial class VampireSystem
         AddBloodPoints(vampire, -vampire.Comp.MasqueradeActivationCost);
         EnsureComp<VampireMasqueradeComponent>(vampire);
         _actions.SetToggled(args.Action.Owner, true);
+        _actions.SetUseDelay(args.Action.Owner, null);
         _popup.PopupEntity(Loc.GetString("vampire-masquerade-on"), vampire, vampire, PopupType.Medium);
 
         args.Handled = true;

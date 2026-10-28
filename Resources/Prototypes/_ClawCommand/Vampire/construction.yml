@@ -1,0 +1,129 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: constructionGraph
+  id: VampireStake
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: wood
+      steps:
+      - material: WoodPlank
+        amount: 2
+        doAfter: 4
+  - node: wood
+    entity: VampireStake
+    edges:
+    - to: hardened
+      steps:
+      - tool: Welding
+        doAfter: 8
+  - node: hardened
+    entity: VampireStakeHardened
+    edges:
+    - to: silver
+      steps:
+      - material: Silver
+        amount: 1
+        doAfter: 2
+  - node: silver
+    entity: VampireStakeSilver
+
+- type: constructionGraph
+  id: GarlicNecklace
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: necklace
+      steps:
+      - material: Cable
+        amount: 10
+        doAfter: 2
+      - tag: Garlic
+        name: construction-graph-tag-garlic
+        icon:
+          sprite: Objects/Specific/Hydroponics/garlic.rsi
+          state: produce
+      - tag: Garlic
+        name: construction-graph-tag-garlic
+        icon:
+          sprite: Objects/Specific/Hydroponics/garlic.rsi
+          state: produce
+      - tag: Garlic
+        name: construction-graph-tag-garlic
+        icon:
+          sprite: Objects/Specific/Hydroponics/garlic.rsi
+          state: produce
+        doAfter: 4
+  - node: necklace
+    entity: ClothingNeckGarlicNecklace
+
+- type: constructionGraph
+  id: VampireCandelabrum
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: candelabrum
+      steps:
+      - material: Steel
+        amount: 3
+      - material: MetalRod
+        amount: 1
+      - tag: Candle
+        name: construction-graph-tag-candle
+        icon:
+          sprite: Objects/Misc/candles.rsi
+          state: candle-big
+        doAfter: 4
+  - node: candelabrum
+    entity: VampireCandelabrum
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 3
+      - !type:SpawnPrototype
+        prototype: PartRodMetal1
+        amount: 1
+      - !type:DeleteEntity {}
+      steps:
+      - tool: Anchoring
+        doAfter: 2
+      - tool: Welding
+        doAfter: 4
+
+- type: construction
+  parent: BaseWeapon
+  id: VampireStake
+  graph: VampireStake
+  targetNode: wood
+
+- type: construction
+  parent: BaseWeapon
+  id: VampireStakeHardened
+  graph: VampireStake
+  targetNode: hardened
+
+- type: construction
+  parent: BaseWeapon
+  id: VampireStakeSilver
+  graph: VampireStake
+  targetNode: silver
+
+- type: construction
+  parent: BaseClothing
+  id: ClothingNeckGarlicNecklace
+  graph: GarlicNecklace
+  targetNode: necklace
+
+- type: construction
+  parent: BaseFurniture
+  id: VampireCandelabrum
+  graph: VampireCandelabrum
+  targetNode: candelabrum
+  canRotate: false
+  conditions:
+  - !type:TileNotBlocked

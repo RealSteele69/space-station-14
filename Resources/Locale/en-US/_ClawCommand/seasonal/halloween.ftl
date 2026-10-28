@@ -38,6 +38,7 @@ spooky-station-announcement-5 = CREWMEMBERS BEWARE, YOU'RE IN FOR A SCARE!
 # Cauldron
 halloween-cauldron-feed = The cauldron swallows the offering and bubbles expectantly.
 halloween-cauldron-reward = The cauldron spits out something sweet!
+halloween-cauldron-refuse = The cauldron bubbles angrily and refuses {THE($item)}.
 
 # Uplink
 uplink-hack-o-lantern-name = Hack o' Lantern

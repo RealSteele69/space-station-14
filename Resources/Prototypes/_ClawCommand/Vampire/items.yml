@@ -1,16 +1,20 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+# Stakes: whittle one from planks, scorch the point with a welder to harden it, then cap it in silver.
+# Each step drives in faster and holds a conscious vampire's powers down for longer.
+
 - type: entity
   parent: BaseItem
   id: VampireStake
   name: wooden stake
-  description: A roughly-whittled length of hardwood, sharpened to a wicked point. Driven through a helpless vampire's heart, nothing else ends them so surely.
+  description: A simple wooden stake carved to a sharp point. Driven through a helpless vampire's heart, nothing else ends them so surely.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Melee/bone_spear.rsi
-    state: spear
+    sprite: _ClawCommand/Objects/Weapons/Melee/vampire_stake.rsi
+    state: wood
   - type: Item
-    sprite: Objects/Weapons/Melee/bone_spear.rsi
+    sprite: _ClawCommand/Objects/Weapons/Melee/vampire_stake.rsi
+    heldPrefix: wood
     size: Small
   - type: MeleeWeapon
     damage:
@@ -19,20 +23,19 @@
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: VampireStake
+    stakeDuration: 12
+  - type: Construction
+    graph: VampireStake
+    node: wood
 
 - type: entity
   parent: VampireStake
-  id: VampireStakeSilver
-  name: silver stake
-  suffix: Silver
-  description: A hardwood stake capped in silver. No less lethal to a vampire, and a great deal harder for them to simply wrench back out.
+  id: VampireStakeHardened
+  name: hardened stake
+  description: A hardened wooden stake carved to a sharp point and scorched at the end.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Melee/bone_spear.rsi
-    state: spear1
-  - type: Item
-    sprite: Objects/Weapons/Melee/bone_spear.rsi
-    size: Small
+    state: hardened
   - type: MeleeWeapon
     damage:
       types:
@@ -40,4 +43,46 @@
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: VampireStake
+    stakeDuration: 8
+    stakedDurationMultiplier: 1.5
+  - type: Construction
+    graph: VampireStake
+    node: hardened
+
+- type: entity
+  parent: VampireStake
+  id: VampireStakeSilver
+  name: silver stake
+  description: Polished and sharp at the end. For when some vampire is always trying to iceskate uphill.
+  components:
+  - type: Sprite
+    state: silver
+  - type: Item
+    heldPrefix: silver
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 9
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: VampireStake
+    stakeDuration: 6
     stakedDurationMultiplier: 2
+  - type: Construction
+    graph: VampireStake
+    node: silver
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckGarlicNecklace
+  name: garlic necklace
+  description: Garlic cloves strung on a cable and knotted into a loop. Hang it on a vampire and it smothers their healing and their powers until it comes off.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/Neck/garlic_necklace.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/Neck/garlic_necklace.rsi
+  - type: VampireGarlicWard
+  - type: Construction
+    graph: GarlicNecklace
+    node: necklace

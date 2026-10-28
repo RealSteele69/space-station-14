@@ -3,37 +3,67 @@
 
   [color=#ac1a1a]An undead predator, hiding among the crew, who survives on stolen blood.[/color]
 
-  A vampire regenerates wounds slowly on borrowed blood, dreads direct light, and withers to nothing if their stolen blood runs completely dry.
+  A vampire regenerates wounds slowly on borrowed blood, fears the solar flares that sweep the station, and cannot truly be killed by ordinary means.
   <Box>
     <GuideEntityEmbed Entity="CrateCoffin" Caption="Coffin"/>
-    <GuideEntityEmbed Entity="VampireStake" Caption="Stake"/>
+    <GuideEntityEmbed Entity="VampireCandelabrum" Caption="Candelabrum"/>
   </Box>
 
   ## Blood
 
   Everything a vampire does draws on blood, shown by the alert in the corner of the screen. Run dry, and the hunger starts to show.
 
-  [bold]Feed[/bold] on a victim you have at least a soft grip on to steal their blood. Feeding knocks them down and keeps them down as long as it continues.
+  [bold]Feed[/bold] on a victim you have at least a soft grip on to steal their blood. Feeding knocks them down and keeps them down as long as it continues. Its cooldown only starts once you stop.
 
-  ## Light
+  ## Sol
 
-  Direct light burns. Darkness, shade, and anything enclosed - a locker, a crate, a coffin - are all safe.
+  Every so often a solar flare bombards the station. You will be warned about a minute and a half ahead, again at 25 seconds, and once more as it rises. It lasts a minute, and each night between flares is a little longer than the last.
+
+  - Out in the open, the flare burns you every few seconds - and once you've grown past a fledgling, it sets you alight.
+  - Hiding in a locker or crate only softens the burn.
+  - Resting in [bold]your own coffin[/bold] protects you completely.
+
+  Surviving a flare ages you by one rank.
 
   ## The Coffin
 
-  Close the lid on any closet or crate while resting inside an unclaimed one, and it becomes your coffin: your lair. Rest there with the lid shut to heal quickly and for free.
+  Close the lid on any closet or crate while resting inside an unclaimed one, and it becomes your coffin: your lair. Rest there with the lid shut to heal quickly and for free, burns included. If your coffin is destroyed, you can claim another.
 
   Resting in your own coffin with a rank saved up and the blood to spend it lets you grow in power - right-click yourself to see what's on offer.
 
   ## Masquerade
 
-  Toggle [bold]Masquerade[/bold] to fake being alive - at the cost of being unable to heal at all while it holds.
+  Toggle [bold]Masquerade[/bold] to fake being alive - at the cost of being unable to heal at all while it holds. Its cooldown only starts once you switch it off.
 
   ## Vassals
 
-  [bold]Embrace[/bold] a helpless victim to bind them as your Vassal: a loyal thrall who can heal on borrowed blood of their own and knows roughly where you are at all times. How many you can keep bound scales with your rank. Lose your final death, and every Vassal is freed.
+  [bold]Embrace[/bold] a helpless victim to bind them as your Vassal: a loyal thrall who can heal on borrowed blood of their own and knows roughly where you are at all times. How many you can keep bound scales with your rank. Mindshielded crew can't be embraced. If you fall, every Vassal is freed.
 
-  ## Final Death
+  ## Torpor
 
-  A stake driven through the heart while you're helpless ends you for good. The same stake driven through a conscious vampire just locks their powers away until it's pulled.
+  Dying doesn't end a vampire. Your body falls into [bold]torpor[/bold] instead and keeps knitting itself back together - burns included - until you can get back up. Torpor can't heal you while a solar flare is up, while you're staked, or with garlic in you.
+
+  ## Hunting a Vampire
+
+  [color=#ac1a1a]For the crew.[/color] Beating a vampire for good means stopping them coming back. Any one of these is [bold]final death[/bold]:
+  - A [bold]stake[/bold] through the heart while they're asleep, unconscious, in torpor, or drained of blood.
+  - Enough [bold]fire[/bold] - burn them far past the point of death.
+  - Removing their [bold]brain or heart[/bold].
+
+  A finally-dead vampire can't be defibrillated or cloned. Vampires can never be cloned at all.
+  <Box>
+    <GuideEntityEmbed Entity="VampireStake" Caption="Wooden stake"/>
+    <GuideEntityEmbed Entity="VampireStakeHardened" Caption="Hardened stake"/>
+    <GuideEntityEmbed Entity="VampireStakeSilver" Caption="Silver stake"/>
+  </Box>
+
+  [bold]Stakes[/bold] are crafted from two wooden planks, hardened with a welder, then capped with a silver sheet. A stake only goes in while the target is lying down; each upgrade drives in faster. Stake a vampire who is still fighting back and you miss the heart - but their powers stay locked away for a while, longer with a better stake.
+
+  [bold]Garlic[/bold] shuts a vampire down. Feed them anything with garlic in it, or hang a [bold]garlic necklace[/bold] on them (crafted from three garlic bulbs and ten cable), and they can neither heal nor use their powers while it lasts.
+  <Box>
+    <GuideEntityEmbed Entity="FoodGarlic" Caption="Garlic"/>
+    <GuideEntityEmbed Entity="ClothingNeckGarlicNecklace" Caption="Garlic necklace"/>
+  </Box>
+
+  The solar flares are on your side too: a vampire caught in the open when Sol rises has nowhere to run.
 </Document>

@@ -634,6 +634,7 @@
   - type: Tag
     tags:
     - Vegetable
+    - Garlic # Claw Command - garlic necklace recipe
   - type: FoodSequenceElement
     entries:
       Burger: GarlicBurger

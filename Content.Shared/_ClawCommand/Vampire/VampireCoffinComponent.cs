@@ -11,5 +11,5 @@ namespace Content.Shared._ClawCommand.Vampire;
 public sealed partial class VampireCoffinComponent : Component
 {
     [DataField]
-    public EntityUid? Owner;
+    public EntityUid? Claimant; // not "Owner": that would hide Component.Owner (CS0108, an error in Release)
 }

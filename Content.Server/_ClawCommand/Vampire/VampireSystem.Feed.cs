@@ -39,6 +39,10 @@ public sealed partial class VampireSystem
             return;
         }
 
+        // A stake doesn't stop feeding, garlic does.
+        if (PowersBlocked(vampire, ignoreStake: true))
+            return;
+
         var target = args.Target;
 
         if (!TryComp<PullerComponent>(vampire, out var puller)
@@ -60,6 +64,7 @@ public sealed partial class VampireSystem
         action.Action = args.Action.Owner;
 
         _actions.SetToggled(args.Action.Owner, true);
+        _actions.SetUseDelay(args.Action.Owner, null); // the cooldown only starts once feeding stops
         _popup.PopupEntity(Loc.GetString("vampire-feed-start", ("target", target)), vampire, vampire, PopupType.MediumCaution);
 
         args.Handled = true;
@@ -93,6 +98,10 @@ public sealed partial class VampireSystem
     private void StopFeeding(Entity<VampireComponent> vampire, Entity<VampireFeedingComponent> feeding)
     {
         _actions.SetToggled(feeding.Comp.Action, false);
+        // Set as the use delay too: when this runs inside the action itself, the action system restarts
+        // the use delay right afterwards and would otherwise wipe a plain cooldown.
+        _actions.SetUseDelay(feeding.Comp.Action, vampire.Comp.FeedCooldown);
+        _actions.SetCooldown(feeding.Comp.Action, vampire.Comp.FeedCooldown);
         RemComp<VampireFeedingComponent>(vampire);
         _popup.PopupEntity(Loc.GetString("vampire-feed-stop"), vampire, vampire);
     }

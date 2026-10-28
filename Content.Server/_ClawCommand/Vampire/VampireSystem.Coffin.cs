@@ -25,7 +25,7 @@ public sealed partial class VampireSystem
             || Transform(user).ParentUid != storage.Owner)
             return;
 
-        EnsureComp<VampireCoffinComponent>(storage).Owner = user;
+        EnsureComp<VampireCoffinComponent>(storage).Claimant = user;
         vampireComp.ClaimedCoffin = storage.Owner;
 
         _popup.PopupEntity(Loc.GetString("vampire-coffin-claimed"), user, user);

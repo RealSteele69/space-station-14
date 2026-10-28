@@ -8,6 +8,9 @@
   name: security bot ziptie dispenser
   categories: [ HideSpawnMenu ]
   components:
+  - type: Sprite # never seen, but every item needs one
+    sprite: Objects/Misc/zipties.rsi
+    state: cuff
   - type: Handcuff
     removeOnUse: false
     spawnedOnUse: Zipties

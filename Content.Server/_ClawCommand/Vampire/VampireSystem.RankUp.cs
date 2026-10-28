@@ -61,6 +61,28 @@ public sealed partial class VampireSystem
         }
     }
 
+    /// <summary>
+    /// Surviving a Sol ages every vampire by a rank. It's spent by resting in their own coffin.
+    /// </summary>
+    private void RankUpAll()
+    {
+        var query = EntityQueryEnumerator<VampireComponent>();
+        while (query.MoveNext(out var uid, out var vampire))
+        {
+            if (vampire.FinalDeath)
+                continue;
+
+            vampire.LevelUnspent++;
+
+            var message = IsRestingInOwnCoffin((uid, vampire))
+                ? "vampire-rankup-gained-coffin"
+                : vampire.ClaimedCoffin == null && vampire.LevelUnspent >= 2
+                    ? "vampire-rankup-gained-no-coffin"
+                    : "vampire-rankup-gained";
+            Notify(uid, Loc.GetString(message), null);
+        }
+    }
+
     private void RankUp(Entity<VampireComponent> vampire, EntProtoId? power, float cost)
     {
         // The verb's Act runs later than the menu was built, so re-check everything is still true.

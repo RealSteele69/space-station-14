@@ -49,11 +49,8 @@ public sealed partial class VampireSystem
 
         var target = args.Target;
 
-        if (IsStaked(vampire))
-        {
-            _popup.PopupEntity(Loc.GetString("vampire-power-fail-staked"), vampire, vampire);
+        if (PowersBlocked(vampire)) // stake or garlic
             return;
-        }
 
         if (vampire.Comp.Vassals.Count >= vampire.Comp.Level)
         {
@@ -141,6 +138,14 @@ public sealed partial class VampireSystem
 
     private void OnVampireMobStateChanged(Entity<VampireComponent> vampire, ref MobStateChangedEvent args)
     {
+        if (!vampire.Comp.FinalDeath)
+        {
+            if (args.NewMobState == MobState.Dead)
+                _popup.PopupEntity(Loc.GetString("vampire-torpor-begin"), vampire, vampire, PopupType.LargeCaution);
+            else if (args.OldMobState == MobState.Dead)
+                _popup.PopupEntity(Loc.GetString("vampire-torpor-end"), vampire, vampire, PopupType.Large);
+        }
+
         if (args.NewMobState != MobState.Dead || vampire.Comp.Vassals.Count == 0)
             return;
 

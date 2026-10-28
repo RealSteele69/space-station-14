@@ -30,6 +30,8 @@
     rules:
     - id: Devil # Claw Command - roleplay antag, rolls often even on calm shifts
       prob: 0.6
+    - id: Vampire # Claw Command - 20+ players, rare
+      prob: 0.12
     - id: Thief
       prob: 0.5
     - id: SubWizard
@@ -49,6 +51,8 @@
     rules:
     - id: Devil # Claw Command - roleplay antag, rolls often even on calm shifts
       prob: 0.6
+    - id: Vampire # Claw Command - 20+ players, rare
+      prob: 0.12
     - id: Thief
       prob: 0.5
     - id: SubXenoborgs
@@ -64,6 +68,8 @@
     rules:
     - id: Devil # Claw Command - roleplay antag, rolls often even on calm shifts
       prob: 0.6
+    - id: Vampire # Claw Command - 20+ players, rare
+      prob: 0.12
     - id: Thief
       prob: 0.5
     - id: SubWizard
@@ -81,6 +87,8 @@
     rules:
     - id: Devil # Claw Command - roleplay antag, rolls often even on calm shifts
       prob: 0.6
+    - id: Vampire # Claw Command - 20+ players, rare
+      prob: 0.12
     - id: Thief
       prob: 0.5
     - id: Changeling

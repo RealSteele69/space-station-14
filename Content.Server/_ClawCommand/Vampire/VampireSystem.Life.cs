@@ -20,19 +20,24 @@ public sealed partial class VampireSystem
     /// </summary>
     private void LifeTick(Entity<VampireComponent> vampire)
     {
+        CheckFinalDeath(vampire);
         if (vampire.Comp.FinalDeath)
             return;
 
-        ProcessSunlight(vampire);
+        // Death is only torpor: no blood is spent, and the body heals until it can get back up.
+        if (_mobState.IsDead(vampire))
+        {
+            if (TryComp<VampireFeedingComponent>(vampire, out var lostGrip))
+                StopFeeding(vampire, (vampire.Owner, lostGrip));
+            TorporTick(vampire);
+            return;
+        }
 
         if (TryComp<VampireFeedingComponent>(vampire, out var feeding))
         {
             ProcessFeeding(vampire, (vampire.Owner, feeding));
             return;
         }
-
-        if (!_mobState.IsAlive(vampire) && !_mobState.IsCritical(vampire))
-            return; // Dead vampires neither drain nor regenerate - final death handling is a later pass.
 
         // Resting in your own closed coffin is free: no blood spent, and wounds close far faster.
         if (IsRestingInOwnCoffin(vampire))
@@ -66,7 +71,7 @@ public sealed partial class VampireSystem
 
     private void Regenerate(Entity<VampireComponent> vampire, float multiplier = 1f, bool healBurn = false)
     {
-        if (IsStaked(vampire) || !TryComp<DamageableComponent>(vampire, out var damageable))
+        if (IsStaked(vampire) || IsGarlicked(vampire) || !TryComp<DamageableComponent>(vampire, out var damageable))
             return;
 
         var amount = FixedPoint2.New(-vampire.Comp.RegenRate * multiplier);

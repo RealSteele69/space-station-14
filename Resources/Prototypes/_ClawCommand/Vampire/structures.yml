@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
+  parent: BaseStructure
   id: VampireCandelabrum
   name: candelabrum
   description: An ornate candelabrum, its cold blue flames never guttering. Something about it makes your skin crawl.
@@ -8,6 +9,21 @@
   - type: Sprite
     sprite: _GoobStation/Structures/Decoration/candelabra.rsi
     state: candelabra
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.4,0.2,0.4"
+        density: 30
+        mask:
+        - MachineMask
+        layer:
+        - LowImpassable
+  - type: Anchorable
+  - type: Construction
+    graph: VampireCandelabrum
+    node: candelabrum
   - type: PointLight
     enabled: true
     radius: 3

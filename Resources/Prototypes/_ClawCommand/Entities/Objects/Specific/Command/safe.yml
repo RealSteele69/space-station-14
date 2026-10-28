@@ -35,6 +35,9 @@
     - type: AccessReader
       access: [["CC-SpareSafe"]]
     - type: SpareIDSafe
+    - type: Tag
+      tags:
+      - EmagImmune
 
 - type: entity
   id: SpareIdCabinetFilled

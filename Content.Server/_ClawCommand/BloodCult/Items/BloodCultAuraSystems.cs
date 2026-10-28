@@ -99,15 +99,11 @@ public sealed partial class BloodCultAuraSystem : EntitySystem
 
         aura.Comp.Target = target;
 
-        // A downed victim is bound at once, anyone else has to be held still for it.
-        if (HasComp<KnockedDownComponent>(target) || HasComp<StunnedComponent>(target))
-        {
-            if (_cuffable.TryAddNewCuffs(target, args.User, shackles, cuffable))
-                Incant(args.User, aura.Comp);
-            return;
-        }
-
-        if (_cuffable.TryCuffing(args.User, target, shackles, cuffable: cuffable))
+        // The shackles live in the aura's own container, not the user's hand, so TryCuffing's
+        // do-after path never applies: it gates on SharedCuffableSystem.CanDrop(user, handcuff),
+        // which always fails for a handcuff entity the user isn't holding. TryAddNewCuffs has no
+        // such check, so the bind lands instantly on any hit, same as it already did for a downed victim.
+        if (_cuffable.TryAddNewCuffs(target, args.User, shackles, cuffable))
             Incant(args.User, aura.Comp);
     }
 

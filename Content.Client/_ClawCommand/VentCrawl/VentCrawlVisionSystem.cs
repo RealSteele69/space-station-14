@@ -23,6 +23,9 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SubFloorHideSystem _subFloorHide = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private ILogManager _logManager = default!;
+
+    private ISawmill _sawmill = default!;
 
     private const float Range = 14f;
     private const string Unshaded = "unshaded";
@@ -38,6 +41,7 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
     {
         base.Initialize();
         _overlay = new VentCrawlOverlay();
+        _sawmill = _logManager.GetSawmill("ventcrawl.vision");
     }
 
     public override void Shutdown()
@@ -62,7 +66,10 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
         }
 
         if (!_overlays.HasOverlay<VentCrawlOverlay>())
+        {
             _overlays.AddOverlay(_overlay);
+            _sawmill.Info($"Overlay added for {ToPrettyString(player.Value)}");
+        }
 
         _accumulator += frameTime;
         if (_accumulator < 0.25f)
@@ -70,16 +77,19 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
         _accumulator = 0f;
 
         var xform = Transform(player.Value);
+        var worldPos = _transform.GetWorldPosition(xform);
         _inRange.Clear();
-        _lookup.GetEntitiesInRange(xform.MapID, _transform.GetWorldPosition(xform), Range, _inRange,
+        _lookup.GetEntitiesInRange(xform.MapID, worldPos, Range, _inRange,
             LookupFlags.Static | LookupFlags.Sundries | LookupFlags.Approximate);
 
         var keep = new HashSet<EntityUid>();
+        var pipeCandidates = 0;
         foreach (var (uid, _) in _inRange)
         {
             if (!HasComp<PipeAppearanceComponent>(uid) && !HasComp<AtmosPipeLayersComponent>(uid))
                 continue;
 
+            pipeCandidates++;
             keep.Add(uid);
             if (!_revealed.ContainsKey(uid))
                 Reveal(uid);
@@ -90,12 +100,19 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
             if (!keep.Contains(uid))
                 Unreveal(uid);
         }
+
+        _sawmill.Info($"tick: mapId={xform.MapID} pos={worldPos} inRange={_inRange.Count} pipeCandidates={pipeCandidates} revealed={_revealed.Count}");
     }
 
     private void Reveal(EntityUid uid)
     {
         if (!TryComp<SpriteComponent>(uid, out var sprite))
+        {
+            _sawmill.Warning($"Reveal: {ToPrettyString(uid)} has no SpriteComponent");
             return;
+        }
+
+        _sawmill.Info($"Reveal: {ToPrettyString(uid)} layers={sprite.AllLayers.Count()} visibleBefore={sprite.Visible} drawDepthBefore={sprite.DrawDepth}");
 
         var saved = new List<(ProtoId<ShaderPrototype>?, ShaderInstance?)>();
         for (var i = 0; i < sprite.AllLayers.Count(); i++)

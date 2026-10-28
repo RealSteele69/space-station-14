@@ -505,14 +505,13 @@ public sealed partial class AdvXenoAbilitySystem : EntitySystem
 
         _stun.TryUpdateParalyzeDuration(target, TimeSpan.FromSeconds(6));
 
-        if (!_hands.TryGetEmptyHand(uid, out _))
-        {
-            _popup.PopupEntity(Loc.GetString("adv-xeno-leap-hands-full"), uid, uid, PopupType.SmallCaution);
-            return;
-        }
-
+        // PullingSystem.TryStartPull already checks PullerComponent.NeedsHands itself, and xenos
+        // are handless (needsHands: false, they grab with jaws/claws) — an extra TryGetEmptyHand
+        // check here always fails for them since they have no HandsComponent at all.
         if (_pulling.TryStartPull(uid, target))
             _popup.PopupEntity(Loc.GetString("adv-xeno-leap-seize", ("user", uid), ("target", Identity.Entity(target, EntityManager))), uid, PopupType.MediumCaution);
+        else
+            _popup.PopupEntity(Loc.GetString("adv-xeno-leap-hands-full"), uid, uid, PopupType.SmallCaution);
     }
 
     private bool IsRestrained(EntityUid uid)

@@ -172,6 +172,10 @@ public sealed partial class ChatUIController : UIController
     public ChatSelectChannel SelectableChannels { get; private set; }
     private ChatSelectChannel PreferredChannel { get; set; } = ChatSelectChannel.OOC;
 
+    // claw command - once the round has ended, dead chat becomes visible to everyone, not just ghosts/admins.
+    // Set by ClientGameTicker when the round-end summary comes in, cleared when a new round starts.
+    private bool _postRoundDeadChatOpen;
+
     public event Action<ChatSelectChannel>? CanSendChannelsChanged;
     public event Action<ChatChannel>? FilterableChannelsChanged;
     public event Action<ChatSelectChannel>? SelectableChannelsChanged;
@@ -560,11 +564,16 @@ public sealed partial class ChatUIController : UIController
             }
         }
 
-        // Only ghosts and admins can send / see deadchat.
+        // Only ghosts and admins can send / see deadchat - except once the round has ended, when
+        // dead chat becomes visible (not sendable) to everyone, claw command.
         if (_admin.HasFlag(AdminFlags.Admin) || _ghost is {IsGhost: true})
         {
             FilterableChannels |= ChatChannel.Dead;
             CanSendChannels |= ChatSelectChannel.Dead;
+        }
+        else if (_postRoundDeadChatOpen)
+        {
+            FilterableChannels |= ChatChannel.Dead;
         }
 
         // only admins can see / filter asay
@@ -595,6 +604,17 @@ public sealed partial class ChatUIController : UIController
         CanSendChannelsChanged?.Invoke(CanSendChannels);
         FilterableChannelsChanged?.Invoke(FilterableChannels);
         SelectableChannelsChanged?.Invoke(SelectableChannels);
+    }
+
+    // claw command - called by ClientGameTicker when the round-end summary comes in / a new round starts,
+    // to open or close dead chat's visibility to everyone.
+    public void SetPostRoundDeadChatOpen(bool open)
+    {
+        if (_postRoundDeadChatOpen == open)
+            return;
+
+        _postRoundDeadChatOpen = open;
+        UpdateChannelPermissions();
     }
 
     public void ClearUnfilteredUnreads(ChatChannel channels)

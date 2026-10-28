@@ -43,6 +43,11 @@
         - id: FoodNoodlesBoiled
         - id: FoodNoodles
         - id: FoodNoodlesButter
+        - id: FoodNoodlesBeef # Claw Command - exotic dish
+        - id: FoodFunaHosomaki # Claw Command - exotic dish
+        - id: FoodFunaNigiri # Claw Command - exotic dish
+        - id: FoodTobiko # Claw Command - exotic dish
+        - id: FoodOnigiri # Claw Command - exotic dish
         - id: FoodMealHappyHonkClown
         - id: FoodSoupPea
         - id: FoodSaladHerb

@@ -20,8 +20,11 @@ namespace Content.Server._ClawCommand.Administration;
 /// <summary>
 /// View variables and debug-console monitoring:
 /// <list type="bullet">
-/// <item>Critical players editing anything through VV (field edits, path writes/invokes, addcomp/rmcomp) get
-/// one admin-log entry per change and at most one short admin-chat notice per <see cref="ThrottleInterval"/>.</item>
+/// <item>Every admin's VV activity (field edits, path writes/invokes, addcomp/rmcomp, and plain views) is
+/// recorded, whether or not they're a critical player. It's batched per admin into one plain-English
+/// admin-log line every <see cref="VvBatchDelay"/>, instead of one entry per click.</item>
+/// <item>Critical players additionally get at most one short admin-chat notice per <see cref="ThrottleInterval"/>,
+/// pointing at the admin log for detail.</item>
 /// <item>Any admin looking at antag data through VV (minds, mind roles, antag body components) counts as an
 /// antag reveal, and toolshed queries touching that data get a throttled notice.</item>
 /// </list>
@@ -39,6 +42,16 @@ public sealed partial class CriticalPlayerAlertSystem
     [Dependency] private SharedContainerSystem _container = default!;
 
     private static readonly TimeSpan ThrottleInterval = TimeSpan.FromMinutes(5);
+
+    /// <summary>
+    /// How long a given admin's VV edits/views are collected before they're written as one admin-log line.
+    /// </summary>
+    private static readonly TimeSpan VvBatchDelay = TimeSpan.FromSeconds(5);
+
+    /// <summary>
+    /// How many distinct changes or viewed things are listed before the rest is summarized as "+N more".
+    /// </summary>
+    private const int MaxListedVv = 8;
 
     private static readonly char[] CommandSeparators = [' ', '\t', ',', '(', ')', '[', ']', '{', '}', '|', ';', '"'];
 
@@ -80,6 +93,13 @@ public sealed partial class CriticalPlayerAlertSystem
     /// What each VV session the server opened points at, for readable edit logs.
     /// </summary>
     private readonly Dictionary<uint, string> _vvSessions = new();
+
+    /// <summary>
+    /// Every admin's VV changes and views this round, collected until <see cref="VvBatchDelay"/> passes
+    /// with no new activity from them, then written as one log line and cleared.
+    /// </summary>
+    private readonly Dictionary<NetUserId, PendingVv> _pendingVv = new();
+    private readonly List<NetUserId> _toFlushVv = new();
 
     private readonly List<(object Data, FieldInfo Field, ProcessMessage Original)> _wrapped = new();
     private FieldInfo? _nextSessionIdField;
@@ -209,6 +229,7 @@ public sealed partial class CriticalPlayerAlertSystem
         }
 
         _vvSessions[_sessionIdBeforeRequest] = description;
+        ReportVvView(session, description);
     }
 
     private void OnModifyRemote(ICommonSession session, NetMessage msg)
@@ -226,8 +247,11 @@ public sealed partial class CriticalPlayerAlertSystem
 
     private void OnReadPath(ICommonSession session, NetMessage msg)
     {
-        if (GetPath(msg) is { } path && _conGroup.CanCommand(session, "vvread"))
-            CheckSensitivePath(session, path);
+        if (GetPath(msg) is not { } path || !_conGroup.CanCommand(session, "vvread"))
+            return;
+
+        CheckSensitivePath(session, path);
+        ReportVvView(session, path);
     }
 
     private void OnWritePath(ICommonSession session, NetMessage msg)
@@ -284,6 +308,7 @@ public sealed partial class CriticalPlayerAlertSystem
                 break;
             case "vvread":
                 CheckSensitivePath(session, args[0]);
+                ReportVvView(session, args[0]);
                 break;
         }
     }
@@ -321,17 +346,125 @@ public sealed partial class CriticalPlayerAlertSystem
     #region Reporting
 
     /// <summary>
-    /// Admin-logs a VV change made by a critical player and queues it for the throttled admin-chat notice.
+    /// Queues a VV change for every admin's batched log line; critical players additionally get a
+    /// throttled admin-chat notice (their role status stays masked in that notice).
     /// </summary>
     private void ReportCriticalVV(ICommonSession session, string kind, string detail)
     {
-        if (!_adminManager.IsAdmin(session) || !TryDescribe(session, out var who))
+        ReportVv(session, kind, detail);
+
+        if (TryDescribe(session, out var who))
+            Throttle(session, "vv", who, kind);
+    }
+
+    /// <summary>
+    /// Records one VV change for <paramref name="session"/>, batched into their next log line.
+    /// </summary>
+    private void ReportVv(ICommonSession session, string kind, string detail)
+    {
+        if (GetPendingVv(session) is not { } pending)
             return;
 
-        _adminLog.Add(LogType.AdminCommands, LogImpact.High,
-            $"{session:player} [{who}] VV {kind}: {detail}");
+        var key = $"{kind} {detail}";
+        pending.Changes[key] = pending.Changes.GetValueOrDefault(key) + 1;
+    }
 
-        Throttle(session, "vv", who, kind);
+    /// <summary>
+    /// Records that <paramref name="session"/> looked at <paramref name="target"/> through VV, batched
+    /// into their next log line. Every admin's VV views are recorded, not just critical players'.
+    /// </summary>
+    private void ReportVvView(ICommonSession session, string target)
+    {
+        if (GetPendingVv(session) is not { } pending)
+            return;
+
+        pending.Views[target] = pending.Views.GetValueOrDefault(target) + 1;
+    }
+
+    private PendingVv? GetPendingVv(ICommonSession session)
+    {
+        if (!_adminManager.IsAdmin(session))
+            return null;
+
+        if (!_pendingVv.TryGetValue(session.UserId, out var pending))
+        {
+            pending = new PendingVv(session.Name, _timing.CurTime + VvBatchDelay);
+            _pendingVv.Add(session.UserId, pending);
+        }
+
+        return pending;
+    }
+
+    private void UpdatePendingVv()
+    {
+        if (_pendingVv.Count == 0)
+            return;
+
+        var now = _timing.CurTime;
+        foreach (var (user, pending) in _pendingVv)
+        {
+            if (now >= pending.FlushAt)
+                _toFlushVv.Add(user);
+        }
+
+        foreach (var user in _toFlushVv)
+        {
+            FlushVv(_pendingVv[user]);
+            _pendingVv.Remove(user);
+        }
+
+        _toFlushVv.Clear();
+    }
+
+    /// <summary>
+    /// Flushes every admin's pending VV activity right away, e.g. so nothing is lost at round end.
+    /// </summary>
+    private void FlushAllPendingVv()
+    {
+        foreach (var pending in _pendingVv.Values)
+            FlushVv(pending);
+
+        _pendingVv.Clear();
+    }
+
+    /// <summary>
+    /// Writes one plain-English admin-log line summarizing everything <paramref name="pending"/> collected.
+    /// </summary>
+    private void FlushVv(PendingVv pending)
+    {
+        var parts = new List<string>();
+
+        if (pending.Changes.Count > 0)
+        {
+            var total = pending.Changes.Values.Sum();
+            parts.Add($"made {total} VV change{(total == 1 ? "" : "s")}: {string.Join(", ", SummarizeVv(pending.Changes))}");
+        }
+
+        if (pending.Views.Count > 0)
+        {
+            var total = pending.Views.Values.Sum();
+            parts.Add($"viewed {total} thing{(total == 1 ? "" : "s")}: {string.Join(", ", SummarizeVv(pending.Views))}");
+        }
+
+        if (parts.Count == 0)
+            return;
+
+        _adminLog.Add(LogType.AdminCommands, LogImpact.Medium, $"{pending.Who} {string.Join("; ", parts)}");
+    }
+
+    private static List<string> SummarizeVv(Dictionary<string, int> counts)
+    {
+        var items = counts
+            .OrderByDescending(kv => kv.Value)
+            .Take(MaxListedVv)
+            .Select(kv => kv.Value > 1 ? $"{kv.Value}x {kv.Key}" : kv.Key)
+            .ToList();
+
+        var hidden = counts.Count - items.Count;
+        if (hidden > 0)
+            items.Add($"{hidden} more");
+
+        return items;
     }
 
     private void Throttle(ICommonSession session, string channel, string who, string kind)
@@ -474,5 +607,13 @@ public sealed partial class CriticalPlayerAlertSystem
         public string Who = string.Empty;
         public TimeSpan NextAllowed;
         public readonly Dictionary<string, int> Counts = new();
+    }
+
+    private sealed class PendingVv(string who, TimeSpan flushAt)
+    {
+        public readonly string Who = who;
+        public readonly TimeSpan FlushAt = flushAt;
+        public readonly Dictionary<string, int> Changes = new();
+        public readonly Dictionary<string, int> Views = new();
     }
 }

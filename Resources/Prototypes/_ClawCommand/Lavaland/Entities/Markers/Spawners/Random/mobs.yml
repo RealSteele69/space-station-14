@@ -16,6 +16,10 @@
         weight: 1
     - id: LavalandMobBrimdemon
       weight: 0.5
+    - id: LavalandMobBasilisk
+      weight: 0.5
+    - id: LavalandMobHivelord
+      weight: 0.5
 
 - type: entityTable
   id: LavalandLightMobs
@@ -33,6 +37,12 @@
       - id: LavalandMobAshWhelp
         weight: 2
       - id: LavalandMobLegionMonkey
+    - !type:GroupSelector # Claw Command - Goldgrub/Curse Blob/Gutlunch, additive light fauna
+      weight: 0.6
+      children:
+      - id: LavalandMobGoldgrub
+      - id: LavalandMobCurseBlob
+      - id: LavalandMobGutlunch
 
 - type: entity
   name: lavaland heavy mob spawner

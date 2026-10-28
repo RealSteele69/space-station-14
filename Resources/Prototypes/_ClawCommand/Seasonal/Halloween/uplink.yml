@@ -1,0 +1,50 @@
+# Spooky season novelty uplink items. Mechanically unchanged cosmetic reskins of existing gear,
+# using the two items' real dedicated holiday sprites.
+
+- type: entity
+  parent: Emag
+  id: EmagHackOLantern
+  name: hack o' lantern
+  description: A cryptographic sequencer, dressed up for the occasion. Still unlocks doors like a proper EMAG.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Halloween/hack_o_lantern.rsi
+    state: hack_o_lantern
+  - type: Item
+    sprite: _ClawCommand/Seasonal/Halloween/hack_o_lantern.rsi
+
+- type: entity
+  parent: WeaponEnergyCrossbow
+  id: WeaponCandyCornCrossbow
+  name: candy corn crossbow
+  description: A mini energy crossbow with a seasonal paint job. The bolts are not, in fact, made of candy corn.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Halloween/crossbow_halloween.rsi
+    layers:
+    - state: crossbow_halloween
+    - state: crossbow_halloween_empty
+      map: [ "empty-icon" ]
+      visible: false
+  - type: Item
+    sprite: _ClawCommand/Seasonal/Halloween/crossbow_halloween.rsi
+
+- type: listing
+  id: UplinkEmagHackOLantern
+  name: uplink-hack-o-lantern-name
+  description: uplink-hack-o-lantern-desc
+  productEntity: EmagHackOLantern
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkPointless
+
+- type: listing
+  id: UplinkCandyCornCrossbow
+  name: uplink-candy-corn-crossbow-name
+  description: uplink-candy-corn-crossbow-desc
+  productEntity: WeaponCandyCornCrossbow
+  cost:
+    Telecrystal: 5
+  categories:
+  - UplinkPointless

@@ -1,0 +1,171 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseAction
+  id: ActionVampireFeed
+  name: Feed
+  description: Latch onto a grabbed victim and drain their blood. Requires an uncovered mouth and at least a soft grab.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 30
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: Interface/Actions/changeling.rsi
+    layers:
+    - state: devour
+      map: [ "enum.ActionVisuals.Icon" ]
+    - state: devour_on
+      map: [ "enum.ActionVisuals.IconToggled" ]
+      visible: false
+  - type: ActionRequireMouthUncovered
+  - type: TargetAction
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:VampireFeedActionEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionVampireMasquerade
+  name: Masquerade
+  description: Fake being alive - stop your body's tells, at the cost of being unable to heal at all while it holds.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 50
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: Interface/Actions/changeling.rsi
+    layers:
+    - state: stasis_enter
+      map: [ "enum.ActionVisuals.Icon" ]
+    - state: stasis_exit
+      map: [ "enum.ActionVisuals.IconToggled" ]
+      visible: false
+  - type: InstantAction
+    event: !type:VampireMasqueradeActionEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionVampireFortitude
+  name: Fortitude
+  description: Toughen your undead body, shrugging off far more harm than it should - for a price in blood every second it holds.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: Interface/Actions/changeling.rsi
+    layers:
+    - state: armblade
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:VampireFortitudeActionEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionVampireCloak
+  name: Cloak of Darkness
+  description: Fade into the shadows. Any blow that lands on you tears the cloak away.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+  - type: Sprite
+    layers:
+    - texture: Interface/VerbIcons/psionic_invisibility.png
+      map: [ "enum.ActionVisuals.Icon" ]
+    - texture: Interface/VerbIcons/psionic_invisibility_off.png
+      map: [ "enum.ActionVisuals.IconToggled" ]
+      visible: false
+  - type: InstantAction
+    event: !type:VampireCloakActionEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionVampireMesmerize
+  name: Mesmerize
+  description: Lock eyes with a victim and hold their stare for a few seconds. Break their will, and they drop where they stand.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 300
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: Interface/Actions/changeling.rsi
+    layers:
+    - state: transform
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: TargetAction
+    range: 3
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:VampireMesmerizeActionEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionVampireEmbrace
+  name: Embrace
+  description: Sire a helpless victim as your Vassal - a loyal thrall, bound to your fate.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 20
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: Interface/Actions/changeling.rsi
+    layers:
+    - state: devour_on
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: TargetAction
+    range: 1
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:VampireEmbraceActionEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionVassalRecuperate
+  name: Sanguine Recuperation
+  description: Heal on blood your master lent you, drawing on your own veins while it lasts.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: Interface/Actions/changeling.rsi
+    layers:
+    - state: stasis_enter
+      map: [ "enum.ActionVisuals.Icon" ]
+    - state: stasis_exit
+      map: [ "enum.ActionVisuals.IconToggled" ]
+      visible: false
+  - type: InstantAction
+    event: !type:VassalRecuperateActionEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionVassalSenseMaster
+  name: Sense Master
+  description: Feel for the pull of your master's blood in your veins.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 10
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: Interface/Actions/changeling.rsi
+    layers:
+    - state: armblade
+      map: [ "enum.ActionVisuals.Icon" ]
+  - type: InstantAction
+    event: !type:VassalSenseMasterActionEvent {}

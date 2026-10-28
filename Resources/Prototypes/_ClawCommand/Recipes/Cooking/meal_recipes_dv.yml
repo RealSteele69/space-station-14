@@ -23,3 +23,17 @@
     FoodBowlBig: 1
     FoodEgg: 3
     FoodButter: 1
+
+# Ported from DeltaV/Recipes/Cooking/meal_recipes.yml
+- type: microwaveMealRecipe
+  id: RecipeChickenNuggetBox
+  name: chicken nugget box recipe
+  result: FoodBoxNugget
+  time: 10
+  group: Savory
+  reagents:
+    Protein: 20
+    Egg: 4
+    Flour: 6
+  solids:
+    MaterialCardboard1: 1

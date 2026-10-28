@@ -1,0 +1,148 @@
+# Plant entities for sibling-fork seeds, modernised from `- type: seed` prototypes.
+# Each pairs with a seed packet in:
+#   _ClawCommand/Entities/Objects/Specific/Hydroponics/seed_packets_euphoria.yml
+
+- type: entity
+  parent: BasePlant
+  id: BlackberryPlants
+  categories: [HideSpawnMenu]
+  name: blackberry bush
+  components:
+  - type: Sprite
+    sprite: _Euphoria/Objects/Specific/Hydroponics/blackberry.rsi
+  - type: PlantData
+    name: seeds-blackberry-name
+    packetPrototype: BlackberrySeeds
+    productPrototypes: [ FoodBlackberry ]
+  - type: Plant
+    lifespan: 55
+    maturation: 10
+    production: 10
+    yield: 4
+    potency: 10
+    growthStages: 3
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 20
+        potencyDivisor: 20
+      BlackberryJuice:
+        min: 5
+        max: 10
+        potencyDivisor: 25
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: BlueberryPlants
+  categories: [HideSpawnMenu]
+  name: blueberry bush
+  components:
+  - type: Sprite
+    sprite: _Euphoria/Objects/Specific/Hydroponics/blueberry.rsi
+  - type: PlantData
+    name: seeds-blueberry-name
+    packetPrototype: BlueberrySeeds
+    productPrototypes: [ FoodBlueberry ]
+  - type: Plant
+    lifespan: 55
+    maturation: 10
+    production: 10
+    yield: 4
+    potency: 10
+    growthStages: 3
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 20
+        potencyDivisor: 20
+      BlueberryJuice:
+        min: 5
+        max: 10
+        potencyDivisor: 25
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: RaspberryPlants
+  categories: [HideSpawnMenu]
+  name: raspberry bush
+  components:
+  - type: Sprite
+    sprite: _Euphoria/Objects/Specific/Hydroponics/raspberry.rsi
+  - type: PlantData
+    name: seeds-raspberry-name
+    packetPrototype: RaspberrySeeds
+    productPrototypes: [ FoodRaspberry ]
+    mutationPrototypes: [ BlueRaspberryPlants ]
+  - type: Plant
+    lifespan: 55
+    maturation: 10
+    production: 10
+    yield: 4
+    potency: 10
+    growthStages: 3
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 20
+        potencyDivisor: 20
+      RaspberryJuice:
+        min: 5
+        max: 10
+        potencyDivisor: 25
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: BlueRaspberryPlants
+  categories: [HideSpawnMenu]
+  name: blue raspberry bush
+  components:
+  - type: Sprite
+    sprite: _Euphoria/Objects/Specific/Hydroponics/blueraspberry.rsi
+  - type: PlantData
+    name: seeds-blueraspberry-name
+    packetPrototype: BlueRaspberrySeeds
+    productPrototypes: [ FoodBlueRaspberry ]
+  - type: Plant
+    lifespan: 55
+    maturation: 10
+    production: 10
+    yield: 4
+    potency: 10
+    growthStages: 3
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 20
+        potencyDivisor: 20
+      BlueRaspberryJuice:
+        min: 5
+        max: 10
+        potencyDivisor: 25
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50

@@ -1,0 +1,26 @@
+# Ported from Euphoria/Entities/Objects/Consumable/Food/hotdog.yml
+# Source entity used FoodSequenceStartPoint/FoodMetamorphableByAdding to let players add toppings
+# (the 11 named variants - LA, Chicago, Chili, etc.) via a tag-driven food-sequence system. We are not
+# porting that topping metamorph system or the 11 topping entities themselves (out of scope for this
+# port - see the recipe cards below, which cover them as flavor text instead), so this is kept as a
+# plain standalone food item instead of wiring up a dangling, topping-less metamorph start point.
+# Sprite copied to _Euphoria/Objects/Consumable/Food/hotdog.rsi (hotdog-bun state only).
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodHotdogBun
+  name: hotdog bun
+  description: A perfect warm bun for a juicy sausage.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - bun
+  - type: Sprite
+    sprite: _Euphoria/Objects/Consumable/Food/hotdog.rsi
+    state: hotdog-bun
+  - type: Solution
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6.66

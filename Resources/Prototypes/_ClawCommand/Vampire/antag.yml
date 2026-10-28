@@ -1,0 +1,257 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: antag
+  id: Vampire
+  name: roles-antag-vampire-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-vampire-description
+  guides: [ Vampire ]
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 36000 # 10h - a dangerous, hard-to-kill predator antag
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: Vampire
+  prefRoles:
+  - Vampire
+  # Silicons have no blood to drink or feed with.
+  jobBlacklist:
+  - StationAi
+  - Borg
+  mindRoles:
+  - VampireMindRole
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: VampireMindRole
+  name: Vampire Role
+  components:
+  - type: MindRole
+    antag: true
+    antagPrototype: Vampire
+    exclusiveAntag: true
+    roleType: SoloAntagonist
+    subtype: role-subtype-vampire
+  - type: VampireRole
+
+# Rolled as a sub-gamemode, same as other solo antags here - never cancels a preset on its own.
+- type: entity
+  parent: BaseGameRule
+  id: Vampire
+  components:
+  - type: VampireRule
+  - type: GameRule
+    minPlayers: 15
+    cancelPresetOnTooFewPlayers: false
+  - type: AntagObjectives
+    objectives:
+    - VampireLairObjective
+    - VampireProtegeObjective
+    - VampireBloodHarvestObjective
+    - VampireSurviveObjective
+  - type: AntagSelection
+    selectionTime: JobsAssigned
+    agentName: vampire-roundend-name
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: Vampire
+      range:
+        min: 1
+        max: 6
+      playerRatio: 10
+  - type: Tag
+    tags:
+    - CalmAntag
+
+- type: npcFaction
+  id: VampireFaction
+  hostile:
+  - NanoTrasen
+
+- type: damageModifierSet
+  id: VampireUndeadResilience
+  coefficients:
+    Blunt: 0.8
+    Slash: 0.8
+    Piercing: 0.8
+    Cold: 0.0
+
+- type: alert
+  id: VampireBlood
+  icons:
+  - sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed0
+  - sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed1
+  - sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed2
+  - sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed3
+  - sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed4
+  - sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed5
+  - sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed6
+  - sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed7
+  - sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed8
+  - sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed9
+  - sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleed10
+  name: alert-vampire-blood-name
+  description: alert-vampire-blood-desc
+
+- type: dataset
+  id: names_vampire_first_male
+  values:
+  - Desmond
+  - Rudolph
+  - Dracul
+  - Vlad
+  - Pyotr
+  - Gregor
+  - Cristian
+  - Christoff
+  - Marcu
+  - Andrei
+  - Constantin
+  - Grigore
+  - Ilie
+  - Iacob
+  - Luca
+  - Mihail
+  - Pavel
+  - Vasile
+  - Octavian
+  - Sorin
+  - Sveyn
+  - Aurel
+  - Alexe
+  - Theodor
+  - Dimitrie
+  - Damien
+  - Magnus
+  - Caine
+
+- type: dataset
+  id: names_vampire_first_female
+  values:
+  - Islana
+  - Tyrra
+  - Greganna
+  - Pytra
+  - Hilda
+  - Andra
+  - Crina
+  - Viorela
+  - Viorica
+  - Anemona
+  - Camelia
+  - Narcisa
+  - Sorina
+  - Alessia
+  - Sophia
+  - Arcana
+  - Morgan
+  - Lasarra
+  - Ioana
+  - Elena
+  - Alina
+  - Rodica
+  - Teodora
+  - Denisa
+  - Mihaela
+  - Stefania
+  - Lilith
+
+- type: dataset
+  id: names_vampire_title_male
+  values:
+  - Count
+  - Baron
+  - Viscount
+  - Prince
+  - Duke
+  - Tzar
+  - Dreadlord
+  - Lord
+  - Master
+
+- type: dataset
+  id: names_vampire_title_female
+  values:
+  - Countess
+  - Baroness
+  - Viscountess
+  - Princess
+  - Duchess
+  - Tzarina
+  - Dreadlady
+  - Lady
+  - Mistress
+
+- type: dataset
+  id: names_vampire_reputation_fledgling
+  values:
+  - Crude
+  - Callow
+  - Unlearned
+  - Neophyte
+  - Novice
+  - Unseasoned
+  - Fledgling
+  - Young
+  - Neonate
+  - Untested
+  - Unproven
+  - Unknown
+  - Newly Risen
+  - Unknowing
+  - Unspoiled
+  - Meek
+  - Timid
+
+- type: dataset
+  id: names_vampire_reputation_master
+  values:
+  - Butcher
+  - Blood Fiend
+  - Crimson
+  - Terror
+  - Nightman
+  - Feared
+  - Ravenous
+  - Fiend
+  - Malevolent
+  - Wicked
+  - Ancient
+  - Sinister
+  - Forgotten
+  - Wretched
+  - Baleful
+  - Harvester
+  - Reviled
+  - Betrayer
+  - Damned
+  - Accursed
+  - Vicious
+  - Vile
+  - Slayer
+  - Sovereign
+  - Forsaken
+  - Dragon
+  - Savage
+  - Immortal
+  - Undying
+  - Tyrant
+
+- type: guideEntry
+  id: Vampire
+  name: guide-entry-vampire
+  text: "/ServerInfo/_ClawCommand/Guidebook/Antagonist/Vampire.xml"

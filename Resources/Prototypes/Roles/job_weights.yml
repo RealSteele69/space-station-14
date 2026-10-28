@@ -13,6 +13,8 @@
     ERTMedical: 0
     ERTJanitor: 0
     CentralCommandOfficial: 0
+    SRTAgent: 0
+    CentralCommandIntern: 0
     Passenger: 0
     Bartender: 0
     Botanist: 0

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Derived from a CC-BY-SA-3.0 licensed tgstation-family codebase; redrawn/adapted for this project.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "tumorbread",
+      "directions": 4
+    },
+    {
+      "name": "tumorbreadslice"
+    }
+  ]
+}

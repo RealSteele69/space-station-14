@@ -1,0 +1,25 @@
+# Ported from Impstation/Entities/Objects/Consumable/Food/soup.yml
+# Sprite copied to _Impstation/Objects/Consumable/Food/bowl.rsi.
+
+- type: entity
+  parent: FoodBowlBase
+  id: FoodCamelSoup
+  name: one day blinding stew
+  description: The hospital can't stop me. I will never go. Not with the strength I've obtained.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - cigarettes
+  - type: Sprite
+    sprite: _Impstation/Objects/Consumable/Food/bowl.rsi
+    layers:
+    - state: bowl
+    - state: camelsouplit
+  - type: Solution
+    solution:
+      maxVol: 57
+      reagents:
+      - ReagentId: TearGas
+        Quantity: 40
+      - ReagentId: ChloralHydrate
+        Quantity: 17

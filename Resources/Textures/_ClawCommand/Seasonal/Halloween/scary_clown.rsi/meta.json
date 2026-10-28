@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Converted from a DMI sprite sheet under Citadel Station 13's icons/mob/clown_mobs.dmi, CC-BY-SA-3.0 per that project's blanket asset license.",
+    "size": {
+        "x": 64,
+        "y": 64
+    },
+    "states": [
+        {
+            "name": "scary_clown",
+            "directions": 4
+        }
+    ]
+}

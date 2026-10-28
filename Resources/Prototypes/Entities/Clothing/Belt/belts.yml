@@ -227,3 +227,59 @@
     sprite: Clothing/Belt/militarywebbingert.rsi
   - type: Clothing
     sprite: Clothing/Belt/militarywebbingert.rsi
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbingERT
+  id: ClothingBeltMilitaryWebbingERTMedicine
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: EmergencyMedipen
+        - id: Truncheon
+        - id: BurnAutoInjector
+        - id: PunctAutoInjector
+        - id: PyraAutoInjector
+        - id: AntiPoisonMedipen
+        - id: BurnAutoInjector
+        - id: PunctAutoInjector
+        - id: PyraAutoInjector
+        - id: AntiPoisonMedipen
+
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltPaperwork
+  name: paperwork belt
+  description: For all your tactical paperwork needs on the field.
+  components:
+  - type: Sprite
+    sprite: DeltaV/Clothing/Belt/paperwork.rsi
+  - type: Clothing
+    sprite: DeltaV/Clothing/Belt/paperwork.rsi
+  - type: Storage
+    whitelist:
+      tags:
+      - Folder
+      - Document
+      - Flashlight
+      - Radio
+      components:
+      - HandLabeler
+      - FitsInDispenser
+      - Stamp
+
+- type: entity
+  parent: ClothingBeltPaperwork
+  id: ClothingBeltPaperworkFilled
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: BoxFolderBase
+        - id: BoxFolderBlack
+        - id: BoxFolderClipboard
+        - id: DrinkVacuumFlask

@@ -1,0 +1,193 @@
+# Oddball sci-fi/lore cocktails, each with its own bit of in-universe legend behind it.
+
+- type: reagent
+  id: PinotMort
+  name: reagent-name-pinot-mort
+  parent: BaseAlcohol
+  desc: reagent-desc-pinot-mort
+  physicalDesc: reagent-physical-desc-dark-red
+  flavor: pinotmort
+  color: "#A72424"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.04
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+
+- type: reagent
+  id: RedQueen
+  name: reagent-name-red-queen
+  parent: BaseDrink
+  desc: reagent-desc-red-queen
+  physicalDesc: reagent-physical-desc-unidentifiable
+  flavor: redqueen
+  color: "#E6DDC3"
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:Jitter
+        conditions:
+        - !type:ReagentCondition
+          reagent: RedQueen
+          min: 3
+
+- type: reagent
+  id: Blazaam
+  name: reagent-name-blazaam
+  parent: BaseAlcohol
+  desc: reagent-desc-blazaam
+  physicalDesc: reagent-physical-desc-enigmatic
+  flavor: blazaam
+  color: "#8B5FBF"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.13
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:Jitter
+        conditions:
+        - !type:ReagentCondition
+          reagent: Blazaam
+          min: 5
+
+- type: reagent
+  id: BastionBourbon
+  name: reagent-name-bastion-bourbon
+  parent: BaseAlcohol
+  desc: reagent-desc-bastion-bourbon
+  physicalDesc: reagent-physical-desc-soothing
+  flavor: bastionbourbon
+  color: "#00FFFF"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.06
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:EvenHealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: BastionBourbon
+          min: 1
+        damage:
+          Burn: -0.5
+          Brute: -0.5
+          Airloss: -0.5
+          Toxin: -0.25
+
+- type: reagent
+  id: CommanderAndChief
+  name: reagent-name-commander-and-chief
+  parent: BaseAlcohol
+  desc: reagent-desc-commander-and-chief
+  physicalDesc: reagent-physical-desc-vibrant
+  flavor: commanderandchief
+  color: "#FFFFC9"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.09
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:EvenHealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: CommanderAndChief
+          min: 1
+        damage:
+          Burn: -1
+          Brute: -1
+          Airloss: -1
+          Toxin: -1
+
+- type: reagent
+  id: FringeWeaver
+  name: reagent-name-fringe-weaver
+  parent: BaseAlcohol
+  desc: reagent-desc-fringe-weaver
+  physicalDesc: reagent-physical-desc-foamy
+  flavor: fringeweaver
+  color: "#FFEAC4"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.17
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+
+- type: reagent
+  id: SugarRush
+  name: reagent-name-sugar-rush
+  parent: BaseAlcohol
+  desc: reagent-desc-sugar-rush
+  physicalDesc: reagent-physical-desc-sugary
+  flavor: sugarrush
+  color: "#FF226C"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.02
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:Satiate
+        satiationType: Hunger
+        factor: -1
+
+- type: reagent
+  id: CreviceSpike
+  name: reagent-name-crevice-spike
+  parent: BaseDrink
+  desc: reagent-desc-crevice-spike
+  physicalDesc: reagent-physical-desc-sour
+  flavor: crevicespike
+  color: "#5BD231"
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:EvenHealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: CreviceSpike
+          min: 1
+        damage:
+          Brute: 0.5
+
+- type: reagent
+  id: SquirtCider
+  name: reagent-name-squirt-cider
+  parent: BaseAlcohol
+  desc: reagent-desc-squirt-cider
+  physicalDesc: reagent-physical-desc-tart
+  flavor: squirtcider
+  color: "#FF0000"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.07
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:Satiate
+        satiationType: Hunger
+        factor: 1

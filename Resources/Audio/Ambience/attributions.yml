@@ -126,3 +126,44 @@
   license: "CC-BY-4.0"
   copyright: "Created by zimbot, edited and converted to mono by TheShuEd"
   source: "https://freesound.org/people/zimbot/sounds/122972/"
+
+- files: ["acidrain_start.ogg,
+          acidrain_mid.ogg,
+          acidrain_end.ogg,
+          ambiatm1.ogg,
+          ambifailure.ogg,
+          ambilava.ogg,
+          ambimaint.ogg,
+          ambimaint6.ogg,
+          ambimaint7.ogg,
+          ambimaint8.ogg,
+          ambimaint9.ogg,
+          ambimaint10.ogg,
+          ambimalf.ogg,
+          ambireebe2.ogg,
+          ambispace.ogg,
+          ambivapor1.ogg,
+          deserted.ogg,
+          seag1.ogg,
+          seag2.ogg,
+          seag3.ogg,
+          shore.ogg,
+          VoidsEmbrace.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from Citadel Station 13, which took it from /tg/station (see license: all assets are CC-BY-SA 3.0 unless otherwise indicated)"
+  source: "https://github.com/citadel-station/citadel-main/tree/31b47497ab7e3b1c15c67657931ce480f14caed1/sound/ambience"
+
+- files: ["ambidet1.ogg"]
+  license: "CC-BY-3.0"
+  copyright: "Fast Talking by Kevin MacLeod, cropped for use ingame. Taken from Citadel Station 13"
+  source: "https://github.com/citadel-station/citadel-main/tree/31b47497ab7e3b1c15c67657931ce480f14caed1/sound/ambience"
+
+- files: ["ambidet2.ogg"]
+  license: "CC-BY-3.0"
+  copyright: "Night on the Docks, Piano by Kevin MacLeod, cropped and fades in. Taken from Citadel Station 13"
+  source: "https://github.com/citadel-station/citadel-main/tree/31b47497ab7e3b1c15c67657931ce480f14caed1/sound/ambience"
+
+- files: ["aurora_caelus.ogg"]
+  license: "CC-BY-3.0"
+  copyright: "Music for Manatees by Kevin MacLeod, cropped and fades out. Taken from Citadel Station 13"
+  source: "https://github.com/citadel-station/citadel-main/tree/31b47497ab7e3b1c15c67657931ce480f14caed1/sound/ambience"

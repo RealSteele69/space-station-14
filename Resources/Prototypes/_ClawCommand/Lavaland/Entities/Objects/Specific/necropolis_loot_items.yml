@@ -1,0 +1,317 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Expanded Necropolis chest loot (see Structures/Storage/Crates/necropolis.yml for the tables that
+# reference these). All items here either wrap an existing prototype/component with a reskin or
+# stat tweak, or are purely cosmetic flavor items with no new mechanics - no new C# was added for
+# any of these.
+
+## Relic-flavored
+
+- type: entity
+  parent: PersonalAI
+  id: LavalandBoundSoulEffigy
+  name: bound soul effigy
+  description: A battered personal-AI chassis, repurposed by the necropolis to hold something that isn't quite artificial. It still boots up like any other pai.
+  components:
+  - type: Sprite
+    color: "#9a5fd1"
+
+- type: entity
+  parent: BaseItem
+  id: LavalandWarpConduit
+  name: warp conduit
+  description: A pitted cube of unstable bluespace alloy, warm to the touch. It wants to fold space around itself.
+  components:
+  - type: Sprite
+    sprite: /Textures/Objects/Devices/hand_teleporter.rsi
+    layers:
+    - state: icon
+      color: "#6a1b9a"
+  - type: Item
+    size: Small
+  - type: HandTeleporter
+
+- type: entity
+  parent: DefibrillatorCompact
+  id: LavalandRitualLifeWard
+  name: ritual life-ward
+  description: A necropolis talisman wired from salvaged defibrillator components. It refuses to let its bearer stay dead for long.
+  components:
+  - type: Sprite
+    color: "#c9a227"
+
+- type: entity
+  parent: ClothingNeckBling
+  id: LavalandMementoLocket
+  name: memento locket
+  description: A tarnished locket, warm despite the cold stone around it. The portrait inside has worn away to a face you can no longer place.
+  components:
+  - type: Sprite
+    color: "#9a9a9a"
+
+# Stronger cousin of LavalandVampirismCrystal (Specific/Salvage/lavaland_loot.yml) - extends variety
+# around the existing vampirism PKA upgrade rather than duplicating it. Shares its upgrade tag so the
+# two can't both be slotted at once.
+- type: entity
+  parent: BasePKAUpgrade
+  id: LavalandVampirismCrystalGreater
+  name: a pulsing crimson crystal
+  description: A larger, denser cousin of the red crystals mining crews occasionally dig up. It pulses in time with a heartbeat that isn't there.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Objects/Specific/Lavaland/loot.rsi
+    state: crystal
+    color: "#8b0000"
+  - type: GunUpgrade
+    tags: [ GunUpgradeVampirism ]
+    examineText: gun-upgrade-examine-text-vampirism
+  - type: GunUpgradeVampirism
+    damageOnHit:
+      types:
+        Slash: -2.5
+        Piercing: -2.5
+        Blunt: -2.5
+
+- type: entity
+  parent: GuardianDeck
+  id: LavalandSpectralBlade
+  name: spectral blade shard
+  description: A sword-shaped shard that is mostly not there. It still remembers how to fight, even though whoever it belonged to is long gone.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/cult_blade.rsi
+    layers:
+    - state: icon
+      color: "#8fd9ff"
+  - type: GuardianCreator
+    emptyPopup: lavaland-spectral-blade-invalid-creation
+    emptyExamine: lavaland-spectral-blade-used-examine
+    usedSound: /Audio/Effects/guardian_inject.ogg
+
+- type: entity
+  parent: ClothingNeckBling
+  id: LavalandUndyingTalisman
+  name: undying talisman
+  description: A charm strung from something that was once alive. While worn, it refuses to let death stick the first time it comes knocking.
+  components:
+  - type: Sprite
+    color: "#d9c27a"
+  - type: ClothingGrantComponent
+    component:
+    - type: CheatDeath
+      reviveAmount: 1
+
+## Weapon/armor-flavored
+
+- type: entity
+  parent: UnholyHalberd
+  id: LavalandCleavingHalberd
+  name: ashen cleaver
+  description: A poleaxe pulled from the necropolis, its edge blackened by heat that never fully cooled.
+  components:
+  - type: Sprite
+    color: "#b23b1a"
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 0.75
+    damage:
+      types:
+        Blunt: 10
+        Slash: 10
+        Heat: 4
+
+- type: entity
+  parent: ClothingOuterHardsuitSalvageAlt
+  id: LavalandNecropolisHardsuit
+  name: necropolis mining hardsuit
+  description: A mining hardsuit recovered from the necropolis depths, its plating fused smooth by repeated exposure to lava flows.
+  components:
+  - type: Sprite
+    color: "#8a3324"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.55
+        Piercing: 0.65
+        Heat: 0.5
+        Radiation: 0.3
+        Caustic: 0.65
+
+- type: entity
+  parent: EldritchBlade
+  id: LavalandCeremonialBlade
+  name: necropolis ceremonial blade
+  description: A blade taken from some long-dead rite. It still thirsts.
+  components:
+  - type: Sprite
+    color: "#d4af37"
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 0.75
+    damage:
+      types:
+        Slash: 16
+        Heat: 3
+
+- type: entity
+  parent: RitualDagger
+  id: LavalandSacrificialDagger
+  name: sacrificial dagger
+  description: A dagger stained dark by use that long predates the station's arrival on this rock.
+  components:
+  - type: Sprite
+    color: "#701c1c"
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 1.5
+    damage:
+      types:
+        Slash: 14
+
+- type: entity
+  parent: WeaponCrusherHammerFilledRandom
+  id: LavalandAshCrusherHammer
+  name: ash-wrought crusher hammer
+  description: A crusher hammer forged in necropolis heat, already fitted with scavenged upgrades.
+  components:
+  - type: Sprite
+    color: "#5a3a1a"
+
+# Generic world-targeted spawn spell (same event type vanilla's Summon Magicarp spell uses) retargeted
+# to drop a lava patch instead of mobs - no new C#, just a new spawn target for an existing event.
+- type: entity
+  parent: BaseAction
+  id: ActionLavalandMoltenEruption
+  name: molten eruption
+  description: Calls up a surge of lava from beneath the floor.
+  components:
+  - type: Action
+    useDelay: 20
+    itemIconStyle: BigAction
+  - type: Sprite
+    sprite: Objects/Magic/magicactions.rsi
+    layers:
+    - state: fireball
+  - type: TargetAction
+    range: 5
+  - type: WorldTargetAction
+    event: !type:WorldSpawnSpellEvent
+      prototypes:
+      - id: FloorLavaEntity
+        amount: 1
+      offset: 0, 0
+
+- type: entity
+  parent: AnimationStaff
+  id: LavalandMoltenStaff
+  name: molten rod
+  description: A necropolis rod, warm along its entire length. Point it at the floor and step back.
+  components:
+  - type: Sprite
+    color: "#b23b1a"
+  - type: ActionOnInteract
+    requiresCharge: true
+    actions:
+    - ActionLavalandMoltenEruption
+
+## Misc-flavored
+
+- type: entity
+  parent: BookBase
+  id: LavalandVavilonBook
+  name: tattered field journal
+  description: A water-stained journal, its spine cracked from whatever dig recovered it.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Lavaland/Objects/Specific/Lavaland/loot.rsi
+    layers:
+    - state: vavilon_book
+  - type: Paper
+    contentSize: 4000
+    content: necropolis-journal-text
+
+- type: entity
+  parent: [ RingBase, SilverRingBase ]
+  id: LavalandNecropolisSignetRing
+  name: necropolis signet ring
+  description: A cracked signet ring, its crest worn smooth by centuries somewhere cold.
+  components:
+  - type: Sprite
+    layers:
+    - state: ring
+      color: "#5c1f1f"
+
+- type: entity
+  parent: FlashlightLantern
+  id: LavalandEmberLantern
+  name: ember lantern
+  description: A battered lantern recovered from deep in the necropolis. Its light burns a dull orange, like embers that never quite went out.
+  components:
+  - type: Sprite
+    color: "#e2711d"
+
+## Per-boss trophy cosmetics (additive to each megafauna's existing SpawnLootOnDeath table)
+
+- type: entity
+  parent: ClothingNeckBling
+  id: LavalandDrakeFangNecklace
+  name: drake fang necklace
+  description: A necklace strung with a single fang pried from the ash drake. Still warm.
+  components:
+  - type: Sprite
+    color: "#ff7043"
+
+- type: entity
+  parent: ClothingNeckBling
+  id: LavalandBubblegumClawNecklace
+  name: demon claw necklace
+  description: A necklace strung with a curved claw taken from Bubblegum itself. It twitches, just slightly, when nobody's looking.
+  components:
+  - type: Sprite
+    color: "#e91e8c"
+
+- type: entity
+  parent: ClothingNeckBling
+  id: LavalandColossusCoreNecklace
+  name: colossus core shard necklace
+  description: A sliver of the shielding core that once protected the Colossus, strung on a scavenged chain.
+  components:
+  - type: Sprite
+    color: "#4fc3f7"
+
+- type: entity
+  parent: ClothingNeckBling
+  id: LavalandLegionSkullNecklace
+  name: legion skull fragment necklace
+  description: A fragment of bone taken from Legion's countless skulls, strung on a cord. You could swear it's still watching.
+  components:
+  - type: Sprite
+    color: "#9ccc65"
+
+- type: entity
+  parent: ClothingNeckBling
+  id: LavalandHierophantChimeNecklace
+  name: hierophant chime necklace
+  description: A necklace strung with a cracked chime pried from the hierophant's frame. It still keeps time with a beat only it can hear.
+  components:
+  - type: Sprite
+    color: "#c9b037"
+
+- type: entity
+  parent: ClothingNeckBling
+  id: LavalandTumorShardNecklace
+  name: tumor shard necklace
+  description: A necklace strung with a shard carved from one of lavaland's strange tumors. It pulses faintly, like it's still growing.
+  components:
+  - type: Sprite
+    color: "#558b2f"
+
+- type: entity
+  parent: ClothingNeckBling
+  id: LavalandPandoraLatchNecklace
+  name: pandora latch necklace
+  description: A necklace strung with the tiny, warped latch from Pandora's box. It won't open anything ever again.
+  components:
+  - type: Sprite
+    color: "#7e57c2"

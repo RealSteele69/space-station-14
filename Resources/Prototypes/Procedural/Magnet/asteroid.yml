@@ -26,6 +26,21 @@
     count: 8
     minGroupSize: 0
     maxGroupSize: 1
+  # Found loot and dead miner's kits (_ClawCommand)
+  - !type:EntityTableDunGen
+    minCount: 1
+    maxCount: 3
+    ignoreReserved: true
+    table: !type:GroupSelector
+      children:
+      - id: SalvageSpawnerAsteroidFoundLoot
+  - !type:EntityTableDunGen
+    minCount: 0
+    maxCount: 1
+    ignoreReserved: true
+    table: !type:GroupSelector
+      children:
+      - id: SalvageSpawnerAsteroidMinerGear
 
 # Multiple smaller asteroids
 # This is a pain so we generate fewer tiles
@@ -55,6 +70,21 @@
     count: 8
     minGroupSize: 0
     maxGroupSize: 1
+  # Found loot and dead miner's kits (_ClawCommand)
+  - !type:EntityTableDunGen
+    minCount: 1
+    maxCount: 3
+    ignoreReserved: true
+    table: !type:GroupSelector
+      children:
+      - id: SalvageSpawnerAsteroidFoundLoot
+  - !type:EntityTableDunGen
+    minCount: 0
+    maxCount: 1
+    ignoreReserved: true
+    table: !type:GroupSelector
+      children:
+      - id: SalvageSpawnerAsteroidMinerGear
 
 # Long and spindly, less smooth than blob
 - type: dungeonConfig
@@ -84,6 +114,21 @@
     count: 8
     minGroupSize: 0
     maxGroupSize: 1
+  # Found loot and dead miner's kits (_ClawCommand)
+  - !type:EntityTableDunGen
+    minCount: 1
+    maxCount: 3
+    ignoreReserved: true
+    table: !type:GroupSelector
+      children:
+      - id: SalvageSpawnerAsteroidFoundLoot
+  - !type:EntityTableDunGen
+    minCount: 0
+    maxCount: 1
+    ignoreReserved: true
+    table: !type:GroupSelector
+      children:
+      - id: SalvageSpawnerAsteroidMinerGear
 
 # Lots of holes in it
 - type: dungeonConfig
@@ -112,3 +157,18 @@
     count: 8
     minGroupSize: 0
     maxGroupSize: 1
+  # Found loot and dead miner's kits (_ClawCommand)
+  - !type:EntityTableDunGen
+    minCount: 1
+    maxCount: 3
+    ignoreReserved: true
+    table: !type:GroupSelector
+      children:
+      - id: SalvageSpawnerAsteroidFoundLoot
+  - !type:EntityTableDunGen
+    minCount: 0
+    maxCount: 1
+    ignoreReserved: true
+    table: !type:GroupSelector
+      children:
+      - id: SalvageSpawnerAsteroidMinerGear

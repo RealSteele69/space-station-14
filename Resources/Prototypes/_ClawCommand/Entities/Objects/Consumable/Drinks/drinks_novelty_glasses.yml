@@ -1,0 +1,125 @@
+- type: entity
+  parent: DrinkGlass
+  id: DrinkPinotMortGlass
+  suffix: pinot mort
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: PinotMort
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/pinotmort.rsi
+    state: pinotmort
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkRedQueenGlass
+  suffix: red queen
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: RedQueen
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/red_queen.rsi
+    state: red_queen
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkBlazaamGlass
+  suffix: blazaam
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Blazaam
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/blazaamglass.rsi
+    state: blazaamglass
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkBastionBourbonGlass
+  suffix: bastion bourbon
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: BastionBourbon
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/bastion_bourbon.rsi
+    state: bastion_bourbon
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkCommanderAndChiefGlass
+  suffix: commander and chief
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CommanderAndChief
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/commander_and_chief.rsi
+    state: commander_and_chief
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkFringeWeaverGlass
+  suffix: fringe weaver
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: FringeWeaver
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/fringe_weaver.rsi
+    state: fringe_weaver
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkSugarRushGlass
+  suffix: sugar rush
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: SugarRush
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/sugar_rush.rsi
+    state: sugar_rush
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkCreviceSpikeGlass
+  suffix: crevice spike
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CreviceSpike
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/crevice_spike.rsi
+    state: crevice_spike
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkSquirtCiderGlass
+  suffix: squirt cider
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: SquirtCider
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/squirt_cider.rsi
+    state: squirt_cider

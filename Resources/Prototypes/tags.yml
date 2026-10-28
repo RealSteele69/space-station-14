@@ -1055,6 +1055,12 @@
 - type: Tag
   id: OreUranium # CargoBounty: BountySalvageOreUranium
 
+- type: Tag
+  id: OreVerdantium
+
+- type: Tag
+  id: OreOsmium
+
 ## P ##
 
 - type: Tag

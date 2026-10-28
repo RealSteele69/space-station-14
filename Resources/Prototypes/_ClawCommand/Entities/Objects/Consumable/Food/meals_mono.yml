@@ -1,0 +1,16 @@
+# Ported from Mono/Entities/Objects/Consumable/Food/Baked/misc.yml
+# Only the simple biscuit variant was requested; sugar/oatmeal variants were not ported.
+# Sprite copied to _Mono/Objects/Consumable/Food/Baked/misc.rsi (biscuit-simple state only).
+
+- type: entity
+  name: simple biscuit
+  parent: FoodBakedBase
+  id: FoodBakedBiscuitSimple
+  description: A simple dry biscuit, perfect pair for some tea or coffee.
+  components:
+  - type: Sprite
+    sprite: _Mono/Objects/Consumable/Food/Baked/misc.rsi
+    state: biscuit-simple
+  - type: Tag
+    tags:
+    - SimpleBiscuit

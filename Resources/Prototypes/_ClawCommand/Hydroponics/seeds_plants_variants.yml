@@ -1,0 +1,1347 @@
+- type: entity
+  parent: BasePlant
+  id: BluespaceBananaPlants
+  categories: [HideSpawnMenu]
+  name: bluespace banana tree
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/bluespace_banana.rsi
+  - type: PlantData
+    name: seeds-bluespacebanana-name
+    packetPrototype: BluespaceBananaSeeds
+    productPrototypes: [ FoodBluespaceBanana ]
+  - type: Plant
+    lifespan: 50
+    maturation: 6
+    production: 6
+    yield: 2
+    potency: 10
+    growthStages: 6
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      Vitamin:
+        min: 1
+        max: 4
+        potencyDivisor: 25
+      Nutriment:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: PoisonBerryPlants
+  categories: [HideSpawnMenu]
+  name: poison-berry bush
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/poison_berry.rsi
+  - type: PlantData
+    name: seeds-poisonberry-name
+    packetPrototype: PoisonBerrySeeds
+    productPrototypes: [ FoodPoisonBerries ]
+    mutationPrototypes: [ DeathBerryPlants ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 6
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 5
+        potencyDivisor: 25
+      Toxin:
+        min: 2
+        max: 10
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: DeathBerryPlants
+  categories: [HideSpawnMenu]
+  name: death-berry bush
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/death_berry.rsi
+  - type: PlantData
+    name: seeds-deathberry-name
+    packetPrototype: DeathBerrySeeds
+    productPrototypes: [ FoodDeathBerries ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 15
+    growthStages: 6
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Toxin:
+        min: 5
+        max: 25
+        potencyDivisor: 10
+
+- type: entity
+  parent: BasePlant
+  id: GlowBerryPlants
+  categories: [HideSpawnMenu]
+  name: glow-berry bush
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/glow_berry.rsi
+  - type: PlantData
+    name: seeds-glowberry-name
+    packetPrototype: GlowBerrySeeds
+    productPrototypes: [ FoodGlowBerries ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 6
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 10
+        potencyDivisor: 20
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: BlueCherryPlants
+  categories: [HideSpawnMenu]
+  name: blue cherry tree
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/blue_cherry.rsi
+  - type: PlantData
+    name: seeds-bluecherry-name
+    packetPrototype: BlueCherrySeeds
+    productPrototypes: [ FoodBlueCherry ]
+  - type: Plant
+    lifespan: 60
+    maturation: 10
+    production: 5
+    yield: 3
+    potency: 10
+    growthStages: 6
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    waterConsumption: 0.5
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 5
+        potencyDivisor: 25
+      JuiceCherry:
+        min: 1
+        max: 10
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: CherryBulbPlants
+  categories: [HideSpawnMenu]
+  name: cherry bulb tree
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/cherry_bulb.rsi
+  - type: PlantData
+    name: seeds-cherrybulb-name
+    packetPrototype: CherryBulbSeeds
+    productPrototypes: [ FoodCherryBulb ]
+  - type: Plant
+    lifespan: 60
+    maturation: 12
+    production: 5
+    yield: 2
+    potency: 15
+    growthStages: 6
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    waterConsumption: 0.5
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 8
+        potencyDivisor: 20
+      JuiceCherry:
+        min: 2
+        max: 15
+        potencyDivisor: 12
+
+- type: entity
+  parent: BasePlant
+  id: CherryBombPlants
+  categories: [HideSpawnMenu]
+  name: cherry bomb tree
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/cherry_bomb.rsi
+  - type: PlantData
+    name: seeds-cherrybomb-name
+    packetPrototype: CherryBombSeeds
+    productPrototypes: [ FoodCherryBomb ]
+  - type: Plant
+    lifespan: 60
+    maturation: 14
+    production: 5
+    yield: 1
+    potency: 10
+    growthStages: 6
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    waterConsumption: 0.5
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 5
+        potencyDivisor: 25
+      Thermite:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: GreenGrapePlants
+  categories: [HideSpawnMenu]
+  name: green grape vine
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/green_grape.rsi
+  - type: PlantData
+    name: seeds-greengrape-name
+    packetPrototype: GreenGrapeSeeds
+    productPrototypes: [ FoodGreenGrape ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 7
+    yield: 5
+    potency: 10
+    growthStages: 2
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 5
+        potencyDivisor: 25
+      JuiceGrape:
+        min: 1
+        max: 10
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: DeathweedPlants
+  categories: [HideSpawnMenu]
+  name: deathweed
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/deathweed.rsi
+  - type: PlantData
+    name: seeds-deathweed-name
+    packetPrototype: DeathweedSeeds
+    productPrototypes: [ LeavesDeathweed ]
+  - type: Plant
+    lifespan: 75
+    maturation: 10
+    production: 10
+    yield: 2
+    potency: 25
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.4
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      THC:
+        min: 2
+        max: 15
+        potencyDivisor: 8
+      Toxin:
+        min: 1
+        max: 5
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: LifeweedPlants
+  categories: [HideSpawnMenu]
+  name: lifeweed
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/lifeweed.rsi
+  - type: PlantData
+    name: seeds-lifeweed-name
+    packetPrototype: LifeweedSeeds
+    productPrototypes: [ LeavesLifeweed ]
+  - type: Plant
+    lifespan: 75
+    maturation: 10
+    production: 10
+    yield: 2
+    potency: 15
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.4
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      THC:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+      Bicaridine:
+        min: 1
+        max: 10
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: OmegaWeedPlants
+  categories: [HideSpawnMenu]
+  name: omega weed
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/omega_weed.rsi
+  - type: PlantData
+    name: seeds-omegaweed-name
+    packetPrototype: OmegaWeedSeeds
+    productPrototypes: [ LeavesOmegaWeed ]
+  - type: Plant
+    lifespan: 75
+    maturation: 12
+    production: 12
+    yield: 1
+    potency: 30
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.4
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      THC:
+        min: 3
+        max: 25
+        potencyDivisor: 6
+      SpaceDrugs:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: IcePepperPlants
+  categories: [HideSpawnMenu]
+  name: ice pepper plant
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/ice_pepper.rsi
+  - type: PlantData
+    name: seeds-icepepper-name
+    packetPrototype: IcePepperSeeds
+    productPrototypes: [ FoodIcePepper ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 6
+    yield: 2
+    potency: 15
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantAtmospheric
+    lowHeatTolerance: 260
+    highHeatTolerance: 288
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 4
+        potencyDivisor: 25
+      Frostoil:
+        min: 2
+        max: 15
+        potencyDivisor: 10
+
+- type: entity
+  parent: BasePlant
+  id: CombustibleLemonPlants
+  categories: [HideSpawnMenu]
+  name: combustible lemon tree
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/combustible_lemon.rsi
+  - type: PlantData
+    name: seeds-combustiblelemon-name
+    packetPrototype: CombustibleLemonSeeds
+    productPrototypes: [ FoodCombustibleLemon ]
+  - type: Plant
+    lifespan: 55
+    maturation: 8
+    production: 6
+    yield: 2
+    potency: 15
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 4
+        potencyDivisor: 25
+      JuiceLemon:
+        min: 1
+        max: 8
+        potencyDivisor: 20
+      Thermite:
+        min: 1
+        max: 8
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: VanillaPodPlants
+  categories: [HideSpawnMenu]
+  name: vanilla tree
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/vanilla_pod.rsi
+  - type: PlantData
+    name: seeds-vanillapod-name
+    packetPrototype: VanillaPodSeeds
+    productPrototypes: [ FoodVanillaPod ]
+  - type: Plant
+    lifespan: 65
+    maturation: 12
+    production: 4
+    yield: 2
+    potency: 10
+    growthStages: 6
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 6
+        potencyDivisor: 20
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: SnapcornPlants
+  categories: [HideSpawnMenu]
+  name: snapcorn stalk
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/snapcorn.rsi
+  - type: PlantData
+    name: seeds-snapcorn-name
+    packetPrototype: SnapcornSeeds
+    productPrototypes: [ FoodSnapcorn ]
+  - type: Plant
+    lifespan: 25
+    maturation: 8
+    production: 6
+    yield: 2
+    potency: 20
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 4
+        potencyDivisor: 25
+
+- type: entity
+  parent: BasePlant
+  id: DurathreadPlants
+  categories: [HideSpawnMenu]
+  name: durathread plant
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/durathread.rsi
+  - type: PlantData
+    name: seeds-durathread-name
+    packetPrototype: DurathreadSeeds
+    productPrototypes: [ DurathreadBol ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 2
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Fiber:
+        min: 5
+        max: 15
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: GeraniumPlants
+  categories: [HideSpawnMenu]
+  name: geranium
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/geranium.rsi
+  - type: PlantData
+    name: seeds-geranium-name
+    packetPrototype: GeraniumSeeds
+    productPrototypes: [ FoodGeranium ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+      Bicaridine:
+        min: 1
+        max: 15
+        potencyDivisor: 8
+
+- type: entity
+  parent: BasePlant
+  id: HarebellPlants
+  categories: [HideSpawnMenu]
+  name: harebell
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/harebell.rsi
+  - type: PlantData
+    name: seeds-harebell-name
+    packetPrototype: HarebellSeeds
+    productPrototypes: [ FoodHarebell ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+      Bicaridine:
+        min: 1
+        max: 15
+        potencyDivisor: 8
+
+- type: entity
+  parent: BasePlant
+  id: SunflowerPlants
+  categories: [HideSpawnMenu]
+  name: sunflower
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/sunflower.rsi
+  - type: PlantData
+    name: seeds-sunflower-name
+    packetPrototype: SunflowerSeeds
+    productPrototypes: [ FoodSunflower ]
+    mutationPrototypes: [ MoonflowerPlants, NovaflowerPlants ]
+  - type: Plant
+    lifespan: 30
+    maturation: 10
+    production: 4
+    yield: 3
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 4
+        potencyDivisor: 25
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: MoonflowerPlants
+  categories: [HideSpawnMenu]
+  name: moonflower
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/moonflower.rsi
+  - type: PlantData
+    name: seeds-moonflower-name
+    packetPrototype: MoonflowerSeeds
+    productPrototypes: [ FoodMoonflower ]
+  - type: Plant
+    lifespan: 30
+    maturation: 12
+    production: 4
+    yield: 2
+    potency: 15
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+      Bicaridine:
+        min: 1
+        max: 15
+        potencyDivisor: 8
+
+- type: entity
+  parent: BasePlant
+  id: NovaflowerPlants
+  categories: [HideSpawnMenu]
+  name: novaflower
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/novaflower.rsi
+  - type: PlantData
+    name: seeds-novaflower-name
+    packetPrototype: NovaflowerSeeds
+    productPrototypes: [ FoodNovaflower ]
+  - type: Plant
+    lifespan: 30
+    maturation: 12
+    production: 4
+    yield: 2
+    potency: 15
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+      Thermite:
+        min: 1
+        max: 10
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: BeeBalmPlants
+  categories: [HideSpawnMenu]
+  name: bee balm
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/bee_balm.rsi
+  - type: PlantData
+    name: seeds-beebalm-name
+    packetPrototype: BeeBalmSeeds
+    productPrototypes: [ FoodBeeBalm ]
+    mutationPrototypes: [ HoneyBalmPlants ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 4
+        potencyDivisor: 25
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: HoneyBalmPlants
+  categories: [HideSpawnMenu]
+  name: honey balm
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/honey_balm.rsi
+  - type: PlantData
+    name: seeds-honeybalm-name
+    packetPrototype: HoneyBalmSeeds
+    productPrototypes: [ FoodHoneyBalm ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+      Sugar:
+        min: 1
+        max: 10
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: ReishiPlants
+  categories: [HideSpawnMenu]
+  name: reishi mushroom
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/reishi.rsi
+  - type: PlantData
+    noun: seeds-noun-spores
+    name: seeds-reishi-name
+    packetPrototype: ReishiSeeds
+    productPrototypes: [ FoodReishi ]
+  - type: Plant
+    lifespan: 35
+    maturation: 10
+    production: 7
+    yield: 4
+    potency: 1
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+    nutrientConsumption: 0.5
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+      Bicaridine:
+        min: 1
+        max: 8
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: DestroyingAngelPlants
+  categories: [HideSpawnMenu]
+  name: destroying angel mushroom
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/destroying_angel.rsi
+  - type: PlantData
+    noun: seeds-noun-spores
+    name: seeds-destroyingangel-name
+    packetPrototype: DestroyingAngelSeeds
+    productPrototypes: [ FoodDestroyingAngel ]
+  - type: Plant
+    lifespan: 25
+    maturation: 12
+    production: 3
+    yield: 3
+    potency: 15
+    growthStages: 2
+  - type: PlantGrowth
+    waterConsumption: 0.6
+    nutrientConsumption: 0.5
+  - type: PlantChemicals
+    chemicals:
+      Amatoxin:
+        min: 2
+        max: 15
+        potencyDivisor: 8
+
+- type: entity
+  parent: BasePlant
+  id: LibertyCapPlants
+  categories: [HideSpawnMenu]
+  name: liberty-cap mushroom
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/liberty_cap.rsi
+  - type: PlantData
+    noun: seeds-noun-spores
+    name: seeds-libertycap-name
+    packetPrototype: LibertyCapSeeds
+    productPrototypes: [ FoodLibertyCap ]
+  - type: Plant
+    lifespan: 25
+    maturation: 12
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 2
+  - type: PlantGrowth
+    waterConsumption: 0.6
+    nutrientConsumption: 0.5
+  - type: PlantChemicals
+    chemicals:
+      SpaceDrugs:
+        min: 1
+        max: 8
+        potencyDivisor: 15
+      Nutriment:
+        min: 1
+        max: 3
+        potencyDivisor: 25
+
+- type: entity
+  parent: BasePlant
+  id: PlumpHelmetPlants
+  categories: [HideSpawnMenu]
+  name: plump-helmet mushroom
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/plump_helmet.rsi
+  - type: PlantData
+    noun: seeds-noun-spores
+    name: seeds-plumphelmet-name
+    packetPrototype: PlumpHelmetSeeds
+    productPrototypes: [ FoodPlumpHelmet ]
+  - type: Plant
+    lifespan: 35
+    maturation: 10
+    production: 7
+    yield: 5
+    potency: 1
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+    nutrientConsumption: 0.5
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 2
+        max: 15
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: JupiterCupPlants
+  categories: [HideSpawnMenu]
+  name: jupiter cup mushroom
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/jupiter_cup.rsi
+  - type: PlantData
+    noun: seeds-noun-spores
+    name: seeds-jupitercup-name
+    packetPrototype: JupiterCupSeeds
+    productPrototypes: [ FoodJupiterCup ]
+  - type: Plant
+    lifespan: 35
+    maturation: 10
+    production: 7
+    yield: 4
+    potency: 1
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+    nutrientConsumption: 0.5
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 4
+        potencyDivisor: 20
+      Amatoxin:
+        min: 1
+        max: 6
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: GlowshroomPlants
+  categories: [HideSpawnMenu]
+  name: glowshroom
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/glowshroom.rsi
+  - type: PlantData
+    noun: seeds-noun-spores
+    name: seeds-glowshroom-name
+    packetPrototype: GlowshroomSeeds
+    productPrototypes: [ FoodGlowshroom ]
+    mutationPrototypes: [ GlowcapPlants, ShadowshroomPlants ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 5
+    yield: 4
+    potency: 1
+    growthStages: 2
+  - type: PlantGrowth
+    waterConsumption: 0.6
+    nutrientConsumption: 0.5
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 4
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: GlowcapPlants
+  categories: [HideSpawnMenu]
+  name: glowcap mushroom
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/glowcap.rsi
+  - type: PlantData
+    noun: seeds-noun-spores
+    name: seeds-glowcap-name
+    packetPrototype: GlowcapSeeds
+    productPrototypes: [ FoodGlowcap ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 5
+    yield: 4
+    potency: 1
+    growthStages: 2
+  - type: PlantGrowth
+    waterConsumption: 0.6
+    nutrientConsumption: 0.5
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 4
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: ShadowshroomPlants
+  categories: [HideSpawnMenu]
+  name: shadowshroom
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/shadowshroom.rsi
+  - type: PlantData
+    noun: seeds-noun-spores
+    name: seeds-shadowshroom-name
+    packetPrototype: ShadowshroomSeeds
+    productPrototypes: [ FoodShadowshroom ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 5
+    yield: 3
+    potency: 10
+    growthStages: 2
+  - type: PlantGrowth
+    waterConsumption: 0.6
+    nutrientConsumption: 0.5
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 3
+        potencyDivisor: 25
+      Amatoxin:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: PeachPlants
+  categories: [HideSpawnMenu]
+  name: peach tree
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/peach.rsi
+  - type: PlantData
+    name: seeds-peach-name
+    packetPrototype: PeachSeeds
+    productPrototypes: [ FoodPeach ]
+  - type: Plant
+    lifespan: 55
+    maturation: 6
+    production: 6
+    yield: 3
+    potency: 10
+    growthStages: 6
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 5
+        potencyDivisor: 25
+      JuicePeach:
+        min: 1
+        max: 10
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: SweetPotatoPlants
+  categories: [HideSpawnMenu]
+  name: sweet potato plant
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/sweet_potato.rsi
+  - type: PlantData
+    name: seeds-sweetpotato-name
+    packetPrototype: SweetPotatoSeeds
+    productPrototypes: [ FoodSweetPotato ]
+  - type: Plant
+    lifespan: 30
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 4
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 5
+        potencyDivisor: 25
+      Sugar:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: ParsnipPlants
+  categories: [HideSpawnMenu]
+  name: parsnip
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/parsnip.rsi
+  - type: PlantData
+    name: seeds-parsnip-name
+    packetPrototype: ParsnipSeeds
+    productPrototypes: [ FoodParsnip ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 4
+        potencyDivisor: 25
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: WhiteBeetPlants
+  categories: [HideSpawnMenu]
+  name: white-beet plant
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/white_beet.rsi
+  - type: PlantData
+    name: seeds-whitebeet-name
+    packetPrototype: WhiteBeetSeeds
+    productPrototypes: [ FoodWhiteBeet ]
+    mutationPrototypes: [ RedBeetPlants ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 4
+        potencyDivisor: 25
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: RedBeetPlants
+  categories: [HideSpawnMenu]
+  name: red-beet plant
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/red_beet.rsi
+  - type: PlantData
+    name: seeds-redbeet-name
+    packetPrototype: RedBeetSeeds
+    productPrototypes: [ FoodRedBeet ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 4
+        potencyDivisor: 25
+      Iron:
+        min: 1
+        max: 4
+        potencyDivisor: 25
+
+- type: entity
+  parent: BasePlant
+  id: TeaAstraPlants
+  categories: [HideSpawnMenu]
+  name: tea astra plant
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/tea_astra.rsi
+  - type: PlantData
+    name: seeds-teaastra-name
+    packetPrototype: TeaAstraSeeds
+    productPrototypes: [ LeavesTeaAstra ]
+  - type: Plant
+    lifespan: 75
+    maturation: 5
+    production: 3
+    yield: 2
+    potency: 20
+    growthStages: 5
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      Theobromine:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+
+- type: entity
+  parent: BasePlant
+  id: CatnipPlants
+  categories: [HideSpawnMenu]
+  name: catnip plant
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/catnip.rsi
+  - type: PlantData
+    name: seeds-catnip-name
+    packetPrototype: CatnipSeeds
+    productPrototypes: [ LeavesCatnip ]
+  - type: Plant
+    lifespan: 75
+    maturation: 5
+    production: 3
+    yield: 2
+    potency: 20
+    growthStages: 5
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      Happiness:
+        min: 1
+        max: 8
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: CoffeeRobustaPlants
+  categories: [HideSpawnMenu]
+  name: coffee robusta shrub
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/coffee_robusta.rsi
+  - type: PlantData
+    name: seeds-coffeerobusta-name
+    packetPrototype: CoffeeRobustaSeeds
+    productPrototypes: [ FoodCoffeeRobusta ]
+  - type: Plant
+    lifespan: 25
+    maturation: 9
+    production: 1
+    yield: 2
+    potency: 5
+    growthStages: 5
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 2
+        max: 8
+        potencyDivisor: 16
+      Theobromine:
+        min: 2
+        max: 8
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: SpaceTobaccoPlants
+  categories: [HideSpawnMenu]
+  name: space tobacco plant
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/space_tobacco.rsi
+  - type: PlantData
+    name: seeds-spacetobacco-name
+    packetPrototype: SpaceTobaccoSeeds
+    productPrototypes: [ LeavesSpaceTobacco ]
+  - type: Plant
+    lifespan: 75
+    maturation: 5
+    production: 5
+    yield: 2
+    potency: 25
+    growthStages: 3
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    waterConsumption: 0.4
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      Nicotine:
+        min: 2
+        max: 15
+        potencyDivisor: 8
+      SpaceDrugs:
+        min: 1
+        max: 4
+        potencyDivisor: 25
+
+- type: entity
+  parent: BasePlant
+  id: BambooPlants
+  categories: [HideSpawnMenu]
+  name: bamboo stalk
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/bamboo.rsi
+  - type: PlantData
+    noun: seeds-noun-spores
+    name: seeds-bamboo-name
+    packetPrototype: BambooSeeds
+    productPrototypes: [ BambooLog ]
+  - type: Plant
+    lifespan: 80
+    maturation: 15
+    production: 3
+    yield: 5
+    potency: 1
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+    nutrientConsumption: 0.5

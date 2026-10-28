@@ -153,6 +153,10 @@ public sealed partial class ChatSystem
 
     private IEnumerable<INetChannel> GetDeadChatClients()
     {
+        // claw command - once the round has ended, dead chat is visible to every connected player
+        if (_postRoundDeadChatOpen)
+            return Filter.Broadcast().Recipients.Select(p => p.Channel);
+
         return Filter.Empty()
             .AddWhereAttachedEntity(HasComp<GhostComponent>)
             .Recipients

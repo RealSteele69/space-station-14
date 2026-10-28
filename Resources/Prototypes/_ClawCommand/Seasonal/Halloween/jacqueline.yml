@@ -1,0 +1,35 @@
+# Jacqueline the Pumpqueen: a wandering spooky-season NPC who trades witches' candy for a treat -
+# or, sometimes, a trick.
+
+- type: entity
+  id: MobJacquelinePumpqueen
+  name: Jacqueline the Pumpqueen
+  description: A woman in a ragged shawl with a carved pumpkin for a head. She's carrying a bowl of candy.
+  parent: SimpleSpaceMobBase
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Halloween/halloween_items.rsi
+    state: jacqueline
+  - type: NpcFactionMember
+    factions:
+    - Passive
+  - type: HTN
+    rootTask:
+      task: IdleCompound
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: female
+  - type: Tag
+    tags:
+    - CannotSuicide
+  - type: Jacqueline
+    treats:
+    - PlushieGhost
+    - PlushieBee
+    - CarvedPumpkinSmall
+    - FoodCandyApple
+    - FoodCookieSkull
+    - FoodCookieCoffin
+    - FoodMagicCandy
+    - DrinkMagicPotion

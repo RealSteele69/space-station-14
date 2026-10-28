@@ -5,23 +5,41 @@
     AmbrosiaVulgarisSeeds: 3
     AppleSeeds: 5
     AvocadoSeeds: 5 # Claw Command - ported (Frontier)
+    BambooSeeds: 3
     BananaSeeds: 5
+    BeeBalmSeeds: 3
     BeeSeeds: 5 # Claw Command - ported (Frontier)
     BerrySeeds: 5
+    BlackberrySeeds: 5
+    BlueberrySeeds: 5
+    BlueCherrySeeds: 3
+    BluespaceBananaSeeds: 3
     CarrotSeeds: 5
     CabbageSeeds: 5
+    CatnipSeeds: 3
     ChanterelleSeeds: 5
+    CherryBulbSeeds: 3
     CherrySeeds: 5
     ChiliSeeds: 5
     CocoaSeeds: 3
+    CoconutSeeds: 3
+    CoffeeRobustaSeeds: 3
     CoffeeSeeds: 3 # Claw Command - ported (Floof - Botany Additions)
+    CombustibleLemonSeeds: 3
     CornSeeds: 5
     CottonSeeds: 5
     CucumberSeeds: 5 # Claw Command - ported (Frontier)
+    DurathreadSeeds: 3
     EggplantSeeds: 5
     GalaxythistleSeeds: 3
     GarlicSeeds: 3
+    GeraniumSeeds: 3
+    GlowBerrySeeds: 3
+    GlowshroomSeeds: 3
     GrapeSeeds: 5
+    GreenGrapeSeeds: 5
+    HarebellSeeds: 3
+    IcePepperSeeds: 3
     LemonSeeds: 5
     LimeSeeds: 5
     PineappleSeeds: 5
@@ -31,22 +49,40 @@
     OnionSeeds: 5
     OnionRedSeeds: 5
     OrangeSeeds: 5
+    ParsnipSeeds: 3
+    PeachSeeds: 3
     PeaSeeds: 5
+    PeanutSeeds: 5
     PearSeeds: 3 # Claw Command - ported (Floof - Botany Additions)
+    PlumpHelmetSeeds: 3
     PomegranateSeeds: 3 # Claw Command - ported (Floofstation)
     PoppySeeds: 3
     PotatoSeeds: 5
     PumpkinSeeds: 5
+    RaspberrySeeds: 5
+    ReishiSeeds: 3
     RiceSeeds: 5
+    SnapcornSeeds: 3
     SoybeanSeeds: 5
+    StrawberrySeeds: 5
     SugarcaneSeeds: 5
+    SunflowerSeeds: 3
+    SweetPotatoSeeds: 3
+    TeaAstraSeeds: 3
     TeaPlantSeeds: 5
     TomatoSeeds: 5
     TowercapSeeds: 5
+    VanillaPodSeeds: 3
     WheatSeeds: 5
     WatermelonSeeds: 5
+    WhiteBeetSeeds: 3
   contrabandInventory:
     TobaccoSeeds: 2
     FoodSnackSemki: 2
     FlyAmanitaSeeds: 1
     HumpShroomSeeds: 1 # Claw Command - ported (Floof - Botany Additions)
+    DeathweedSeeds: 1
+    LibertyCapSeeds: 1
+    LifeweedSeeds: 1
+    OmegaWeedSeeds: 1
+    SpaceTobaccoSeeds: 1

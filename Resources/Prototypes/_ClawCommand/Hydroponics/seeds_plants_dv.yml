@@ -1,0 +1,39 @@
+# Plant entities for sibling-fork seeds, modernised from `- type: seed` prototypes.
+# Each pairs with a seed packet in:
+#   _ClawCommand/Entities/Objects/Specific/Hydroponics/seeds_extras.yml
+
+- type: entity
+  parent: BasePlant
+  id: AmbrosiaNobilisPlants
+  categories: [HideSpawnMenu]
+  name: ambrosia nobilis plant
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/ambrosia_deus.rsi
+  - type: PlantData
+    name: seeds-ambrosianobilis-name
+    packetPrototype: AmbrosiaNobilisSeeds
+    productPrototypes: [ FoodAmbrosiaNobilis ]
+    mutationPrototypes: [ AmbrosiaDeusPlants ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+  - type: PlantGrowth
+    waterConsumption: 0.60
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 2
+        potencyDivisor: 10
+      SpaceDrugs:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+      Tricordrazine:
+        min: 1
+        max: 4
+        potencyDivisor: 25

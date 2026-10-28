@@ -1,0 +1,34 @@
+# Bartholomew's cauldron.
+
+- type: entity
+  parent: BaseStructure
+  id: StructureHalloweenCauldron
+  name: Bartholomew's cauldron
+  description: A black iron cauldron, bubbling with something that smells vaguely of candy. Feed it junk and see what happens.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Halloween/halloween_items.rsi
+    state: barthpot
+    noRot: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 200
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: PointLight
+    enabled: true
+    color: "#cc6600"
+    radius: 1.5
+    energy: 2.0
+  - type: InteractionOutline
+  - type: Cauldron

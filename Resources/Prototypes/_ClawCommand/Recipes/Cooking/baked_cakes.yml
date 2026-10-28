@@ -1,0 +1,44 @@
+# Microwave recipes for Resources/Prototypes/_ClawCommand/Entities/Objects/Consumable/Food/Baked/baked_cakes.yml
+
+- type: microwaveMealRecipe
+  id: RecipeBriocheCake
+  name: brioche cake recipe
+  result: FoodCakeBrioche
+  time: 5
+  group: Cake
+  reagents:
+    Sugar: 5
+  solids:
+    FoodCakePlain: 1
+    FoodDough: 1
+
+- type: microwaveMealRecipe
+  id: RecipeAngelFoodCake
+  name: angel food cake recipe
+  result: FoodCakeAngelFood
+  time: 5
+  group: Cake
+  reagents:
+    Holywater: 10
+  solids:
+    FoodCakePlain: 1
+
+- type: microwaveMealRecipe
+  id: RecipePoundCake
+  name: pound cake recipe
+  result: FoodCakePound
+  time: 15
+  group: Cake
+  solids:
+    FoodCakeBatter: 2
+
+- type: microwaveMealRecipe
+  id: RecipeHardwareCake
+  name: hardware cake recipe
+  result: FoodCakeHardware
+  time: 5
+  group: Cake
+  reagents:
+    Oil: 15
+  solids:
+    FoodCakePlain: 1

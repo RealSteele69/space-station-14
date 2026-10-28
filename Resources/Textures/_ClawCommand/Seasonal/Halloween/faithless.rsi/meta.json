@@ -1,0 +1,18 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Converted from a DMI sprite sheet under Citadel Station 13's icons/mob/animal.dmi, CC-BY-SA-3.0 per that project's blanket asset license.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "faithless",
+            "directions": 4
+        },
+        {
+            "name": "faithless_dead"
+        }
+    ]
+}

@@ -1,0 +1,174 @@
+# Claw Command - sushi components and dishes not already covered by the NF
+# avocado/carp sushi port (sushi_nf.yml) or the Floof salmon roll. Prep
+# ingredients (rice, seaweed, canned tuna) are stocked in the chef vending
+# machine; finished dishes go through the RandomFoodMeal spawner.
+
+# === Components === #
+
+- type: entity
+  name: sushi rice
+  parent: FoodInjectableBase
+  id: FoodSushiRice
+  description: A bowl of sticky rice for making sushi.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - rice
+    - salty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sushi_extras.rsi
+    state: sushi_rice
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: TableSalt
+        Quantity: 5
+
+- type: entity
+  name: seaweed sheet
+  parent: FoodInjectableBase
+  id: FoodSeaweedSheet
+  description: A thin, light salted sheet of plant matter. Commonly used in sushi recipes.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - salty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sushi_extras.rsi
+    state: sea_weed
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: TableSalt
+        Quantity: 2
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: canned tuna
+  parent: FoodInjectableBase
+  id: FoodCannedTuna
+  description: A small can of tuna fish, beloved by felines.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - cannedtuna
+    - salty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sushi_extras.rsi
+    state: tuna_can
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: TableSalt
+        Quantity: 5
+      - ReagentId: Mercury
+        Quantity: 1
+  - type: Tag
+    tags:
+    - Meat
+
+# === Dishes === #
+
+- type: entity
+  name: funa hosomaki
+  parent: FoodMealBase
+  id: FoodFunaHosomaki
+  description: A small cylinder filled with rice and fish.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - fishy
+    - rice
+    - salty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sushi_extras.rsi
+    state: sushie_basic
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+      - ReagentId: Vitamin
+        Quantity: 2
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: funa nigiri
+  parent: FoodMealBase
+  id: FoodFunaNigiri
+  description: A well-prepared piece of carp fillet placed on rice. Looks fancy and fresh!
+  components:
+  - type: FlavorProfile
+    flavors:
+    - fishy
+    - rice
+    - salty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sushi_extras.rsi
+    state: sushie_pro
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Vitamin
+        Quantity: 3
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: tobiko
+  parent: FoodMealBase
+  id: FoodTobiko
+  description: Fish roe wrapped in a thin salted seaweed pod.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - salty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sushi_extras.rsi
+    state: sushie_egg
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: Vitamin
+        Quantity: 2
+      - ReagentId: TableSalt
+        Quantity: 1
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: onigiri
+  parent: FoodMealBase
+  id: FoodOnigiri
+  description: A ball of rice with some light salt and a wrap of seaweed.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - rice
+    - salty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sushi_extras.rsi
+    state: riceball
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+      - ReagentId: TableSalt
+        Quantity: 2

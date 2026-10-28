@@ -31,6 +31,9 @@
   - ClawCommandOfficer
   - ClawCommandMaid
   - AdmiralClaw
+  # Claw Command - CentComm staff; upstream used `canBeAntag: false` on the job, which JobPrototype lacks here.
+  - CentralCommandIntern
+  - SRTAgent
 
 # Borgs
 - type: antagSpecifier

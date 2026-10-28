@@ -23,9 +23,20 @@
     FoodCheese: 1
     FoodMeat: 6
     FoodBoxCloth: 1 # _ClawCommand: Added.
+    ReagentContainerGreenTeaPouch: 2 # Claw Command - Mono port
+    ReagentContainerChamomileTeaPouch: 2 # Claw Command - Mono port
+    ReagentContainerBerryTeaPouch: 2 # Claw Command - Mono port
+    ReagentContainerFruitTeaPouch: 2 # Claw Command - Mono port
+    ReagentContainerYorkshireTeaPouch: 2 # Claw Command - Mono port
+    ReagentContainerDecafBlackTeaPouch: 2 # Claw Command - Mono port
+    ReagentContainerDecafCoffeePouch: 2 # Claw Command - Mono port
+    FoodSushiRice: 2 # Claw Command - exotic snack
+    FoodSeaweedSheet: 2 # Claw Command - exotic snack
+    FoodCannedTuna: 2 # Claw Command - exotic snack
   contrabandInventory:
     EggBoxBroken: 1
     FoodBoxDonkpocket: 1
     FoodFrozenSandwich: 2
     FoodFrozenSandwichStrawberry: 2
+    ReagentContainerSyndicateTeaPouch: 2 # Claw Command - Mono port
 

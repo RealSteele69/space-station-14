@@ -1,0 +1,164 @@
+# New sandwiches/toasts not previously present in this fork. Recipes in
+# _ClawCommand/Recipes/Cooking/meal_recipes_sandwiches_extra.yml.
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealBLT
+  name: BLT sandwich
+  description: The classic bacon, lettuce, and tomato sandwich.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - bacon
+    - cabbage
+    - tomato
+    - mayonnaise
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sandwiches_extra.rsi
+    state: blt
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 18
+      - ReagentId: Protein
+        Quantity: 4
+      - ReagentId: Mayo
+        Quantity: 5
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealTwoBread
+  name: two bread
+  description: This seems awfully bitter.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - bread
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sandwiches_extra.rsi
+    state: twobread
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealTunaSandwich
+  name: tuna sandwich
+  description: Both a salad and a sandwich in one.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - cannedtuna
+    - mayonnaise
+    - bread
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sandwiches_extra.rsi
+    state: tunasandwich
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 20
+      - ReagentId: Protein
+        Quantity: 4
+      - ReagentId: Mayo
+        Quantity: 5
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealMeatballSub
+  name: meatball sub
+  description: At some point, you need to be the chief sub.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - bread
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/meals_mains.rsi
+    state: meatballsub
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 22
+      - ReagentId: Protein
+        Quantity: 6
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealJelliedToast
+  name: jellied toast
+  description: A slice of toast covered with delicious jam.
+  components:
+  - type: Item
+    storedOffset: 0,-2
+  - type: FlavorProfile
+    flavors:
+    - bread
+    - jelly
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sandwiches_extra.rsi
+    state: jellytoast
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+      - ReagentId: Sugar
+        Quantity: 3
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealJellySandwich
+  name: jelly sandwich
+  description: You wish you had some peanut butter to go with this...
+  components:
+  - type: FlavorProfile
+    flavors:
+    - bread
+    - jelly
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sandwiches_extra.rsi
+    state: jellysandwich
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Sugar
+        Quantity: 4
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealNotASandwich
+  name: not-a-sandwich
+  description: Something seems to be wrong with this, you can't quite figure out what. Maybe it's the moustache.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - bread
+    - strange
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/sandwiches_extra.rsi
+    state: notasandwich
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 12
+      - ReagentId: Vitamin
+        Quantity: 6

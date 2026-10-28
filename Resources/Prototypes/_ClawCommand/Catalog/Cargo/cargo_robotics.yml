@@ -1,0 +1,39 @@
+- type: cargoProduct
+  id: MechRipleyOrder
+  icon:
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: ripley
+  product: MechRipleyBattery
+  cost: 6000
+  category: cargoproduct-category-name-science
+  group: market
+
+- type: cargoProduct
+  id: MechHonkerOrder
+  icon:
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: honker
+  product: MechHonkerBattery
+  cost: 5000
+  category: cargoproduct-category-name-science
+  group: market
+
+- type: cargoProduct
+  id: MechHamtrOrder
+  icon:
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: hamtr
+  product: MechHamtrBattery
+  cost: 4500
+  category: cargoproduct-category-name-science
+  group: market
+
+- type: cargoProduct
+  id: MechVimOrder
+  icon:
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: vim
+  product: MechVimBattery
+  cost: 2000
+  category: cargoproduct-category-name-science
+  group: market

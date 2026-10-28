@@ -60,6 +60,16 @@
       children:
       - id: ClothingOuterRobesCult
       - id: BedsheetCult
+    # Expanded necropolis loot pool, split into themed sub-tables (relic / weapon-armor / misc).
+    - !type:NestedSelector
+      weight: 1.5
+      tableId: NecropolisLootRelic
+    - !type:NestedSelector
+      weight: 1.5
+      tableId: NecropolisLootWeaponArmor
+    - !type:NestedSelector
+      weight: 1.5
+      tableId: NecropolisLootMisc
 
 - type: entityTable
   id: LavalandMaterialRare
@@ -76,3 +86,51 @@
       - id: MaterialLegionSkull1
       - id: MaterialBones1
         rolls: 2, 3
+
+# Relic-flavored necropolis loot: cursed trinkets, soul-binding and teleportation oddities, mementos.
+- type: entityTable
+  id: NecropolisLootRelic
+  table: !type:GroupSelector
+    children:
+    - id: ClothingMaskGoldenCursed # haunted trinket; existing cursed-mask prototype, reused as-is
+      weight: 0.5
+    - id: LavalandBoundSoulEffigy
+    - id: LavalandWarpConduit
+      weight: 0.75
+    - id: LavalandRitualLifeWard
+      weight: 0.5
+    - id: LavalandMementoLocket
+    - id: LavalandVampirismCrystalGreater
+      weight: 0.75
+    - id: LavalandSpectralBlade
+      weight: 0.5
+    - id: LavalandUndyingTalisman
+      weight: 0.4
+
+# Weapon/armor-flavored necropolis loot: reskins and stat variants of existing weapons/armor.
+- type: entityTable
+  id: NecropolisLootWeaponArmor
+  table: !type:GroupSelector
+    children:
+    - id: LavalandCleavingHalberd
+    - id: LavalandNecropolisHardsuit
+      weight: 0.75
+    - id: LavalandCeremonialBlade
+    - id: LavalandSacrificialDagger
+    - id: LavalandAshCrusherHammer
+      weight: 0.5
+    - id: LavalandMoltenStaff
+      weight: 0.5
+
+# Misc-flavored necropolis loot: cosmetics, a lore book and bonus rare materials.
+- type: entityTable
+  id: NecropolisLootMisc
+  table: !type:GroupSelector
+    children:
+    - id: LavalandVavilonBook
+    - id: LavalandNecropolisSignetRing
+    - !type:NestedSelector # rare-material bundle
+      tableId: LavalandMaterialRare
+      weight: 1.5
+    - id: LavalandEmberLantern
+    - id: DrinkGoldenCup # existing prototype, reused as a trophy cup

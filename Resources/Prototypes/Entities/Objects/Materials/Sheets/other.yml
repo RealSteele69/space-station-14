@@ -229,6 +229,74 @@
 
 - type: entity
   parent: SheetOtherBase
+  id: SheetVerdantium
+  name: verdantium
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      Verdantium: 100
+  - type: Stack
+    stackType: Verdantium
+    baseLayer: base
+    layerStates:
+    - uranium
+    - uranium_2
+    - uranium_3
+  - type: Sprite
+    state: uranium_3
+    color: "#2ecc71"
+    layers:
+    - state: uranium_3
+      map: ["base"]
+  - type: Item
+    heldPrefix: uranium
+
+- type: entity
+  parent: SheetVerdantium
+  id: SheetVerdantium1
+  name: verdantium
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: SheetOtherBase
+  id: SheetOsmium
+  name: osmium
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      Osmium: 100
+  - type: Stack
+    stackType: Osmium
+    baseLayer: base
+    layerStates:
+    - uranium
+    - uranium_2
+    - uranium_3
+  - type: Sprite
+    state: uranium_3
+    color: "#6b7f8c"
+    layers:
+    - state: uranium_3
+      map: ["base"]
+  - type: Item
+    heldPrefix: uranium
+
+- type: entity
+  parent: SheetOsmium
+  id: SheetOsmium1
+  name: osmium
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: SheetOtherBase
   id: MaterialSheetMeat
   name: meat sheet
   suffix: Full

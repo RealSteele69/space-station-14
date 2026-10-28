@@ -1,0 +1,31 @@
+# Seasonal Halloween curtains. The source texture had no matching entity
+# upstream, so this is a minimal new entity built off our fork's BaseCurtains,
+# following the same component shape as the other BaseCurtains variants
+# (e.g. CurtainsRed) in Entities/Structures/Decoration/curtains.yml.
+# No construction-graph node exists for this variant, so it is placeable only
+# (map/admin spawn), not player-buildable via the Curtains construction graph.
+
+- type: entity
+  id: CurtainsBloodyHalloween
+  parent: BaseCurtains
+  suffix: Bloody, Halloween
+  name: curtains
+  description: Hides what others shouldn't see. These look like they've seen some things themselves.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Structures/Decoration/Curtains/bloody_curtains.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+
+- type: entity
+  id: CurtainsBloodyHalloweenOpen
+  parent: CurtainsBloodyHalloween
+  suffix: Open, Bloody, Halloween
+  components:
+  - type: Door
+    state: Open
+  - type: Occluder
+    enabled: false
+  - type: Physics
+    canCollide: false

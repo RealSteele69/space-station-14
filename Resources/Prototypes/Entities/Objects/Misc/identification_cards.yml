@@ -1337,6 +1337,44 @@
 
 - type: entity
   parent: IDCardStandard
+  id: CentcomIDCardSRT
+  name: SRT ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: centcom
+    - state: stripe_top
+      color: *color-centcomm-top
+    - state: stripe_bottom
+      color: *color-centcomm-bottom
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: DeathSquad
+  - type: PresetIdCard
+    job: SRTAgent
+
+- type: entity
+  parent: IDCardStandard
+  id: CentcomInternIDCard
+  name: CentComm intern ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: centcom
+    - state: stripe_top
+      color: *color-centcomm-top
+    - state: stripe_bottom
+      color: *color-centcomm-bottom
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: Nanotrasen
+  - type: Item
+    heldPrefix: blue
+  - type: PresetIdCard
+    job: CentralCommandIntern
+
+- type: entity
+  parent: IDCardStandard
   id: CBURNIDcard
   name: CBURN ID card
   suffix: CBURN

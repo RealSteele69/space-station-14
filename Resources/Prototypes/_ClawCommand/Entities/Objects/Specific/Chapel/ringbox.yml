@@ -1,0 +1,20 @@
+- type: entity
+  parent: [ BoxBase, BaseBagOpenClose ]
+  id: RingBox
+  name: ring box
+  description: Made from high quality wood.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Chapel/ringbox.rsi
+    layers:
+    - state: ring-box-closed
+      map: [ "closeLayer" ]
+    - state: ring-box-open
+      map: [ "openLayer" ]
+      visible: false
+  - type: StaticPrice
+    price: 50
+  - type: Appearance
+  - type: Storage
+    grid:
+    - 0,0,0,0

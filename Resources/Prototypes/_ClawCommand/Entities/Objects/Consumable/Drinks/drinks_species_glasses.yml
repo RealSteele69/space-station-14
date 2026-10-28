@@ -1,0 +1,167 @@
+- type: entity
+  parent: DrinkGlass
+  id: DrinkColdscalesGlass
+  suffix: coldscales
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Coldscales
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/coldscales.rsi
+    state: coldscales
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkOilDrumGlass
+  suffix: oil drum
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: OilDrum
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/oil_drum.rsi
+    state: oil_drum
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkNordKingGlass
+  suffix: nord king
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: NordKing
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/nord_king.rsi
+    state: nord_king
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkVelvetKissGlass
+  suffix: velvet kiss
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: VelvetKiss
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/velvet_kiss.rsi
+    state: velvet_kiss
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkAbductionFruitGlass
+  suffix: abduction fruit
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: AbductionFruit
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/abduction_fruit.rsi
+    state: abduction_fruit
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkBugZapperGlass
+  suffix: bug zapper
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: BugZapper
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/bug_zapper.rsi
+    state: bug_zapper
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkMushCrushGlass
+  suffix: mush crush
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: MushCrush
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/mush_crush.rsi
+    state: mush_crush
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkDarkbrewGlass
+  suffix: darkbrew
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Darkbrew
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/darkbrew.rsi
+    state: darkbrew
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkHollowBoneGlass
+  suffix: hollow bone
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: HollowBone
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/hollow_bone.rsi
+    state: hollow_bone
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkFriskyKittyGlass
+  suffix: frisky kitty
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: FriskyKitty
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/frisky_kitty.rsi
+    state: frisky_kitty
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkJellWyrmGlass
+  suffix: jell wyrm
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: JellWyrm
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/jell_wyrm.rsi
+    state: jell_wyrm
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkLavalSpitGlass
+  suffix: laval spit
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: LavalSpit
+        Quantity: 30
+  - type: Icon
+    sprite: _ClawCommand/Objects/Consumable/Drinks/laval_spit.rsi
+    state: laval_spit

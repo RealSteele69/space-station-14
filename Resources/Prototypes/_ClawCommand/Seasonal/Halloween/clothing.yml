@@ -1,0 +1,19 @@
+# Jacqueline's "trick" headwear. Reuses the vanilla jack-o-lantern sprite - she doesn't carve a new
+# one for every victim.
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatJackOLantern
+  name: jack o' lantern
+  description: A hollowed-out pumpkin, now stuck firmly on someone's head.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/pumpkin.rsi
+    state: lantern
+  - type: Clothing
+    sprite: Objects/Specific/Hydroponics/pumpkin.rsi
+  - type: PointLight
+    enabled: true
+    color: "#cc6600"
+    radius: 1.5
+    energy: 3.0

@@ -204,6 +204,20 @@
     RawUranium: 100
 
 - type: latheRecipe
+  id: SheetVerdantium1
+  result: SheetVerdantium1
+  completetime: 0
+  materials:
+    RawVerdantium: 100
+
+- type: latheRecipe
+  id: SheetOsmium1
+  result: SheetOsmium1
+  completetime: 0
+  materials:
+    RawOsmium: 100
+
+- type: latheRecipe
   id: IngotGold1
   result: IngotGold1
   completetime: 0

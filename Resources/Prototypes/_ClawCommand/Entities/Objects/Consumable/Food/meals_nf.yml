@@ -232,3 +232,88 @@
   - type: Tag
     tags:
     - Fruit
+
+# Sausage & hotdog
+# Ported from _NF/Entities/Objects/Consumable/Food/ingredients.yml and _NF/Entities/Objects/Consumable/Food/meals.yml.
+# Source's NFHotdogStove Construction graph doesn't exist in this fork - dropped, microwave recipe
+# reachability is sufficient (matches this fork's convention elsewhere).
+# sausagecooked.png/hotdog.png from the source's meat.rsi were skipped: that file's meta.json has two
+# conflicting "copyright" keys and neither one actually credits those two specific states, so they are
+# effectively unattributed - substituted with existing, clearly-credited vanilla sprites instead
+# (Objects/Consumable/Food/meat.rsi "cutlet-cooked" and Objects/Consumable/Food/burger.rsi "bun").
+# sausageraw.png/sausagecasing.png (credited to Prismatic) were copied normally.
+
+- type: entity
+  parent: FoodMeatBase
+  id: FoodSausageRaw
+  name: raw sausage
+  description: A simple sausage. Who knows what's in this thing?
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Consumable/Food/ingredients.rsi
+    state: sausageraw
+  - type: Solution
+    solution:
+      maxVol: 7
+      reagents:
+      - ReagentId: UncookedAnimalProteins
+        Quantity: 5
+
+- type: entity
+  parent: BaseItem
+  id: FoodSausageCasing
+  name: sausage casing
+  description: The intestine or some equivalent of some poor creature out there...
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Consumable/Food/ingredients.rsi
+    state: sausagecasing
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMeatSausage
+  name: cooked sausage
+  description: A simple sausage. Who knows what's in this thing?
+  components:
+  - type: Tag
+    tags:
+    - Cooked
+    - Meat
+  - type: FlavorProfile
+    flavors:
+    - meaty
+  - type: Sprite
+    sprite: Objects/Consumable/Food/meat.rsi
+    state: cutlet-cooked
+  - type: Solution
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: Flavorol
+        Quantity: 2
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealHotdog
+  name: hotdog
+  description: Hot diggity dog!
+  components:
+  - type: Tag
+    tags:
+    - Cooked
+    - Meat
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - bread
+  - type: Sprite
+    sprite: Objects/Consumable/Food/burger.rsi
+    state: bun
+  - type: Solution
+    solution:
+      maxVol: 18
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8

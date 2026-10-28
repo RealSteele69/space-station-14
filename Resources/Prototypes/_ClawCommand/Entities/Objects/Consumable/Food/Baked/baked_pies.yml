@@ -1,0 +1,170 @@
+# Additional baked pies/tarts not covered by the vanilla/NF pie lineup.
+
+- type: entity
+  name: beary pie
+  parent: FoodPieBase
+  id: FoodPieBeary
+  description: No brown bears were harmed in the making of this pie. Probably.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - meaty
+      - fishy
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_pies.rsi
+    state: bearypie
+  - type: Tag
+    tags:
+    - Meat
+    - Pie
+
+- type: entity
+  name: burek
+  parent: [ FoodPieBase, BaseSlicingRefinableFood ]
+  id: FoodPieBurek
+  description: A flaky pastry roll stuffed with seasoned meat. If you know, you know.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - meaty
+      - oily
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_pies.rsi
+    state: burek
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodPieBurekSlice
+      amount: 8
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 64
+      - ReagentId: Protein
+        Quantity: 16
+      - ReagentId: Vitamin
+        Quantity: 12
+  - type: Tag
+    tags:
+    - Meat
+    - Pie
+
+- type: entity
+  name: slice of burek
+  parent: FoodPieSliceBase
+  id: FoodPieBurekSlice
+  description: A flaky slice of burek. Watch out for oil stains.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - meaty
+      - oily
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_pies.rsi
+    state: burekslice
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+      - ReagentId: Protein
+        Quantity: 2
+      - ReagentId: Vitamin
+        Quantity: 1.5
+  - type: Tag
+    tags:
+    - Meat
+    - Pie
+    - Slice
+
+- type: entity
+  name: tofu-pie
+  parent: FoodPieBase
+  id: FoodPieTofu
+  description: A delicious vegetarian take on meat-pie.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - tofu
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_pies.rsi
+    layers:
+    - state: meatpie
+      color: "#F5DEB3"
+
+- type: entity
+  name: berry tart
+  parent: FoodPieBase
+  id: FoodTartBerry
+  description: A tasty dessert of mixed berries atop a thin pastry crust.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+      - fruity
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_pies.rsi
+    state: berrytart
+  - type: Tag
+    tags:
+    - Fruit
+    - Pie
+
+- type: entity
+  name: dulce de batata
+  parent: [ FoodPieBase, BaseSlicingRefinableFood ]
+  id: FoodPieDulceDeBatata
+  description: A delicious jelly made with sweet potatoes.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+      - potatoes
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_pies.rsi
+    state: dulcedebatata
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 56
+      - ReagentId: Vitamin
+        Quantity: 16
+      - ReagentId: Sugar
+        Quantity: 12
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodPieDulceDeBatataSlice
+      amount: 8
+  - type: Tag
+    tags:
+    - Vegetable
+    - Pie
+
+- type: entity
+  name: slice of dulce de batata
+  parent: FoodPieSliceBase
+  id: FoodPieDulceDeBatataSlice
+  description: A sweet slice of dulce de batata jelly.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+      - potatoes
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_pies.rsi
+    state: dulcedebatataslice
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 7
+      - ReagentId: Vitamin
+        Quantity: 2
+      - ReagentId: Sugar
+        Quantity: 1.5
+  - type: Tag
+    tags:
+    - Vegetable
+    - Pie
+    - Slice

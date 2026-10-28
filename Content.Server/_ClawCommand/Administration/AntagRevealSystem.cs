@@ -14,6 +14,7 @@ using Content.Shared.Roles;
 using Robust.Server.Player;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Timing;
 
 namespace Content.Server._ClawCommand.Administration;
 
@@ -32,8 +33,19 @@ public sealed partial class AntagRevealSystem : EntitySystem
     [Dependency] private GameTicker _ticker = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SharedRoleSystem _role = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private readonly HashSet<NetUserId> _revealed = new();
+
+    /// <summary>
+    /// Reveals in quick succession (an admin clicking the button repeatedly) are coalesced into a single
+    /// log entry and admin alert instead of one each, so the log/chat doesn't get spammed.
+    /// </summary>
+    private static readonly TimeSpan BatchWindow = TimeSpan.FromSeconds(3);
+    private readonly List<PendingReveal> _pending = new();
+    private TimeSpan _pendingFlushAt;
+
+    private readonly record struct PendingReveal(string AdminName, string PlayerName, string Character, NetUserId Target, string Source, string Result);
 
     /// <summary>
     /// Admin log types that state antag status outright. In the current round they are hidden from the
@@ -92,19 +104,56 @@ public sealed partial class AntagRevealSystem : EntitySystem
             ? string.Join(", ", antagRoles.Distinct())
             : Loc.GetString("antag-reveal-none");
 
-        _adminLog.Add(LogType.AntagReveal, LogImpact.High,
-            $"{adminName} revealed antag status of {playerName} ({target}) via {source}: {result}");
-
-        // Chat is broadcast to every admin, so the result itself stays out of it; the admin log entry
-        // above (and the now-unmasked player panel) is where the actual status lives.
-        _chat.SendAdminAlert(Loc.GetString("antag-reveal-admin-alert",
-            ("admin", adminName),
-            ("player", playerName),
-            ("character", character == string.Empty ? string.Empty : Loc.GetString("antag-reveal-character", ("name", character))),
-            ("source", source)));
+        // The log entry and chat alert are queued, not sent right away, so repeated reveals in a short
+        // window (someone clicking the panel button down a player list) land as one entry, not a flood.
+        _pending.Add(new PendingReveal(adminName, playerName, character, target, source, result));
+        _pendingFlushAt = _timing.CurTime + BatchWindow;
 
         if (_revealed.Add(target))
             _admin.RefreshPlayerInfo(target);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (_pending.Count == 0 || _timing.CurTime < _pendingFlushAt)
+            return;
+
+        FlushPending();
+    }
+
+    private void FlushPending()
+    {
+        if (_pending.Count == 0)
+            return;
+
+        if (_pending.Count == 1)
+        {
+            var r = _pending[0];
+            _adminLog.Add(LogType.AntagReveal, LogImpact.High,
+                $"{r.AdminName} revealed antag status of {r.PlayerName} ({r.Target}) via {r.Source}: {r.Result}");
+
+            _chat.SendAdminAlert(Loc.GetString("antag-reveal-admin-alert",
+                ("admin", r.AdminName),
+                ("player", r.PlayerName),
+                ("character", r.Character == string.Empty ? string.Empty : Loc.GetString("antag-reveal-character", ("name", r.Character))),
+                ("source", r.Source)));
+        }
+        else
+        {
+            var adminNames = string.Join(", ", _pending.Select(r => r.AdminName).Distinct());
+            var details = string.Join("; ", _pending.Select(r => $"{r.PlayerName} ({r.Target}) via {r.Source}: {r.Result}"));
+
+            _adminLog.Add(LogType.AntagReveal, LogImpact.High,
+                $"{adminNames} revealed antag status of {_pending.Count} players: {details}");
+
+            _chat.SendAdminAlert(Loc.GetString("antag-reveal-admin-alert-batch",
+                ("admin", adminNames),
+                ("count", _pending.Count)));
+        }
+
+        _pending.Clear();
     }
 
     /// <summary>
@@ -153,6 +202,7 @@ public sealed partial class AntagRevealSystem : EntitySystem
 
     private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
     {
+        FlushPending();
         _revealed.Clear();
     }
 

@@ -2,6 +2,7 @@ using Content.Client.Administration.Managers;
 using Content.Client.Gameplay;
 using Content.Client.Lobby;
 using Content.Client.RoundEnd;
+using Content.Client.UserInterface.Systems.Chat; // claw command
 using Content.Shared.GameTicking;
 using Content.Shared.GameWindow;
 using Content.Shared.Roles;
@@ -149,6 +150,9 @@ namespace Content.Client.GameTicking.Managers
         private void JoinGame(TickerJoinGameEvent message)
         {
             _stateManager.RequestStateChange<GameplayState>();
+
+            // claw command - close the postround dead-chat-to-all window once a new round's gameplay starts
+            _userInterfaceManager.GetUIController<ChatUIController>().SetPostRoundDeadChatOpen(false);
         }
 
         private void LobbyCountdown(TickerLobbyCountdownEvent message)
@@ -163,6 +167,10 @@ namespace Content.Client.GameTicking.Managers
             RestartSound = message.RestartSound;
 
             _userInterfaceManager.GetUIController<RoundEndSummaryUIController>().OpenRoundEndSummaryWindow(message);
+
+            // claw command - the round-end summary (antag reveal) just went out to everyone; open dead
+            // chat's visibility to everyone too, for the usual postround "who was the traitor" banter.
+            _userInterfaceManager.GetUIController<ChatUIController>().SetPostRoundDeadChatOpen(true);
         }
     }
 }

@@ -1,0 +1,74 @@
+# New soups not previously present in this fork. Recipes in
+# _ClawCommand/Recipes/Cooking/meal_recipes_soups_extra.yml.
+
+- type: entity
+  name: wish soup
+  parent: FoodBowlBase
+  id: FoodSoupWish
+  description: I wish this was soup.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - water
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/soups_extra.rsi
+    state: wishsoup
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Water
+        Quantity: 20
+
+- type: entity
+  name: bear chili
+  parent: FoodBowlBase
+  id: FoodSoupBearChili
+  description: Sensationally seasoned bear meat diced up with some peppers.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - spicy
+    - meaty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/soups_extra.rsi
+    state: bearchili
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 18
+      - ReagentId: Protein
+        Quantity: 6
+      - ReagentId: CapsaicinOil
+        Quantity: 6
+  - type: Tag
+    tags:
+    - Meat
+    - Soup
+
+- type: entity
+  name: pot of facehugger jambalaya
+  parent: FoodBowlBase
+  id: FoodSoupJambalaya
+  description: An entire pot of an extremely spicy dish made using extremely exotic ingredients. Highly recommended by an interdimensional businessman.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - spicy
+    - meaty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/soups_extra.rsi
+    state: facehuggerpot
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 22
+      - ReagentId: Vitamin
+        Quantity: 6
+      - ReagentId: CapsaicinOil
+        Quantity: 4
+  - type: Tag
+    tags:
+    - Meat
+    - Soup

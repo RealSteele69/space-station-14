@@ -202,3 +202,86 @@
     Bloodstream:
       effects:
       - !type:Jitter
+
+# Ported from DeltaV/Reagents/Consumable/Drink/drinks.yml
+- type: reagent
+  id: DoubleIceCream
+  name: reagent-name-double-ice-cream
+  parent: BaseSoda
+  desc: reagent-desc-double-ice-cream
+  physicalDesc: reagent-physical-desc-fizzy-and-creamy
+  flavor: doubleicecream
+  color: "#a06f42"
+  metamorphicSprite:
+    sprite: DeltaV/Objects/Consumable/Drinks/doubleicecreamglass.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 5
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  fizziness: 0.4
+
+- type: reagent
+  id: LemonLimeBitters
+  name: reagent-name-lemon-lime-bitters
+  parent: BaseDrink
+  desc: reagent-desc-lemon-lime-bitters
+  physicalDesc: reagent-physical-desc-fizzy
+  flavor: lemonlimebitters
+  color: "#ffa37e"
+  metamorphicSprite:
+    sprite: DeltaV/Objects/Consumable/Drinks/lemonlimebitters.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  fizziness: 0.2
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+
+- type: reagent
+  parent: BaseDrink
+  id: CoffeeNocaf
+  name: reagent-name-coffee-nocaf
+  desc: reagent-desc-coffee-nocaf
+  physicalDesc: reagent-physical-desc-aromatic
+  flavor: coffee
+  color: "#664300"
+  recognizable: false
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+  metamorphicSprite:
+    sprite: Objects/Consumable/Drinks/coffeeglass.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+
+- type: reagent
+  id: DrGibbBloodRed
+  name: reagent-name-dr-gibb-blood-red
+  parent: BaseSoda
+  desc: reagent-desc-dr-gibb-blood-red
+  physicalDesc: reagent-physical-desc-fizzy
+  flavor: drgibbbloodred
+  color: "#570303"
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2.0
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Human ]
+          inverted: true
+      - !type:AdjustReagent
+        reagent: UncookedAnimalProteins
+        amount: 0.05

@@ -67,3 +67,8 @@
   license: "CC0-1.0"
   copyright: "Taken from source"
   source: "https://freesound.org/people/blukotek/sounds/593862/"
+
+- files: ["supermatterglow.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from Citadel Station 13, which took it from /tg/station (see license: all assets are CC-BY-SA 3.0 unless otherwise indicated)"
+  source: "https://github.com/citadel-station/citadel-main/tree/31b47497ab7e3b1c15c67657931ce480f14caed1/sound/ambience"

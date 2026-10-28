@@ -1,0 +1,19 @@
+# Ported from Floof/Reagents/Consumable/Food/food.yml
+# PeanutOil already exists in this fork (Resources/Prototypes/_ClawCommand/Reagents/peanut_oil.yml);
+# PeanutButter itself was still missing, and several Floof fish/peanut-butter dishes we're porting
+# need it, so we add it here as an ingredient owned by this port.
+
+- type: reagent
+  id: PeanutButter
+  name: reagent-name-peanut-butter
+  parent: Butter
+  group: Foods
+  desc: reagent-desc-peanut-butter
+  physicalDesc: reagent-physical-desc-sticky
+  flavor: sweet
+  color: "#DCA465"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Nutriment: 0.4
+        Sugar: 0.1

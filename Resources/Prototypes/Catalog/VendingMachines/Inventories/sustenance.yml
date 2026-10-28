@@ -5,6 +5,20 @@
     FoodSnackNutribrick: 5
     FoodSnackMREBrownie: 5
     FoodCondimentPacketKetchup: 5
+    ReagentTinPowderedMilk: 2 # Claw Command - DeltaV port
+    ReagentTinPowderedMilkSoy: 2 # Claw Command - DeltaV port
+    ReagentTinPowderedJuiceOrange: 1 # Claw Command - DeltaV port
+    ReagentTinPowderedJuiceLime: 1 # Claw Command - DeltaV port
+    ReagentTinPowderedJuiceLemon: 1 # Claw Command - DeltaV port
+    ReagentTinPowderedJuicePineapple: 1 # Claw Command - DeltaV port
+    ReagentTinPowderedJuiceBanana: 1 # Claw Command - DeltaV port
+    ReagentTinPowderedJuiceBerry: 1 # Claw Command - DeltaV port
+    ReagentTinPowderedJuiceWatermelon: 1 # Claw Command - DeltaV port
+    ReagentTinPowderedJuiceGrape: 1 # Claw Command - DeltaV port
+    ReagentTinPowderedJuiceApple: 1 # Claw Command - DeltaV port
+    ReagentTinPowderedJuiceCherry: 1 # Claw Command - DeltaV port
+    ReagentTinPowderedJuiceCarrot: 1 # Claw Command - DeltaV port
+    ReagentTinPowderedJuiceTomato: 1 # Claw Command - DeltaV port
   contrabandInventory:
     FoodTinMRE: 3
     FoodTinBeans: 3

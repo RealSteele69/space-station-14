@@ -1,0 +1,14 @@
+# Never actually seen or picked up - spawned for an instant by SecurityBotSystem.TryCuff to carry
+# the reusable (RemoveOnUse: false) side of HandcuffComponent, then immediately deleted. The real,
+# visible restraints the perp ends up wearing are a normal set of Zipties (HandcuffComponent's
+# default SpawnedOnUse), spawned fresh by the cuffing code itself.
+- type: entity
+  id: SecurityBotCuffTool
+  parent: BaseItem
+  name: security bot ziptie dispenser
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Handcuff
+    removeOnUse: false
+    spawnedOnUse: Zipties
+    cuffTime: 0

@@ -1,0 +1,43 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseItem
+  id: VampireStake
+  name: wooden stake
+  description: A roughly-whittled length of hardwood, sharpened to a wicked point. Driven through a helpless vampire's heart, nothing else ends them so surely.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/bone_spear.rsi
+    state: spear
+  - type: Item
+    sprite: Objects/Weapons/Melee/bone_spear.rsi
+    size: Small
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 6
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: VampireStake
+
+- type: entity
+  parent: VampireStake
+  id: VampireStakeSilver
+  name: silver stake
+  suffix: Silver
+  description: A hardwood stake capped in silver. No less lethal to a vampire, and a great deal harder for them to simply wrench back out.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/bone_spear.rsi
+    state: spear1
+  - type: Item
+    sprite: Objects/Weapons/Melee/bone_spear.rsi
+    size: Small
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 8
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: VampireStake
+    stakedDurationMultiplier: 2

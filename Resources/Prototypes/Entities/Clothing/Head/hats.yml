@@ -1567,3 +1567,14 @@
     - ClothMade
     - Recyclable
     - WhitelistChameleon
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretSRT
+  name: SRT beret
+  description: A red beret with a dark blue NanoTrasen logo on it.
+  components:
+  - type: Sprite
+    sprite: DeltaV/Clothing/Head/Hats/beret_SRT.rsi
+  - type: Clothing
+    sprite: DeltaV/Clothing/Head/Hats/beret_SRT.rsi

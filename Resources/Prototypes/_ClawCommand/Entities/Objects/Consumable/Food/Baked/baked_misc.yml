@@ -1,0 +1,127 @@
+# Additional small baked goods not covered by the vanilla misc.yml lineup.
+
+- type: entity
+  name: butter biscuit
+  parent: FoodBakedBase
+  id: FoodBakedButterBiscuit
+  description: Well butter my biscuit!
+  components:
+  - type: FlavorProfile
+    flavors:
+      - butter
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_misc.rsi
+    state: butterbiscuit
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: Butter
+        Quantity: 2.5
+
+- type: entity
+  name: plump helmet biscuit
+  parent: FoodBakedBase
+  id: FoodBakedPlumpHelmetBiscuit
+  description: A finely-prepared biscuit made from exceptionally minced plump helmets and well-milled flour.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - mushroom
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_misc.rsi
+    state: phelmbiscuit
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+      - ReagentId: Vitamin
+        Quantity: 2
+
+- type: entity
+  name: dog treat
+  parent: FoodBakedBase
+  id: FoodBakedDogTreat
+  description: A bone-shaped treat for good dogs. Probably not meant for anyone else.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - meaty
+      - dough
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_misc.rsi
+    state: dogtreat
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+
+- type: entity
+  name: cracker
+  parent: FoodBakedBase
+  id: FoodBakedCracker
+  description: It's a salted cracker.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - salty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_misc.rsi
+    state: cracker
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: TableSalt
+        Quantity: 1
+
+- type: entity
+  name: khachapuri
+  parent: [ SolutionSmall, FoodBakedBase ]
+  id: FoodBakedKhachapuri
+  description: Bread with egg and cheese baked into a boat. What's not to love?
+  components:
+  - type: Item
+    size: Small
+  - type: FlavorProfile
+    flavors:
+      - bread
+      - egg
+      - cheesy
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_misc.rsi
+    state: khachapuri
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 24
+      - ReagentId: Vitamin
+        Quantity: 4
+
+- type: entity
+  name: chocolate cornet
+  parent: FoodBakedBase
+  id: FoodBakedChocolateCornet
+  description: Which end is the head, the fat end or the thin end?
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+      - bread
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_misc.rsi
+    state: chococornet
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+      - ReagentId: Vitamin
+        Quantity: 1
+      - ReagentId: Theobromine
+        Quantity: 1

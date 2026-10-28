@@ -1,0 +1,267 @@
+# New main-course dishes not previously present in this fork (see also
+# burritos.yml, sandwiches_extra.yml and soups_extra.yml for the rest of the
+# same pass). Recipes live in _ClawCommand/Recipes/Cooking/meal_recipes_mains_extra.yml.
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealKhinkali
+  name: khinkali
+  description: One hundred khinkalis? Do I look like a pig?
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - onion
+    - garlic
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/meals_mains.rsi
+    state: khinkali
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 20
+      - ReagentId: Protein
+        Quantity: 8
+      - ReagentId: Allicin
+        Quantity: 2
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealStewedSoyMeat
+  name: stewed soy meat
+  description: Even non-vegetarians will love this!
+  components:
+  - type: FlavorProfile
+    flavors:
+    - soy
+    - vegetables
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/meals_mains.rsi
+    state: stewedsoymeat
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 24
+      - ReagentId: Vitamin
+        Quantity: 6
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodSoyDope
+  name: soy dope
+  description: Dope from a soy.
+  components:
+  - type: Item
+    storedOffset: 0,-2
+  - type: FlavorProfile
+    flavors:
+    - soy
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/meals_mains.rsi
+    state: soydope
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealSweetAndSourChicken
+  name: sweet and sour chicken
+  description: More sweet than sour, but delicious nonetheless.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - chicken
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/meals_mains.rsi
+    state: sweet_and_sour
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 20
+      - ReagentId: Protein
+        Quantity: 6
+      - ReagentId: Soysauce
+        Quantity: 4
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealCorndog
+  name: corndog plate
+  description: A plate with two small corn dogs, with two dimples of ketchup and mustard to dip them in.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - mustard
+    - bread
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/meals_mains.rsi
+    state: corndog
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 22
+      - ReagentId: Mustard
+        Quantity: 5
+      - ReagentId: Ketchup
+        Quantity: 5
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealGreenEggsAndHam
+  name: green eggs and ham
+  description: Would you eat them on a train? Would you eat them on a plane? Would you eat them on a state-of-the-art corporate deathtrap floating through space?
+  components:
+  - type: FlavorProfile
+    flavors:
+    - egg
+    - meaty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/meals_mains.rsi
+    state: spidereggsham
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 18
+      - ReagentId: Protein
+        Quantity: 6
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealStuffedLegion
+  name: stuffed legion
+  description: A hollowed-out skull filled with goliath meat, with a decorative lava pool made of ketchup and hot sauce.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - spicy
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/meals_mains.rsi
+    state: stuffed_legion
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 20
+      - ReagentId: Protein
+        Quantity: 8
+      - ReagentId: Ketchup
+        Quantity: 4
+      - ReagentId: CapsaicinOil
+        Quantity: 4
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodTatorTot
+  name: tator tot
+  description: A large fried potato nugget that may or may not try to valid you.
+  components:
+  - type: Item
+    storedOffset: 0,-2
+  - type: FlavorProfile
+    flavors:
+    - potatoes
+    - validhunting
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/meals_mains.rsi
+    state: tatortot
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealEggWrap
+  name: egg wrap
+  description: The precursor to pigs in a blanket.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - egg
+    - salty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/meals_mains.rsi
+    state: eggwrap
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 12
+      - ReagentId: Soysauce
+        Quantity: 3
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealMashedPotato
+  name: mashed potatoes
+  description: A diced and smashed potato, served with a touch of salt.
+  components:
+  - type: Item
+    storedOffset: 0,-2
+  - type: FlavorProfile
+    flavors:
+    - potatoes
+    - creamy
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/meals_mains.rsi
+    state: mashedpotato
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 14
+      - ReagentId: TableSalt
+        Quantity: 1
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealButteredPotato
+  name: buttered potatoes
+  description: Mashed potatoes served with an ample serving of butter.
+  components:
+  - type: Item
+    storedOffset: 0,-2
+  - type: FlavorProfile
+    flavors:
+    - potatoes
+    - butter
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/meals_mains.rsi
+    state: buttermash
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 18
+      - ReagentId: Butter
+        Quantity: 2.5

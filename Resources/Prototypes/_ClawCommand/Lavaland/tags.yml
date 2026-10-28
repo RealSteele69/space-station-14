@@ -59,6 +59,12 @@
   id: PKAUpgradeSpace
 
 - type: Tag
+  id: PKAUpgradeRapidFeed
+
+- type: Tag
+  id: GunUpgradeRapidFeed # GunUpgrade tag for PKAUpgradeRapidFeed
+
+- type: Tag
   id: MarkerBeacon
 
 - type: Tag

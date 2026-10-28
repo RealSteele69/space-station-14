@@ -16,3 +16,28 @@
   - type: SolutionContainerVisuals
     maxFillLevels: 2
     fillBaseName: packet-trans-
+
+# Claw Command - rare bottle variant. No label layer on purpose; whoever bottled it didn't want
+# anyone to know what's in it. Uses the generic unlabeled bottle shape and reuses the stock
+# condiment bottle fill/open art, so no new sprite was needed.
+- type: entity
+  parent: BaseFoodCondimentBottle
+  id: FoodCondimentBottleSecretSauce
+  name: unlabeled sauce bottle
+  description: No label. No markings. Whoever bottled this didn't want anyone to know what's in it.
+  components:
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: SecretSauce
+        Quantity: 15
+  - type: Sprite
+    layers:
+    - state: bottle-empty
+      map: ["enum.OpenableVisuals.Layer"]
+    - state: bottle-alpha-6
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: true
+  - type: Icon
+    state: bottle-alpha-6

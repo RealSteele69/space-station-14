@@ -76,6 +76,22 @@
   price: 0.85 # $85 for 1 unit
 
 - type: material
+  id: Verdantium
+  stackEntity: SheetVerdantium1
+  name: materials-verdantium
+  icon: { sprite: Objects/Materials/Sheets/other.rsi, state: uranium }
+  color: "#2ecc71"
+  price: 1.2
+
+- type: material
+  id: Osmium
+  stackEntity: SheetOsmium1
+  name: materials-osmium
+  icon: { sprite: Objects/Materials/Sheets/other.rsi, state: uranium }
+  color: "#6b7f8c"
+  price: 1.2
+
+- type: material
   id: Bananium
   stackEntity: MaterialBananium1
   name: materials-bananium

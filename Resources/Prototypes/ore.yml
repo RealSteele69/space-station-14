@@ -65,6 +65,18 @@
   maxOreYield: 2
 
 - type: ore
+  id: OreVerdantium
+  oreEntity: VerdantiumOre1
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: ore
+  id: OreOsmium
+  oreEntity: OsmiumOre1
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: ore
   id: OreQuartzCrab
   oreEntity: MobSpawnCrabQuartz
 

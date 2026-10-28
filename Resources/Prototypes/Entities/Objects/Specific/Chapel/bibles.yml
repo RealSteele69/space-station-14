@@ -35,6 +35,8 @@
     bibleUserOnly: true
   - type: Summonable
     summonEntity: SpawnPointGhostRemilia
+  - type: RevealRevenantOnCollide
+    revealTime: 20
   - type: ReactionMixer
     mixMessage: "bible-mixing-success"
     reactionTypes:
@@ -42,6 +44,9 @@
   - type: Sprite
     sprite: Objects/Specific/Chapel/bible.rsi
     state: icon
+  - type: Tool
+    qualities:
+    - Blessing
   - type: Item
     size: Small
     sprite: Objects/Specific/Chapel/bible.rsi
@@ -60,6 +65,20 @@
     - Book
   - type: StealTarget
     stealGroup: Bible
+  - type: CollisionWake
+    enabled: false
+  - type: DivineIntervention
+    validSpellDenialSlots: BELT
+  - type: HandHeldArmor
+    modifiers:
+      coefficients:
+        Cold: 0.7
+        Asphyxiation: 0.7
+        Holy: 0.3
+    whitelist:
+      components:
+      - BibleUser
+    whitelistFailMessage: held-armor-bible-user-fail
 
 - type: entity
   parent: [Bible, BaseSyndicateContraband]

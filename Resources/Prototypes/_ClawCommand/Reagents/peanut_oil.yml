@@ -1,0 +1,8 @@
+- type: reagent
+  id: PeanutOil
+  name: reagent-name-peanutoil
+  group: Foods
+  desc: reagent-desc-peanutoil
+  physicalDesc: reagent-physical-desc-sticky
+  flavor: sweet
+  color: "#795C32"

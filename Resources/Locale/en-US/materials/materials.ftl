@@ -11,6 +11,8 @@ materials-steel = steel
 materials-gold = gold
 materials-silver = silver
 materials-plasteel = plasteel
+materials-verdantium = verdantium
+materials-osmium = osmium
 
 # Other
 materials-biomass = biomass
@@ -42,3 +44,5 @@ materials-raw-uranium = raw uranium
 materials-raw-bananium = raw bananium
 materials-raw-salt = raw salt
 materials-raw-diamond = raw diamond
+materials-raw-verdantium = raw verdantium
+materials-raw-osmium = raw osmium

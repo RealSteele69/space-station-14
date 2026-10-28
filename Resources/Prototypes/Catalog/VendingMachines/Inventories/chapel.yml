@@ -19,12 +19,17 @@
     ClothingHeadsetService: 2
     BoxCandle: 2
     BoxCandleSmall: 2
+    BoxCandleInfinite: 2
     Urn: 5
     Bible: 1
     ClothingHandsChaplainWarmers: 1 # Claw Command - Floof
     ClothingUnderSocksChaplain: 1 # Claw Command - Floof
     ClothingOuterEpiChaplainMantle: 1 # Claw Command - Floof
     CosmicCenser: 1 # Claw Command - Cosmic Cult counterplay
+    PurifyingSalts: 5 # Claw Command - holy healing
+    SilverSword: 1 # Claw Command - radiant sword crafting base
+    SilverRing: 2 # Claw Command - weddings
+    RingBox: 2 # Claw Command - weddings
   contrabandInventory:
     FoodBakedBunHotX: 2
     DrinkWineBottleFull: 1

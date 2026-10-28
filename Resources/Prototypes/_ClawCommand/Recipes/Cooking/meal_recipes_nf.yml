@@ -213,3 +213,52 @@
   reagents:
     Honey: 10
     Oats: 10
+
+# Sausage & hotdog
+# Source used a multi-result list (result: [FoodSausageRaw x3]) with resultCount commented out and
+# recipeType: Assembler/Microwave - this fork's FoodRecipePrototype only supports a single EntProtoId
+# Result and has no RecipeType field at all (unconditionally a microwave recipe), so both have been
+# adapted to a single-result standard microwave recipe.
+
+- type: microwaveMealRecipe
+  id: RecipeSausageRaw
+  name: raw sausage recipe
+  result: FoodSausageRaw
+  time: 10
+  group: Savory
+  solids:
+    FoodSausageCasing: 1
+  reagents:
+    UncookedAnimalProteins: 9
+
+- type: microwaveMealRecipe
+  id: RecipeSausageRawStomachHuman
+  name: raw stomach sausage recipe
+  result: FoodSausageRaw
+  time: 10
+  group: Savory
+  solids:
+    OrganHumanStomach: 1
+  reagents:
+    UncookedAnimalProteins: 9
+
+- type: microwaveMealRecipe
+  id: RecipeSausageCooked
+  name: cooked sausage recipe
+  result: FoodMeatSausage
+  time: 5
+  group: Savory
+  solids:
+    FoodSausageRaw: 1
+  reagents:
+    Water: 10
+
+- type: microwaveMealRecipe
+  id: RecipeHotdog
+  name: hotdog recipe
+  result: FoodMealHotdog
+  time: 10
+  group: Savory
+  solids:
+    FoodMeatSausage: 1
+    FoodBreadBun: 1

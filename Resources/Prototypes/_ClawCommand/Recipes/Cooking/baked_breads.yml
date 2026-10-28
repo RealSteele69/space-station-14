@@ -1,0 +1,10 @@
+# Microwave recipes for Resources/Prototypes/_ClawCommand/Entities/Objects/Consumable/Food/Baked/baked_breads.yml
+
+- type: microwaveMealRecipe
+  id: RecipeBreadTumor
+  name: dead tumor bread recipe
+  result: FoodBreadTumor
+  time: 15
+  group: Breads
+  solids:
+    FoodDough: 2

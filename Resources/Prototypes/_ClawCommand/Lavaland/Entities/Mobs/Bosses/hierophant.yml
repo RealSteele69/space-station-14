@@ -107,6 +107,7 @@
       children:
       - id: LavalandHierophantClub
       - id: CrusherUpgradeMainMarker
+      - id: LavalandHierophantChimeNecklace # trophy cosmetic
     deleteOnDeath: true
   - type: MegafaunaAi
     actionDelay: 0.5

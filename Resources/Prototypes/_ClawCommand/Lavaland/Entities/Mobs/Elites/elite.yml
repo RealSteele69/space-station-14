@@ -80,6 +80,7 @@
         tableId: CrusherUpgradesHandle
       - !type:NestedSelector
         tableId: LavalandMaterialRare
+      - id: LavalandTumorShardNecklace # trophy cosmetic
 
 - type: entity
   name: Legionnaire
@@ -261,6 +262,7 @@
         tableId: CrusherUpgradesMain
       - !type:NestedSelector
         tableId: LavalandMaterialRare
+      - id: LavalandPandoraLatchNecklace # trophy cosmetic
 
 - type: entity
   name: Herald

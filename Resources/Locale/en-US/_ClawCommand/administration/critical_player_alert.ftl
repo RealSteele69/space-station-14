@@ -1,5 +1,5 @@
 critical-alert-player = {$player} ({$character}, {$roles})
-critical-alert-hidden-antag = antag
+critical-alert-hidden-role = hidden
 
 critical-alert-aghost = {$who} aghosted
 critical-alert-aghost-other = {$who} was aghosted by {$actor}

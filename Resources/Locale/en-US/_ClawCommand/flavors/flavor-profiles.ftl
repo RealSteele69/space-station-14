@@ -1,4 +1,5 @@
 flavor-complex-clawtail = like an orderly command structure
+flavor-complex-indescribable = indescribable, in the best possible way
 
 # Ported from _Floof
 flavor-complex-ablustine = fruity and treacly
@@ -70,3 +71,107 @@ flavor-complex-vanilla = sweet and vanilla
 flavor-complex-chuddy = chuddy
 flavor-complex-unicorntears = sparkling and impossibly sweet
 
+# Ported from Mono/flavors/flavor-profiles.ftl
+flavor-complex-tea-green = grassy, fresh, and slightly sweet
+flavor-complex-tea-chamomile = floral, soothing, and honey-like
+flavor-complex-tea-berry = sweet, tart, and bursting with berry notes
+flavor-complex-tea-fruit = vibrant, juicy, and medley of fruits
+flavor-complex-tea-yorkshire = hearty, bold, and full-bodied
+flavor-complex-tea-decaf-black = classic, but without the kick, still flavorful
+flavor-complex-tea-syndie = watery, synthetic and like coffee
+flavor-complex-coffee-decaf = coffee, but missing something... a little flat and disappointing
+
+# Ported from DeltaV/flavors/flavor-profiles.ftl
+flavor-complex-old-fashioned = like bittersweet whiskey
+flavor-complex-mnatsa-collins = like sweet and sour brandy
+flavor-complex-affogato = like boozy ice cream
+flavor-complex-five-oclock = like hard tea
+flavor-complex-mliko = like a prank
+flavor-complex-firebolt-deltav = like above while burning like below
+flavor-complex-double-ice-cream = like ice cream, twice
+flavor-complex-lemon-lime-bitters = like an Aussie dessert
+flavor-complex-drgibbbloodred = like severe malpractice
+
+# Ported from DEN/flavor/flavor-profiles.ftl
+flavor-complex-jaegermister = like black licorice
+flavor-complex-jaegerbomb = like fruit-flavored anxiety
+flavor-complex-jaegerita = like the color orange
+flavor-complex-surfer = like an ocean breeze on your face
+flavor-complex-surfer-on-acid = like the forest for the trees
+flavor-complex-fizzball = like fresh black licorice
+flavor-complex-tuxedo-sunset = like knocking a glass off a counter
+flavor-complex-inside-scoop = like a juicy story to tell
+flavor-complex-fizzball-float = bitter AND sweet
+flavor-complex-chartruse = like a mint-flavored lemonade
+flavor-complex-death-flip = like jumping off an office chair
+flavor-complex-bloody-jaeger = like a tomato-based fruit salad
+flavor-complex-pop-quiz = like barely passing an exam
+flavor-complex-naughty-bartender = like a fancy coffee
+flavor-complex-cafe-cocktail = like a cold morning breeze
+flavor-complex-cinnamon-cookie = like grandma's baking
+flavor-complex-blood-red-licorice = like carnage in a candy store
+
+# Ported from Floof/flavors/flavor-profiles.ftl
+flavor-complex-7deadlysins = like liquid sin
+flavor-complex-appleberryfizz = sweet and fizzy
+flavor-complex-cafedecacao = sweet, chocolatey, and like coffee
+flavor-complex-calicosunrise = like citrus and cola
+flavor-complex-cremedecacao = sweet and chocolatey
+flavor-complex-darkoasis = like sweet relief
+flavor-complex-deadmansdraught = alcohol and liver failure
+flavor-complex-numberone = empowering and energizing
+flavor-complex-pomonade = sweet and tangy
+flavor-complex-prisonwine = like wine, sans regret
+flavor-complex-slimesdelight = like war crimes
+flavor-complex-triplecitrus = extremely bitter
+flavor-complex-wakeupjuice = chunky, thick, and utterly disgusting
+flavor-complex-axelsale = like a long day on the frontier
+flavor-complex-jenntonic = sweet with a hidden bite
+flavor-complex-hallelujah = a moment of peace
+flavor-complex-millermargarita = like a boozy, zesty jello-shot
+flavor-complex-harpysnowfall = like a Valyrian sunset
+flavor-complex-vbbeer = like you've finally sat down after a long hot days work at your blue collar 9 to 5 job.
+flavor-complex-bananacreampie = like dreams of a banana republic, with a hint of harmbatoning clowns.
+
+# Ported from DeltaV/Flavors/icecreamflavors.yml
+flavor-complex-tart = tart
+flavor-complex-icecream-apple-caramel = like apple pie
+flavor-complex-icecream-caramel-fudge = like a liquid caramel brownie
+flavor-complex-icecream-cobbler = a dessert with a tasty identity crisis
+flavor-complex-icecream-cookiedough = like a weekend at grandma's
+flavor-complex-icecream-neapolitan = like chocolate, vanilla, and cherry
+flavor-complex-icecream-rockyroad = like a bumpy highway
+flavor-complex-icecream-tower = like a tower of power
+flavor-complex-icecream-rainbow = like a rainbow of flavors
+
+# Species-specific and novelty cocktails
+flavor-complex-coldscales = like dead flies
+flavor-complex-oildrum = like an oil spill
+flavor-complex-nordking = like honey and red wine
+flavor-complex-velvetkiss = like iron and grape juice
+flavor-complex-abductionfruit = like grass and lime
+flavor-complex-bugzapper = like copper and crackling static
+flavor-complex-mushcrush = like dirt and iron
+flavor-complex-darkbrew = like shadow and burnt coffee grounds
+flavor-complex-hollowbone = like milk and salt
+flavor-complex-friskykitty = like warm milk and catnip
+flavor-complex-jellwyrm = like a tropical sea
+flavor-complex-lavalspit = like scorched stone and sulfur
+flavor-complex-pinotmort = like ash and old lizard skin
+flavor-complex-redqueen = like wonder and curiosity
+flavor-complex-blazaam = like alternate realities
+flavor-complex-bastionbourbon = like a hot herbal brew with a hint of fruit
+flavor-complex-commanderandchief = like duty and responsibility
+flavor-complex-fringeweaver = like ethylic alcohol with a hint of sugar
+flavor-complex-sugarrush = like sugar clogging your arteries
+flavor-complex-crevicespike = like a bitter spike with a sour aftertaste
+flavor-complex-squirtcider = like stale bread with a staler aftertaste
+
+flavor-complex-cigarettes = like ash and stale smoke
+flavor-complex-blackberry = like tart, dark berries
+flavor-complex-blueberry = like sweet, juicy berries
+flavor-complex-raspberry = like tangy, bright berries
+flavor-complex-blueraspberry = like an artificially sweet berry candy
+flavor-complex-weed = like bitter, leafy greenery
+flavor-complex-tobacco = like dried, earthy leaves
+flavor-complex-peach = like sweet, fuzzy stone fruit

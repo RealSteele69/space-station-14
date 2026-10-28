@@ -1,0 +1,37 @@
+# Microwave recipes for the new soups in
+# _ClawCommand/Entities/Objects/Consumable/Food/soups_extra.yml.
+
+- type: microwaveMealRecipe
+  id: RecipeSoupWish
+  name: wish soup recipe
+  result: FoodSoupWish
+  time: 10
+  group: Soup
+  reagents:
+    Water: 20
+  solids:
+    FoodBowlBig: 1
+
+- type: microwaveMealRecipe
+  id: RecipeSoupBearChili
+  name: bear chili recipe
+  result: FoodSoupBearChili
+  time: 10
+  group: Soup
+  reagents:
+    CapsaicinOil: 6
+  solids:
+    FoodBowlBig: 1
+    FoodMeatBearCooked: 1
+
+- type: microwaveMealRecipe
+  id: RecipeSoupJambalaya
+  name: facehugger jambalaya recipe
+  result: FoodSoupJambalaya
+  time: 15
+  group: Soup
+  reagents:
+    CapsaicinOil: 4
+  solids:
+    FoodBowlBig: 1
+    FoodMeatXenoCutletCooked: 2

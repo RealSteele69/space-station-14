@@ -1,0 +1,123 @@
+# Microwave recipes for the new mains in
+# _ClawCommand/Entities/Objects/Consumable/Food/meals_mains.yml.
+
+- type: microwaveMealRecipe
+  id: RecipeMealKhinkali
+  name: khinkali recipe
+  result: FoodMealKhinkali
+  time: 10
+  group: Meat
+  solids:
+    FoodDoughSlice: 2
+    FoodMeatMeatballCooked: 1
+    FoodGarlic: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealStewedSoyMeat
+  name: stewed soy meat recipe
+  result: FoodMealStewedSoyMeat
+  time: 15
+  group: Savory
+  solids:
+    FoodSoyDope: 2
+    FoodCarrot: 1
+    FoodTomato: 1
+
+- type: microwaveMealRecipe
+  id: RecipeSoyDope
+  name: soy dope recipe
+  result: FoodSoyDope
+  time: 5
+  group: Other
+  solids:
+    FoodSoybeans: 2
+
+- type: microwaveMealRecipe
+  id: RecipeMealSweetAndSourChicken
+  name: sweet and sour chicken recipe
+  result: FoodMealSweetAndSourChicken
+  time: 10
+  group: Meat
+  reagents:
+    Soysauce: 4
+  solids:
+    FoodBakedNugget: 2
+    FoodPineappleSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealCorndog
+  name: corndog plate recipe
+  result: FoodMealCorndog
+  time: 10
+  group: Meat
+  reagents:
+    Mustard: 5
+    Ketchup: 5
+  solids:
+    FoodMeatCutletCooked: 1
+    FoodBreadBun: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealGreenEggsAndHam
+  name: green eggs and ham recipe
+  result: FoodMealGreenEggsAndHam
+  time: 10
+  group: Breakfast
+  solids:
+    FoodMealFriedegg: 1
+    FoodMeatCutletCooked: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealStuffedLegion
+  name: stuffed legion recipe
+  result: FoodMealStuffedLegion
+  time: 20
+  group: Meat
+  reagents:
+    Ketchup: 4
+    CapsaicinOil: 4
+  solids:
+    FoodMeatGoliathCooked: 1
+
+- type: microwaveMealRecipe
+  id: RecipeTatorTot
+  name: tator tot recipe
+  result: FoodTatorTot
+  time: 10
+  group: Savory
+  solids:
+    FoodPotato: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealEggWrap
+  name: egg wrap recipe
+  result: FoodMealEggWrap
+  time: 10
+  group: Breakfast
+  reagents:
+    Soysauce: 5
+  solids:
+    FoodMealFriedegg: 1
+    FoodCabbage: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealMashedPotato
+  name: mashed potatoes recipe
+  result: FoodMealMashedPotato
+  time: 10
+  group: Savory
+  reagents:
+    Milk: 5
+    TableSalt: 1
+  solids:
+    FoodPotato: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealButteredPotato
+  name: buttered potatoes recipe
+  result: FoodMealButteredPotato
+  time: 5
+  group: Savory
+  solids:
+    FoodMealMashedPotato: 1
+    FoodButterSlice: 1

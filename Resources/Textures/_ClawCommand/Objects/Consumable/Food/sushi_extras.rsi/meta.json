@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Derived from a CC-BY-SA-3.0 licensed tgstation-family codebase; redrawn/adapted for this project.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "sushi_rice"
+    },
+    {
+      "name": "sea_weed"
+    },
+    {
+      "name": "tuna_can"
+    },
+    {
+      "name": "sushie_basic"
+    },
+    {
+      "name": "sushie_pro"
+    },
+    {
+      "name": "sushie_egg"
+    },
+    {
+      "name": "riceball"
+    }
+  ]
+}

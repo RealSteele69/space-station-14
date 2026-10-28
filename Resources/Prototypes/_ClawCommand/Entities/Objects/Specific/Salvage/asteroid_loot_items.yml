@@ -1,0 +1,67 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Flavor items for asteroid/debris salvage loot (see Markers/Spawners/Random/Salvage/asteroid_loot_tables.yml
+# for the tables that reference these). The tool variants are plain color-tinted reskins of existing
+# mining tools with no stat changes, and the papers are plain written flavor notes - no new mechanics
+# or art, no new C#.
+
+## Reskinned mining tools (rare cosmetic variants, same stats as their parent)
+
+- type: entity
+  parent: Pickaxe
+  id: PickaxeSilver
+  name: silver-plated pickaxe
+  description: An old pickaxe plated in tarnished silver. Still breaks rock just fine.
+  components:
+  - type: Sprite
+    color: "#c0c0c0"
+
+- type: entity
+  parent: Pickaxe
+  id: PickaxeGold
+  name: gold-plated pickaxe
+  description: A pickaxe plated in gold leaf. Impractical and ostentatious, but it still swings.
+  components:
+  - type: Sprite
+    color: "#d4af37"
+
+- type: entity
+  parent: MiningDrill
+  id: MiningDrillJackhammer
+  name: jackhammer drill
+  description: A mining drill retooled with a heavier bit casing. Louder, blunter, and still gets the job done.
+  components:
+  - type: Sprite
+    color: "#4a4a4a"
+
+## Found documents (rare atmospheric finds, no mechanical effect)
+
+- type: entity
+  parent: Paper
+  id: PaperAsteroidFoundLogbook
+  name: torn logbook page
+  description: A page ripped from a miner's logbook, stained with rock dust.
+  components:
+  - type: Paper
+    contentSize: 2000
+    content: asteroid-found-document-logbook
+
+- type: entity
+  parent: Paper
+  id: PaperAsteroidFoundClaim
+  name: scrawled claim notice
+  description: A hand-written notice staking a claim on this rock. Whoever wrote it never filed the paperwork.
+  components:
+  - type: Paper
+    contentSize: 2000
+    content: asteroid-found-document-claim
+
+- type: entity
+  parent: Paper
+  id: PaperAsteroidFoundManifest
+  name: smudged supply manifest
+  description: A supply manifest for a mining crew, half the items crossed out in a hurry.
+  components:
+  - type: Paper
+    contentSize: 2000
+    content: asteroid-found-document-manifest

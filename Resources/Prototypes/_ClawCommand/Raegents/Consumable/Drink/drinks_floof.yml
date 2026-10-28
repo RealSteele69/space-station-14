@@ -71,3 +71,46 @@
     collection: FootstepSticky
     params:
       volume: 3
+
+# Ported from Floof/Reagents/Drinks/drinks.yml
+- type: reagent
+  id: VBBeer
+  name: reagent-name-VB-beer
+  parent: BaseAlcohol
+  desc: reagent-desc-VB-beer
+  physicalDesc: reagent-physical-desc-bubbly
+  flavor: vbbeer
+  color: "#e3e77b"
+  recognizable: true
+  fizziness: 0.6
+
+- type: reagent # You may ask me why, but I got sick of seeing green come of cream pies.
+  id: BananaCreamPie
+  name: reagent-name-bananacreampie
+  desc: reagent-desc-bananacreampie
+  physicalDesc: reagent-physical-desc-creamy
+  flavor: bananacreampie
+  color: "#fffdd0"
+  recognizable: true
+  viscosity: 0.15
+  footstepSound:
+    collection: FootstepSticky
+    params:
+      volume: 3
+  metabolisms:
+    Digestion:
+      metabolites:
+        Nutriment: 0.8
+        Vitamin: 0.2
+
+# Claw Command - source reaction needs PeanutButter, which doesn't exist in this fork
+# (owned by a parallel food-ingredients port); metabolizes via existing PeanutOil instead.
+- type: reagent
+  id: PeanutButterWhiskey
+  name: reagent-name-peanut-butter-whiskey
+  parent: BaseJuice
+  desc: reagent-desc-peanut-butter-whiskey
+  physicalDesc: reagent-physical-desc-sticky
+  flavor: sweet
+  color: "#DCA465"
+  recognizable: true

@@ -1,0 +1,20 @@
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateDecorCarpet
+  name: decorative carpet crate
+  description: One stack of carpet in each available color.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: FloorCarpetItemRed
+        - id: FloorCarpetItemBlack
+        - id: FloorCarpetItemBlue
+        - id: FloorCarpetItemGreen
+        - id: FloorCarpetItemOrange
+        - id: FloorCarpetItemSkyBlue
+        - id: FloorCarpetItemPurple
+        - id: FloorCarpetItemPink
+        - id: FloorCarpetItemCyan
+        - id: FloorCarpetItemWhite

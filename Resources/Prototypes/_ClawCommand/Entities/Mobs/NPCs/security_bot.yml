@@ -1,0 +1,105 @@
+# An autonomous security bot: scans nearby crew for a Wanted/Hostile criminal status, closes in
+# and stuns them with its intrinsic disabler, then zip-ties them once they're down. Separate
+# entity/behavior from MobDisablerBot (which attacks indiscriminately) - this one only goes after
+# people security actually wants, and announces infractions/arrests over the radio like an officer
+# would. Emagging it drops every check and makes it treat everyone still standing as wanted.
+- type: entity
+  parent: MobSiliconBase
+  id: MobSecurityBot
+  name: security bot
+  description: An autonomous enforcement unit. It's scanning the crowd for familiar faces.
+  components:
+  - type: StaticPrice
+    price: 650
+  - type: Sprite
+    sprite: Mobs/Silicon/Bots/disablerbot.rsi
+    state: disablerbot
+    color: "#8fb8ff"
+  - type: SecurityBot
+  - type: SentienceTarget
+    flavorKind: station-event-random-sentience-flavor-mechanical
+  - type: UseDelay
+    delay: 1
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
+  - type: CombatMode
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Security
+  - type: ActiveRadio
+    channels:
+    - Security
+    - Common
+  - type: BatterySelfRecharger
+    autoRechargeRate: 300
+  - type: Battery
+    maxCharge: 10000
+    startingCharge: 10000
+  - type: Gun
+    fireRate: 1
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot: /Audio/Weapons/Guns/Gunshots/taser2.ogg
+  - type: BatteryAmmoProvider
+    proto: BulletDisablerSmgStunning
+    fireCost: 1
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      60: Dead
+    stateAlertDict:
+      Alive: BorgHealth
+      Dead: BorgDead
+    showOverlays: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:TriggerBehavior
+    - trigger:
+        !type:DamageTrigger
+        damage: 60
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ProximitySensor:
+            min: 1
+            max: 1
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          WeaponDisabler:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 3.5
+  - type: HTN
+    rootTask:
+      task: SecurityBotCompound
+  - type: InteractionPopup
+    interactSuccessString: petting-success-disablerbot
+    interactFailureString: petting-failure-disablerbot
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSecurityBot
+  name: security bot spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Mobs/Silicon/Bots/disablerbot.rsi
+      state: disablerbot
+      color: "#8fb8ff"
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSecurityBot

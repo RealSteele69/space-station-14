@@ -1,0 +1,47 @@
+# Additional baked breads not covered by the vanilla/NF bread lineup.
+
+- type: entity
+  name: dead tumor bread
+  parent: [ FoodBreadBase, BaseSlicingRefinableFood ]
+  id: FoodBreadTumor
+  description: It's still within its expiration date, right? Best not to look too closely at the lumps.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - bread
+      - acid
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_breads.rsi
+    state: tumorbread
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodBreadTumorSlice
+      amount: 8
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 64
+      - ReagentId: Mold
+        Quantity: 16
+
+- type: entity
+  name: tumor bread slice
+  parent: FoodBreadSliceBase
+  id: FoodBreadTumorSlice
+  description: A slice of bread filled with tumors!
+  components:
+  - type: FlavorProfile
+    flavors:
+      - bread
+      - acid
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/baked_breads.rsi
+    state: tumorbreadslice
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+      - ReagentId: Mold
+        Quantity: 2

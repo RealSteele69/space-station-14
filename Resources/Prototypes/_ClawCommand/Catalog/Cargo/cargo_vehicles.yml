@@ -4,17 +4,39 @@
 # keyed vehicles also need their key product ordered), then re-comment once the event is over.
 # Vehicles: _ClawCommand/Entities/Objects/Vehicles/{cars,ridden,trailers,rmc_vehicles,rmc_combat_vehicles}.yml
 
+# --- Always available, priced as a splurge: these are huge entities that eat a cargo pad on arrival ---
+# Tug ships with its key already inserted (VehicleCargoTug's ContainerFill) - no separate key order needed.
+- type: cargoProduct
+  id: VehicleCargoTugOrder
+  icon:
+    sprite: _ClawCommand/Objects/Vehicles/cargo_tug.rsi
+    state: vehicle
+  product: VehicleCargoTug
+  cost: 10000
+  category: cargoproduct-category-name-fun
+  group: market
+
+- type: cargoProduct
+  id: VehicleTrailerCargoOrder
+  icon:
+    sprite: _ClawCommand/Objects/Vehicles/trailers.rsi
+    state: cargo
+  product: VehicleTrailerCargo
+  cost: 2000
+  category: cargoproduct-category-name-fun
+  group: market
+
+- type: cargoProduct
+  id: VehicleGoKartOrder
+  icon:
+    sprite: _ClawCommand/Objects/Vehicles/gokart.rsi
+    state: orange
+  product: VehicleGoKartRandom
+  cost: 8000
+  category: cargoproduct-category-name-fun
+  group: market
+
 ## --- Keys (needed for keyed vehicles) ---
-#- type: cargoProduct
-#  id: VehicleKeyCargoOrder
-#  icon:
-#    sprite: _ClawCommand/Objects/Vehicles/keys.rsi
-#    state: cargo
-#  product: VehicleKeyCargo
-#  cost: 100
-#  category: cargoproduct-category-name-fun
-#  group: market
-#
 #- type: cargoProduct
 #  id: VehicleKeyMedicalOrder
 #  icon:
@@ -77,42 +99,12 @@
 #  group: market
 #
 #- type: cargoProduct
-#  id: VehicleGoKartOrder
-#  icon:
-#    sprite: _ClawCommand/Objects/Vehicles/gokart.rsi
-#    state: orange
-#  product: VehicleGoKartRandom
-#  cost: 800
-#  category: cargoproduct-category-name-fun
-#  group: market
-#
-#- type: cargoProduct
 #  id: VehicleBicycleOrder
 #  icon:
 #    sprite: _ClawCommand/Objects/Vehicles/bicycle.rsi
 #    state: vehicle
 #  product: VehicleBicycle
 #  cost: 400
-#  category: cargoproduct-category-name-fun
-#  group: market
-#
-#- type: cargoProduct
-#  id: VehicleCargoTugOrder
-#  icon:
-#    sprite: _ClawCommand/Objects/Vehicles/cargo_tug.rsi
-#    state: vehicle
-#  product: VehicleCargoTug
-#  cost: 1500
-#  category: cargoproduct-category-name-fun
-#  group: market
-#
-#- type: cargoProduct
-#  id: VehicleTrailerCargoOrder
-#  icon:
-#    sprite: _ClawCommand/Objects/Vehicles/trailers.rsi
-#    state: cargo
-#  product: VehicleTrailerCargo
-#  cost: 500
 #  category: cargoproduct-category-name-fun
 #  group: market
 #

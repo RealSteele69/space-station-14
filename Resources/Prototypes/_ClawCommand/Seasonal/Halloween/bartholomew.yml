@@ -1,0 +1,21 @@
+# Bartholomew: Jacqueline's familiar. Mechanically just a unique cat who likes to hang around his
+# cauldron (see cauldron.yml).
+
+- type: entity
+  parent: [ BaseUniquePet, MobCat ]
+  id: MobBartholomew
+  name: Bartholomew
+  description: A black cat with an unsettling habit of sitting very still next to a bubbling cauldron.
+  components:
+  - type: NpcFactionMember
+    factions:
+    - PetsNT
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: male
+  - type: Tag
+    tags:
+    - CannotSuicide
+  - type: StealTarget
+    stealGroup: AnimalNamedCat

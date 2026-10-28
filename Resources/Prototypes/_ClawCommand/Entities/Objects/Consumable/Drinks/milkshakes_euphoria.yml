@@ -1,0 +1,174 @@
+# Ported from Euphoria/Entities/Objects/Consumable/Drinks (no dedicated source
+# entity file — milkshake/syrup glasses mirror this fork's own
+# drinks_metamorphic.yml pre-filled-glass convention). Reachable via the
+# chemistry/mixing reactions in milkshakes_euphoria.yml under Recipes/Reactions.
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkBlackberryShake
+  suffix: blackberry milkshake
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: BlackberryShake
+        Quantity: 30
+  - type: Icon
+    sprite: _Euphoria/Objects/Consumable/Drinks/Milkshakes/blackberry_shake.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkBlueberryShake
+  suffix: blueberry milkshake
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: BlueberryShake
+        Quantity: 30
+  - type: Icon
+    sprite: _Euphoria/Objects/Consumable/Drinks/Milkshakes/blueberry_shake.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkBlueraspberryShake
+  suffix: blue raspberry milkshake
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: BlueraspberryShake
+        Quantity: 30
+  - type: Icon
+    sprite: _Euphoria/Objects/Consumable/Drinks/Milkshakes/blueraspberry_shake.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkChocolateShake
+  suffix: chocolate milkshake
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: ChocolateShake
+        Quantity: 30
+  - type: Icon
+    sprite: _Euphoria/Objects/Consumable/Drinks/Milkshakes/chocolate_shake.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkRaspberryShake
+  suffix: raspberry milkshake
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: RaspberryShake
+        Quantity: 30
+  - type: Icon
+    sprite: _Euphoria/Objects/Consumable/Drinks/Milkshakes/raspberry_shake.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkStrawberryShake
+  suffix: strawberry milkshake
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: StrawberryShake
+        Quantity: 30
+  - type: Icon
+    sprite: _Euphoria/Objects/Consumable/Drinks/Milkshakes/strawberry_shake.rsi
+    state: icon
+
+# Syrups - bottled for the bar, reuse the shared syrup.rsi sheet (per-flavor state)
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkBlackberrySyrup
+  suffix: blackberry syrup
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: BlackberrySyrup
+        Quantity: 30
+  - type: Icon
+    sprite: _Euphoria/Objects/Consumable/Drinks/Milkshakes/syrup.rsi
+    state: syrup_blackberry
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkBlueberrySyrup
+  suffix: blueberry syrup
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: BlueberrySyrup
+        Quantity: 30
+  - type: Icon
+    sprite: _Euphoria/Objects/Consumable/Drinks/Milkshakes/syrup.rsi
+    state: syrup_blueberry
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkBlueRaspberrySyrup
+  suffix: blue raspberry syrup
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: BlueRaspberrySyrup
+        Quantity: 30
+  - type: Icon
+    sprite: _Euphoria/Objects/Consumable/Drinks/Milkshakes/syrup.rsi
+    state: syrup_blue_raspberry
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkStrawberrySyrup
+  suffix: strawberry syrup
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: StrawberrySyrup
+        Quantity: 30
+  - type: Icon
+    sprite: _Euphoria/Objects/Consumable/Drinks/Milkshakes/syrup.rsi
+    state: syrup_strawberry
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkChocolateSyrup
+  suffix: chocolate syrup
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: ChocolateSyrup
+        Quantity: 30
+  - type: Icon
+    sprite: _Euphoria/Objects/Consumable/Drinks/Milkshakes/syrup.rsi
+    state: syrup_chocolate
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkRaspberrySyrup
+  suffix: raspberry syrup
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: RaspberrySyrup
+        Quantity: 30
+  - type: Icon
+    sprite: _Euphoria/Objects/Consumable/Drinks/Milkshakes/syrup.rsi
+    state: syrup_raspberry

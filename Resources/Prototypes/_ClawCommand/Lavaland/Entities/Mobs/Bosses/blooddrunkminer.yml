@@ -1,0 +1,106 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Blood-drunk Miner: a humanoid-scale lavaland boss built around relentless melee
+# pursuit. Unlike the other megafauna it fits through doors and corridors instead
+# of smashing through walls, and simply refuses to stop chasing.
+
+- type: entity
+  name: blood-drunk miner
+  id: LavalandBossBloodDrunkMiner
+  parent: LavalandMobBase
+  description: Once a prospector, now little more than a ragged coat full of hunger. It never stops digging, and it never stops chasing.
+  components:
+  - type: Physics
+    bodyType: KinematicController
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 1000
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: NpcFactionMember
+    factions:
+    - Lavafauna
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        12
+      AggroVisionRadius: !type:Single
+        20
+      NavSmash: !type:Bool
+        true
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _ClawCommand/Heretic/eldritch_mobs.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: ash_walker
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Items/Mining/pickaxe.ogg
+    damage:
+      types:
+        Piercing: 18
+        Blunt: 10
+        Structural: 160
+  - type: Tag
+    tags:
+    - CannotSuicide
+  - type: CombatMode
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5
+    baseSprintSpeed: 5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2000: Dead
+  - type: Damageable
+    damageModifierSet: Hierophant
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: TileMovement
+  - type: BossMusic
+    soundId: Miniboss
+  - type: Aggressive # also required component for aggro checking
+    forgiveRange: 40.0 # relentless chaser flavor: gives up far later than the other megafauna
+  - type: CombatPower # Goobstation
+    factor: 25 # times more dangerous than a crew-member
+  # Megafauna AI
+  - type: Fauna
+  - type: ActionGrant
+    actions:
+    - ActionBloodDrunkMinerCharge
+    - ActionBloodDrunkMinerFrenziedRush
+  - type: MegafaunaAi
+    actionDelay: 0.6
+    startingDelay: 1.0
+    selector: !type:NestedMegafaunaSelector
+      id: BloodDrunkMiner
+  - type: MegafaunaAggroRadius
+    radius: 12
+  - type: Anger
+    totalHp: 2000
+  - type: AngerPlayerScaling
+    angerScale: 1.1
+    hpScale: 1.2
+  - type: MobPhases
+    phaseThresholds:
+      0: 1
+      1000: 2
+  - type: MegafaunaGodmode
+  - type: MegafaunaRejuvenate
+  - type: DamageSquareImmunity
+  - type: SpawnLootOnDeath
+    table: !type:AllSelector
+      children:
+      - id: LavalandCrateNecropolisFilled
+      - id: CrusherUpgradeHandleRange

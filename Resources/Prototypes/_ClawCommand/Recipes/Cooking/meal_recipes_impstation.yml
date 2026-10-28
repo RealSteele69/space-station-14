@@ -1,0 +1,12 @@
+# Ported from Impstation/Recipes/Cooking/meal_recipes.yml
+
+- type: microwaveMealRecipe
+  id: RecipeCamelSoup
+  name: one day blinding stew recipe
+  result: FoodCamelSoup
+  time: 15
+  group: Soup
+  solids:
+    TearGasGrenade: 1
+    FoodBowlBig: 1
+    Cigarette: 8

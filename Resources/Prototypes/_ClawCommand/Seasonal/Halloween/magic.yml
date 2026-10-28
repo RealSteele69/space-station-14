@@ -1,0 +1,60 @@
+# Jacqueline's magic potion and magic candy: true to the source, each one gets a single random
+# reagent rolled fresh on spawn via RandomReagentOnSpawn, rather than a fixed effect.
+
+- type: entity
+  parent: FoodSnackBase
+  id: FoodMagicCandy
+  name: magic candy
+  description: It's warm, and faintly glowing, and smells like absolutely anything could happen.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Halloween/halloween_items.rsi
+    state: jacq_candy
+  - type: FlavorProfile
+    flavors:
+    - sweet
+    - magical
+  - type: Solution
+    solution:
+      reagents: []
+  - type: RandomReagentOnSpawn
+    solutionName: food
+    reagents:
+    - Bicaridine
+    - Omnizine
+    - SpaceDrugs
+    - Ipecac
+    - Sugar
+    quantity: 10
+
+- type: entity
+  parent: DrinkCanBaseFull
+  id: DrinkMagicPotion
+  name: magic potion
+  description: It's warm, and faintly glowing, and smells like absolutely anything could happen.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Halloween/halloween_items.rsi
+    layers:
+    - state: jacq_potion
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          True: {state: "jacq_potion"}
+          False: {state: "jacq_potion"}
+  - type: Item
+    sprite: _ClawCommand/Seasonal/Halloween/halloween_items.rsi
+  - type: Solution
+    solution:
+      reagents: []
+  - type: RandomReagentOnSpawn
+    solutionName: drink
+    reagents:
+    - Bicaridine
+    - Omnizine
+    - SpaceDrugs
+    - Ipecac
+    - Sugar
+    quantity: 15

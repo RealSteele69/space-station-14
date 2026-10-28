@@ -1,0 +1,29 @@
+# The trick-or-treat bag every crew member finds at round start during spooky season. True to the
+# source: 6 independent uniform picks from the same 7-item pool (including the "oh god this isn't
+# candy" brain), not a weighted/rare-trick table.
+
+- type: entity
+  parent: BoxBaseSmall
+  id: TrickOrTreatBag
+  name: trick-or-treat bag
+  description: A pumpkin-shaped paper bag, stuffed with whatever Jacqueline the Pumpqueen felt like handing out this year.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Halloween/halloween_items.rsi
+    state: treatbag
+  - type: Storage
+    grid:
+    - 0,0,3,2
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 6, 6
+        children:
+        - id: FoodCookieSkull
+        - id: FoodCookieCoffin
+        - id: FoodCandyCorn
+        - id: FoodSnackSwirlLollipop
+        - id: FoodCandyApple
+        - id: FoodSnackChocolate
+        - id: OrganHumanBrain # OH GOD THIS ISN'T CANDY!

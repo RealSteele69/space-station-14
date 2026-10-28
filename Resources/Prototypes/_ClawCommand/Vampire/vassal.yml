@@ -1,0 +1,38 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Not round-start selectable - a Vassal only exists because a Vampire embraced them mid-round.
+- type: antag
+  id: Vassal
+  name: roles-antag-vassal-name
+  antagonist: true
+  objective: roles-antag-vassal-objective
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: VassalMindRole
+  name: Vassal Role
+  components:
+  - type: MindRole
+    antag: true
+    antagPrototype: Vassal
+    exclusiveAntag: false
+    roleType: Familiar
+    subtype: role-subtype-vassal
+  - type: VassalRole
+
+- type: objectiveIssuer
+  id: Vampire
+  name: objective-issuer-vampire
+
+- type: entity
+  parent: BaseKeepAliveObjective
+  id: VassalKeepMasterAliveObjective
+  components:
+  - type: Objective
+    difficulty: 1.5
+    issuer: Vampire
+    icon:
+      sprite: Structures/Storage/Crates/coffin.rsi
+      state: base
+  - type: TargetObjective
+    title: vassal-objective-keep-master-alive-title

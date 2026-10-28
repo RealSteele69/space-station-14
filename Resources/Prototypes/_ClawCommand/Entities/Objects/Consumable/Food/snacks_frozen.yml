@@ -1,0 +1,351 @@
+# Claw Command - frozen dessert and snowcone variants not already covered by
+# the vanilla frozen.yml or the DeltaV ice-cream-vat flavor port. Reachability
+# is via RandomSnackTable (Food_Drinks/food_snacks.yml), matching how the
+# existing frozen desserts/snowcones are distributed.
+
+# === Frozen desserts === #
+
+- type: entity
+  name: honkdae
+  parent: FoodFrozenBase
+  id: FoodFrozenHonkdae
+  description: The clown's favorite dessert.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - banana
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/frozen_treats.rsi
+    state: honkdae
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: JuiceBanana
+        Quantity: 5
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: banana split
+  parent: FoodFrozenBase
+  id: FoodFrozenBananaSplit
+  description: A long dish filled with ice cream, chocolate and a banana down the middle. A timeless classic by any standards.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - banana
+    - cherry
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/frozen_treats.rsi
+    state: banana_split
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: JuiceBanana
+        Quantity: 8
+      - ReagentId: JuiceCherry
+        Quantity: 2
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: cherry shake
+  parent: FoodFrozenBase
+  id: FoodFrozenCherryShake
+  description: Cherries mixed with ice cream, known for its filling taste.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - cherry
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/frozen_treats.rsi
+    state: cherryshake
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: JuiceCherry
+        Quantity: 8
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: blue cherry shake
+  parent: FoodFrozenBase
+  id: FoodFrozenBlueCherryShake
+  description: Cherries mixed with ice cream, known for its filling taste. This one is an exotic blue!
+  components:
+  - type: FlavorProfile
+    flavors:
+    - cherry
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/frozen_treats.rsi
+    state: bluecherryshake
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: JuiceCherry
+        Quantity: 8
+  - type: Tag
+    tags:
+    - Fruit
+
+# === Snowcones === #
+# FoodFrozenSnowconeBase (shaved ice + alpha-filling layer, tintable) and its
+# trash are defined upstream in Entities/Objects/Consumable/Food/frozen.yml.
+# Flavorless/berry/fruit-salad/clown/mime/rainbow already exist there; these
+# fill in the rest of the flavor line using existing juice/soda reagents.
+
+- type: entity
+  name: lime snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconeLime
+  description: Lime syrup drizzled over a snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#99bb43"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: lemon snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconeLemon
+  description: Lemon syrup drizzled over a snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#fff690"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: apple snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconeApple
+  description: Apple syrup drizzled over a snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#FDAD01"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: grape snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconeGrape
+  description: Grape syrup drizzled over a snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#512284"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: orange snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconeOrange
+  description: Orange syrup drizzled over a snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#E78108"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: cherry snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconeCherry
+  description: Cherry syrup drizzled over a snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#84031a"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: blue cherry snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconeBlueCherry
+  description: Blue cherry syrup drizzled over a snowball in a paper cup, how rare!
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#1E3A8A"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: peach snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconePeach
+  description: A peach snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#FFCBA4"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: strawberry snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconeStrawberry
+  description: A strawberry snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#FA5053"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: pineapple snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconePineapple
+  description: Pineapple syrup drizzled over a snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#FFF200"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: space cola snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconeCola
+  description: Space Cola drizzled over a snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#6c2828"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+
+- type: entity
+  name: Space Mountain Wind snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconeMountainWind
+  description: Space Mountain Wind drizzled over a snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#a6fa5a"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+
+- type: entity
+  name: pwrgame snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconePwrgame
+  description: Pwrgame soda drizzled over a snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#9385bf"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash
+
+- type: entity
+  name: honey snowcone
+  parent: FoodFrozenSnowconeBase
+  id: FoodFrozenSnowconeHoney
+  description: Honey drizzled over a snowball in a paper cup.
+  components:
+  - type: Sprite
+    layers:
+    - state: cone
+    - state: alpha-filling
+      color: "#FFBF00"
+  - type: Edible
+    trash:
+    - FoodFrozenSnowconeTrash

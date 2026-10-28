@@ -34,6 +34,35 @@
     - id: FoodFrozenSnowconeMime
     - id: FoodFrozenSnowconeRainbow
     - id: FoodFrozenSundae
+    # Claw Command - exotic frozen desserts
+    - id: FoodFrozenHonkdae
+    - id: FoodFrozenBananaSplit
+    - id: FoodFrozenCherryShake
+    - id: FoodFrozenBlueCherryShake
+    # Claw Command - snowcone flavor line
+    - id: FoodFrozenSnowconeLime
+    - id: FoodFrozenSnowconeLemon
+    - id: FoodFrozenSnowconeApple
+    - id: FoodFrozenSnowconeGrape
+    - id: FoodFrozenSnowconeOrange
+    - id: FoodFrozenSnowconeCherry
+    - id: FoodFrozenSnowconeBlueCherry
+    - id: FoodFrozenSnowconePeach
+    - id: FoodFrozenSnowconeStrawberry
+    - id: FoodFrozenSnowconePineapple
+    - id: FoodFrozenSnowconeCola
+    - id: FoodFrozenSnowconeMountainWind
+    - id: FoodFrozenSnowconePwrgame
+    - id: FoodFrozenSnowconeHoney
+    # Claw Command - exotic candy/snacks
+    - id: FoodChocolateCoin
+    - id: FoodFudgeDice
+    - id: FoodChocolateOrange
+    - id: FoodChocolateBunny
+    - id: FoodChocolateDippedStrawberry
+    - id: FoodChocolateDippedBanana
+    - id: FoodBranRequestsCereal
+    - id: FoodMarshmallow
     - id: FoodSnackBoritos
     - id: FoodSnackCheesie
     - id: FoodSnackChips

@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: DecorCarpetOrder
+  icon:
+    sprite: Objects/Tiles/tile.rsi
+    state: carpet-red
+  product: CrateDecorCarpet
+  cost: 600
+  category: cargoproduct-category-name-materials
+  group: market

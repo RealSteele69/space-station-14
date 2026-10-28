@@ -1,0 +1,20 @@
+# Ported from Frontier (_NF) — pre-filled glass for the HoneyIcedTea reagent
+# (Resources/Prototypes/_ClawCommand/Raegents/Consumable/Drink/drinks_nf.yml).
+# The source fork has no dedicated entity for this (reagent-only, picked up
+# by any metamorphic DrinkGlass); this one exists so it can be stocked in a
+# vending machine, same as DrinkGreenTea/DrinkChamomileTea etc.
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkHoneyIcedTea
+  suffix: honey iced tea
+  components:
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: HoneyIcedTea
+        Quantity: 30
+  - type: Icon
+    sprite: _NF/Objects/Consumable/Drinks/honeyicedtea.rsi
+    state: icon

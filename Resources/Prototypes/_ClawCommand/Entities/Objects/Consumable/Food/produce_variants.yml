@@ -1,0 +1,1155 @@
+- type: entity
+  name: bluespace banana
+  parent: [FoodProduceBase, BaseSlicingRefinableFood]
+  id: FoodBluespaceBanana
+  description: A banana that doesn't seem entirely certain where it is.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - banana
+  - type: Edible
+    trash:
+    - TrashBananaPeel
+  - type: ToolRefinable
+    refineResult:
+    - id: TrashBananaPeel
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+      - ReagentId: Vitamin
+        Quantity: 2
+      - ReagentId: JuiceBanana
+        Quantity: 5
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/bluespace_banana.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: BluespaceBananaPlants
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceBanana
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit
+    - Banana
+
+- type: entity
+  name: poison-berries
+  parent: FoodProduceBase
+  id: FoodPoisonBerries
+  description: Deep purple berries with an unpleasant sheen.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - berry
+      - bitter
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Toxin
+        Quantity: 5
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/poison_berry.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: PoisonBerryPlants
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: death-berries
+  parent: FoodProduceBase
+  id: FoodDeathBerries
+  description: Almost-black berries. The smell alone is a warning.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - berry
+      - bitter
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Toxin
+        Quantity: 12
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/death_berry.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: DeathBerryPlants
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: glow-berries
+  parent: FoodProduceBase
+  id: FoodGlowBerries
+  description: These berries pulse with a gentle light.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - berry
+      - sweet
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Vitamin
+        Quantity: 2
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/glow_berry.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: GlowBerryPlants
+  - type: Tag
+    tags:
+    - Fruit
+  - type: PointLight
+    color: "#88ffff"
+    radius: 1.5
+    energy: 1.2
+
+- type: entity
+  name: blue cherries
+  parent: [FoodProduceBase, BaseSlicingRefinableFood]
+  id: FoodBlueCherry
+  description: Cherries with an unusual, deep blue hue.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - cherry
+  - type: Edible
+    trash:
+    - TrashCherryPit
+  - type: ToolRefinable
+    refineResult:
+    - id: TrashCherryPit
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: JuiceCherry
+        Quantity: 6
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/blue_cherry.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: BlueCherryPlants
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceCherry
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: cherry bulbs
+  parent: [FoodProduceBase, BaseSlicingRefinableFood]
+  id: FoodCherryBulb
+  description: Unusually large, swollen cherries.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - cherry
+  - type: Edible
+    trash:
+    - TrashCherryPit
+  - type: ToolRefinable
+    refineResult:
+    - id: TrashCherryPit
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: JuiceCherry
+        Quantity: 10
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/cherry_bulb.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: CherryBulbPlants
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceCherry
+        Quantity: 15
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: cherry bombs
+  parent: FoodProduceBase
+  id: FoodCherryBomb
+  description: They smell faintly of gunpowder. Probably still just cherries.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - cherry
+      - gunpowder
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Thermite
+        Quantity: 3
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/cherry_bomb.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: CherryBombPlants
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: green grapes
+  parent: FoodProduceBase
+  id: FoodGreenGrape
+  description: A crisp, pale-green variety of grape.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - grape
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: JuiceGrape
+        Quantity: 6
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/green_grape.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: GreenGrapePlants
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceGrape
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: deathweed leaves
+  parent: FoodProduceBase
+  id: LeavesDeathweed
+  description: A sinister, near-black strain of cannabis leaf.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - weed
+      - bitter
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: THC
+        Quantity: 10
+      - ReagentId: Toxin
+        Quantity: 3
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/deathweed.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: DeathweedPlants
+
+- type: entity
+  name: lifeweed leaves
+  parent: FoodProduceBase
+  id: LeavesLifeweed
+  description: A pale, soothing strain of cannabis leaf.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - weed
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: THC
+        Quantity: 3
+      - ReagentId: Bicaridine
+        Quantity: 6
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/lifeweed.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: LifeweedPlants
+
+- type: entity
+  name: omega weed leaves
+  parent: FoodProduceBase
+  id: LeavesOmegaWeed
+  description: The strongest strain known to botany.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - weed
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: THC
+        Quantity: 18
+      - ReagentId: SpaceDrugs
+        Quantity: 3
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/omega_weed.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: OmegaWeedPlants
+
+- type: entity
+  name: ice pepper
+  parent: FoodProduceBase
+  id: FoodIcePepper
+  description: Cold to the touch, somehow.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sour
+      - cold
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Frostoil
+        Quantity: 8
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/ice_pepper.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: IcePepperPlants
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: combustible lemon
+  parent: FoodProduceBase
+  id: FoodCombustibleLemon
+  description: Squeeze with caution.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sour
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: JuiceLemon
+        Quantity: 5
+      - ReagentId: Thermite
+        Quantity: 5
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/combustible_lemon.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: CombustibleLemonPlants
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceLemon
+        Quantity: 8
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: vanilla pod
+  parent: FoodProduceBase
+  id: FoodVanillaPod
+  description: A fragrant, cream-colored seed pod.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - vanilla
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Vitamin
+        Quantity: 2
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/vanilla_pod.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: VanillaPodPlants
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: snapcorn
+  parent: FoodProduceBase
+  id: FoodSnapcorn
+  description: The kernels seem to twitch when you're not looking.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - corn
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/snapcorn.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: SnapcornPlants
+  - type: Tag
+    tags:
+    - Vegetable
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 1
+
+- type: entity
+  name: durathread bol
+  parent: [FoodProduceBase, BaseSlicingRefinableFood]
+  id: DurathreadBol
+  description: A reinforced, unusually tough strain of cotton.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - cotton
+  - type: Edible
+    requiresSpecialDigestion: true
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 10
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/durathread.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: ToolRefinable
+    refineResult:
+    - id: MaterialDurathread1
+  - type: Produce
+    plantId: DurathreadPlants
+  - type: Tag
+    tags:
+    - RawMaterial
+
+- type: entity
+  name: geranium
+  parent: FoodProduceBase
+  id: FoodGeranium
+  description: A hardy flowering plant.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 1
+      - ReagentId: Bicaridine
+        Quantity: 8
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/geranium.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: GeraniumPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower
+
+- type: entity
+  name: harebell
+  parent: FoodProduceBase
+  id: FoodHarebell
+  description: Delicate, bell-shaped flowers.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 1
+      - ReagentId: Bicaridine
+        Quantity: 8
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/harebell.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: HarebellPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower
+
+- type: entity
+  name: sunflower
+  parent: FoodProduceBase
+  id: FoodSunflower
+  description: Tends to turn to face the station's lights.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: Vitamin
+        Quantity: 2
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/sunflower.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: SunflowerPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower
+
+- type: entity
+  name: moonflower
+  parent: FoodProduceBase
+  id: FoodMoonflower
+  description: A pale mutation that seems to prefer the dark.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 1
+      - ReagentId: Bicaridine
+        Quantity: 8
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/moonflower.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: MoonflowerPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower
+
+- type: entity
+  name: novaflower
+  parent: FoodProduceBase
+  id: FoodNovaflower
+  description: Radiates an uncomfortable amount of heat.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 1
+      - ReagentId: Thermite
+        Quantity: 6
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/novaflower.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: NovaflowerPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower
+
+- type: entity
+  name: bee balm
+  parent: FoodProduceBase
+  id: FoodBeeBalm
+  description: A favorite of pollinators.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+      - sweet
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: Vitamin
+        Quantity: 2
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/bee_balm.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: BeeBalmPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower
+
+- type: entity
+  name: honey balm
+  parent: FoodProduceBase
+  id: FoodHoneyBalm
+  description: Smells faintly of honey.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 1
+      - ReagentId: Sugar
+        Quantity: 6
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/honey_balm.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: HoneyBalmPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower
+
+- type: entity
+  name: reishi
+  parent: FoodProduceBase
+  id: FoodReishi
+  description: A prized medicinal mushroom.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - mushroom
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: Bicaridine
+        Quantity: 5
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/reishi.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: ReishiPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: destroying angel
+  parent: FoodProduceBase
+  id: FoodDestroyingAngel
+  description: Pale, innocent-looking, and extremely dangerous.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - mushroom
+      - bitter
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Amatoxin
+        Quantity: 10
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/destroying_angel.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: DestroyingAngelPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: liberty-cap
+  parent: FoodProduceBase
+  id: FoodLibertyCap
+  description: Known for its, ah, recreational properties.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - mushroom
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: SpaceDrugs
+        Quantity: 6
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/liberty_cap.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: LibertyCapPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: plump-helmet
+  parent: FoodProduceBase
+  id: FoodPlumpHelmet
+  description: A hearty, nutritious mushroom.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - mushroom
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/plump_helmet.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: PlumpHelmetPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: jupiter cup
+  parent: FoodProduceBase
+  id: FoodJupiterCup
+  description: A deep purple mushroom with a cosmic look to it.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - mushroom
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: Amatoxin
+        Quantity: 4
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/jupiter_cup.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: JupiterCupPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: glowshroom
+  parent: FoodProduceBase
+  id: FoodGlowshroom
+  description: Glows faintly in the dark.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - mushroom
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/glowshroom.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: GlowshroomPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+  - type: PointLight
+    color: "#88ffee"
+    radius: 1.5
+    energy: 1.2
+
+- type: entity
+  name: glowcap
+  parent: FoodProduceBase
+  id: FoodGlowcap
+  description: A bright green bioluminescent mushroom.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - mushroom
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/glowcap.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: GlowcapPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+  - type: PointLight
+    color: "#88ff88"
+    radius: 1.5
+    energy: 1.2
+
+- type: entity
+  name: shadowshroom
+  parent: FoodProduceBase
+  id: FoodShadowshroom
+  description: Seems to drink in the light around it.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - mushroom
+      - bitter
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: Amatoxin
+        Quantity: 3
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/shadowshroom.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: ShadowshroomPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: peach
+  parent: FoodProduceBase
+  id: FoodPeach
+  description: Fuzzy on the outside, sweet on the inside.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: JuicePeach
+        Quantity: 6
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/peach.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: PeachPlants
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuicePeach
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: sweet potato
+  parent: FoodProduceBase
+  id: FoodSweetPotato
+  description: Sweeter than a regular potato.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 6
+      - ReagentId: Sugar
+        Quantity: 3
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/sweet_potato.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: SweetPotatoPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: parsnip
+  parent: FoodProduceBase
+  id: FoodParsnip
+  description: A pale cousin of the carrot.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - carrot
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Vitamin
+        Quantity: 2
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/parsnip.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: ParsnipPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: white-beet
+  parent: FoodProduceBase
+  id: FoodWhiteBeet
+  description: A pale root vegetable.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - carrot
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Vitamin
+        Quantity: 2
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/white_beet.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: WhiteBeetPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: red-beet
+  parent: FoodProduceBase
+  id: FoodRedBeet
+  description: A deep red root vegetable.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - carrot
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Iron
+        Quantity: 2
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/red_beet.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: RedBeetPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: tea astra leaves
+  parent: FoodProduceBase
+  id: LeavesTeaAstra
+  description: A starry variety of tea leaf.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - tea
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Theobromine
+        Quantity: 8
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/tea_astra.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: TeaAstraPlants
+  - type: Extractable
+    grindableSolutionName: food
+
+- type: entity
+  name: catnip leaves
+  parent: FoodProduceBase
+  id: LeavesCatnip
+  description: Smells minty. Cats go wild for it.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Happiness
+        Quantity: 6
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/catnip.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: CatnipPlants
+  - type: Extractable
+    grindableSolutionName: food
+
+- type: entity
+  name: coffee robusta beans
+  parent: FoodProduceBase
+  id: FoodCoffeeRobusta
+  description: A bolder, more bitter variety of coffee bean.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - coffee
+      - bitter
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: Theobromine
+        Quantity: 5
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/coffee_robusta.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: CoffeeRobustaPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: space tobacco leaves
+  parent: FoodProduceBase
+  id: LeavesSpaceTobacco
+  description: A cosmic-smelling tobacco leaf.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - tobacco
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nicotine
+        Quantity: 10
+      - ReagentId: SpaceDrugs
+        Quantity: 2
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/space_tobacco.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: SpaceTobaccoPlants
+  - type: Extractable
+    grindableSolutionName: food
+
+- type: entity
+  parent: [ProduceBase, BaseSlicingRefinable]
+  id: BambooLog
+  name: bamboo log
+  description: Grows surprisingly fast.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/bamboo.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 8
+  - type: Produce
+    plantId: BambooPlants
+  - type: ToolRefinable
+    qualityNeeded: Sawing
+    refineResult:
+    - id: MaterialWoodPlank1
+      amount: 2

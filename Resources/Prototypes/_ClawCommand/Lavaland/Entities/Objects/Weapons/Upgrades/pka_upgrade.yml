@@ -49,3 +49,34 @@
     tags:
     - PKAUpgrade
     - PKAUpgradeSpace
+
+# Trades some stopping power for a much faster trigger. Reuses the shared fire-rate/damage
+# upgrade components rather than adding a new mechanic.
+- type: entity
+  id: PKAUpgradeRapidFeed
+  parent: BasePKAUpgrade
+  name: PKA modkit (rapid feed)
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay-1
+      color: "#f2c230"
+    - state: overlay-2
+      color: "#8a6d00"
+    - state: overlay-3
+      color: "#f2c230"
+  - type: GunUpgrade
+    tags: [ GunUpgradeRapidFeed ]
+    examineText: gun-upgrade-examine-text-rapid-feed
+  - type: GunUpgradeFireRate
+    coefficient: 1.8
+  - type: GunUpgradeDamage
+    damage:
+      types:
+        Blunt: -3
+        Piercing: -3
+  - type: Tag
+    tags:
+    - PKAUpgrade
+    - PKAUpgradeRapidFeed

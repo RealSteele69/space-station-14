@@ -146,6 +146,9 @@
   - type: ContainerContainer
     containers:
       key_slot: !type:ContainerSlot
+  - type: ContainerFill
+    containers:
+      key_slot: [ VehicleKeyCargo ]
 
 - type: entity
   parent: VehicleCargoTug

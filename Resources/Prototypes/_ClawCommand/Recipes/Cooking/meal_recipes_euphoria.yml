@@ -1,0 +1,14 @@
+# Ported from Euphoria/Recipes/Cooking/meal_recipes.yml
+# Source made the bun via an intermediate FoodUncookedHotdogBun + a "DoughBuns" construction graph that
+# doesn't exist in this fork. Adapted to a direct microwave recipe from dough, matching this fork's/
+# vanilla's existing convention for other bun shapes (RecipeBun -> FoodBreadBun in vanilla
+# Recipes/Cooking/meal_recipes.yml).
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogBun
+  name: hotdog bun recipe
+  result: FoodHotdogBun
+  time: 5
+  group: Breads
+  solids:
+    FoodDoughSlice: 1

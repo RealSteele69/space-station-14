@@ -1,0 +1,6 @@
+- files: ["ahaha.ogg", "bats.ogg", "chain_rattling.ogg", "ghost_whisper.ogg", "ghosty_wind.ogg",
+          "girlscream.ogg", "insane_low_laugh.ogg", "scary_clown_appear.ogg", "scary_horn.ogg",
+          "scary_horn2.ogg", "scary_horn3.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from Citadel Station 13's sound/spookoween/ folder, CC-BY-SA-3.0 per that project's blanket asset license."
+  source: "https://github.com/Citadel-Station-13/Citadel-Station-13-RP"

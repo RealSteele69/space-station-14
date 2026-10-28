@@ -1,0 +1,61 @@
+# Claw Command - branded liquor bottle reskins. Each is a straight name/description/sprite
+# variant of an existing vanilla bottle-of-X entity; the reagent, volume, and every other
+# component are inherited unchanged. (Vanilla's own Gin/Whiskey/Rum/Patron/Vermouth/Tequila
+# bottles already ship with flavorful brand names of this exact kind, so those are skipped here
+# to avoid a redundant second brand on the same bottle - Vodka, Cognac, Coffee Liqueur,
+# Champagne and Sake are the vanilla bottles that are still plainly named in this fork.)
+
+- type: entity
+  parent: DrinkVodkaBottleFull
+  id: DrinkVodkaBottleTunguska
+  name: Tunguska Triple Distilled
+  description: Vodka so potent it could double as fuel in a pinch. Prime choice of drink and fuel worldwide, allegedly.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Drinks/tunguska.rsi
+  # no in-hand art in the branded RSI; held sprites come from the vanilla bottle
+  - type: Item
+    sprite: Objects/Consumable/Drinks/vodkabottle.rsi
+  - type: SolutionContainerVisuals
+    inHandsMaxFillLevels: 0
+
+- type: entity
+  parent: DrinkCognacBottleFull
+  id: DrinkCognacBottleChateauDeBaton
+  name: Chateau de Baton Premium Cognac
+  description: A sweet, strongly alcoholic spirit, aged through numerous distillations. Premium, allegedly.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Drinks/chateaubaton.rsi
+  # no in-hand art in the branded RSI; held sprites come from the vanilla bottle
+  - type: Item
+    sprite: Objects/Consumable/Drinks/cognacbottle.rsi
+  - type: SolutionContainerVisuals
+    inHandsMaxFillLevels: 0
+
+- type: entity
+  parent: DrinkCoffeeLiqueurBottleFull
+  id: DrinkCoffeeLiqueurBottleRobustReserve
+  name: Robert Robust's Coffee Liqueur
+  description: A rich, dark coffee liqueur. In continuous production since the early days of deep space exploration.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Drinks/robustcoffee.rsi
+
+- type: entity
+  parent: DrinkChampagneBottleFull
+  id: DrinkChampagneBottleEauDeDandy
+  name: Eau d'Dandy Brut Champagne
+  description: Finely sourced from only the most pretentious vineyards this side of known space.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Drinks/eaudedandy.rsi
+
+- type: entity
+  parent: DrinkSakeBottleFull
+  id: DrinkSakeBottleRyoTraditional
+  name: Ryo's Traditional Sake
+  description: The regret of the next morning seems to be nipping at the bottle too.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Drinks/ryosake.rsi

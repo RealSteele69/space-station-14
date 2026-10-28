@@ -77,3 +77,21 @@
   icon: { sprite: Objects/Materials/ore.rsi, state: salt }
   color: "#f5e7d7"
   price: 0.075
+
+- type: material
+  id: RawVerdantium
+  stackEntity: VerdantiumOre1
+  name: materials-raw-verdantium
+  unit: materials-unit-chunk
+  icon: { sprite: Objects/Materials/ore.rsi, state: spacequartz }
+  color: "#2ecc71"
+  price: 0.6
+
+- type: material
+  id: RawOsmium
+  stackEntity: OsmiumOre1
+  name: materials-raw-osmium
+  unit: materials-unit-chunk
+  icon: { sprite: Objects/Materials/ore.rsi, state: silver }
+  color: "#6b7f8c"
+  price: 0.6

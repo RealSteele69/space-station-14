@@ -402,3 +402,33 @@
   - type: Icon
     sprite: _Floof/Objects/Consumable/Drinks/ginandpussy.rsi
     state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkHarpySnowfallGlass
+  suffix: harpy's snowfall
+  components:
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: HarpySnowfall
+        Quantity: 60
+  - type: Icon
+    sprite: _Floof/Objects/Consumable/Drinks/harpysnowfall.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkMillerMargaritaGlass
+  suffix: miller margarita
+  components:
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: MillerMargarita
+        Quantity: 60
+  - type: Icon
+    sprite: _Floof/Objects/Consumable/Drinks/millermargarita.rsi
+    state: icon

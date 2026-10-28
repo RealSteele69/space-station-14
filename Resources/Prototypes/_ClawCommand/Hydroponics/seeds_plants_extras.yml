@@ -307,6 +307,141 @@
         max: 10
         potencyDivisor: 25
 
+- type: entity
+  parent: BasePlant
+  id: CoconutPlants
+  categories: [HideSpawnMenu]
+  name: coconut palm
+  components:
+  - type: Sprite
+    sprite: _Floof/Objects/Specific/Hydroponics/coconut.rsi
+  - type: PlantData
+    name: seeds-coconut-name
+    packetPrototype: CoconutSeeds
+    productPrototypes: [ FoodCoconut ]
+    mutationPrototypes: [ CoconutGunPlants ]
+  - type: Plant
+    lifespan: 55
+    maturation: 10
+    production: 10
+    yield: 3
+    potency: 10
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 20
+        potencyDivisor: 20
+      CoconutWater:
+        min: 5
+        max: 30
+        potencyDivisor: 25
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: CoconutGunPlants
+  categories: [HideSpawnMenu]
+  name: coconut gun palm
+  components:
+  - type: Sprite
+    sprite: _Floof/Objects/Specific/Hydroponics/coconut_gun.rsi
+  - type: PlantData
+    name: seeds-coconut-gun-name
+    packetPrototype: CoconutGunSeeds
+    productPrototypes: [ FoodCoconutGunFruit ]
+  - type: Plant
+    lifespan: 65
+    maturation: 15
+    production: 15
+    yield: 1
+    potency: 10
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+      Sulfur:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: PeanutPlants
+  categories: [HideSpawnMenu]
+  name: peanut vine
+  components:
+  - type: Sprite
+    sprite: _Floof/Objects/Specific/Hydroponics/peanut.rsi
+  - type: PlantData
+    name: seeds-peanut-name
+    packetPrototype: PeanutSeeds
+    productPrototypes: [ FoodPeanutInShell ]
+  - type: Plant
+    lifespan: 55
+    maturation: 10
+    production: 10
+    yield: 2
+    potency: 10
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 20
+        potencyDivisor: 20
+      PeanutOil:
+        min: 5
+        max: 30
+        potencyDivisor: 25
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: StrawberryPlants
+  categories: [HideSpawnMenu]
+  name: strawberry plant
+  components:
+  - type: Sprite
+    sprite: _Floof/Objects/Specific/Hydroponics/strawberry.rsi
+  - type: PlantData
+    name: seeds-strawberry-name
+    packetPrototype: StrawberrySeeds
+    productPrototypes: [ FoodStrawberry ]
+  - type: Plant
+    lifespan: 55
+    maturation: 10
+    production: 10
+    yield: 4
+    potency: 10
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 20
+        potencyDivisor: 20
+      StrawberryJuice:
+        min: 5
+        max: 10
+        potencyDivisor: 25
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
 # ===== DeltaV =====
 
 - type: entity

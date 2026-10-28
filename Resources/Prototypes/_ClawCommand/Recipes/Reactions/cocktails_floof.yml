@@ -385,3 +385,278 @@
       amount: 1
   products:
     YeOlHandy: 5
+
+- type: reaction
+  id: 7DeadlySins
+  reactants:
+    Blood:
+      amount: 1
+    FourteenLoko:
+      amount: 1
+    Pomelustine:
+      amount: 1
+    Sugar:
+      amount: 1
+    TableSalt:
+      amount: 1
+  products:
+    7DeadlySins: 5
+
+- type: reaction
+  id: AppleberryFizz
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    JuiceApple:
+      amount: 1
+    JuiceBerry:
+      amount: 1
+    SodaWater:
+      amount: 1
+  products:
+    AppleberryFizz: 3
+
+- type: reaction
+  id: CafeDeCacao
+  reactants:
+    Coffee:
+      amount: 1
+    CremeDeCacao:
+      amount: 1
+    Ice:
+      amount: 1
+  products:
+    CafeDeCacao: 3
+
+- type: reaction
+  id: CalicoSunrise
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    SpaceUp:
+      amount: 1
+    JuiceOrange:
+      amount: 1
+    JuicePineapple:
+      amount: 1
+  products:
+    CalicoSunrise: 3
+
+- type: reaction
+  id: CremeDeCacao
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    HotCocoa:
+      amount: 1
+    Sugar:
+      amount: 1
+    Vodka:
+      amount: 2
+  products:
+    CremeDeCacao: 4
+
+- type: reaction
+  id: DarkOasis
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    CocoaPowder:
+      amount: 1
+    Sugar:
+      amount: 1
+    Tequila:
+      amount: 1
+  products:
+    DarkOasis: 3
+
+- type: reaction
+  id: DeadMansDraught
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Ale:
+      amount: 1
+    Cognac:
+      amount: 1
+    Rum:
+      amount: 1
+    Whiskey:
+      amount: 1
+  products:
+    DeadMansDraught: 4
+
+- type: reaction
+  id: NumberOne
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Ephedrine:
+      amount: 1
+    PwrGame:
+      amount: 1
+    Vodka:
+      amount: 1
+  products:
+    NumberOne: 3
+
+- type: reaction
+  id: Pomonade
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    JuicePomegranate:
+      amount: 1
+    Lemonade:
+      amount: 2
+  products:
+    Pomonade: 3
+
+- type: reaction
+  id: PrisonWine
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    JuiceGrape:
+      amount: 2
+    Water:
+      amount: 1
+    Sugar:
+      amount: 1
+  products:
+    PrisonWine: 4
+
+- type: reaction
+  id: SlimesDelight
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Grenadine:
+      amount: 1
+    Slime:
+      amount: 1
+    WeldingFuel:
+      amount: 1
+  products:
+    SlimesDelight: 3
+
+- type: reaction
+  id: TripleCitrus
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    JuiceLemon:
+      amount: 1
+    JuiceLime:
+      amount: 1
+    JuiceOrange:
+      amount: 1
+  products:
+    TripleCitrus: 3
+
+- type: reaction
+  id: WakeUpJuice
+  priority: 1 # contains the CreviceSpike recipe; must win or it can never form
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    CapsaicinOil:
+      amount: 1
+    Hotsauce:
+      amount: 1
+    JuiceLime:
+      amount: 1
+    JuiceTomato:
+      amount: 1
+  products:
+    WakeUpJuice: 4
+
+- type: reaction
+  id: AxelsAle
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Ale:
+      amount: 1
+    Rum:
+      amount: 1
+    Pomelustine:
+      amount: 1
+  products:
+    AxelsAle: 3
+
+- type: reaction
+  id: JennTonic
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Ice:
+      amount: 1
+    Whiskey:
+      amount: 1
+    TonicWater:
+      amount: 1
+  products:
+    JennTonic: 3
+
+- type: reaction
+  id: Hallelujah
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Wine:
+      amount: 2
+    Water:
+      amount: 3
+    LotophagoiOil:
+      amount: 1
+  products:
+    Hallelujah: 6
+
+- type: reaction
+  id: MillerMargarita
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Slime:
+      amount: 1
+    JuiceOrange:
+      amount: 1
+    Margarita:
+      amount: 1
+  products:
+    MillerMargarita: 3
+
+- type: reaction
+  id: HarpySnowfall
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    JuiceWatermelon:
+      amount: 3
+    Vodka:
+      amount: 1
+    Ice:
+      amount: 1
+    Sugar:
+      amount: 1
+  products:
+    HarpySnowfall: 6
+
+# VBBeer has no mixed-drink reaction upstream either - it's a straight bottled
+# beer (see DrinkVBLongneckFull in drinks_floof_bottles.yml), not a cocktail.
+
+# Claw Command - source reaction needs PeanutButter, which doesn't exist in this fork
+# (owned by a parallel food-ingredients port); substituted with the existing PeanutOil
+# reagent so this cocktail doesn't require a new precursor.
+- type: reaction
+  id: PeanutButterWhiskey
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    PeanutOil:
+      amount: 1
+    Whiskey:
+      amount: 1
+  products:
+    PeanutButterWhiskey: 2

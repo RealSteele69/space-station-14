@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: VampireCandelabrum
+  name: candelabrum
+  description: An ornate candelabrum, its cold blue flames never guttering. Something about it makes your skin crawl.
+  components:
+  - type: Sprite
+    sprite: _GoobStation/Structures/Decoration/candelabra.rsi
+    state: candelabra
+  - type: PointLight
+    enabled: true
+    radius: 3
+    energy: 1.2
+    color: "#66FFFF"
+  - type: VampireCandelabrum
+
+- type: moodEffect
+  id: VampireCandelabrumUnease
+  moodChange: -4
+  timeout: 10

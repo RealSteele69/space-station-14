@@ -1,0 +1,39 @@
+# Jacqueline the Pumpqueen's barks. See jacqueline.yml / JacquelineSystem.
+
+- type: localizedDataset
+  id: JacquelineGreetLines
+  values:
+    prefix: jacqueline-greet-
+    count: 6
+
+- type: localizedDataset
+  id: JacquelineTreatLines
+  values:
+    prefix: jacqueline-treat-
+    count: 4
+
+- type: localizedDataset
+  id: JacquelineTrickLines
+  values:
+    prefix: jacqueline-trick-
+    count: 4
+
+- type: localizedDataset
+  id: JacquelineNoCandyLines
+  values:
+    prefix: jacqueline-no-candy-
+    count: 4
+
+# Silly station-name prefixes stuck on for the duration of spooky season.
+- type: localizedDataset
+  id: SpookyStationNamePrefixes
+  values:
+    prefix: spooky-station-prefix-
+    count: 6
+
+# Round-start announcement read out alongside the rename.
+- type: localizedDataset
+  id: SpookyStationAnnouncements
+  values:
+    prefix: spooky-station-announcement-
+    count: 5

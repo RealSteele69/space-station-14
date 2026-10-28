@@ -1,0 +1,18 @@
+# Ported from Mono/Recipes/Cooking/meal_recipes.yml
+# Source recipe used result: [FoodBakedBiscuitSimple x4] with resultCount commented out, and
+# recipeType: Oven. This fork's FoodRecipePrototype (Content.Shared/Kitchen/MicrowaveMealRecipePrototype.cs)
+# only supports a single EntProtoId Result and has no RecipeType/resultCount field at all - it is
+# unconditionally a microwave recipe - so both have been dropped/adapted to a normal single-result
+# microwave recipe, matching this fork's existing convention (e.g. RecipeBun in vanilla meal_recipes.yml).
+
+- type: microwaveMealRecipe
+  id: RecipeBiscuitSimple
+  name: simple cookie recipe
+  result: FoodBakedBiscuitSimple
+  time: 10
+  group: BarsAndCookies
+  reagents:
+    Flour: 10
+    Milk: 5
+  solids:
+    FoodButterSlice: 1

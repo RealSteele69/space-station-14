@@ -125,3 +125,123 @@
     - type: Icon
       sprite: DeltaV/Objects/Consumable/Drinks/mothamphetamine.rsi
       state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: DoubleIceCreamGlass
+  suffix: double ice cream
+  components:
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: DoubleIceCream
+        Quantity: 60
+  - type: Icon
+    sprite: DeltaV/Objects/Consumable/Drinks/doubleicecreamglass.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: LemonLimeBittersGlass
+  suffix: lemon lime bitters
+  components:
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: LemonLimeBitters
+        Quantity: 60
+  - type: Icon
+    sprite: DeltaV/Objects/Consumable/Drinks/lemonlimebitters.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: OldFashionedGlass
+  suffix: old fashioned
+  components:
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: OldFashioned
+        Quantity: 60
+  - type: Icon
+    sprite: DeltaV/Objects/Consumable/Drinks/oldfashioned.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: MnatsaCollinsGlass
+  suffix: mnatsa collins
+  components:
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: MnatsaCollins
+        Quantity: 60
+  - type: Icon
+    sprite: DeltaV/Objects/Consumable/Drinks/mnatsacollins.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: AffogatoGlass
+  suffix: affogato
+  components:
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: Affogato
+        Quantity: 60
+  - type: Icon
+    sprite: DeltaV/Objects/Consumable/Drinks/affogato.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: FiveOClockGlass
+  suffix: fiveoclock
+  components:
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: FiveOClock
+        Quantity: 60
+  - type: Icon
+    sprite: DeltaV/Objects/Consumable/Drinks/fiveoclock.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: MlikoGlass
+  suffix: mliko
+  components:
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: Mliko
+        Quantity: 60
+  - type: Icon
+    sprite: DeltaV/Objects/Consumable/Drinks/mliko.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkFireboltGlass
+  suffix: firebolt
+  components:
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: Firebolt
+        Quantity: 60
+  - type: Icon
+    sprite: DeltaV/Objects/Consumable/Drinks/firebolt.rsi
+    state: icon

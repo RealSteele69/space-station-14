@@ -1,0 +1,219 @@
+# Claw Command - standalone candy/sweet snacks not already covered by
+# candy_extras.yml, lollypops.yml (88 variants), snacks.yml or snacks_extras.yml.
+# Reachability is via RandomSnackTable (Food_Drinks/food_snacks.yml), except
+# space twinkie which stocks the candy vending machine like its source.
+
+- type: entity
+  parent: FoodBase
+  id: FoodChocolateCoin
+  name: chocolate coin
+  description: A completely edible, but non-flippable, festive coin.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - chocolate
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/candy_extras.rsi
+    state: chococoin
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: CocoaPowder
+        Quantity: 1
+      - ReagentId: Sugar
+        Quantity: 1
+
+- type: entity
+  parent: FoodBase
+  id: FoodFudgeDice
+  name: fudge dice
+  description: A little cube of chocolate that tends to taste less intense if you eat too many at once.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - chocolate
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/candy_extras.rsi
+    state: chocodice
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: CocoaPowder
+        Quantity: 1
+      - ReagentId: Sugar
+        Quantity: 1
+
+- type: entity
+  parent: FoodBase
+  id: FoodChocolateOrange
+  name: chocolate orange
+  description: A festive chocolate orange.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - chocolate
+    - orange
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/candy_extras.rsi
+    state: chocoorange
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: CocoaPowder
+        Quantity: 1
+      - ReagentId: JuiceOrange
+        Quantity: 2
+      - ReagentId: Sugar
+        Quantity: 1
+
+- type: entity
+  parent: FoodBase
+  id: FoodChocolateBunny
+  name: chocolate bunny
+  description: Contains less than 10% real rabbit!
+  components:
+  - type: FlavorProfile
+    flavors:
+    - chocolate
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/candy_extras.rsi
+    state: chocolatebunny
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: CocoaPowder
+        Quantity: 2
+      - ReagentId: Sugar
+        Quantity: 2
+
+- type: entity
+  parent: FoodBase
+  id: FoodChocolateDippedStrawberry
+  name: chocolate-dipped strawberries
+  description: A strawberry dipped in a bit of chocolate.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - chocolate
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/candy_extras.rsi
+    state: chocolatestrawberry
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: CocoaPowder
+        Quantity: 1
+      - ReagentId: StrawberryJuice
+        Quantity: 3
+      - ReagentId: Sugar
+        Quantity: 5
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  parent: FoodBase
+  id: FoodChocolateDippedBanana
+  name: chocolate-dipped banana
+  description: A banana dipped in a bit of chocolate and held on a stick.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - chocolate
+    - banana
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/candy_extras.rsi
+    state: banana_coco
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Vitamin
+        Quantity: 1
+      - ReagentId: CocoaPowder
+        Quantity: 1
+      - ReagentId: JuiceBanana
+        Quantity: 3
+      - ReagentId: Sugar
+        Quantity: 5
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  parent: FoodBase
+  id: FoodBranRequestsCereal
+  name: Bran Requests Cereal
+  description: A dry cereal that satiates your requests for bran. Tastes uniquely like raisins and salt.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - raisins
+    - salty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/candy_extras.rsi
+    state: bran_requests
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Vitamin
+        Quantity: 2
+      - ReagentId: TableSalt
+        Quantity: 5
+
+- type: entity
+  parent: FoodBase
+  id: FoodMarshmallow
+  name: marshmallow
+  description: A marshmallow filled with fluffy marshmallow fluff.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/candy_extras.rsi
+    state: marshmallow
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sugar
+        Quantity: 5
+      - ReagentId: Nutriment
+        Quantity: 2
+
+- type: entity
+  parent: FoodBase
+  id: FoodSpaceTwinkie
+  name: space twinkie
+  description: Guaranteed to survive longer than you will.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - sweet
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/candy_extras.rsi
+    state: space_twinkie
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sugar
+        Quantity: 4

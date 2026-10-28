@@ -1,0 +1,146 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Extra "found loot" and "dead miner's kit" loot for asteroid/debris salvage (magnet asteroids and
+# timed salvage expeditions). Every item referenced here is an existing prototype or a plain
+# color-tinted reskin/flavor paper from asteroid_loot_items.yml - no new mechanics or art.
+# Wired into Procedural/Magnet/asteroid.yml (magnet asteroids) and Procedural/salvage_loot.yml
+# (timed expeditions) alongside the loot that's already there.
+
+## Found loot: a crate of scavenged odds and ends
+
+- type: entityTable
+  id: SalvageAsteroidFoundLootTable
+  table: !type:GroupSelector
+    children:
+    - id: FoodBoxDonkpocket
+      weight: 3
+    - id: ToolboxEmergencyFilled
+      weight: 2
+    - id: MedkitFilled
+      weight: 2
+    - id: ToolboxMechanicalFilled
+      weight: 2
+    - !type:GroupSelector
+      weight: 1.5
+      children:
+      - id: DrinkWaterBottleFull
+      - id: DrinkColaCan
+      - id: DrinkSpaceMountainWindCan
+    - id: SpaceCash1000
+      weight: 1.5
+    - !type:AllSelector # jackpot: a little bit of everything
+      weight: 0.4
+      children:
+      - id: MedkitFilled
+      - id: ToolboxEmergencyFilled
+      - id: FoodBoxDonkpocket
+      - id: SpaceCash1000
+    - !type:GroupSelector # rare atmospheric finds
+      weight: 0.3
+      children:
+      - id: PaperAsteroidFoundLogbook
+      - id: PaperAsteroidFoundClaim
+      - id: PaperAsteroidFoundManifest
+
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateSalvageFoundLoot
+  name: salvage loot crate
+  description: A dented crate of scavenged supplies, scraped together from wherever the last crew left them.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: SalvageAsteroidFoundLootTable
+        rolls: 2, 3
+
+## Dead miner's kits: a basic and an advanced gear set
+
+- type: entityTable
+  id: SalvageAsteroidMinerGearBasic
+  table: !type:AllSelector
+    children:
+    - id: OreBag
+    - id: ClothingUniformJumpsuitSalvageSpecialist
+    - !type:GroupSelector
+      children:
+      - id: Pickaxe
+      - id: PickaxeSilver
+        weight: 0.1
+      - id: PickaxeGold
+        weight: 0.1
+
+- type: entityTable
+  id: SalvageAsteroidMinerGearAdvanced
+  table: !type:AllSelector
+    children:
+    - id: OreBagOfHolding
+    - !type:GroupSelector # 50/50 original vs alt, matches the existing salvage hardsuit crate
+      children:
+      - id: ClothingOuterHardsuitSalvage
+      - id: ClothingOuterHardsuitSalvageAlt
+    - !type:GroupSelector
+      children:
+      - id: MiningDrill
+        weight: 2
+      - id: MiningDrillDiamond
+        weight: 1
+      - id: MiningDrillJackhammer
+        weight: 0.3
+
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateSalvageMinerGearBasic
+  name: dead miner's kit
+  description: A battered kit bag, salvaged from someone who didn't make it off the rock.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: SalvageAsteroidMinerGearBasic
+
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateSalvageMinerGearAdvanced
+  name: veteran miner's kit
+  description: A well-maintained kit bag, belonging to someone who clearly knew what they were doing. They still didn't make it.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: SalvageAsteroidMinerGearAdvanced
+
+## Spawner markers (for dungeon/biome generation, see Procedural/Magnet/asteroid.yml)
+
+- type: entity
+  parent: MarkerBase
+  id: SalvageSpawnerAsteroidFoundLoot
+  name: Salvage Found Loot Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: pink
+    - sprite: Structures/Storage/Crates/generic.rsi
+      state: icon
+  - type: EntityTableSpawner
+    table: !type:GroupSelector
+      children:
+      - id: CrateSalvageFoundLoot
+
+- type: entity
+  parent: MarkerBase
+  id: SalvageSpawnerAsteroidMinerGear
+  name: Salvage Miner Gear Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: pink
+    - sprite: Structures/Storage/Crates/generic.rsi
+      state: icon
+  - type: EntityTableSpawner
+    table: !type:GroupSelector
+      children:
+      - id: CrateSalvageMinerGearBasic
+        weight: 3
+      - id: CrateSalvageMinerGearAdvanced
+        weight: 1

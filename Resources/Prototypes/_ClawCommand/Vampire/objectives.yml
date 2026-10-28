@@ -1,0 +1,61 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseVampireObjective
+  components:
+  - type: Objective
+    difficulty: 1
+    issuer: Vampire
+
+- type: entity
+  parent: BaseVampireObjective
+  id: VampireLairObjective
+  name: "Claim a Lair"
+  description: "Claim a coffin as your own - a safe place to rest and heal, away from prying eyes."
+  components:
+  - type: Objective
+    icon:
+      sprite: Structures/Storage/Crates/coffin.rsi
+      state: base
+  - type: VampireLairCondition
+
+- type: entity
+  parent: BaseVampireObjective
+  id: VampireProtegeObjective
+  name: "Raise a Protégé"
+  description: "Embrace at least one Vassal to serve you."
+  components:
+  - type: Objective
+    difficulty: 1.5
+    icon:
+      sprite: Interface/Actions/changeling.rsi
+      state: devour_on
+  - type: VampireProtegeCondition
+
+- type: entity
+  parent: BaseVampireObjective
+  id: VampireBloodHarvestObjective
+  name: "Blood Harvest"
+  description: "Feed on at least 3 different victims."
+  components:
+  - type: Objective
+    difficulty: 1.25
+    icon:
+      sprite: Interface/Alerts/bleed.rsi
+      state: bleed5
+  - type: VampireBloodHarvestCondition
+    goal: 3
+
+- type: entity
+  parent: [ BaseVampireObjective, BaseSurviveObjective ]
+  id: VampireSurviveObjective
+  name: "Survive"
+  description: "Make it to the end of the round undiscovered or undefeated."
+  components:
+  - type: Objective
+    difficulty: 1
+    icon:
+      sprite: Interface/Alerts/bleed.rsi
+      state: bleed0

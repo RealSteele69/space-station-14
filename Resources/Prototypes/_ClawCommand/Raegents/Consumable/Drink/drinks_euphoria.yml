@@ -1,0 +1,16 @@
+# Ported from Euphoria/Reagents/Consumable/Drink/drinks.yml
+- type: reagent
+  id: BerryNice
+  name: reagent-name-berrynice
+  parent: BaseDrink
+  desc: reagent-desc-berrynice
+  physicalDesc: reagent-physical-desc-sticky
+  flavor: sweet
+  color: "#7F00FF"
+  metamorphicSprite:
+    sprite: DeltaV/Objects/Consumable/Drinks/pilk.rsi # re-use the pilk glass until we get a better sprite
+    state: icon_empty
+  metamorphicMaxFillLevels: 6
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: true
+  fizziness: 0.3

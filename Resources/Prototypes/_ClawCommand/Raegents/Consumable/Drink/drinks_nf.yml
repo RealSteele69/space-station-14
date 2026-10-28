@@ -17,3 +17,23 @@
         - !type:Satiate
           satiationType: Thirst
           factor: 6
+
+# Claw Command - the source fork defines no brewing reaction for this, just
+# the reagent (vending/premade only).
+- type: reagent
+  id: HoneyIcedTea
+  name: reagent-name-honey-iced-tea
+  parent: BaseDrink
+  desc: reagent-desc-honey-iced-tea
+  physicalDesc: reagent-physical-desc-aromatic
+  flavor: honey
+  color: "#E79A3F"
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 0.6
+  metamorphicSprite:
+    sprite: _NF/Objects/Consumable/Drinks/honeyicedtea.rsi
+    state: icon

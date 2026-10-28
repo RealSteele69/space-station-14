@@ -205,7 +205,7 @@
     sprite: Objects/Specific/Service/vending_machine_restock.rsi
     state: base
   product: CrateVendingMachineRestockSeedsFilled
-  cost: 4700 # Claw Command - was 3750; the fork's extra stock sold for more (arbitrage)
+  cost: 6700 # Claw Command - was 3750; the fork's extra seed stock sells for 6550 (arbitrage)
   category: cargoproduct-category-name-hydroponics
   group: market
 

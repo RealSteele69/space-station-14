@@ -1,0 +1,30 @@
+# Claw Command - pasta dishes not already covered by the vanilla noodles.yml
+# port (boiled spaghetti, spaghetti, copypasta, spaghetti and meatballs,
+# spesslaw, chow mein and butter noodles all already exist there).
+# Reachability is via the RandomFoodMeal spawner (Food_Drinks/food_meal.yml).
+
+- type: entity
+  parent: FoodNoodlesBase
+  id: FoodNoodlesBeef
+  name: beef noodle
+  description: Nutritious, beefy and noodly.
+  components:
+  - type: Item
+    storedOffset: 0,-4
+  - type: FlavorProfile
+    flavors:
+    - pasta
+    - meaty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/noodles_extras.rsi
+    state: beefnoodle
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 40
+      - ReagentId: Protein
+        Quantity: 5
+  - type: Tag
+    tags:
+    - Meat

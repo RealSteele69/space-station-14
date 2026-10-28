@@ -1,0 +1,53 @@
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateCostumeWizard
+  name: wizard costume crate
+  description: A fake wizard robe and hat set, for looking the part without the real thing's reputation.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: ClothingOuterWizardFake
+        - id: ClothingHeadHatWizardFake
+
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateCostumeWitch
+  name: witch costume crate
+  description: Witch robes and a matching hat.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: ClothingOuterSuitWitchRobes
+        - id: ClothingHeadHatWitch1
+
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateCostumeHoliday
+  name: holiday costume crate
+  description: A santa suit and hat, ready for any time of year.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: ClothingOuterSanta
+        - id: ClothingHeadHatSantahat
+
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateCostumeHawaiian
+  name: hawaiian shirt crate
+  description: One hawaiian shirt in each available color.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: ClothingUniformJumpsuitHawaiBlack
+        - id: ClothingUniformJumpsuitHawaiBlue
+        - id: ClothingUniformJumpsuitHawaiRed
+        - id: ClothingUniformJumpsuitHawaiYellow

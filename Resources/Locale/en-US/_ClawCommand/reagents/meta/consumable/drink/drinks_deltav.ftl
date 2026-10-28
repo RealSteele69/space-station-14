@@ -18,3 +18,15 @@ reagent-desc-healthviolation = Allegedly it's a cocktail. The warning cone motif
 
 reagent-name-mothamphetamine = mothamphetamine
 reagent-desc-mothamphetamine = A strangely... fuzzy drink. It has a chaotic aura.
+
+reagent-name-double-ice-cream = double ice cream
+reagent-desc-double-ice-cream = Ice cream, but now with even more ice cream on top. It doesn't get any sweeter than this!
+
+reagent-name-lemon-lime-bitters = lemon lime bitters
+reagent-desc-lemon-lime-bitters = Western Australians love this shit.
+
+reagent-name-coffee-nocaf = nocaf coffee
+reagent-desc-coffee-nocaf = A drink made from brewed chicory and figs. Contains no caffeine.
+
+reagent-name-dr-gibb-blood-red = Dr. Gibb Blood Red
+reagent-desc-dr-gibb-blood-red = A drink to quench YOUR blood thirst.

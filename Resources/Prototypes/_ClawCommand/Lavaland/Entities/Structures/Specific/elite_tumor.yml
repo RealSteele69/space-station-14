@@ -1,0 +1,50 @@
+- type: entity
+  id: LavalandStructureEliteTumor
+  parent: BaseStructure
+  name: pulsing tumor
+  description: A swollen mass of alien tissue. It twitches like something inside is trying to get out.
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: Mobs/Aliens/Asteroid/hivelord.rsi
+    state: hivelord
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+        density: 200
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:WeightedSpawnEntityBehavior
+        weightedEntityTable: "LavalandEliteTumorSpawnTable"
+        minSpawn: 1
+        maxSpawn: 1
+        spawnAfter: 0.5
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: weightedRandomEntity
+  id: LavalandEliteTumorSpawnTable
+  weights:
+    LavalandEliteLegionnaire: 1.0
+    LavalandEliteHerald: 1.0
+    LavalandEliteGoliathBroodmother: 1.0
+    LavalandElitePandora: 1.0

@@ -192,3 +192,33 @@
   path: /Maps/_ClawCommand/Lavaland/Lavaland/reclaimer_shuttle_ruin.yml
   priority: -1 # highest priority
   patchToPlanet: false
+
+- type: lavalandGridRuin
+  id: EliteTumor
+  name: lavaland-ruin-tumor
+  path: /Maps/_ClawCommand/Lavaland/Lavaland/ruin_elite_tumor.yml
+  priority: 31
+
+- type: lavalandGridRuin
+  id: MinersCache
+  name: lavaland-ruin-miners-cache
+  path: /Maps/_ClawCommand/Lavaland/Lavaland/ruin_miners_cache.yml
+  priority: 32
+
+- type: lavalandGridRuin
+  id: Oasis
+  name: lavaland-ruin-oasis
+  path: /Maps/_ClawCommand/Lavaland/Lavaland/ruin_oasis.yml
+  priority: 33
+
+- type: lavalandGridRuin
+  id: VanityVault
+  name: lavaland-ruin-vanity-vault
+  path: /Maps/_ClawCommand/Lavaland/Lavaland/ruin_vanity_vault.yml
+  priority: 34
+
+- type: lavalandGridRuin
+  id: HotSpringBathhouse
+  name: lavaland-ruin-bathhouse
+  path: /Maps/_ClawCommand/Lavaland/Lavaland/ruin_hotspring_bathhouse.yml
+  priority: 35

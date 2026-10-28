@@ -1,0 +1,52 @@
+- type: entity
+  name: purifying salts
+  description: A canister of purifying salts for cleansing the body of metaphysical injuries.
+  parent: BaseHealingItem
+  id: PurifyingSalts
+  suffix: Full
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Medical/purifyingsalts.rsi
+    state: icon
+  - type: Item
+    sprite: _ClawCommand/Objects/Medical/purifyingsalts.rsi
+  - type: Healing
+    damageContainers:
+    - Biological
+    - BiologicalMetaphysical
+    damage:
+      types:
+        Holy: -10
+    healingBeginSound:
+      path: "/Audio/Items/Medical/brutepack_begin.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+    healingEndSound:
+      path: "/Audio/Items/Medical/brutepack_end.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+  - type: Stack
+    stackType: PurifyingSalts
+    count: 10
+  - type: StackPrice
+    price: 5
+  - type: Tag
+    tags:
+    - PurifyingSalts
+
+- type: entity
+  parent: PurifyingSalts
+  id: PurifyingSalts1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: stack
+  parent: BaseSmallStack
+  id: PurifyingSalts
+  name: stack-purifying-salts
+  icon: { sprite: "_ClawCommand/Objects/Medical/purifyingsalts.rsi", state: icon }
+  spawn: PurifyingSalts

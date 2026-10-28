@@ -643,3 +643,70 @@
           Piercing: 10
       hitSound:
         path: /Audio/Weapons/smash.ogg
+
+# ---------------------------------------------------------------------------
+# Blood-drunk Miner
+# ---------------------------------------------------------------------------
+
+- type: entity
+  parent: ActionBaseMegafaunaAttack
+  id: ActionBloodDrunkMinerCharge
+  name: Pickaxe Charge
+  description: Charge at the target, pickaxe raised.
+  components:
+  - type: Action
+    useDelay: 5
+    sound:
+      path: /Audio/Items/Mining/pickaxe.ogg
+  - type: Sprite
+    sprite: _ClawCommand/Heretic/eldritch_mobs.rsi
+    layers:
+    - state: ash_walker
+      map: ["enum.ActionVisuals.Icon"]
+  - type: WorldTargetAction
+    event: !type:MegafaunaChargeActionEvent
+      windUp: 0.6
+      chargeSpeed: 16
+      overshoot: 3
+      maxDistance: 13
+      hitRadius: 1.2
+      knockbackDistance: 2
+      knockdownTime: 1
+      windUpSpawn: MegafaunaWindUpEffect
+      damage:
+        types:
+          Piercing: 18
+          Blunt: 10
+      windUpSound:
+        path: /Audio/Items/Mining/pickaxe.ogg
+      hitSound:
+        path: /Audio/Weapons/smash.ogg
+
+- type: entity
+  parent: ActionBloodDrunkMinerCharge
+  id: ActionBloodDrunkMinerFrenziedRush
+  name: Frenzied Rush
+  description: Charge at the target three times in a row, maddened by bloodlust.
+  components:
+  - type: Action
+    useDelay: 9
+  - type: WorldTargetAction
+    event: !type:MegafaunaChargeActionEvent
+      windUp: 0.5
+      chainWindUp: 0.3
+      charges: 3
+      chargeSpeed: 18
+      overshoot: 3
+      maxDistance: 13
+      hitRadius: 1.2
+      knockbackDistance: 2
+      knockdownTime: 1
+      windUpSpawn: MegafaunaWindUpEffect
+      damage:
+        types:
+          Piercing: 15
+          Blunt: 8
+      windUpSound:
+        path: /Audio/Items/Mining/pickaxe.ogg
+      hitSound:
+        path: /Audio/Weapons/smash.ogg

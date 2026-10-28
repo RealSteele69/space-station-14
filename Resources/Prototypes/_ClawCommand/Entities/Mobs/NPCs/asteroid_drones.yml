@@ -1,0 +1,176 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Small hostile scrap-drones for the Asteroid biome's wildlife spawn table
+# (see SalvageSpawnerMobMiningAsteroid in Entities/Markers/Spawners/Random/Salvage/spawners.yml).
+# Both reuse the existing hivebot chassis/sprite (Entities/Mobs/NPCs/hivebot.yml,
+# Mobs/Aliens/hivebot.rsi) and the same reagent-injection-on-hit setup already used
+# by the venomous asteroid snakes in Entities/Mobs/NPCs/xeno.yml (SolutionManager +
+# MeleeChemicalInjector dosing Toxin) for their sting - no new components needed.
+
+- type: entity
+  parent: [ BaseSimpleMob, MobCombat, MobRobotic, BaseMobDestructible ]
+  id: MobRogueMaintenanceDrone
+  name: rogue maintenance drone
+  description: A scavenged maintenance drone with its safety interlocks stripped out. It darts in on a scored hull plate, jabs with an improvised toxin needle, then skitters off before you can swing back.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Mobs/Aliens/hivebot.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: basic_attack
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.30
+        density: 25
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      12: Dead
+    stateAlertDict:
+      Alive: BorgHealth
+      Dead: BorgDead
+    showOverlays: false
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      6: 0.7
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Piercing: 3
+  - type: SolutionManager
+    solutions:
+    - SolutionVenomRogueMaintenanceDrone
+  - type: MeleeChemicalInjector
+    solution: melee
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - Unimplantable
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.6
+    baseSprintSpeed: 4.2
+  - type: RotationVisuals
+    horizontalRotation: 90
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Borg
+  - type: SpawnLootOnDeath
+    table: !type:NestedSelector
+      tableId: SalvageScrapLowValue
+
+- type: entity
+  parent: [SolutionWeapon, SolutionTiny]
+  id: SolutionVenomRogueMaintenanceDrone
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Toxin
+        Quantity: 15
+
+- type: entity
+  parent: [ BaseSimpleMob, MobCombat, MobRobotic, BaseMobDestructible ]
+  id: MobDerelictMedicalDrone
+  name: derelict medical drone
+  description: An old diagnostic drone, still drifting through a sampling routine from some long-abandoned medbay. Slow and clumsy, but its sampling needle still draws a little blood - and whatever it's still carrying in the reservoir.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Mobs/Aliens/hivebot.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: strong_attack
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 60
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      40: Dead
+    stateAlertDict:
+      Alive: BorgHealth
+      Dead: BorgDead
+    showOverlays: false
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      20: 0.7
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Piercing: 2
+  - type: SolutionManager
+    solutions:
+    - SolutionVenomDerelictMedicalDrone
+  - type: MeleeChemicalInjector
+    solution: melee
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - Unimplantable
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0.9
+    baseSprintSpeed: 1.6
+  - type: RotationVisuals
+    horizontalRotation: 90
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Borg
+  - type: SpawnLootOnDeath
+    table: !type:NestedSelector
+      tableId: SalvageScrapLowValue
+
+- type: entity
+  parent: [SolutionWeapon, SolutionTiny]
+  id: SolutionVenomDerelictMedicalDrone
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Toxin
+        Quantity: 8

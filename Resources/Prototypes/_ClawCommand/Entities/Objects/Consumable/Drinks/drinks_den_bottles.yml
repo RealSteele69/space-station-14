@@ -1,0 +1,17 @@
+# Ported from DEN/Entities/Objects/Consumable/Drinks/drinks_bottles.yml
+- type: entity
+  parent: [DrinkBottleVisualsOpenable, DrinkBottleGlassBaseFull]
+  id: DrinkJaegermisterBottleFull
+  name: jaegermister bottle
+  description: A bittersweet alcohol that hasn't changed its recipe in nearly a thousand years.
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Jaegermister
+        Quantity: 100
+  - type: Label
+    localizedLabel: reagent-name-jaegermister
+  - type: Sprite
+    sprite: _DEN/Objects/Consumable/Drinks/jaegermisterbottle.rsi
+  - type: Sealable

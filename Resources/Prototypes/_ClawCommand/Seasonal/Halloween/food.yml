@@ -1,0 +1,89 @@
+# Spooky season candy. Candy corn/apple reuse the stock tgstation candy.rsi states; the cookies
+# use dedicated art (see Resources/Textures/_ClawCommand/Seasonal/Halloween/halloween_items.rsi
+# for license/credit).
+
+- type: entity
+  parent: FoodSnackBase
+  id: FoodCandyCorn
+  name: candy corn
+  description: A handful of waxy, tri-colored sugar. A Halloween classic.
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candy.rsi
+    state: corn
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+    - sweet
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sugar
+        Quantity: 8
+
+- type: entity
+  parent: FoodSnackBase
+  id: FoodCandyApple
+  name: candy apple
+  description: A whole apple, drowned in sugar on a stick. Dentist's nightmare, kid's dream.
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candy.rsi
+    state: apple
+  - type: Item
+    size: Small
+  - type: FlavorProfile
+    flavors:
+    - sweet
+    - sour
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sugar
+        Quantity: 6
+      - ReagentId: Nutriment
+        Quantity: 6
+
+- type: entity
+  parent: FoodBakedCookie
+  id: FoodCookieSkull
+  name: skull cookie
+  description: A sugar cookie, iced bone-white and shaped like a grinning skull.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Halloween/halloween_items.rsi
+    state: skeletoncookie
+  - type: FlavorProfile
+    flavors:
+    - sweet
+
+- type: entity
+  parent: FoodBakedCookie
+  id: FoodCookieCoffin
+  name: coffin cookie
+  description: A sugar cookie baked dark and cut into a tiny coffin. Someone in the kitchen has a flair for the dramatic.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Halloween/halloween_items.rsi
+    state: coffincookie
+  - type: FlavorProfile
+    flavors:
+    - sweet
+    - bitter
+
+# Witches' candy: the currency Bartholomew's cauldron produces and Jacqueline trades for.
+- type: entity
+  parent: BaseItem
+  id: WitchesCandy
+  name: witches' candy
+  description: A chocolate coin, still warm from the cauldron. Jacqueline the Pumpqueen might trade you something for it.
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candy.rsi
+    state: coin
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Trash

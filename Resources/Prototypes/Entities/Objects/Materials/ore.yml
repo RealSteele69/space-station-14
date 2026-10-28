@@ -256,6 +256,69 @@
 
 - type: entity
   parent: OreBase
+  id: VerdantiumOre
+  name: verdantium ore
+  suffix: Full
+  components:
+  - type: Stack
+    stackType: VerdantiumOre
+  - type: Sprite
+    state: spacequartz
+    color: "#2ecc71"
+  - type: PhysicalComposition
+    materialComposition:
+      RawVerdantium: 100
+  - type: PointLight
+    radius: 1.2
+    energy: 0.6
+    castShadows: false
+    color: "#2ecc71"
+  - type: Item
+    heldPrefix: spacequartz
+  - type: Tag
+    tags:
+    - Ore
+    - OreVerdantium
+
+- type: entity
+  parent: VerdantiumOre
+  id: VerdantiumOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: OreBase
+  id: OsmiumOre
+  name: osmium ore
+  suffix: Full
+  components:
+  - type: Stack
+    stackType: OsmiumOre
+  - type: Sprite
+    state: silver
+    color: "#6b7f8c"
+  - type: PhysicalComposition
+    materialComposition:
+      RawOsmium: 100
+  - type: Item
+    heldPrefix: silver
+  - type: Tag
+    tags:
+    - Ore
+    - OreOsmium
+
+- type: entity
+  parent: OsmiumOre
+  id: OsmiumOre1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: OreBase
   id: Coal
   name: coal
   suffix: Full

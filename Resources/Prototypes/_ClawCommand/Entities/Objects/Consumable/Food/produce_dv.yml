@@ -85,3 +85,39 @@
   - type: Tag
     tags:
     - Vegetable
+
+- type: entity
+  name: ambrosia nobilis
+  parent: FoodProduceBase
+  id: FoodAmbrosiaNobilis
+  description: A blue medicinal plant for those who need to be topped off. May have some funky side effects.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+      - medicine
+  - type: Solution
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: Tricordrazine
+        Quantity: 3
+      - ReagentId: SpaceDrugs
+        Quantity: 5
+      - ReagentId: Nutriment
+        Quantity: 2
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/ambrosia_deus.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: AmbrosiaNobilisPlants
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Clothing
+    sprite: Objects/Specific/Hydroponics/ambrosia_deus.rsi
+    slots:
+    - HEAD
+  - type: Tag
+    tags:
+    - Ambrosia

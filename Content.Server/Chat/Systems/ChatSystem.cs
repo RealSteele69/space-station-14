@@ -55,6 +55,9 @@ public sealed partial class ChatSystem : SharedChatSystem
 
     private bool _deadChatEnabled = true;
 
+    // claw command - once true, dead chat is relayed to every connected player instead of just ghosts/admins
+    private bool _postRoundDeadChatOpen;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -112,8 +115,14 @@ public sealed partial class ChatSystem : SharedChatSystem
             case GameRunLevel.InRound:
                 if (!_configurationManager.GetCVar(CCVars.OocEnableDuringRound))
                     _configurationManager.SetCVar(CCVars.OocEnabled, false);
+                _postRoundDeadChatOpen = false;
                 break;
             case GameRunLevel.PostRound:
+                // CLAW COMMAND - once the shuttle docks and the round-end summary (antag reveal) goes out,
+                // open dead chat to every connected player, not just ghosts/admins, so the usual
+                // postround "who was the traitor" banter is visible to everyone, survivors included.
+                _postRoundDeadChatOpen = true;
+                goto case GameRunLevel.PreRoundLobby;
             case GameRunLevel.PreRoundLobby:
                 // CLAW COMMAND - always re-enable OOC once the round ends / players return to the lobby,
                 // even when OOC is allowed during the round (OocEnableDuringRound). Otherwise a manual

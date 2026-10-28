@@ -1,0 +1,66 @@
+# Microwave recipes for Resources/Prototypes/_ClawCommand/Entities/Objects/Consumable/Food/Baked/baked_misc.yml
+
+- type: microwaveMealRecipe
+  id: RecipeButterBiscuit
+  name: butter biscuit recipe
+  result: FoodBakedButterBiscuit
+  time: 5
+  group: Breakfast
+  reagents:
+    Flour: 5
+  solids:
+    FoodButterSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipePlumpHelmetBiscuit
+  name: plump helmet biscuit recipe
+  result: FoodBakedPlumpHelmetBiscuit
+  time: 5
+  group: Other
+  solids:
+    FoodDough: 1
+    FoodMushroom: 2
+
+- type: microwaveMealRecipe
+  id: RecipeDogTreat
+  name: dog treat recipe
+  result: FoodBakedDogTreat
+  time: 5
+  group: Other
+  reagents:
+    Flour: 5
+  solids:
+    FoodMeat: 1
+
+- type: microwaveMealRecipe
+  id: RecipeCracker
+  name: cracker recipe
+  result: FoodBakedCracker
+  time: 5
+  group: Other
+  reagents:
+    Flour: 5
+  solids:
+    FoodDough: 1
+
+- type: microwaveMealRecipe
+  id: RecipeKhachapuri
+  name: khachapuri recipe
+  result: FoodBakedKhachapuri
+  time: 10
+  group: Breads
+  solids:
+    FoodDoughPie: 1
+    FoodCheeseSlice: 2
+    FoodEgg: 1
+
+- type: microwaveMealRecipe
+  id: RecipeChocolateCornet
+  name: chocolate cornet recipe
+  result: FoodBakedChocolateCornet
+  time: 5
+  group: BarsAndCookies
+  solids:
+    FoodDough: 1
+    FoodButterSlice: 1
+    FoodSnackChocolateBar: 1

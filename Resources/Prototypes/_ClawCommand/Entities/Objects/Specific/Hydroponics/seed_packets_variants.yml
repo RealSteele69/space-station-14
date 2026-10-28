@@ -1,0 +1,450 @@
+- type: entity
+  parent: SeedBase
+  name: packet of bluespace banana seeds
+  description: "These seeds shimmer faintly, like they're not quite all the way here."
+  id: BluespaceBananaSeeds
+  components:
+    - type: Seed
+      plantId: BluespaceBananaPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/bluespace_banana.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of poison-berry seeds
+  description: "Pretty, but best left to the professionals."
+  id: PoisonBerrySeeds
+  components:
+    - type: Seed
+      plantId: PoisonBerryPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/poison_berry.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of death-berry seeds
+  description: "Do not eat. Seriously."
+  id: DeathBerrySeeds
+  components:
+    - type: Seed
+      plantId: DeathBerryPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/death_berry.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of glow-berry seeds
+  description: "A soft light pulses from within each berry."
+  id: GlowBerrySeeds
+  components:
+    - type: Seed
+      plantId: GlowBerryPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/glow_berry.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of blue cherry seeds
+  description: "An unusually blue variety of cherry."
+  id: BlueCherrySeeds
+  components:
+    - type: Seed
+      plantId: BlueCherryPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/blue_cherry.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of cherry bulb seeds
+  description: "These grow fat, heavy cherries."
+  id: CherryBulbSeeds
+  components:
+    - type: Seed
+      plantId: CherryBulbPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/cherry_bulb.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of cherry bomb seeds
+  description: "These cherries smell faintly of gunpowder. Handle gently."
+  id: CherryBombSeeds
+  components:
+    - type: Seed
+      plantId: CherryBombPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/cherry_bomb.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of green grape seeds
+  description: "A crisp, pale variety of grape."
+  id: GreenGrapeSeeds
+  components:
+    - type: Seed
+      plantId: GreenGrapePlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/green_grape.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of deathweed seeds
+  description: "A sinister-looking strain of cannabis."
+  id: DeathweedSeeds
+  components:
+    - type: Seed
+      plantId: DeathweedPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/deathweed.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of lifeweed seeds
+  description: "An unusually pale, soothing strain of cannabis."
+  id: LifeweedSeeds
+  components:
+    - type: Seed
+      plantId: LifeweedPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/lifeweed.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of omega weed seeds
+  description: "The strongest strain known to botany."
+  id: OmegaWeedSeeds
+  components:
+    - type: Seed
+      plantId: OmegaWeedPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/omega_weed.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of ice pepper seeds
+  description: "These peppers are cold to the touch."
+  id: IcePepperSeeds
+  components:
+    - type: Seed
+      plantId: IcePepperPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/ice_pepper.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of combustible lemon seeds
+  description: "Best not to squeeze these near an open flame."
+  id: CombustibleLemonSeeds
+  components:
+    - type: Seed
+      plantId: CombustibleLemonPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/combustible_lemon.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of vanilla pod seeds
+  description: "Smells sweet even before it grows."
+  id: VanillaPodSeeds
+  components:
+    - type: Seed
+      plantId: VanillaPodPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/vanilla_pod.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of snapcorn seeds
+  description: "These kernels seem to twitch when you're not looking."
+  id: SnapcornSeeds
+  components:
+    - type: Seed
+      plantId: SnapcornPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/snapcorn.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of durathread seeds
+  description: "A hardy, reinforced strain of cotton."
+  id: DurathreadSeeds
+  components:
+    - type: Seed
+      plantId: DurathreadPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/durathread.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of geranium seeds
+  description: "A hardy flowering plant."
+  id: GeraniumSeeds
+  components:
+    - type: Seed
+      plantId: GeraniumPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/geranium.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of harebell seeds
+  description: "Delicate, bell-shaped flowers."
+  id: HarebellSeeds
+  components:
+    - type: Seed
+      plantId: HarebellPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/harebell.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of sunflower seeds
+  description: "Tends to turn to face the station's lights."
+  id: SunflowerSeeds
+  components:
+    - type: Seed
+      plantId: SunflowerPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/sunflower.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of moonflower seeds
+  description: "A pale mutation that seems to prefer the dark."
+  id: MoonflowerSeeds
+  components:
+    - type: Seed
+      plantId: MoonflowerPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/moonflower.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of novaflower seeds
+  description: "This mutation radiates an uncomfortable amount of heat."
+  id: NovaflowerSeeds
+  components:
+    - type: Seed
+      plantId: NovaflowerPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/novaflower.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of bee balm seeds
+  description: "A favorite of pollinators."
+  id: BeeBalmSeeds
+  components:
+    - type: Seed
+      plantId: BeeBalmPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/bee_balm.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of honey balm seeds
+  description: "Smells faintly of honey."
+  id: HoneyBalmSeeds
+  components:
+    - type: Seed
+      plantId: HoneyBalmPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/honey_balm.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of reishi mycelium
+  description: "A prized medicinal mushroom."
+  id: ReishiSeeds
+  components:
+    - type: Seed
+      plantId: ReishiPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/reishi.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of destroying angel mycelium
+  description: "Pale, innocent-looking, and extremely dangerous."
+  id: DestroyingAngelSeeds
+  components:
+    - type: Seed
+      plantId: DestroyingAngelPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/destroying_angel.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of liberty-cap mycelium
+  description: "Known for its, ah, recreational properties."
+  id: LibertyCapSeeds
+  components:
+    - type: Seed
+      plantId: LibertyCapPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/liberty_cap.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of plump-helmet mycelium
+  description: "A hearty, nutritious mushroom."
+  id: PlumpHelmetSeeds
+  components:
+    - type: Seed
+      plantId: PlumpHelmetPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/plump_helmet.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of jupiter cup mycelium
+  description: "A deep purple mushroom with a cosmic look to it."
+  id: JupiterCupSeeds
+  components:
+    - type: Seed
+      plantId: JupiterCupPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/jupiter_cup.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of glowshroom mycelium
+  description: "Glows faintly in the dark."
+  id: GlowshroomSeeds
+  components:
+    - type: Seed
+      plantId: GlowshroomPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/glowshroom.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of glowcap mycelium
+  description: "A bright green bioluminescent mushroom."
+  id: GlowcapSeeds
+  components:
+    - type: Seed
+      plantId: GlowcapPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/glowcap.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of shadowshroom mycelium
+  description: "Seems to drink in the light around it."
+  id: ShadowshroomSeeds
+  components:
+    - type: Seed
+      plantId: ShadowshroomPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/shadowshroom.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of peach seeds
+  description: "they are peachy good for you."
+  id: PeachSeeds
+  components:
+    - type: Seed
+      plantId: PeachPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/peach.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of sweet potato seeds
+  description: "Sweeter than a regular potato."
+  id: SweetPotatoSeeds
+  components:
+    - type: Seed
+      plantId: SweetPotatoPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/sweet_potato.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of parsnip seeds
+  description: "A pale cousin of the carrot."
+  id: ParsnipSeeds
+  components:
+    - type: Seed
+      plantId: ParsnipPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/parsnip.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of white-beet seeds
+  description: "A pale root vegetable."
+  id: WhiteBeetSeeds
+  components:
+    - type: Seed
+      plantId: WhiteBeetPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/white_beet.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of red-beet seeds
+  description: "A deep red root vegetable."
+  id: RedBeetSeeds
+  components:
+    - type: Seed
+      plantId: RedBeetPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/red_beet.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of tea astra seeds
+  description: "A starry variety of tea."
+  id: TeaAstraSeeds
+  components:
+    - type: Seed
+      plantId: TeaAstraPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/tea_astra.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of catnip seeds
+  description: "Smells minty. Cats go wild for it."
+  id: CatnipSeeds
+  components:
+    - type: Seed
+      plantId: CatnipPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/catnip.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of coffee robusta seeds
+  description: "A bolder, more bitter variety of coffee."
+  id: CoffeeRobustaSeeds
+  components:
+    - type: Seed
+      plantId: CoffeeRobustaPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/coffee_robusta.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of space tobacco seeds
+  description: "A cosmic-smelling tobacco."
+  id: SpaceTobaccoSeeds
+  components:
+    - type: Seed
+      plantId: SpaceTobaccoPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/space_tobacco.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of bamboo seeds
+  description: "Grows surprisingly fast."
+  id: BambooSeeds
+  components:
+    - type: Seed
+      plantId: BambooPlants
+    - type: Sprite
+      sprite: _ClawCommand/Objects/Specific/Hydroponics/bamboo.rsi

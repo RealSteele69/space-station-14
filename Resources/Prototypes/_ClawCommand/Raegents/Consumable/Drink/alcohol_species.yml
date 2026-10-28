@@ -1,0 +1,295 @@
+# Species-specific cocktails, one per playable race's unofficial house drink.
+
+- type: reagent
+  id: Coldscales
+  name: reagent-name-coldscales
+  parent: BaseAlcohol
+  desc: reagent-desc-coldscales
+  physicalDesc: reagent-physical-desc-cold
+  flavor: coldscales
+  color: "#5AEB52"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.09
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+
+- type: reagent
+  id: OilDrum
+  name: reagent-name-oil-drum
+  parent: BaseAlcohol
+  desc: reagent-desc-oil-drum
+  physicalDesc: reagent-physical-desc-oily
+  flavor: oildrum
+  color: "#000000"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.08
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:MovementSpeedModifier
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+        walkSpeedModifier: 1.1
+        sprintSpeedModifier: 1.1
+        time: 3
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: OilDrum
+          min: 3
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerSynth ]
+          inverted: true
+        damage:
+          types:
+            Poison: 0.1
+
+- type: reagent
+  id: NordKing
+  name: reagent-name-nord-king
+  parent: BaseAlcohol
+  desc: reagent-desc-nord-king
+  physicalDesc: reagent-physical-desc-sweet
+  flavor: nordking
+  color: "#EB1010"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.09
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: NordKing
+          min: 3
+        - !type:MetabolizerTypeCondition
+          type: [ Dwarf ]
+        damage:
+          types:
+            Poison: -0.1
+            Blunt: -0.1
+
+- type: reagent
+  id: VelvetKiss
+  name: reagent-name-velvet-kiss
+  parent: BaseAlcohol
+  desc: reagent-desc-velvet-kiss
+  physicalDesc: reagent-physical-desc-dark-red
+  flavor: velvetkiss
+  color: "#EB1010"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.02
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+
+- type: reagent
+  id: AbductionFruit
+  name: reagent-name-abduction-fruit
+  parent: BaseAlcohol
+  desc: reagent-desc-abduction-fruit
+  physicalDesc: reagent-physical-desc-tart
+  flavor: abductionfruit
+  color: "#DEFACD"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.15
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+
+- type: reagent
+  id: BugZapper
+  name: reagent-name-bug-zapper
+  parent: BaseAlcohol
+  desc: reagent-desc-bug-zapper
+  physicalDesc: reagent-physical-desc-electric
+  flavor: bugzapper
+  color: "#F5882A"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.01
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:Jitter
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Moth ]
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: BugZapper
+          min: 2
+        - !type:MetabolizerTypeCondition
+          type: [ Moth ]
+          inverted: true
+        damage:
+          types:
+            Poison: 0.1
+
+- type: reagent
+  id: MushCrush
+  name: reagent-name-mush-crush
+  parent: BaseAlcohol
+  desc: reagent-desc-mush-crush
+  physicalDesc: reagent-physical-desc-murky
+  flavor: mushcrush
+  color: "#6B4423"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.01
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: MushCrush
+          min: 2
+        - !type:MetabolizerTypeCondition
+          type: [ Plant ]
+        damage:
+          types:
+            Poison: -0.1
+      - !type:EvenHealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: MushCrush
+          min: 2
+        - !type:MetabolizerTypeCondition
+          type: [ Plant ]
+        damage:
+          Brute: -0.1
+
+- type: reagent
+  id: Darkbrew
+  name: reagent-name-darkbrew
+  parent: BaseAlcohol
+  desc: reagent-desc-darkbrew
+  physicalDesc: reagent-physical-desc-inky
+  flavor: darkbrew
+  color: "#000000"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.01
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+
+- type: reagent
+  id: HollowBone
+  name: reagent-name-hollow-bone
+  parent: BaseAlcohol
+  desc: reagent-desc-hollow-bone
+  physicalDesc: reagent-physical-desc-milky
+  flavor: hollowbone
+  color: "#FCF7D4"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.03
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+
+- type: reagent
+  id: FriskyKitty
+  name: reagent-name-frisky-kitty
+  parent: BaseDrink
+  desc: reagent-desc-frisky-kitty
+  physicalDesc: reagent-physical-desc-creamy
+  flavor: friskykitty
+  color: "#FCF7D4"
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:Satiate
+        satiationType: Hunger
+        factor: 1
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ MetabolizerFelinid ]
+
+- type: reagent
+  id: JellWyrm
+  name: reagent-name-jell-wyrm
+  parent: BaseAlcohol
+  desc: reagent-desc-jell-wyrm
+  physicalDesc: reagent-physical-desc-bubbly
+  flavor: jellwyrm
+  color: "#FF6200"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.07
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: JellWyrm
+          min: 2
+        - !type:MetabolizerTypeCondition
+          type: [ Slime ]
+        damage:
+          types:
+            Poison: -0.1
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: JellWyrm
+          min: 2
+        - !type:MetabolizerTypeCondition
+          type: [ Slime ]
+          inverted: true
+        damage:
+          types:
+            Poison: 0.15
+
+- type: reagent
+  id: LavalSpit
+  name: reagent-name-laval-spit
+  parent: BaseAlcohol
+  desc: reagent-desc-laval-spit
+  physicalDesc: reagent-physical-desc-burning
+  flavor: lavalspit
+  color: "#DE3009"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.06
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+      - !type:AdjustTemperature
+        amount: 150

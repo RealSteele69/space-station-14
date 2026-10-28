@@ -1,0 +1,48 @@
+# Microwave recipes for the burrito family in
+# _ClawCommand/Entities/Objects/Consumable/Food/burritos.yml.
+# All use FoodDoughTortillaFlat as the wrap, matching how this fork already
+# uses that entity as the generic "tortilla" for nachos/enchiladas.
+
+- type: microwaveMealRecipe
+  id: RecipeMealBurrito
+  name: burrito recipe
+  result: FoodMealBurrito
+  time: 15
+  group: Savory
+  solids:
+    FoodDoughTortillaFlat: 1
+    FoodSoybeans: 2
+
+- type: microwaveMealRecipe
+  id: RecipeMealBurritoCheesy
+  name: cheesy burrito recipe
+  result: FoodMealBurritoCheesy
+  time: 15
+  group: Savory
+  solids:
+    FoodDoughTortillaFlat: 1
+    FoodCheeseSlice: 2
+    FoodSoybeans: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealBurritoCarneAsada
+  name: carne asada burrito recipe
+  result: FoodMealBurritoCarneAsada
+  time: 15
+  group: Meat
+  solids:
+    FoodDoughTortillaFlat: 1
+    FoodMeatCutletCooked: 2
+    FoodSoybeans: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealBurritoFuego
+  name: fuego plasma burrito recipe
+  result: FoodMealBurritoFuego
+  time: 15
+  group: Savory
+  reagents:
+    CapsaicinOil: 10
+  solids:
+    FoodDoughTortillaFlat: 1
+    FoodSoybeans: 1

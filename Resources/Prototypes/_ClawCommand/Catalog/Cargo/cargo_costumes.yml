@@ -1,0 +1,39 @@
+- type: cargoProduct
+  id: CostumeWizardOrder
+  icon:
+    sprite: Clothing/OuterClothing/Misc/wizard_fake.rsi
+    state: icon
+  product: CrateCostumeWizard
+  cost: 500
+  category: cargoproduct-category-name-costumes
+  group: market
+
+- type: cargoProduct
+  id: CostumeWitchOrder
+  icon:
+    sprite: Clothing/OuterClothing/Suits/witchrobe.rsi
+    state: icon
+  product: CrateCostumeWitch
+  cost: 500
+  category: cargoproduct-category-name-costumes
+  group: market
+
+- type: cargoProduct
+  id: CostumeHolidayOrder
+  icon:
+    sprite: Clothing/OuterClothing/Misc/santa.rsi
+    state: icon
+  product: CrateCostumeHoliday
+  cost: 500
+  category: cargoproduct-category-name-costumes
+  group: market
+
+- type: cargoProduct
+  id: CostumeHawaiianOrder
+  icon:
+    sprite: Clothing/Uniforms/Jumpsuits/Civilian/hawaiblue.rsi
+    state: icon
+  product: CrateCostumeHawaiian
+  cost: 400
+  category: cargoproduct-category-name-costumes
+  group: market

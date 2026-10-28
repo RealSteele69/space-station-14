@@ -1,0 +1,244 @@
+# SPDX-FileCopyrightText: 2026 RealSteele69 <hello@example.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Claw Command - additional light Lavaland wildlife: Goldgrub, Curse Blob, Gutlunch.
+# Kept to the same tier as Ash Whelp/Rabble in mobs.yml: Destructible gib-on-threshold
+# instead of a tanky Dead sprite, Hierophant/Inorganic damage profile, low CombatPower.
+
+- type: entity
+  name: Goldgrub
+  id: LavalandMobGoldgrub
+  parent: LavalandMobBase
+  description: A fist-sized burrowing worm that gorges itself on raw ore. Skittish by nature, it would much rather flee than fight.
+  components:
+  - type: Physics
+    bodyType: KinematicController
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        density: 300
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: NpcFactionMember
+    factions:
+    - Passive
+  - type: HTN
+    rootTask:
+      task: IdleCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Mobs/Animals/slug.rsi
+    color: "#D8B23C"
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: slug
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: slug
+      Dead:
+        Base: dead
+  - type: Tag
+    tags:
+    - CannotSuicide
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 5
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 20
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+          - !type:PlaySoundBehavior
+            sound:
+              path: /Audio/Effects/gib1.ogg
+  - type: Damageable
+    damageModifierSet: Hierophant
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Fauna
+  - type: CombatPower # Goobstation
+    factor: 1 # harmless scavenger, barely a threat
+  - type: SpawnLootOnDeath
+    table: !type:NestedSelector
+      tableId: LavalandGoldgrubLoot
+
+- type: entityTable
+  id: LavalandGoldgrubLoot
+  table: !type:AllSelector
+    children:
+    - id: GoldOre1
+      rolls: 1, 2
+    - id: IngotGold1
+      prob: 0.2
+
+- type: entity
+  name: Curse Blob
+  id: LavalandMobCurseBlob
+  parent: LavalandMobBase
+  description: A gelatinous mass pulsing with corrupted energy. Getting too close is a mistake you only make once.
+  components:
+  - type: Physics
+    bodyType: KinematicController
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        density: 300
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: NpcFactionMember
+    factions:
+    - Lavafauna
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Mobs/Aliens/slimes.rsi
+    color: "#8E44AD"
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: green_adult_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: green_adult_slime
+      Dead:
+        Base: green_adult_slime_dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/demon_attack1.ogg
+    damage:
+        types:
+          Caustic: 8
+  - type: Tag
+    tags:
+    - CannotSuicide
+  - type: CombatMode
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 30
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+          - !type:PlaySoundBehavior
+            sound:
+              path: /Audio/Effects/gib1.ogg
+  - type: Damageable
+    damageModifierSet: Hierophant
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Fauna
+  - type: CombatPower # Goobstation
+    factor: 2 # slow, but its touch corrodes
+
+- type: entity
+  name: Gutlunch
+  id: LavalandMobGutlunch
+  parent: LavalandMobBase
+  description: A hunched scavenger that trails behind bigger predators, picking apart whatever they leave behind.
+  components:
+  - type: Physics
+    bodyType: KinematicController
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        density: 300
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: NpcFactionMember
+    factions:
+    - Lavafauna
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _ClawCommand/Lavaland/Mobs/lavaland_monsters.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: gutlunch
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/demon_attack1.ogg
+    damage:
+        types:
+          Slash: 8
+  - type: Tag
+    tags:
+    - CannotSuicide
+  - type: CombatMode
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 4
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 35
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+          - !type:PlaySoundBehavior
+            sound:
+              path: /Audio/Effects/gib1.ogg
+  - type: Damageable
+    damageModifierSet: Hierophant
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Fauna
+  - type: CombatPower # Goobstation
+    factor: 2
+  - type: SolutionManager
+    solutions:
+    - SolutionGutlunch
+  - type: HarvestableSolution
+    solutionName: gutlunch
+
+- type: entity
+  parent: SolutionSmall
+  id: SolutionGutlunch
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    id: gutlunch
+    solution:
+      reagents:
+      - ReagentId: Ichor
+        Quantity: 30

@@ -18,3 +18,17 @@
   name: stack-uranium
   icon: { sprite: /Textures/Objects/Materials/Sheets/other.rsi, state: uranium }
   spawn: SheetUranium1
+
+- type: stack
+  parent: BaseSheetStack
+  id: Verdantium
+  name: stack-verdantium
+  icon: { sprite: /Textures/Objects/Materials/Sheets/other.rsi, state: uranium }
+  spawn: SheetVerdantium1
+
+- type: stack
+  parent: BaseSheetStack
+  id: Osmium
+  name: stack-osmium
+  icon: { sprite: /Textures/Objects/Materials/Sheets/other.rsi, state: uranium }
+  spawn: SheetOsmium1

@@ -1124,3 +1124,63 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSanta
+
+#SRT Hardsuit
+- type: entity
+  abstract: true
+  parent: [ BaseCentcommContraband, ClothingOuterHardsuitBase ]
+  id: ClothingOuterHardsuitEliteBase
+  components:
+  - type: PressureProtection
+    highPressureMultiplier: 0.02
+    lowPressureMultiplier: 1000
+  - type: FireProtection
+    reduction: 0.8
+  - type: ExplosionResistance
+    damageCoefficient: 0.50
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.50
+        Heat: 0.6
+        Radiation: 0
+        Caustic: 0.35
+        Holy: 0.50
+        Soul: 0.50
+  - type: StaminaResistance
+    damageCoefficient: 0.2
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+
+- type: entity
+  parent: ClothingOuterHardsuitEliteBase
+  id: ClothingOuterHardsuitSRT
+  name: SRT hardsuit
+  description: An uparmored boarding hardsuit for Special Response Team operatives. The serial numbers on this one have been removed.
+  components:
+  - type: Sprite
+    sprite: DeltaV/Clothing/OuterClothing/Hardsuits/SRT.rsi
+  - type: Clothing
+    sprite: DeltaV/Clothing/OuterClothing/Hardsuits/SRT.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitSRT
+  - type: ExplosionResistance
+    damageCoefficient: 0.2
+  - type: StaminaResistance
+    damageCoefficient: 0.2
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.4
+        Heat: 0.5
+        Radiation: 0.2
+        Caustic: 0.2
+        Cold: 0.4
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.85

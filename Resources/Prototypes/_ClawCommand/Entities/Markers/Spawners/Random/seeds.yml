@@ -53,6 +53,12 @@
         - PumpkinSeeds
         - CottonSeeds
         - LilySeeds
+        - BlackberrySeeds
+        - BlueberrySeeds
+        - RaspberrySeeds
+        - StrawberrySeeds
+        - CoconutSeeds
+        - PeanutSeeds
       chance: 0.95
       offset: 0.0
       rarePrototypes:
@@ -71,5 +77,19 @@
         - KoibeanSeeds
         - SpacemansTrumpetSeeds
         - LaughinPeaSeeds
+        - BlueRaspberrySeeds
+        - CoconutGunSeeds
+        - AmbrosiaNobilisSeeds
+        - PoisonBerrySeeds
+        - DeathBerrySeeds
+        - CherryBombSeeds
+        - DestroyingAngelSeeds
+        - ShadowshroomSeeds
+        - JupiterCupSeeds
+        - RedBeetSeeds
+        - MoonflowerSeeds
+        - NovaflowerSeeds
+        - HoneyBalmSeeds
+        - GlowcapSeeds
       rareChance: 0.05
 

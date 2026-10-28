@@ -141,6 +141,7 @@ public sealed partial class CriticalPlayerAlertSystem : EntitySystem
         base.Update(frameTime);
 
         UpdateThrottled();
+        UpdatePendingVv();
 
         if (_pendingSpawns.Count == 0)
             return;
@@ -224,7 +225,9 @@ public sealed partial class CriticalPlayerAlertSystem : EntitySystem
 
     /// <summary>
     /// Builds "player (character, roles)" if the player has been critical at any point this round.
-    /// Antag roles are only named once the player's antag status has been revealed to admins.
+    /// Neither job nor antag roles are named until the player's status has been revealed to admins;
+    /// unrevealed, the roles field is a single generic placeholder that doesn't hint at which kind
+    /// (command or antag) they held, so reading this alert never gives that away either.
     /// </summary>
     private bool TryDescribe(ICommonSession player, out string who)
     {
@@ -234,13 +237,15 @@ public sealed partial class CriticalPlayerAlertSystem : EntitySystem
             return false;
 
         var record = _critical[player.UserId];
-        var roles = new List<string>(record.Jobs);
-        if (record.Antags.Count > 0)
+        List<string> roles;
+        if (_antagReveal.IsRevealed(player.UserId))
         {
-            if (_antagReveal.IsRevealed(player.UserId))
-                roles.AddRange(record.Antags);
-            else
-                roles.Add(Loc.GetString("critical-alert-hidden-antag"));
+            roles = new List<string>(record.Jobs);
+            roles.AddRange(record.Antags);
+        }
+        else
+        {
+            roles = [Loc.GetString("critical-alert-hidden-role")];
         }
 
         who = Loc.GetString("critical-alert-player",
@@ -252,6 +257,8 @@ public sealed partial class CriticalPlayerAlertSystem : EntitySystem
 
     private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
     {
+        FlushAllPendingVv();
+
         _critical.Clear();
         _pendingSpawns.Clear();
         _throttled.Clear();

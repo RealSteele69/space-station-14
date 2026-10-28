@@ -6,6 +6,15 @@
     DrinkTeacup: 5
     DrinkGreenTea: 5
     DrinkHotCoco: 5
+    DrinkChamomileTea: 3 # Claw Command - Mono port
+    DrinkBerryTea: 3 # Claw Command - Mono port
+    DrinkFruitTea: 3 # Claw Command - Mono port
+    DrinkYorkshireTea: 3 # Claw Command - Mono port
+    DrinkDecafBlackTea: 3 # Claw Command - Mono port
+    DrinkDecafCoffee: 3 # Claw Command - Mono port
+    DrinkHoneyIcedTea: 3 # Claw Command - NF port
+    DrinkHotCoffeeNocaf: 3 # Claw Command - DeltaV port
   contrabandInventory:
     DrinkTeapot: 2
     DrinkNothing: 2
+    DrinkSyndicateTea: 2 # Claw Command - Mono port

@@ -48,9 +48,38 @@
     DrinkChampagneBottleFull: 2 #because the premium drink
     DrinkSakeBottleFull: 3
     DrinkSojuBottleFull: 2 # Claw Command - DeltaV port
+    DrinkJaegermisterBottleFull: 5 # Claw Command - DEN port
+    DrinkVBLongneckFull: 5 # Claw Command - Floof port
     DrinkBeerCan: 5
     DrinkWineCan: 5
   contrabandInventory:
     ChemistryBottleEthanol: 3
     DrinkBottleOfNothingFull: 1
     DrinkPoisonWinebottleFull: 2
+    # Claw Command - species drinks
+    DrinkColdscalesGlass: 2
+    DrinkOilDrumGlass: 2
+    DrinkNordKingGlass: 2
+    DrinkVelvetKissGlass: 2
+    DrinkAbductionFruitGlass: 2
+    DrinkBugZapperGlass: 2
+    DrinkMushCrushGlass: 2
+    DrinkDarkbrewGlass: 2
+    DrinkHollowBoneGlass: 2
+    DrinkFriskyKittyGlass: 2
+    DrinkJellWyrmGlass: 2
+    DrinkLavalSpitGlass: 2
+    # Claw Command - novelty cocktails
+    DrinkPinotMortGlass: 2
+    DrinkRedQueenGlass: 2
+    DrinkBlazaamGlass: 2
+    DrinkBastionBourbonGlass: 2
+    DrinkCommanderAndChiefGlass: 1
+    DrinkFringeWeaverGlass: 2
+    DrinkSugarRushGlass: 2
+    DrinkCreviceSpikeGlass: 2
+    DrinkSquirtCiderGlass: 2
+    # Claw Command - rare bottle variant
+    DrinkVodkaBottleTunguska: 1
+    DrinkCognacBottleChateauDeBaton: 1
+    DrinkChampagneBottleEauDeDandy: 1

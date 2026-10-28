@@ -1,0 +1,77 @@
+# Microwave recipes for the new sandwiches/toasts in
+# _ClawCommand/Entities/Objects/Consumable/Food/sandwiches_extra.yml.
+
+- type: microwaveMealRecipe
+  id: RecipeMealBLT
+  name: BLT sandwich recipe
+  result: FoodMealBLT
+  time: 10
+  group: Savory
+  reagents:
+    Mayo: 5
+  solids:
+    FoodMeatBaconCooked: 2
+    FoodCabbage: 1
+    FoodTomato: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealTwoBread
+  name: two bread recipe
+  result: FoodMealTwoBread
+  time: 5
+  group: Other
+  solids:
+    FoodBreadPlainSlice: 2
+
+- type: microwaveMealRecipe
+  id: RecipeMealTunaSandwich
+  name: tuna sandwich recipe
+  result: FoodMealTunaSandwich
+  time: 10
+  group: Savory
+  reagents:
+    Mayo: 5
+  solids:
+    FoodBreadPlainSlice: 2
+    FoodCannedTuna: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealMeatballSub
+  name: meatball sub recipe
+  result: FoodMealMeatballSub
+  time: 10
+  group: Meat
+  solids:
+    FoodMeatMeatballCooked: 3
+    FoodBreadBun: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealJelliedToast
+  name: jellied toast recipe
+  result: FoodMealJelliedToast
+  time: 5
+  group: Breakfast
+  reagents:
+    Sugar: 3
+  solids:
+    FoodBreadPlainSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMealJellySandwich
+  name: jelly sandwich recipe
+  result: FoodMealJellySandwich
+  time: 5
+  group: Breakfast
+  reagents:
+    Sugar: 4
+  solids:
+    FoodBreadPlainSlice: 2
+
+- type: microwaveMealRecipe
+  id: RecipeMealNotASandwich
+  name: not-a-sandwich recipe
+  result: FoodMealNotASandwich
+  time: 5
+  group: Other
+  solids:
+    FoodBreadPlainSlice: 2

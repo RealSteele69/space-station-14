@@ -1,0 +1,176 @@
+# Jump-scare effects spawned by SpookyClosetTrapSystem when someone opens a booby-trapped closet
+# during spooky season. All of these are self-contained and clean themselves up.
+
+- type: soundCollection
+  id: HalloweenJumpscare
+  files:
+  - /Audio/_ClawCommand/Seasonal/Halloween/girlscream.ogg
+  - /Audio/_ClawCommand/Seasonal/Halloween/scary_horn.ogg
+  - /Audio/_ClawCommand/Seasonal/Halloween/scary_horn2.ogg
+  - /Audio/_ClawCommand/Seasonal/Halloween/scary_horn3.ogg
+  - /Audio/_ClawCommand/Seasonal/Halloween/ahaha.ogg
+  - /Audio/_ClawCommand/Seasonal/Halloween/insane_low_laugh.ogg
+
+# A skeleton leaps out, screams, and collapses back into whatever closet it came from.
+- type: entity
+  id: EffectSpookyClosetSkeleton
+  name: fake skeleton
+  description: Somebody's idea of a joke.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Structures/Decoration/Mannequins/skeleton_mannequin.rsi
+    state: Fake-skeleton
+    noRot: true
+  - type: EmitSoundOnSpawn
+    sound:
+      collection: HalloweenJumpscare
+  - type: TimedDespawn
+    lifetime: 4
+
+# A howling poltergeist that drifts around for a while before fading out.
+- type: entity
+  id: EffectSpookyClosetGhost
+  name: howling ghost
+  description: Something cold just brushed past you.
+  categories: [ HideSpawnMenu ]
+  parent: [ Incorporeal, BaseMob ]
+  components:
+  - type: Sprite
+    sprite: Mobs/Ghosts/ghost_human.rsi
+    color: "#9fdfff80"
+    noRot: true
+    layers:
+    - state: animated
+      shader: unshaded
+  - type: NpcFactionMember
+    factions:
+    - Passive
+  - type: HTN
+    rootTask:
+      task: IdleCompound
+  - type: AmbientSound
+    enabled: true
+    range: 5
+    volume: -4
+    sound:
+      path: /Audio/_ClawCommand/Seasonal/Halloween/ghosty_wind.ogg
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_ClawCommand/Seasonal/Halloween/ghost_whisper.ogg
+  - type: FadingTimedDespawn
+    lifetime: 15
+    fadeOutTime: 3
+
+# A small swarm of bats bursts out and flies off.
+- type: entity
+  id: EffectSpookyClosetBats
+  name: bat swarm spawner
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTableSpawner
+    offset: 1.0
+    table: !type:GroupSelector
+      rolls: !type:RangeNumberSelector
+        range: 3, 5
+      children:
+      - id: MobBat
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_ClawCommand/Seasonal/Halloween/bats.ogg
+
+# An "insane clown" - stands still and silently stares until someone attacks or gets too close,
+# then retaliates. Nerfed and self-limiting (times out on its own if ignored).
+- type: entity
+  id: EffectSpookyClosetClown
+  name: insane clown
+  description: Some clowns do not manage to be accepted, and go insane. This is one of them.
+  categories: [ HideSpawnMenu ]
+  parent: [ SimpleSpaceMobBase, BaseMobDestructible ]
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Halloween/scary_clown.rsi
+    state: scary_clown
+  - type: Speech
+    speechVerb: Cluwne
+  - type: NpcFactionMember
+    factions:
+    - Passive
+  - type: NPCRetaliation
+    attackMemoryLength: 30
+  - type: FactionException
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: CombatMode
+  - type: MeleeWeapon
+    angle: 0
+    animation: WeaponArcFist
+    damage:
+      types:
+        Blunt: 5
+    soundHit:
+      collection: WeakHit
+  - type: StaminaDamageOnHit
+    damage: 25
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_ClawCommand/Seasonal/Halloween/scary_clown_appear.ogg
+  - type: FadingTimedDespawn
+    lifetime: 90
+    fadeOutTime: 3
+
+# A vengeful spirit - the rarest "something hostile is in here with you" roll. Genuinely dangerous
+# (real melee damage, not just a stagger), which is why it's nerfed hard on the probability side -
+# see the weighting in misc.yml. Self-despawns if nobody deals with it.
+- type: entity
+  id: EffectSpookyClosetHostile
+  name: vengeful spirit
+  description: This being radiates pure evil. You'd better run.
+  categories: [ HideSpawnMenu ]
+  parent: [ SimpleSpaceMobBase, BaseMobDestructible ]
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Seasonal/Halloween/faithless.rsi
+    noRot: true
+    layers:
+    - state: faithless
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: faithless
+      Critical:
+        Base: faithless_dead
+      Dead:
+        Base: faithless_dead
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      80: Dead
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: CombatMode
+  - type: MeleeWeapon
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/Effects/hit_kick.ogg
+    damage:
+      types:
+        Blunt: 10
+  - type: StaminaDamageOnHit
+    damage: 30
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_ClawCommand/Seasonal/Halloween/chain_rattling.ogg
+  - type: FadingTimedDespawn
+    lifetime: 90
+    fadeOutTime: 3

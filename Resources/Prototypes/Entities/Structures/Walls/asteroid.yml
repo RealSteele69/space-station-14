@@ -269,6 +269,38 @@
 
 - type: entity
   abstract: true
+  id: BaseVeinVerdantium
+  suffix: Verdantium
+  description: An ore vein rich with verdantium.
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreVerdantium
+  - type: Sprite
+    layers:
+    - state: rock_quartz
+      sprite: Structures/Walls/stone-ore.rsi
+      color: "#2ecc71"
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+
+- type: entity
+  abstract: true
+  id: BaseVeinOsmium
+  suffix: Osmium
+  description: An ore vein rich with osmium.
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreOsmium
+  - type: Sprite
+    layers:
+    - state: rock_silver
+      sprite: Structures/Walls/stone-ore.rsi
+      color: "#6b7f8c"
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+
+- type: entity
+  abstract: true
   id: BaseVeinRandom
   suffix: 33% Random Ores
   description: A vein rich with strange artifacts.
@@ -385,6 +417,14 @@
 - type: entity
   parent: [ BaseVeinArtifactFragment, AsteroidRock ]
   id: AsteroidRockArtifactFragment
+
+- type: entity
+  parent: [ BaseVeinVerdantium, AsteroidRock ]
+  id: AsteroidRockVerdantium
+
+- type: entity
+  parent: [ BaseVeinOsmium, AsteroidRock ]
+  id: AsteroidRockOsmium
 
 - type: entity
   parent: [ BaseRockGibtonite, BaseAsteroidRockVisuals, BaseAsteroidRock ]

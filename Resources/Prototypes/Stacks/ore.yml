@@ -58,6 +58,20 @@
 
 - type: stack
   parent: BaseMediumStack
+  id: VerdantiumOre
+  name: stack-verdantium-ore
+  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: spacequartz }
+  spawn: VerdantiumOre1
+
+- type: stack
+  parent: BaseMediumStack
+  id: OsmiumOre
+  name: stack-osmium-ore
+  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: silver }
+  spawn: OsmiumOre1
+
+- type: stack
+  parent: BaseMediumStack
   id: Coal
   name: stack-coal
   icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: coal }

@@ -1,0 +1,76 @@
+# Claw Command - rare sealed liquor export trophies. These carry no reagent at all; they're pure
+# cargo-sale flavor items (an unlabeled blend you can't drink, you can only sell). Adapted from a
+# "sealed export bottle" idea in the source material's economy, but this fork has no dedicated
+# export/sale subsystem the way that source does - there's just the normal cargo shuttle, which
+# sells any item dumped on the pad for its price. So these are plain sellable items with a fixed
+# StaticPrice, following the same pattern this fork already uses for other no-reagent sale items
+# like the golden cup (Resources/Prototypes/Entities/Objects/Consumable/Drinks/drinks_cups.yml).
+# Deliberately not drinkable/openable - the seal is the point.
+
+- type: entity
+  parent: BaseItem
+  id: SealedExportBottleBloodDrop
+  name: Blood Drop
+  description: A large red bottle, filled with a blend of wine and other spirits whose labels you don't recognize.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Drinks/blooddropbottle.rsi
+    state: icon
+  - type: StaticPrice
+    price: 400
+  - type: PhysicalComposition
+    materialComposition:
+      Glass: 50
+
+- type: entity
+  parent: BaseItem
+  id: SealedExportBottleSlimGold
+  name: Slim Gold
+  description: A gleaming gold-colored bottle. Its contents are an unlabeled mix of spirits with countless brand names.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Drinks/slimgoldbottle.rsi
+    state: icon
+  - type: StaticPrice
+    price: 450
+  - type: PhysicalComposition
+    materialComposition:
+      Glass: 50
+
+- type: entity
+  parent: BaseItem
+  id: SealedExportBottleWhiteBloodmoon
+  name: White Bloodmoon
+  description: A rather simple white bottle, for this kind of drink. Simplicity sells, apparently.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Drinks/whitebloodmoonbottle.rsi
+    state: icon
+  - type: StaticPrice
+    price: 350
+  - type: PhysicalComposition
+    materialComposition:
+      Glass: 50
+
+- type: entity
+  parent: BaseItem
+  id: SealedExportBottleGreenRoad
+  name: Green Road
+  description: Ironically named - whatever fruit went into this grew somewhere decidedly un-green.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Drinks/greenroadbottle.rsi
+    state: icon
+  - type: StaticPrice
+    price: 300
+  - type: PhysicalComposition
+    materialComposition:
+      Glass: 50

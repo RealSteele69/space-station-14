@@ -4,6 +4,7 @@
   files:
     - /Audio/Ambience/ambiatmos.ogg
     - /Audio/Ambience/ambiatmos2.ogg
+    - /Audio/Ambience/ambiatm1.ogg
     - /Audio/Ambience/ambisin1.ogg
     - /Audio/Ambience/ambisin2.ogg
     - /Audio/Ambience/ambisin3.ogg
@@ -48,6 +49,12 @@
     - /Audio/Ambience/ambimaint3.ogg
     - /Audio/Ambience/ambimaint4.ogg
     - /Audio/Ambience/ambimaint5.ogg
+    - /Audio/Ambience/ambimaint.ogg
+    - /Audio/Ambience/ambimaint6.ogg
+    - /Audio/Ambience/ambimaint7.ogg
+    - /Audio/Ambience/ambimaint8.ogg
+    - /Audio/Ambience/ambimaint9.ogg
+    - /Audio/Ambience/ambimaint10.ogg
     - /Audio/Ambience/ambitech2.ogg
     - /Audio/Voice/Misc/lowHiss1.ogg
     - /Audio/Voice/Misc/lowHiss2.ogg
@@ -78,6 +85,8 @@
     - /Audio/Ambience/ambiruin5.ogg
     - /Audio/Ambience/ambiruin6.ogg
     - /Audio/Ambience/ambiruin7.ogg
+    - /Audio/Ambience/ambifailure.ogg
+    - /Audio/Ambience/ambilava.ogg
     - /Audio/Ambience/voyage_neverending.ogg
     - /Audio/Ambience/unanchored.ogg
 
@@ -97,6 +106,8 @@
     - /Audio/Ambience/ambiruin5.ogg
     - /Audio/Ambience/ambiruin6.ogg
     - /Audio/Ambience/ambiruin7.ogg
+    - /Audio/Ambience/deserted.ogg
+    - /Audio/Ambience/shore.ogg
 
 - type: soundCollection
   id: AmbienceSpace
@@ -107,6 +118,10 @@
     - /Audio/Ambience/spookyspace1.ogg
     - /Audio/Ambience/spookyspace2.ogg
     - /Audio/Ambience/ambispace2.ogg
+    - /Audio/Ambience/ambispace.ogg
+    - /Audio/Ambience/ambivapor1.ogg
+    - /Audio/Ambience/VoidsEmbrace.ogg
+    - /Audio/Ambience/aurora_caelus.ogg
     - /Audio/Lobby/title2.ogg
 
 - type: soundCollection
@@ -118,6 +133,8 @@
     - /Audio/Ambience/ambiodd.ogg
     - /Audio/Ambience/ambiruin6.ogg
     - /Audio/Ambience/ambiruin7.ogg
+    - /Audio/Ambience/ambimalf.ogg
+    - /Audio/Ambience/deserted.ogg
 
 - type: soundCollection
   id: AmbienceTrain
@@ -146,6 +163,8 @@
     - /Audio/Ambience/ambidanger.ogg
     - /Audio/Ambience/ambidanger2.ogg
     - /Audio/Ambience/ambimine.ogg
+    - /Audio/Ambience/ambifailure.ogg
+    - /Audio/Ambience/ambilava.ogg
 
 ## Background noise on station, separate to ambient music.
 - type: soundCollection

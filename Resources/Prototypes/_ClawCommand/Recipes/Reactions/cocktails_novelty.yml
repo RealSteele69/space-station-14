@@ -1,0 +1,107 @@
+# Reactions for the novelty/lore cocktail set (see Raegents/Consumable/Drink/alcohol_novelty.yml).
+
+- type: reaction
+  id: PinotMort
+  reactants:
+    Ash:
+      amount: 2
+    Wine:
+      amount: 1
+    Vitamin:
+      amount: 1
+  products:
+    PinotMort: 4
+
+- type: reaction
+  id: RedQueen
+  priority: 1 # contains the IcedTea recipe; must win or it can never form
+  reactants:
+    Tea:
+      amount: 1
+    Sugar:
+      amount: 1
+    Ice:
+      amount: 1
+  products:
+    RedQueen: 3
+
+- type: reaction
+  id: Blazaam
+  reactants:
+    Gin:
+      amount: 2
+    JuicePeach:
+      amount: 1
+  products:
+    Blazaam: 3
+
+- type: reaction
+  id: BastionBourbon
+  reactants:
+    Tea:
+      amount: 1
+    JuicePeach:
+      amount: 1
+    StrawberryJuice:
+      amount: 1
+  products:
+    BastionBourbon: 2
+
+- type: reaction
+  id: CommanderAndChief
+  reactants:
+    Champagne:
+      amount: 2
+    DoctorsDelight:
+      amount: 1
+    Gin:
+      amount: 1
+  products:
+    CommanderAndChief: 3
+
+- type: reaction
+  id: FringeWeaver
+  priority: -1 # plain ethanol+sugar; any more specific recipe (JellWyrm, crystals) goes first
+  reactants:
+    Ethanol:
+      amount: 9
+    Sugar:
+      amount: 1
+  products:
+    FringeWeaver: 10
+
+- type: reaction
+  id: SugarRush
+  reactants:
+    Sugar:
+      amount: 2
+    JuiceLemon:
+      amount: 1
+    Wine:
+      amount: 1
+  products:
+    SugarRush: 4
+
+- type: reaction
+  id: CreviceSpike
+  requiredMixerCategories: # shaken, so it doesn't pre-empt WakeUpJuice (same lime+capsaicin base)
+  - Shake
+  reactants:
+    JuiceLime:
+      amount: 2
+    CapsaicinOil:
+      amount: 2
+  products:
+    CreviceSpike: 3
+
+- type: reaction
+  id: SquirtCider
+  reactants:
+    Water:
+      amount: 1
+    JuiceTomato:
+      amount: 1
+    Nutriment:
+      amount: 1
+  products:
+    SquirtCider: 3

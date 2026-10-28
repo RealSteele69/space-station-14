@@ -18,6 +18,20 @@
   greet:
     !type:Custom
     text: holiday-custom-spooky-season
+  celebrate: # Claw Command - trick-or-treat bags for the crew, a few closets booby-trapped
+    !type:TrickOrTreatCelebrate
+    trapEffects: !type:GroupSelector
+      children:
+      - id: EffectSpookyClosetSkeleton
+        weight: 640
+      - id: EffectSpookyClosetGhost
+        weight: 200
+      - id: EffectSpookyClosetBats
+        weight: 150
+      - id: EffectSpookyClosetHostile
+        weight: 10
+      - id: EffectSpookyClosetClown
+        weight: 1
 
 - type: localizedDataset
   id: CookieFortunes

@@ -1006,6 +1006,34 @@
 
 - type: entity
   parent: CentcomPDA
+  id: CentcomInternPDA
+  name: CentComm Intern PDA
+  description: Brand new light green PDA that smells of fresh plastic.
+  components:
+  - type: Pda
+    id: CentcomInternIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-interncentcomm
+  - type: Icon
+    state: pda-interncentcomm
+
+- type: entity
+  parent: CentcomPDA
+  id: SRTPDA
+  name: SRT PDA
+  description: A light green PDA that smells of cold fusion.
+  components:
+  - type: Pda
+    id: CentcomIDCardSRT
+  - type: Tag #  Ignore Chameleon tags
+    tags:
+    - DoorBumpOpener
+
+- type: entity
+  parent: CentcomPDA
   id: DeathsquadPDA
   suffix: Death Squad
   components:

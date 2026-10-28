@@ -29,6 +29,9 @@
   id: JobCentralCommandOfficial
 
 - type: playTimeTracker
+  id: JobCentralCommandIntern
+
+- type: playTimeTracker
   id: JobChaplain
 
 - type: playTimeTracker
@@ -69,6 +72,9 @@
 
 - type: playTimeTracker
   id: JobDeathSquad
+
+- type: playTimeTracker
+  id: JobSRTAgent
 
 - type: playTimeTracker
   id: JobCBURN

@@ -1,0 +1,17 @@
+# Ported from Goobstation/Recipes/Cooking/meal_recipes.yml (RecipeCornmoth).
+# The "cornmoth" corn-dog-with-a-moth-face joke item (Goobstation/Entities/Objects/Consumable/Food/snacks.yml,
+# id FoodSnackCornmoth) was already ported into this fork under the name FoodSnackMothdog
+# (_ClawCommand/Entities/Objects/Consumable/Food/mothdog.yml) - same source file/sprite, renamed to avoid a
+# naming clash with other moth content. No duplicate entity is added here; this just adds the missing
+# microwave recipe so it is actually craftable and shows up in the recipe book.
+
+- type: microwaveMealRecipe
+  id: RecipeCornmoth
+  name: mothdog recipe
+  result: FoodSnackMothdog
+  time: 5
+  group: Savory
+  solids:
+    FoodButterSlice: 1
+    FoodKebabSkewer: 1
+    CottonBol: 2

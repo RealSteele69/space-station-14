@@ -108,6 +108,15 @@
         - proto: WeaponTeslaGun
           prob: 0.1
           cost: 2
+        - proto: CrateSalvageFoundLoot # _ClawCommand - found loot crate
+          cost: 1
+          prob: 0.6
+        - proto: CrateSalvageMinerGearBasic # _ClawCommand - dead miner's kit
+          cost: 1
+          prob: 0.4
+        - proto: CrateSalvageMinerGearAdvanced # _ClawCommand - veteran miner's kit
+          cost: 3
+          prob: 0.15
 
 # Mob loot table
 
@@ -180,6 +189,21 @@
   loots:
     - !type:BiomeMarkerLoot
       proto: OreDiamond
+
+# - Very rare
+- type: salvageLoot
+  id: OreVerdantium
+  guaranteed: true
+  loots:
+    - !type:BiomeMarkerLoot
+      proto: OreVerdantium
+
+- type: salvageLoot
+  id: OreOsmium
+  guaranteed: true
+  loots:
+    - !type:BiomeMarkerLoot
+      proto: OreOsmium
 
 - type: salvageLoot
   id: OreArtifactFragment

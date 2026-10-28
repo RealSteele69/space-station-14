@@ -1,0 +1,67 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Converted from a DMI sprite sheet under Citadel Station 13's icons/obj/halloween_items.dmi, CC-BY-SA-3.0 per that project's blanket asset license. Happy halloween!",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "skeletoncookie"
+        },
+        {
+            "name": "coffincookie"
+        },
+        {
+            "name": "treatbag"
+        },
+        {
+            "name": "jacqueline",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "barthpot",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "jacq_potion"
+        },
+        {
+            "name": "jacq_candy"
+        }
+    ]
+}

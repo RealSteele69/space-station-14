@@ -43,3 +43,4 @@ gun-upgrade-crusher-range = [bold]long[/bold] handle
 gun-upgrade-examine-text-pressure = This has a [color=orangered][bold]pressure[/bold][/color] upgrade.
 gun-upgrade-examine-text-space = This has a [color=#ff00bf][bold]space[/bold][/color] upgrade.
 gun-upgrade-examine-text-vampirism = This has a [color=crimson][bold]vampirism[/bold][/color] upgrade.
+gun-upgrade-examine-text-rapid-feed = This has a [color=#f2c230][bold]rapid feed[/bold][/color] upgrade.

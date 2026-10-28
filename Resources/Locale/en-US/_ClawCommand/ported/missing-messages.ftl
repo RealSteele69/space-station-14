@@ -29,3 +29,7 @@ stack-super-manipulator = super manipulator
 fibers-dyed = dyed
 tool-quality-axing-name = Axing
 tool-quality-axing-tool-name = Axe
+tool-quality-bible-name = Blessing
+tool-quality-bible-tool-name = Bible
+construction-graph-tag-silversword = silver sword
+stack-purifying-salts = purifying salts

@@ -81,3 +81,57 @@ reagent-desc-syndicate-eggnog = creamy, pale yellow and topped with a sprinkle o
 
 reagent-name-gin-and-pussy = Gin and Pussy
 reagent-desc-gin-and-pussy = A Sapphic twist on the classic Gin and Tonic, featuring locally sourced Natural Lubricant as a replacement for Tonic, A favorite of Maintenance Bars everywhere.
+
+reagent-name-7deadlysins = 7 deadly sins
+reagent-desc-7deadlysins = A vile concoction of liqour and various other ingredients, all coming together into something that has the stench of death.
+
+reagent-name-appleberryfizz = appleberry fizz
+reagent-desc-appleberryfizz = A sweet, delightful little drink.
+
+reagent-name-cafedecacao = cafe de cacao
+reagent-desc-cafedecacao = Almost like a mocha, except with alcohol.
+
+reagent-name-calicosunrise = calico sunrise
+reagent-desc-calicosunrise = A sweet, fruity beverage that feels like watching the sun rise up over the horizon.
+
+reagent-name-cremedecacao = crème de cacao
+reagent-desc-cremedecacao = A spiked hot chocolate, satisfying to anyone caught out in the snow.
+
+reagent-name-darkoasis = dark oasis
+reagent-desc-darkoasis = The darker it looks the sweeter it tastes.
+
+reagent-name-deadmansdraught = dead man's draught
+reagent-desc-deadmansdraught = One of those everything-at-the-bar blends, something that will make some of the strongest stomachs turn.
+
+reagent-name-numberone = number one
+reagent-desc-numberone = The perfect drink to help ensure that YOU stay on top of your game this shift! (And get heart disease).
+
+reagent-name-pomonade = pomonade
+reagent-desc-pomonade = A spin on a classic lemonade, with a sweeter side.
+
+reagent-name-prisonwine = prison wine
+reagent-desc-prisonwine = A quickly thrown together mixture of grapes and sugar in soda water. Probably wouldn't actually turn into wine, but you can put it in your loo nonetheless.
+
+reagent-name-slimesdelight = slime's delight
+reagent-desc-slimesdelight = A somewhat gross drink for many people to imagine consuming. Most end up ordering something else.
+
+reagent-name-triplecitrus = triple citrus
+reagent-desc-triplecitrus = Triple the citrus, triple the fun.
+
+reagent-name-wakeupjuice = wake up juice
+reagent-desc-wakeupjuice = A drink that'll bring your cloudy mind right back to the thinking about the future.
+
+reagent-name-axels-ale = Axel's Ale
+reagent-desc-axels-ale = Red like the color of a setting sun on a beach
+
+reagent-name-jenn-tonic = Jenn in Tonic
+reagent-desc-jenn-tonic = Light golden and bubbly, what could go wrong?
+
+reagent-name-hallelujah = Hallelujah
+reagent-desc-hallelujah = Exactly what you need.
+
+reagent-name-millermargarita = Miller Margarita
+reagent-desc-millermargarita = A self-made spin on a classic by a popular bartender, emphasis on "self-made".
+
+reagent-name-harpysnowfall = Harpy's Snowfall
+reagent-desc-harpysnowfall = A chilled drink with a splash of booze, preferred by harpies on a hot day.

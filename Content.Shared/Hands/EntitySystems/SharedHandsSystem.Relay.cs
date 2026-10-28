@@ -1,6 +1,9 @@
+using Content.Shared.Armor; // _ClawCommand - held armor relay
 using Content.Shared.Atmos;
 using Content.Shared.Camera;
 using Content.Shared.Cuffs;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Hands.Components;
 using Content.Shared.Heretic; // _ClawCommand - heretic focus relay
 using Content.Shared.Movement.Systems;
@@ -17,6 +20,8 @@ public abstract partial class SharedHandsSystem
         SubscribeLocalEvent<HandsComponent, GetEyePvsScaleRelayedEvent>(RelayEvent);
         SubscribeLocalEvent<HandsComponent, RefreshMovementSpeedModifiersEvent>(RelayEvent);
         SubscribeLocalEvent<HandsComponent, CheckMagicItemEvent>(RelayEvent); // _ClawCommand - relay heretic focus check to held items (codex/book)
+        SubscribeLocalEvent<HandsComponent, CoefficientQueryEvent>(RelayEvent); // _ClawCommand - relay held armor protection (e.g. bible)
+        SubscribeLocalEvent<HandsComponent, DamageModifyEvent>(RelayEvent); // _ClawCommand - relay held armor protection (e.g. bible)
 
         // By-ref events.
         SubscribeLocalEvent<HandsComponent, GetEyeOffsetRelayedEvent>(RefRelayEvent);

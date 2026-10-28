@@ -19,6 +19,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Silicons.Bots;
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
 using Content.Shared.Storage.Components;
@@ -60,6 +61,7 @@ public sealed partial class NPCUtilitySystem : EntitySystem
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private SatiationSystem _satiation = default!;
     [Dependency] private SharedStealthSystem _stealth = default!;
+    [Dependency] private SecurityBotSystem _securityBot = default!;
     [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
 
     private ObjectPool<HashSet<EntityUid>> _entPool =
@@ -355,6 +357,10 @@ public sealed partial class NPCUtilitySystem : EntitySystem
             case TargetIsDeadCon:
             {
                 return _mobState.IsDead(targetUid) ? 1f : 0f;
+            }
+            case TargetIsWantedCon:
+            {
+                return _securityBot.IsWanted(owner, targetUid) ? 1f : 0f;
             }
             case TargetMeleeCon:
             {

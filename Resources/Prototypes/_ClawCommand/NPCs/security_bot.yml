@@ -1,0 +1,104 @@
+# Security bot AI: finds wanted/hostile crew by their criminal status, zaps them down with its
+# intrinsic disabler, then zip-ties them. Reuses the engine's existing gun-combat compound chain
+# (movement/juking/line-of-sight/firing) - only target selection and the cuffing finisher are new.
+
+- type: utilityQuery
+  id: SecurityBotWantedTargets
+  query:
+    - !type:ComponentQuery
+      components:
+        - type: MobState
+        - type: Cuffable
+    - !type:ComponentFilter
+      components:
+        - type: Silicon
+          speedModifierThresholds: {} # required datafield; only the component type matters here
+      retainWithComp: false
+  considerations:
+    - !type:TargetIsWantedCon
+      curve: !type:BoolCurve
+    - !type:TargetIsAliveCon
+      curve: !type:BoolCurve
+    - !type:TargetDistanceCon
+      curve: !type:PresetCurve
+        preset: TargetDistance
+    - !type:TargetInLOSOrCurrentCon
+      curve: !type:BoolCurve
+
+- type: htnCompound
+  id: SecurityBotInnateRangedCombatCompound
+  branches:
+    - preconditions:
+        - !type:GunAmmoPrecondition
+          minPercent: 0.001
+      tasks:
+        - !type:HTNCompoundTask
+          task: SecurityBotGunCombatCompound
+
+- type: htnCompound
+  id: SecurityBotGunCombatCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UtilityOperator
+            proto: SecurityBotWantedTargets
+
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:KeyExistsPrecondition
+              key: Target
+          operator: !type:SecurityBotAnnounceTargetOperator
+            targetKey: Target
+
+        - !type:HTNPrimitiveTask
+          operator: !type:MoveToOperator
+            shutdownState: PlanFinished
+            pathfindInPlanning: true
+            removeKeyOnFinish: false
+            targetKey: TargetCoordinates
+            pathfindKey: TargetPathfind
+            stopOnLineOfSight: true
+            rangeKey: MeleeRange
+
+        - !type:HTNPrimitiveTask
+          operator: !type:JukeOperator
+            jukeType: AdjacentTile
+
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:KeyExistsPrecondition
+              key: Target
+          operator: !type:GunOperator
+            targetKey: Target
+          services:
+            - !type:UtilityService
+              id: RangedService
+              proto: SecurityBotWantedTargets
+              key: Target
+
+- type: htnCompound
+  id: SecurityBotCompound
+  branches:
+    # A perp is adjacent and down - cuff them (or just leave them stunned in warning mode).
+    - preconditions:
+        - !type:KeyExistsPrecondition
+          key: Target
+        - !type:TargetInRangePrecondition
+          targetKey: Target
+          rangeKey: MeleeRange
+        - !type:TargetIncapacitatedPrecondition
+          targetKey: Target
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:SecurityBotApprehendOperator
+            targetKey: Target
+
+    # Otherwise hunt down anyone wanted and zap them.
+    - tasks:
+        - !type:HTNCompoundTask
+          task: SecurityBotInnateRangedCombatCompound
+
+    # Nobody wanted in sight - patrol/idle.
+    - tasks:
+        - !type:HTNCompoundTask
+          task: IdleCompound

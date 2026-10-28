@@ -1,0 +1,6 @@
+- type: tool
+  id: Blessing
+  name: tool-quality-bible-name
+  toolName: tool-quality-bible-tool-name
+  spawn: Bible
+  icon: { sprite: Objects/Specific/Chapel/bible.rsi, state: icon }

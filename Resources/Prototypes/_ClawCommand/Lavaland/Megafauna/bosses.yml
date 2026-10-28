@@ -340,3 +340,37 @@
       - id: ActionHierophantBox
       - id: ActionHierophantCrosses
       - id: ActionHierophantBlink
+
+# ---------------------------------------------------------------------------
+# Blood-drunk Miner
+# ---------------------------------------------------------------------------
+
+- type: megafaunaSelector
+  id: BloodDrunkMiner
+  selector: !type:AllMegafaunaSelector
+    children:
+    - id: PickTargetSimple
+    - id: BloodDrunkMinerActions
+
+- type: megafaunaSelector
+  id: BloodDrunkMinerActions
+  selector: !type:GroupMegafaunaSelector
+    children:
+    - !type:PerformActionSelector
+      actionId: ActionBloodDrunkMinerCharge
+      weight: 3
+      delay: !type:AngerNumberSelector
+        range: 1.2,2.2
+        inverse: true
+      conditions:
+      - !type:ActionAvailableCondition
+        actionId: ActionBloodDrunkMinerCharge
+    - !type:PerformActionSelector
+      actionId: ActionBloodDrunkMinerFrenziedRush
+      weight: 2
+      delay: 3.0
+      conditions:
+      - !type:PhaseMegafaunaCondition
+        phases: [ 2 ]
+      - !type:ActionAvailableCondition
+        actionId: ActionBloodDrunkMinerFrenziedRush

@@ -65,6 +65,47 @@
   flavorType: Base
   description: flavor-base-chuddy
 
+# Ported from Mono/Flavors/flavors.yml
+- type: flavor
+  id: teaGreen
+  flavorType: Complex
+  description: flavor-complex-tea-green
+
+- type: flavor
+  id: teaChamomile
+  flavorType: Complex
+  description: flavor-complex-tea-chamomile
+
+- type: flavor
+  id: teaBerry
+  flavorType: Complex
+  description: flavor-complex-tea-berry
+
+- type: flavor
+  id: teaFruit
+  flavorType: Complex
+  description: flavor-complex-tea-fruit
+
+- type: flavor
+  id: teaYorkshire
+  flavorType: Complex
+  description: flavor-complex-tea-yorkshire
+
+- type: flavor
+  id: teaDecafBlack
+  flavorType: Complex
+  description: flavor-complex-tea-decaf-black
+
+- type: flavor
+  id: teaSyndie
+  flavorType: Complex
+  description: flavor-complex-tea-syndie
+
+- type: flavor
+  id: coffeeDecaf
+  flavorType: Complex
+  description: flavor-complex-coffee-decaf
+
 - type: flavor
   id: circusjuice
   flavorType: Complex
@@ -369,3 +410,432 @@
   id: yeolhandy
   flavorType: Complex
   description: flavor-complex-yeolhandy
+
+# Claw Command - flavours for ported alcoholic drink/cocktail content (DeltaV, DEN, Floof origins)
+- type: flavor
+  id: oldfashioned
+  flavorType: Complex
+  description: flavor-complex-old-fashioned
+
+- type: flavor
+  id: mnatsacollins
+  flavorType: Complex
+  description: flavor-complex-mnatsa-collins
+
+- type: flavor
+  id: affogato
+  flavorType: Complex
+  description: flavor-complex-affogato
+
+- type: flavor
+  id: fiveoclock
+  flavorType: Complex
+  description: flavor-complex-five-oclock
+
+- type: flavor
+  id: mliko
+  flavorType: Complex
+  description: flavor-complex-mliko
+
+- type: flavor
+  id: firebolt
+  flavorType: Complex
+  description: flavor-complex-firebolt-deltav
+
+- type: flavor
+  id: doubleicecream
+  flavorType: Complex
+  description: flavor-complex-double-ice-cream
+
+- type: flavor
+  id: lemonlimebitters
+  flavorType: Complex
+  description: flavor-complex-lemon-lime-bitters
+
+- type: flavor
+  id: drgibbbloodred
+  flavorType: Complex
+  description: flavor-complex-drgibbbloodred
+
+- type: flavor
+  id: jaegermister
+  flavorType: Complex
+  description: flavor-complex-jaegermister
+
+- type: flavor
+  id: jaegerbomb
+  flavorType: Complex
+  description: flavor-complex-jaegerbomb
+
+- type: flavor
+  id: jaegerita
+  flavorType: Complex
+  description: flavor-complex-jaegerita
+
+- type: flavor
+  id: surfer
+  flavorType: Complex
+  description: flavor-complex-surfer
+
+- type: flavor
+  id: surfer-on-acid
+  flavorType: Complex
+  description: flavor-complex-surfer-on-acid
+
+- type: flavor
+  id: fizzball
+  flavorType: Complex
+  description: flavor-complex-fizzball
+
+- type: flavor
+  id: tuxedo-sunset
+  flavorType: Complex
+  description: flavor-complex-tuxedo-sunset
+
+- type: flavor
+  id: inside-scoop
+  flavorType: Complex
+  description: flavor-complex-inside-scoop
+
+- type: flavor
+  id: fizzball-float
+  flavorType: Complex
+  description: flavor-complex-fizzball-float
+
+- type: flavor
+  id: chartruse
+  flavorType: Complex
+  description: flavor-complex-chartruse
+
+- type: flavor
+  id: death-flip
+  flavorType: Complex
+  description: flavor-complex-death-flip
+
+- type: flavor
+  id: bloody-jaeger
+  flavorType: Complex
+  description: flavor-complex-bloody-jaeger
+
+- type: flavor
+  id: pop-quiz
+  flavorType: Complex
+  description: flavor-complex-pop-quiz
+
+- type: flavor
+  id: naughty-bartender
+  flavorType: Complex
+  description: flavor-complex-naughty-bartender
+
+- type: flavor
+  id: cafe-cocktail
+  flavorType: Complex
+  description: flavor-complex-cafe-cocktail
+
+- type: flavor
+  id: cinnamon-cookie
+  flavorType: Complex
+  description: flavor-complex-cinnamon-cookie
+
+- type: flavor
+  id: blood-red-licorice
+  flavorType: Complex
+  description: flavor-complex-blood-red-licorice
+
+- type: flavor
+  id: 7deadlysins
+  flavorType: Complex
+  description: flavor-complex-7deadlysins
+
+- type: flavor
+  id: appleberryfizz
+  flavorType: Complex
+  description: flavor-complex-appleberryfizz
+
+- type: flavor
+  id: cafedecacao
+  flavorType: Complex
+  description: flavor-complex-cafedecacao
+
+- type: flavor
+  id: calicosunrise
+  flavorType: Complex
+  description: flavor-complex-calicosunrise
+
+- type: flavor
+  id: cremedecacao
+  flavorType: Complex
+  description: flavor-complex-cremedecacao
+
+- type: flavor
+  id: darkoasis
+  flavorType: Complex
+  description: flavor-complex-darkoasis
+
+- type: flavor
+  id: deadmansdraught
+  flavorType: Complex
+  description: flavor-complex-deadmansdraught
+
+- type: flavor
+  id: numberone
+  flavorType: Complex
+  description: flavor-complex-numberone
+
+- type: flavor
+  id: pomonade
+  flavorType: Complex
+  description: flavor-complex-pomonade
+
+- type: flavor
+  id: prisonwine
+  flavorType: Complex
+  description: flavor-complex-prisonwine
+
+- type: flavor
+  id: slimesdelight
+  flavorType: Complex
+  description: flavor-complex-slimesdelight
+
+- type: flavor
+  id: triplecitrus
+  flavorType: Complex
+  description: flavor-complex-triplecitrus
+
+- type: flavor
+  id: wakeupjuice
+  flavorType: Complex
+  description: flavor-complex-wakeupjuice
+
+- type: flavor
+  id: axelsale
+  flavorType: Complex
+  description: flavor-complex-axelsale
+
+- type: flavor
+  id: coldscales
+  flavorType: Complex
+  description: flavor-complex-coldscales
+
+- type: flavor
+  id: oildrum
+  flavorType: Complex
+  description: flavor-complex-oildrum
+
+- type: flavor
+  id: nordking
+  flavorType: Complex
+  description: flavor-complex-nordking
+
+- type: flavor
+  id: velvetkiss
+  flavorType: Complex
+  description: flavor-complex-velvetkiss
+
+- type: flavor
+  id: abductionfruit
+  flavorType: Complex
+  description: flavor-complex-abductionfruit
+
+- type: flavor
+  id: bugzapper
+  flavorType: Complex
+  description: flavor-complex-bugzapper
+
+- type: flavor
+  id: mushcrush
+  flavorType: Complex
+  description: flavor-complex-mushcrush
+
+- type: flavor
+  id: darkbrew
+  flavorType: Complex
+  description: flavor-complex-darkbrew
+
+- type: flavor
+  id: hollowbone
+  flavorType: Complex
+  description: flavor-complex-hollowbone
+
+- type: flavor
+  id: friskykitty
+  flavorType: Complex
+  description: flavor-complex-friskykitty
+
+- type: flavor
+  id: jellwyrm
+  flavorType: Complex
+  description: flavor-complex-jellwyrm
+
+- type: flavor
+  id: lavalspit
+  flavorType: Complex
+  description: flavor-complex-lavalspit
+
+- type: flavor
+  id: pinotmort
+  flavorType: Complex
+  description: flavor-complex-pinotmort
+
+- type: flavor
+  id: redqueen
+  flavorType: Complex
+  description: flavor-complex-redqueen
+
+- type: flavor
+  id: blazaam
+  flavorType: Complex
+  description: flavor-complex-blazaam
+
+- type: flavor
+  id: bastionbourbon
+  flavorType: Complex
+  description: flavor-complex-bastionbourbon
+
+- type: flavor
+  id: commanderandchief
+  flavorType: Complex
+  description: flavor-complex-commanderandchief
+
+- type: flavor
+  id: fringeweaver
+  flavorType: Complex
+  description: flavor-complex-fringeweaver
+
+- type: flavor
+  id: sugarrush
+  flavorType: Complex
+  description: flavor-complex-sugarrush
+
+- type: flavor
+  id: crevicespike
+  flavorType: Complex
+  description: flavor-complex-crevicespike
+
+- type: flavor
+  id: squirtcider
+  flavorType: Complex
+  description: flavor-complex-squirtcider
+
+- type: flavor
+  id: jenntonic
+  flavorType: Complex
+  description: flavor-complex-jenntonic
+
+- type: flavor
+  id: hallelujah
+  flavorType: Complex
+  description: flavor-complex-hallelujah
+
+- type: flavor
+  id: millermargarita
+  flavorType: Complex
+  description: flavor-complex-millermargarita
+
+- type: flavor
+  id: harpysnowfall
+  flavorType: Complex
+  description: flavor-complex-harpysnowfall
+
+- type: flavor
+  id: vbbeer
+  flavorType: Complex
+  description: flavor-complex-vbbeer
+
+- type: flavor
+  id: bananacreampie
+  flavorType: Complex
+  description: flavor-complex-bananacreampie
+
+# Ported from DeltaV/Flavors/icecreamflavors.yml
+- type: flavor
+  id: tart
+  flavorType: Complex
+  description: flavor-complex-tart
+
+- type: flavor
+  id: IceCreamAppleCaramel
+  flavorType: Complex
+  description: flavor-complex-icecream-apple-caramel
+
+- type: flavor
+  id: IceCreamCaramelFudge
+  flavorType: Complex
+  description: flavor-complex-icecream-caramel-fudge
+
+- type: flavor
+  id: IceCreamCobbler
+  flavorType: Complex
+  description: flavor-complex-icecream-cobbler
+
+- type: flavor
+  id: IceCreamCookieDough
+  flavorType: Complex
+  description: flavor-complex-icecream-cookiedough
+
+- type: flavor
+  id: IceCreamNeapolitan
+  flavorType: Complex
+  description: flavor-complex-icecream-neapolitan
+
+- type: flavor
+  id: IceCreamRockyRoad
+  flavorType: Complex
+  description: flavor-complex-icecream-rockyroad
+
+- type: flavor
+  id: IceCreamTower
+  flavorType: Complex
+  description: flavor-complex-icecream-tower
+
+- type: flavor
+  id: IceCreamRainbow
+  flavorType: Complex
+  description: flavor-complex-icecream-rainbow
+
+# Claw Command - rare condiment flavours
+- type: flavor
+  id: indescribable
+  flavorType: Complex
+  description: flavor-complex-indescribable
+
+# Claw Command - missing flavours referenced by ported food/reagent content
+- type: flavor
+  id: cigarettes
+  flavorType: Complex
+  description: flavor-complex-cigarettes
+
+- type: flavor
+  id: blackberry
+  flavorType: Complex
+  description: flavor-complex-blackberry
+
+- type: flavor
+  id: blueberry
+  flavorType: Complex
+  description: flavor-complex-blueberry
+
+- type: flavor
+  id: raspberry
+  flavorType: Complex
+  description: flavor-complex-raspberry
+
+- type: flavor
+  id: blueraspberry
+  flavorType: Complex
+  description: flavor-complex-blueraspberry
+
+- type: flavor
+  id: weed
+  flavorType: Complex
+  description: flavor-complex-weed
+
+- type: flavor
+  id: tobacco
+  flavorType: Complex
+  description: flavor-complex-tobacco
+
+- type: flavor
+  id: peach
+  flavorType: Complex
+  description: flavor-complex-peach

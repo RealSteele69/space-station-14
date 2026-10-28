@@ -1,0 +1,158 @@
+# Lavaland-tiered hivelord: a shifting alien mass that bursts into weaker
+# shards when killed. Uses the same SpawnLootOnDeath + AllSelector pattern
+# already used by LavalandBossMegaLegion to split into lesser legions on
+# death (see Bosses/megalegion.yml), just pointed at a new weaker shard mob
+# instead of another full-strength copy. Reuses the vanilla hivelord/brood
+# sprites as-is.
+
+- type: entity
+  name: Hivelord
+  id: LavalandMobHivelord
+  parent: LavalandMobBase
+  description: A mass of unknown organic material, constantly fluctuating. Killing it only scatters more of it.
+  components:
+  - type: Physics
+    bodyType: KinematicController
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        density: 300
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: NpcFactionMember
+    factions:
+    - Lavafauna
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Mobs/Aliens/Asteroid/hivelord.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: hivelord
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: hivelord
+      Dead:
+        Base: hivelord_dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    soundHit:
+      path: /Audio/Effects/demon_attack1.ogg
+    animation: WeaponArcPunch
+    damage:
+        types:
+          Slash: 12
+  - type: Tag
+    tags:
+    - CannotSuicide
+  - type: CombatMode
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 2.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      300: Dead
+  - type: Damageable
+    damageModifierSet: Hierophant
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Fauna
+  - type: CombatPower # Goobstation
+    factor: 4 # times more dangerous than a crew-member
+  - type: SpawnLootOnDeath
+    deleteOnDeath: true # splits into weaker shards
+    table: !type:AllSelector
+      children:
+      - id: LavalandMobHivelordShard
+        amount: 2, 3
+
+- type: entity
+  name: Hivelord Shard
+  id: LavalandMobHivelordShard
+  parent: LavalandMobBase
+  description: A fragment of a hivelord, still twitching with the same alien hunger. Weak on its own.
+  components:
+  - type: Physics
+    bodyType: KinematicController
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 300
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: NpcFactionMember
+    factions:
+    - Lavafauna
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard: # highly aggressive, matches the vanilla brood's temperament
+      VisionRadius: !type:Single
+        15
+      AggroVisionRadius: !type:Single
+        15
+      NavSmash: !type:Bool
+        true
+  - type: Sprite
+    drawdepth: Mobs
+    scale: 0.75, 0.75
+    sprite: Mobs/Aliens/Asteroid/hivelord.rsi
+    layers:
+    - state: hivelordbrood
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    attackRate: 1.0
+    range: 0.75
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    animation: WeaponArcPunch
+    damage:
+        types:
+          Slash: 5
+  - type: Tag
+    tags:
+    - CannotSuicide
+  - type: CombatMode
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 35
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+          - !type:PlaySoundBehavior
+            sound:
+              path: /Audio/Effects/gib1.ogg
+  - type: Damageable
+    damageModifierSet: Hierophant
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Fauna
+  - type: CombatPower # Goobstation
+    factor: 2 # weaker than a full hivelord
+  - type: TimedDespawn
+    lifetime: 120

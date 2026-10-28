@@ -1,0 +1,18 @@
+# Ported from Euphoria/Recipes/Reactions/drinks.yml
+- type: reaction
+  id: BerryNice
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    BlackberryJuice:
+      amount: 1
+    BlueberryJuice:
+      amount: 1
+    RaspberryJuice:
+      amount: 1
+    StrawberryJuice:
+      amount: 1
+    JuiceGrape:
+      amount: 1
+  products:
+    BerryNice: 5

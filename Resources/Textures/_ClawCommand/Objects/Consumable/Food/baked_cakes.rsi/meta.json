@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Derived from a CC-BY-SA-3.0 licensed tgstation-family codebase; redrawn/adapted for this project.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "briochecake"
+    },
+    {
+      "name": "briochecake_slice"
+    },
+    {
+      "name": "holy_cake"
+    },
+    {
+      "name": "holy_cake_slice"
+    },
+    {
+      "name": "pound_cake"
+    },
+    {
+      "name": "pound_cake_slice"
+    },
+    {
+      "name": "hardware_cake"
+    },
+    {
+      "name": "hardware_cake_slice"
+    }
+  ]
+}

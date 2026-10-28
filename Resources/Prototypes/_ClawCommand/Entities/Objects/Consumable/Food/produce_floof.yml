@@ -118,3 +118,167 @@
     tags:
     - Fruit
     - Slice
+
+- type: entity
+  name: coconut
+  parent: FoodProduceBase
+  id: FoodCoconut
+  description: A delicious, sweet fruit, believed to have special properties.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+      - creamy
+      - nutty
+  - type: Solution
+    solution:
+      maxVol: 7
+      reagents:
+      - ReagentId: CoconutWater
+        Quantity: 2
+      - ReagentId: Nutriment
+        Quantity: 5
+  - type: Sprite
+    sprite: _Floof/Objects/Specific/Hydroponics/coconut.rsi
+  - type: Produce
+    plantId: CoconutPlants
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: CoconutWater
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit
+    - CoconutFruit
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 1 # give it a tiny bit of throw damage for the silly
+
+- type: entity
+  name: coconut gun husk
+  parent: FoodProduceBase
+  id: FoodCoconutGunFruit
+  description: A delicious, gun-shaped fruit with a thick wooden stem.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - gunpowder
+      - sweet
+      - creamy
+      - nutty
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Sulfur # kept so it tastes similar to gatfruit
+        Quantity: 5
+      - ReagentId: CoconutWater
+        Quantity: 5
+  - type: Sprite
+    sprite: _Floof/Objects/Specific/Hydroponics/coconut_gun.rsi
+  - type: Produce
+    plantId: CoconutGunPlants
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: CoconutWater
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: peanut
+  parent: FoodProduceBase
+  id: FoodPeanutInShell # in shell
+  description: A delicious and salty peanut in its shell.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - creamy
+      - nutty
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: PeanutOil
+        Quantity: 10
+      - ReagentId: Nutriment
+        Quantity: 5
+  - type: Sprite
+    sprite: _Floof/Objects/Specific/Hydroponics/peanut.rsi
+  - type: Produce
+    plantId: PeanutPlants
+  - type: Tag
+    tags:
+    - Nuts
+  - type: SpawnItemsOnUse
+    items:
+    - id: FoodPeanut
+      amount: 2 # two peanuts per plant
+    sound:
+      path: /Audio/Effects/packetrip.ogg
+
+- type: entity
+  name: peanut
+  parent: FoodProduceBase
+  id: FoodPeanut
+  description: A delicious and salty peanut out of its shell.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - creamy
+      - nutty
+  - type: Solution
+    solution:
+      maxVol: 7
+      reagents:
+      - ReagentId: PeanutOil
+        Quantity: 2
+      - ReagentId: Nutriment
+        Quantity: 5
+  - type: Sprite
+    sprite: _Floof/Objects/Specific/Hydroponics/peanut_raw.rsi
+  - type: Tag
+    tags:
+    - Nuts
+
+- type: entity
+  name: strawberries
+  parent: FoodProduceBase
+  id: FoodStrawberry
+  description: A delectable strawberry, its berry nice to meet you.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - strawberry
+  - type: Solution
+    solution:
+      maxVol: 11
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Vitamin
+        Quantity: 4
+  - type: Sprite
+    sprite: _Floof/Objects/Specific/Hydroponics/strawberry.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    plantId: StrawberryPlants
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: StrawberryJuice
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit
+  - type: FoodSequenceElement
+    entries:
+      Burger: Strawberry
+      Taco: Strawberry

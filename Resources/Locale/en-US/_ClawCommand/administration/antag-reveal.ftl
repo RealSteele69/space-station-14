@@ -1,4 +1,5 @@
 antag-reveal-admin-alert = [Reveal] {$admin} → {$player}{$character} ({$source})
+antag-reveal-admin-alert-batch = [Reveal] {$admin} revealed {$count} players, see admin logs
 antag-reveal-character = {" "}({$name})
 antag-reveal-none = not antag
 antag-reveal-console = Console

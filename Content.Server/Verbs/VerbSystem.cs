@@ -90,6 +90,20 @@ namespace Content.Server.Verbs
 
         public void LogVerb(Verb verb, EntityUid user, EntityUid target, bool forced)
         {
+            var verbText = $"{verb.Category?.Text} {verb.Text}".Trim();
+
+            // lets not frame people, eh?
+            var executionText = forced ? "was forced to execute" : "executed";
+
+            // Claw Command - antag-assignment verbs (make traitor/zombie/cultist/etc) name the admin who
+            // did it, but never the player they targeted - that's the whole point of the verb being secret.
+            if (verb.Category == VerbCategory.Antag)
+            {
+                _adminLogger.Add(LogType.Verb, verb.Impact,
+                    $"{ToPrettyString(user):user} {executionText} the [{verbText:verb}] verb targeting a player");
+                return;
+            }
+
             // first get the held item. again.
             EntityUid? holding = null;
             if (_hands.GetActiveItem(user) is { } heldEntity)
@@ -100,11 +114,6 @@ namespace Content.Server.Verbs
             // if this is a virtual pull, get the held entity
             if (holding != null && TryComp(holding, out VirtualItemComponent? pull))
                 holding = pull.BlockingEntity;
-
-            var verbText = $"{verb.Category?.Text} {verb.Text}".Trim();
-
-            // lets not frame people, eh?
-            var executionText = forced ? "was forced to execute" : "executed";
 
             if (holding == null)
             {

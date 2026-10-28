@@ -1,0 +1,39 @@
+<Document>
+  # Vampire
+
+  [color=#ac1a1a]An undead predator, hiding among the crew, who survives on stolen blood.[/color]
+
+  A vampire regenerates wounds slowly on borrowed blood, dreads direct light, and withers to nothing if their stolen blood runs completely dry.
+  <Box>
+    <GuideEntityEmbed Entity="CrateCoffin" Caption="Coffin"/>
+    <GuideEntityEmbed Entity="VampireStake" Caption="Stake"/>
+  </Box>
+
+  ## Blood
+
+  Everything a vampire does draws on blood, shown by the alert in the corner of the screen. Run dry, and the hunger starts to show.
+
+  [bold]Feed[/bold] on a victim you have at least a soft grip on to steal their blood. Feeding knocks them down and keeps them down as long as it continues.
+
+  ## Light
+
+  Direct light burns. Darkness, shade, and anything enclosed - a locker, a crate, a coffin - are all safe.
+
+  ## The Coffin
+
+  Close the lid on any closet or crate while resting inside an unclaimed one, and it becomes your coffin: your lair. Rest there with the lid shut to heal quickly and for free.
+
+  Resting in your own coffin with a rank saved up and the blood to spend it lets you grow in power - right-click yourself to see what's on offer.
+
+  ## Masquerade
+
+  Toggle [bold]Masquerade[/bold] to fake being alive - at the cost of being unable to heal at all while it holds.
+
+  ## Vassals
+
+  [bold]Embrace[/bold] a helpless victim to bind them as your Vassal: a loyal thrall who can heal on borrowed blood of their own and knows roughly where you are at all times. How many you can keep bound scales with your rank. Lose your final death, and every Vassal is freed.
+
+  ## Final Death
+
+  A stake driven through the heart while you're helpless ends you for good. The same stake driven through a conscious vampire just locks their powers away until it's pulled.
+</Document>

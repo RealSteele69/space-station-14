@@ -1,0 +1,102 @@
+# Burrito family, not previously present in this fork. Built from the
+# existing FoodDoughTortillaFlat ingredient (already used as the generic
+# "tortilla" for nachos/enchiladas elsewhere in this repo), so no new
+# produce/dough items were needed. Recipes in
+# _ClawCommand/Recipes/Cooking/meal_recipes_burritos.yml.
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealBurrito
+  name: burrito
+  description: Tortilla-wrapped goodness.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - soy
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/burritos.rsi
+    state: burrito
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 18
+      - ReagentId: Protein
+        Quantity: 4
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealBurritoCheesy
+  name: cheesy burrito
+  description: It's a burrito filled with cheese.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - cheesy
+    - meaty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/burritos.rsi
+    state: cheesyburrito
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 20
+      - ReagentId: Protein
+        Quantity: 2
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealBurritoCarneAsada
+  name: carne asada burrito
+  description: The best burrito for meat lovers.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/burritos.rsi
+    state: carneburrito
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 18
+      - ReagentId: Protein
+        Quantity: 8
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  parent: FoodMealBase
+  id: FoodMealBurritoFuego
+  name: fuego plasma burrito
+  description: A super spicy burrito.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - spicy
+    - meaty
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Food/burritos.rsi
+    state: fuegoburrito
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 16
+      - ReagentId: CapsaicinOil
+        Quantity: 10
+      - ReagentId: Vitamin
+        Quantity: 3
+  - type: Tag
+    tags:
+    - Meat

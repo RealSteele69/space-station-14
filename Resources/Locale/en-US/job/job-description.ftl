@@ -57,10 +57,12 @@ job-description-station-ai = Remotely interface with the station's cameras, airl
 
 # Misc.
 job-description-centcommoff = Act as liaison to the newest state-of-the-art space station in Nanotrasen's fleet.
+job-description-centcomintern = Serve coffee, sort faxes, and run errands for the ground workers at Central Command.
 job-description-ertchaplain = Ensure that the station's crew have their last rites performed.
 job-description-ertengineer = Ensure that the station has power and clean air.
 job-description-ertjanitor = Ensure that the station is thoroughly cleaned and sterilized.
 job-description-ertleader = Lead the Emergency Response Team to protect and preserve Nanotrasen assets.
 job-description-ertmedic = Ensure that the station's crew have their injuries treated.
+job-description-srtagent = A member of NanoTrasen's paramilitary forces, equipped to succeed where ERT doesn't.
 job-description-ertsecurity = Ensure that any threats to the station are eliminated.
 job-description-visitor = Enjoy your visit to the station!

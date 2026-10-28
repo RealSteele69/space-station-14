@@ -38,6 +38,8 @@
   - ERTSecurity
   - ERTEngineer
   - DeathSquad
+  - SRTAgent
+  - CentralCommandIntern
   - AdmiralClaw #claw command
   editorHidden: true
   weight: 120
@@ -67,6 +69,8 @@
   - ERTSecurity
   - ERTEngineer
   - DeathSquad
+  - SRTAgent
+  - CentralCommandIntern
   primary: false
   weight: 100
 

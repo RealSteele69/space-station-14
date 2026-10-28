@@ -264,6 +264,8 @@
     sprite: _ClawCommand/Seasonal/Food/holiday_snacks.rsi
     state: gingerbread_box
   - type: Storage
+    grid:
+    - 0,0,3,1
     whitelist:
       tags:
       - GingerbreadCookie

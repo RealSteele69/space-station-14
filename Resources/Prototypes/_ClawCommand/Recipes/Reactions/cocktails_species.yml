@@ -1,0 +1,141 @@
+# Reactions for the species-specific drink line (see Raegents/Consumable/Drink/alcohol_species.yml).
+
+- type: reaction
+  id: Coldscales
+  reactants:
+    JuiceLime:
+      amount: 1
+    Tea:
+      amount: 1
+    Ice:
+      amount: 1
+  products:
+    Coldscales: 3
+
+- type: reaction
+  id: OilDrum
+  reactants:
+    Ethanol:
+      amount: 1
+    Oil:
+      amount: 1
+    Champagne:
+      amount: 1
+  products:
+    OilDrum: 3
+
+- type: reaction
+  id: NordKing
+  reactants:
+    Ethanol:
+      amount: 1
+    Honey:
+      amount: 1
+    RedMead:
+      amount: 2
+  products:
+    NordKing: 4
+
+- type: reaction
+  id: VelvetKiss
+  reactants:
+    Blood:
+      amount: 1
+    Tea:
+      amount: 1
+    Wine:
+      amount: 2
+  products:
+    VelvetKiss: 4
+
+- type: reaction
+  id: AbductionFruit
+  reactants:
+    JuiceLime:
+      amount: 2
+    StrawberryJuice:
+      amount: 1
+    JuiceWatermelon:
+      amount: 2
+  products:
+    AbductionFruit: 3
+
+- type: reaction
+  id: BugZapper
+  reactants:
+    JuiceLemon:
+      amount: 2
+    Copper:
+      amount: 1
+    Sugar:
+      amount: 1
+  products:
+    BugZapper: 4
+
+- type: reaction
+  id: MushCrush
+  priority: 1 # contains the Darkbrew recipe; must win or it can never form
+  reactants:
+    Ash:
+      amount: 1
+    Nutriment:
+      amount: 1
+    Tea:
+      amount: 1
+  products:
+    MushCrush: 3
+
+- type: reaction
+  id: Darkbrew
+  reactants:
+    Ash:
+      amount: 1
+    Tea:
+      amount: 2
+  products:
+    Darkbrew: 3
+
+- type: reaction
+  id: HollowBone
+  reactants:
+    Milk:
+      amount: 2
+    Vitamin:
+      amount: 1
+  products:
+    HollowBone: 3
+
+- type: reaction
+  id: FriskyKitty
+  reactants:
+    Milk:
+      amount: 1
+    Happiness:
+      amount: 1
+  products:
+    FriskyKitty: 2
+
+- type: reaction
+  id: JellWyrm
+  reactants:
+    CarbonDioxide:
+      amount: 1
+    Sugar:
+      amount: 1
+    Ethanol:
+      amount: 1
+  products:
+    JellWyrm: 2
+
+- type: reaction
+  id: LavalSpit
+  minTemp: 500
+  reactants:
+    Ash:
+      amount: 1
+    Sulfur:
+      amount: 1
+    Ethanol:
+      amount: 1
+  products:
+    LavalSpit: 3

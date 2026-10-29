@@ -145,6 +145,17 @@
     ClothingUniformWeddingDress: 2
     ClothingHeadHatWizardFake: 1
     ClothingOuterWizardFake: 1
+    # Claw Command - Ported Goob-Station Halloween costumes/treats
+    CandyBucket: 4
+    Broomstick: 2
+    ClothingCostumeAbductorHead: 2
+    ClothingCostumeAbductor: 2
+    ClothingCostumeGingerbreadHead: 1
+    ClothingOuterSuitHotDog: 1
+    ClothingOuterSuitPickle: 1
+    ClothingOuterSuitTutu: 1
+    ClothingMaskPlague: 1
+    ClothingOuterPlagueSuit: 1
     # Claw Command - imported costume clothing (Imperial Space, CC-licensed art).
     # Generic dress only: no command, security, department or ERT kit, so the machine
     # cannot be used as a shortcut to a uniform somebody is meant to earn.
@@ -274,6 +285,9 @@
     ClothingUniformStripedThongWhite: 1
     ClothingUniformMusicKingBlack: 2
     ClothingUniformMusicKing: 2
+    # Claw Command - Ported Goob-Station Halloween contraband
+    ToyBladeEldritch: 2
+    ClothingOuterArmorHereticCostume: 1
   emaggedInventory:
     ClothingMaskSexyClown: 1
     ClothingMaskSexyMime: 1

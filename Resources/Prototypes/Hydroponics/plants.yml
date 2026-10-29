@@ -149,7 +149,7 @@
     name: seeds-banana-name
     packetPrototype: BananaSeeds
     productPrototypes: [ FoodBanana ]
-    mutationPrototypes: [ MimanaPlants ]
+    mutationPrototypes: [ MimanaPlants, BluespaceBananaPlants ]
   - type: Plant
     lifespan: 50
     maturation: 6
@@ -558,6 +558,7 @@
     name: seeds-teaplant-name
     packetPrototype: TeaPlantSeeds
     productPrototypes: [ LeavesTea ]
+    mutationPrototypes: [ TeaAstraPlants ]
   - type: Plant
     lifespan: 75
     maturation: 5
@@ -2095,6 +2096,7 @@
     name: seeds-berries-name
     packetPrototype: BerrySeeds
     productPrototypes: [ FoodBerries ]
+    mutationPrototypes: [ GlowBerryPlants ]
   - type: Plant
     lifespan: 50
     maturation: 6
@@ -2308,7 +2310,7 @@
     name: seeds-cotton-name
     packetPrototype: CottonSeeds
     productPrototypes: [ CottonBol ]
-    mutationPrototypes: [ PyrottonPlants ]
+    mutationPrototypes: [ PyrottonPlants, DurathreadPlants ]
   - type: Plant
     lifespan: 25
     maturation: 8

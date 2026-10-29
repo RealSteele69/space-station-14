@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- files: ["merrychristmas.ogg"]
+  license: "CC-BY-4.0"
+  copyright: "made by john john"
+  source: "https://github.com/JohnJJohn"

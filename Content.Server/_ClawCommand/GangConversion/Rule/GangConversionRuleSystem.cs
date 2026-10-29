@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Numerics;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
 using Content.Server.Decals;
@@ -397,11 +396,10 @@ public sealed partial class GangConversionRuleSystem : GameRuleSystem<GangConver
         foreach (var team in rule.Teams)
             team.TurfScore = 0;
 
-        var hugeBox = new Box2(new Vector2(-100000, -100000), new Vector2(100000, 100000));
         var gridQuery = EntityQueryEnumerator<MapGridComponent>();
-        while (gridQuery.MoveNext(out var gridUid, out _))
+        while (gridQuery.MoveNext(out var gridUid, out var grid))
         {
-            foreach (var (_, decal) in _decals.GetDecalsIntersecting(gridUid, hugeBox))
+            foreach (var (_, decal) in _decals.GetDecalsIntersecting(gridUid, grid.LocalAABB))
             {
                 if (decal.Id != rule.TagDecalId || decal.Color is not { } color)
                     continue;

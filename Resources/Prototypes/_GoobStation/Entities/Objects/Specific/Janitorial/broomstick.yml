@@ -1,0 +1,46 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseItem
+  name: broomstick
+  id: Broomstick
+  description: To stay healthy, you need to sweep at least 8 hours a day!
+  components:
+  - type: Sprite
+    sprite: _GoobStation/Objects/Specific/Janitorial/broomstick.rsi
+    state: icon
+  - type: Appearance
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 8
+    soundHit:
+      collection: MetalThud
+  - type: Spillable
+    solution: absorbed
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: -8 # It's in between your legs, you can't use it as a weapon.
+  - type: Item
+    size: Large
+  - type: Absorbent
+  - type: SolutionContainerManager
+    solutions:
+      absorbed:
+        maxVol: 60
+  - type: UseDelay
+    delay: 0.5
+  - type: PhysicalComposition
+    materialComposition:
+      Wood: 100
+      Cloth: 100
+  - type: Tag
+    tags:
+    - Mop
+    - DroneUsable
+  - type: GuideHelp
+    guides:
+    - Janitorial
+  - type: DnaSubstanceTrace

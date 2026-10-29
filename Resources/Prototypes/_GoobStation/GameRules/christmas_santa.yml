@@ -1,0 +1,125 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Santa Claus ghost-role midround event: not wired into the automatic event
+# tables, so it only runs when an admin spawns it (or adds it to a table for
+# the holiday season), same as how the source project kept it dormant outside Christmas.
+- type: entity
+  id: SantaClausSpawn
+  parent: BaseGameRule
+  components:
+  - type: StationEvent
+    weight: 1
+    earliestStart: 3
+    minimumPlayers: 10
+    maxOccurrences: 1
+  - type: GameRule
+  - type: VentCrittersRule # like a chimney
+    entries:
+    - id: SantaClaus
+      prob: 0.1
+
+- type: entity
+  parent: MobHuman
+  id: SantaClaus
+  name: Santa Claus
+  components:
+  - type: Loadout
+    prototypes: [ SantaGear ]
+  - type: GhostTakeoverAvailable
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: ghost-role-information-santa-name
+    description: ghost-role-information-santa-description
+    rules: ghost-role-information-nonantagonist-rules
+    mindRoles:
+    - MindRoleGhostRoleNeutral
+    raffle:
+      settings: default
+
+- type: startingGear
+  id: SantaGear
+  equipment:
+    ears: ClothingHeadsetCentCom
+    head: ClothingHeadHatSantahat
+    jumpsuit: ClothingUniformJumpsuitColorWhite
+    shoes: ClothingShoesColorBlack
+    id: CentcomPDA
+    pocket1: FoodBakedCookie
+    pocket2: DrinkGlassWhite
+    gloves: ClothingHandsGlovesColorWhite
+    outerClothing: ClothingOuterSanta
+    back: ClothingBackpackSantasSack
+  inhand:
+  - SantaCannonRegenerating
+
+- type: entity
+  parent: BaseStorageItem
+  id: LauncherCreamPieRegenerating
+  name: regenerating pie cannon
+  description: A self-regenerating pie cannon.
+  suffix: Regenerating
+  components:
+  - type: PacifismAllowedGun
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Cannons/pie_cannon.rsi
+    layers:
+    - state: piecannon
+  - type: Gun
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/Effects/thunk.ogg
+    soundEmpty:
+      path: /Audio/Items/hiss.ogg
+    clumsyProof: true
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 10
+    rechargeSound:
+      path: /Audio/Items/bikehorn.ogg
+  - type: BasicEntityAmmoProvider
+    proto: FoodPieBananaCream
+
+- type: entity
+  parent: LauncherCreamPieRegenerating
+  id: SantaCannonRegenerating
+  name: Santa's merry pneumatic cannon
+  suffix: DO NOT MAP
+  description: The only thing you'll need to spread christmas cheer!
+  components:
+  - type: BasicEntityAmmoProvider
+    proto: PresentRandomUnsafe
+    capacity: 2
+    count: 2
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 5
+    rechargeSound:
+      path: /Audio/_GoobStation/Weapons/Guns/Gunshots/merrychristmas.ogg
+
+- type: entity
+  name: Santa's sack of holding
+  description: All you need to spread christmas cheer is contained inside!
+  parent: ClothingBackpackHolding
+  id: ClothingBackpackSantasSack
+  suffix: Unremoveable
+  components:
+  - type: Unremoveable
+  - type: StorageFill
+    contents:
+    - id: PresentRandomUnsafe
+    - id: PresentRandomUnsafe
+    - id: PresentRandomUnsafe
+    - id: PresentRandomUnsafe
+    - id: PresentRandomUnsafe
+    - id: PresentRandomUnsafe
+    - id: PresentRandomUnsafe
+    - id: PresentRandomUnsafe
+    - id: PresentRandomUnsafe
+    - id: PresentRandomUnsafe
+    - id: PresentRandomUnsafe
+    - id: PresentRandomUnsafe
+    - id: PresentRandomUnsafe

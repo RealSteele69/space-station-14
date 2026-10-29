@@ -20,6 +20,26 @@
     ClothingHeadHatSantahat: 2
     ClothingHeadHatXmasCrown: 2
     ClothingOuterWarmWornoutCoat: 2 # Claw Command - Floof
+    # Claw Command - Ported Goob-Station winter coats
+    ClothingOuterCoatGentle: 3
+    ClothingOuterCoatJensen: 3
+    ClothingOuterWinterColorRed: 2
+    ClothingOuterWinterColorOrange: 2
+    ClothingOuterWinterColorYellow: 2
+    ClothingOuterWinterColorGreen: 2
+    ClothingOuterWinterColorBlue: 2
+    ClothingOuterWinterColorPurple: 2
+    ClothingOuterWinterColorLightBrown: 2
+    ClothingOuterWinterColorBrown: 2
+    ClothingOuterWinterColorBlack: 2
+    ClothingOuterWinterColorGray: 2
+    ClothingOuterWinterColorWhite: 2
+  contrabandInventory:
+    # Claw Command - Ported Goob-Station winter contraband
+    ClothingOuterDavidsJacket: 1
+    ClothingNeckScarfStripedCentcom: 3
+    ClothingOuterCoatSpaceAsshole: 1
+    ClothingOuterWinterCosmic: 1
   emaggedInventory:
     ClothingNeckScarfStripedSyndieGreen: 3
     ClothingNeckScarfStripedSyndieRed: 3

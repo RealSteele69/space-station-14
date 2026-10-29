@@ -1,0 +1,85 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterSuitHotDog
+  name: hotdog costume
+  description: Hot-diggity-dog!
+  components:
+  - type: Sprite
+    sprite: _GoobStation/Clothing/OuterClothing/Misc/hotdog.rsi
+  - type: Clothing
+    sprite: _GoobStation/Clothing/OuterClothing/Misc/hotdog.rsi
+    quickEquip: true
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterSuitPickle
+  name: pickle suit
+  description: Smells horribly of vinegar.
+  components:
+  - type: Sprite
+    sprite: _GoobStation/Clothing/OuterClothing/Misc/pickle.rsi
+  - type: Clothing
+    sprite: _GoobStation/Clothing/OuterClothing/Misc/pickle.rsi
+    quickEquip: true
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterSuitTutu
+  name: tutu
+  description: Why?..
+  components:
+  - type: Sprite
+    sprite: _GoobStation/Clothing/OuterClothing/Misc/tutu.rsi
+  - type: Clothing
+    sprite: _GoobStation/Clothing/OuterClothing/Misc/tutu.rsi
+    quickEquip: true
+
+- type: entity
+  parent: ClothingOuterBaseToggleable
+  id: ClothingOuterArmorHereticCostume
+  name: occult robes
+  description: A ragged, dusty set of robes. Strange smudgy eyes line the inside.
+  components:
+  - type: Sprite
+    sprite: _GoobStation/Heretic/Clothing/OuterClothing/toy_armor.rsi
+    state: icon
+  - type: Clothing
+    sprite: _GoobStation/Heretic/Clothing/OuterClothing/toy_armor.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ClothingHeadHatHoodHereticCostume
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterDavidsJacket
+  name: EMT jacket
+  description: A bright yellow signal jacket, beloved by paramedics of the end of the 21st century.
+  components:
+  - type: Sprite
+    sprite: _GoobStation/Clothing/OuterClothing/Coats/david_jacket.rsi
+  - type: Clothing
+    sprite: _GoobStation/Clothing/OuterClothing/Coats/david_jacket.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterWinterCosmic
+  name: cosmic winter coat
+  description: An expensive machine-made winter coat.
+  components:
+  - type: Sprite
+    sprite: _GoobStation/Clothing/OuterClothing/Wintercoats/cosmic.rsi
+    state: icon
+  - type: Clothing
+    sprite: _GoobStation/Clothing/OuterClothing/Wintercoats/cosmic.rsi

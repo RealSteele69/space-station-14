@@ -1,0 +1,70 @@
+<Document>
+  # Gang Conversion
+
+  The station has a crime problem, and it's about to get worse. A handful of crew have decided they'd
+  rather carve out their own turf than clock in for another shift. Each gang boss answers to nobody but
+  themselves, and they intend to make that stick - by force, if they have to.
+
+  Gang Conversion can appear on shifts with as few as 3 players. Two or more rival gangs form at once, so
+  it's never just the crew against one antagonist: it's everyone against a turf war that might not stay
+  contained to just the gangs.
+
+  ## Objective
+
+  Control the most turf by the end of the shift. Turf is tracked continuously, so check in on it - a gang
+  that's been winning all round can still be out-tagged in the last few minutes.
+
+  ## Tattoo Gun
+
+  <Box>
+    <GuideEntityEmbed Entity="GangTattooGun" Caption="Tattoo Gun"/>
+  </Box>
+
+  Only the boss starts with one. Land a melee hit on an eligible crew member and they're recruited on the
+  spot - no warning, no choice. A mindshielded target can't be converted. Hitting a rival gang member
+  instead flips them to your side, stripping any rank they held.
+
+  Eligible targets must be a living, humanoid crew member. Silicons and anyone already in your own gang
+  can't be (re-)converted.
+
+  ## Spray Tagger
+
+  <Box>
+    <GuideEntityEmbed Entity="GangSprayTagger" Caption="Spray Tagger"/>
+  </Box>
+
+  Every gang member gets one. Use it on the floor to paint a tag in your gang's colour, claiming that spot
+  as turf. Tagging over a rival's mark scrubs it out first. Tagging your own mark again does nothing - look
+  for untagged or rival ground instead. It has a short cooldown between uses.
+
+  ## Ranks
+
+  - [bold]Boss[/bold]: founded the gang. Starts with a tattoo gun and a spray tagger. Can promote any
+  gang member to enforcer with a right-click verb. Losing the boss doesn't end the gang, but it can no
+  longer promote anyone new.
+  - [bold]Enforcer[/bold]: a boss's trusted lieutenant. Gets their own tattoo gun on promotion, so they can
+  recruit too.
+  - [bold]Ganger[/bold]: everyone else. Can tag turf, but can't recruit or promote.
+
+  ## Winning
+
+  Turf is counted across the whole station on a timer, and again at the very end of the round. The gang
+  with the most turf wins; ties are broken by whichever gang has the most living members. A gang that
+  loses every member doesn't get removed from the board - their last tally still counts, they just can't
+  grow it any further.
+
+  ## Fighting the Gangs
+
+  - A mindshield operation makes someone immune to the tattoo gun.
+  - Cleaning or painting over a gang tag removes it from their turf count, same as a rival gang tagging
+  over it.
+  - A gang with no boss and no enforcers left can't recruit new members, only hold or lose what they
+  already have.
+
+  ## Tips
+
+  - Tag early and tag often. A few seconds of spray paint is worth more than a long fight you might lose.
+  - Don't let the boss wander off alone with the only tattoo gun in the gang - promote an enforcer early
+  so a lucky hit on the boss doesn't end your recruiting for good.
+  - Watch for rival taggers re-claiming ground the moment you look away.
+</Document>

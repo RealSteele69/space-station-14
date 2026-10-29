@@ -12,9 +12,11 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private IUserInterfaceManager _ui = default!;
+#if DEBUG
     [Dependency] private ILogManager _logManager = default!;
 
     private ISawmill _sawmill = default!;
+#endif
 
     private bool _showAll;
 
@@ -50,7 +52,9 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
     {
         base.Initialize();
 
+#if DEBUG
         _sawmill = _logManager.GetSawmill("subfloor.hide");
+#endif
 
         SubscribeLocalEvent<SubFloorHideComponent, AppearanceChangeEvent>(OnAppearanceChanged);
         SubscribeNetworkEvent<ShowSubfloorRequestEvent>(OnRequestReceived);
@@ -79,10 +83,12 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
         {
             _appearance.QueueUpdate(uid, appearance);
         }
+#if DEBUG
         else
         {
             _sawmill.Warning($"SetVentCrawlRevealed({ToPrettyString(uid)}, {revealed}): entity has no AppearanceComponent, reveal will never apply");
         }
+#endif
     }
 
     private void OnRequestReceived(ShowSubfloorRequestEvent ev)
@@ -106,10 +112,12 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
 
         var revealed = !covered || ShowAll || scannerRevealed;
 
+#if DEBUG
         if (ventCrawlRevealed)
         {
             _sawmill.Info($"OnAppearanceChanged({ToPrettyString(uid)}): covered={covered} scannerRevealed={scannerRevealed} ventCrawlRevealed={ventCrawlRevealed} showAll={ShowAll} -> revealed={revealed}");
         }
+#endif
 
         // set visibility & color of each layer
         foreach (var layer in args.Sprite.AllLayers)
@@ -133,10 +141,12 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
 
         _sprite.SetVisible((uid, args.Sprite), hasVisibleLayer || revealed);
 
+#if DEBUG
         if (ventCrawlRevealed)
         {
             _sawmill.Info($"OnAppearanceChanged({ToPrettyString(uid)}): after SetVisible, sprite.Visible={args.Sprite.Visible} drawDepth={args.Sprite.DrawDepth}");
         }
+#endif
 
         if (ShowAll)
         {

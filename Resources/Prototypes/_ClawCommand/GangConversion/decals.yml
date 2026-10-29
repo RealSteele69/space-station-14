@@ -1,0 +1,11 @@
+# Turf marker, drawn by the gang spray tagger (GangTaggerSystem). Reuses the existing stencil decal art
+# rather than new assets; tinted to each gang's colour at paint time.
+- type: decal
+  id: GangTagDecal
+  tags: [ "gang-tag" ]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: Decals/stencil.rsi
+    state: stencilX

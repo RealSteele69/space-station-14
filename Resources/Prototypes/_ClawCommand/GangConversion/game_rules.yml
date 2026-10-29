@@ -1,0 +1,138 @@
+# Gang Conversion: every selected boss founds their own gang, recruits by force with a tattoo gun, and
+# fights over turf with a spray tagger. Normal Secret rounds roll it through SubGangConversion in the
+# Easy/Medium/Hard tiers (GameRules/difficulty.yml). Playable from 3 players up - unlike the mass-conversion
+# cults, two rival bosses are enough to start a gang war.
+
+- type: antag
+  id: GangBoss
+  name: roles-antag-gang-boss-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-gang-boss-objective
+  guides: [ GangConversion ]
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: GangBoss
+  prefRoles:
+  - GangBoss
+  mindRoles:
+  - MindRoleGangBoss
+  briefing:
+    text: gang-role-briefing-boss
+    color: White
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleGangBoss
+  name: Gang Boss Role
+  components:
+  - type: MindRole
+    antag: true
+    antagPrototype: GangBoss
+    exclusiveAntag: true
+    roleType: TeamAntagonist
+    subtype: role-subtype-gang-boss
+  - type: GangBossRole
+
+# Not player-selectable at round start; granted on forced conversion, same as plain Revolutionary vs HeadRev.
+- type: antag
+  id: GangMember
+  name: roles-antag-gang-member-name
+  antagonist: true
+  setPreference: false
+  objective: roles-antag-gang-member-objective
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: GangMember
+  mindRoles:
+  - MindRoleGangMember
+  briefing:
+    text: gang-role-briefing-member
+    color: White
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleGangMember
+  name: Gang Member Role
+  components:
+  - type: MindRole
+    antag: true
+    antagPrototype: GangMember
+    exclusiveAntag: true
+    roleType: TeamAntagonist
+    subtype: role-subtype-gang-member
+  - type: GangMemberRole
+
+- type: entity
+  parent: BaseGameRule
+  id: GangConversion
+  components:
+  - type: GangConversionRule
+  - type: GameRule
+    minPlayers: 3
+    delay:
+      min: 20
+      max: 50
+  - type: AntagSelection
+    selectionTime: JobsAssigned
+    agentName: gang-roundend-name
+    antags:
+    - !type:LinearAntagCount
+      proto: GangBoss
+      range:
+        min: 2
+        max: 4
+      playerRatio: 12
+  - type: Tag
+    tags:
+    - RoundstartAntag
+
+# Secret-difficulty variant: rolled as a major antag, so being under the population floor just skips it
+# instead of cancelling the preset that rolled it.
+- type: entity
+  parent: GangConversion
+  id: SubGangConversion
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GameRule
+    minPlayers: 3
+    cancelPresetOnTooFewPlayers: false
+    delay:
+      min: 20
+      max: 50
+
+# Admin-forceable presets (`setgamepreset gangconversion` / `secretgangconversion`).
+- type: gamePreset
+  id: GangConversion
+  alias:
+  - gangconversion
+  - gangs
+  name: gang-conversion-title
+  description: gang-conversion-description
+  showInVote: false
+  rules:
+  - DummyNonAntagChance
+  - GangConversion
+  - SubGamemodesRuleNoWizard
+  - CCSecretMediumScheduler
+  - CCSecretMediumMeteorScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset # Runs Gang Conversion but shows "Secret" in the lobby.
+  id: SecretGangConversion
+  alias:
+  - secretgangconversion
+  name: secret-title
+  description: secret-description
+  showInVote: false
+  rules:
+  - DummyNonAntagChance
+  - GangConversion
+  - SubGamemodesRuleNoWizard
+  - CCSecretMediumScheduler
+  - CCSecretMediumMeteorScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation

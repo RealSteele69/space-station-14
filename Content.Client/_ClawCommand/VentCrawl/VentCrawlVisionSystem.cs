@@ -23,9 +23,11 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SubFloorHideSystem _subFloorHide = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+#if DEBUG
     [Dependency] private ILogManager _logManager = default!;
 
     private ISawmill _sawmill = default!;
+#endif
 
     private const float Range = 14f;
     private const string Unshaded = "unshaded";
@@ -41,7 +43,9 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
     {
         base.Initialize();
         _overlay = new VentCrawlOverlay();
+#if DEBUG
         _sawmill = _logManager.GetSawmill("ventcrawl.vision");
+#endif
     }
 
     public override void Shutdown()
@@ -68,7 +72,9 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
         if (!_overlays.HasOverlay<VentCrawlOverlay>())
         {
             _overlays.AddOverlay(_overlay);
+#if DEBUG
             _sawmill.Info($"Overlay added for {ToPrettyString(player.Value)}");
+#endif
         }
 
         _accumulator += frameTime;
@@ -101,18 +107,24 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
                 Unreveal(uid);
         }
 
+#if DEBUG
         _sawmill.Info($"tick: mapId={xform.MapID} pos={worldPos} inRange={_inRange.Count} pipeCandidates={pipeCandidates} revealed={_revealed.Count}");
+#endif
     }
 
     private void Reveal(EntityUid uid)
     {
         if (!TryComp<SpriteComponent>(uid, out var sprite))
         {
+#if DEBUG
             _sawmill.Warning($"Reveal: {ToPrettyString(uid)} has no SpriteComponent");
+#endif
             return;
         }
 
+#if DEBUG
         _sawmill.Info($"Reveal: {ToPrettyString(uid)} layers={sprite.AllLayers.Count()} visibleBefore={sprite.Visible} drawDepthBefore={sprite.DrawDepth}");
+#endif
 
         var saved = new List<(ProtoId<ShaderPrototype>?, ShaderInstance?)>();
         for (var i = 0; i < sprite.AllLayers.Count(); i++)

@@ -180,7 +180,7 @@
   components:
   - type: SubGamemodes
     rules:
-    - prob: 0.55 # nothing
+    - prob: 0.45 # nothing
       orGroup: major
     - id: SubNukeops
       prob: 0.13
@@ -193,6 +193,9 @@
       orGroup: major
     - id: SubWizard
       prob: 0.05
+      orGroup: major
+    - id: SubGangConversion # Claw Command - Gang Conversion (3+ players)
+      prob: 0.10
       orGroup: major
 
 - type: entity
@@ -218,7 +221,7 @@
   components:
   - type: SubGamemodes
     rules:
-    - prob: 0.16 # nothing
+    - prob: 0.08 # nothing
       orGroup: major
     - id: SubCosmicCult # Claw Command - Cosmic Cult (15+ players)
       prob: 0.06
@@ -246,6 +249,9 @@
       orGroup: major
     - id: SubXenoborgs
       prob: 0.04
+      orGroup: major
+    - id: SubGangConversion # Claw Command - Gang Conversion (3+ players)
+      prob: 0.08
       orGroup: major
 
 - type: entity
@@ -299,6 +305,9 @@
       orGroup: major
     - id: SubXenoborgs
       prob: 0.06
+      orGroup: major
+    - id: SubGangConversion # Claw Command - Gang Conversion (3+ players)
+      prob: 0.07
       orGroup: major
 
 - type: entity

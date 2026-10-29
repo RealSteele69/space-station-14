@@ -1,0 +1,52 @@
+# Each gang gets its own private channel this round, assigned in founding order. Four channels caps the
+# game at four simultaneous gangs (matches GangConversionRuleComponent.TeamColors).
+
+- type: radioChannel
+  id: GangAlphaRadio
+  name: chat-radio-gang-alpha
+  keycode: 'j'
+  frequency: 1916
+  color: "#c62828"
+  longRange: true
+
+- type: radioChannel
+  id: GangBetaRadio
+  name: chat-radio-gang-beta
+  keycode: 'k'
+  frequency: 1917
+  color: "#1565c0"
+  longRange: true
+
+- type: radioChannel
+  id: GangGammaRadio
+  name: chat-radio-gang-gamma
+  keycode: 'o'
+  frequency: 1918
+  color: "#2e7d32"
+  longRange: true
+
+- type: radioChannel
+  id: GangDeltaRadio
+  name: chat-radio-gang-delta
+  keycode: 'w'
+  frequency: 1919
+  color: "#6a1b9a"
+  longRange: true
+
+- type: factionIcon
+  id: GangMember
+  isShaded: false
+  priority: 11
+  locationPreference: Left
+  showTo:
+    components:
+    - GangMember
+    - ShowAntagIcons
+  icon:
+    sprite: /Textures/Objects/Fun/spraycans.rsi
+    state: spray_colors
+
+- type: guideEntry
+  id: GangConversion
+  name: guide-entry-gang-conversion
+  text: "/ServerInfo/_ClawCommand/Guidebook/Antagonist/GangConversion.xml"

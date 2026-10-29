@@ -1,0 +1,38 @@
+# Gang Conversion items. Both reuse existing in-repo art (hypospray, spraycan) rather than new assets -
+# the gun looks like a hopped-up combat hypo, the tagger like an ordinary spray can.
+
+- type: entity
+  parent: BaseItem
+  id: GangTattooGun
+  name: tattoo gun
+  description: A modified injector that brands whoever it jabs with a gang's mark, body and mind.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/hypospray.rsi
+    state: combat_hypo
+  - type: Item
+    size: Small
+    sprite: Objects/Specific/Medical/hypospray.rsi
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Items/hypospray.ogg
+    damage:
+      types:
+        Piercing: 1
+  - type: GangConverter
+
+- type: entity
+  parent: BaseItem
+  id: GangSprayTagger
+  name: spray tagger
+  description: A spray can loaded with gang-marked paint. Tags turf for your gang, scrubbing out rival tags underneath.
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/spraycans.rsi
+    state: spray_colors
+  - type: Item
+    size: Small
+    sprite: Objects/Fun/spraycans.rsi
+  - type: GangTagger
+  - type: UseDelay
+    delay: 2

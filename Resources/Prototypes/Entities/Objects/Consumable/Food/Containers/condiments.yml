@@ -282,6 +282,18 @@
   - type: SolutionContainerVisuals
     maxFillLevels: 2
     fillBaseName: packet-solid-
+  # Claw Command - wraith, ported from Goobstation: lets a salt packet be used to draw a
+  # ward-line against the Wraith, and ghost-corporealizes a Wraith that walks over spilled salt.
+  - type: StatusEffectOnCollideGhost
+    whitelist:
+      tags:
+      - WeakToSalt
+    statusEffect: Corporeal
+    duration: 15
+  - type: SaltLinePlacer
+    saltLine: SaltLine
+  - type: ConsumeOnSaltLine
+    amount: 1
 
 - type: entity
   parent: BaseFoodCondimentPacketDrink

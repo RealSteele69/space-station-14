@@ -1,0 +1,304 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+#
+# Adaptations (see Body/Organs/slaughter_demon.yml for the full body-system writeup):
+#  - Damageable: dropped damageContainer (field doesn't exist in this fork).
+#  - Body: swapped the old slotted "prototype: SlaughterDemon" body for this fork's current
+#    Body + EntityTableContainerFill(body_organs) pattern (see Body/Animals/animal.yml upstream).
+#  - BloodCrawl is now granted directly on the mob (it used to come from the heart organ's onAdd, which
+#    this fork's OrganComponent doesn't support). Blood list: dropped AlienBlood/BlackBlood/BloodChangeling
+#    (no such reagents in this fork), added AdvXenoBlood and SulfurBlood as the closest equivalents that do
+#    exist here.
+#  - Dropped GrabIntent (no such component here; this fork has its own grab/slam tuning on
+#    PullerComponent/PullableComponent, which Puller below already opts into).
+#  - toHeal/toHealNonCrew/toHealAnythingElse: DamageSpecifier has no "groups:" shorthand in this fork
+#    (only "types:"), so each damage group is expanded to its constituent types.
+#  - Dropped "- type: Gibbable" - no such component is registered in this fork (confirmed by the YAML
+#    linter: "UnknownComponentException: Unknown name: Gibbable"). Gib-on-death still works via BodyComponent/
+#    GibbingSystem's BeingGibbedEvent (which SlaughterDemonSystem.OnGib subscribes to) regardless.
+
+- type: entity
+  parent:
+    - SimpleSpaceMobBase
+    - MobPolymorphable
+  id: BaseMobSlaughterDemon
+  name: slaughter demon
+  suffix: ""
+  description: A large, menacing creature covered in armored black scales. You should run.
+  components:
+  - type: Sprite
+    sprite: _GoobStation/SlaughterDemon/demon.rsi
+    state: daemon
+  - type: Stamina
+    baseCritThreshold: 150
+  # Fork note: NightVision was reworked upstream into a noise/overlay shader system - no more
+  # color/activateSound/deactivateSound fields. Mapped to the closest equivalent (lightingColor), always on
+  # (no Action set, so no toggle is granted - matches source's "no activate/deactivate sound" intent).
+  - type: NightVision
+    lightingColor: "#AA4A44"
+  - type: Insulated
+  - type: Damageable
+    damageModifierSet: SlaughterDemon
+  - type: StatusEffects # Overwriting basesimplemob to remove flash
+    allowed:
+    - SlowedDown
+    - Stutter
+    - Electrocution
+    - ForcedSleep
+    - TemporaryBlindness
+    - Pacified
+    - RadiationProtection
+    - Drowsiness
+    - Adrenaline
+  - type: MobMover
+  - type: InputMover
+  - type: Input
+    context: "human"
+  - type: InteractionOutline
+  - type: NoSlip
+  - type: Clickable
+  - type: Butcherable
+    butcherDelay: 15
+    spawned: [ ]
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: ghost-role-information-slaughter-demon-name
+    description: ghost-role-information-slaughter-demon-description
+    rules: ghost-role-information-slaughter-demon-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Physics
+    bodyType: KinematicController
+  - type: MobState
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: Examiner
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Effects/demon_attack1.ogg
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 25
+        Structural: 50
+  - type: SlaughterDemon # main component
+    speedModWalk: 2.5
+    speedModRun: 2.5
+    bloodCrawlSounds:
+      collection: bloodCrawl
+      params:
+        volume: 2
+  - type: BloodCrawl
+    blood:
+    - Blood
+    - AmmoniaBlood
+    - InsectBlood
+    - CopperBlood
+    - ZombieBlood
+    - SulfurBlood
+    - AdvXenoBlood
+  - type: SlaughterDevour # allows the demon to devour
+    toHeal: # Healing done when eating someone
+      types:
+        Blunt: -100
+        Slash: -100
+        Piercing: -100
+        Heat: -100
+        Shock: -100
+        Cold: -100
+        Caustic: -100
+        Asphyxiation: -100
+        Bloodloss: -100
+        Poison: -100
+        Radiation: -100
+        Cellular: -100
+        Holy: -100
+    toHealNonCrew: # Healing done when eating a robot
+      types:
+        Blunt: -50
+        Slash: -50
+        Piercing: -50
+        Heat: -50
+        Shock: -50
+        Cold: -50
+        Caustic: -50
+        Asphyxiation: -50
+        Bloodloss: -50
+        Poison: -50
+        Radiation: -50
+        Cellular: -50
+        Holy: -50
+    toHealAnythingElse:  # Healing when previous conditions weren't met
+      types:
+        Blunt: -25
+        Slash: -25
+        Piercing: -25
+        Heat: -25
+        Shock: -25
+        Cold: -25
+        Caustic: -25
+        Asphyxiation: -25
+        Bloodloss: -25
+        Poison: -25
+        Radiation: -25
+        Cellular: -25
+        Holy: -25
+    doAfterDelay: 2
+  - type: DemonicAccent # the accent
+  - type: Puller
+    needsHands: false
+  - type: Targeting
+  - type: Speech
+    speechVerb: SlaughterDemon
+    speechSounds: SlaughterDemon
+  - type: TypingIndicator
+    proto: guardian
+  - type: Crawler
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: Body
+  - type: EntityTableContainerFill
+    containers:
+      body_organs: !type:AllSelector
+        children:
+        - id: OrganAnimalLungs
+        - id: OrganSlaughterHeart
+        - id: OrganAnimalStomach
+        - id: OrganAnimalLiver
+        - id: OrganAnimalKidneys
+  - type: StandingState
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 666
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2
+  - type: NpcFactionMember
+    factions:
+    - DevilFaction
+  - type: ActionGrant
+    actions:
+      - DemonicWhisperAction
+  - type: ReplacementAccent
+    accent: slaughterDemon
+  # Fork note: dropped "- type: GrantHellRip" - no such component exists in this fork at all (confirmed via
+  # the YAML linter and a grep of the Devil port, which doesn't have an equivalent "innate claw weapon in
+  # hand" mechanic either). The demon still deals its full melee damage through the MeleeWeapon component
+  # above regardless; this only drops the cosmetic "claw" item appearing in its hand slot.
+  - type: WeakToHoly
+    alwaysTakeHoly: true
+  - type: Hands
+  # Fork note: PressureImmunity/Muted were converted to status effects upstream (see
+  # silicon_base.yml's own comment on this); granted here the same way other mobs in this fork do it
+  # (e.g. Entities/Mobs/NPCs/animals.yml) - as a permanent status effect rather than a plain component.
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectPressureImmunity
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Effects/demon_dies.ogg
+  # Fork note: Vocal.EmoteSounds is a single ProtoId<EmoteSoundsPrototype> here (no per-sex Male/Female/
+  # Unsexed dict - that concept doesn't exist on this component any more).
+  - type: Vocal
+    emoteSounds: SlaughterDemon
+  - type: ZombieImmune
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      200: 1
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Sulfur
+        Quantity: 300
+    bleedReductionAmount: 5
+  - type: Temperature
+  - type: TemperatureDamage
+    coldDamage:
+      types:
+        Cold: 0
+    heatDamage:
+      types:
+        Heat: 0
+    heatDamageThreshold: 666
+    coldDamageThreshold: 66
+  - type: LanguageKnowledge # Einstein Engines - Language
+    speaks:
+    - TauCetiBasic
+    understands:
+    - TauCetiBasic
+
+# laughter demon
+- type: entity
+  parent: BaseMobSlaughterDemon
+  id: MobLaughterDemon
+  name: laughter demon
+  description: A large, adorable creature covered in armor with pink bows.
+  components:
+  - type: Sprite
+    sprite: _GoobStation/SlaughterDemon/demon.rsi
+    state: bowmon
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      190: Dead
+  - type: SlaughterDevour
+    feastSound: /Audio/_GoobStation/Misc/scary_horn2.ogg
+  - type: SlaughterDemon
+    isLaughter: true
+  - type: Speech
+    speechVerb: Cluwne
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Items/bikehorn.ogg
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 20
+        Structural: 50
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: ghost-role-information-laughter-demon-name
+    description: ghost-role-information-laughter-demon-description
+    rules: ghost-role-information-slaughter-demon-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Effects/sadtrombone.ogg
+
+# midround roll
+- type: entity
+  parent: BaseMobSlaughterDemon
+  id: MobLesserSlaughterDemon
+  name: lesser slaughter demon
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      180: Dead

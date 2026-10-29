@@ -536,7 +536,7 @@ public sealed partial class CriticalPlayerAlertSystem
         if (!TryGetSensitiveMind(uid, component, out var mind)
             || mind.UserId is not { } target
             || target == admin.UserId
-            || _antagReveal.IsRevealed(target))
+            || _antagReveal.IsRevealed(admin, target))
         {
             return;
         }

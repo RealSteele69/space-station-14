@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+#
+# Fork note (big adaptation): Goobstation's body system has BodyPart entities with slots/connections and
+# per-organ "onAdd: [components...]" lists that grant abilities (BloodCrawl, SlaughterDevour, etc.) when an
+# organ is surgically inserted into a body - letting a human who gets this heart transplanted turn into a
+# slaughter demon. This fork's body system was rewritten upstream: there are no BodyPart entities at all any
+# more (see Resources/Prototypes/Body/Animals/animal.yml for the current pattern - a flat "body_organs"
+# container filled via EntityTableContainerFill) and OrganComponent has no onAdd/integrity fields to grant
+# components on insertion.
+#
+# Given that, this port keeps OrganSlaughterHeart as a flavor/cosmetic organ (it still shows up when the
+# demon is butchered/gibbed, same sprite, same price) but BloodCrawl and SlaughterDevour are granted
+# directly on the mob in Mobs/slaughter_demon.yml instead of via organ insertion. The OrganMagicSlaughterHeart
+# wizard variant - the "transplant this into a human to turn them into a slaughter demon" mechanic - is NOT
+# ported: reimplementing organ-insertion-grants-components from scratch was judged out of scope for this
+# port (see the port report). Body/Parts/slaughter_demon.yml and Body/slaughter_demon.yml (the old slotted
+# body prototype) are likewise not ported - there's nothing for them to attach to any more.
+
+- type: entity
+  parent: [OrganAnimalHeart, BaseMagicalContraband]
+  id: OrganSlaughterHeart
+  name: demonic heart
+  components:
+  - type: Sprite
+    sprite: _GoobStation/SlaughterDemon/heart.rsi
+    # Fork note: OrganBaseHeart's Sprite.layers (inherited via OrganAnimalHeart) hardcodes a "heart-on"
+    # state layer, which doesn't exist in our custom heart.rsi (only "demon_heart" does) - override the
+    # layer list too, not just the top-level sprite/state, or the client errors trying to render it.
+    layers:
+    - state: demon_heart
+  - type: StaticPrice
+    price: 10000

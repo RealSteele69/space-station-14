@@ -1,0 +1,57 @@
+// SPDX-FileCopyrightText: 2024 Goobstation Contributors
+// SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Ported from Goobstation for ClawCommand.
+
+using Content.Shared._GoobStation.SlaughterDemon;
+using Content.Shared._GoobStation.SlaughterDemon.Systems;
+using Content.Server.Polymorph.Components;
+using Content.Server.Polymorph.Systems;
+using Content.Shared.Polymorph;
+using Robust.Server.Audio;
+using Robust.Shared.Prototypes;
+
+namespace Content.Server._GoobStation.SlaughterDemon;
+
+public sealed partial class BloodCrawlSystem : SharedBloodCrawlSystem
+{
+    [Dependency] private PolymorphSystem _polymorph = default!;
+    [Dependency] private AudioSystem _audio = default!;
+
+    private EntityQuery<PolymorphedEntityComponent> _polymorphedQuery;
+
+    /// <inheritdoc/>
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        _polymorphedQuery = GetEntityQuery<PolymorphedEntityComponent>();
+    }
+
+    protected override bool CheckAlreadyCrawling(Entity<BloodCrawlComponent> ent)
+    {
+        base.CheckAlreadyCrawling(ent);
+
+        var component = ent.Comp;
+        var uid = ent.Owner;
+
+        if (component.IsCrawling || !_polymorphedQuery.TryComp(uid, out var polymorph))
+            return true;
+        var reverted = _polymorph.Revert(uid);
+
+        if (reverted != null)
+            _audio.PlayPvs(component.ExitJauntSound, reverted.Value);
+
+        var evExit = new BloodCrawlExitEvent();
+        RaiseLocalEvent(polymorph.Parent!.Value, ref evExit);
+
+        return false;
+    }
+
+    protected override void PolymorphDemon(EntityUid user, ProtoId<PolymorphPrototype> polymorph)
+    {
+        base.PolymorphDemon(user, polymorph);
+
+        _polymorph.PolymorphEntity(user, polymorph);
+    }
+}

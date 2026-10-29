@@ -1,0 +1,124 @@
+// SPDX-FileCopyrightText: 2024 Goobstation Contributors
+// SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Ported from Goobstation for ClawCommand.
+//
+// Fork note: dropped the "SourceEffect" field - source granted/removed this component through a
+// StatusEffectsSystem wrapper ("StatusEffectFeared") via GrantComponentsStatusEffect, which on this
+// fork is a dead data-only stub (no system reads it). SlasherFearSystem instead adds/removes this
+// component directly, so there's no wrapping status effect entity to track.
+
+using Content.Shared.Alert;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
+using Content.Shared.FixedPoint;
+using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+
+namespace Content.Shared._GoobStation.Slasher.Components;
+
+/// <summary>
+/// Applied to anyone the Slasher has frightened. Fear rises while
+/// the Slasher can see them and decays once they break line of sight.
+/// </summary>
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+public sealed partial class SlasherVictimFearBuildupComponent : Component
+{
+    [DataField, AutoNetworkedField]
+    public float Fear;
+
+    [DataField]
+    public ProtoId<AlertPrototype> Alert = "SlasherFearVictim";
+
+    [ViewVariables, AutoNetworkedField]
+    public NetEntity? Scarer;
+
+    [ViewVariables]
+    public ComponentRegistry? AppliedStyle;
+
+    /// <summary>
+    /// Fear gained per second while the Slasher has line of sight.
+    /// </summary>
+    [DataField]
+    public float GainPerSecond = 0.02f;
+
+    [DataField]
+    public float DecayPerSecond = 0.03f;
+
+    /// <summary>
+    /// How long after a Slasher last had line of sight the victim still counts as observed.
+    /// </summary>
+    [DataField]
+    public TimeSpan ObserveTimeout = TimeSpan.FromSeconds(0.6);
+
+    /// <summary>
+    /// Grace period after the Slasher loses sight before the victim's fear begins to fall.
+    /// </summary>
+    [DataField]
+    public TimeSpan FearGracePeriod = TimeSpan.FromSeconds(5);
+
+    /// <summary>
+    /// How long after the owning Slasher last had the victim in sight before a
+    /// different Slasher may claim them.
+    /// </summary>
+    [DataField]
+    public TimeSpan OwnershipTimeout = TimeSpan.FromSeconds(1);
+
+    /// <summary>
+    /// At or above this fear, the victim is slowed.
+    /// </summary>
+    [DataField]
+    public float SlowThreshold = 0.45f;
+
+    /// <summary>
+    /// Movement multiplier applied while slowed (walk and sprint).
+    /// </summary>
+    [DataField]
+    public float SlowMultiplier = 0.7f;
+
+    /// <summary>
+    /// How long the slow is refreshed for on each update the victim stays above the slow threshold.
+    /// </summary>
+    [DataField]
+    public TimeSpan SlowRefresh = TimeSpan.FromSeconds(1.5);
+
+    [DataField]
+    public EntProtoId SlowEffect = "SlasherSlowdownStatusEffect";
+
+    /// <summary>
+    /// At or above this fear, the victim takes periodic damage.
+    /// </summary>
+    [DataField]
+    public float DamageThreshold = 0.9f;
+
+    /// <summary>
+    /// Damage applied each second while over the damage threshold.
+    /// </summary>
+    [DataField]
+    public DamageSpecifier DamagePerSecond = new()
+    {
+        DamageDict = new Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2> { { "Asphyxiation", 1.5 } },
+    };
+
+    /// <summary>
+    /// Last time a Slasher had this victim in sight.
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
+    public TimeSpan LastObserved;
+
+    /// <summary>
+    /// How often this victim's fear is recalculated.
+    /// </summary>
+    [DataField]
+    public TimeSpan UpdateInterval = TimeSpan.FromSeconds(1);
+
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
+    public TimeSpan NextUpdate;
+
+    [ViewVariables]
+    public EntityUid? MusicStream;
+
+    [ViewVariables]
+    public EntityUid? MusicScarer;
+}

@@ -18,3 +18,12 @@ reagent-desc-peanutoil = An oil pressed from peanuts.
 
 reagent-name-juice-peach = peach juice
 reagent-desc-juice-peach = Sweet, fuzzy, and refreshing.
+
+reagent-name-vanilla = vanilla extract
+reagent-desc-vanilla = A fragrant, sweet extract prized by bakers.
+
+reagent-name-liquidelectricity = liquid electricity
+reagent-desc-liquidelectricity = A glowing green fluid that crackles faintly. Tastes like licking a battery, and about as good for you.
+
+reagent-name-bluespace = bluespace dust
+reagent-desc-bluespace = A fine dust of microscopic bluespace crystals, with minor space-warping properties.

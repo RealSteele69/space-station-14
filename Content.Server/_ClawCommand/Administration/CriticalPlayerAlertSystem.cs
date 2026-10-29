@@ -238,7 +238,10 @@ public sealed partial class CriticalPlayerAlertSystem : EntitySystem
 
         var record = _critical[player.UserId];
         List<string> roles;
-        if (_antagReveal.IsRevealed(player.UserId))
+        // Claw Command - this alert is one shared chat line read by every admin at once, so it can only go
+        // by whether the target is revealed to everyone (not one admin's personal reveal, which would
+        // otherwise leak into a message every other admin reads too)
+        if (_antagReveal.IsRevealedGlobally(player.UserId))
         {
             roles = new List<string>(record.Jobs);
             roles.AddRange(record.Antags);

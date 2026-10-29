@@ -1,0 +1,45 @@
+// SPDX-FileCopyrightText: 2024 Goobstation Contributors
+// SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Ported from Goobstation for ClawCommand.
+
+using Content.Shared._GoobStation.Slasher.Components;
+using Robust.Shared.Network;
+using Robust.Shared.Timing;
+
+namespace Content.Shared._GoobStation.Slasher.Systems;
+
+/// <summary>
+/// Handles the lifetime of the stagger overlay component.
+/// </summary>
+public sealed partial class SharedSlasherStaggerOverlaySystem : EntitySystem
+{
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private INetManager _net = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<SlasherStaggerOverlayComponent, ComponentStartup>(OnStartup);
+    }
+
+    private void OnStartup(Entity<SlasherStaggerOverlayComponent> ent, ref ComponentStartup args)
+    {
+        ent.Comp.EndTime = _timing.CurTime + ent.Comp.Duration;
+        Dirty(ent);
+    }
+
+    public override void Update(float frameTime)
+    {
+        if (_net.IsClient)
+            return;
+
+        var query = EntityQueryEnumerator<SlasherStaggerOverlayComponent>();
+        while (query.MoveNext(out var uid, out var overlay))
+        {
+            if (_timing.CurTime >= overlay.EndTime)
+                RemCompDeferred<SlasherStaggerOverlayComponent>(uid);
+        }
+    }
+}

@@ -1,0 +1,49 @@
+- type: entity
+  id: CigaretteSpaceTobacco
+  parent: BaseCigar
+  name: space cigarette
+  description: A roll of space tobacco. Smells faintly of ozone.
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Smokeables/Cigarettes/cigarette.rsi
+    state: unlit-icon
+    color: "#c9a0ff"
+  - type: Tag
+    tags:
+      - Cigarette
+      - Trash
+  - type: SpaceGarbage
+  - type: Clothing
+    sprite: Objects/Consumable/Smokeables/Cigarettes/cigarette.rsi
+    slots: [ mask ]
+    equippedPrefix: unlit
+  - type: Item
+    size: Tiny
+    sprite: Objects/Consumable/Smokeables/Cigarettes/cigarette.rsi
+    heldPrefix: unlit
+  - type: Construction
+    graph: smokeableCigaretteSpaceTobacco
+    node: cigarette
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nicotine
+        Quantity: 10
+      - ReagentId: SpaceDrugs
+        Quantity: 2
+
+- type: entity
+  id: CigaretteSpaceTobaccoSpent
+  parent: CigaretteSpaceTobacco
+  suffix: spent
+  components:
+  - type: Sprite
+    state: burnt-icon
+    color: "#c9a0ff"
+  - type: Smokable
+    state: Burnt
+  - type: Tag
+    tags:
+      - Cigarette
+      - Trash
+      - Burnt

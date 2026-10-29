@@ -1,0 +1,19 @@
+- type: reagent
+  id: Vanilla
+  name: reagent-name-vanilla
+  group: Foods
+  desc: reagent-desc-vanilla
+  physicalDesc: reagent-physical-desc-gloopy
+  flavor: vanilla
+  flavorMinimum: 0.05
+  color: "#F3E5AB"
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Hunger
+        conditions:
+        - !type:ReagentCondition
+          reagent: Nutriment
+          min: 0.1
+        factor: 0.1

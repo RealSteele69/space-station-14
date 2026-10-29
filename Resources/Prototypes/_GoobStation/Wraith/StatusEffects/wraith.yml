@@ -1,0 +1,52 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+# Revenant - Touch of Evil
+# Results -> Increased damage buff + Punches throw people across X amount of distance
+
+- type: entity
+  parent: MobStatusEffectBase
+  id: StatusEffectTouchOfEvil
+  name: touch of evil
+  components:
+  - type: ActiveTouchOfEvil
+
+# Skeleton Commander - Rally
+# Results -> Buffs attack damage and attack speed
+- type: entity
+  parent: MobStatusEffectBase
+  id: StatusEffectRally
+  name: rally
+  components:
+  - type: Rallied
+
+# Spiker - Shuffle
+# Results -> Makes it a small mob and removes all stuns
+- type: entity
+  parent: MobStatusEffectBase
+  id: StatusEffectShuffle
+  name: shuffle
+  components:
+  - type: SpikerShuffleEffect
+
+# Curse of Weakness slowdown effect (new-style status effect entity, ported from
+# _Goobstation/Entities/StatusEffects/movement.yml since it's only ever referenced from Wraith's curses).
+- type: entity
+  parent: StatusEffectSlowdown
+  id: CurseWeaknessSlowDownEffect
+  name: curse of enfeeblement slowdown
+  components:
+  - type: MovementModStatusEffect
+    sprintSpeedModifier: 0.5
+    walkSpeedModifier: 0.5
+
+# Wraith - Weakened Wraith
+# Results -> Removes your ability to use any actions
+- type: entity
+  parent: MobStatusEffectBase
+  id: StatusEffectWeakenedWraith
+  name: weakened
+  components:
+  - type: WraithWeakened

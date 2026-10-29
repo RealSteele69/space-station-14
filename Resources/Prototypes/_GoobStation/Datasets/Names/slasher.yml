@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+- type: localizedDataset
+  id: NamesSlasher
+  values:
+    prefix: names-slasher-dataset-
+    count: 33
+
+- type: localizedDataset
+  id: NamesSlasherTitle
+  values:
+    prefix: names-slasher-title-dataset-
+    count: 30

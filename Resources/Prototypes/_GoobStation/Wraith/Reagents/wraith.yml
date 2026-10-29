@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+#
+# Fork note: source's Formaldehyde reagent lived in a big shared medicine.yml and used
+# !type:AdjustConsciousness (a _Shitmed/pain-system effect this fork doesn't have) as part of its
+# metabolism. Added here as its own small, Wraith-only reagent file (additive, doesn't touch the
+# vanilla Reagents/*.yml files) with a plain HealthChange-on-the-living metabolism instead - its
+# only real job for Wraith is as an embalming-fluid marker AbsorbCorpseSystem checks for in a
+# corpse's bloodstream (see AbsorbCorpseComponent.Reagent) to punish absorbing an embalmed body.
+
+- type: reagent
+  id: Formaldehyde
+  name: reagent-name-formaldehyde
+  group: Medicine
+  desc: reagent-desc-formaldehyde
+  physicalDesc: reagent-physical-desc-thick
+  flavor: strange
+  color: "#FFA500"
+  worksOnTheDead: true
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.03
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:MobStateCondition
+          mobstate: Alive
+        damage:
+          types:
+            Poison: 1

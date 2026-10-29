@@ -1,0 +1,79 @@
+// SPDX-FileCopyrightText: 2024 Goobstation Contributors
+// SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Ported from Goobstation for ClawCommand.
+
+using Content.Shared._GoobStation.Wraith.Components.Mobs;
+using Content.Shared._GoobStation.Wraith.Events;
+using Content.Shared.Popups;
+using Content.Shared.StatusEffectNew;
+using Content.Shared.Weapons.Melee;
+using Content.Shared.Whitelist;
+
+namespace Content.Shared._GoobStation.Wraith.Systems.Mobs;
+
+public sealed partial class RallySystem : EntitySystem
+{
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private StatusEffectsSystem _status = default!;
+
+    private readonly HashSet<Entity<MeleeWeaponComponent>> _melee = new();
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<RallyComponent, RallyEvent>(OnRally);
+
+        SubscribeLocalEvent<RalliedComponent, StatusEffectAppliedEvent>(OnEffectApplied);
+        SubscribeLocalEvent<RalliedComponent, StatusEffectRemovedEvent>(OnEffectRemoved);
+    }
+
+    private void OnRally(Entity<RallyComponent> ent, ref RallyEvent args)
+    {
+        // Get all entities in range of the rally
+        _melee.Clear();
+        _lookup.GetEntitiesInRange(Transform(ent.Owner).Coordinates, ent.Comp.RallyRange, _melee);
+
+        foreach (var affected in _melee)
+        {
+            if (!_whitelist.IsWhitelistPass(ent.Comp.Whitelist, affected))
+                continue;
+
+            _status.TryAddStatusEffectDuration(affected, ent.Comp.StatusEffectRally, ent.Comp.Duration);
+
+            _popup.PopupClient(Loc.GetString("wraith-skeleton-rally-howl", ("user", ent.Owner)), ent.Owner, ent.Owner);
+        }
+
+        args.Handled = true;
+    }
+
+    private void OnEffectApplied(Entity<RalliedComponent> ent, ref StatusEffectAppliedEvent args)
+    {
+        if (!TryComp<MeleeWeaponComponent>(args.Target, out var melee))
+            return;
+
+        // save original damage
+        ent.Comp.OriginalDamage = melee.Damage;
+        ent.Comp.OriginalSpeed = melee.AttackRate;
+        Dirty(ent);
+
+        // apply buffs
+        melee.Damage *= ent.Comp.RalliedStrength;
+        melee.AttackRate *= ent.Comp.RalliedAttackSpeed;
+        Dirty(args.Target, melee);
+    }
+
+    private void OnEffectRemoved(Entity<RalliedComponent> ent, ref StatusEffectRemovedEvent args)
+    {
+        if (!TryComp<MeleeWeaponComponent>(args.Target, out var melee)
+            || ent.Comp.OriginalDamage == null)
+            return;
+
+        melee.Damage = ent.Comp.OriginalDamage;
+        melee.AttackRate = ent.Comp.OriginalSpeed;
+        Dirty(args.Target, melee);
+    }
+}

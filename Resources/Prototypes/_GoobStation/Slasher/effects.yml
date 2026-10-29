@@ -1,0 +1,21 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+- type: entity
+  id: SlasherRegenerateEffect
+  name: slasher regenerate effect
+  description: A dark, bloody aura surrounds the slasher as they regenerate.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.85
+  - type: Transform
+    noRot: true
+  - type: PointLight
+    color: "#8B0000"
+    radius: 5
+    energy: 10
+  - type: LightFade
+    duration: 0.7

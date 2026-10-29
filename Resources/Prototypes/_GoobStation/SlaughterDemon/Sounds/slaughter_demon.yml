@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+- type: soundCollection
+  id: bloodCrawl
+  files:
+  - /Audio/_GoobStation/Hallucinations/behind_you1.ogg
+  - /Audio/_GoobStation/Hallucinations/i_see_you1.ogg
+  - /Audio/_GoobStation/Hallucinations/im_here1.ogg
+  - /Audio/_GoobStation/Hallucinations/turn_around1.ogg
+
+- type: soundCollection
+  id: demonLaugh
+  files:
+  - /Audio/_GoobStation/SlaughterDemon/demon_laugh.ogg
+  - /Audio/_GoobStation/SlaughterDemon/demon_laugh2.ogg
+
+- type: speechSounds
+  id: SlaughterDemon
+  saySound:
+    path: /Audio/_GoobStation/SlaughterDemon/demon_speech.ogg
+  askSound:
+    path: /Audio/_GoobStation/SlaughterDemon/demon_speech2.ogg
+  exclaimSound:
+    path: /Audio/_GoobStation/SlaughterDemon/demon_speech.ogg

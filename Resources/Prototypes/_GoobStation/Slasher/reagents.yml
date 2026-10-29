@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+- type: reagent
+  id: Slasherium
+  name: reagent-name-slasherium
+  desc: reagent-desc-slasherium
+  physicalDesc: reagent-physical-desc-odorless
+  flavor: bitter
+  color: "#8B0000"
+  metabolisms:
+    Bloodstream:
+      effects:
+      - !type:EvenHealthChange
+        damage:
+          Brute: -3
+          Burn: -3

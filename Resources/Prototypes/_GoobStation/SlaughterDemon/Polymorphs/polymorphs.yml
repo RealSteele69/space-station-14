@@ -1,0 +1,15 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+# Fork note: this fork's PolymorphConfiguration has no componentsToTransfer/attachToGridOrMap/showPopup
+# fields (only entity/forced plus the usual Transfer*/RevertOn* flags, which default sensibly here -
+# TransferDamage/RevertOnCrit/RevertOnDeath already default to true). Source used componentsToTransfer to
+# carry LanguageKnowledge/LanguageSpeaker/Grammar/SlaughterDevour onto the jaunt form; those are instead
+# baked directly onto PolymorphBloodCrawlJaunt itself (see Mobs/NPC/polymorph.yml).
+
+- type: polymorph
+  id: BloodCrawlJaunt
+  configuration:
+    entity: PolymorphBloodCrawlJaunt
+    forced: true

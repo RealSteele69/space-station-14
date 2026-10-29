@@ -20,7 +20,7 @@
   time: 15
   group: Pie
   reagents:
-    Oil: 5
+    OilOlive: 5
   solids:
     FoodDoughPie: 1
     FoodMeat: 3

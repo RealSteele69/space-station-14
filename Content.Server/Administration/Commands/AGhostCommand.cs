@@ -5,7 +5,6 @@ using Content.Server.Ghost;
 using Content.Server.Mind;
 using Content.Shared.Administration;
 using Content.Shared.Ghost.Components;
-using Content.Shared.Ghost.Systems;
 using Content.Shared.Mind;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
@@ -74,7 +73,7 @@ public sealed partial class AGhostCommand : LocalizedCommands
 
         var mindSystem = _entities.System<SharedMindSystem>();
         var metaDataSystem = _entities.System<MetaDataSystem>();
-        var ghostSystem = _entities.System<SharedGhostSystem>();
+        var ghostSystem = _entities.System<GhostSystem>();
         var transformSystem = _entities.System<TransformSystem>();
         var gameTicker = _entities.System<GameTicker>();
 
@@ -96,6 +95,9 @@ public sealed partial class AGhostCommand : LocalizedCommands
 
         var canReturn = mind.CurrentEntity != null
                         && !_entities.HasComponent<GhostComponent>(mind.CurrentEntity);
+
+        // Claw Command - check VIP status before the body is replaced by the admin ghost below.
+        var isVip = ghostSystem.IsVip(mind.CurrentEntity, player);
 
         // ClawCommand: tell admins when someone who was a critical player this round goes into aghost.
         _entities.System<CriticalPlayerAlertSystem>().AlertAGhost(player!, shell.Player);
@@ -126,5 +128,9 @@ public sealed partial class AGhostCommand : LocalizedCommands
 
         var comp = _entities.GetComponent<GhostComponent>(ghost);
         ghostSystem.SetCanReturnToBody((ghost, comp), canReturn);
+
+        // Claw Command - keep VIP ghosts purple when they switch to an admin ghost.
+        if (isVip)
+            ghostSystem.SetColor((ghost, comp), GhostSystem.VipGhostColor);
     }
 }

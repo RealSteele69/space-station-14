@@ -1,0 +1,49 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+#
+# Fork note (big adaptation): upstream replaced the old AntagSelectionComponent.Definitions: List<...>
+# shape with Antags: AntagCountSelector[] + a separate "antagSpecifier" prototype - see
+# Resources/Prototypes/_GoobStation/SlaughterDemon/GameRules/slaughter_demon.yml for the established
+# pattern this mirrors. Also dropped GameRuleComponent.chaosScore and StationEventComponent.eventType/chaos
+# (don't exist on this fork), and the "MidroundAntag" Tag (not defined anywhere on this fork).
+
+- type: antagSpecifier
+  id: WraithSpecifier
+  spawnerPrototype: SpawnPointGhostWraith
+  pickPlayer: false
+  mindRoles:
+  - MindRoleGhostRoleSoloAntagonist
+  briefing:
+    text: wraith-role-greeting
+    color: MediumPurple
+    sound: /Audio/_GoobStation/Wraith/Ambience/Void_Calls.ogg
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesWraith
+    - NamesWraithTitle
+    nameFormat: name-format-wraith
+  - type: Banishment # revive once on death, resets wraith points
+    lives: 1
+    popup: wraith-banishment
+
+- type: entity
+  parent: BaseAntagGhostRoleRule
+  id: WraithMidround
+  components:
+  - type: AntagSpawner
+    prototype: MobWraith
+  - type: AntagSelection
+    agentName: wraith-round-end-agent-name
+    antags:
+    - !type:FixedAntagCount
+      proto: WraithSpecifier
+  - type: AntagRandomSpawn
+  - type: StationEvent
+    weight: 4
+    earliestStart: 40
+    minimumPlayers: 30
+    duration: null
+    maxOccurrences: 1

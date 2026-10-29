@@ -21,6 +21,7 @@ using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Roles;
 using Robust.Server.Containers;
 using Robust.Server.Player;
 using Robust.Shared.Audio.Systems;
@@ -54,6 +55,7 @@ public sealed partial class CloningPodSystem : EntitySystem
     [Dependency] private MaterialStorageSystem _material = default!;
     [Dependency] private PopupSystem _popupSystem = default!;
     [Dependency] private SharedMindSystem _mindSystem = default!;
+    [Dependency] private SharedRoleSystem _roleSystem = default!;
     [Dependency] private CloningSystem _cloning = default!;
     [Dependency] private EmagSystem _emag = default!;
     [Dependency] private DamageableSystem _damageable = default!;
@@ -93,6 +95,10 @@ public sealed partial class CloningPodSystem : EntitySystem
         _mindSystem.TransferTo(mindId, entity, ghostCheckOverride: true, mind: mind);
         _mindSystem.UnVisit(mindId, mind);
         ClonesWaitingForMind.Remove(mind);
+
+        // Claw Command - clones are a fresh start: strip any antag status and objectives from the old body.
+        _roleSystem.MindRemoveAllAntagRoles((mindId, mind));
+        _mindSystem.ClearObjectives(mindId, mind);
     }
 
     private void HandleMindAdded(EntityUid uid, BeingClonedComponent clonedComponent, MindAddedMessage message)

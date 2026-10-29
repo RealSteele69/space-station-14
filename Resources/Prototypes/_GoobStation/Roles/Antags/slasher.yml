@@ -1,0 +1,132 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+#
+# Fork note: source's ghost-role spawner used mindRoles: [ MindRoleGhostRoleSoloAntagonistGoob ],
+# a Goobstation-specific mind role variant that doesn't exist here. Uses the plain
+# MindRoleGhostRoleSoloAntagonist (already used by this fork's other ghost-role antags, e.g.
+# Dragon). Also dropped the "SpawnPointGhostSlasherToken" secondary/relic-token spawner variant -
+# it isn't referenced by the actual GameRule and is a minor convenience spawner, not core to the
+# feature.
+
+- type: antag
+  id: Slasher
+  name: roles-antag-slasher-name
+  antagonist: true
+  setPreference: false
+  objective: roles-antag-slasher-objectives
+  guides: [ Slasher ]
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostSlasher
+  components:
+  - type: GhostRole
+    name: ghost-role-information-slasher-name
+    description: ghost-role-information-slasher-description
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: _GoobStation/Objects/Specific/Slasher/machete.rsi
+      state: icon
+
+- type: startingGear
+  id: SlasherGear
+  equipment:
+    jumpsuit: ClothingUniformSlasher
+    back: ClothingBackpackSatchel
+    head: ClothingHeadHatSlasherMask
+    gloves: ClothingHandsSlasherGloves
+    outerClothing: ClothingOuterSlasherApron
+    shoes: ClothingShoesSlasher
+    id: AgentIDCard
+
+- type: startingGear
+  id: SlasherGearSpring
+  parent: SlasherGear
+  equipment:
+    head: ClothingHeadHatSlasherMaskSpring
+    outerClothing: ClothingOuterSlasherApronSpring
+
+- type: startingGear
+  id: SlasherGearBilly
+  parent: SlasherGear
+  equipment:
+    jumpsuit: ClothingUniformSlasherBilly
+    head: ClothingMaskSlasherBilly
+    gloves: ClothingHandsSlasherBilly
+    outerClothing: ClothingOuterSlasherBilly
+
+- type: startingGear
+  id: SlasherGearCult
+  parent: SlasherGear
+  equipment:
+    head: ClothingHeadSlasherCult
+    mask: ClothingMaskSlasherCult
+    outerClothing: ClothingOuterSlasherCult
+
+- type: startingGear
+  id: SlasherGearMaintenance
+  parent: SlasherGear
+  equipment:
+    jumpsuit: ClothingUniformSlasherMaintenance
+    head: ClothingHeadSlasherMaintenance
+    outerClothing: ClothingOuterSlasherMaintenance
+    neck: HarmonicaInstrument
+
+- type: startingGear
+  id: SlasherGearCannibal
+  parent: SlasherGear
+  equipment:
+    jumpsuit: ClothingUniformSlasherCannibal
+    head: ClothingHeadSlasherCannibal
+    mask: ClothingMaskSlasherCannibal
+    outerClothing: ClothingOuterSlasherCannibal
+
+- type: startingGear
+  id: SlasherGearGlutton
+  parent: SlasherGear
+  equipment:
+    head: ClothingHeadSlasherGlutton
+    outerClothing: ClothingOuterSlasherGlutton
+
+- type: startingGear
+  id: SlasherGearClown
+  parent: SlasherGear
+  equipment:
+    jumpsuit: ClothingUniformSlasherClown
+    head: ClothingMaskSlasherClown
+    outerClothing: ClothingOuterSlasherClown
+    shoes: ClothingShoesSlasherClown
+
+- type: startingGear
+  id: SlasherGearClownAscended
+  equipment:
+    jumpsuit: ClothingUniformSlasherClownAscended
+    head: ClothingMaskSlasherClownAscended
+    shoes: ClothingShoesSlasherClownAscended
+
+- type: startingGear
+  id: SlasherGearHockey
+  parent: SlasherGear
+  equipment:
+    jumpsuit: ClothingUniformSlasherHockey
+    head: ClothingMaskSlasherHockey
+    outerClothing: ClothingOuterSlasherHockey
+
+- type: startingGear
+  id: SlasherGearBoogeyman
+  equipment:
+    jumpsuit: ClothingUniformSlasherBoogeyman
+    head: ClothingHeadHatSlasherMaskBoogeyman
+    back: ClothingBackpackSatchel
+    shoes: ClothingShoesSlasher
+    id: AgentIDCard

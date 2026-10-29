@@ -1,0 +1,279 @@
+// SPDX-FileCopyrightText: 2024 Goobstation Contributors
+// SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Ported from Goobstation for ClawCommand.
+//
+// Fork note: renamed HumanoidAppearanceComponent -> HumanoidProfileComponent (fork-wide rename), and
+// BatterySystem.ChangeCharge -> SharedBatterySystem.ChangeCharge (lives in Content.Shared on this fork).
+// HauntPDAComponent/HaunPDAs are dropped - source itself never implemented them (marked "Part 2 TODO"
+// with no system ever subscribing to it), so there was nothing functional to port.
+
+using System.Linq;
+using Content.Server.Actions;
+using Content.Server.Atmos.EntitySystems;
+using Content.Server.Doors.Systems;
+using Content.Server.Fluids.EntitySystems;
+using Content.Server.Ghost;
+using Content.Server.Light.EntitySystems;
+using Content.Server.Popups;
+using Content.Server.Power.Components;
+using Content.Server.Storage.EntitySystems;
+using Content.Shared._GoobStation.Wraith.Components;
+using Content.Shared._GoobStation.Wraith.Events;
+using Content.Shared._GoobStation.Wraith.Spook;
+using Content.Shared._GoobStation.Wraith.WraithPoints;
+using Content.Shared.Actions.Components;
+using Content.Shared.Atmos.Components;
+using Content.Shared.Doors.Components;
+using Content.Shared.Humanoid;
+using Content.Shared.Light.Components;
+using Content.Shared.Popups;
+using Content.Shared.Power.EntitySystems;
+using Content.Shared.Storage.Components;
+using Robust.Server.GameObjects;
+using Robust.Shared.Map;
+using Robust.Shared.Random;
+using Robust.Shared.Timing;
+
+namespace Content.Server._GoobStation.Wraith;
+
+public sealed partial class SpookActionSystem : EntitySystem
+{
+    [Dependency] private IGameTiming _timing = default!;
+
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private PoweredLightSystem _poweredLight = default!;
+    [Dependency] private FlammableSystem _flammableSystem = default!;
+    [Dependency] private DoorSystem _door = default!;
+    [Dependency] private EntityStorageSystem _entityStorage = default!;
+    [Dependency] private SmokeSystem _smoke = default!;
+    [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private SharedBatterySystem _battery = default!;
+    [Dependency] private ActionsSystem _actions = default!;
+    [Dependency] private PopupSystem _popup = default!;
+
+    private EntityQuery<PoweredLightComponent> _poweredLightQuery;
+    private EntityQuery<DoorComponent> _doorQuery;
+    private EntityQuery<EntityStorageComponent> _entityStorageQuery;
+    private EntityQuery<ApcComponent> _apcQuery;
+    private EntityQuery<ActionComponent> _actionQuery;
+    private EntityQuery<FlammableComponent> _flammable;
+    private EntityQuery<HumanoidProfileComponent> _humanoidProfileQuery;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        _poweredLightQuery = GetEntityQuery<PoweredLightComponent>();
+        _doorQuery = GetEntityQuery<DoorComponent>();
+        _entityStorageQuery = GetEntityQuery<EntityStorageComponent>();
+        _apcQuery = GetEntityQuery<ApcComponent>();
+        _actionQuery = GetEntityQuery<ActionComponent>();
+        _flammable = GetEntityQuery<FlammableComponent>();
+        _humanoidProfileQuery = GetEntityQuery<HumanoidProfileComponent>();
+
+        SubscribeLocalEvent<SpookMarkComponent, SpookEvent>(OnSpookEvent);
+
+        SubscribeLocalEvent<FlipLightsComponent, FlipLightsEvent>(OnFlipLights);
+        SubscribeLocalEvent<BurnLightsComponent, BurnLightsEvent>(OnBurnLights);
+        SubscribeLocalEvent<OpenDoorsSpookComponent, OpenDoorsSpookEvent>(OnOpenDoors);
+        SubscribeLocalEvent<CreateSpookSmokeComponent, CreateSmokeSpookEvent>(OnCreateSmoke);
+        SubscribeLocalEvent<CreateEctoplasmComponent, CreateEctoplasmEvent>(OnCreateEctoplasm);
+        SubscribeLocalEvent<SapAPCComponent, SapApcEvent>(OnSapAPC);
+        SubscribeLocalEvent<RandomSpookComponent, RandomSpookEvent>(OnRandomSpook);
+    }
+
+    private void OnSpookEvent(Entity<SpookMarkComponent> ent, ref SpookEvent args)
+    {
+        if (ent.Comp.SpookEntity is { } spook)
+            QueueDel(spook);
+
+        var spookEnt = SpawnAtPosition(ent.Comp.Spook, args.Target);
+        ent.Comp.SpookEntity = spookEnt;
+        _popup.PopupEntity(Loc.GetString("spook-on-create"), ent.Owner, PopupType.Medium);
+
+        args.Handled = true;
+    }
+
+    private void OnFlipLights(Entity<FlipLightsComponent> ent, ref FlipLightsEvent args)
+    {
+        // taken from ghost boo system
+
+        if (args.Handled)
+            return;
+
+        var entities = _lookup.GetEntitiesInRange(args.Performer, ent.Comp.FlipLightRadius).ToList();
+        _random.Shuffle(entities);
+
+        var booCounter = 0;
+        foreach (var entity in entities)
+        {
+            var ev = new GhostBooEvent();
+            RaiseLocalEvent(entity, ref ev);
+
+            if (ev.Handled)
+                booCounter++;
+
+            if (booCounter >= ent.Comp.FlipLightMaxTargets)
+                break;
+        }
+
+        _popup.PopupEntity(Loc.GetString("spook-flip-lights"), ent.Owner, PopupType.Medium);
+        args.Handled = true;
+    }
+
+    private void OnBurnLights(Entity<BurnLightsComponent> ent, ref BurnLightsEvent args)
+    {
+        var entities = _lookup.GetEntitiesInRange(args.Performer, ent.Comp.SearchRadius).ToList();
+        _random.Shuffle(entities);
+
+        var lightBrokenCounter = 0;
+        foreach (var entity in entities)
+        {
+            if (lightBrokenCounter > ent.Comp.MaxBurnLights)
+                break;
+
+            if (!_poweredLightQuery.TryComp(entity, out var poweredLight))
+                continue;
+
+            _poweredLight.TryDestroyBulb(entity, poweredLight);
+
+            var bulbLookup = _lookup.GetEntitiesInRange(entity, ent.Comp.Range);
+            foreach (var target in bulbLookup)
+            {
+                if (!_flammable.TryGetComponent(target, out var fl) || _humanoidProfileQuery.HasComp(target))
+                    continue;
+
+                fl.FireStacks += ent.Comp.FireStack.Next(_random);
+                _flammableSystem.Ignite(target, entity, fl);
+            }
+
+            lightBrokenCounter++;
+        }
+
+        _popup.PopupEntity(Loc.GetString("spook-burn-lights"), ent.Owner, PopupType.Medium);
+        args.Handled = true;
+    }
+
+    private void OnOpenDoors(Entity<OpenDoorsSpookComponent> ent, ref OpenDoorsSpookEvent args)
+    {
+        var entities = _lookup.GetEntitiesInRange(ent.Owner, ent.Comp.SearchRadius).ToList();
+        _random.Shuffle(entities);
+
+        var openedCounter = 0;
+        foreach (var entity in entities)
+        {
+            if (openedCounter > ent.Comp.MaxContainer)
+                break;
+
+            if (_entityStorageQuery.HasComp(entity))
+            {
+                _entityStorage.OpenStorage(entity);
+                openedCounter++;
+                continue;
+            }
+
+            if (_doorQuery.HasComp(entity))
+            {
+                _door.TryOpen(entity);
+                openedCounter++;
+            }
+        }
+
+        args.Handled = true;
+    }
+
+    private void OnCreateSmoke(Entity<CreateSpookSmokeComponent> ent, ref CreateSmokeSpookEvent args)
+    {
+        var grid = _transform.GetGrid(ent.Owner);
+        var center = Transform(ent.Owner).Coordinates;
+        var map = _transform.GetMap(ent.Owner);
+
+        if (map == null || grid == null)
+            return;
+
+        for (var i = 0; i < ent.Comp.SmokeAmount; i++)
+        {
+            var offsetX = _random.Next(-ent.Comp.SearchRange, ent.Comp.SearchRange + 1);
+            var offsetY = _random.Next(-ent.Comp.SearchRange, ent.Comp.SearchRange + 1);
+
+            var targetCoords = new EntityCoordinates(grid.Value, center.X + offsetX, center.Y + offsetY);
+
+            var smokeEnt = SpawnAtPosition(ent.Comp.SmokeProto, targetCoords);
+            _smoke.StartSmoke(smokeEnt, ent.Comp.SmokeSolution, ent.Comp.Duration, ent.Comp.SpreadAmount);
+        }
+
+        _popup.PopupEntity(Loc.GetString("spook-create-smoke"), ent.Owner, PopupType.Medium);
+        args.Handled = true;
+    }
+
+    private void OnCreateEctoplasm(Entity<CreateEctoplasmComponent> ent, ref CreateEctoplasmEvent args)
+    {
+        var grid = _transform.GetGrid(ent.Owner);
+        var center = Transform(ent.Owner).Coordinates;
+        var map = _transform.GetMap(ent.Owner);
+
+        if (map == null || grid == null)
+            return;
+
+        var amount = _random.Next(ent.Comp.AmountMinMax.X, ent.Comp.AmountMinMax.Y + 1);
+        for (var i = 0; i < amount; i++)
+        {
+            var offsetX = _random.Next(-ent.Comp.SearchRange, ent.Comp.SearchRange + 1);
+            var offsetY = _random.Next(-ent.Comp.SearchRange, ent.Comp.SearchRange + 1);
+
+            var targetCoords = new EntityCoordinates(grid.Value, center.X + offsetX, center.Y + offsetY);
+
+            SpawnAtPosition(ent.Comp.EctoplasmProto, targetCoords);
+        }
+
+        _popup.PopupEntity(Loc.GetString("spook-create-ectoplasm"), ent.Owner, PopupType.Medium);
+        args.Handled = true;
+    }
+
+    private void OnSapAPC(Entity<SapAPCComponent> ent, ref SapApcEvent args)
+    {
+        var chargeToRemove = ent.Comp.ChargeToRemove;
+
+        if (TryComp<PassiveWraithPointsComponent>(ent.Owner, out var passiveWraithPoints))
+            chargeToRemove *= (float)passiveWraithPoints.WpGeneration;
+
+        var lookup = _lookup.GetEntitiesInRange(ent.Owner, ent.Comp.SearchRange).ToList();
+        _random.Shuffle(lookup);
+
+        foreach (var entity in lookup)
+        {
+            if (!_apcQuery.HasComp(entity))
+                continue;
+
+            _battery.ChangeCharge(entity, -chargeToRemove);
+            _popup.PopupEntity(Loc.GetString("spook-apc-sap"), entity, PopupType.MediumCaution);
+            break;
+        }
+        args.Handled = true;
+    }
+
+    private void OnRandomSpook(Entity<RandomSpookComponent> ent, ref RandomSpookEvent args)
+    {
+        var actions = _actions.GetActions(ent.Owner).ToList();
+        _random.Shuffle(actions);
+
+        foreach (var action in actions)
+        {
+            if (!_actionQuery.TryComp(action, out var actionComp)
+                || action == args.Action // skip itself
+                || _actions.IsCooldownActive(actionComp, _timing.CurTime))
+            {
+                _popup.PopupEntity(Loc.GetString("spook-on-cooldown"), ent.Owner);
+                continue;
+            }
+
+            _actions.PerformAction(args.Performer, action);
+            _actions.StartUseDelay(action.Owner);
+            break;
+        }
+
+        args.Handled = true;
+    }
+}

@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostSlaughterDemon
+  components:
+  - type: GhostRole
+    name: ghost-role-information-slaughter-demon-name
+    description: ghost-role-information-slaughter-demon-description
+    rules: ghost-role-information-slaughter-demon-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default
+  - type: Sprite
+    sprite: _GoobStation/SlaughterDemon/demon.rsi
+    state: daemon
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: SpawnPointGhostSlaughterDemon
+  id: SpawnPointGhostLaughterDemon
+  components:
+  - type: GhostRole
+    name: ghost-role-information-laughter-demon-name
+    description: ghost-role-information-laughter-demon-description
+    rules: ghost-role-information-slaughter-demon-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default

@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+- type: shader
+  id: WraithAura
+  kind: source
+  path: "/Textures/_GoobStation/Wraith/Shaders/aura.swsl"
+  params:
+    mango: 0.5
+    distortion: 0.05

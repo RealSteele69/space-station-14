@@ -1,0 +1,19 @@
+# LiquidElectricity - dangerous to eat for anyone who isn't built to run on it,
+# which nothing in this fork currently is. Plain hazardous reagent, no species synergy.
+- type: reagent
+  id: LiquidElectricity
+  name: reagent-name-liquidelectricity
+  group: Toxins
+  desc: reagent-desc-liquidelectricity
+  physicalDesc: reagent-physical-desc-electric
+  flavor: voltage
+  color: "#97ee63"
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.5
+      effects:
+      - !type:HealthChange
+        probability: 0.25
+        damage:
+          types:
+            Shock: 12

@@ -1,0 +1,106 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+# This is the only true revenant
+# 1. 9. 8. 4.
+
+- type: entity
+  id: ActionRevenantPush
+  name: Push
+  description: Pushes a target object or mob away from the revenant.
+  components:
+  - type: ActionWraithPoints
+    wpConsume: 50
+  - type: Sprite
+    sprite: _GoobStation/Wraith/actions.rsi
+    state: push
+  - type: Action
+    useDelay: 30
+    itemIconStyle: BigAction
+  - type: TargetAction
+    range: 2
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:RevenantPushEvent
+
+- type: entity
+  id: ActionMassCommand
+  name: Mass Command
+  description: Launch an assortment of nearby objects at a target location.
+  components:
+  - type: ActionWraithPoints
+    wpConsume: 300
+  - type: Sprite
+    sprite: _GoobStation/Wraith/actions.rsi
+    state: mass_comm
+  - type: Action
+    useDelay: 30
+    itemIconStyle: BigAction
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    blacklist:
+      components:
+        - BibleUser
+    canTargetSelf: false
+    event: !type:WraithCommandEvent
+
+- type: entity
+  id: ActionShockwave
+  name: Shockwave
+  description: Emit a shockwave, breaking nearby lights and walls, and stunning nearby humans for a short time.
+  components:
+  - type: ActionWraithPoints
+    wpConsume: 750
+  - type: Sprite
+    sprite: _GoobStation/Wraith/actions.rsi
+    state: shockwave
+  - type: Action
+    useDelay: 30
+  - type: InstantAction
+    event: !type:RevenantShockwaveEvent
+
+- type: entity
+  id: ActionTouchOfEvil
+  name: Touch of Evil
+  description: Empower your hand-to-hand attacks for a short time, causing additional damage and knockdown.
+  components:
+  - type: ActionWraithPoints
+    wpConsume: 1000
+  - type: Sprite
+    sprite: _GoobStation/Wraith/actions.rsi
+    state: evil_touch
+  - type: Action
+    sound: !type:SoundPathSpecifier
+      path: /Audio/_GoobStation/Wraith/revtouch.ogg
+    useDelay: 30
+  - type: InstantAction
+    event: !type:TouchOfEvilEvent
+
+- type: entity
+  id: ActionCrush
+  name: Crush
+  description: Channel your telekinetic abilities at a human target, causing damage as long as you stand still. Casting any other spell will interrupt this!
+  components:
+  - type: ActionWraithPoints
+    wpConsume: 2500
+  - type: Sprite
+    sprite: _GoobStation/Wraith/actions.rsi
+    state: crush
+  - type: Action
+    useDelay: 60
+    itemIconStyle: BigAction
+  - type: TargetAction
+    range: 15
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:RevenantCrushEvent
+    whitelist:
+      components:
+        - Body
+    blacklist:
+      components:
+        - BibleUser
+

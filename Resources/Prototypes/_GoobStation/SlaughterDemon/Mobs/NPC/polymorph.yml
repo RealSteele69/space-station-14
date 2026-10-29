@@ -1,0 +1,57 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+# Fork note: dropped "- type: Muted" (this fork replaced that persistent component with a status-effect-
+# based MutedStatusEffectComponent applied at runtime, not something settable as a plain startup component
+# in a prototype - minor flavor-only difference, the jaunt form isn't expected to need to talk anyway).
+# Added LanguageKnowledge directly here (see Polymorphs/polymorphs.yml note) since this fork's Polymorph
+# system has no componentsToTransfer to carry it over from the original form. SlaughterDevour itself isn't
+# needed on the jaunt form - the devour attempt is checked and resolved on the pre-jaunt entity before the
+# polymorph happens (see SlaughterDevourSystem.TryDevour), and the jaunt form can't pull/drag anyone anyway.
+
+- type: entity
+  id: PolymorphBloodCrawlJaunt
+  name: Unknown
+  description: You can't figure out what that is.
+  parent: [ Incorporeal, BaseMob ]
+  components:
+  - type: Sprite
+    sprite: Structures/Specific/Anomalies/Cores/flesh_core.rsi
+    state: core
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 12
+    baseWalkSpeed: 8
+  - type: Input
+    context: "ghost"
+  - type: NoSlip
+  - type: BloodCrawl
+    isCrawling: true
+    blood:
+    - Blood
+    - AmmoniaBlood
+    - InsectBlood
+    - CopperBlood
+    - ZombieBlood
+    - SulfurBlood
+    - AdvXenoBlood
+  - type: Visibility
+    layer: 2 # Ghost visflag
+  - type: Spectral
+  - type: Eye
+    drawFov: false
+    visMask:
+    - Normal
+    - Ghost
+  - type: MindContainer
+  - type: MindExaminable
+  - type: ActionGrant
+    actions:
+    - DemonicWhisperAction
+  # Fork note: IsDeadICComponent has no fields in this fork (plain marker) - dropped "dead: false".
+  - type: IsDeadIC
+  - type: LanguageKnowledge
+    speaks:
+    - TauCetiBasic
+    understands:
+    - TauCetiBasic

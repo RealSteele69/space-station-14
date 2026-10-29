@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+- type: soundCollection
+  id: SlasherBreathing
+  files:
+  - /Audio/_GoobStation/Effects/Slasher/SlasherBreathe1.ogg
+  - /Audio/_GoobStation/Effects/Slasher/SlasherBreathe2.ogg
+  - /Audio/_GoobStation/Effects/Slasher/SlasherBreathe3.ogg
+  - /Audio/_GoobStation/Effects/Slasher/SlasherBreathe4.ogg
+  - /Audio/_GoobStation/Effects/Slasher/SlasherBreathe5.ogg

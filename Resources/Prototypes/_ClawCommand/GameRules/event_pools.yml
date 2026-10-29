@@ -241,6 +241,9 @@
     - id: WizardSpawn
     - id: ZombieOutbreak
     - id: BlobSpawn # Claw Command - blob (20+ players, once a round)
+    - id: SlaughterDemonMidround # Claw Command - slaughter demon, ported from Goobstation (50+ players, once a round)
+    - id: SlasherSpawn # Claw Command - slasher, ported from Goobstation (30+ players)
+    - id: WraithMidround # Claw Command - wraith, ported from Goobstation (30+ players, once a round)
 
 # ---------------------------------------------------------------------------
 # Extended Irregular pools

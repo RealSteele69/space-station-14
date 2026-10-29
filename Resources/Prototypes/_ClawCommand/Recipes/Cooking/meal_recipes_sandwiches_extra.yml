@@ -73,5 +73,13 @@
   result: FoodMealNotASandwich
   time: 5
   group: Other
+  # Needs a distinct ingredient signature from RecipeMealTwoBread below (both were
+  # just "FoodBreadPlainSlice: 2" with no reagents). RecipeManager sorts recipes by
+  # descending IngredientCount() and picks the first match, so two recipes tied on
+  # the exact same ingredients are ambiguous - whichever sorts first silently
+  # shadows the other, which can then never be cooked. The "Nothing" reagent nudges
+  # this one to a higher ingredient count so it's checked first when present.
+  reagents:
+    Nothing: 1
   solids:
     FoodBreadPlainSlice: 2

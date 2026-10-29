@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+#
+# Fork note: Objective.Issuer is a ProtoId<ObjectiveIssuerPrototype>, not a raw loc string - added
+# an "objectiveIssuer" prototype below (same pattern as the other already-ported antags, e.g.
+# Resources/Prototypes/_ClawCommand/Devil/antag.yml).
+
+- type: objectiveIssuer
+  id: Slasher
+  name: objective-issuer-slasher
+
+- type: entity
+  id: SlasherAbsorbSoulsObjective
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Objective
+    difficulty: 2
+    issuer: Slasher
+    icon:
+      sprite: _GoobStation/Actions/slashericons.rsi
+      state: SoulSteal
+  - type: NumberObjective
+    min: 15
+    max: 15
+    title: slasher-objective-absorb-souls-title
+    description: slasher-objective-absorb-souls-desc
+  - type: SlasherAbsorbSoulsCondition
+
+- type: entity
+  id: SlasherSurviveObjective
+  categories: [ HideSpawnMenu ]
+  name: Survive until the end
+  description: While death may be a foreign concept to you, getting banished is not.
+  components:
+  - type: Objective
+    difficulty: 1
+    issuer: Slasher
+    icon:
+      sprite: _GoobStation/Actions/slashericons.rsi
+      state: SoulSteal
+  - type: SurviveCondition

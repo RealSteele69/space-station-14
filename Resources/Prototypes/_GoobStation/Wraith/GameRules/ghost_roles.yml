@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+#
+# Fork note: mirrors the established SlaughterDemon/Slasher port pattern for this cosmetic ghost-role-list
+# spawner entity (see Resources/Prototypes/_GoobStation/SlaughterDemon/Spawners/ghost_roles.yml). The
+# actual Wraith mob is spawned by AntagSpawner on the game rule itself (GameRules/wraith.yml); this entity
+# only supplies the ghost-role browser's name/description/icon.
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostWraith
+  components:
+  - type: GhostRole
+    name: ghost-role-information-wraith-name
+    description: ghost-role-information-wraith-description
+    rules: ghost-role-information-wraith-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default
+  - type: Sprite
+    sprite: _GoobStation/Wraith/wraith.rsi
+    state: icon

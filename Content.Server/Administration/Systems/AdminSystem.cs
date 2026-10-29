@@ -109,12 +109,7 @@ public sealed partial class AdminSystem : EntitySystem
             _playerList[id] = GetPlayerInfo(playerData, session);
         }
 
-        var updateEv = new FullPlayerListEvent() { PlayersInfo = _playerList.Values.ToList() };
-
-        foreach (var admin in _adminManager.ActiveAdmins)
-        {
-            RaiseNetworkEvent(updateEv, admin.Channel);
-        }
+        BroadcastFullPlayerList(); // Claw Command - mask per admin's own reveals
     }
 
     private void OnPlayerRenamed(Entity<ActorComponent> ent, ref EntityRenamedEvent args)
@@ -126,16 +121,36 @@ public sealed partial class AdminSystem : EntitySystem
     {
         _playerList[player.UserId] = GetPlayerInfo(player.Data, player);
 
-        var playerInfoChangedEvent = new PlayerInfoChangedEvent
-        {
-            PlayerInfo = _playerList[player.UserId]
-        };
+        BroadcastPlayerInfo(player.UserId); // Claw Command - mask per admin's own reveals
+    }
 
+    // Claw Command start - antag reveal gate: each admin only sees antag status for players they've
+    // personally revealed (or that were revealed globally), so the cached PlayerInfo carries the true
+    // data and gets masked separately for each admin it's sent to.
+    private List<PlayerInfo> MaskedPlayerList(NetUserId admin)
+    {
+        return _playerList.Values.Select(info => _antagReveal.Mask(info, admin)).ToList();
+    }
+
+    private void BroadcastFullPlayerList()
+    {
         foreach (var admin in _adminManager.ActiveAdmins)
         {
-            RaiseNetworkEvent(playerInfoChangedEvent, admin.Channel);
+            var ev = new FullPlayerListEvent { PlayersInfo = MaskedPlayerList(admin.UserId) };
+            RaiseNetworkEvent(ev, admin.Channel);
         }
     }
+
+    private void BroadcastPlayerInfo(NetUserId target)
+    {
+        var info = _playerList[target];
+        foreach (var admin in _adminManager.ActiveAdmins)
+        {
+            var ev = new PlayerInfoChangedEvent { PlayerInfo = _antagReveal.Mask(info, admin.UserId) };
+            RaiseNetworkEvent(ev, admin.Channel);
+        }
+    }
+    // Claw Command end
 
     public PlayerInfo? GetCachedPlayerInfo(NetUserId? netUserId)
     {
@@ -148,25 +163,27 @@ public sealed partial class AdminSystem : EntitySystem
 
     // Claw Command start - antag reveal gate
     /// <summary>
-    ///     Rebuilds and resends one player's entry, including players who are disconnected.
+    ///     Rebuilds one player's entry, including players who are disconnected, and resends it. A reveal
+    ///     only changed what one admin can see, so when <paramref name="admin"/> is given, only they get the
+    ///     update; a console reveal (<paramref name="admin"/> is null) unmasks for everyone, so everyone gets it.
     /// </summary>
-    public void RefreshPlayerInfo(NetUserId userId)
+    public void RefreshPlayerInfo(NetUserId userId, ICommonSession? admin)
     {
         if (_playerManager.TryGetSessionById(userId, out var session))
-        {
-            UpdatePlayerList(session);
-            return;
-        }
-
-        if (!_playerManager.TryGetPlayerData(userId, out var data))
+            _playerList[userId] = GetPlayerInfo(session.Data, session);
+        else if (_playerManager.TryGetPlayerData(userId, out var data))
+            _playerList[userId] = GetPlayerInfo(data, null);
+        else
             return;
 
-        _playerList[userId] = GetPlayerInfo(data, null);
-        var ev = new PlayerInfoChangedEvent { PlayerInfo = _playerList[userId] };
-        foreach (var admin in _adminManager.ActiveAdmins)
+        if (admin != null)
         {
+            var ev = new PlayerInfoChangedEvent { PlayerInfo = _antagReveal.Mask(_playerList[userId], admin.UserId) };
             RaiseNetworkEvent(ev, admin.Channel);
+            return;
         }
+
+        BroadcastPlayerInfo(userId);
     }
 
     /// <summary>
@@ -183,11 +200,7 @@ public sealed partial class AdminSystem : EntitySystem
             _playerList[id] = GetPlayerInfo(data, session);
         }
 
-        var ev = new FullPlayerListEvent { PlayersInfo = _playerList.Values.ToList() };
-        foreach (var admin in _adminManager.ActiveAdmins)
-        {
-            RaiseNetworkEvent(ev, admin.Channel);
-        }
+        BroadcastFullPlayerList();
     }
     // Claw Command end
 
@@ -201,22 +214,31 @@ public sealed partial class AdminSystem : EntitySystem
         if (!ev.RoleTypeUpdate || !_playerManager.TryGetSessionById(ev.Mind.UserId, out var session))
             return;
 
-        // Claw Command start - a masked antag role change looks identical to admins; don't send a no-op update,
-        // its timing alone would reveal when someone was made an antag.
+        // Claw Command start - a role-type change on a target an admin hasn't revealed must look identical
+        // to that admin; GetPlayerInfo now caches true antag data, so the diff has to be taken per admin
+        // *after* masking, not on the cached truth, or the mere arrival of an update would leak that
+        // something changed even though its masked contents didn't.
+        var old = GetCachedPlayerInfo(session.UserId);
         var updated = GetPlayerInfo(session.Data, session);
-        if (GetCachedPlayerInfo(session.UserId) is { } old &&
-            (old.Username, old.CharacterName, old.IdentityName, old.StartingJob, old.Antag, old.RoleProto, old.Subtype,
-                old.SortWeight, old.NetEntity, old.Connected, old.ActiveThisRound, old.AntagRevealed) ==
-            (updated.Username, updated.CharacterName, updated.IdentityName, updated.StartingJob, updated.Antag, updated.RoleProto, updated.Subtype,
-                updated.SortWeight, updated.NetEntity, updated.Connected, updated.ActiveThisRound, updated.AntagRevealed))
+        _playerList[session.UserId] = updated;
+
+        foreach (var admin in _adminManager.ActiveAdmins)
         {
-            _playerList[session.UserId] = updated;
-            return;
+            var maskedNew = _antagReveal.Mask(updated, admin.UserId);
+            if (old != null && MaskedFieldsEqual(_antagReveal.Mask(old, admin.UserId), maskedNew))
+                continue;
+
+            RaiseNetworkEvent(new PlayerInfoChangedEvent { PlayerInfo = maskedNew }, admin.Channel);
         }
         // Claw Command end
-
-        UpdatePlayerList(session);
     }
+
+    // Claw Command - field-by-field comparison; PlayerInfo.Equals only compares SessionId
+    private static bool MaskedFieldsEqual(PlayerInfo a, PlayerInfo b) =>
+        (a.Username, a.CharacterName, a.IdentityName, a.StartingJob, a.Antag, a.RoleProto, a.Subtype,
+            a.SortWeight, a.NetEntity, a.Connected, a.ActiveThisRound, a.AntagRevealed) ==
+        (b.Username, b.CharacterName, b.IdentityName, b.StartingJob, b.Antag, b.RoleProto, b.Subtype,
+            b.SortWeight, b.NetEntity, b.Connected, b.ActiveThisRound, b.AntagRevealed);
 
     private void OnAdminPermsChanged(AdminPermsChangedEventArgs obj)
     {
@@ -266,9 +288,10 @@ public sealed partial class AdminSystem : EntitySystem
 
     private void SendFullPlayerList(ICommonSession playerSession)
     {
-        var ev = new FullPlayerListEvent();
-
-        ev.PlayersInfo = _playerList.Values.ToList();
+        var ev = new FullPlayerListEvent
+        {
+            PlayersInfo = MaskedPlayerList(playerSession.UserId), // Claw Command - mask per this admin's own reveals
+        };
 
         RaiseNetworkEvent(ev, playerSession.Channel);
     }
@@ -288,7 +311,6 @@ public sealed partial class AdminSystem : EntitySystem
         }
 
         var antag = false;
-        var revealed = _antagReveal.IsRevealed(data.UserId); // Claw Command
 
         // Starting role, antagonist status and role type
         RoleTypePrototype? roleType = null;
@@ -308,17 +330,9 @@ public sealed partial class AdminSystem : EntitySystem
 
             antag = _role.MindIsAntagonist(mindId);
             startingRole = _jobs.MindTryGetJobName(mindId);
-
-            // Claw Command - until revealed, antag status and role type are withheld for every player,
-            // antag or not, so a hidden role type can't single anyone out
-            if (!revealed)
-            {
-                antag = false;
-                sortWeight = 0;
-                roleType = null;
-                subtype = null;
-            }
         }
+        // Claw Command - this cache always holds the true antag/role data; AntagRevealSystem.Mask
+        // strips it back out per admin when the info is actually sent out
 
         // Connection status and playtime
         var connected = session != null && session.Status is SessionStatus.Connected or SessionStatus.InGame;
@@ -347,8 +361,7 @@ public sealed partial class AdminSystem : EntitySystem
             data.UserId,
             connected,
             _roundActivePlayers.Contains(data.UserId),
-            overallPlaytime,
-            revealed); // Claw Command
+            overallPlaytime); // AntagRevealed defaults false; Mask() sets it correctly per admin on send
     }
 
     private void OnPanicBunkerChanged(bool enabled)

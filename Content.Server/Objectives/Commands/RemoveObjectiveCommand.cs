@@ -67,8 +67,8 @@ namespace Content.Server.Objectives.Commands
                 if (!_mind.TryGetMind(session, out var mindId, out var mind))
                     return CompletionResult.Empty;
 
-                // Claw Command - don't list someone's objectives before their antag status is revealed
-                if (session != shell.Player && !_antagReveal.IsRevealed(session.UserId))
+                // Claw Command - don't list someone's objectives before their antag status is revealed to this admin
+                if (session != shell.Player && !_antagReveal.IsRevealed(shell.Player, session.UserId))
                     return CompletionResult.FromHint(Loc.GetString("cmd-rmobjective-hidden-hint"));
 
                 if (mind.Objectives.Count == 0)

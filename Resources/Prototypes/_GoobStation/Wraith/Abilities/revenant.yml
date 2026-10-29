@@ -1,0 +1,73 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+# Fork note (significant adaptation): source's RevenantAbilities just bundled Wraith-authored abilities
+# directly onto the possessed body. This fork's vanilla Revenant (Resources/Prototypes/Entities/Mobs/NPCs/
+# revenant.yml) is a completely different implementation (Essence currency + a Store/RevenantAbilities
+# shop category, not a flat component bundle), so WraithRevenantAbilities grants BOTH that real vanilla
+# Revenant kit (Revenant/Store/ActionGrant ActionRevenantShop/Emag - same components MobRevenant itself
+# has) AND these Wraith-exclusive bonus abilities on top. Also: DamageSpecifier has no "groups:" field on
+# this fork (expanded to explicit "types:").
+- type: entity
+  id: WraithRevenantAbilities
+  name: Revenant Abilities
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Revenant
+  - type: Emag
+    emagType: All
+  - type: Store
+    categories:
+    - RevenantAbilities
+    currencyWhitelist:
+    - StolenEssence
+  - type: Aura
+    auraFarm: 0.4
+    distortion: 0.02
+    auraColor: "#030300"
+  - type: RevenantCrush
+    abilityDuration: 5
+    initialDamage:
+      types:
+        Blunt: 50
+  - type: TouchOfEvil
+    damageBuff: 2.5
+  - type: RevenantShockwave
+    structureDamage:
+      types:
+        Structural: 80
+  - type: RevenantPush
+    damageWhenThrown:
+      types:
+        Blunt: 30
+  - type: WraithCommand
+    blacklist:
+      components:
+      - MobState
+      - Body
+      - Edible
+      - EntityStorage
+      - Solution
+    searchRange: 14 # why not
+    stunDuration: 8 # why not
+  - type: WraithPoints
+    startingWraithPoints: 500
+  - type: PassiveWraithPoints
+    wpGeneration: 15 # generate points 15x than a normal wraith
+    nextWpUpdate: 1 # generate points every second
+  - type: ActionGrant
+    actions:
+    - ActionRevenantShop
+    - ActionRevenantPush
+    - ActionMassCommand
+    - ActionShockwave
+    - ActionTouchOfEvil
+    - ActionCrush
+  - type: TriggerOnMobstateChange # smoke on death
+    mobState:
+    - Critical
+  - type: SmokeOnTrigger
+    duration: 4
+    spreadAmount: 50

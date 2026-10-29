@@ -19,7 +19,9 @@ using Robust.Shared.Timing;
 namespace Content.Server._ClawCommand.Administration;
 
 /// <summary>
-/// Hides antagonist status from admins until it is explicitly revealed for a player.
+/// Hides antagonist status from admins until it is explicitly revealed for a player. A reveal is scoped to
+/// the admin who triggered it, not shared with every other admin, so one admin looking someone up doesn't
+/// unmask them for the rest of the team; a console reveal has no admin to scope to and unmasks for everyone.
 /// Every reveal (admin panel button or a command that prints antag info) is admin-logged and
 /// announced in admin chat, so looking up who the antags are is never silent.
 /// </summary>
@@ -35,7 +37,18 @@ public sealed partial class AntagRevealSystem : EntitySystem
     [Dependency] private SharedRoleSystem _role = default!;
     [Dependency] private IGameTiming _timing = default!;
 
-    private readonly HashSet<NetUserId> _revealed = new();
+    /// <summary>
+    /// Per-admin reveals: a target revealed to one admin stays masked for every other admin who hasn't
+    /// separately revealed them. Keyed by target, not admin, since lookups are almost always "is this
+    /// target revealed to this admin".
+    /// </summary>
+    private readonly Dictionary<NetUserId, HashSet<NetUserId>> _revealedTo = new();
+
+    /// <summary>
+    /// Targets revealed with no specific admin attached (server console). Console has no personal view to
+    /// scope a reveal to, so a console reveal is treated as visible to every admin, same as round end.
+    /// </summary>
+    private readonly HashSet<NetUserId> _revealedGlobally = new();
 
     /// <summary>
     /// Reveals in quick succession (an admin clicking the button repeatedly) are coalesced into a single
@@ -66,17 +79,62 @@ public sealed partial class AntagRevealSystem : EntitySystem
     }
 
     /// <summary>
-    /// Whether admins may currently see this player's antag status. Everything is visible once the round has ended.
+    /// Whether <paramref name="admin"/> may currently see this player's antag status. Everything is visible
+    /// once the round has ended, or if the target was revealed from the console (which has no personal view
+    /// to scope a reveal to, so it unmasks for every admin).
     /// </summary>
-    public bool IsRevealed(NetUserId user)
+    public bool IsRevealed(NetUserId admin, NetUserId target)
     {
-        return _ticker.RunLevel == GameRunLevel.PostRound || _revealed.Contains(user);
+        if (_ticker.RunLevel == GameRunLevel.PostRound || _revealedGlobally.Contains(target))
+            return true;
+
+        return _revealedTo.TryGetValue(target, out var admins) && admins.Contains(admin);
+    }
+
+    /// <inheritdoc cref="IsRevealed(NetUserId,NetUserId)"/>
+    /// <param name="admin">The admin, or null for the server console.</param>
+    public bool IsRevealed(ICommonSession? admin, NetUserId target)
+    {
+        if (_ticker.RunLevel == GameRunLevel.PostRound || _revealedGlobally.Contains(target))
+            return true;
+
+        return admin != null && IsRevealed(admin.UserId, target);
+    }
+
+    /// <summary>
+    /// Whether this player's antag status is visible to every admin at once (round end or a console reveal),
+    /// as opposed to only the specific admins who revealed them. Use this for anything broadcast to admins
+    /// as a group (e.g. a single admin-chat alert) that can't be masked differently per recipient.
+    /// </summary>
+    public bool IsRevealedGlobally(NetUserId target)
+    {
+        return _ticker.RunLevel == GameRunLevel.PostRound || _revealedGlobally.Contains(target);
+    }
+
+    /// <summary>
+    /// Returns <paramref name="info"/> as <paramref name="admin"/> should see it: unmasked if revealed to
+    /// them, antag status and role type stripped out otherwise.
+    /// </summary>
+    public PlayerInfo Mask(PlayerInfo info, NetUserId admin)
+    {
+        if (IsRevealed(admin, info.SessionId))
+            return info with { AntagRevealed = true };
+
+        return info with
+        {
+            Antag = false,
+            RoleProto = null,
+            Subtype = null,
+            SortWeight = 0,
+            AntagRevealed = false,
+        };
     }
 
     /// <summary>
     /// Records that <paramref name="admin"/> learned <paramref name="target"/>'s antag status through
-    /// <paramref name="source"/>: admin-logs it, announces it in admin chat and unmasks the player in the
-    /// admin player list for the rest of the round. Call this from anything that shows antag info to an admin.
+    /// <paramref name="source"/>: admin-logs it, announces it in admin chat and, the first time it happens,
+    /// unmasks the player in the admin player list for <paramref name="admin"/> (or for every admin, if this
+    /// came from the console) for the rest of the round. Call this from anything that shows antag info to an admin.
     /// </summary>
     /// <param name="admin">The admin, or null for the server console.</param>
     public void Reveal(ICommonSession? admin, NetUserId target, string source)
@@ -109,8 +167,23 @@ public sealed partial class AntagRevealSystem : EntitySystem
         _pending.Add(new PendingReveal(adminName, playerName, character, target, source, result));
         _pendingFlushAt = _timing.CurTime + BatchWindow;
 
-        if (_revealed.Add(target))
-            _admin.RefreshPlayerInfo(target);
+        bool newlyRevealed;
+        if (admin != null)
+        {
+            if (!_revealedTo.TryGetValue(target, out var admins))
+                _revealedTo[target] = admins = new HashSet<NetUserId>();
+
+            newlyRevealed = admins.Add(admin.UserId);
+        }
+        else
+        {
+            newlyRevealed = _revealedGlobally.Add(target);
+        }
+
+        // Only push a player-list update the first time this admin (or everyone, for a console reveal)
+        // actually gains visibility; repeat lookups still log/alert above but have nothing new to unmask.
+        if (newlyRevealed)
+            _admin.RefreshPlayerInfo(target, admin);
     }
 
     public override void Update(float frameTime)
@@ -165,17 +238,18 @@ public sealed partial class AntagRevealSystem : EntitySystem
         if (!_mind.TryGetMind(body, out var mindId, out var mind) || mind.UserId is not { } userId)
             return;
 
-        if (admin?.UserId == userId || IsRevealed(userId) || !_role.MindIsAntagonist(mindId))
+        if (admin?.UserId == userId || IsRevealed(admin, userId) || !_role.MindIsAntagonist(mindId))
             return;
 
         Reveal(admin, userId, source);
     }
 
     /// <summary>
-    /// Restricts an admin log query so it can't show antag status of unrevealed players in the current round.
-    /// Call once when the filter is created; the reveal state is snapshotted so paging stays consistent.
+    /// Restricts an admin log query so it can't show antag status of players not revealed to
+    /// <paramref name="admin"/> in the current round. Call once when the filter is created; the reveal
+    /// state is snapshotted so paging stays consistent.
     /// </summary>
-    public void ApplyLogMask(LogFilter filter)
+    public void ApplyLogMask(LogFilter filter, NetUserId admin)
     {
         if (_ticker.RunLevel == GameRunLevel.PostRound)
             return;
@@ -185,7 +259,15 @@ public sealed partial class AntagRevealSystem : EntitySystem
             return;
 
         filter.HiddenTypes = HiddenLogTypes;
-        filter.VisiblePlayers = _revealed.Select(u => u.UserId).ToArray();
+
+        var visible = _revealedGlobally.Select(u => u.UserId).ToList();
+        foreach (var (target, admins) in _revealedTo)
+        {
+            if (admins.Contains(admin))
+                visible.Add(target.UserId);
+        }
+
+        filter.VisiblePlayers = visible.ToArray();
     }
 
     private void OnRequestReveal(RequestAntagRevealEvent ev, EntitySessionEventArgs args)
@@ -193,8 +275,8 @@ public sealed partial class AntagRevealSystem : EntitySystem
         if (!_adminManager.HasAdminFlag(args.SenderSession, AdminFlags.Admin))
             return;
 
-        // The panel button is one-shot per player per round.
-        if (IsRevealed(ev.Target))
+        // The panel button is one-shot per player per admin per round.
+        if (IsRevealed(args.SenderSession, ev.Target))
             return;
 
         Reveal(args.SenderSession, ev.Target, Loc.GetString("antag-reveal-source-panel"));
@@ -203,7 +285,8 @@ public sealed partial class AntagRevealSystem : EntitySystem
     private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
     {
         FlushPending();
-        _revealed.Clear();
+        _revealedTo.Clear();
+        _revealedGlobally.Clear();
     }
 
     private void OnRunLevelChanged(GameRunLevelChangedEvent ev)

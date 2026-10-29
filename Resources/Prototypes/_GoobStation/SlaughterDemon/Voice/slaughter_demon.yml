@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+- type: speechVerb
+  id: SlaughterDemon
+  name: chat-speech-verb-name-demon
+  speechVerbStrings:
+  - chat-speech-verb-demon-1
+  - chat-speech-verb-demon-2
+
+- type: emoteSounds
+  id: SlaughterDemon
+  sounds:
+    Laugh:
+      collection: demonLaugh
+    Scream:
+      path: /Audio/_GoobStation/SlaughterDemon/demon_scream.ogg

@@ -1,0 +1,100 @@
+// SPDX-FileCopyrightText: 2024 Goobstation Contributors
+// SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Ported from Goobstation for ClawCommand.
+//
+// Fork note: source used SharedStunSystem.KnockdownOrStun, which doesn't exist on this fork. Substituted
+// with TryKnockdown (this fork's equivalent "make them fall over" call).
+
+using System.Linq;
+using System.Numerics;
+using Content.Shared._GoobStation.Wraith.Events;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Maps;
+using Content.Shared.StatusEffect;
+using Content.Shared.Stunnable;
+using Content.Shared.Tag;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Network;
+using Robust.Shared.Random;
+
+namespace Content.Shared._GoobStation.Wraith.Revenant;
+
+public sealed partial class RevenantShockwaveSystem : EntitySystem
+{
+    [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private TileSystem _tile = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+
+    private EntityQuery<StatusEffectsComponent> _statusEffectsQuery;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        _statusEffectsQuery = GetEntityQuery<StatusEffectsComponent>();
+
+        SubscribeLocalEvent<RevenantShockwaveComponent, RevenantShockwaveEvent>(OnShockwave);
+    }
+
+    private void OnShockwave(Entity<RevenantShockwaveComponent> ent, ref RevenantShockwaveEvent args)
+    {
+        PryAnyTiles(ent);
+
+        if (ent.Comp.StructureDamage == null)
+            return;
+
+        var lookup = _lookup.GetEntitiesInRange(ent.Owner, ent.Comp.SearchRange);
+
+        foreach (var entity in lookup)
+        {
+            if (_tag.HasTag(entity, ent.Comp.WallTag) || _tag.HasTag(entity, ent.Comp.WindowTag))
+            {
+                _damageable.TryChangeDamage(entity, ent.Comp.StructureDamage, true, origin: ent.Owner);
+                continue;
+            }
+
+            if (!_statusEffectsQuery.TryComp(entity, out _))
+                continue;
+
+            _stun.TryKnockdown(entity, ent.Comp.KnockdownDuration, true);
+        }
+
+        _audio.PlayPredicted(ent.Comp.ShockSound, ent.Owner, null);
+
+        args.Handled = true;
+    }
+
+    private void PryAnyTiles(Entity<RevenantShockwaveComponent> ent)
+    {
+        if (_net.IsClient)
+            return;
+
+        var grid = _transform.GetGrid(ent.Owner);
+        if (!TryComp<MapGridComponent>(grid, out var map))
+            return;
+
+        var tiles = _mapSystem.GetTilesIntersecting(
+                grid.Value,
+                map,
+                Box2.CenteredAround(_transform.GetWorldPosition(ent.Owner),
+                    new Vector2(ent.Comp.SearchRange * 2, ent.Comp.SearchRange)))
+            .ToArray();
+
+        _random.Shuffle(tiles);
+
+        for (var i = 0; i < ent.Comp.TilesToPry && i < tiles.Length; i++)
+        {
+            _tile.PryTile(tiles[i]);
+        }
+    }
+}

@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+- type: factionIcon
+  id: SoullessFaction
+  isShaded: false
+  priority: 11
+  showTo:
+    components:
+    - Slasher
+    - Devil
+    - ShowAntagIcons
+  icon:
+    sprite: /Textures/_GoobStation/Interface/Misc/faction_icons.rsi
+    state: soulless

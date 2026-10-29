@@ -1,0 +1,21 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+#
+# Fork note: GuideEntry.Name is a LocId - it's always resolved through the localization system,
+# with no literal-text fallback (source's quoted "Slasher" string was actually relying on this
+# key not being found and the engine falling back to showing the raw string - this fork's YAML
+# linter treats that as an error instead). Added real loc keys.
+
+- type: guideEntry
+  id: Slasher
+  name: guide-entry-slasher
+  text: "/ServerInfo/_GoobStation/Guidebook/Antagonist/Slasher.xml"
+  children:
+  - SlasherBoogeyman
+
+- type: guideEntry
+  id: SlasherBoogeyman
+  name: guide-entry-slasher-boogeyman
+  text: "/ServerInfo/_GoobStation/Guidebook/Antagonist/Slasher_Boogeyman.xml"

@@ -223,7 +223,7 @@
   reactants:
     Vinegar:
       amount: 5
-    Oil:
+    OilOlive:
       amount: 5
     Egg:
       amount: 6
@@ -235,7 +235,7 @@
   reactants:
     JuiceLemon:
       amount: 5
-    Oil:
+    OilOlive:
       amount: 5
     Egg:
       amount: 6

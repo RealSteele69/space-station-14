@@ -1,0 +1,110 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+- type: entity
+  id: SpookObject
+  name: ???
+  suffix: DO NOT MAP
+  description: It can do various things by being interacted with.
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 15
+        layer:
+        - GhostImpassable
+  - type: InteractionOutline
+  - type: Sprite
+    noRot: true
+    layers:
+      - sprite: _ClawCommand/Heretic/Effects/effects.rsi
+        state: curse
+    overrideContainerOcclusion: true # Always show up regardless of where they're contained.
+    drawdepth: Ghosts
+  - type: Visibility
+    layer: 2 # Ghost visflag
+  - type: Spectral
+  # Fork note: SpookComponent.Actions is List<WraithRadialEntry> (id/name/prototype/icon) here instead of
+  # source's Content.Shared._White.RadialSelector RadialSelectorEntry shape - see SpookComponent.cs and
+  # UI/WraithRadialUi.cs. Id is set to the action's own prototype id, which is what SpookSystem looks up.
+  - type: Spook
+    actions:
+    - id: ActionFlipLights
+      prototype: ActionFlipLights
+    - id: ActionBurnLights
+      prototype: ActionBurnLights
+    - id: ActionOpenDoors
+      prototype: ActionOpenDoors
+    - id: ActionCreateSmoke
+      prototype: ActionCreateSmoke
+    - id: ActionCreateEctoplasm
+      prototype: ActionCreateEctoplasm
+    - id: ActionSapApc
+      prototype: ActionSapApc
+    - id: ActionSpookRandom
+      prototype: ActionSpookRandom
+  - type: Actions
+  - type: ActionGrant
+    actions:
+    - ActionFlipLights
+    - ActionBurnLights
+    - ActionOpenDoors
+    - ActionCreateSmoke
+    - ActionCreateEctoplasm
+    - ActionSapApc
+    - ActionSpookRandom
+  - type: ActivatableUI
+    key: enum.SpookRadialUiKey.Key
+    requiresComplex: false
+  - type: UserInterface
+    interfaces:
+      enum.SpookRadialUiKey.Key:
+        type: WraithRadialBoundUserInterface
+  - type: FlipLights
+  - type: BurnLights
+  - type: CreateEctoplasm
+  - type: CreateSpookSmoke
+    smokeSolution: # Fork note: "ThickSmoke" reagent doesn't exist on this fork - substituted with Ammonia.
+      reagents:
+      - ReagentId: Ammonia
+        Quantity: 50
+  - type: OpenDoorsSpook
+  - type: SapAPC
+  - type: RandomSpook
+
+- type: entity
+  parent: Ectoplasm
+  id: EctoplasmGoon
+  name: ectoplasm
+  description: A glob of who knows what. Just staring at it gives you the creeps.
+  components:
+    - type: Sprite
+      noRot: true
+      sprite: _GoobStation/Wraith/Objects/ectoplasm.rsi
+      state: ectoplasmaGoon
+    - type: Tag
+      tags:
+        - Trash
+        - Ectoplasm
+    - type: SolutionContainerManager
+      solutions:
+        food:
+          maxVol: 50
+          reagents:
+            - ReagentId: Ash
+              Quantity: 25
+            - ReagentId: Coldsauce
+              Quantity: 25
+    - type: GuideHelp
+      guides:
+      - MinorAntagonists

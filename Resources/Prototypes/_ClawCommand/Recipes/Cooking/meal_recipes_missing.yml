@@ -54,3 +54,12 @@
     Cream: 15
   solids:
     FoodBowlBig: 1
+
+- type: microwaveMealRecipe
+  id: RecipeDriedSpaceTobacco
+  name: dried space tobacco leaves recipe
+  result: LeavesSpaceTobaccoDried
+  time: 10
+  group: Medicinal
+  solids:
+    LeavesSpaceTobacco: 1

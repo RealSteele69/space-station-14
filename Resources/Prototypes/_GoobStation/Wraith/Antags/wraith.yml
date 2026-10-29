@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+#
+# Fork note: mirrors the established SlaughterDemon/Slasher port pattern (see
+# Resources/Prototypes/_GoobStation/SlaughterDemon/Antags/slaughter_demon.yml) - a dedicated "antag"
+# prototype in its own file, reusing the existing generic MindRoleGhostRoleSoloAntagonist rather than a
+# dedicated mind role.
+
+- type: antag
+  id: Wraith
+  name: roles-antag-wraith-name
+  antagonist: true
+  objective: roles-antag-wraith-objective
+  guides: [ Wraith ]

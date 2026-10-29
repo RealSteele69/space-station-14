@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+# Fork note: guideEntry.name is a LocId lookup here, not literal text (source's literal "Slaughter Demon"
+# string isn't registered as a loc message) - pointed at a proper loc key instead (see guidebook.ftl).
+
+- type: guideEntry
+  id: SlaughterDemon
+  name: guide-entry-slaughter-demon
+  text: "/ServerInfo/_GoobStation/Guidebook/Antagonist/SlaughterDemon.xml"

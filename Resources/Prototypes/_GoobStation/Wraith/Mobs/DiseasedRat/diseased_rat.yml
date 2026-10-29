@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+# This holds all forms of the diseased rat
+# Fork note: dropped transferComponents - this fork's DiseasedRatFormUnlockPrototype has no such field.
+# The server DiseasedRatSystem evolves via a plain PolymorphEntity call, which already transfers
+# name/damage; the Medium/Large forms below just define their own full component set directly instead.
+- type: diseasedRatFormUnlock
+  id: MediumDiseasedRat
+  filthRequired: 6
+  entity: MobPlagueRatMedium
+
+- type: diseasedRatFormUnlock
+  id: GiantDiseasedRat
+  filthRequired: 12
+  entity: MobPlagueRatLarge
+

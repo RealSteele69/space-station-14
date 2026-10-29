@@ -51,7 +51,7 @@ public sealed partial class AdminLogsEui : BaseEui
             CancellationToken = _logSendCancellation.Token,
             Limit = _clientBatchSize
         };
-        _e.System<AntagRevealSystem>().ApplyLogMask(_filter); // Claw Command
+        // Claw Command - Player isn't assigned yet in the constructor; the mask is applied once Opened() runs
     }
 
     private int CurrentRoundId => _e.System<GameTicker>().RoundId;
@@ -62,6 +62,7 @@ public sealed partial class AdminLogsEui : BaseEui
 
         _adminManager.OnPermsChanged += OnPermsChanged;
 
+        _e.System<AntagRevealSystem>().ApplyLogMask(_filter, Player.UserId); // Claw Command
         var roundId = _filter.Round ?? CurrentRoundId;
         await LoadFromDb(roundId);
     }
@@ -129,7 +130,7 @@ public sealed partial class AdminLogsEui : BaseEui
                 };
 
                 var roundId = _filter.Round ??= CurrentRoundId;
-                _e.System<AntagRevealSystem>().ApplyLogMask(_filter); // Claw Command
+                _e.System<AntagRevealSystem>().ApplyLogMask(_filter, Player.UserId); // Claw Command
                 await LoadFromDb(roundId);
 
                 SendLogs(true, _filter);

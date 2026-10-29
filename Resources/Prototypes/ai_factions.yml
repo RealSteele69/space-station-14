@@ -30,6 +30,14 @@
   - Wizard
   - Xenoborg
   - Lavafauna # Claw Command - Lavaland
+  - Wraith # Claw Command - Wraith, ported from Goobstation
+
+- type: npcFaction # Claw Command - Wraith, ported from Goobstation
+  id: Wraith
+  hostile:
+  - NanoTrasen
+  - SimpleHostile
+  - PetsNT
 
 - type: npcFaction
   id: Mouse

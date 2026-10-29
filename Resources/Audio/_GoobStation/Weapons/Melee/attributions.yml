@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand (verbatim from Goobstation's
+# Resources/Audio/_Goobstation/Weapons/Melee/attributions.yml).
+
+- files: ["slashermachetehit.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from Goonstation"
+  source: "https://github.com/goonstation/goonstation/blob/master/sound/impact_sounds/katana_slash.ogg"

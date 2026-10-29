@@ -18,8 +18,8 @@
   time: 5
   group: Other
   solids:
-    FoodDough: 1
-    FoodMushroom: 2
+    FoodDoughSlice: 1 # a single biscuit, not a whole loaf of dough
+    FoodMushroom: 1
 
 - type: microwaveMealRecipe
   id: RecipeDogTreat
@@ -41,7 +41,7 @@
   reagents:
     Flour: 5
   solids:
-    FoodDough: 1
+    FoodDoughSlice: 1 # a single cracker, not a whole loaf of dough
 
 - type: microwaveMealRecipe
   id: RecipeKhachapuri

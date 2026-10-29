@@ -5,6 +5,8 @@ using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
@@ -27,6 +29,7 @@ public sealed partial class JacquelineSystem : EntitySystem
     [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private PullingSystem _pulling = default!;
 
     public override void Initialize()
     {
@@ -74,6 +77,10 @@ public sealed partial class JacquelineSystem : EntitySystem
 
         if (candidates.Count == 0)
             return;
+
+        // Don't let anyone holding onto her hitch a ride to wherever she's teleporting.
+        if (TryComp<PullableComponent>(uid, out var pullable))
+            _pulling.TryStopPull(uid, pullable, ignoreGrab: true);
 
         var target = _random.Pick(candidates);
         var targetCoords = Transform(target).Coordinates;

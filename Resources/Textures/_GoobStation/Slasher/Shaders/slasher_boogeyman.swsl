@@ -1,0 +1,23 @@
+// SPDX-FileCopyrightText: 2024 Goobstation Contributors
+// SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Ported from Goobstation for ClawCommand.
+
+// Boogeyman shadow shader.
+// Fades the sprite out in darkness and back in under light.
+
+uniform highp float darkThreshold;
+uniform highp float lightThreshold;
+
+void fragment()
+{
+    COLOR = zTexture(UV);
+
+    highp float brightness = max(max(lightSample.r, lightSample.g), lightSample.b);
+
+    highp float visibility = smoothstep(darkThreshold, lightThreshold, brightness);
+
+    COLOR.a *= visibility;
+
+    lightSample = vec3(1.0);
+}

@@ -396,6 +396,18 @@ public abstract partial class SharedMindSystem : EntitySystem
         return true;
     }
 
+    /// <summary>
+    /// Removes every objective from a mind. Used to strip objectives when a mind loses its antagonist status,
+    /// e.g. when cloning a body.
+    /// </summary>
+    public void ClearObjectives(EntityUid mindId, MindComponent mind)
+    {
+        while (mind.Objectives.Count > 0)
+        {
+            TryRemoveObjective(mindId, mind, 0);
+        }
+    }
+
     public bool TryGetObjectiveComp<T>(EntityUid uid, [NotNullWhen(true)] out T? objective) where T : IComponent
     {
         if (TryGetMind(uid, out var mindId, out var mind) && TryGetObjectiveComp(mindId, out objective, mind))

@@ -1,0 +1,78 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+# Dummy Entity for ghost roles to choose a void creature
+- type: entity
+  id: SummonVoidGhost
+  name: ???
+  description: It looks unfinished.
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    layers:
+      - sprite: _ClawCommand/Heretic/Effects/effects.rsi
+        state: curse
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 50
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+          - !type:PlaySoundBehavior
+            sound:
+              path: /Audio/_GoobStation/Wraith/revleave.ogg
+  - type: Damageable
+    damageModifierSet: ManifestedSpirit
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Examiner
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 60
+        mask:
+          - MobMask
+        layer:
+          - Opaque
+  - type: PointLight
+    color: MediumPurple
+    radius: 5
+    softness: 1
+  - type: Polymorphable
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: ghost-role-information-nascent-name
+    description: ghost-role-information-nascent-description
+    rules: ghost-role-information-nascent-rules
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: ActionGrant
+    actions:
+    - ActionChooseVoidCreature
+  # Fork note: see ChooseVoidCreatureComponent.cs - List<WraithRadialEntry> instead of source's
+  # Content.Shared._White.RadialSelector shape.
+  - type: ChooseVoidCreature
+    availableSummons:
+    - id: MobSkeletonCommanderWraith
+      prototype: MobSkeletonCommanderWraith
+    - id: MobVoidSpikerWraith
+      prototype: MobVoidSpikerWraith
+    - id: MobVoidHoundWraith
+      prototype: MobVoidHoundWraith
+  - type: UserInterface # allows them to use the radial menu
+    interfaces:
+      enum.ChooseVoidCreatureUiKey.Key:
+        type: WraithRadialBoundUserInterface

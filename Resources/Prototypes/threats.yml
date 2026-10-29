@@ -4,6 +4,9 @@
   weights:
     Dragon: 1
     Revenant: 1
+    SlaughterDemon: 1 # Ported for ClawCommand from Goobstation.
+    Slasher: 1 # Ported for ClawCommand from Goobstation.
+    Wraith: 1 # Ported for ClawCommand from Goobstation.
 
 - type: ninjaHackingThreat
   id: Dragon
@@ -14,3 +17,18 @@
   id: Revenant
   announcement: terror-revenant
   rule: RevenantSpawn
+
+- type: ninjaHackingThreat # Ported for ClawCommand from Goobstation.
+  id: SlaughterDemon
+  announcement: terror-slaughter-demon
+  rule: SlaughterDemonMidround
+
+- type: ninjaHackingThreat # Ported for ClawCommand from Goobstation.
+  id: Slasher
+  announcement: terror-slasher
+  rule: SlasherSpawn
+
+- type: ninjaHackingThreat # Ported for ClawCommand from Goobstation.
+  id: Wraith
+  announcement: terror-wraith
+  rule: WraithMidround

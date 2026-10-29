@@ -389,6 +389,36 @@ public abstract partial class SharedRoleSystem : EntitySystem
     }
 
     /// <summary>
+    /// Finds and removes every antagonist mind role (Antag or ExclusiveAntag) from a mind.
+    /// Used to strip antagonist status from a mind, e.g. when cloning a body.
+    /// </summary>
+    /// <returns>True if any antagonist role was removed</returns>
+    public bool MindRemoveAllAntagRoles(Entity<MindComponent?> mind)
+    {
+        if (!Resolve(mind.Owner, ref mind.Comp))
+            return false;
+
+        var delete = new List<EntityUid>();
+        var deleteName = "'Antagonist'";
+
+        foreach (var role in mind.Comp.MindRoleContainer.ContainedEntities)
+        {
+            if (!TryComp<MindRoleComponent>(role, out var roleComp))
+            {
+                Log.Error($"Encountered mind role entity {ToPrettyString(role)} without a {nameof(MindRoleComponent)}");
+                continue;
+            }
+
+            if (!roleComp.Antag && !roleComp.ExclusiveAntag)
+                continue;
+
+            delete.Add(role);
+        }
+
+        return MindRemoveRoleDo(mind, delete, deleteName);
+    }
+
+    /// <summary>
     /// Performs the actual role entity deletion.
     /// </summary>
     private bool MindRemoveRoleDo(Entity<MindComponent?> mind, List<EntityUid> delete, string? logName = "")

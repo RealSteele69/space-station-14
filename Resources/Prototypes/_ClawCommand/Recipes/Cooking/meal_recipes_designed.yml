@@ -312,9 +312,15 @@
   time: 10
   group: Savory
   solids:
-    FoodDoughFlat: 1
+    # Was FoodDoughFlat (a whole pizza-sized dough sheet) - massively overpriced
+    # for one taco; every other taco recipe uses the shell. Tomato/onion are added
+    # both to match FoodMealSoftTaco's own FlavorProfile (cheesy/tomato/meaty/onion)
+    # and so this doesn't tie RecipeTacoBeef's exact ingredient signature/count.
+    FoodTacoShell: 1
     FoodMeatCutlet: 1
     FoodCheeseSlice: 1
+    FoodTomato: 1
+    FoodOnionSlice: 1
 
 # === CAKES === #
 

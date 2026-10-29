@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+# Fork note: DemonicWhisperAction no longer extends ActionTelepathy / uses TelepathyAction+TelepathyWhisperEvent
+# (that generic dialog-box telepathy framework doesn't exist in this fork) - see DemonicWhisperEvent.cs for
+# why it's simplified to a plain EntityTargetAction with a flat flavor popup instead.
+# Also: ActionComponent has no "icon:" field in this fork - the icon comes from a plain Sprite component on
+# the action entity instead (see any vanilla Resources/Prototypes/Actions/*.yml for the pattern).
+
+- type: entity
+  id: BloodCrawlAction
+  name: Blood Crawl
+  description: JAUNT ANYWHERE WHENEVER YOU ARE ON BLOOD
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 4
+  - type: Sprite
+    sprite: _GoobStation/SlaughterDemon/abilities.rsi
+    state: crawl
+  - type: InstantAction
+    event: !type:BloodCrawlEvent
+
+- type: entity
+  id: DemonicWhisperAction
+  name: Demonic Whisper
+  description: SEND A MESSAGE TO THEIR SOUL, FROM HELL
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 15
+  - type: Sprite
+    sprite: _GoobStation/SlaughterDemon/abilities.rsi
+    state: whisper
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DemonicWhisperEvent

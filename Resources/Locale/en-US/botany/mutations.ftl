@@ -6,3 +6,4 @@ mutation-plant-slippery = It is slick to the touch.
 mutation-plant-unviable = It is wilting and sickly.
 mutation-plant-seedless = Its harvested produce is seedless.
 mutation-plant-sampled = It has already been sampled.
+mutation-plant-carnivore = It twitches hungrily whenever something warm-blooded gets close.

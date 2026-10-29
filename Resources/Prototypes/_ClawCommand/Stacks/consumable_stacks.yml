@@ -6,3 +6,19 @@
   icon: { sprite: _Floof/Objects/Consumable/Food/ingredients.rsi, state: frosting-pipe }
   spawn: FoodFrosting
   maxCount: 3
+
+# Smokeables
+
+- type: stack
+  parent: BaseVerySmallStack
+  id: LeavesSpaceTobaccoDried
+  name: stack-dried-space-tobacco-leaves
+  icon: { sprite: _ClawCommand/Objects/Specific/Hydroponics/space_tobacco.rsi, state: dried }
+  spawn: LeavesSpaceTobaccoDried
+
+- type: stack
+  parent: BaseVerySmallStack
+  id: GroundSpaceTobacco
+  name: stack-ground-space-tobacco
+  icon: { sprite: /Textures/Objects/Misc/reagent_fillings.rsi, state: powderpile }
+  spawn: GroundSpaceTobacco

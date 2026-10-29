@@ -1337,8 +1337,11 @@
 
 - type: reaction
   id: Vodka
-  requiredMixerCategories:
-  - Stir
+  # No requiredMixerCategories: almost every other base reagent reaction in this
+  # file (and the whole chemistry system) fires automatically on mixing. Gating
+  # this one behind a manual Stir action (which most of the handful of other
+  # Stir-gated recipes are optional cocktails, not a base liquor) meant simply
+  # combining Ethanol and Water the normal way never actually produced Vodka.
   reactants:
     Ethanol:
       amount: 1

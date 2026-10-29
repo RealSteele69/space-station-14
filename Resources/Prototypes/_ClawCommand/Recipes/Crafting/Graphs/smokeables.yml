@@ -1,0 +1,28 @@
+- type: constructionGraph
+  id: smokeableGroundSpaceTobacco
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: ground
+          steps:
+          - material: LeavesSpaceTobaccoDried
+            amount: 2
+            doAfter: 5
+    - node: ground
+      entity: GroundSpaceTobacco
+
+- type: constructionGraph
+  id: smokeableCigaretteSpaceTobacco
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: cigarette
+          steps:
+            - material: PaperRolling
+            - material: CigaretteFilter
+            - material: GroundSpaceTobacco
+              doAfter: 2
+    - node: cigarette
+      entity: CigaretteSpaceTobacco

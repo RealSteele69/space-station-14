@@ -9,10 +9,10 @@
       - banana
   - type: Edible
     trash:
-    - TrashBananaPeel
+    - TrashBluespaceBananaPeel
   - type: ToolRefinable
     refineResult:
-    - id: TrashBananaPeel
+    - id: TrashBluespaceBananaPeel
   - type: Solution
     solution:
       reagents:
@@ -22,6 +22,8 @@
         Quantity: 2
       - ReagentId: JuiceBanana
         Quantity: 5
+      - ReagentId: Bluespace
+        Quantity: 4
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/bluespace_banana.rsi
   - type: Item
@@ -37,6 +39,24 @@
     tags:
     - Fruit
     - Banana
+
+- type: entity
+  name: bluespace banana peel
+  parent: TrashBananaPeel
+  id: TrashBluespaceBananaPeel
+  description: A peel from a bluespace banana. It looks like it's not entirely here.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/bluespace_banana.rsi
+    state: peel
+  - type: Item
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/bluespace_banana.rsi
+    heldPrefix: peel
+  - type: RandomTeleport
+    radius:
+      min: 1
+      max: 3
+    teleportAttempts: 5
 
 - type: entity
   name: poison-berries
@@ -107,6 +127,8 @@
         Quantity: 5
       - ReagentId: Vitamin
         Quantity: 2
+      - ReagentId: Uranium
+        Quantity: 4
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/glow_berry.rsi
   - type: Item
@@ -194,6 +216,10 @@
   - type: Tag
     tags:
     - Fruit
+  - type: PointLight
+    color: "#ff66cc"
+    radius: 1.2
+    energy: 1.0
 
 - type: entity
   name: cherry bombs
@@ -221,6 +247,21 @@
   - type: Tag
     tags:
     - Fruit
+  - type: TriggerOnUse
+  - type: TimerTrigger
+    delay: 5
+  - type: RandomTimerTrigger
+    min: 5
+    max: 10
+  - type: ExplodeOnTrigger
+    keysIn:
+    - timer
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 0.8
+    intensitySlope: 1
+    totalIntensity: 3.5
+    canCreateVacuum: false
 
 - type: entity
   name: green grapes
@@ -238,6 +279,8 @@
         Quantity: 4
       - ReagentId: JuiceGrape
         Quantity: 6
+      - ReagentId: Kelotane
+        Quantity: 3
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/green_grape.rsi
   - type: Item
@@ -291,8 +334,8 @@
       reagents:
       - ReagentId: THC
         Quantity: 3
-      - ReagentId: Bicaridine
-        Quantity: 6
+      - ReagentId: Omnizine
+        Quantity: 4
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/lifeweed.rsi
   - type: Item
@@ -322,6 +365,10 @@
     heldPrefix: produce
   - type: Produce
     plantId: OmegaWeedPlants
+  - type: PointLight
+    color: "#39ff14"
+    radius: 1.5
+    energy: 1.2
 
 - type: entity
   name: ice pepper
@@ -382,6 +429,20 @@
   - type: Tag
     tags:
     - Fruit
+  - type: TriggerOnUse
+  - type: TimerTrigger
+    delay: 1
+  - type: RandomTimerTrigger
+    min: 0
+    max: 5
+  - type: ExplodeOnTrigger
+    keysIn:
+    - timer
+  - type: Explosive
+    explosionType: FireBomb
+    totalIntensity: 15
+    intensitySlope: 5
+    maxIntensity: 3
 
 - type: entity
   name: vanilla pod
@@ -399,6 +460,8 @@
         Quantity: 4
       - ReagentId: Vitamin
         Quantity: 2
+      - ReagentId: Vanilla
+        Quantity: 5
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/vanilla_pod.rsi
   - type: Item
@@ -432,10 +495,12 @@
   - type: Tag
     tags:
     - Vegetable
-  - type: DamageOtherOnHit
-    damage:
-      types:
-        Piercing: 1
+  - type: SpawnItemsOnUse
+    items:
+    - id: SnapPop
+    uses: 3
+    sound:
+      path: /Audio/Effects/packetrip.ogg
 
 - type: entity
   name: durathread bol
@@ -460,6 +525,7 @@
   - type: ToolRefinable
     refineResult:
     - id: MaterialDurathread1
+      amount: 2
   - type: Produce
     plantId: DurathreadPlants
   - type: Tag
@@ -500,6 +566,10 @@
   id: FoodHarebell
   description: Delicate, bell-shaped flowers.
   components:
+  - type: Clothing
+    slots:
+    - HEAD
+    quickEquip: false
   - type: FlavorProfile
     flavors:
       - leafy
@@ -508,8 +578,6 @@
       reagents:
       - ReagentId: Nutriment
         Quantity: 1
-      - ReagentId: Bicaridine
-        Quantity: 8
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/harebell.rsi
   - type: Item
@@ -528,6 +596,10 @@
   id: FoodSunflower
   description: Tends to turn to face the station's lights.
   components:
+  - type: Clothing
+    slots:
+    - HEAD
+    quickEquip: false
   - type: FlavorProfile
     flavors:
       - leafy
@@ -564,8 +636,10 @@
       reagents:
       - ReagentId: Nutriment
         Quantity: 1
-      - ReagentId: Bicaridine
-        Quantity: 8
+      - ReagentId: Moonshine
+        Quantity: 6
+      - ReagentId: Vitamin
+        Quantity: 2
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/moonflower.rsi
   - type: Item
@@ -577,6 +651,10 @@
   - type: Tag
     tags:
     - Flower
+  - type: PointLight
+    color: "#9B59B6"
+    radius: 1.5
+    energy: 1
 
 - type: entity
   name: novaflower
@@ -584,6 +662,10 @@
   id: FoodNovaflower
   description: Radiates an uncomfortable amount of heat.
   components:
+  - type: Clothing
+    slots:
+    - HEAD
+    quickEquip: false
   - type: FlavorProfile
     flavors:
       - leafy
@@ -605,6 +687,8 @@
   - type: Tag
     tags:
     - Flower
+  - type: IgniteOnMeleeHit
+    fireStacks: 1
 
 - type: entity
   name: bee balm
@@ -649,7 +733,7 @@
       reagents:
       - ReagentId: Nutriment
         Quantity: 1
-      - ReagentId: Sugar
+      - ReagentId: Honey
         Quantity: 6
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/honey_balm.rsi
@@ -706,6 +790,8 @@
       reagents:
       - ReagentId: Amatoxin
         Quantity: 10
+      - ReagentId: SpaceDrugs
+        Quantity: 2
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/destroying_angel.rsi
   - type: Item
@@ -760,6 +846,8 @@
       reagents:
       - ReagentId: Nutriment
         Quantity: 10
+      - ReagentId: Vitamin
+        Quantity: 4
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/plump_helmet.rsi
   - type: Item
@@ -776,7 +864,7 @@
   name: jupiter cup
   parent: FoodProduceBase
   id: FoodJupiterCup
-  description: A deep purple mushroom with a cosmic look to it.
+  description: A strange mushroom, moist and faintly crackling. You wonder how many tiny worms have met their fate inside.
   components:
   - type: FlavorProfile
     flavors:
@@ -785,8 +873,8 @@
     solution:
       reagents:
       - ReagentId: Nutriment
-        Quantity: 2
-      - ReagentId: Amatoxin
+        Quantity: 4
+      - ReagentId: LiquidElectricity
         Quantity: 4
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/jupiter_cup.rsi
@@ -814,6 +902,10 @@
       reagents:
       - ReagentId: Nutriment
         Quantity: 3
+      - ReagentId: Radium
+        Quantity: 1
+      - ReagentId: Phosphorus
+        Quantity: 1
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/glowshroom.rsi
   - type: Item
@@ -856,7 +948,7 @@
     tags:
     - Vegetable
   - type: PointLight
-    color: "#88ff88"
+    color: "#ff5533"
     radius: 1.5
     energy: 1.2
 
@@ -875,7 +967,7 @@
       reagents:
       - ReagentId: Nutriment
         Quantity: 2
-      - ReagentId: Amatoxin
+      - ReagentId: Radium
         Quantity: 3
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/shadowshroom.rsi
@@ -888,6 +980,10 @@
   - type: Tag
     tags:
     - Vegetable
+  - type: PointLight
+    color: "#1a0a26"
+    radius: 1
+    energy: 0.1
 
 - type: entity
   name: peach
@@ -990,8 +1086,8 @@
       reagents:
       - ReagentId: Nutriment
         Quantity: 4
-      - ReagentId: Vitamin
-        Quantity: 2
+      - ReagentId: Sugar
+        Quantity: 4
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/white_beet.rsi
   - type: Item
@@ -1046,6 +1142,8 @@
       reagents:
       - ReagentId: Theobromine
         Quantity: 8
+      - ReagentId: Synaptizine
+        Quantity: 4
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/tea_astra.rsi
   - type: Item
@@ -1067,7 +1165,7 @@
   - type: Solution
     solution:
       reagents:
-      - ReagentId: Happiness
+      - ReagentId: Pax
         Quantity: 6
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/catnip.rsi
@@ -1095,6 +1193,8 @@
         Quantity: 2
       - ReagentId: Theobromine
         Quantity: 5
+      - ReagentId: Ephedrine
+        Quantity: 4
   - type: Sprite
     sprite: _ClawCommand/Objects/Specific/Hydroponics/coffee_robusta.rsi
   - type: Item
@@ -1131,6 +1231,48 @@
     plantId: SpaceTobaccoPlants
   - type: Extractable
     grindableSolutionName: food
+
+- type: entity
+  name: dried space tobacco leaves
+  parent: LeavesSpaceTobacco
+  id: LeavesSpaceTobaccoDried
+  description: Dried space tobacco leaves, ready to be ground.
+  components:
+  - type: Stack
+    stackType: LeavesSpaceTobaccoDried
+    count: 1
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Specific/Hydroponics/space_tobacco.rsi
+    state: dried
+
+- type: entity
+  name: ground space tobacco
+  parent: [SolutionFood, SolutionTiny, BaseItem]
+  id: GroundSpaceTobacco
+  description: Ground space tobacco, perfect for hand-rolled cigarettes.
+  components:
+  - type: Stack
+    stackType: GroundSpaceTobacco
+    count: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nicotine
+        Quantity: 10
+      - ReagentId: SpaceDrugs
+        Quantity: 2
+  - type: Sprite
+    sprite: Objects/Misc/reagent_fillings.rsi
+    state: powderpile
+    color: purple
+  - type: Construction
+    graph: smokeableGroundSpaceTobacco
+    node: ground
+  - type: Tag
+    tags:
+      - Smokable
+  - type: Item
+    size: Tiny
 
 - type: entity
   parent: [ProduceBase, BaseSlicingRefinable]

@@ -115,6 +115,22 @@ public abstract partial class SharedGhostSystem : EntitySystem
         entity.Comp.CanGhostInteract = value;
         Dirty(entity);
     }
+
+    /// <summary>
+    /// Sets the ghost's sprite color.
+    /// </summary>
+    /// <remarks>Claw Command - used so VIP ghosts keep their colour when swapping to an admin ghost.</remarks>
+    public void SetColor(Entity<GhostComponent?> entity, Color value)
+    {
+        if (!Resolve(entity, ref entity.Comp))
+            return;
+
+        if (entity.Comp.Color == value)
+            return;
+
+        entity.Comp.Color = value;
+        Dirty(entity);
+    }
 }
 
 /// <summary>

@@ -1,0 +1,65 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+- type: soundCollection
+  id: WraithRevPush
+  files:
+  - /Audio/_GoobStation/Wraith/revpush1.ogg
+  - /Audio/_GoobStation/Wraith/revpush2.ogg
+
+- type: soundCollection
+  id: WraithRaise
+  files:
+  - /Audio/_GoobStation/Wraith/wraithraise1.ogg
+  - /Audio/_GoobStation/Wraith/wraithraise2.ogg
+  - /Audio/_GoobStation/Wraith/wraithraise3.ogg
+
+- type: soundCollection
+  id: WraithSoulSucc
+  files:
+  - /Audio/_GoobStation/Wraith/wraithsoulsucc1.ogg
+  - /Audio/_GoobStation/Wraith/wraithsoulsucc2.ogg
+
+- type: soundCollection
+  id: WraithSpookSounds
+  files:
+  - /Audio/_GoobStation/Wraith/wraithspook1.ogg
+  - /Audio/_GoobStation/Wraith/wraithspook2.ogg
+
+- type: soundCollection
+  id: WraithWhisper
+  files:
+  - /Audio/_GoobStation/Wraith/wraithwhisper1.ogg
+  - /Audio/_GoobStation/Wraith/wraithwhisper2.ogg
+  - /Audio/_GoobStation/Wraith/wraithwhisper3.ogg
+  - /Audio/_GoobStation/Wraith/wraithwhisper4.ogg
+
+- type: soundCollection
+  id: WraithRepairbot
+  files:
+  - /Audio/_GoobStation/Wraith/Mobs/repairbot/cantanymore.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/repairbot/brick.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/repairbot/entropy.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/repairbot/fixit.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/repairbot/fixtouch.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/repairbot/passionproject.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/repairbot/patchingholes.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/repairbot/pay.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/repairbot/strings.ogg
+
+- type: soundCollection
+  id: WraithCreepyWhisper
+  files:
+  - /Audio/_GoobStation/Wraith/Mobs/shade/creepywhisper_1.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/shade/creepywhisper_2.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/shade/creepywhisper_3.ogg
+
+- type: soundCollection
+  id: WraithGoonZGroan
+  files:
+  - /Audio/_GoobStation/Wraith/Mobs/hulk/Zgroan1.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/hulk/Zgroan2.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/hulk/Zgroan3.ogg
+  - /Audio/_GoobStation/Wraith/Mobs/hulk/Zgroan4.ogg

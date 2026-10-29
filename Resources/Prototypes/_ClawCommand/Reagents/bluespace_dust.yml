@@ -1,0 +1,8 @@
+- type: reagent
+  id: Bluespace
+  name: reagent-name-bluespace
+  group: Toxins
+  desc: reagent-desc-bluespace
+  physicalDesc: reagent-physical-desc-crystalline
+  flavor: spacetime
+  color: "#0000CC"

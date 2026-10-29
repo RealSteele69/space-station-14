@@ -1,0 +1,29 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+# Fork note: this file wasn't in the SlaughterDemon source folder list we were given, but DemonicAccent
+# (used by the main demon mob) needs it to have any word-replacement effect - without it the accent would
+# only uppercase speech and occasionally append a suffix line. Also renamed the accent id from source's
+# "slaughterDemon" to match the id DemonicAccentSystem actually looks up ("slaughterDemon") - in Goobstation
+# those two strings didn't match each other, which looks like an upstream bug (the lookup used
+# "slaughter_demon" while this prototype's id was "slaughterDemon"), so this is a deliberate fix.
+
+- type: accent
+  id: slaughterDemon
+  wordReplacements:
+    accent-demonic-words-1: accent-demonic-words-replace-1
+    accent-demonic-words-2: accent-demonic-words-replace-2
+    accent-demonic-words-3: accent-demonic-words-replace-3
+    accent-demonic-words-4: accent-demonic-words-replace-4
+    accent-demonic-words-5: accent-demonic-words-replace-5
+    accent-demonic-words-6: accent-demonic-words-replace-6
+    accent-demonic-words-7: accent-demonic-words-replace-7
+    accent-demonic-words-8: accent-demonic-words-replace-8
+    accent-demonic-words-9: accent-demonic-words-replace-9
+    accent-demonic-words-10: accent-demonic-words-replace-10
+    accent-demonic-words-11: accent-demonic-words-replace-11
+    accent-demonic-words-12: accent-demonic-words-replace-12
+    accent-demonic-words-13: accent-demonic-words-replace-13
+    accent-demonic-words-14: accent-demonic-words-replace-14
+    accent-demonic-words-15: accent-demonic-words-replace-15

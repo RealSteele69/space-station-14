@@ -176,6 +176,7 @@
   id: BaseSpeciesMobOrganic
   save: false
   components:
+  - type: WraithAbsorbable # Claw Command - wraith, ported from Goobstation (lets the Wraith antag absorb this species' corpses)
   - type: Satiation
     satiations:
       Hunger:

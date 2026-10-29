@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+
+- type: entity
+  id: WraithDeathEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _GoobStation/Wraith/wraith.rsi
+    state: wraithdie
+  - type: PointLight
+    radius: 6
+    netsync: false
+    energy: 5
+    color: "#FF0000"
+  - type: FadingTimedDespawn
+    lifetime: 1.4
+    fadeOutTime: 1.2

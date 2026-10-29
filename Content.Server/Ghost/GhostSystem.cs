@@ -497,6 +497,18 @@ namespace Content.Server.Ghost
             return ghostBoo.Handled;
         }
 
+        // Claw Command - colour patrons' ghosts purple, whether they're a normal ghost or (via AGhostCommand) an admin ghost.
+        public static readonly Color VipGhostColor = Color.FromHex("#aa00ff");
+
+        /// <summary>
+        /// Claw Command - whether the given body and/or session has VIP (patron) status.
+        /// </summary>
+        public bool IsVip(EntityUid? body, ICommonSession? session)
+        {
+            return body is { } b && _adminManager.HasAdminFlag(b, AdminFlags.VIP)
+                || session != null && _adminManager.HasAdminFlag(session, AdminFlags.VIP);
+        }
+
         public EntityUid? SpawnGhost(Entity<MindComponent?> mind, EntityUid targetEntity,
             bool canReturn = false)
         {
@@ -550,8 +562,7 @@ namespace Content.Server.Ghost
             if (session == null && mind.Comp.UserId is { } vipUserId)
                 _player.TryGetSessionById(vipUserId, out session);
 
-            if (mind.Comp.CurrentEntity is { } vipBody && _adminManager.HasAdminFlag(vipBody, AdminFlags.VIP)
-                || session != null && _adminManager.HasAdminFlag(session, AdminFlags.VIP))
+            if (IsVip(mind.Comp.CurrentEntity, session))
             {
                 ghostPrototype = "MobObserverVip";
             }

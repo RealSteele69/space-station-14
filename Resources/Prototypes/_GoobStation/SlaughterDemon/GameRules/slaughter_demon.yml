@@ -1,0 +1,138 @@
+# SPDX-FileCopyrightText: 2024 Goobstation Contributors
+# SPDX-FileCopyrightText: 2025 ClawCommand Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Ported from Goobstation for ClawCommand.
+#
+# Fork note (big adaptation): upstream replaced the old AntagSelectionComponent.Definitions: List<...> shape
+# with Antags: AntagCountSelector[] + a separate "antagSpecifier" prototype (spawnerPrototype/mindRoles/
+# briefing/components all live on the antagSpecifier now, see Content.Shared/Antag/AntagSpecifierPrototype.cs
+# and e.g. GameRules/events.yml's DragonSpawn for the current pattern). Rebuilt all three rules around that:
+# one antagSpecifier per rule (can't share one, since each needs its own briefing/RandomMetadata segments),
+# referenced via "!type:FixedAntagCount proto: <specifier id>". Also dropped GameRuleComponent's chaosScore
+# and StationEventComponent's eventType/chaos fields on SlaughterDemonMidround - none of those fields exist
+# on this fork's GameRule/StationEvent components.
+
+- type: antagSpecifier
+  id: SlaughterDemonSpecifier
+  spawnerPrototype: SpawnPointGhostSlaughterDemon
+  pickPlayer: false
+  mindRoles:
+  - MindRoleSlaughterDemon
+  briefing:
+    text: slaughter-role-greeting
+    color: Red
+    sound: /Audio/_GoobStation/SlaughterDemon/briefing.ogg
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSlaughterTitle
+    - NamesSlaughter
+    nameFormat: name-format-slaughter
+
+- type: antagSpecifier
+  id: LaughterDemonSpecifier
+  spawnerPrototype: SpawnPointGhostLaughterDemon
+  pickPlayer: false
+  mindRoles:
+  - MindRoleSlaughterDemon
+  briefing:
+    text: laughter-role-greeting
+    color: Pink
+    # Fork note: source's clowncar_fart.ogg has no attributions.yml entry anywhere in Goobstation's
+    # tree (unattributed asset), so per this port's asset policy it's skipped in favor of this fork's
+    # existing (vanilla, already-credited) bike horn sound.
+    sound: /Audio/Items/bikehorn.ogg
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesLaughterTitle
+    - NamesSlaughter
+    nameFormat: name-format-slaughter
+
+- type: antagSpecifier
+  id: LesserSlaughterDemonSpecifier
+  spawnerPrototype: SpawnPointGhostSlaughterDemon
+  pickPlayer: false
+  mindRoles:
+  - MindRoleSlaughterDemon
+  briefing:
+    text: slaughter-role-greeting
+    color: Red
+    sound: /Audio/Misc/narsie_rises.ogg
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSlaughterTitle
+    - NamesSlaughter
+    nameFormat: name-format-slaughter
+
+# major
+- type: entity
+  parent: BaseAntagGhostRoleRule
+  id: SlaughterDemonSummon
+  components:
+  - type: AntagSpawner
+    prototype: BaseMobSlaughterDemon
+  - type: AntagSelection
+    agentName: slaughter-round-end-agent-name
+    antags:
+    - !type:FixedAntagCount
+      proto: SlaughterDemonSpecifier
+  # Required alongside AntagSelection for the ghost role spawner to actually find somewhere on the
+  # station to appear - without it, AntagSelectionSystem logs "Found no valid positions to place antag
+  # spawner" and nothing spawns (caught by Content.IntegrationTests/Tests/GameRules/AntagGhostRoleTest).
+  - type: AntagRandomSpawn
+  - type: AntagObjectives
+    objectives:
+      # - SlaughterKillTheWizardObjective
+      - SlaughterKillEveryoneObjective
+
+# laughter
+- type: entity
+  parent: BaseAntagGhostRoleRule
+  id: LaughterDemonSummon
+  components:
+  - type: AntagSpawner
+    prototype: MobLaughterDemon
+  - type: AntagSelection
+    agentName: laughter-round-end-agent-name
+    antags:
+    - !type:FixedAntagCount
+      proto: LaughterDemonSpecifier
+  - type: AntagRandomSpawn
+  - type: AntagObjectives
+    objectives:
+    - SlaughterHugAndTickleObjective
+
+# midround
+- type: entity
+  parent: BaseAntagGhostRoleRule
+  id: SlaughterDemonMidround
+  components:
+  - type: AntagSpawner
+    prototype: MobLesserSlaughterDemon
+  - type: AntagSelection
+    agentName: lesser-slaughter-round-end-agent-name
+    antags:
+    - !type:FixedAntagCount
+      proto: LesserSlaughterDemonSpecifier
+  - type: AntagRandomSpawn
+  - type: StationEvent
+    weight: 1
+    earliestStart: 30
+    minimumPlayers: 50
+    duration: null
+    maxOccurrences: 1
+  # Fork note: dropped "- type: Tag / tags: [MidroundAntag]" - that tag isn't defined anywhere in this
+  # fork, and this port's additive-only scope only allows touching threats.yml/antagonist.yml/events.yml/
+  # locale files, not Tags.yml, to add it. Not load-bearing for any of SlaughterDemon's own mechanics.
+  - type: AntagObjectives
+    objectives:
+      - SlaughterDevourObjective
+      - AnnihilateAllJanitorsObjectiveFluff
+      - SpareCrewObjectiveFluff
+      - HuntTheBraveObjectiveFluff
+      - HuntTheCowardsObjectiveFluff
+      - ShowCrewPowerObjectiveFluff
+      - DriveInsaneObjectiveFluff
+      - SpreadBloodObjectiveFluff

@@ -5,3 +5,4 @@ construction-graph-tag-dropper = dropper
 
 # other
 construction-graph-tag-pipe-bend = gas pipe bend
+construction-graph-tag-weapon-disabler = a disabler

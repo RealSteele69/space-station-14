@@ -1,4 +1,6 @@
 # Jacqueline the Pumpqueen
+holiday-name-jacqueline-week = Jacqueline's Week
+
 jacqueline-greet-1 = Trick or treat?
 jacqueline-greet-2 = Got any candy for me?
 jacqueline-greet-3 = Lovely little station you have here.

@@ -1,0 +1,33 @@
+- type: constructionGraph
+  id: SecurityBot
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: bot
+      steps:
+      - tag: WeaponDisabler
+        icon:
+          sprite: Objects/Weapons/Guns/Battery/disabler.rsi
+          state: base
+        name: construction-graph-tag-weapon-disabler
+      - tag: Handcuffs
+        icon:
+          sprite: Objects/Misc/zipties.rsi
+          state: cuff
+        name: construction-graph-tag-cuffs
+        doAfter: 2
+      - tag: ProximitySensor
+        icon:
+          sprite: Objects/Misc/proximity_sensor.rsi
+          state: icon
+        name: construction-graph-tag-proximity-sensor
+        doAfter: 2
+      - tag: BorgArm
+        icon:
+          sprite: Mobs/Silicon/drone.rsi
+          state: l_hand
+        name: construction-graph-tag-borg-arm
+        doAfter: 2
+  - node: bot
+    entity: MobSecurityBot

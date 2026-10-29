@@ -18,3 +18,15 @@
         - id: FloorCarpetItemPink
         - id: FloorCarpetItemCyan
         - id: FloorCarpetItemWhite
+
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateDecorMoodLighting
+  name: mood lighting crate
+  description: Two boxes of colored light tubes for setting the mood - red, frosty blue, and black light.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: BoxLighttubeMood
+        amount: 2

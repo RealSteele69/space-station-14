@@ -7,3 +7,13 @@
   cost: 600
   category: cargoproduct-category-name-materials
   group: market
+
+- type: cargoProduct
+  id: DecorMoodLightingOrder
+  icon:
+    sprite: Objects/Power/light_bulb.rsi
+    state: normal
+  product: CrateDecorMoodLighting
+  cost: 600
+  category: cargoproduct-category-name-service
+  group: market

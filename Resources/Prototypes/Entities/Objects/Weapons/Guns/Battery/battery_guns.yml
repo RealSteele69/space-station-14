@@ -572,6 +572,9 @@
     - Security
     - Antagonists
   - type: PacifismAllowedGun
+  - type: Tag
+    tags:
+    - WeaponDisabler
 
 - type: entity
   name: disabler SMG

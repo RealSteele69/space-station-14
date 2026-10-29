@@ -1,0 +1,4 @@
+- type: construction
+  parent: BaseRobot
+  id: securitybot
+  graph: SecurityBot

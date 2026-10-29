@@ -28,3 +28,20 @@
           amount: 2
         - id: CandlePurpleInfinite
           amount: 2
+
+- type: entity
+  name: mood lighting box
+  parent: BoxLighttube
+  id: BoxLighttubeMood
+  description: This box is shaped on the inside so that only light tubes and bulbs fit. Contains a selection of colored tubes for setting the mood.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ColoredLightTubeRed
+          amount: 4
+        - id: ColoredLightTubeFrostyBlue
+          amount: 4
+        - id: ColoredLightTubeBlackLight
+          amount: 4

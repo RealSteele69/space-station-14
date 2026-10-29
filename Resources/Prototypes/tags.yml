@@ -1544,6 +1544,9 @@
   id: WeaponAntiqueLaser # Storage whitelist: GlassBoxLaser
 
 - type: Tag
+  id: WeaponDisabler # ConstructionGraph: SecurityBot
+
+- type: Tag
   id: WeaponPistolCHIMPUpgradeKit # ConstructionGraph: UpgradeWeaponPistolCHIMP
 
 - type: Tag

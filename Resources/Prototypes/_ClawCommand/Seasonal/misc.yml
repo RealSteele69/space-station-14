@@ -33,6 +33,19 @@
       - id: EffectSpookyClosetClown
         weight: 1
 
+# Claw Command - Jacqueline the Pumpqueen wanders in for a week on either side of Halloween.
+- type: holiday
+  id: JacquelineWeek
+  name: holiday-name-jacqueline-week
+  beginDay: 24
+  beginMonth: October
+  endDay: 7
+  endMonth: November
+  greet:
+    !type:Silent
+  celebrate:
+    !type:JacquelineCelebrate
+
 - type: localizedDataset
   id: CookieFortunes
   values:

@@ -1,0 +1,15 @@
+{
+   "version": 1,
+   "license": "CC-BY-SA-3.0",
+   "copyright": "Taken from https://github.com/Citadel-Station-13/Citadel-Station-13-RP at commit db254a45e84676b7d1f32e3386c65453253bc6c5 (icons/obj/aibots.dmi, state secbot1), converted from DMI to RSI for this fork.",
+   "size": {
+      "x": 32,
+      "y": 32
+   },
+   "states": [
+      {
+         "name": "security_bot",
+         "directions": 4
+      }
+   ]
+}

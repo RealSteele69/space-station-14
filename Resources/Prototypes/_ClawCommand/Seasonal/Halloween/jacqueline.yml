@@ -23,6 +23,7 @@
   - type: Tag
     tags:
     - CannotSuicide
+  - type: Godmode
   - type: Jacqueline
     treats:
     - PlushieGhost

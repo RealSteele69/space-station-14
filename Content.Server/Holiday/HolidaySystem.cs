@@ -53,7 +53,13 @@ namespace Content.Server.Holiday
         {
             foreach (var holiday in _currentHolidays)
             {
-                _chatManager.DispatchServerAnnouncement(holiday.Greet());
+                // Claw Command - skip the announcement entirely for holidays with nothing to say
+                // (e.g. Silent), rather than posting an empty server announcement every round.
+                var greeting = holiday.Greet();
+                if (string.IsNullOrWhiteSpace(greeting))
+                    continue;
+
+                _chatManager.DispatchServerAnnouncement(greeting);
             }
         }
 

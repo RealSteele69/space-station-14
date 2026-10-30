@@ -13,6 +13,8 @@ using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Content.Shared.Antag;
+using Content.Shared.GameTicking.Rules;
 
 namespace Content.Server._ClawCommand.Devil.GameTicking.Rules;
 

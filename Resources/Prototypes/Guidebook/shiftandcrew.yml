@@ -12,10 +12,11 @@
   - GuideAnomalySOP #claw command
   - GuidePrisonerSOP #claw command
   - GuideSiliconSOP #claw command
-  - Service
+  - Command
   - Cargo
+  - Engineering
   - Medical
   - Science
-  - Engineering
   - Security
-  - Command
+  - Service
+  - Civilian

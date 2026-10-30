@@ -1,4 +1,4 @@
-﻿using Content.Shared._ClawCommand.Silicons.Borgs;
+using Content.Shared._ClawCommand.Silicons.Borgs;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;

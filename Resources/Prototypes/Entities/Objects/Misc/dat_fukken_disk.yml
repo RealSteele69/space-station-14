@@ -21,7 +21,8 @@
     tags:
     - HighRiskItem
   - type: StealTarget
-    stealGroup: NukeDisk
+    stealGroup:
+    - NukeDisk
   - type: SupermatterImmune # Claw Command - supermatter
 
 - type: entity

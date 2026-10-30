@@ -49,6 +49,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server._GoobStation.Slasher.Systems;
 
@@ -69,7 +70,7 @@ public sealed partial class SlasherSoulStealSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private AtmosphereSystem _atmos = default!;
-    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private ServerStationSystem _stationSystem = default!;
     [Dependency] private ChatSystem _chatSystem = default!;
     [Dependency] private AlertLevelSystem _alertLevel = default!;
     [Dependency] private IPrototypeManager _protoMan = default!;
@@ -78,7 +79,7 @@ public sealed partial class SlasherSoulStealSystem : EntitySystem
     [Dependency] private PoweredLightSystem _light = default!;
     [Dependency] private SlasherRegenerateSystem _regenerate = default!;
     [Dependency] private InventorySystem _inventory = default!;
-    [Dependency] private SharedStationSpawningSystem _spawning = default!;
+    [Dependency] private StationSpawningSystem _spawning = default!;
 
     public override void Initialize()
     {

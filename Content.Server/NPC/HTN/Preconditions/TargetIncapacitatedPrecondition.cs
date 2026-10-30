@@ -16,9 +16,10 @@ public sealed partial class TargetIncapacitatedPrecondition : HTNPrecondition
     [DataField("targetKey", required: true)]
     public string TargetKey = default!;
 
-    public override void Initialize(IEntitySystemManager sysManager)
+    public override void Initialize(IDependencyCollection deps)
     {
-        base.Initialize(sysManager);
+        var sysManager = deps.Resolve<IEntitySystemManager>();
+        base.Initialize(deps);
         _mobState = sysManager.GetEntitySystem<MobStateSystem>();
     }
 

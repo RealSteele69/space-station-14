@@ -25,7 +25,7 @@
 
 - type: entity
   id: ClothingMaskHonkmotherFace
-  parent: ClothingMaskClownBase
+  parent: ClothingMaskClownBaseNoFold
   name: "honkmother face"
   description: "The face of the Honkmother sees everything and everyone. Always."
   components:

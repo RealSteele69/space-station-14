@@ -285,3 +285,11 @@
     Steel: 50
     Glass: 50
     Plastic: 100
+
+- type: latheRecipe
+  id: VehicleWheelchairFolded
+  result: VehicleWheelchairFolded
+  completetime: 1
+  materials:
+    Steel: 500
+    Plastic: 300

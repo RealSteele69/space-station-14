@@ -6,7 +6,7 @@
   recipes:
   # Plain lawsets - the ones a borg normally ships with.
   - NTDefaultCircuitBoard
-  - AsimovCircuitBoard
+  - CrewsimovCircuitBoard
   - CorporateCircuitBoard
   # Job lawsets whose departments can't print boards themselves.
   - ResearchCircuitBoard

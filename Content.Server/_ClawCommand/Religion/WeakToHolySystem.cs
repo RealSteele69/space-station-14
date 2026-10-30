@@ -13,11 +13,13 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Content.Shared.Timing;
+using Content.Shared.Timing.Systems;
 using Content.Shared.Damage;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Content.Shared.Timing.Components;
 
 namespace Content.Server._ClawCommand.Religion;
 

@@ -5,9 +5,9 @@
   children:
   - GuideEpistemicsSOP #claw command
   - GuidePsionics #claw command - psionics port
-  - Technologies
   - AnomalousResearch
   - Xenoarchaeology
+  - Technologies
   - Robotics
 
 # Claw Command - psionics port

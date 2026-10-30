@@ -2,7 +2,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeBearyPie
-  name: beary pie recipe
   result: FoodPieBeary
   time: 15
   group: Pie
@@ -15,7 +14,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeBurek
-  name: burek recipe
   result: FoodPieBurek
   time: 15
   group: Pie
@@ -28,7 +26,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeTofuPie
-  name: tofu-pie recipe
   result: FoodPieTofu
   time: 15
   group: Pie
@@ -38,7 +35,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeBerryTart
-  name: berry tart recipe
   result: FoodTartBerry
   time: 15
   group: Pie
@@ -51,7 +47,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeDulceDeBatata
-  name: dulce de batata recipe
   result: FoodPieDulceDeBatata
   time: 15
   group: Pie

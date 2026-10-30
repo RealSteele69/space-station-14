@@ -5,7 +5,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealBurrito
-  name: burrito recipe
   result: FoodMealBurrito
   time: 15
   group: Savory
@@ -15,7 +14,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealBurritoCheesy
-  name: cheesy burrito recipe
   result: FoodMealBurritoCheesy
   time: 15
   group: Savory
@@ -26,7 +24,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealBurritoCarneAsada
-  name: carne asada burrito recipe
   result: FoodMealBurritoCarneAsada
   time: 15
   group: Meat
@@ -37,7 +34,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealBurritoFuego
-  name: fuego plasma burrito recipe
   result: FoodMealBurritoFuego
   time: 15
   group: Savory

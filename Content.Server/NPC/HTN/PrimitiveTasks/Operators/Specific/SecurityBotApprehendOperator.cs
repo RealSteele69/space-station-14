@@ -21,9 +21,10 @@ public sealed partial class SecurityBotApprehendOperator : HTNOperator
     [DataField("targetKey", required: true)]
     public string TargetKey = string.Empty;
 
-    public override void Initialize(IEntitySystemManager sysManager)
+    public override void Initialize(IDependencyCollection deps)
     {
-        base.Initialize(sysManager);
+        var sysManager = deps.Resolve<IEntitySystemManager>();
+        base.Initialize(deps);
         _chat = sysManager.GetEntitySystem<ChatSystem>();
         _securityBot = sysManager.GetEntitySystem<SecurityBotSystem>();
         _cuffable = sysManager.GetEntitySystem<SharedCuffableSystem>();

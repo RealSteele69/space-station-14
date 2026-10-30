@@ -29,7 +29,7 @@ public sealed partial class VisualOrganMarkingsComponent : Component
     /// <summary>
     /// Layers that are eligible for hiding based on e.g. clothing
     /// </summary>
-    [DataField, AutoNetworkedField, AlwaysPushInheritance] // Claw Command - AlwaysPushInheritance added
+    [DataField, AutoNetworkedField, AlwaysPushInheritance]
     public HashSet<Enum> HideableLayers = new();
 
     /// <summary>
@@ -66,7 +66,7 @@ public sealed partial class VisualOrganMarkingsComponent : Component
 [Serializable, NetSerializable]
 public partial record struct OrganMarkingData
 {
-    [DataField(required: true)]
+    [DataField(required: true), AlwaysPushInheritance]
     public HashSet<HumanoidVisualLayers> Layers = default!;
 
     /// <summary>

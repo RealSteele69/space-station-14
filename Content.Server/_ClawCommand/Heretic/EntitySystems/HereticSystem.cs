@@ -66,6 +66,7 @@ using Content.Server.Hands.Systems;
 
 using Content.Shared._ClawCommand.HereticAdapters;
 using Content.Server._ClawCommand.HereticAdapters;
+using Content.Shared.Antag;
 namespace Content.Server.Heretic.EntitySystems;
 
 public sealed partial class HereticSystem : SharedHereticSystem

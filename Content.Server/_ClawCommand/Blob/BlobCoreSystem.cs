@@ -34,6 +34,7 @@ using Robust.Shared.Player;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Components;
 using Robust.Shared.Prototypes;
+using Content.Shared.GameTicking;
 
 namespace Content.Server._ClawCommand.Blob;
 
@@ -44,7 +45,7 @@ public sealed partial class BlobCoreSystem : EntitySystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private GameTicker _gameTicker = default!;
     [Dependency] private DamageableSystem _damageable = default!;
-    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private ServerStationSystem _stationSystem = default!;
     [Dependency] private AlertLevelSystem _alertLevelSystem = default!;
     [Dependency] private MetaDataSystem _metaDataSystem = default!;
     [Dependency] private ActionsSystem _action = default!;

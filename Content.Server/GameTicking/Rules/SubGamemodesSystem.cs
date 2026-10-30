@@ -1,18 +1,24 @@
 using Content.Server.GameTicking.Rules.Components;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Storage;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Content.Shared.GameTicking;
 
 namespace Content.Server.GameTicking.Rules;
 
+/// <summary>
+/// A handler for rules adding one or more additional rules when a first is added.
+/// </summary>
+/// <seealso cref="SubGamemodesComponent"/>
 public sealed partial class SubGamemodesSystem : GameRuleSystem<SubGamemodesComponent>
 {
     [Dependency] private ISharedPlayerManager _player = default!;
 
-    protected override void Added(EntityUid uid, SubGamemodesComponent comp, GameRuleComponent rule, GameRuleAddedEvent args)
+    protected override void Added(Entity<SubGamemodesComponent, GameRuleComponent> ent, ref GameRuleAddedEvent args)
     {
-        var picked = EntitySpawnCollection.GetSpawns(comp.Rules, RobustRandom);
+        var picked = EntitySpawnCollection.GetSpawns(ent.Comp1.Rules, RobustRandom);
         var players = GetPlayerCount();
 
         foreach (var id in picked)
@@ -27,11 +33,11 @@ public sealed partial class SubGamemodesSystem : GameRuleSystem<SubGamemodesComp
             // the rule itself got ended again. Check it here so the rule is never added at all.
             if (!HasEnoughPlayers(id, players))
             {
-                Log.Info($"Skipping subgamemode {id} of {ToPrettyString(uid):rule}: {players} players, needs more.");
+                Log.Info($"Skipping subgamemode {id} of {ToPrettyString(ent.Owner):rule}: {players} players, needs more.");
                 continue;
             }
 
-            Log.Info($"Starting gamerule {id} as a subgamemode of {ToPrettyString(uid):rule}");
+            Log.Info($"Starting gamerule {id} as a subgamemode of {ToPrettyString(ent.Owner):rule}");
             GameTicker.AddGameRule(id);
         }
     }

@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.Instruments;
 using Content.Server.Speech.Components;
 using Content.Shared.ActionBlocker;
@@ -58,7 +59,7 @@ public sealed partial class SingerSystem : SharedSingerSystem
             return;
 
         var swappableComp = EnsureComp<SwappableInstrumentComponent>(uid);
-        swappableComp.InstrumentList = singer.InstrumentList;
+        swappableComp.InstrumentList = singer.InstrumentList.ToDictionary(kv => (LocId) kv.Key, kv => kv.Value);
     }
 
     private void OnEquip(GotEquippedEvent args)

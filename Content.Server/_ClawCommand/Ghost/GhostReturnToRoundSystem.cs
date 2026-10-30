@@ -10,6 +10,7 @@ using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Timing;
+using Content.Shared.GameTicking;
 
 namespace Content.Server.Ghost;
 
@@ -20,7 +21,7 @@ public sealed partial class GhostReturnToRoundSystem : EntitySystem
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private IGameTiming _gameTiming = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
-    [Dependency] private GameTicker _ticker = default!;
+    [Dependency] private ServerGameTicker _ticker = default!;
 
     public override void Initialize()
     {

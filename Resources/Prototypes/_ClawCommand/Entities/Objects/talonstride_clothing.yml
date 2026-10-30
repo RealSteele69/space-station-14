@@ -10,7 +10,8 @@
   - type: Sprite
     sprite: DeltaV/Clothing/Neck/Cloaks/cjcloak.rsi
   - type: StealTarget
-    stealGroup: HeadCloak
+    stealGroup:
+    - HeadCloak
 
 # --- Nyanotrasen/Entities/Clothing/OuterClothing/wintercoats.yml ---
 - type: entity

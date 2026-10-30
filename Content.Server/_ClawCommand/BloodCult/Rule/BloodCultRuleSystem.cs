@@ -40,6 +40,9 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Shared.Antag;
+using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Rules;
 
 namespace Content.Server._ClawCommand.BloodCult.Rule;
 
@@ -57,7 +60,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedMoodSystem _mood = default!;
-    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private ServerNavMapSystem _navMap = default!;
     [Dependency] private NpcFactionSystem _faction = default!;
     [Dependency] private SharedRoleSystem _role = default!;
     [Dependency] private RoundEndSystem _roundEnd = default!;
@@ -89,12 +92,11 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
         PickRendingPlacements(component);
     }
 
-    protected override void AppendRoundEndText(EntityUid uid,
-        BloodCultRuleComponent component,
-        GameRuleComponent gameRule,
-        ref RoundEndTextAppendEvent args)
+    protected override void AppendRoundEndText(Entity<BloodCultRuleComponent> rule, ref RoundEndTextAppendEvent args)
     {
-        base.AppendRoundEndText(uid, component, gameRule, ref args);
+        var uid = rule.Owner;
+        var component = rule.Comp;
+        base.AppendRoundEndText(rule, ref args);
 
         args.AddLine(Loc.GetString($"blood-cult-condition-{component.WinCondition.ToString().ToLowerInvariant()}"));
         args.AddLine(Loc.GetString("blood-cult-summary-converted", ("count", component.TotalConverted)));
@@ -136,7 +138,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
     private void OnNarsieSummoned(BloodCultNarsieSummonedEvent ev)
     {
         var query = QueryActiveRules();
-        while (query.MoveNext(out _, out var rule, out _))
+        while (query.MoveNext(out var rule, out _, out _))
         {
             rule.WinCondition = BloodCultWinCondition.Win;
 
@@ -157,7 +159,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
     private void OnCultistRemoved(Entity<BloodCultistComponent> cultist, ref ComponentRemove args)
     {
         var query = QueryActiveRules();
-        while (query.MoveNext(out _, out var rule, out _))
+        while (query.MoveNext(out var rule, out _, out _))
         {
             rule.Cultists.Remove(cultist);
             if (rule.CultLeader == cultist.Owner)
@@ -179,7 +181,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
         _mood.RemoveMoodlet(cultist, CultFocusedMood);
 
         query = QueryActiveRules();
-        while (query.MoveNext(out _, out var rule, out _))
+        while (query.MoveNext(out var rule, out _, out _))
         {
             _faction.RemoveFaction(cultist.Owner, rule.BloodCultFaction);
             _faction.AddFaction(cultist.Owner, rule.NanoTrasenFaction);
@@ -223,7 +225,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
         args.Append(Loc.GetString("blood-cult-role-briefing-short"));
 
         var rules = QueryActiveRules();
-        while (rules.MoveNext(out _, out var rule, out _))
+        while (rules.MoveNext(out var rule, out _, out _))
         {
             if (rule.OfferingTarget is { } target && !TerminatingOrDeleted(target))
                 args.Append(Loc.GetString("blood-cult-role-briefing-target", ("name", Name(target))));
@@ -261,7 +263,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
             return false;
 
         var query = QueryActiveRules();
-        while (query.MoveNext(out var ruleUid, out _, out var rule, out _))
+        while (query.MoveNext(out var ruleUid, out var rule, out _, out _))
         {
             if (!MakeCultist(target, (ruleUid, rule), true))
                 return false;
@@ -282,7 +284,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
     public void RecordSacrifice()
     {
         var query = QueryActiveRules();
-        while (query.MoveNext(out _, out var rule, out _))
+        while (query.MoveNext(out var rule, out _, out _))
         {
             rule.TotalSacrificed++;
         }
@@ -303,7 +305,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
     {
         target = null;
         var query = QueryActiveRules();
-        while (query.MoveNext(out _, out var rule, out _))
+        while (query.MoveNext(out var rule, out _, out _))
         {
             if (rule.OfferingTarget is not { } offering)
                 continue;
@@ -334,7 +336,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
         }
 
         var query = QueryActiveRules();
-        while (query.MoveNext(out _, out var rule, out _))
+        while (query.MoveNext(out var rule, out _, out _))
         {
             return rule.Cultists.Count + constructs;
         }
@@ -348,7 +350,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
     public EntityUid? EnsureOfferingTarget()
     {
         var query = QueryActiveRules();
-        while (query.MoveNext(out _, out var rule, out _))
+        while (query.MoveNext(out var rule, out _, out _))
         {
             if (rule.OfferingTarget == null || TerminatingOrDeleted(rule.OfferingTarget.Value))
                 SetRandomCultTarget(rule);
@@ -365,7 +367,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
     public bool CanDrawRendingRune(EntityUid user)
     {
         var rules = QueryActiveRules();
-        while (rules.MoveNext(out _, out var rule, out _))
+        while (rules.MoveNext(out var rule, out _, out _))
         {
             if (rule is { EmergencyMarkersMode: true, EmergencyMarkersCount: > 0 })
                 return true;
@@ -388,7 +390,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
     public void ConsumeNearestMarker(EntityUid user)
     {
         var rules = QueryActiveRules();
-        while (rules.MoveNext(out _, out var rule, out _))
+        while (rules.MoveNext(out var rule, out _, out _))
         {
             if (rule is not { EmergencyMarkersMode: true, EmergencyMarkersCount: > 0 })
                 continue;
@@ -481,7 +483,7 @@ public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleCo
     private void CheckWinCondition()
     {
         var query = QueryActiveRules();
-        while (query.MoveNext(out _, out var rule, out _))
+        while (query.MoveNext(out var rule, out _, out _))
         {
             if (rule.WinCondition == BloodCultWinCondition.Win)
                 continue;

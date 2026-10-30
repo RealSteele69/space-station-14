@@ -5,6 +5,7 @@ using Content.Server.Mind;
 using Content.Server.Roles;
 using Content.Shared._ClawCommand.AdvancedXenos;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Antag;
 
 namespace Content.Server._ClawCommand.AdvancedXenos.Rules;
 

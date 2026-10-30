@@ -42,6 +42,18 @@
         },
         {
             "name": "weeds_side_w"
+        },
+        {
+            "name": "edge_advxenoweeds_south"
+        },
+        {
+            "name": "edge_advxenoweeds_east"
+        },
+        {
+            "name": "edge_advxenoweeds_north"
+        },
+        {
+            "name": "edge_advxenoweeds_west"
         }
     ]
 }

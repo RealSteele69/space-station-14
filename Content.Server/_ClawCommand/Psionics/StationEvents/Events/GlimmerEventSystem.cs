@@ -9,9 +9,11 @@ namespace Content.Server.StationEvents.Events
     {
         [Dependency] private GlimmerSystem _glimmerSystem = default!;
 
-        protected override void Ended(EntityUid uid, GlimmerEventComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
+        protected override void Ended(Entity<GlimmerEventComponent> rule, ref GameRuleEndedEvent args)
         {
-            base.Ended(uid, component, gameRule, args);
+            var uid = rule.Owner;
+            var component = rule.Comp;
+            base.Ended(rule, ref args);
 
             var glimmerBurned = RobustRandom.Next(component.GlimmerBurnLower, component.GlimmerBurnUpper);
             _glimmerSystem.Glimmer -= glimmerBurned;

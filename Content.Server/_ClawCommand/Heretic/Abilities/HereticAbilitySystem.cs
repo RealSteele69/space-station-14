@@ -112,7 +112,7 @@ public sealed partial class HereticAbilitySystem : SharedHereticAbilitySystem
     [Dependency] private SharedStunSystem _stun = default!;
     [Dependency] private ThrowingSystem _throw = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ServerStationSystem _station = default!;
     [Dependency] private SharedMapSystem _mapMan = default!;
     [Dependency] private ITileDefinitionManager _tileDefinitionManager = default!;
     [Dependency] private IComponentFactory _compFactory = default!;

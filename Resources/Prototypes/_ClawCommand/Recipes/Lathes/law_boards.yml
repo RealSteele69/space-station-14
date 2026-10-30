@@ -75,8 +75,8 @@
 
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseCircuitryRecipeCategory ]
-  id: AsimovCircuitBoard
-  result: AsimovCircuitBoard
+  id: CrewsimovCircuitBoard
+  result: CrewsimovCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseCircuitryRecipeCategory ]

@@ -41,6 +41,7 @@ using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
 using Content.Shared.Timing;
+using Content.Shared.Timing.Systems;
 using Content.Shared.Trigger;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Whitelist;
@@ -51,6 +52,7 @@ using Robust.Shared.Prototypes;
 
 using Content.Shared.Magic.Events;
 using Content.Shared._ClawCommand.HereticAdapters;
+using Content.Shared.Timing.Components;
 namespace Content.Server.Heretic.EntitySystems;
 
 public sealed partial class MansusGraspSystem : SharedMansusGraspSystem

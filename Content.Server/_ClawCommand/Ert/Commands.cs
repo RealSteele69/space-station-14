@@ -22,6 +22,8 @@ using Content.Shared.Preferences;
 using Content.Server.Preferences.Managers;
 using Content.Server.Mind;
 using Content.Server.Station.Systems;
+using Content.Shared.Spawners.Components;
+using Content.Shared.Station.Systems;
 namespace Content.Server._ClawCommand.Ert;
 
 internal sealed partial class ErtSystem : EntitySystem

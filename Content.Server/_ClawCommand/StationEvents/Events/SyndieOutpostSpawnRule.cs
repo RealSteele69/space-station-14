@@ -23,7 +23,7 @@ public sealed partial class SyndieOutpostSpawnRule : StationEventSystem<SyndieOu
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private TransformSystem _xform = default!;
-    [Dependency] private StationSystem _stations = default!;
+    [Dependency] private ServerStationSystem _stations = default!;
     [Dependency] private MapSystem _mapSystem = default!;
 
     protected override void Started(EntityUid uid, SyndieOutpostSpawnRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
@@ -94,9 +94,11 @@ public sealed partial class SyndieOutpostSpawnRule : StationEventSystem<SyndieOu
         }
     }
 
-    protected override void Ended(EntityUid uid, SyndieOutpostSpawnRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
+    protected override void Ended(Entity<SyndieOutpostSpawnRuleComponent> rule, ref GameRuleEndedEvent args)
     {
-        base.Ended(uid, component, gameRule, args);
+        var uid = rule.Owner;
+        var component = rule.Comp;
+        base.Ended(rule, ref args);
 
         if (component.AdditionalRule != null)
             GameTicker.EndGameRule(component.AdditionalRule.Value);

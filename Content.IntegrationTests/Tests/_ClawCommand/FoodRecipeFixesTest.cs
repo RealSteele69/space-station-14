@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Content.IntegrationTests.Fixtures;
-using Content.Server.Kitchen.Components;
-using Content.Server.Kitchen.EntitySystems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Kitchen;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
+using Content.Shared.Kitchen.Components;
+using Content.Shared.Kitchen.EntitySystems;
 
 namespace Content.IntegrationTests.Tests._ClawCommand;
 
@@ -49,55 +49,48 @@ public sealed class FoodRecipeFixesTest : GameTest
     {
         var pair = Pair;
         var server = pair.Server;
-        var recipeManager = server.System<RecipeManager>();
+        var entMan = server.ResolveDependency<IEntityManager>();
+        var testMap = await pair.CreateTestMap();
+        var recipeSystem = entMan.System<RecipeSystem>();
+        var microwaveSystem = entMan.System<MicrowaveSystem>();
 
         await server.WaitAssertion(() =>
         {
-            // What is actually in the microwave: the carrot (which brings its own juice/vitamin/oculine
-            // along) and the salt shaker holding 15u of table salt.
-            var solids = new Dictionary<string, int>
-            {
-                ["FoodCarrot"] = 1,
-                ["FoodShakerSalt"] = 1,
-            };
-            var reagents = new Dictionary<string, FixedPoint2>
-            {
-                ["JuiceCarrot"] = 5,
-                ["Vitamin"] = 7,
-                ["Oculine"] = 3,
-                ["TableSalt"] = 15,
-            };
+            // What is actually in the microwave: a carrot and a salt shaker.
+            var carrot = entMan.SpawnEntity("FoodCarrot", testMap.GridCoords);
+            var shaker = entMan.SpawnEntity("FoodShakerSalt", testMap.GridCoords);
+            var ingredients = microwaveSystem.GetTotalIngredients(new List<EntityUid> { carrot, shaker });
 
-            var friesCookTime = recipeManager.Recipes.First(r => r.ID == "RecipeCarrotFries").CookTime;
+            var friesCookTime = recipeSystem.Recipes.First(r => r.ID == "RecipeCarrotFries").Time;
 
             Assert.Multiple(() =>
             {
                 foreach (var timer in TimerButtons)
                 {
-                    var microwave = new MicrowaveComponent { CurrentCookTimerTime = timer };
-
-                    // Mirrors MicrowaveSystem.Wzhzhzh: first satisfied recipe wins, and RecipeManager has
-                    // already sorted them by ingredient count descending.
-                    var picked = recipeManager.Recipes
-                        .Select(r => MicrowaveSystem.CanSatisfyRecipe(microwave, r, solids, reagents))
-                        .FirstOrDefault(r => r.Item2 > 0);
+                    // Mirrors MicrowaveSystem.GetRecipe: the first recipe with at least one portion wins,
+                    // and RecipeSystem has already sorted them.
+                    var picked = recipeSystem.Recipes
+                        .FirstOrDefault(r => MicrowaveSystem.GetRecipePortions(r, ingredients, timer) > 0);
 
                     if (timer % friesCookTime == 0)
                     {
-                        Assert.That(picked.Item1, Is.Not.Null, $"Nothing cooked on the {timer}s button.");
-                        Assert.That(picked.Item1.ID,
+                        Assert.That(picked, Is.Not.Null, $"Nothing cooked on the {timer}s button.");
+                        Assert.That(picked!.ID,
                             Is.EqualTo("RecipeCarrotFries"),
-                            $"A carrot and a salt shaker cooked {picked.Item1.ID} instead of carrot fries on the {timer}s button.");
+                            $"A carrot and a salt shaker cooked {picked.ID} instead of carrot fries on the {timer}s button.");
                     }
                     else
                     {
                         // Not a bug to fix in this recipe - it is how every recipe in the game behaves.
-                        Assert.That(picked.Item1,
+                        Assert.That(picked,
                             Is.Null,
-                            $"The {timer}s button is not a multiple of the {friesCookTime}s cook time, so nothing should cook, but {picked.Item1?.ID} did.");
+                            $"The {timer}s button is not a multiple of the {friesCookTime}s cook time, so nothing should cook, but {picked?.ID} did.");
                     }
                 }
             });
+
+            entMan.DeleteEntity(carrot);
+            entMan.DeleteEntity(shaker);
         });
     }
 

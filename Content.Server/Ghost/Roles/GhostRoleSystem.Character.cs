@@ -13,6 +13,7 @@ using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Preferences;
 using Robust.Shared.Player;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server.Ghost.Roles
 {

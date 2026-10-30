@@ -48,7 +48,7 @@
 
 # ----------------------------------------------------------------------------- infected hosts, as the hive sees them
 
-- type: factionIcon
+- type: statusIcon
   abstract: true
   id: AdvXenoInfectedBase
   priority: 12
@@ -58,42 +58,42 @@
     - AdvXenoHive
     - ShowAntagIcons
 
-- type: factionIcon
+- type: statusIcon
   parent: AdvXenoInfectedBase
   id: AdvXenoInfected0
   icon:
     sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/infected.rsi
     state: infected0
 
-- type: factionIcon
+- type: statusIcon
   parent: AdvXenoInfectedBase
   id: AdvXenoInfected1
   icon:
     sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/infected.rsi
     state: infected1
 
-- type: factionIcon
+- type: statusIcon
   parent: AdvXenoInfectedBase
   id: AdvXenoInfected2
   icon:
     sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/infected.rsi
     state: infected2
 
-- type: factionIcon
+- type: statusIcon
   parent: AdvXenoInfectedBase
   id: AdvXenoInfected3
   icon:
     sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/infected.rsi
     state: infected3
 
-- type: factionIcon
+- type: statusIcon
   parent: AdvXenoInfectedBase
   id: AdvXenoInfected4
   icon:
     sprite: /Textures/_ClawCommand/Interface/AdvancedXenos/infected.rsi
     state: infected4
 
-- type: factionIcon
+- type: statusIcon
   parent: AdvXenoInfectedBase
   id: AdvXenoInfected5
   icon:

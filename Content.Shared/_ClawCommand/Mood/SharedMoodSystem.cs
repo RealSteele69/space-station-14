@@ -1,4 +1,5 @@
 using Content.Shared.CCVar;
+using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
@@ -16,7 +17,6 @@ namespace Content.Shared._ClawCommand.Mood;
 public sealed partial class SharedMoodSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _config = default!;
-    [Dependency] private SharedJetpackSystem _jetpack = default!;
 
     /// <summary>
     ///     Prefix for the short, out-of-character name of a moodlet. Used by guidebook text.
@@ -72,7 +72,7 @@ public sealed partial class SharedMoodSystem : EntitySystem
 
         if (!_config.GetCVar(CCVars.MoodEnabled)
             || comp.CurrentMoodThreshold is > MoodThreshold.Meh and < MoodThreshold.Good or MoodThreshold.Dead
-            || _jetpack.IsUserFlying(ent))
+            || HasComp<JetpackUserComponent>(ent))
             return;
 
         // This ridiculous math serves a purpose: making high mood less impactful on movement speed than low mood.

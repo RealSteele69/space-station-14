@@ -3,7 +3,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSoupWish
-  name: wish soup recipe
   result: FoodSoupWish
   time: 10
   group: Soup
@@ -14,7 +13,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSoupBearChili
-  name: bear chili recipe
   result: FoodSoupBearChili
   time: 10
   group: Soup
@@ -26,7 +24,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSoupJambalaya
-  name: facehugger jambalaya recipe
   result: FoodSoupJambalaya
   time: 15
   group: Soup

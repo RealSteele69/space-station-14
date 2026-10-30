@@ -5,6 +5,7 @@ using Content.Server.GameTicking;
 using Content.Shared._ClawCommand.AdvancedXenos;
 using Content.Server.Ghost.Roles.Components;
 using Robust.Shared.GameObjects;
+using Content.Shared.GameTicking;
 
 namespace Content.IntegrationTests.Tests._ClawCommand;
 
@@ -28,7 +29,11 @@ public sealed class AdvXenoRulesTest : GameTest
         var ticker = entMan.System<GameTicker>();
 
         EntityUid rule = default;
-        await server.WaitAssertion(() => Assert.That(ticker.StartGameRule(Infestation, out rule), Is.True));
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(ticker.StartGameRule(Infestation, out var ruleEnt), Is.True);
+            rule = ruleEnt!.Value.Owner;
+        });
 
         // station events wait 10-20 seconds before they actually start
         await pair.RunSeconds(21);

@@ -41,6 +41,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Radio.Components;
+using Content.Shared.Antag;
 
 namespace Content.Server._ClawCommand.CosmicCult;
 
@@ -59,7 +60,7 @@ public sealed partial class CosmicCultSystem
     [Dependency] private MapLoaderSystem _mapLoader = default!;
     [Dependency] private MonumentSystem _monument = default!;
     [Dependency] private MovementSpeedModifierSystem _movementSpeed = default!;
-    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private ServerNavMapSystem _navMap = default!;
     [Dependency] private PopupSystem _popup = default!;
     [Dependency] private ServerGlobalSoundSystem _sound = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
@@ -67,7 +68,7 @@ public sealed partial class CosmicCultSystem
     [Dependency] private SharedEyeSystem _eye = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ServerStationSystem _station = default!;
     [Dependency] private StatusEffectsSystem _statusEffects = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private AmbientSoundSystem _ambient = default!;

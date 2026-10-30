@@ -9,6 +9,7 @@ using Content.Shared.Heretic;
 using Content.Shared.Heretic.Messages;
 using Content.Shared.Interaction;
 using Robust.Server.GameObjects;
+using Content.Shared.Antag;
 
 namespace Content.Server._Shitcode.Heretic.Ui;
 

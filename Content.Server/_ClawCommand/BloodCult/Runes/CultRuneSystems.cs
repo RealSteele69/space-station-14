@@ -41,6 +41,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Shared.GameTicking;
 
 namespace Content.Server._ClawCommand.BloodCult.Runes;
 
@@ -69,7 +70,7 @@ public sealed partial class CultRuneSystems : EntitySystem
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private MobThresholdSystem _thresholds = default!;
-    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private ServerNavMapSystem _navMap = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private StatusEffectsSystem _statusEffects = default!;
     [Dependency] private SharedStunSystem _stun = default!;

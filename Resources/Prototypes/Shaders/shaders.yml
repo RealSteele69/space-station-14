@@ -146,3 +146,8 @@
   id: SaturationScale
   kind: source
   path: "/Textures/Shaders/saturationscale.swsl"
+
+- type: shader
+  id: VacuumDesaturation
+  kind: source
+  path: "/Textures/Shaders/vacuum_desaturation.swsl"

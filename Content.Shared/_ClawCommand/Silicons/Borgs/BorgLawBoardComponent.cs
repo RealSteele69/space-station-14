@@ -39,7 +39,7 @@ public sealed partial class BorgLawBoardComponent : Component
     /// inert, until someone fits a board by hand.
     /// </summary>
     [DataField]
-    public EntProtoId? DefaultBoard = "AsimovCircuitBoard";
+    public EntProtoId? DefaultBoard = "CrewsimovCircuitBoard";
 
     /// <summary>
     /// How long installing a law board takes.

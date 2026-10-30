@@ -25,7 +25,7 @@ public sealed partial class CosmicMonumentSystem : EntitySystem
     [Dependency] private PopupSystem _popup = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ServerStationSystem _station = default!;
     [Dependency] private TurfSystem _turf = default!;
 
     private static readonly EntProtoId MonumentCollider = "MonumentCollider";

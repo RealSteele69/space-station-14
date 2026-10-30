@@ -19,7 +19,7 @@ public abstract partial class SharedZombieBlobSystem : EntitySystem
         SubscribeLocalEvent<BoundUserInterfaceMessageAttempt>(OnBoundUserInterface, after: [typeof(SharedInteractionSystem)]);
     }
 
-    private void OnBoundUserInterface(BoundUserInterfaceMessageAttempt args)
+    private void OnBoundUserInterface(ref BoundUserInterfaceMessageAttempt args)
     {
         if(
             args.Cancelled ||

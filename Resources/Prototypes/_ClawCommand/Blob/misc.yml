@@ -69,7 +69,7 @@
   displayName: store-currency-display-blob-points
   canWithdraw: false
 
-- type: factionIcon
+- type: statusIcon
   id: BlobFaction
   priority: 10
   showTo:
@@ -227,7 +227,7 @@
     sprite: Markers/jobs.rsi
     layers:
     - state: green
-    - sprite: Mobs/Animals/mouse.rsi
+    - sprite: Mobs/Animals/Rodents/mouse.rsi
       state: icon-0
 
 # ----------------------------------------------------------------------------- roles and objective

@@ -12,9 +12,10 @@ public sealed partial class DrainOperator : HTNOperator
     [DataField(required: true)]
     public string DrainKey = string.Empty;
 
-    public override void Initialize(IEntitySystemManager sysManager)
+    public override void Initialize(IDependencyCollection deps)
     {
-        base.Initialize(sysManager);
+        var sysManager = deps.Resolve<IEntitySystemManager>();
+        base.Initialize(deps);
 
         _drainer = sysManager.GetEntitySystem<LifeDrainerSystem>();
         _drainerQuery = _entMan.GetEntityQuery<LifeDrainerComponent>();

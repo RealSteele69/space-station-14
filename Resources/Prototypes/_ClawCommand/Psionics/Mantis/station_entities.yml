@@ -79,7 +79,8 @@
     - ForensicBeltEquip
     - HighRiskItem
   - type: StealTarget
-    stealGroup: AntiPsychicKnife
+    stealGroup:
+    - AntiPsychicKnife
 
 - type: stealTargetGroup
   id: AntiPsychicKnife

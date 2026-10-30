@@ -30,9 +30,10 @@ public sealed partial class PickDrainTargetOperator : HTNOperator
     [DataField]
     public string PathfindKey = NPCBlackboard.PathfindKey;
 
-    public override void Initialize(IEntitySystemManager sysMan)
+    public override void Initialize(IDependencyCollection deps)
     {
-        base.Initialize(sysMan);
+        var sysMan = deps.Resolve<IEntitySystemManager>();
+        base.Initialize(deps);
 
         _drainer = sysMan.GetEntitySystem<LifeDrainerSystem>();
         _faction = sysMan.GetEntitySystem<NpcFactionSystem>();

@@ -18,4 +18,5 @@
     tags:
     - CannotSuicide
   - type: StealTarget
-    stealGroup: AnimalNamedCat
+    stealGroup:
+    - AnimalNamedCat

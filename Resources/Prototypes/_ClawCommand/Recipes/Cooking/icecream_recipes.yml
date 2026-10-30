@@ -8,7 +8,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamBloodDrop
-  name: blood drop ice cream recipe
   result: IceCreamBloodDrop
   time: 5
   group: Dessert
@@ -21,7 +20,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamCaramel
-  name: caramel ice cream recipe
   result: IceCreamCaramel
   time: 5
   group: Dessert
@@ -35,7 +33,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamCoffee
-  name: coffee ice cream recipe
   result: IceCreamCoffee
   time: 5
   group: Dessert
@@ -47,7 +44,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamGreenTea
-  name: green tea ice cream recipe
   result: IceCreamGreenTea
   time: 5
   group: Dessert
@@ -59,7 +55,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamLemon
-  name: lemon ice cream recipe
   result: IceCreamLemon
   time: 5
   group: Dessert
@@ -71,7 +66,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamOrange
-  name: orange ice cream recipe
   result: IceCreamOrange
   time: 5
   group: Dessert
@@ -83,7 +77,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamRainbow
-  name: rainbow ice cream recipe
   result: IceCreamRainbow
   time: 5
   group: Dessert
@@ -97,7 +90,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamSaltedCaramel
-  name: salted caramel ice cream recipe
   result: IceCreamSaltedCaramel
   time: 5
   group: Dessert
@@ -110,7 +102,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamSpaghetti
-  name: spaghetti ice cream recipe
   result: IceCreamSpaghetti
   time: 5
   group: Dessert
@@ -123,7 +114,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamStrawberry
-  name: strawberry ice cream recipe
   result: IceCreamStrawberry
   time: 5
   group: Dessert
@@ -136,7 +126,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamBananaSplit
-  name: banana split ice cream recipe
   result: IceCreamBananaSplit
   time: 5
   group: Dessert
@@ -151,7 +140,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamChoco
-  name: chocolate ice cream recipe
   result: IceCreamChoco
   time: 5
   group: Dessert
@@ -164,7 +152,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamCoconut
-  name: coconut ice cream recipe
   result: IceCreamCoconut
   time: 5
   group: Dessert
@@ -176,7 +163,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamCosmos
-  name: cosmos ice cream recipe
   result: IceCreamCosmos
   time: 5
   group: Dessert
@@ -189,7 +175,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamGilded
-  name: gilded ice cream recipe
   result: IceCreamGilded
   time: 5
   group: Dessert
@@ -201,7 +186,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamLoversDelight
-  name: lover's delight ice cream recipe
   result: IceCreamLoversDelight
   time: 5
   group: Dessert
@@ -213,7 +197,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamMintChoco
-  name: mint chocolate ice cream recipe
   result: IceCreamMintChoco
   time: 5
   group: Dessert
@@ -226,7 +209,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamSolar
-  name: solar ice cream recipe
   result: IceCreamSolar
   time: 5
   group: Dessert
@@ -239,7 +221,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamNebula
-  name: nebula ice cream recipe
   result: IceCreamNebula
   time: 5
   group: Dessert
@@ -252,7 +233,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamNeapolitan
-  name: neapolitan ice cream recipe
   result: IceCreamNeapolitan
   time: 5
   group: Dessert
@@ -265,7 +245,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamWatermelon
-  name: watermelon ice cream recipe
   result: IceCreamWatermelon
   time: 5
   group: Dessert
@@ -277,7 +256,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamVanilla
-  name: vanilla ice cream recipe
   result: IceCreamVanilla
   time: 5
   group: Dessert
@@ -291,7 +269,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamVoid
-  name: void ice cream recipe
   result: IceCreamVoid
   time: 5
   group: Dessert
@@ -303,7 +280,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamHazelnut
-  name: hazelnut ice cream recipe
   result: IceCreamHazelnut
   time: 5
   group: Dessert
@@ -316,7 +292,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamWalnut
-  name: walnut ice cream recipe
   result: IceCreamWalnut
   time: 5
   group: Dessert
@@ -329,7 +304,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamStarlight
-  name: starlight ice cream recipe
   result: IceCreamStarlight
   time: 5
   group: Dessert
@@ -342,7 +316,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeIceCreamRockyRoad
-  name: rocky road ice cream recipe
   result: IceCreamRockyRoad
   time: 5
   group: Dessert

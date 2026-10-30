@@ -2,7 +2,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeBreadTumor
-  name: dead tumor bread recipe
   result: FoodBreadTumor
   time: 15
   group: Breads

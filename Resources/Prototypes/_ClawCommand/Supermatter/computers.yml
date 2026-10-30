@@ -21,6 +21,12 @@
       state: supermatter_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+  - type: ComputerVisuals # Claw Command - this console drives its own string-keyed layers below
+    stateFrame: null
+    stateKeyboard: null
+    stateScreen: null
+    stateKeys: null
+    statePanel: null
   - type: PointLight
     radius: 1.5
     energy: 1.6

@@ -33,15 +33,10 @@
   name: mood lighting box
   parent: BoxLighttube
   id: BoxLighttubeMood
-  description: This box is shaped on the inside so that only light tubes and bulbs fit. Contains a selection of colored tubes for setting the mood.
+  description: A cardboard package containing a selection of colored tubes for setting the mood.
   components:
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ColoredLightTubeRed
-          amount: 4
-        - id: ColoredLightTubeFrostyBlue
-          amount: 4
-        - id: ColoredLightTubeBlackLight
-          amount: 4
+  - type: EntityProvider
+    entityCounter:
+      ColoredLightTubeRed: 4
+      ColoredLightTubeFrostyBlue: 4
+      ColoredLightTubeBlackLight: 4

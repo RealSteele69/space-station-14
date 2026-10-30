@@ -43,7 +43,7 @@ public sealed partial class LavalandTriggerSystem : EntitySystem
             {
                 foreach (var spawn in spawns)
                 {
-                    EntityManager.PredictedSpawn(spawn, mapCoords);
+                    PredictedSpawn(spawn, mapCoords);
                 }
             }
             else if (_net.IsServer)

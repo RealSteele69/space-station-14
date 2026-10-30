@@ -1117,6 +1117,14 @@
   - CCWShoulderBeaconWhite
   - CCWShoulderBeaconYellow
 
+- type: loadoutGroup
+  id: ChaplainShoes
+  name: loadout-group-chaplain-shoes
+  loadouts:
+  - BlackShoes
+  - BlackSandals
+  - BrownSandals
+
 #- type: loadoutGroup
 #  id: ChaplainJobTrinkets
 #  name: loadout-group-jobtrinkets
@@ -1754,6 +1762,7 @@
   - CCWVlPCUniformTwo
   - CCWWitcherKombvOne
   - CCWWitcherKombvTwo
+  - QuartermasterFormalDress
 
 - type: loadoutGroup
   id: QuartermasterNeck
@@ -3617,6 +3626,7 @@
   maxLimit: 1
   loadouts:
   - TramDriverJumpsuit
+  - TramDriverJumpskirt
 
 - type: loadoutGroup
   id: TramDriverOuterClothing

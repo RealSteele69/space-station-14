@@ -69610,7 +69610,6 @@ entities:
       parent: 2
     - type: FaxMachine
       name: Medical
-      destinationAddress: Medical
   - uid: 5369
     components:
     - type: Transform
@@ -69625,7 +69624,6 @@ entities:
       parent: 2
     - type: FaxMachine
       name: Epistemics
-      destinationAddress: Science
   - uid: 5374
     components:
     - type: Transform
@@ -69633,7 +69631,6 @@ entities:
       parent: 2
     - type: FaxMachine
       name: Bridge
-      destinationAddress: bridge
   - uid: 5842
     components:
     - type: Transform
@@ -115212,8 +115209,6 @@ entities:
       pos: 24.421595,36.948696
       parent: 2
     - type: NetworkConfigurator
-      devices:
-        'UID: 68530': 10370
       linkModeActive: False
     - type: Physics
       angularDamping: 0

@@ -8,7 +8,7 @@ namespace Content.Server.ClawCommand.Cabinet.Components;
 /// <summary>
 /// Denotes a station has no captain and holds data for automatic ACO systems
 /// </summary>
-[RegisterComponent, Access(typeof(CaptainStateSystem), typeof(StationSystem))]
+[RegisterComponent, Access(typeof(CaptainStateSystem), typeof(ServerStationSystem))]
 public sealed partial class CaptainStateComponent : Component
 {
     /// <summary>

@@ -20,8 +20,10 @@ public sealed partial class GravityFailureRule : StationEventSystem<GravityFailu
     {
         base.Started(uid, component, gameRule, args);
 
-        if (!TryGetRandomStation(out var station) || !TryComp<StationDataComponent>(station, out var data))
+        if (!Station.TryGetRandomStation(out var station))
             return;
+
+        var data = station.Value.Comp;
 
         foreach (var grid in data.Grids)
         {
@@ -34,9 +36,11 @@ public sealed partial class GravityFailureRule : StationEventSystem<GravityFailu
         }
     }
 
-    protected override void Ended(EntityUid uid, GravityFailureRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
+    protected override void Ended(Entity<GravityFailureRuleComponent> rule, ref GameRuleEndedEvent args)
     {
-        base.Ended(uid, component, gameRule, args);
+        var uid = rule.Owner;
+        var component = rule.Comp;
+        base.Ended(rule, ref args);
 
         foreach (var grid in component.AffectedGrids)
         {

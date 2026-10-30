@@ -52,7 +52,7 @@ public sealed partial class TrickOrTreatCelebrate : IHolidayCelebrate
         var random = IoCManager.Resolve<IRobustRandom>();
         var proto = IoCManager.Resolve<IPrototypeManager>();
         var mobState = entMan.System<MobStateSystem>();
-        var stationSystem = entMan.System<StationSystem>();
+        var stationSystem = entMan.System<ServerStationSystem>();
         var chat = entMan.System<Content.Server.Chat.Systems.ChatSystem>();
 
         var players = entMan.EntityQueryEnumerator<ActorComponent, MobStateComponent, TransformComponent>();

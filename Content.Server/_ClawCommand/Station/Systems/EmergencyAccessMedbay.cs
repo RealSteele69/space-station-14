@@ -11,6 +11,7 @@ using Content.Server.Doors.Systems;
 using Content.Shared.Doors.Components;
 using Content.Shared.Access.Systems;
 using Content.Server.ClawCommand.Cabinet.Events;
+using Content.Shared.GameTicking;
 
 namespace Content.Server._ClawCommand.Station.Systems;
 

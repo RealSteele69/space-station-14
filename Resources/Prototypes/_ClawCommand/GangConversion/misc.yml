@@ -33,7 +33,7 @@
   color: "#6a1b9a"
   longRange: true
 
-- type: factionIcon
+- type: statusIcon
   id: GangMember
   isShaded: false
   priority: 11

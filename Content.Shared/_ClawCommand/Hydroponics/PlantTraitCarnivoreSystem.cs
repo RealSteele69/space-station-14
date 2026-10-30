@@ -17,22 +17,22 @@ public sealed partial class PlantTraitCarnivoreSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnPlantGrow(Entity<PlantTraitCarnivoreComponent> ent, ref PlantGrowEvent args)
     {
-        var trayUid = GetEntity(args.Tray);
+        var trayUid = args.Tray;
         if (!_trayQuery.TryComp(trayUid, out var tray))
             return;
 
-        var trayEnt = (trayUid, tray);
         var fed = FixedPoint2.Zero;
 
         if (_solutionContainer.ResolveSolution(trayUid, tray.SoilSolutionName, ref tray.SoilSolution, out var solution)
-            && solution.Volume > 0)
+            && solution.Volume > 0
+            && tray.SoilSolution is { } soil)
         {
-            fed = _solutionContainer.RemoveReagent(tray.SoilSolution.Value, ent.Comp.FeedReagent, FixedPoint2.New(ent.Comp.FeedAmount));
+            fed = _solutionContainer.RemoveReagent(soil, ent.Comp.FeedReagent, FixedPoint2.New(ent.Comp.FeedAmount));
         }
 
         if (fed > FixedPoint2.Zero)
-            _plantTray.AdjustNutrient(trayEnt, fed.Float() * ent.Comp.NutrientPerFeedUnit);
+            _plantTray.AdjustNutrient((trayUid, tray), fed.Float() * ent.Comp.NutrientPerFeedUnit);
         else
-            _plantTray.AdjustNutrient(trayEnt, -ent.Comp.StarveAmount);
+            _plantTray.AdjustNutrient((trayUid, tray), -ent.Comp.StarveAmount);
     }
 }

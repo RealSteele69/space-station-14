@@ -29,7 +29,10 @@
         acts: ["Destruction"]
   - type: IconSmooth
     key: wallswood
-    base: wood
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ wallswood ]
+      base: wood
 
 - type: entity
   parent: N14WallWoodWhite
@@ -52,4 +55,7 @@
     sprite: _ClawCommand/Structures/Walls/woodlognew.rsi
   - type: IconSmooth
     key: log
-    base: log
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ log ]
+      base: log

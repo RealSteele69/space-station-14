@@ -12,7 +12,7 @@ namespace Content.Shared._ClawCommand.BloodCult.Components;
 public sealed partial class BloodCultistComponent : Component
 {
     [DataField]
-    public ProtoId<FactionIconPrototype> StatusIcon = "BloodCultMember";
+    public ProtoId<StatusIconPrototype> StatusIcon = "BloodCultMember";
 
     /// <summary>
     /// How long holy water takes to purge the cult out of someone.
@@ -40,7 +40,7 @@ public sealed partial class BloodCultistComponent : Component
 public sealed partial class BloodCultLeaderComponent : Component
 {
     [DataField]
-    public ProtoId<FactionIconPrototype> StatusIcon = "BloodCultLeader";
+    public ProtoId<StatusIconPrototype> StatusIcon = "BloodCultLeader";
 }
 
 /// <summary>

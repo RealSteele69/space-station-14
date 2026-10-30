@@ -26,8 +26,10 @@ public sealed partial class AdvXenoInfestationRuleSystem : StationEventSystem<Ad
     {
         base.Started(uid, component, gameRule, args);
 
-        if (!TryGetRandomStation(out var station))
+        if (!Station.TryGetRandomStation(out var stationEnt))
             return;
+
+        EntityUid? station = stationEnt.Value.Owner;
 
         var vents = new List<(EntityUid Vent, TransformComponent Xform)>();
         var query = EntityQueryEnumerator<GasVentPumpComponent, TransformComponent>();
@@ -62,9 +64,11 @@ public sealed partial class AdvXenoInfestationRuleSystem : StationEventSystem<Ad
             colorOverride: Color.Gold);
     }
 
-    protected override void Ended(EntityUid uid, AdvXenoInfestationRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
+    protected override void Ended(Entity<AdvXenoInfestationRuleComponent> rule, ref GameRuleEndedEvent args)
     {
-        base.Ended(uid, component, gameRule, args);
+        var uid = rule.Owner;
+        var component = rule.Comp;
+        base.Ended(rule, ref args);
 
         if (component.Vents.Count == 0)
         {

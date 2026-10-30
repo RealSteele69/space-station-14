@@ -47,7 +47,7 @@ public sealed partial class CarvingKnifeSystem : EntitySystem
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private GravitySystem _gravity = default!;
     [Dependency] private TagSystem _tag = default!;
-    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private ServerNavMapSystem _navMap = default!;
     [Dependency] private SharedStaminaSystem _stamina = default!;
     [Dependency] private Shared.StatusEffectNew.StatusEffectsSystem _statusNew = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;

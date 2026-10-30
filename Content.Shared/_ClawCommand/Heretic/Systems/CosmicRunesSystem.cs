@@ -9,6 +9,7 @@ using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Timing;
+using Content.Shared.Timing.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
@@ -20,6 +21,7 @@ using Content.Shared.Teleportation;
 using Content.Goobstation.Common.Grab;
 using Content.Goobstation.Shared.Bible;
 using Content.Goobstation.Shared.Religion;
+using Content.Shared.Timing.Components;
 namespace Content.Shared._Shitcode.Heretic.Systems;
 
 public sealed partial class CosmicRunesSystem : EntitySystem
@@ -68,7 +70,7 @@ public sealed partial class CosmicRunesSystem : EntitySystem
             _useDelay.IsDelayed((args.Used, useDelay)))
             return;
 
-        _useDelay.TryResetDelay(args.Used, false, useDelay);
+        _useDelay.TryResetDelay((args.Used, useDelay));
         _audio.PlayPredicted(new SoundPathSpecifier("/Audio/Effects/holy.ogg"), Transform(ent).Coordinates, args.User);
         EnsureComp<FadingTimedDespawnComponent>(ent).Lifetime = 0f;
         args.Handled = true;

@@ -71,6 +71,10 @@ using Content.Shared.Light.Components;
 using Content.Shared.Roles.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Components;
+using Content.Shared.Antag;
+using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Rules;
+using Content.Shared.RoundEnd;
 
 namespace Content.Server._ClawCommand.CosmicCult;
 
@@ -112,7 +116,7 @@ public sealed partial class CosmicCultRuleSystem : GameRuleSystem<CosmicCultRule
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
     [Dependency] private VisibilitySystem _visibility = default!;
     [Dependency] private IPlayerManager _player = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ServerStationSystem _station = default!;
     [Dependency] private CuffableSystem _cuffable = default!;
 
     private ISawmill _sawmill = default!;
@@ -391,7 +395,7 @@ public sealed partial class CosmicCultRuleSystem : GameRuleSystem<CosmicCultRule
 
     private void SpawnRift()
     {
-        if (TryFindRandomTile(out var _, out var _, out var _, out var coords))
+        if (_station.TryFindRandomTile(out var _, out var _, out var _, out var coords))
         {
             Spawn("CosmicMalignRift", coords);
         }
@@ -418,7 +422,7 @@ public sealed partial class CosmicCultRuleSystem : GameRuleSystem<CosmicCultRule
     private void OnGodSpawn(Entity<CosmicGodComponent> uid, ref ComponentInit args)
     {
         var query = QueryActiveRules();
-        while (query.MoveNext(out var ruleUid, out _, out var cultRule, out _))
+        while (query.MoveNext(out var ruleUid, out var cultRule, out _, out _))
         {
             SetWinType((ruleUid, cultRule), WinType.CultComplete); // There's no coming back from this. Cult wins this round
             QueueDel(cultRule.MonumentInGame); // The monument doesn't need to stick around postround! Into the bin with you.
@@ -483,7 +487,7 @@ public sealed partial class CosmicCultRuleSystem : GameRuleSystem<CosmicCultRule
 
         var query = QueryActiveRules();
 
-        while (query.MoveNext(out var uid, out _, out var cultRule, out _))
+        while (query.MoveNext(out var uid, out var cultRule, out _, out _))
             ConfirmWinState((uid, cultRule)); //If so, let's consult our Winconditions and set an appropriate WinType.
     }
 
@@ -517,7 +521,7 @@ public sealed partial class CosmicCultRuleSystem : GameRuleSystem<CosmicCultRule
 
         var query = QueryActiveRules();
 
-        while (query.MoveNext(out var ruleUid, out _, out var ruleComp, out _))
+        while (query.MoveNext(out var ruleUid, out var ruleComp, out _, out _))
             ConfirmWinState((ruleUid, ruleComp));
     }
 
@@ -580,11 +584,10 @@ public sealed partial class CosmicCultRuleSystem : GameRuleSystem<CosmicCultRule
             SetWinType(ent, WinType.CrewMajor); // There's still cultists registered, but if we got here, that means they're all dead or in cuffs
     }
 
-    protected override void AppendRoundEndText(EntityUid uid,
-        CosmicCultRuleComponent component,
-        GameRuleComponent gameRule,
-        ref RoundEndTextAppendEvent args)
+    protected override void AppendRoundEndText(Entity<CosmicCultRuleComponent> rule, ref RoundEndTextAppendEvent args)
     {
+        var uid = rule.Owner;
+        var component = rule.Comp;
         var ftlKey = component.WinType.ToString().ToLower();
         var winType = Loc.GetString($"cosmiccult-roundend-{ftlKey}");
         var summaryText = Loc.GetString($"cosmiccult-summary-{ftlKey}");

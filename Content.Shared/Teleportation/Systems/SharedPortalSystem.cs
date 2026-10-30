@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Shared._ClawCommand.Shadekin;
 using Content.Shared._ClawCommand.Shadekin.Components; // CLAW COMMAND
 using Content.Shared.Ghost;

@@ -4,6 +4,8 @@ using Content.Server.GameTicking.Rules;
 using Robust.Shared.Player;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Map;
+using Content.Shared.Antag;
+using Content.Shared.GameTicking.Rules;
 
 namespace Content.Server._ClawCommand.HereticAdapters;
 

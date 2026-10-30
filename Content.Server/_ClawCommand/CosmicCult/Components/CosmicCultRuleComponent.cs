@@ -5,6 +5,7 @@ using Content.Shared._ClawCommand.CosmicCult.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using Content.Shared.RoundEnd;
 
 namespace Content.Server._ClawCommand.CosmicCult.Components;
 

@@ -55,12 +55,9 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
 #if DEBUG
         _sawmill = _logManager.GetSawmill("subfloor.hide");
 #endif
-
-        SubscribeLocalEvent<SubFloorHideComponent, AppearanceChangeEvent>(OnAppearanceChanged);
-        SubscribeNetworkEvent<ShowSubfloorRequestEvent>(OnRequestReceived);
-        SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlayerDetached(LocalPlayerDetachedEvent ev)
     {
         // Vismask resets so need to reset this.
@@ -91,19 +88,21 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
 #endif
     }
 
+    [SubscribeNetworkEvent]
     private void OnRequestReceived(ShowSubfloorRequestEvent ev)
     {
         // When client receives request Queue an update on all vis.
         UpdateAll();
     }
 
+    [SubscribeLocalEvent]
     private void OnAppearanceChanged(EntityUid uid, SubFloorHideComponent component, ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null)
             return;
 
-        _appearance.TryGetData<bool>(uid, SubFloorVisuals.Covered, out var covered, args.Component);
-        _appearance.TryGetData<bool>(uid, SubFloorVisuals.ScannerRevealed, out var scannerRevealed, args.Component);
+        args.TryGetData<bool>(SubFloorVisuals.Covered, out var covered);
+        args.TryGetData<bool>(SubFloorVisuals.ScannerRevealed, out var scannerRevealed);
         var ventCrawlRevealed = _ventCrawlRevealed.Contains(uid);
 
         scannerRevealed &= !ShowAll; // no transparency for show-subfloor mode.
@@ -157,11 +156,11 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
         }
         else if (scannerRevealed)
         {
-            // Allows a t-ray to show wires/pipes above carpets/puddles.
+            // Allows a t-ray to show wires/pipes above walls.
             if (component.OriginalDrawDepth is not null)
                 return;
             component.OriginalDrawDepth = args.Sprite.DrawDepth;
-            var drawDepthDifference = Shared.DrawDepth.DrawDepth.ThickPipe - (Shared.DrawDepth.DrawDepth.Puddles + 1);
+            var drawDepthDifference = Shared.DrawDepth.DrawDepth.ThickPipe - (Shared.DrawDepth.DrawDepth.Walls + 1);
             _sprite.SetDrawDepth((uid, args.Sprite), args.Sprite.DrawDepth - drawDepthDifference);
         }
         else if (component.OriginalDrawDepth.HasValue)

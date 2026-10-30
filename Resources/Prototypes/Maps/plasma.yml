@@ -20,7 +20,7 @@
           path: /Maps/Shuttles/cargo_plasma.yml
         - type: StationJobs
           availableJobs: # 66 jobs total w/o latejoins & interns, 91 jobs total w/ latejoins & interns
-            Anomaly: [ 4, 4 ] # CLAW COMMAND - Shadekin
+            Anomaly: [ 0, 4 ] # CLAW COMMAND - Shadekin
             #command (7)
             Captain: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ]
@@ -30,53 +30,53 @@
             HeadOfSecurity: [ 1, 1 ]
             Quartermaster: [ 1, 1 ]
             #service (15 - 17)
-            Bartender: [ 2, 2 ]
-            Botanist: [ 2, 3 ]
-            Chef: [ 2, 2 ]
-            Janitor: [ 3, 3 ]
-            Chaplain: [ 1, 1 ]
-            Librarian: [ 1, 1 ]
-            ServiceWorker: [ 2, 2 ]
-            Reporter: [ 2, 3 ]
+            Bartender: [ 0, 2 ]
+            Botanist: [ 0, 3 ]
+            Chef: [ 0, 2 ]
+            Janitor: [ 0, 3 ]
+            Chaplain: [ 0, 1 ]
+            Librarian: [ 0, 1 ]
+            ServiceWorker: [ 0, 2 ]
+            Reporter: [ 0, 3 ]
             #engineering (8)
-            AtmosphericTechnician: [ 4, 4 ]
-            StationEngineer: [ 4, 4 ]
-            SeniorEngineer: [ 1, 1 ] # Claw Command - senior variant
-            TechnicalAssistant: [ 4, 4 ] #intern, not counted
+            AtmosphericTechnician: [ 1, 4 ]
+            StationEngineer: [ 2, 4 ]
+            SeniorEngineer: [ 0, 1 ] # Claw Command - senior variant
+            TechnicalAssistant: [ 0, 4 ] #intern, not counted
             #medical (9)
-            Chemist: [ 2, 2 ]
-            MedicalDoctor: [ 4, 4 ]
-            SeniorPhysician: [ 1, 1 ] # Claw Command - senior variant
-            Paramedic: [ 2, 2 ]
-            MedicalIntern: [ 4, 4 ] #intern, not counted
-            Psychologist: [ 1, 1 ]
+            Chemist: [ 1, 2 ]
+            MedicalDoctor: [ 1, 4 ]
+            SeniorPhysician: [ 0, 1 ] # Claw Command - senior variant
+            Paramedic: [ 0, 2 ]
+            MedicalIntern: [ 0, 4 ] #intern, not counted
+            Psychologist: [ 0, 1 ]
             #science (4)
-            Scientist: [ 4, 4 ]
-            SeniorResearcher: [ 1, 1 ] # Claw Command - senior variant
-            ResearchAssistant: [ 4, 4 ] #intern, not counted
+            Scientist: [ 2, 4 ]
+            SeniorResearcher: [ 0, 1 ] # Claw Command - senior variant
+            ResearchAssistant: [ 0, 4 ] #intern, not counted
             #security (9 - 11)
             Warden: [ 1, 1 ]
-            SecurityOfficer: [ 6, 8 ]
-            SeniorOfficer: [ 1, 1 ] # Claw Command - senior variant
+            SecurityOfficer: [ 2, 8 ]
+            SeniorOfficer: [ 0, 1 ] # Claw Command - senior variant
             Detective: [ 1, 2 ] #good cop, bad cop
-            SecurityCadet: [ 4, 4 ] #intern, not counted
-            Lawyer: [ 1, 2 ]
+            SecurityCadet: [ 0, 4 ] #intern, not counted
+            Lawyer: [ 0, 2 ]
             #supply (8 - 10)
-            SalvageSpecialist: [ 4, 4 ] #the salvagers yearn for the mines
-            CargoTechnician: [ 4, 6 ]
-            SeniorCourier: [ 1, 1 ] # Claw Command - senior variant
+            SalvageSpecialist: [ 1, 4 ] #the salvagers yearn for the mines
+            CargoTechnician: [ 1, 6 ]
+            SeniorCourier: [ 0, 1 ] # Claw Command - senior variant
             #civilian (3 - 4+)
             Passenger: [ -1, -1 ]  #infinite, the tiders yearn for the mines
-            Prisoner: [ 5, 5 ] #claw command
-            Clown: [ 1, 2 ] # this might be fun!
-            Mime: [ 1, 1 ]
-            Musician: [ 1, 1 ]
+            Prisoner: [ 0, 5 ] #claw command
+            Clown: [ 0, 2 ] # this might be fun!
+            Mime: [ 0, 1 ]
+            Musician: [ 0, 1 ]
             #silicon (3 - 5)
-            Borg: [ 2, 4 ]
-            DogborgSecurity: [ 3, 3 ]
-            DogborgMedical: [ 3, 3 ]
-            DogborgEngineering: [ 3, 3 ]
-            DogborgJanitor: [ 3, 3 ]
-            DogborgService: [ 3, 3 ]
-            DogborgMining: [ 3, 3 ]
+            Borg: [ 0, 4 ]
+            DogborgSecurity: [ 0, 3 ]
+            DogborgMedical: [ 0, 3 ]
+            DogborgEngineering: [ 0, 3 ]
+            DogborgJanitor: [ 0, 3 ]
+            DogborgService: [ 0, 3 ]
+            DogborgMining: [ 0, 3 ]
             StationAi: [ 1, 1 ]

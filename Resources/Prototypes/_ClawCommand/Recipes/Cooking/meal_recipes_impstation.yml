@@ -2,7 +2,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeCamelSoup
-  name: one day blinding stew recipe
   result: FoodCamelSoup
   time: 15
   group: Soup

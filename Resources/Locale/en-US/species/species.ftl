@@ -1,4 +1,4 @@
-﻿## Species Names
+## Species Names
 
 species-name-human = Human
 species-name-dwarf = Dwarf
@@ -13,6 +13,7 @@ species-name-gingerbread = delicious baked good
 species-name-vulpkanin = Vulpkanin
 # claw command - IPC
 species-name-ipc = IPC
+species-name-horror = Shambling abomination
 
 ## Misc species things
 

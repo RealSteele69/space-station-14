@@ -42,7 +42,7 @@ public sealed partial class DockingShuttleSystem : SharedDockingShuttleSystem
 {
     [Dependency] private DockingConsoleSystem _console = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ServerStationSystem _station = default!;
 
     public override void Initialize()
     {

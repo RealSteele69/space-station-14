@@ -1,4 +1,4 @@
-﻿using Content.Shared._ClawCommand.Mousetrap; // Claw Command
+using Content.Shared._ClawCommand.Mousetrap; // Claw Command
 using Content.Shared.Examine;
 using Content.Shared.Inventory;
 using Content.Shared.Mousetrap; // Claw Command

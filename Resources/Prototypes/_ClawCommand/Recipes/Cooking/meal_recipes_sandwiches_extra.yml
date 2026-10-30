@@ -3,7 +3,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealBLT
-  name: BLT sandwich recipe
   result: FoodMealBLT
   time: 10
   group: Savory
@@ -16,7 +15,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealTwoBread
-  name: two bread recipe
   result: FoodMealTwoBread
   time: 5
   group: Other
@@ -25,7 +23,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealTunaSandwich
-  name: tuna sandwich recipe
   result: FoodMealTunaSandwich
   time: 10
   group: Savory
@@ -37,7 +34,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealMeatballSub
-  name: meatball sub recipe
   result: FoodMealMeatballSub
   time: 10
   group: Meat
@@ -47,7 +43,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealJelliedToast
-  name: jellied toast recipe
   result: FoodMealJelliedToast
   time: 5
   group: Breakfast
@@ -58,7 +53,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealJellySandwich
-  name: jelly sandwich recipe
   result: FoodMealJellySandwich
   time: 5
   group: Breakfast
@@ -69,7 +63,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealNotASandwich
-  name: not-a-sandwich recipe
   result: FoodMealNotASandwich
   time: 5
   group: Other

@@ -60,7 +60,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeFortuneCookie
-  name: fortune cookie recipe
   result: FoodFortuneCookie
   time: 5
   group: BarsAndCookies

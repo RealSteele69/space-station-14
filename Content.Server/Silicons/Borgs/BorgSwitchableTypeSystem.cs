@@ -1,4 +1,4 @@
-﻿using Content.Server._ClawCommand.Silicons.Borgs; // _ClawCommand - law boards
+using Content.Server._ClawCommand.Silicons.Borgs; // _ClawCommand - law boards
 using Content.Server.Inventory;
 using Content.Shared.Inventory;
 using Content.Shared.Radio.Components;

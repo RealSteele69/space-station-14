@@ -90,11 +90,11 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: Structures/Walls/solid.rsi
-    state: rgeneric
+    sprite: Structures/Walls/solid-reinforced.rsi
+    state: full
   - type: Icon
-    sprite: Structures/Walls/solid.rsi
-    state: rgeneric
+    sprite: Structures/Walls/solid-reinforced.rsi
+    state: full
   - type: Physics
     bodyType: Static
   - type: Fixtures

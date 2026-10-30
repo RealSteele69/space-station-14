@@ -159,7 +159,8 @@
   components:
   - type: Sprite
     sprite: _GoobStation/Wraith/actions.rsi
-    state: anim_object
+    layers:
+    - state: anim_object
   - type: Action
     sound: !type:SoundPathSpecifier
       path: /Audio/_GoobStation/Wraith/wraithlivingobject.ogg

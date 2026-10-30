@@ -24,7 +24,7 @@
   name: alerts-blood-cult-empowered-name
   description: alerts-blood-cult-empowered-desc
 
-- type: factionIcon
+- type: statusIcon
   id: BloodCultMember
   isShaded: false
   priority: 11
@@ -38,7 +38,7 @@
     sprite: /Textures/_ClawCommand/BloodCult/cult_hud.rsi
     state: cult_member
 
-- type: factionIcon
+- type: statusIcon
   id: BloodCultLeader
   isShaded: false
   priority: 11

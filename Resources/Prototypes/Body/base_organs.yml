@@ -349,6 +349,7 @@
     markingData:
       layers:
       - Eyes
+      - OverEyes
   - type: Tag # _ClawCommand - heretic ritual input (AmberFocus/RawRitual/AshenEyes)
     tags:
     - Eyes

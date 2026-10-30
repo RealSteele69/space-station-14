@@ -75,6 +75,7 @@ using Content.Shared.Damage.Systems;
 using Content.Goobstation.Shared.Religion;
 using Content.Goobstation.Shared.Bible;
 using Content.Shared._ClawCommand.HereticAdapters;
+using Content.Shared.Antag;
 namespace Content.Server.Heretic.EntitySystems;
 
 public sealed partial class GhoulSystem : EntitySystem

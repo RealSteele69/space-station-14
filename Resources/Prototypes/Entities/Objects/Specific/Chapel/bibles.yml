@@ -64,7 +64,8 @@
     tags:
     - Book
   - type: StealTarget
-    stealGroup: Bible
+    stealGroup:
+    - Bible
   - type: CollisionWake
     enabled: false
   - type: DivineIntervention

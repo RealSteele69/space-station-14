@@ -24,18 +24,8 @@
   parent: BaseComputer
   id: BaseComputerDocking
   components:
-  - type: Sprite
-    layers:
-    - map: [ "computerLayerBody" ]
-      state: computer
-    - map: [ "computerLayerKeyboard" ]
-      state: generic_keyboard
-    - map: [ "computerLayerScreen" ]
-      state: shuttle
-    - map: ["computerLayerKeys" ]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: shuttle
   - type: ActivatableUI
     key: enum.DockingConsoleUiKey.Key
   - type: UserInterface

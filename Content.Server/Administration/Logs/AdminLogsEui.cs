@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server._ClawCommand.Administration;
@@ -54,7 +54,7 @@ public sealed partial class AdminLogsEui : BaseEui
         // Claw Command - Player isn't assigned yet in the constructor; the mask is applied once Opened() runs
     }
 
-    private int CurrentRoundId => _e.System<GameTicker>().RoundId;
+    private int CurrentRoundId => _e.System<ServerGameTicker>().RoundId;
 
     public override async void Opened()
     {

@@ -2,6 +2,7 @@ using Content.Server._ClawCommand.Blob.Components;
 using Content.Shared._ClawCommand.Blob.Components;
 using Content.Server.GameTicking;
 using Content.Shared.Popups;
+using Content.Shared.GameTicking;
 
 namespace Content.Server._ClawCommand.Blob;
 
@@ -56,7 +57,7 @@ public sealed partial class BlobResourceSystem : EntitySystem
     /// On round end makes all the blobs resource nodes generate 100 points each pulse.
     /// </summary>
     /// <param name="args"></param>
-    private void OnRoundEnd(RoundEndTextAppendEvent args)
+    private void OnRoundEnd(ref RoundEndTextAppendEvent args)
     {
         var query = EntityQueryEnumerator<BlobResourceComponent>();
         while(query.MoveNext(out var resource))

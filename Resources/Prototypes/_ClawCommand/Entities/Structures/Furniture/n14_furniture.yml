@@ -151,4 +151,4 @@
     sprite: _Nuclear14/Structures/Furniture/64x64_furniture.rsi
     state: desk_wood
   - type: IconSmooth
-    mode: NoSprite
+    states: [] # Claw Command - no sprite smoothing of its own; still smooths neighbours via key

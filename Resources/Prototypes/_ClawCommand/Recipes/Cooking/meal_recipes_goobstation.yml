@@ -7,7 +7,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeCornmoth
-  name: mothdog recipe
   result: FoodSnackMothdog
   time: 5
   group: Savory

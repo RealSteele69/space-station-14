@@ -101,7 +101,8 @@ public sealed partial class VendingMachineSystem : SharedVendingMachineSystem
 
     private void TryUpdateVisualState(Entity<VendingMachineComponent?> entity, VendingMachineEjectComponent? ejectComponent = null)
     {
-        if (!Resolve(entity.Owner, ref entity.Comp))
+        // Claw Command - shop-style vendors reuse the vending visuals without a VendingMachineComponent.
+        if (!Resolve(entity.Owner, ref entity.Comp, false))
             return;
 
         Resolve(entity.Owner, ref ejectComponent, false);

@@ -57,7 +57,7 @@ public sealed partial class DockingConsoleSystem : SharedDockingConsoleSystem
     [Dependency] private ShuttleSystem _shuttle = default!;
     [Dependency] private MapLoaderSystem _mapLoader = default!;
     [Dependency] private MapSystem _mapSystem = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ServerStationSystem _station = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
 
     public override void Initialize()

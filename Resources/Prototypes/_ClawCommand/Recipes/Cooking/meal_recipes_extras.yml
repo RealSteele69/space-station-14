@@ -6,7 +6,6 @@
 # recipe craftable.
 - type: microwaveMealRecipe
   id: RecipeHarpyWings
-  name: harpy wings recipe
   result: FoodHarpyWings
   time: 15
   group: Meat

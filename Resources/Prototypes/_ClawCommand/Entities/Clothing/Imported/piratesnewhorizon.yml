@@ -154,7 +154,7 @@
     - Hunger
     - Thirst
   - type: ShowSyndicateIcons
-  - type: TrayScanner
+  - type: TRayScanner
   - type: ClothingSpeedModifier
     walkModifier: 1.5
     sprintModifier: 1.1

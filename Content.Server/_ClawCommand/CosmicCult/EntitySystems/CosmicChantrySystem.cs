@@ -11,6 +11,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Shared.Antag;
 
 namespace Content.Server._ClawCommand.CosmicCult.EntitySystems;
 
@@ -25,7 +26,7 @@ public sealed partial class CosmicChantrySystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SharedRoleSystem _role = default!;
-    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private ServerNavMapSystem _navMap = default!;
 
     /// <summary>
     /// Mind role to add to colossi.

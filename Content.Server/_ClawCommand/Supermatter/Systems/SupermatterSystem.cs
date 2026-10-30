@@ -56,7 +56,7 @@ public sealed partial class SupermatterSystem : SharedSupermatterSystem
     [Dependency] private AmbientSoundSystem _ambient = default!;
     [Dependency] private LightningSystem _lightning = default!;
     [Dependency] private AlertLevelSystem _alert = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ServerStationSystem _station = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private ISharedAdminLogManager _adminLog = default!;
     [Dependency] private IPrototypeManager _proto = default!;

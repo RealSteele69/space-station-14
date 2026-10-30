@@ -55,4 +55,10 @@ public sealed partial class HumanoidProfileComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float Width = 1f;
+
+    /// <summary>
+    /// Whether the humanoid profile shows on examine. Such as "They are a young human".
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool Examinable = true;
 }

@@ -8,12 +8,15 @@
     drawdepth: Overdoors
     sprite: Structures/Wallmounts/vdu.rsi
     layers:
-      - map: ["computerLayerBody"]
-        state: VDU
-      - map: ["computerLayerKeyboard"]
-        state: keyboard
-      - map: ["computerLayerScreen"]
-        state: screen
+    - map: ["enum.ComputerVisualLayers.Frame"]
+    - map: ["enum.ComputerVisualLayers.Keyboard"]
+    - map: ["enum.ComputerVisualLayers.Screen"]
+  - type: ComputerVisuals
+    stateFrame: VDU
+    stateKeyboard: keyboard
+    stateScreen: screen
+    stateKeys: null
+    statePanel: null
   - type: Fixtures
     fixtures:
       fix1:

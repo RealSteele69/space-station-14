@@ -4,7 +4,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeHoneyBun
-  name: honey bun recipe
   result: FoodBakedBunHoney
   time: 5
   group: Breads
@@ -15,7 +14,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeCookedSpaceshroom
-  name: cooked spaceshroom recipe
   result: FoodSpaceshroomCooked
   time: 5
   group: Savory
@@ -24,7 +22,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeHotX
-  name: hotcross bun recipe
   result: FoodBakedBunHotX
   time: 10
   group: Breads
@@ -35,7 +32,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMeatBun
-  name: meat bun recipe
   result: FoodBakedBunMeat
   time: 10
   group: Breads
@@ -45,7 +41,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeRicePudding2
-  name: rice pudding recipe
   result: FoodRicePudding
   time: 15
   group: Dessert
@@ -57,7 +52,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeDriedSpaceTobacco
-  name: dried space tobacco leaves recipe
   result: LeavesSpaceTobaccoDried
   time: 10
   group: Medicinal

@@ -7,7 +7,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeBiscuitSimple
-  name: simple cookie recipe
   result: FoodBakedBiscuitSimple
   time: 10
   group: BarsAndCookies

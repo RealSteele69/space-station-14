@@ -853,7 +853,8 @@
   - type: Sprite
     sprite: Imperial/Other/ImperialClothes/hoscloakformal.rsi
   - type: StealTarget
-    stealGroup: HeadCloak
+    stealGroup:
+    - HeadCloak
 
 - type: entity
   id: ClothingNeckCloakNanotrasenBlack
@@ -1796,7 +1797,7 @@
       - Handcuff
       - PowerCell
       - Geiger
-      - TrayScanner
+      - TRayScanner
       - GasAnalyzer
   - type: ItemMapper
     mapLayers:

@@ -35,6 +35,9 @@ using Content.Shared.Station.Components;
 using Content.Server.Heretic.Components;
 using Content.Shared.Roles.Components;
 using Content.Server._ClawCommand.HereticAdapters;
+using Content.Shared.Antag;
+using Content.Shared.GameTicking.Rules;
+using Content.Server.Station.Systems;
 namespace Content.Server.GameTicking.Rules;
 
 public sealed partial class HereticRuleSystem : GameRuleSystem<HereticRuleComponent>
@@ -46,6 +49,7 @@ public sealed partial class HereticRuleSystem : GameRuleSystem<HereticRuleCompon
     [Dependency] private UserInterfaceSystem _ui = default!;
     [Dependency] private IRobustRandom _rand = default!;
     [Dependency] private SharedMoodSystem _mood = default!; // Claw Command
+    [Dependency] private ServerStationSystem _stationSystem = default!; // Claw Command
 
     public static readonly SoundSpecifier BriefingSound =
         new SoundPathSpecifier("/Audio/_ClawCommand/Heretic/Ambience/Antag/Heretic/heretic_gain.ogg");
@@ -69,10 +73,10 @@ public sealed partial class HereticRuleSystem : GameRuleSystem<HereticRuleCompon
     {
         TryMakeHeretic(args.EntityUid, ent.Comp);
 
-        if (!TryGetRandomStation(out var station))
+        if (!_stationSystem.TryGetRandomStation(out var station))
             return;
 
-        var grid = this.GetStationMainGrid(Comp<StationDataComponent>(station.Value));
+        var grid = this.GetStationMainGrid(station.Value.Comp);
 
         if (grid == null)
             return;

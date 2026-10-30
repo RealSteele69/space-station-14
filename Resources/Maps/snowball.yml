@@ -57225,7 +57225,6 @@ entities:
       parent: 2
     - type: FaxMachine
       name: Library
-      destinationAddress: Library
   - uid: 8761
     components:
     - type: Transform
@@ -57240,7 +57239,6 @@ entities:
       parent: 2
     - type: FaxMachine
       name: AI
-      destinationAddress: AI
   - uid: 8763
     components:
     - type: Transform

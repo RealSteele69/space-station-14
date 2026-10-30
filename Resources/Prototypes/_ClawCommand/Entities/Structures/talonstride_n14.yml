@@ -894,7 +894,10 @@
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/brick.rsi
   - type: IconSmooth
     key: walls
-    base: slantedbrick
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls ]
+      base: slantedbrick
 
 - type: entity
   parent: [ N14WallBrickSlantedIndestructible, N14BaseWallSlanted ]
@@ -913,7 +916,10 @@
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/brickalt.rsi
   - type: IconSmooth
     key: walls
-    base: slantedbrickalt
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls ]
+      base: slantedbrickalt
 
 - type: entity
   parent: [ N14WallBrickAltSlantedIndestructible, N14BaseWallSlanted ]
@@ -932,7 +938,10 @@
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/wood.rsi
   - type: IconSmooth
     key: walls
-    base: slantedwood
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls ]
+      base: slantedwood
 
 - type: entity
   parent: [ N14WallWoodSlantedIndestructible, N14BaseWallSlantedWood ]

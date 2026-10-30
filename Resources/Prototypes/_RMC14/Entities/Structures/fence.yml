@@ -17,8 +17,10 @@
   - type: Clickable
   - type: IconSmooth
     key: fences
-    base: fence
-    mode: CardinalFlags
+    states:
+    - !type:DirectionSpriteSmoothing
+      mask: [ fences ]
+      base: fence
   - type: Damageable
     damageModifierSet: StructuralMetallic
   - type: Injurable
@@ -64,8 +66,10 @@
     key: walls
   - type: IconSmooth
     key: fences
-    base: brokenfence
-    mode: CardinalFlags
+    states:
+    - !type:DirectionSpriteSmoothing
+      mask: [ fences ]
+      base: brokenfence
   - type: Physics
     canCollide: false
   - type: Damageable

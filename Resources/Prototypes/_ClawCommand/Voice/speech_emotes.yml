@@ -67,16 +67,6 @@
     - gekkers
 
 - type: emote
-  id: Blink
-  name: cc-chat-emote-name-blink
-  category: General
-  chatMessages: [cc-chat-emote-msg-blink]
-  chatTriggers:
-    - blink
-    - blinks
-    - blinked
-
-- type: emote
   id: Mars
   name: cc-chat-emote-name-mars
   category: Vocal

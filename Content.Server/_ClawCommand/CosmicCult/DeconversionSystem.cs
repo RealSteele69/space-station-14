@@ -16,6 +16,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Content.Shared.Timing;
+using Content.Shared.Timing.Systems;
 using Content.Shared.Tools.Systems;
 using Robust.Server.Player;
 using Robust.Shared.Audio.Systems;

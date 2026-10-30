@@ -20,6 +20,10 @@ using Content.Shared.Objectives.Components;
 using Robust.Server.Player;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Content.Shared.Antag;
+using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Rules;
+using Content.Shared.Station.Components;
 
 namespace Content.Server._ClawCommand.Blob.GameTicking;
 
@@ -29,7 +33,7 @@ public sealed partial class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
     [Dependency] private RoundEndSystem _roundEndSystem = default!;
     [Dependency] private ChatSystem _chatSystem = default!;
     [Dependency] private NukeCodePaperSystem _nukeCode = default!;
-    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private ServerStationSystem _stationSystem = default!;
     [Dependency] private AlertLevelSystem _alertLevelSystem = default!;
     [Dependency] private IChatManager _chatManager = default!;
     [Dependency] private IPlayerManager _player = default!;
@@ -59,7 +63,7 @@ public sealed partial class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
             if(uid == entityUid)
                 continue;
 
-            GameTicker.EndGameRule(uid, gameRule);
+            GameTicker.EndGameRule((uid, gameRule));
             Log.Warning("blob is active!!! remove!");
             break;
         }
@@ -264,12 +268,9 @@ public sealed partial class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
         }
     }
 
-    protected override void AppendRoundEndText(
-        EntityUid uid,
-        BlobRuleComponent blob,
-        GameRuleComponent gameRule,
-        ref RoundEndTextAppendEvent ev)
+    protected override void AppendRoundEndText(Entity<BlobRuleComponent> rule, ref RoundEndTextAppendEvent ev)
     {
+        var blob = rule.Comp;
         if (blob.Blobs.Count < 1)
             return;
 

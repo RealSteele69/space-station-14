@@ -42,6 +42,8 @@ using Content.Shared.GameTicking.Components;
 using Content.Shared.Storage.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
+using Content.Shared.Antag;
+using Content.Shared.GameTicking.Rules;
 
 namespace Content.Server._GoobStation.Slasher.Systems;
 
@@ -53,7 +55,7 @@ public sealed partial class AntagLockerSpawnSystem : GameRuleSystem<AntagLockerS
 {
     [Dependency] private EntityStorageSystem _entityStorage = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private ServerStationSystem _stationSystem = default!;
 
     public override void Initialize()
     {
@@ -66,7 +68,7 @@ public sealed partial class AntagLockerSpawnSystem : GameRuleSystem<AntagLockerS
     {
         base.Added(uid, comp, gameRule, args);
 
-        if (comp.Placed || !TryGetRandomStation(out var station))
+        if (comp.Placed || !_stationSystem.TryGetRandomStation(out var station))
             return;
 
         ChooseLocker(station.Value, comp.MaintenanceOnly, out var locker, out var fallback);
@@ -116,7 +118,7 @@ public sealed partial class AntagLockerSpawnSystem : GameRuleSystem<AntagLockerS
         }
 
         // No locker: fall back to a safe random tile on the station.
-        if (TryFindRandomTile(out _, out _, out _, out var targetCoords))
+        if (_stationSystem.TryFindRandomTile(out _, out _, out _, out var targetCoords))
             fallback = targetCoords;
     }
 
@@ -126,7 +128,7 @@ public sealed partial class AntagLockerSpawnSystem : GameRuleSystem<AntagLockerS
     /// </summary>
     public bool TryRelocateToLocker(EntityUid target, bool maintenanceOnly = true)
     {
-        if (!TryGetRandomStation(out var station))
+        if (!_stationSystem.TryGetRandomStation(out var station))
             return false;
 
         ChooseLocker(station.Value, maintenanceOnly, out var locker, out var fallback);

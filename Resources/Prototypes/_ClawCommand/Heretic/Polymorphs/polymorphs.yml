@@ -180,7 +180,7 @@
 - type: polymorph
   id: ShapeshiftGiantSpider
   configuration:
-    entity: MobGiantSpider
+    entity: MobGiantSpiderTarantula
     transferDamage: true
     revertOnCrit: true
     revertOnDeath: true

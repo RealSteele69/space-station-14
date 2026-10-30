@@ -13,6 +13,7 @@ using Content.Shared.Roles;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Maths;
+using Content.Shared.GameTicking;
 
 namespace Content.IntegrationTests.Tests._ClawCommand;
 
@@ -41,7 +42,7 @@ public sealed class GangConversionTest : GameTest
         var pair = Pair;
         var server = pair.Server;
         var entMan = server.EntMan;
-        var ticker = server.System<GameTicker>();
+        var ticker = server.System<ServerGameTicker>();
         var ruleSys = server.System<GangConversionRuleSystem>();
 
         var dummies = await server.AddDummySessions(dummyCount);
@@ -60,7 +61,7 @@ public sealed class GangConversionTest : GameTest
         EntityUid ruleUid = default;
         await server.WaitPost(() =>
         {
-            ruleUid = ticker.AddGameRule(GangGameRuleProtoId);
+            ruleUid = ticker.AddGameRule(GangGameRuleProtoId)!.Value.Owner;
             Assert.That(entMan.TryGetComponent(ruleUid, out rule));
 
             ticker.ToggleReadyAll(true);

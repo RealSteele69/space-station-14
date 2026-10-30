@@ -24,7 +24,7 @@ public sealed class WizdenContentFreeze : GameTest
 
         var protoMan = server.ProtoMan;
 
-        var recipesCount = protoMan.Count<FoodRecipePrototype>();
+        var recipesCount = protoMan.Count<MicrowaveMealRecipePrototype>();
         var recipesLimit = 368; // Claw Command - upstream freezes at 218; this is the fork's own recipe count, frozen the same way
 
         if (recipesCount > recipesLimit)

@@ -10,7 +10,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSalmonSushi
-  name: salmon sushi recipe
   result: FoodMealSalmonSushi
   time: 5
   group: Savory
@@ -24,7 +23,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeFishBurger
-  name: fish burger recipe
   result: FoodBurgerLowQualityFish
   time: 10
   group: Savory
@@ -36,7 +34,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeArmorFishFlatBread
-  name: armor fish flatbread recipe
   result: FoodFlatBreadArmorFish
   time: 10
   group: Savory
@@ -50,7 +47,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeGrilledMoonFish
-  name: grilled moon fish recipe
   result: FoodMeatMoonFishGrilled
   time: 5
   group: Savory
@@ -59,7 +55,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMoonFishDemiglace
-  name: moonfish demiglace recipe
   result: FoodMoonFishDemiglace
   time: 15
   group: Savory
@@ -74,7 +69,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeFishFingers
-  name: fish fingers recipe
   result: FoodFishFingers
   time: 5
   group: Savory
@@ -86,7 +80,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeFishFryLowQualityFish
-  name: low quality fish fry recipe
   result: FoodFishFryLowQualityFish
   time: 5
   group: Savory
@@ -99,7 +92,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeFishFrySalmon
-  name: salmon fish fry recipe
   result: FoodFishFrySalmon
   time: 10
   group: Savory
@@ -113,7 +105,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeDonkFishStew
-  name: donk fish stew recipe
   result: FoodStewDonkFish
   time: 10
   group: Soup
@@ -127,7 +118,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeCalamariPlater
-  name: calamari plater recipe
   result: FoodCalamariPlater
   time: 15
   group: Savory
@@ -144,7 +134,6 @@
 
 - type: microwaveMealRecipe
   id: RecipePeanutButterBrownies
-  name: peanut butter brownie recipe
   result: FoodBakedPeanutButterBrownieBatch
   time: 25
   group: BarsAndCookies
@@ -159,7 +148,6 @@
 
 - type: microwaveMealRecipe
   id: RecipePeanutButterCup
-  name: peanut butter cup recipe
   result: FoodBakedPeanutButterCup
   time: 10
   group: BarsAndCookies
@@ -172,7 +160,6 @@
 
 - type: microwaveMealRecipe
   id: RecipePeanutButterTart
-  name: peanut butter tart recipe
   result: FoodBakedPeanutButterTart
   time: 15
   group: Pie
@@ -185,7 +172,6 @@
 
 - type: microwaveMealRecipe
   id: RecipePeanutButterJelly
-  name: peanut butter and jelly sandwich recipe
   result: FoodBakedPeanutButterJellySandwich
   time: 10
   group: Savory
@@ -197,7 +183,6 @@
 
 - type: microwaveMealRecipe
   id: RecipePeanutButterBanana
-  name: peanut butter and banana sandwich recipe
   result: FoodBakedPeanutButterBananaSandwich
   time: 10
   group: Savory
@@ -209,7 +194,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeToastedPeanutButterBread
-  name: peanut butter toast recipe
   result: FoodBreadPeanutButterToast
   time: 5
   group: Savory
@@ -225,7 +209,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMisoSoup
-  name: miso soup recipe
   result: FoodSoupMiso
   time: 10
   group: Soup

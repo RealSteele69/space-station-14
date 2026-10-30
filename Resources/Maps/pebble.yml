@@ -39599,7 +39599,6 @@ entities:
       pos: -0.5,-26.5
     - type: FaxMachine
       name: Bridge
-      destinationAddress: Bridge
   - uid: 6122
     components:
     - type: Transform

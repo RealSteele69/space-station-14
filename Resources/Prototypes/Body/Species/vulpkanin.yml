@@ -319,6 +319,9 @@
   - type: VisualOrgan
     data:
       sprite: Mobs/Customization/eyes.rsi
+  - type: EyeBlinking
+    eyelidsSprite: /Textures/Mobs/Species/Vulpkanin/parts.rsi
+  - type: Appearance
 
 - type: entity
   parent: [ OrganBaseTongue, OrganVulpkaninInternal ]

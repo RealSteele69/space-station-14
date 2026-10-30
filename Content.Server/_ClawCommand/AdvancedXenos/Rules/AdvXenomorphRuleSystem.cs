@@ -8,6 +8,8 @@ using Content.Shared.Station.Components;
 using Content.Shared.Tools.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
+using Content.Shared.Antag;
+using Content.Shared.GameTicking.Rules;
 
 namespace Content.Server._ClawCommand.AdvancedXenos.Rules;
 

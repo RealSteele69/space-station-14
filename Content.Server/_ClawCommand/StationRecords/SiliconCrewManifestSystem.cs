@@ -35,7 +35,7 @@ public sealed partial class SiliconCrewManifestSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private StationRecordsSystem _records = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ServerStationSystem _station = default!;
     [Dependency] private IEntityManager _entMan = default!;
 
     public override void Initialize()

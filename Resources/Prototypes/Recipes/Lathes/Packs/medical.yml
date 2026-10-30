@@ -20,6 +20,7 @@
   - ChemistryEmptyVial
   - ChemistryEmptyVialSmall
   - Dropper
+  - CandyBowl
 
 - type: latheRecipePack
   parent: BasicChemistryStatic
@@ -51,6 +52,7 @@
   - OffsetCane
   - OffsetCaneWood
   - JetInjector
+  - VehicleWheelchairFolded
 
 - type: latheRecipePack
   id: RollerBedsStatic

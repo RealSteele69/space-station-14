@@ -12,5 +12,8 @@
     sprite: _ClawCommand/Lavaland/Structures/Walls/necropolis.rsi
   - type: IconSmooth
     key: walls
-    base: necropolis
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls ]
+      base: necropolis
   - type: Destructible

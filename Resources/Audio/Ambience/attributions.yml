@@ -167,3 +167,8 @@
   license: "CC-BY-3.0"
   copyright: "Music for Manatees by Kevin MacLeod, cropped and fades out. Taken from Citadel Station 13"
   source: "https://github.com/citadel-station/citadel-main/tree/31b47497ab7e3b1c15c67657931ce480f14caed1/sound/ambience"
+
+- files: ["bubbling.ogg"]
+  license: "CC0-1.0"
+  copyright: "Created by brunoboselli, edited by ScarKy0"
+  source: "https://freesound.org/people/brunoboselli/sounds/782992/"

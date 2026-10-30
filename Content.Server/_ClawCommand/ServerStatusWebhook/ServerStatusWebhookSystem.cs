@@ -170,8 +170,8 @@ public sealed partial class ServerStatusWebhookSystem : EntitySystem
 
     private WebhookPayload BuildPayload()
     {
-        var gameTicker = EntityManager.System<GameTicker>();
-        var sharedTicker = EntityManager.System<SharedGameTicker>();
+        var gameTicker = EntityManager.System<ServerGameTicker>();
+        var sharedTicker = EntityManager.System<GameTicker>();
 
         var serverName = _baseServer.ServerName;
         var playerCount = _playerManager.PlayerCount;
@@ -226,7 +226,7 @@ public sealed partial class ServerStatusWebhookSystem : EntitySystem
         };
     }
 
-    private string FormatInRoundStatus(SharedGameTicker sharedTicker)
+    private string FormatInRoundStatus(GameTicker sharedTicker)
     {
         var elapsed = _gameTiming.RealTime - sharedTicker.RoundStartTimeSpan;
 

@@ -24,24 +24,18 @@
     layers:
     - state: weeds
       map: [ "base" ]
-    - map: [ "enum.EdgeLayer.South" ]
-      state: weeds_side_n
-    - map: [ "enum.EdgeLayer.East" ]
-      state: weeds_side_w
-    - map: [ "enum.EdgeLayer.North" ]
-      state: weeds_side_s
-    - map: [ "enum.EdgeLayer.West" ]
-      state: weeds_side_e
   - type: RandomSprite
     available:
     - base:
         weeds: ""
         weeds1: ""
         weeds2: ""
-  - type: SmoothEdge
   - type: IconSmooth
-    mode: NoSprite
     key: advxenoweeds
+    states:
+    - !type:EdgeSpriteSmoothing
+      mask: [ advxenoweeds ]
+      base: edge_advxenoweeds_
   - type: Damageable
   - type: Injurable
     damageContainer: StructuralInorganic
@@ -79,14 +73,6 @@
     layers:
     - state: weednode
       map: [ "base" ]
-    - map: [ "enum.EdgeLayer.South" ]
-      state: weeds_side_n
-    - map: [ "enum.EdgeLayer.East" ]
-      state: weeds_side_w
-    - map: [ "enum.EdgeLayer.North" ]
-      state: weeds_side_s
-    - map: [ "enum.EdgeLayer.West" ]
-      state: weeds_side_e
   - type: RandomSprite
     available:
     - base:
@@ -152,9 +138,11 @@
     sprite: _ClawCommand/Structures/AdvancedXenos/resin_wall.rsi
     state: resinwall
   - type: IconSmooth
-    mode: CardinalFlags
     key: advxenoresinwall
-    base: wall
+    states:
+    - !type:DirectionSpriteSmoothing
+      mask: [ advxenoresinwall ]
+      base: wall
   - type: Occluder
   - type: Destructible
     thresholds:
@@ -185,9 +173,11 @@
     sprite: _ClawCommand/Structures/AdvancedXenos/resin_membrane.rsi
     state: resinmembrane
   - type: IconSmooth
-    mode: CardinalFlags
     key: advxenoresinmembrane
-    base: membrane
+    states:
+    - !type:DirectionSpriteSmoothing
+      mask: [ advxenoresinmembrane ]
+      base: membrane
   - type: Fixtures
     fixtures:
       fix1:
@@ -255,7 +245,6 @@
         acts: [ "Destruction" ]
   - type: IconSmooth
     key: advxenoresinwall
-    mode: NoSprite
   - type: PlacementReplacement
     key: advxenoresin
 

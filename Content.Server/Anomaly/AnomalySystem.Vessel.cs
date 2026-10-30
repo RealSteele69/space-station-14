@@ -1,4 +1,4 @@
-﻿using Content.Server.Anomaly.Components;
+using Content.Server.Anomaly.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Psionics.Glimmer; // Claw Command - GlimmerSourceComponent
 using Content.Shared.Anomaly;

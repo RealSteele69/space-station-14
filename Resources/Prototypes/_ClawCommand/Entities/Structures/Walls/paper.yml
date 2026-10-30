@@ -34,4 +34,7 @@
         acts: ["Destruction"]
   - type: IconSmooth
     key: walls
-    base: paperwall
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls ]
+      base: paperwall

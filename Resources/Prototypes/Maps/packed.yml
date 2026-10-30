@@ -19,7 +19,7 @@
         emergencyShuttlePath: /Maps/Shuttles/emergency_crimson.yml
       - type: StationJobs
         availableJobs: # 47 jobs total w/o latejoins & interns, 58 jobs total w/ latejoins & interns
-          Anomaly: [ 4, 4 ] # CLAW COMMAND - Shadekin
+          Anomaly: [ 0, 4 ] # CLAW COMMAND - Shadekin
           #command (7)
           Captain: [ 1, 1 ]
           HeadOfPersonnel: [ 1, 1 ]
@@ -29,54 +29,54 @@
           ResearchDirector: [ 1, 1 ]
           Quartermaster: [ 1, 1 ]
           #service (8 - 10)
-          Bartender: [ 1, 1 ]
-          Botanist: [ 1, 2 ]
-          Chef: [ 1, 1 ]
-          Janitor: [ 1, 2 ]
-          Chaplain: [ 1, 1 ]
-          Librarian: [ 1, 1 ]
-          ServiceWorker: [ 2, 2 ]
+          Bartender: [ 0, 1 ]
+          Botanist: [ 0, 2 ]
+          Chef: [ 0, 1 ]
+          Janitor: [ 0, 2 ]
+          Chaplain: [ 0, 1 ]
+          Librarian: [ 0, 1 ]
+          ServiceWorker: [ 0, 2 ]
           #engineering (6)
-          AtmosphericTechnician: [ 2, 2 ]
-          StationEngineer: [ 4, 4 ]
-          SeniorEngineer: [ 1, 1 ] # Claw Command - senior variant
-          TechnicalAssistant: [ 3, 3 ] #intern, not counted
+          AtmosphericTechnician: [ 1, 2 ]
+          StationEngineer: [ 1, 4 ]
+          SeniorEngineer: [ 0, 1 ] # Claw Command - senior variant
+          TechnicalAssistant: [ 0, 3 ] #intern, not counted
           #medical (6)
-          Chemist: [ 2, 2 ]
-          MedicalDoctor: [ 3, 3 ]
-          SeniorPhysician: [ 1, 1 ] # Claw Command - senior variant
-          MedicalIntern: [ 2, 2 ] #intern, not counted
-          Paramedic: [ 1, 1 ]
+          Chemist: [ 1, 2 ]
+          MedicalDoctor: [ 1, 3 ]
+          SeniorPhysician: [ 0, 1 ] # Claw Command - senior variant
+          MedicalIntern: [ 0, 2 ] #intern, not counted
+          Paramedic: [ 0, 1 ]
           #science (4)
-          Scientist: [ 4, 4 ]
-          SeniorResearcher: [ 1, 1 ] # Claw Command - senior variant
-          ForensicMantis: [ 1, 1 ] # Claw Command - psionics port
-          ResearchAssistant: [ 2, 2 ] #intern, not counted
+          Scientist: [ 1, 4 ]
+          SeniorResearcher: [ 0, 1 ] # Claw Command - senior variant
+          ForensicMantis: [ 0, 1 ] # Claw Command - psionics port
+          ResearchAssistant: [ 0, 2 ] #intern, not counted
           #security (6)
           Warden: [ 1, 1 ]
-          SecurityOfficer: [ 3, 3 ]
-          SeniorOfficer: [ 1, 1 ] # Claw Command - senior variant
+          SecurityOfficer: [ 1, 3 ]
+          SeniorOfficer: [ 0, 1 ] # Claw Command - senior variant
           Detective: [ 1, 1 ]
-          SecurityCadet: [ 2, 2 ] #intern, not counted
-          Lawyer: [ 1, 1 ]
+          SecurityCadet: [ 0, 2 ] #intern, not counted
+          Lawyer: [ 0, 1 ]
           #supply (4)
-          SalvageSpecialist: [ 2, 2 ]
-          CargoTechnician: [ 2, 2 ]
-          SeniorCourier: [ 1, 1 ] # Claw Command - senior variant
+          SalvageSpecialist: [ 1, 2 ]
+          CargoTechnician: [ 1, 2 ]
+          SeniorCourier: [ 0, 1 ] # Claw Command - senior variant
           #civilian (3+)
           Passenger: [ -1, -1 ] #infinite, not counted
-          Prisoner: [ 5, 5 ] #claw command
-          Clown: [ 1, 1 ]
-          Mime: [ 1, 1 ]
-          Musician: [ 1, 1 ]
+          Prisoner: [ 0, 5 ] #claw command
+          Clown: [ 0, 1 ]
+          Mime: [ 0, 1 ]
+          Musician: [ 0, 1 ]
           #silicon (3)
           StationAi: [ 1, 1 ]
-          Borg: [ 2, 2 ]
-          DogborgSecurity: [ 3, 3 ]
-          DogborgMedical: [ 3, 3 ]
-          DogborgEngineering: [ 3, 3 ]
-          DogborgJanitor: [ 3, 3 ]
-          DogborgService: [ 3, 3 ]
-          DogborgMining: [ 3, 3 ]
-          ClawCommandOfficer: [1,1]
-          ClawCommandMaid: [1,1]
+          Borg: [ 0, 2 ]
+          DogborgSecurity: [ 0, 3 ]
+          DogborgMedical: [ 0, 3 ]
+          DogborgEngineering: [ 0, 3 ]
+          DogborgJanitor: [ 0, 3 ]
+          DogborgService: [ 0, 3 ]
+          DogborgMining: [ 0, 3 ]
+          ClawCommandOfficer: [ 0, 1 ]
+          ClawCommandMaid: [ 0, 1 ]

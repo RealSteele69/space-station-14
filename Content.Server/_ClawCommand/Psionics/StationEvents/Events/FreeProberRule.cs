@@ -18,7 +18,7 @@ internal sealed partial class FreeProberRule : StationEventSystem<FreeProberRule
     [Dependency] private SharedMapSystem _sharedMapSystem = default!;
     [Dependency] private AnchorableSystem _anchorable = default!;
     [Dependency] private GlimmerSystem _glimmerSystem = default!;
-    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private ServerStationSystem _stationSystem = default!;
 
     private static readonly string ProberPrototype = "GlimmerProber";
     private static readonly int SpawnDirections = 4;

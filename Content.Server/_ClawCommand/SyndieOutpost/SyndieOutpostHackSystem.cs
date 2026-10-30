@@ -5,6 +5,7 @@ using Content.Shared.Medical.CrewMonitoring;
 using Content.Shared.Medical.SuitSensors;
 using Robust.Server.GameObjects;
 using Robust.Shared.Random;
+using Content.Shared.DeviceNetwork;
 
 namespace Content.Server._ClawCommand.SyndieOutpost;
 
@@ -45,7 +46,7 @@ public sealed partial class SyndieOutpostHackSystem : EntitySystem
 
         // Find station crew monitoring server data (skip outpost servers)
         var serverQuery = EntityQueryEnumerator<CrewMonitoringServerComponent>();
-        Dictionary<string, SuitSensorStatus>? stationSensorData = null;
+        Dictionary<DeviceAddress, SuitSensorStatus>? stationSensorData = null;
 
         while (serverQuery.MoveNext(out var serverUid, out var serverComp))
         {
@@ -69,7 +70,7 @@ public sealed partial class SyndieOutpostHackSystem : EntitySystem
             if (!hack.HackSucceeded)
                 continue;
 
-            console.ConnectedSensors = new Dictionary<string, SuitSensorStatus>(stationSensorData);
+            console.ConnectedSensors = new Dictionary<DeviceAddress, SuitSensorStatus>(stationSensorData);
 
             if (_uiSystem.IsUiOpen(consoleUid, CrewMonitoringUIKey.Key))
             {

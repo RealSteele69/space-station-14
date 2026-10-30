@@ -6,7 +6,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeHotdogBun
-  name: hotdog bun recipe
   result: FoodHotdogBun
   time: 5
   group: Breads

@@ -123,8 +123,8 @@
       - id: ClothingUniformSchoolGakuranBlack
     - !type:AllSelector
       children:
-      - id: ClothingShoesBootsPerformer
-      - id: ClothingUniformJumpskirtPerformer
+      - id: ClothingShoesBootsVirtualSinger
+      - id: ClothingUniformJumpskirtVirtualSinger
       - id: FoodMealMemoryleek
         amount: !type:ConstantNumberSelector { value: 2 }
     - !type:AllSelector

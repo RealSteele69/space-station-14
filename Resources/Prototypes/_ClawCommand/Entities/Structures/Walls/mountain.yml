@@ -39,7 +39,10 @@
         - WallLayer
   - type: IconSmooth
     key: walls
-    base: rock_
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls ]
+      base: rock_
 
 # --- MountainRockMining ---
 - type: entity
@@ -106,7 +109,10 @@
         - WallLayer
   - type: IconSmooth
     key: walls
-    base: rock_
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls ]
+      base: rock_
   - type: OreVein
     oreChance: 0.2
     oreRarityPrototypeId: RandomOreDistributionStandard

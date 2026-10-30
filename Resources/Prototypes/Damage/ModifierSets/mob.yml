@@ -89,3 +89,15 @@
     Heat: 0.0
     Caustic: 0.0
     Holy: 2.0
+
+- type: damageModifierSet
+  id: Horror
+  coefficients: # they take less damage from everything, heat a bit less so.
+    Blunt: 0.15
+    Slash: 0.15
+    Piercing: 0.15
+    Cold: 0.3
+    Heat: 0.3
+    Radiation: 0.15
+    Caustic: 0.3
+    Shock: 0.3

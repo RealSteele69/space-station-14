@@ -29,7 +29,7 @@ public sealed partial class CosmicColossusSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private MobThresholdSystem _threshold = default!;
     [Dependency] private PopupSystem _popup = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ServerStationSystem _station = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedAmbientSoundSystem _ambientSound = default!;

@@ -1,10 +1,11 @@
-using Content.Server.DeviceNetwork.Systems;
-using Content.Shared.DeviceNetwork.Events;
-using Robust.Shared.Timing;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.DeviceNetwork.Events;
+using Content.Shared.DeviceNetwork.Systems;
 using Content.Shared.Medical.CrewMonitoring;
 using Content.Shared.Medical.SuitSensors;
 using Content.Shared._ClawCommand.SyndieOutpost; // Claw Command
+using Robust.Shared.Timing;
+using Content.Shared.DeviceNetwork;
 
 namespace Content.Server.Medical.CrewMonitoring;
 
@@ -89,12 +90,12 @@ public sealed partial class CrewMonitoringServerSystem : EntitySystem
             return;
 
         // Claw Command start - TotalSeconds + deferred removal
-        List<string>? toRemove = null;
+        List<DeviceAddress>? toRemove = null;
         foreach (var (address, sensor) in component.SensorStatus)
         {
             var dif = _gameTiming.CurTime - sensor.Timestamp;
             if (dif.TotalSeconds > component.SensorTimeout)
-                (toRemove ??= new List<string>()).Add(address);
+                (toRemove ??= new List<DeviceAddress>()).Add(address);
         }
 
         if (toRemove == null)

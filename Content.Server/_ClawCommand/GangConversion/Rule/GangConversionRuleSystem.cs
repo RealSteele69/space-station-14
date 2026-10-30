@@ -25,6 +25,9 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.Antag;
+using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Rules;
 
 namespace Content.Server._ClawCommand.GangConversion.Rule;
 
@@ -70,12 +73,11 @@ public sealed partial class GangConversionRuleSystem : GameRuleSystem<GangConver
         RecountTurf(component);
     }
 
-    protected override void AppendRoundEndText(EntityUid uid,
-        GangConversionRuleComponent component,
-        GameRuleComponent gameRule,
-        ref RoundEndTextAppendEvent args)
+    protected override void AppendRoundEndText(Entity<GangConversionRuleComponent> rule, ref RoundEndTextAppendEvent args)
     {
-        base.AppendRoundEndText(uid, component, gameRule, ref args);
+        var uid = rule.Owner;
+        var component = rule.Comp;
+        base.AppendRoundEndText(rule, ref args);
 
         if (component.Teams.Count == 0)
             return;

@@ -27,6 +27,7 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.GameTicking;
 
 namespace Content.Server._ClawCommand.Bingle;
 
@@ -41,7 +42,7 @@ public sealed partial class BinglePitSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private PullingSystem _pulling = default!;
-    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private ServerNavMapSystem _navMap = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -266,7 +267,7 @@ public sealed partial class BinglePitSystem : EntitySystem
             _blocker.UpdateCanMove(ent);
     }
 
-    private void OnRoundEndTextAppend(RoundEndTextAppendEvent ev)
+    private void OnRoundEndTextAppend(ref RoundEndTextAppendEvent ev)
     {
         var query = AllEntityQuery<BinglePitComponent, TransformComponent>();
         while (query.MoveNext(out _, out var comp, out var xform))

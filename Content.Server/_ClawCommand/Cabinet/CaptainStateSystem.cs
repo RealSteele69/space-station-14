@@ -8,6 +8,8 @@ using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
+using Content.Shared.GameTicking;
+using Content.Shared.Station.Components;
 
 namespace Content.Server._ClawCommand.Cabinet;
 

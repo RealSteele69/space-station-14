@@ -5,6 +5,7 @@ using Content.Shared.Roles;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Shared.Spawners.Components;
 
 namespace Content.Server._ClawCommand.Seasonal.Halloween;
 

@@ -135,3 +135,13 @@
   components:
     - type: ImpairedMobility
     - type: NoDiveLeap # Claw Command - a cane user does not dive; plain lie-down still works
+
+- type: trait
+  id: BlinkDyspraxia
+  name: trait-blink-dyspraxia-name
+  description: trait-blink-dyspraxia-desc
+  category: Disabilities
+  specials:
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - TraitStatusEffectBlinkDyspraxia

@@ -25,5 +25,5 @@ public sealed partial class GangMemberComponent : Component
     public Color GangColor;
 
     [DataField]
-    public ProtoId<FactionIconPrototype> StatusIcon = "GangMember";
+    public ProtoId<StatusIconPrototype> StatusIcon = "GangMember";
 }

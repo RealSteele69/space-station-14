@@ -12,6 +12,7 @@ using Content.Server.GameTicking;
 using Content.Shared._GoobStation.SlaughterDemon.Items;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
+using Content.Shared.GameTicking;
 
 namespace Content.Server._GoobStation.SlaughterDemon.Destructible;
 

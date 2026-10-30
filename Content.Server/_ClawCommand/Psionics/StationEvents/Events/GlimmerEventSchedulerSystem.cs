@@ -5,6 +5,7 @@ using Content.Shared.GameTicking.Components;
 using Content.Shared.Psionics.Glimmer;
 using JetBrains.Annotations;
 using Robust.Shared.Random;
+using Content.Shared.GameTicking.Rules;
 
 namespace Content.Server.StationEvents;
 
@@ -44,7 +45,7 @@ public sealed partial class GlimmerEventSchedulerSystem : GameRuleSystem<Glimmer
         var query = EntityQueryEnumerator<GlimmerEventSchedulerComponent, GameRuleComponent>();
         while (query.MoveNext(out var uid, out var scheduler, out var gameRule))
         {
-            if (!GameTicker.IsGameRuleActive(uid, gameRule))
+            if (!GameTicker.IsGameRuleActive((uid, gameRule)))
                 continue;
 
             scheduler.TimeUntilNextCheck -= frameTime;

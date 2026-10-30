@@ -36,7 +36,7 @@ public sealed partial class AdvXenoClientSystem : EntitySystem
     private void OnEmbryoIcons(Entity<AdvXenoEmbryoComponent> ent, ref GetStatusIconsEvent args)
     {
         var stage = Math.Clamp(ent.Comp.Stage, 0, 5);
-        if (_proto.TryIndex<FactionIconPrototype>($"AdvXenoInfected{stage}", out var icon))
+        if (_proto.TryIndex<StatusIconPrototype>($"AdvXenoInfected{stage}", out var icon))
             args.StatusIcons.Add(icon);
     }
 

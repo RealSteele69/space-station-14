@@ -44,8 +44,12 @@ public sealed partial class CursePrototype : IPrototype
 }
 
 [Prototype]
-public sealed partial class CurseStatusIconPrototype : StatusIconPrototype, IInheritingPrototype
+public sealed partial class CurseStatusIconPrototype : StatusIconData, IPrototype, IInheritingPrototype
 {
+    /// <inheritdoc/>
+    [IdDataField]
+    public string ID { get; private set; } = default!;
+
     /// <inheritdoc />
     [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<CurseStatusIconPrototype>))]
     public string[]? Parents { get; private set; }

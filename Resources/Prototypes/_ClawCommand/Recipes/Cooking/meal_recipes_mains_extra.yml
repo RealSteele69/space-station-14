@@ -3,7 +3,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealKhinkali
-  name: khinkali recipe
   result: FoodMealKhinkali
   time: 10
   group: Meat
@@ -14,7 +13,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealStewedSoyMeat
-  name: stewed soy meat recipe
   result: FoodMealStewedSoyMeat
   time: 15
   group: Savory
@@ -25,7 +23,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSoyDope
-  name: soy dope recipe
   result: FoodSoyDope
   time: 5
   group: Other
@@ -34,7 +31,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealSweetAndSourChicken
-  name: sweet and sour chicken recipe
   result: FoodMealSweetAndSourChicken
   time: 10
   group: Meat
@@ -46,7 +42,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealCorndog
-  name: corndog plate recipe
   result: FoodMealCorndog
   time: 10
   group: Meat
@@ -59,7 +54,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealGreenEggsAndHam
-  name: green eggs and ham recipe
   result: FoodMealGreenEggsAndHam
   time: 10
   group: Breakfast
@@ -69,7 +63,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealStuffedLegion
-  name: stuffed legion recipe
   result: FoodMealStuffedLegion
   time: 20
   group: Meat
@@ -81,7 +74,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeTatorTot
-  name: tator tot recipe
   result: FoodTatorTot
   time: 10
   group: Savory
@@ -90,7 +82,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealEggWrap
-  name: egg wrap recipe
   result: FoodMealEggWrap
   time: 10
   group: Breakfast
@@ -102,7 +93,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealMashedPotato
-  name: mashed potatoes recipe
   result: FoodMealMashedPotato
   time: 10
   group: Savory
@@ -114,7 +104,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMealButteredPotato
-  name: buttered potatoes recipe
   result: FoodMealButteredPotato
   time: 5
   group: Savory

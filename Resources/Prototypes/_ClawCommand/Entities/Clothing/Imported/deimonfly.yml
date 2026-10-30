@@ -28,7 +28,7 @@
     - id: JawsOfLife
     - id: WelderExperimental
     - id: Multitool
-    - id: trayScanner
+    - id: TRayScanner
     - id: HolofanProjector
     - id: RCD
     - id: RCDAmmo
@@ -70,7 +70,7 @@
       - Handcuff
       - PowerCell
       - Geiger
-      - TrayScanner
+      - TRayScanner
       - GasAnalyzer
 
 - type: entity

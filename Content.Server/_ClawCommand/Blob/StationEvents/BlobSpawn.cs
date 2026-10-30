@@ -34,10 +34,12 @@ public sealed partial class BlobSpawnRule : StationEventSystem<BlobSpawnRuleComp
     {
         base.Started(uid, component, gameRule, args);
 
-        if (!TryGetRandomStation(out var station))
+        if (!Station.TryGetRandomStation(out var stationEnt))
         {
             return;
         }
+
+        EntityUid? station = stationEnt.Value.Owner;
 
         var locations = EntityQueryEnumerator<VentCritterSpawnLocationComponent, TransformComponent>();
         var validLocations = new List<EntityCoordinates>();

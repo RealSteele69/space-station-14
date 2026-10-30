@@ -517,8 +517,11 @@
   - type: Destructible
   - type: IconSmooth
     key: hierofield
-    base: hierotemp
-    shader: unshaded
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ hierofield ]
+      base: hierotemp
+      shader: unshaded
   - type: Occluder
     enabled: false
   - type: RustRequiresPathStage

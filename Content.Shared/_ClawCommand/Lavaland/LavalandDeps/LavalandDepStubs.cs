@@ -147,7 +147,7 @@ namespace Content.Shared._ClawCommand.Lavaland.LavalandDeps
             // Mirror the private request pipeline: the attempt event lets systems veto the action,
             // and the validate event is what writes the requested target entity/coordinates into
             // the action's event. Skipping it leaves world-target actions aimed at default coords.
-            var attemptEv = new ActionAttemptEvent(user);
+            var attemptEv = new ActionAttemptEvent(user, entMan.GetEntity(ev.EntityTarget));
             entMan.EventBus.RaiseLocalEvent(actionEnt, ref attemptEv);
             if (attemptEv.Cancelled)
                 return false;

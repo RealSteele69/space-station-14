@@ -10,6 +10,7 @@ using Content.Shared.Verbs;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Shared.Antag;
 
 namespace Content.Server._ClawCommand.Vampire.Administration;
 

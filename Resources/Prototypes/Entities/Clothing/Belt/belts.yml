@@ -218,7 +218,7 @@
     sprite: Clothing/Belt/militarywebbingmed.rsi
 
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingBeltMilitaryWebbing ]
+  parent: [ BaseTaskForceContraband, ClothingBeltMilitaryWebbing ]
   id: ClothingBeltMilitaryWebbingERT
   name: ERT chest rig
   description: A set of tactical webbing worn by Emergency Response Team operatives.
@@ -238,7 +238,6 @@
       storagebase: !type:AllSelector
         children:
         - id: EmergencyMedipen
-        - id: Truncheon
         - id: BurnAutoInjector
         - id: PunctAutoInjector
         - id: PyraAutoInjector

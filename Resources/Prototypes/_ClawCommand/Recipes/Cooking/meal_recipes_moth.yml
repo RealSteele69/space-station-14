@@ -6,7 +6,6 @@
 # Cheese Curds
 - type: microwaveMealRecipe
   id: RecipeCheeseCurds
-  name: cheese curds recipe
   result: FoodCheeseCurds
   time: 5
   group: Savory
@@ -16,7 +15,6 @@
 # Borito Pie
 - type: microwaveMealRecipe
   id: RecipeBoritoPie
-  name: borito pie recipe
   result: FoodBoritoPie
   time: 15
   group: Pie
@@ -30,7 +28,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothHerbyCheese
-  name: herby cheese recipe
   result: FoodMothHerbyCheese
   time: 5
   group: Moth
@@ -40,7 +37,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothMothicSalad
-  name: mothic salad recipe
   result: FoodMothSaladBase
   time: 10
   group: Moth
@@ -53,7 +49,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothSqueakingFry
-  name: squeaking stir fry recipe
   result: FoodMothSqueakingFry
   time: 15
   group: Moth
@@ -69,7 +64,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothGreenLasagne
-  name: green lasagne recipe
   result: FoodMothGreenLasagne
   time: 20
   group: Moth
@@ -84,7 +78,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothCapreseSalad
-  name: caprese salad recipe
   result: FoodMothCapreseSalad
   time: 10
   group: Moth
@@ -97,7 +90,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothFleetSalad
-  name: fleet salad recipe
   result: FoodMothFleetSalad
   time: 10
   group: Moth
@@ -112,7 +104,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothCottonSalad
-  name: cotton salad recipe
   result: FoodMothCottonSalad
   time: 10
   group: Moth
@@ -126,7 +117,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothKachumbariSalad
-  name: kachumbari salad recipe
   result: FoodMothKachumbariSalad
   time: 10
   group: Moth
@@ -143,7 +133,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothFirecrackerPizza
-  name: firecracker pizza recipe
   result: FoodMothPizzaFirecracker
   time: 30
   group: Moth
@@ -157,7 +146,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothFiveCheesePizza
-  name: quattro formaggi pizza recipe
   result: FoodMothPizzaFiveCheese
   time: 30
   group: Moth
@@ -172,7 +160,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothPestoPizza
-  name: pesto pizza recipe
   result: FoodMothPizzaPesto
   time: 30
   group: Moth
@@ -185,7 +172,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothCottonPizza
-  name: cotton pizza recipe
   result: FoodMothPizzaCotton
   time: 30
   group: Moth
@@ -199,7 +185,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeCorncobPizza
-  name: corncob crust pizza recipe
   result: FoodPizzaCorncob
   time: 30
   group: Pizza
@@ -214,7 +199,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothCheesecakeBalls
-  name: cheesecake balls recipe
   result: FoodMothCheesecakeBalls
   time: 10
   group: Moth
@@ -226,7 +210,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMothMothmallow
-  name: mothmallow recipe
   result: FoodMothMothmallow
   time: 10
   group: Moth
@@ -240,7 +223,6 @@
 #Eventually use the pastry dough
 - type: microwaveMealRecipe
   id: RecipeMothMoffin
-  name: moffin recipe
   result: FoodMothMoffin
   time: 5
   group: Moth

@@ -98,7 +98,7 @@
       - CheapLighter
       #- Matchbox
       #- Shovel
-      - trayScanner
+      - TRayScanner
       - ClothingMaskGas
       - ClothingMaskBreathMedical
       - ClothingEyesHudBeer
@@ -121,7 +121,7 @@
       - ClothingOuterCoatJensen
       - ClothingOuterCoatLab
       - ClothingShoesFlippers
-      - ClothingShoesTourist
+      - ClothingShoesSandalsBlack
       - ClothingUnderSocksBee
       - ClothingUnderSocksCoder
       - CarvedPumpkinSmall

@@ -38,5 +38,8 @@ public sealed partial class PlantTraitCarnivoreComponent : PlantTraitsComponent
     public float StarveAmount = 2f;
 
     /// <inheritdoc/>
-    public override LocId? TraitState { get; set; } = "mutation-plant-carnivore";
+    public override LocId? TraitState { get; set; } = "mutation-plant-description-carnivore";
+
+    /// <inheritdoc/>
+    public override LocId? TraitName { get; set; } = "mutation-plant-noun-carnivore";
 }

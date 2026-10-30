@@ -1,7 +1,29 @@
 # Ported from upstream: Entities/Clothing/Masks/masks.yml
 
+# Claw Command - upstream made ClothingMaskClownBase foldable (needs icon-opened/opened-equipped art);
+# clown masks without folded art parent this instead.
 - type: entity
-  parent: ClothingMaskClownBase
+  parent: ClothingMaskBase
+  id: ClothingMaskClownBaseNoFold
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Clothing/Mask/clown.rsi
+  - type: Clothing
+    sprite: Clothing/Mask/clown.rsi
+  - type: BreathMask
+  - type: IdentityBlocker
+  - type: Tag
+    tags:
+    - ClownMask
+    - WhitelistChameleon
+    - HamsterWearable
+  - type: HideLayerClothing
+    slots:
+    - Snout
+
+- type: entity
+  parent: ClothingMaskClownBaseNoFold
   id: ClothingMaskSexyClown
   name: sexy clown mask
   description: Some naughty clowns think this is what the Honkmother looks like.

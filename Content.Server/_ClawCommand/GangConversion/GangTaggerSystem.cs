@@ -5,7 +5,9 @@ using Content.Shared._ClawCommand.GangConversion.Components;
 using Content.Shared.Decals;
 using Content.Shared.Interaction;
 using Content.Shared.Timing;
+using Content.Shared.Timing.Systems;
 using Robust.Shared.Audio.Systems;
+using Content.Shared.Timing.Components;
 
 namespace Content.Server._ClawCommand.GangConversion;
 

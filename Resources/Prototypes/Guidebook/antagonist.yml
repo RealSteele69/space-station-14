@@ -4,11 +4,12 @@
   text: "/ServerInfo/Guidebook/Antagonist/Antagonists.xml"
   children:
   - GuideAntagonistSOP #claw command
-  - Traitors
-  - Thieves
-  - Revolutionaries
+  - Changelings
   - NuclearOperatives
+  - Revolutionaries
   - SpaceNinja
+  - Thieves
+  - Traitors
   - Wizard
   - Heretics # _ClawCommand - heretics
   - CosmicCult # Claw Command - Cosmic Cult
@@ -17,14 +18,13 @@
   - Devil # Claw Command - devil
   - Vampire # Claw Command - vampire
   - GangConversion # Claw Command - Gang Conversion
-  - Zombies
   - Xenoborgs
   - AdvXenomorphs # Claw Command - advanced xenomorph mode
   - Blob # Claw Command - blob
   - SlaughterDemon # Claw Command - slaughter demon (ported from Goobstation)
   - Slasher # Claw Command - slasher (ported from Goobstation)
   - Wraith # Claw Command - wraith (ported from Goobstation)
-  - Changelings
+  - Zombies
   - MinorAntagonists
 
 - type: guideEntry

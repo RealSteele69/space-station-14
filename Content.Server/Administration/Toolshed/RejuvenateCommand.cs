@@ -1,4 +1,4 @@
-﻿using Content.Server.Administration.Logs;
+using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Shared.Administration;
 using Content.Shared.Administration.Systems;

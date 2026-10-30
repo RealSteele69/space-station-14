@@ -2,7 +2,7 @@
   name: stun baton
   parent: [BaseItem, BaseSecurityContraband]
   id: Stunbaton
-  description: A stun baton for incapacitating people with. Actively harming with this is considered bad tone.
+  description: A stun baton for incapacitating people with. Has advanced wrist strap technology to prevent cadets accidentally dropping it.
   components:
   - type: Tag # _ClawCommand - heretic ritual input (MaskOfMadness)
     tags:
@@ -100,6 +100,7 @@
     guides:
     - Security
     - Antagonists
+  - type: PreventForcedThrow
 
 - type: entity
   name: truncheon
@@ -119,7 +120,10 @@
       collection: MetalThud
     bluntStaminaDamageFactor: 1.5
   - type: Item
-    size: Normal
+    size: Large
+    shape:
+    - 0,0,1,2
+    storedRotation: -45
   - type: Tag
     tags:
     - Truncheon

@@ -23,7 +23,7 @@ public sealed partial class BloodCultConstructComponent : Component
     public TimeSpan TransformDelay = TimeSpan.FromSeconds(1);
 
     [DataField]
-    public ProtoId<FactionIconPrototype> StatusIcon = "BloodCultMember";
+    public ProtoId<StatusIconPrototype> StatusIcon = "BloodCultMember";
 
     /// <summary>
     /// Left behind when the construct is destroyed.

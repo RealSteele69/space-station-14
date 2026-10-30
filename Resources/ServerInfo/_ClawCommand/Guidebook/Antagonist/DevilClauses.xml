@@ -1,61 +1,71 @@
 <Document>
+  # Devil Clauses
+
+  Write each clause on its own line as [bold]Contractee: Name[/bold] or [bold]Contractor: Name[/bold], using the names below. Capitals and spaces do not matter. A contract can be signed once its total weight is [bold]0 or more[/bold]. Negative weight helps whoever receives the clause, and positive weight hurts them. See [textlink="Devil" link="Devil"] for how deals work.
+
+  Nothing undoes a clause once the contract is signed, except where noted below.
+
+  ## Helpful clauses
+
   ## Mortality
   <Box>
     [color=#999999][italic]-135 Weight[/italic][/color]
   </Box>
 
-  - Grants the target an unlimited amount of self revives.
+  - Grants Cheat Death with unlimited revives. It is usable only while dead, has a 250 second cooldown, and fails while the body carries 100 or more holy damage.
 
   ## Weakness
   <Box>
     [color=#999999][italic]-35 Weight[/italic][/color]
   </Box>
 
-  - Cuts all damage the contractee takes in half.
-  - Increases holy damage taken.
-
-  ## Fear of Death
-  <Box>
-    [color=#999999][italic]-25 Weight[/italic][/color]
-  </Box>
-
-  - Makes the contractee have no critical state. You stand, or you die.
+  - Halves brute, heat, cold, poison, radiation and bleeding damage, but holy damage is increased by half.
+  - Replaces the target's damage resistances, including those from their species.
 
   ## Death
   <Box>
     [color=#999999][italic]-25 Weight[/italic][/color]
   </Box>
 
-  - Allows the contractee to revive themselves exactly once on death.
-  - Default on every contract.
+  - Grants Cheat Death with a single revive, usable only while dead.
+  - Included on every new contract.
+
+  ## Fear of Death
+  <Box>
+    [color=#999999][italic]-25 Weight[/italic][/color]
+  </Box>
+
+  - Removes the critical state: you stay standing until 200 damage, then die.
 
   ## Shadows
   <Box>
     [color=#999999][italic]-25 Weight[/italic][/color]
   </Box>
 
-  - Makes the contractee invisible.
+  - Makes the contractee invisible while standing still. Moving reveals them.
 
   ## Brokeness
   <Box>
     [color=#999999][italic]-20 Weight[/italic][/color]
   </Box>
 
-  - Grants the contractee a pair of sick fucking jays, signed by Micheal Jordan himself.
+  - Grants a pair of sick fucking jays, signed by Michael Jordan himself.
+  - They make you 20% faster and can be toggled to stop you slipping. Once they have taken enough damage they crease, and creased jays slow you down.
 
   ## Fear of Fire
   <Box>
     [color=#999999][italic]-20 Weight[/italic][/color]
   </Box>
 
-  - Makes the contractee immune to fire, and immune to being lit on fire.
+  - Heat and radiation no longer do any damage, and high temperatures are harmless. Shock and bleeding damage are also reduced.
+  - Replaces the target's damage resistances, including those from their species.
 
   ## Chance
   <Box>
-    [color=#999999][italic]-15 Weight[/italic][/color]
+    [color=#999999][italic]-20 Weight[/italic][/color]
   </Box>
 
-  - Grants the contractee a completely random clause. Want to try your luck?
+  - Grants a completely random clause, helpful or harmful. Want to try your luck?
 
   ## Fear of Light
   <Box>
@@ -76,21 +86,21 @@
     [color=#999999][italic]-10 Weight[/italic][/color]
   </Box>
 
-  - Makes the contractee not need food or water.
+  - Removes the need for food and water.
 
   ## Fear of Drowning
   <Box>
     [color=#999999][italic]-10 Weight[/italic][/color]
   </Box>
 
-  - Disables the contractees need to breathe.
+  - Removes the need to breathe.
 
   ## Fear of Clowns
   <Box>
     [color=#999999][italic]-10 Weight[/italic][/color]
   </Box>
 
-  - Disables the contractees ability to slip.
+  - Prevents slipping.
 
   ## Fear of Crushing
   <Box>
@@ -111,57 +121,62 @@
     [color=#999999][italic]-10 Weight[/italic][/color]
   </Box>
 
-  - Grants the target a ton of cash-money.
+  - Grants 30,000 spesos in cash.
 
   ## Pain
   <Box>
     [color=#999999][italic]-5 Weight[/italic][/color]
   </Box>
 
-  - Makes the contractee feel no pain, and suffer no negatives from pain.
+  - The contractee feels no pain, and their injuries no longer slow them down.
+  - Any full heal, including Cheat Death, takes away the numbness again.
+
+  ## Harmful clauses
 
   ## Voice
   <Box>
     [color=#999999][italic]20 Weight[/italic][/color]
   </Box>
 
-  - Permanently mutes the contractee.
+  - Mutes the contractee.
+  - Any full heal, including Cheat Death, gives the voice back.
 
   ## Soul Ownership
   <Box>
     [color=#999999][italic]25 Weight[/italic][/color]
   </Box>
 
-  - Transfers ownership of a soul to the contractor.
-  - Default on every contract.
+  - Gives the contractee's soul to the devil who summoned the contract, and condemns them.
+  - Included on every new contract.
 
   ## Strength
   <Box>
     [color=#999999][italic]30 Weight[/italic][/color]
   </Box>
 
-  - Makes the contractee take double damage.
+  - Doubles brute, cold, poison, radiation, bleeding and holy damage taken. Heat and shock are unchanged.
+  - Replaces the target's damage resistances, including those from their species.
 
   ## Coherence
   <Box>
     [color=#999999][italic]30 Weight[/italic][/color]
   </Box>
 
-  - Makes the contractee clumsy and messes up their speech.
+  - Makes the contractee clumsy and makes them speak backwards.
 
   ## Awake
   <Box>
     [color=#999999][italic]35 Weight[/italic][/color]
   </Box>
 
-  - Turns the target narcoleptic.
+  - Narcolepsy: every 5 to 10 minutes, the contractee falls asleep for 10 to 30 seconds.
 
   ## Legs
   <Box>
     [color=#999999][italic]40 Weight[/italic][/color]
   </Box>
 
-  - Permanently paralyzes both of the contractees legs.
+  - Permanently paralyzes both legs.
 
   ## Sight
   <Box>
@@ -170,7 +185,7 @@
 
   - Permanently blinds the contractee.
 
-  ## Will to fight
+  ## Will to Fight
   <Box>
     [color=#999999][italic]60 Weight[/italic][/color]
   </Box>
@@ -182,8 +197,8 @@
     [color=#999999][italic]80 Weight[/italic][/color]
   </Box>
 
-  - Turns the contractee into a frog.
-  - This is permanent.
+  - Turns the contractee into a frog, inventory and all.
+  - The frog turns back into the contractee if it is critically hurt or killed.
 
   ## Time
   <Box>
@@ -191,4 +206,5 @@
   </Box>
 
   - Kills the contractee after five minutes.
+  - The body can never be revived afterwards, by Cheat Death or anything else.
 </Document>

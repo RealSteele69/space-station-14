@@ -3,67 +3,109 @@
 
   [color=#ac1a1a]An undead predator, hiding among the crew, who survives on stolen blood.[/color]
 
-  A vampire regenerates wounds slowly on borrowed blood, fears the solar flares that sweep the station, and cannot truly be killed by ordinary means.
+  A vampire heals on borrowed blood, fears the solar flares that sweep the station, and cannot truly be killed by ordinary means.
   <Box>
     <GuideEntityEmbed Entity="CrateCoffin" Caption="Coffin"/>
     <GuideEntityEmbed Entity="VampireCandelabrum" Caption="Candelabrum"/>
   </Box>
 
+  ## Spotting a vampire
+  - A vampire is an ordinary crew member with their usual name and job. They are never command, security, a borg or the AI. They only appear on stations with 20 or more players, one for every 20 players, and at most three.
+  - Nothing on their body gives them away, so watch what they do instead.
+  - During a solar flare, a vampire caught in the open bursts into flames for no reason, or dives into a locker or coffin.
+  - A vampire's victims are left drained of blood, with no wound to show for it. While it feeds, the victim is held down and cannot move.
+  - A vampire never eats, drinks or breathes, and sees in the dark.
+
+  # Playing a vampire
+
   ## Blood
+  Everything runs on [bold]blood[/bold], shown by the drop alert on your screen. You start with 100 of a possible 600.
+  - Being awake drains 0.1 blood a second. Your active powers drain more.
+  - While you have blood, you heal 0.3 brute and 0.3 toxin damage a second. Burns only heal in your coffin or in torpor.
+  - At 0 blood you stop healing and start to shake.
 
-  Everything a vampire does draws on blood, shown by the alert in the corner of the screen. Run dry, and the hunger starts to show.
+  [bold]Feed[/bold] on someone you hold in at least a soft grab, with your mouth uncovered. In combat mode, press pull again on someone you are dragging to tighten it into a grab. Each second you drain 15 blood from them and gain it yourself, or only half as much from animals. The victim is pinned for as long as you keep feeding. Feeding too long bleeds them dry. Press Feed again to stop, and only then does its 30-second cooldown start. Garlic stops you feeding, but a stake does not.
 
-  [bold]Feed[/bold] on a victim you have at least a soft grip on to steal their blood. Feeding knocks them down and keeps them down as long as it continues. Its cooldown only starts once you stop.
+  ## Your coffin
+  Climb into any closet or crate and close the lid from inside, and it becomes your [bold]coffin[/bold]. You can only own one. If it is destroyed, you can claim another. You can build a proper coffin from 5 wooden planks.
+
+  Staying inside your own coffin with the lid shut stops your blood drain and heals brute, toxin [italic]and[/italic] burn damage four times faster, for free. It is also the only place where you can grow in power, and the only real shelter from Sol.
 
   ## Sol
+  A solar flare bombards the station 15 minutes after the round's first vampire appears. Each night after that is 100 seconds longer than the last. Only vampires and their vassals are warned, in chat with a sound, 90 seconds, 25 seconds and 5 seconds before it starts. The flare lasts one minute, and every 4 seconds it burns you, ignoring all your resistances:
+  - [bold]Out in the open[/bold]: 2 heat damage, plus 1 per rank. From rank 1 on, it also sets you on fire.
+  - [bold]Inside a locker, crate or anything else[/bold]: only 0.5 heat damage, plus 0.5 per rank.
+  - [bold]In your own closed coffin[/bold]: nothing at all.
 
-  Every so often a solar flare bombards the station. You will be warned about a minute and a half ahead, again at 25 seconds, and once more as it rises. It lasts a minute, and each night between flares is a little longer than the last.
+  Torpor does not heal you while the flare is up, and enough burn damage is final death, so take cover. When a flare ends, every vampire, wherever they are, gains one rank to spend.
 
-  - Out in the open, the flare burns you every few seconds - and once you've grown past a fledgling, it sets you alight.
-  - Hiding in a locker or crate only softens the burn.
-  - Resting in [bold]your own coffin[/bold] protects you completely.
+  ## Growing in power
+  You start with one rank to spend. Inside your own closed coffin, with at least 20% of your maximum blood, right-click yourself and pick [bold]Grow in power[/bold]. That costs the blood, and you can choose to learn one new power. Your first rank costs 120 blood, so feed before you try. Every rank also gives:
+  - +100 maximum blood.
+  - +2 blood per second of feeding.
+  - Slightly faster healing.
+  - Room for one more vassal.
 
-  Surviving a flare ages you by one rank.
+  The powers you can learn:
+  - [bold]Fortitude[/bold] (30 blood, then 0.25 a second): take 30% less brute damage while it is on.
+  - [bold]Cloak of Darkness[/bold] (5 blood, then 0.04 a second): turn half-invisible. Any damage tears the cloak away.
+  - [bold]Mesmerize[/bold] (30 blood, 5-minute cooldown): stare at someone right next to you for 6 seconds. If you stay still, they stay within reach, and you are not hurt, they are paralyzed for 15 seconds.
 
-  ## The Coffin
-
-  Close the lid on any closet or crate while resting inside an unclaimed one, and it becomes your coffin: your lair. Rest there with the lid shut to heal quickly and for free, burns included. If your coffin is destroyed, you can claim another.
-
-  Resting in your own coffin with a rank saved up and the blood to spend it lets you grow in power - right-click yourself to see what's on offer.
+  Once you know all three, ranking up only improves your stats.
 
   ## Masquerade
-
-  Toggle [bold]Masquerade[/bold] to fake being alive - at the cost of being unable to heal at all while it holds. Its cooldown only starts once you switch it off.
-
-  ## Vassals
-
-  [bold]Embrace[/bold] a helpless victim to bind them as your Vassal: a loyal thrall who can heal on borrowed blood of their own and knows roughly where you are at all times. How many you can keep bound scales with your rank. Mindshielded crew can't be embraced. If you fall, every Vassal is freed.
+  [bold]Masquerade[/bold] costs 10 blood, then another 0.1 a second, and stops all of your healing while it is on, even in torpor. Its 50-second cooldown starts when you switch it off. Nothing on the station can actually detect a vampire, so it is purely a roleplay tool for acting alive.
 
   ## Torpor
+  Dying does not end a vampire. You fall into [bold]torpor[/bold] instead. Your body heals brute, toxin, burn and suffocation damage at twice your normal rate, without spending blood, and you get back up on your own once you have healed enough. Torpor stops healing while Sol is up, while you are staked, with garlic in you, or while Masquerade is on. Entering torpor frees all of your vassals.
 
-  Dying doesn't end a vampire. Your body falls into [bold]torpor[/bold] instead and keeps knitting itself back together - burns included - until you can get back up. Torpor can't heal you while a solar flare is up, while you're staked, or with garlic in you.
+  ## Vassals
+  [bold]Embrace[/bold] someone right next to you who is in critical condition or dead. It takes 10 seconds of standing still and has a 20-second cooldown. You can keep one vassal per rank, so a fresh vampire can keep none. Mindshielded crew, other vampires and existing vassals cannot be embraced.
 
-  ## Hunting a Vampire
+  A vassal must keep you alive and gets two powers:
+  - [bold]Sanguine Recuperation[/bold] (toggle): heals 1 brute and 1 toxin damage a second, using 2 of their own blood a second. It stops when their blood drops below 30%.
+  - [bold]Sense Master[/bold]: tells them how many tiles away you are.
 
-  [color=#ac1a1a]For the crew.[/color] Beating a vampire for good means stopping them coming back. Any one of these is [bold]final death[/bold]:
-  - A [bold]stake[/bold] through the heart while they're asleep, unconscious, in torpor, or drained of blood.
-  - Enough [bold]fire[/bold] - burn them far past the point of death.
-  - Removing their [bold]brain or heart[/bold].
+  Vassals are warned 25 seconds before each solar flare. All of them go free the moment you die, even if it is only torpor.
 
-  A finally-dead vampire can't be defibrillated or cloned. Vampires can never be cloned at all.
+  ## Objectives
+  - [bold]Claim a Lair[/bold]: own a coffin.
+  - [bold]Raise a Protégé[/bold]: have at least one vassal.
+  - [bold]Blood Harvest[/bold]: feed on at least 3 different victims.
+  - [bold]Survive[/bold] to the end of the round.
+
+  ## The candelabrum
+  You can build a candelabrum from 3 steel, 1 metal rod and 1 candle. Use it to light or snuff it. While it is lit, it glows a cold blue and unsettles everyone within 5 tiles who is not a vampire or vassal, souring their mood.
+
+  # Hunting a vampire
+
+  ## Final death
+  A vampire only stays dead after one of these:
+  - A [bold]stake[/bold] through the heart while they are in critical condition, in torpor, asleep, or drained of all blood.
+  - [bold]300 burn damage[/bold] from fire, shocks, acid or the solar flare.
+  - Losing their [bold]brain or heart[/bold].
+
+  After a final death, nothing can revive them. Vampires can never be cloned, even before that.
+
+  ## Stakes
   <Box>
     <GuideEntityEmbed Entity="VampireStake" Caption="Wooden stake"/>
     <GuideEntityEmbed Entity="VampireStakeHardened" Caption="Hardened stake"/>
     <GuideEntityEmbed Entity="VampireStakeSilver" Caption="Silver stake"/>
   </Box>
 
-  [bold]Stakes[/bold] are crafted from two wooden planks, hardened with a welder, then capped with a silver sheet. A stake only goes in while the target is lying down; each upgrade drives in faster. Stake a vampire who is still fighting back and you miss the heart - but their powers stay locked away for a while, longer with a better stake.
+  Craft a wooden stake from 2 wooden planks, harden it with a welder, then cap it with a silver sheet. A stake only goes in while the vampire is lying down. Click them with it and stand still while you drive it in: 12 seconds for wood, 8 for hardened, or 6 for silver.
 
-  [bold]Garlic[/bold] shuts a vampire down. Feed them anything with garlic in it, or hang a [bold]garlic necklace[/bold] on them (crafted from three garlic bulbs and ten cable), and they can neither heal nor use their powers while it lasts.
+  If the vampire is still conscious and has blood, you [bold]miss the heart[/bold]. Their powers and healing are then locked for 60 seconds with wood, 90 with hardened, or 120 with silver. They can still feed, though. Knock them out first, or wait until they are in torpor, then stake them again.
+
+  ## Garlic
   <Box>
     <GuideEntityEmbed Entity="FoodGarlic" Caption="Garlic"/>
     <GuideEntityEmbed Entity="ClothingNeckGarlicNecklace" Caption="Garlic necklace"/>
   </Box>
 
-  The solar flares are on your side too: a vampire caught in the open when Sol rises has nowhere to run.
+  Garlic stops a vampire from healing, using any power, or feeding. Get them to eat garlic or any food cooked with it, and each unit of allicin lasts 20 seconds. Or hang a [bold]garlic necklace[/bold] around their neck, made from 3 garlic and 10 cable. It works for as long as they wear it, so cuff them so they cannot take it off.
+
+  ## Using Sol
+  The crew is never told when a flare comes, but a vampire is. If you have one cuffed, keep them out in the open: every flare burns and ignites them, and torpor cannot heal them until it ends.
 </Document>

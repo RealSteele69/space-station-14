@@ -3,124 +3,113 @@
 
   [color=#ac3a0d]A devilish trickster with a silver tongue making deals around the station.[/color]
 
-  A devil is an entity originating from some ungodly dimension far, far away from our own.
+  A devil is a crew member whose body has been taken over by something from a far worse place. It does not fight. It trades: power, health and second chances, paid for in souls.
   <Box>
-    <GuideEntityEmbed Entity="PaperDevilContract" Caption="Contract"/>
-    <GuideEntityEmbed Entity="ClothingUniformJumpsuitDevil" Caption="Devilish Attire"/>
+    <GuideEntityEmbed Entity="PaperDevilContract" Caption="Contract from below"/>
+    <GuideEntityEmbed Entity="PaperDevilContractRevival" Caption="Contract from the depths"/>
+    <GuideEntityEmbed Entity="PenDevil" Caption="Devilish pen"/>
+    <GuideEntityEmbed Entity="GuidebookCodexUmbra" Caption="Codex Umbra"/>
   </Box>
 
-  Unlike most depictions in media, a devil isn't easy to find at a glance. There's no fire and brimstone, no pitchfork and screaming. The easiest way to tell is that red glow in their eyes, and sometimes the horns or tail.
-  [bold] Not everyone with a tail or horns is a devil, that's just specist! [/bold]
-
   Despite their usually not-so-good intentions, a Devil is still considered crew!
-  As a Devil, [color=red][bold] you should not interfere with station affairs unless you are directly asked, or you can make a deal out of it. [/bold][/color]
+  As a Devil, [color=red][bold]you should not interfere with station affairs unless you are directly asked, or you can make a deal out of it.[/bold][/color]
 
-  Under normal circumstances, [color=red][bold] a crew member making a deal with the Devil should be considered a crime [/bold][/color]
+  Under normal circumstances, [color=red][bold]a crew member making a deal with the Devil should be considered a crime.[/bold][/color]
 
-  ## Contracts
+  ## Spotting a devil
+  - A devil looks like any other crew member and keeps their usual name and job. It is never command, security, the chaplain, the mime, an intern or a borg.
+  - Once a devil holds 2 souls, examining it shows that [italic]their eyes glow a faint red[/italic]. Sunglasses, masks and helmets hide this, and a devil starts with sunglasses.
+  - People who sold their soul have [italic]hollow and soulless[/italic] eyes when examined.
+  - Summoning a contract is loud: the devil's hand bursts into flames with a fireball sound.
+  - A devil cannot throw a punch or fire a gun.
+  [bold]Not everyone with a tail or horns is a devil, that's just specist![/bold]
 
-  The bread and butter of a devil is their [color=darkred]contracts[/color]. When signing a contract, various effects can be applied onto an entity.
+  # Playing a devil
 
-  Contracts are indestructible once signed, there's no going back once pen touches parchment.
+  ## What you start with
+  - Your [bold]true name[/bold] is in your briefing and in your character menu. Anyone who says it out loud near you hurts you, so keep it secret.
+  - Your backpack holds a [bold]Codex Umbra[/bold] (use it in hand to open the clause list), a [bold]devilish pen[/bold] and sunglasses.
+  - [bold]You cannot fight.[/bold] You have no combat mode, so no melee and no guns. Deals are your only weapon.
+  - You never eat, drink, breathe or feel the temperature or pressure. You cannot become a zombie. Crematoriums, chasms and the supermatter do not touch you.
+  - You take half damage from brute, heat, cold, poison, radiation and bleeding, but [color=red]half again more from holy damage[/color].
 
-  The particular effect of a contract changes depending on which [bold] clauses [/bold] are written on it.
-  Effects can be applied to the Contractor, the Devil, or the Contractee, the signer.
+  ## Objectives
+  - [bold]Collect Souls[/bold]: gain 7 to 9 souls.
+  - [bold]Make profitable deals[/bold]: add up 150 to 200 contract weight over the round. Every contract you complete adds its weight. Handshakes and revival contracts add none.
+  - The exact targets are not shown to you, so aim high.
 
-  Prefixing a [bold]Clause[/bold] with either "Contractee:" or "Contractor:" will dictate who it applies to.
+  ## Your abilities
+  - [bold]Summon infernal contract[/bold] (10 s cooldown): a blank contract appears in your hand. Only you can complete it.
+  - [bold]Shadow jaunt[/bold] (40 s cooldown): turn invisible for 4 seconds and pass through walls. It works while cuffed or downed, and it breaks handcuffs.
+  - [bold]Devils Grip[/bold] (20 s cooldown): puts a burning grip in your hand. Click someone within reach and they are knocked down for 5 seconds, lose 80 stamina, and speak in gibberish for 10 seconds. Anyone holding a bible, or wearing one on their belt, is immune, and the grip is wasted on them. Use the action again to put the grip away.
+  - [bold]Cheat Death[/bold] (250 s cooldown): fully heal, alive or dead, as often as you like. It also breaks handcuffs and resets your other cooldowns. It fails while you carry 100 or more holy damage.
+  - [bold]Summon revival contract[/bold] (2 souls, 30 s cooldown): see below.
+  - [bold]Possess target[/bold] (4 souls, 70 s cooldown): see below.
 
-  A [bold]Clause[/bold] is a concept or thing that one of the parties is giving up, either to the other party or destroying it entirely.
+  ## Making a deal, step by step
+  1. Use [bold]Summon infernal contract[/bold]. The contract already reads as follows, which weighs exactly 0:
+  <Box>
+    [color=#999999]Contractee: Soul Ownership
+    Contractee: Death[/color]
+  </Box>
+  2. Click the contract with a pen to edit it. Each clause is its own line, written as [bold]Contractee: Clause[/bold] (the person signing) or [bold]Contractor: Clause[/bold] (you). Use the clause names from the [textlink="clause list" link="DevilClauses"].
+  3. Examine the contract up close to see its [bold]weight[/bold]. It must be [bold]0 or more[/bold] to be signed.
+  4. Give it to your mark. They hold any pen in their active hand and alt-click the contract (or use the [bold]Sign[/bold] verb). They sign first.
+  5. Countersign it the same way. Every clause takes effect the moment you sign, and if it holds [bold]Soul Ownership[/bold] for the contractee, you gain their soul.
 
-  Example:
-    Contractee: Weakness
-    Contractee: Soul Ownership
+  The clause lines are strict:
+  - The line must start with the prefix and hold nothing else. Bullets, bold text, a trailing full stop or a hyphen break it.
+  - Capitals and spaces in the clause name do not matter, so "Fear of Fire", "fear of fire" and "FearOfFire" all work.
+  - Any line that is not a clause is ignored, so you can write as much fine print around them as you like.
+  - Each clause counts once, whichever side it is on. Writing it twice only applies the first copy.
 
-  In the above contract, the contractee is giving up their weakness and the rights to their soul.
-  Giving up your weakness will grant you massive resistance to all damage types, but giving up your soul could have unforeseen consequences.
+  ## Contract weight
+  Each clause has a weight. [bold]Negative weight is good for whoever gets the clause, and positive weight is bad for them.[/bold] Weights add up the same no matter which side a clause is on.
 
-  ## Contract Weight
+  For example, Soul Ownership (+25) and Weakness (-35) add up to -10, so nobody can sign it. Add "Contractee: Voice" (+20) and the total is +10. Now it can be signed, and the signer is muted on top of everything else.
 
-  Every contract has a weight associated with it, which can be viewed by inspecting it.
-  Contracts with an uneven weight (below zero) cannot be signed.
+  Watch out for two things:
+  - A clause written on [bold]Contractor:[/bold] really does happen to you. "Contractor: Death" or "Contractor: Mortality" even replaces your own unlimited Cheat Death with a weaker one.
+  - Every clause that changes damage taken (Weakness, Strength, Fear of Fire) replaces the target's whole damage profile, including any species resistances, and the last one written wins.
 
-  Each clause has its own weight value.
-  As a general rule of thumb, the better the clause is for the contractee the higher the weight will be.
+  Until both parties have signed, you can [bold]Burn contract[/bold] with its alt verb to destroy it. Careful: alt-clicking a contract with no pen in hand burns it. Contracts cannot be cremated, sold or dropped into chasms, but they can be eaten.
 
-  This effectively means you have to balance good clauses with bad clauses.
-  [italic] It's important to note that there is no limit on how many bad clauses you can put on one contract, always read the fine-print! [/italic]
+  ## Souls and power
+  You gain a soul from a completed contract with Soul Ownership, a handshake, or an accepted revival contract.
+  - [bold]2 souls[/bold]: Summon revival contract, and your eyes start to glow.
+  - [bold]4 souls[/bold]: Possess target.
+  - [bold]6 souls[/bold]: your possessions last longer. Nothing else is unlocked.
 
-  ## Selling your soul?
+  ## Handshakes
+  Right-click someone within reach and pick [bold]Offer handshake[/bold]. They have 15 seconds to right-click you and pick [bold]Shake (name)'s hand[/bold]. If they do, they are fully healed and get one Cheat Death, but you take their soul, and they gain one random harmful clause. The harmful clause can even be Time (death in five minutes). Mindshielded people, silicons and anyone already condemned cannot take your hand.
 
-  Selling your soul is a fickle thing; and usually what most devils are after.
-  As a devil, your main objective is to collect as many souls as possible. The more souls you gain, the more powerful you become.
+  ## Revival contracts
+  Hold a [bold]contract from the depths[/bold] and click a corpse within reach. If the dead player has ghosted, they are asked whether to sell their soul for a second chance. If they accept, the body is fully healed, they return to it, you gain the soul, and the contract is used up. If they refuse, you can offer it again later. This ignores mindshields. The clauses printed on it are only for show.
 
-  As a contractee, selling your soul has consequences.
-  - Without a soul, you will go [bold][color=red]STRAIGHT[/color][/bold] to hell on death. No more second chances.
-  - You cannot make any more deals after selling your soul.
-  - You will be marked as "Condemned", which could have other consequences.
+  ## Possession
+  Use [bold]Possess target[/bold] on someone within reach who has [bold]sold their soul[/bold]. Nobody else can be possessed. You control their body for 60 seconds, or 90 at 6 souls. Your own body turns invisible meanwhile, and you can return early with [bold]End possession[/bold]. You cannot hurt anyone in a possessed body. When it ends, you reappear beside the host, and they are paralyzed for 10 seconds. Mindshields do not stop possession, but chaplains cannot be possessed.
 
-  A Devil may want to be wary of the stations security team after purchasing a soul, [bold] as it can be considered prevention of revival. [/bold]
+  # Facing a devil
 
-  ## No such thing as no second chances.
+  ## Selling your soul
+  - You become [bold]condemned[/bold]. You can never make another deal or shake a devil's hand, and the devil can possess you whenever it is nearby.
+  - Holy things now hurt you too.
+  - The default contract gives you one Cheat Death. If you die with no Cheat Death left, you are [bold][color=red]dragged to hell[/color][/bold]: the body is gone, and nobody can revive you.
+  - Some souls are already spoken for. The chaplain, the lawyer and the captain cannot sign contracts, take a handshake, be revived by contract or be possessed. Neither can silicons or anyone with a mindshield, though a revival contract still works on a mindshielded corpse.
 
-  A devil can increase their overall power level by collecting enough souls during the duration of their stay on station.
-  Upon reaching the first level, they unlock the ability to create revival contracts.
+  ## Hurting a devil
+  - [bold]Its true name.[/bold] It is not on the devil's ID or its contracts, which are signed with its everyday name, so you have to get it out of the devil. Say it aloud within earshot: the devil takes 15 holy damage and is paralyzed for 4 seconds. This works at most once every 30 seconds. Silicons and people without their own soul (the condemned, the chaplain, the lawyer and the captain) have no power over the name. A chaplain from Central Command doubles the effect.
+  - [bold]A chaplain's bible[/bold] sears a devil for 50 holy damage and paralyzes it for 16 seconds.
+  - [bold]Holy water[/bold] and [bold]holy weapons[/bold] such as the chaplain's swords also deal holy damage.
+  - Carry a bible in your hand or on your belt to shrug off the Devils Grip.
 
-  These contracts can be used on a corpse to offer that ghost a second chance at life.
-  When accepting, they will lose their soul in-exchange for a second chance at life.
+  ## Getting rid of one
+  A devil's body can be killed, but it cannot be gibbed, and it can Cheat Death again and again. [bold]Keep its holy damage at 100 or more[/bold] and it cannot revive. Holy damage slowly wears off by itself, so keep it topped up.
 
-  ## Possession?
-
-  A devil unlocks the ability to possess targets at the second level.
-  Possession allows them to temporarily take over a targets body and do practically whatever they want.
-
-  However, there are a few things they [italic] cannot [/italic] do:
-  - Harm themselves or others.
-  - Escape the deadline: the possession wears off on its own, and they can end it early.
-
-  You may only possess targets that are vulnerable to it, such as people who have sold their soul.
-
-  ## Won't you shake a poor sinners hand?
-
-  As depicted in many different forms of media, a good old-fashioned handshake is practically unbeatable.
-  Shaking hands with a devil will provide you with a quick and easy reward: Full health, and a second life.
-
-  The cost? Well, let's just say it varies.
-  You'll lose your soul immediately, and also gain one random negative clause from the list of clauses.
-
-  ## Dealing with the devil.
-
-  Sometimes, in pursuit of finishing their end of a deal, a devil can become quite troublesome for the stations inhabitants.
-  Whether this be through it stealing items, or offering ungodly power to the stations enemies; it's clear to see why someone might want to get rid of one.
-
-  Luckily for them, there's several ways to deal with a devil.
-  - Pronouncing the true name of a devil will stun them.
-  - A bible in a chaplain's hands will burn a devil to the touch.
-  - Chaplains can utilize bibles to banish a devil.
-
-  As one would guess, a chaplain is more effective at facing a devil than most.
-  Chaplains cannot be tricked to give up their soul, as they already pledged it to whatever God(s) they believe in.
-
-  When a chaplain uses a bible on critical or otherwise incapacitated devil, they can temporarily banish them.
-  For the next couple of minutes or so, that devil will be unable to sustain a material form.
-
-  [bold]When a chaplain speaks a devils true name, it will harm them [color=red]significantly![/bold][/color]
-
-  ## True or fake name?
-
-  When a devil arrives at a station they take the form of a random crew member.
-  Whether they are possessed, shape-shifted, or perhaps just a coincidental twin, they'll replace someone on station.
-
-  What's important is that devil's [bold]cannot replace command staff or security members. [/bold]
-
-  In all manners but one, a devil will appear with their false name.
-  The only way to view a devils true name is to read a contract they have signed, or ask them directly.
+  To banish it, the chaplain uses their bible on the devil while it is critical or dead. This is a 10-second exorcism, broken if the chaplain moves or drops the bible. The devil is then cast out for [bold]3 minutes[/bold], and returns with a completely new face, name, DNA and fingerprints.
 
   ## Trickery goes both ways!
-
-  The contractee is not the only person that can be tricked.
-  Contract weight is applied [bold] no matter who the effect applies to [/bold]
-
-  This means if you can trick a devil to sign a paper negatively affecting them, you can get some positive clauses for free!
+  Weight counts the same whichever side a clause is on. If you can talk a devil into signing a clause that harms the [italic]Contractor[/italic], you can take good clauses for free.
 
   [textlink="Learn more about each clause." link="DevilClauses"]
 </Document>

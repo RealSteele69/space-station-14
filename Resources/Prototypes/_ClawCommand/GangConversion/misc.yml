@@ -46,6 +46,19 @@
     sprite: /Textures/Objects/Fun/spraycans.rsi
     state: spray_colors
 
+- type: statusIcon
+  id: GangBoss
+  isShaded: false
+  priority: 11
+  locationPreference: Left
+  showTo:
+    components:
+    - GangMember
+    - ShowAntagIcons
+  icon:
+    sprite: /Textures/Objects/Fun/spraycans.rsi
+    state: spray_cap_colors
+
 - type: guideEntry
   id: GangConversion
   name: guide-entry-gang-conversion

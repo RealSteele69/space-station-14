@@ -25,6 +25,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server._ClawCommand.Lavaland.Procedural.Components;
+using Content.Server.Access.Systems;
+using Content.Server.Radio.EntitySystems;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
@@ -33,8 +35,14 @@ using Content.Shared._ClawCommand.Lavaland.Shuttles.Components;
 using Content.Shared._ClawCommand.Lavaland.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Shared.Humanoid;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Security.Components;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
+using Content.Shared.Silicons.Borgs.Components;
+using Content.Shared.StationRecords.Components;
 using Content.Shared.Timing;
 using Content.Shared.Whitelist;
 using Robust.Server.GameObjects;
@@ -59,6 +67,9 @@ public sealed partial class DockingConsoleSystem : SharedDockingConsoleSystem
     [Dependency] private MapSystem _mapSystem = default!;
     [Dependency] private ServerStationSystem _station = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private RadioSystem _radio = default!;
+    [Dependency] private IdCardSystem _idCard = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
 
     public override void Initialize()
     {
@@ -179,9 +190,93 @@ public sealed partial class DockingConsoleSystem : SharedDockingConsoleSystem
         if (FindLargestGrid(map) is not {} grid)
             return;
 
+        AnnounceTransitThreats(shuttle, docking, map, grid);
+
         Log.Debug($"{ToPrettyString(args.Actor):user} is FTL-docking {ToPrettyString(shuttle):shuttle} to {ToPrettyString(grid):grid}");
 
         _shuttle.FTLToDock(shuttle, Comp<ShuttleComponent>(shuttle), grid, priorityTag: docking.DockTag);
+    }
+
+    /// <summary>
+    /// Scans the shuttle for wanted crew and unidentified lifeforms just before it departs,
+    /// and announces them over the Security radio channel like an automated sensor sweep.
+    /// </summary>
+    private void AnnounceTransitThreats(EntityUid shuttle, DockingShuttleComponent docking, MapId destinationMap, EntityUid destinationGrid)
+    {
+        if (FindHomeStationGrid(docking, destinationMap, destinationGrid) is not {} homeGrid)
+            return;
+
+        var destination = Loc.GetString(HasComp<LavalandStationComponent>(destinationGrid)
+            ? "lavaland-transit-alert-destination-lavaland"
+            : "lavaland-transit-alert-destination-station");
+
+        var wantedNames = new List<string>();
+        var unknownCount = 0;
+
+        var query = EntityQueryEnumerator<MobStateComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var mobState, out var xform))
+        {
+            if (xform.GridUid != shuttle || _mobState.IsDead(uid, mobState))
+                continue;
+
+            if (TryComp<CriminalRecordComponent>(uid, out var record) &&
+                (record.StatusIcon == "SecurityIconWanted" || record.StatusIcon == "SecurityIconHostile"))
+            {
+                wantedNames.Add(Name(uid));
+                continue;
+            }
+
+            // borgs are crew-controlled, not unidentified lifeforms
+            if (HasComp<BorgChassisComponent>(uid))
+                continue;
+
+            // a humanoid with a station record on file is accounted-for crew
+            if (HasComp<HumanoidProfileComponent>(uid) &&
+                _idCard.TryFindIdCard(uid, out var idCard) &&
+                TryComp<StationRecordKeyStorageComponent>(idCard, out var keyStorage) &&
+                keyStorage.Key != null)
+                continue;
+
+            unknownCount++;
+        }
+
+        foreach (var name in wantedNames)
+        {
+            _radio.SendRadioMessage(homeGrid,
+                Loc.GetString("lavaland-transit-alert-wanted", ("name", name), ("destination", destination)),
+                "Security",
+                homeGrid);
+        }
+
+        if (unknownCount > 0)
+        {
+            _radio.SendRadioMessage(homeGrid,
+                Loc.GetString("lavaland-transit-alert-unknown-lifeform", ("count", unknownCount), ("destination", destination)),
+                "Security",
+                homeGrid);
+        }
+    }
+
+    /// <summary>
+    /// Finds the physical grid of the shuttle's home station, regardless of whether it's
+    /// currently departing towards or away from Lavaland, so an announcement can be heard
+    /// by Security back on the station even while the shuttle itself is mid-transit elsewhere.
+    /// </summary>
+    private EntityUid? FindHomeStationGrid(DockingShuttleComponent docking, MapId destinationMap, EntityUid destinationGrid)
+    {
+        if (!HasComp<LavalandStationComponent>(destinationGrid))
+            return destinationGrid;
+
+        foreach (var dest in docking.Destinations)
+        {
+            if (dest.Map == destinationMap)
+                continue;
+
+            if (FindLargestGrid(dest.Map) is {} grid && !HasComp<LavalandStationComponent>(grid))
+                return grid;
+        }
+
+        return null;
     }
 
     private readonly ResPath _miningShuttlePath = new("/Maps/_ClawCommand/Lavaland/mining.yml");

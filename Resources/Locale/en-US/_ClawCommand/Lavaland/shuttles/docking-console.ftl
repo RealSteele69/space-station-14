@@ -19,3 +19,8 @@ docking-console-ftl-message-NoSelection = Select one of the destinations.
 docking-console-ftl-message-NoAccess = ERROR: Access denied.
 docking-console-ftl-message-RechargingFtl = WARNING: FTL System is not ready.
 docking-console-ftl-message-InFtl = FTL is launched!
+
+lavaland-transit-alert-destination-lavaland = Lavaland
+lavaland-transit-alert-destination-station = the station
+lavaland-transit-alert-wanted = Automated sensor sweep: wanted individual { $name } detected aboard the mining shuttle, transiting to { $destination }.
+lavaland-transit-alert-unknown-lifeform = Automated sensor sweep: { $count } unidentified lifeform(s) detected aboard the mining shuttle, transiting to { $destination }.

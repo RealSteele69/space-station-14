@@ -256,6 +256,11 @@
   - LoadoutPetMouse
   - LoadoutPetHamster
   - LoadoutPetMothroach
+  - LoadoutPetMoproach
+  - LoadoutPetSquackroach
+  - LoadoutPetGoldfish
+  - LoadoutPetRoingus
+  - LoadoutPetWhimperlet
 
 # CC Officer Weapon
 - type: loadoutGroup

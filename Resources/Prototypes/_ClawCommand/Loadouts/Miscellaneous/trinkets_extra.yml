@@ -1,0 +1,587 @@
+- type: loadout
+  id: PlushieChoicesTadpole
+  storage:
+    back:
+    - PlushieChoicesTadpole
+  groupBy: "Plushie"
+
+- type: loadout
+  id: GoldenPersonalAI
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobStationAi
+      time: 180000
+  storage:
+    back:
+    - GoldenPersonalAI
+
+- type: loadout
+  id: CrewCassette
+  storage:
+    back:
+    - CrewCassette
+
+- type: loadout
+  id: SuperSynth
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 100h
+  storage:
+    back:
+    - SuperSynthesizerInstrument
+
+- type: loadout
+  id: MagicCrayon
+  effects:
+    - !type:JobRequirementLoadoutEffect
+      requirement:
+        !type:OverallPlaytimeRequirement
+        time: 360000
+  storage:
+    back:
+      - CrayonMagic
+
+- type: loadout
+  id: BasicFlask
+  storage:
+    back:
+    - DrinkFlaskBar
+  groupBy: "Flasks"
+
+- type: loadout
+  id: FancyFlask
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobCaptain
+      time: 36000
+  storage:
+    back:
+    - DrinkFlask
+  groupBy: "Flasks"
+
+- type: loadout
+  id: CardBoxBlack
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 36000
+  storage:
+    back:
+    - CardBoxBlack
+
+- type: loadout
+  id: CardBoxNanotrasen
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobQuartermaster
+      time: 36000
+  storage:
+    back:
+    - CardBoxNanotrasen
+
+- type: loadout
+  id: FoodSnackLollypopWrapped
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 36000
+  storage:
+    back:
+    - FoodSnackLollypopWrapped
+
+- type: loadout
+  id: FoodSnackLollypopWrappedRainbow
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 1800000
+  storage:
+    back:
+    - FoodSnackLollypopWrappedRainbow
+
+- type: loadout
+  id: FoodSnackLollypopWrappedCarp
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSalvageSpecialist
+      time: 360000
+  storage:
+    back:
+    - FoodSnackLollypopWrappedCarp
+
+- type: loadout
+  id: ClothingNeckCloakProgressPride
+  storage:
+    back:
+    - ClothingNeckCloakProgressPride
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckCloakTrans
+  storage:
+    back:
+    - ClothingNeckCloakTrans
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckCloakGenderfluid
+  storage:
+    back:
+    - ClothingNeckCloakGenderfluid
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckCloakAro
+  storage:
+    back:
+    - ClothingNeckCloakAro
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckCloakAce
+  storage:
+    back:
+    - ClothingNeckCloakAce
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckCloakBi
+  storage:
+    back:
+    - ClothingNeckCloakBi
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckCloakIntersex
+  storage:
+    back:
+    - ClothingNeckCloakIntersex
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckCloakLesbian
+  storage:
+    back:
+    - ClothingNeckCloakLesbian
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckCloakGay
+  storage:
+    back:
+    - ClothingNeckCloakGay
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckCloakEnby
+  storage:
+    back:
+    - ClothingNeckCloakEnby
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckCloakPan
+  storage:
+    back:
+    - ClothingNeckCloakPan
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckScarfStripedAce
+  storage:
+    back:
+    - ClothingNeckScarfStripedAce
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckScarfStripedAro
+  storage:
+    back:
+    - ClothingNeckScarfStripedAro
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckScarfStripedAroace
+  storage:
+    back:
+    - ClothingNeckScarfStripedAroace
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckScarfStripedBiSexual
+  storage:
+    back:
+    - ClothingNeckScarfStripedBiSexual
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckScarfStripedGay
+  storage:
+    back:
+    - ClothingNeckScarfStripedGay
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckScarfStripedInter
+  storage:
+    back:
+    - ClothingNeckScarfStripedInter
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckScarfStripedLesbian
+  storage:
+    back:
+    - ClothingNeckScarfStripedLesbian
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckScarfStripedPan
+  storage:
+    back:
+    - ClothingNeckScarfStripedPan
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckScarfStripedNonBinary
+  storage:
+    back:
+    - ClothingNeckScarfStripedNonBinary
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckScarfStripedRainbow
+  storage:
+    back:
+    - ClothingNeckScarfStripedRainbow
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckScarfStripedTrans
+  storage:
+    back:
+    - ClothingNeckScarfStripedTrans
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckScarfStripedGenderfluid
+  storage:
+    back:
+    - ClothingNeckScarfStripedGenderfluid
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckChameleonPride
+  storage:
+    back:
+    - ClothingNeckChameleonPride
+  groupBy: "pin"
+
+- type: loadout
+  id: ClothingNeckUnathiMantle
+  storage:
+    back:
+    - ClothingNeckUnathiMantle
+
+- type: loadout
+  id: MysteryLighterBox
+  storage:
+    back:
+    - MysteryLighterBox
+  groupBy: "smokeables"
+
+- type: loadout
+  id: DiscountDanLighter
+  storage:
+    back:
+    - DiscountDanLighter
+  groupBy: "smokeables"
+
+- type: loadout
+  id: TowelBlack
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChaplain
+      time: 360000
+  storage:
+    back:
+    - TowelBlack
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelDarkBlue
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Command
+      time: 360000
+  storage:
+    back:
+    - TowelDarkBlue
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelDarkGreen
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobLibrarian
+      time: 360000
+  storage:
+    back:
+    - TowelDarkGreen
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelGold
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 3600000
+  storage:
+    back:
+    - TowelGold
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelGray
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobPassenger
+      time: 360000
+  storage:
+    back:
+    - TowelGray
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelGreen
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Civilian
+      time: 360000
+  storage:
+    back:
+    - TowelGreen
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelLightBlue
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Medical
+      time: 360000
+  storage:
+    back:
+    - TowelLightBlue
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelLightBrown
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Cargo
+      time: 360000
+  storage:
+    back:
+    - TowelLightBrown
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelMaroon
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobLawyer
+      time: 360000
+  storage:
+    back:
+    - TowelMaroon
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelMime
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobMime
+      time: 360000
+  storage:
+    back:
+    - TowelMime
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelOrange
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 360000
+  storage:
+    back:
+    - TowelOrange
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelPurple
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Science
+      time: 360000
+  storage:
+    back:
+    - TowelPurple
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelRed
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 360000
+  storage:
+    back:
+    - TowelRed
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelSilver
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 1800000
+  storage:
+    back:
+    - TowelSilver
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelYellow
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobClown
+      time: 360000
+  storage:
+    back:
+    - TowelYellow
+  groupBy: "towels"
+
+- type: loadout
+  id: GoldRing
+  storage:
+    back:
+    - GoldRing
+
+- type: loadout
+  id: SilverRing
+  storage:
+    back:
+    - SilverRing
+
+- type: loadout
+  id: WhiteCane
+  storage:
+    back:
+    - WhiteCane
+
+- type: loadout
+  id: Dogtags
+  storage:
+    back:
+    - Dogtags
+
+- type: loadout
+  id: TapeRecorder
+  storage:
+    back:
+    - TapeRecorderFilled
+
+- type: loadout
+  id: AACTablet
+  storage:
+    back:
+    - AACTablet
+
+- type: loadout
+  id: PlushieCosmicCult
+  storage:
+    back:
+    - PlushieCosmicCult
+  groupBy: "Plushie"
+
+- type: loadout
+  id: PlushieExperiment
+  storage:
+    back:
+    - PlushieExperiment
+  groupBy: "Plushie"
+
+- type: loadout
+  id: CigarGoldCase
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Command
+      time: 54000
+  storage:
+    back:
+    - CigarGoldCase
+  groupBy: "smokeables"
+
+- type: loadout
+  id: PipePacker
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FancySmokeables
+  storage:
+    back:
+    - PipePacker
+  groupBy: "smokeables"
+
+- type: loadout
+  id: FlippoEngravedLighterWorn
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FancySmokeables
+  storage:
+    back:
+    - FlippoEngravedLighterWorn
+  groupBy: "smokeables"

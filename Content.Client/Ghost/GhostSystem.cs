@@ -1,5 +1,6 @@
 using Content.Client.Movement.Systems;
 using Content.Shared.Actions;
+using Content.Shared.GameTicking;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Ghost.Systems;
 using Content.Shared.NightVision;
@@ -25,6 +26,10 @@ namespace Content.Client.Ghost
         public int AvailableGhostRoleCount { get; private set; }
 
         public GhostVisibilityMode GhostVisibility { get; private set; } = GhostVisibilityMode.ShowAllGhosts;
+
+        // Claw Command - set once the round-end summary arrives. The server reveals observer ghosts to everyone
+        // then, so a non-ghost client must stop hiding ghost sprites locally until the next round.
+        private bool _roundEndReveal;
 
         public GhostComponent? Player => CompOrNull<GhostComponent>(_playerManager.LocalEntity);
         public bool IsGhost => Player != null;
@@ -116,7 +121,7 @@ namespace Content.Client.Ghost
             if (uid != _playerManager.LocalEntity)
                 return;
 
-            ApplyGhostVisibility(GhostVisibilityMode.HideOtherGhosts);
+            ApplyGhostVisibility(NonGhostVisibility); // Claw Command
             PlayerRemoved?.Invoke(component);
         }
 
@@ -141,8 +146,28 @@ namespace Content.Client.Ghost
         [SubscribeLocalEvent]
         private void OnGhostPlayerDetach(EntityUid uid, GhostComponent component, LocalPlayerDetachedEvent args)
         {
-            ApplyGhostVisibility(GhostVisibilityMode.HideOtherGhosts);
+            ApplyGhostVisibility(NonGhostVisibility); // Claw Command
             PlayerDetached?.Invoke();
+        }
+
+        // Claw Command - round-end ghost reveal. Without this, anyone who was a ghost earlier in the round
+        // (aghosted, ghosted and respawned, took a ghost role, got revived) keeps every ghost sprite hidden.
+        private GhostVisibilityMode NonGhostVisibility =>
+            _roundEndReveal ? GhostVisibilityMode.ShowAllGhosts : GhostVisibilityMode.HideOtherGhosts;
+
+        [SubscribeNetworkEvent]
+        private void OnRoundEndMessage(RoundEndMessageEvent ev)
+        {
+            _roundEndReveal = true;
+
+            if (!IsGhost)
+                ApplyGhostVisibility(GhostVisibilityMode.ShowAllGhosts);
+        }
+
+        [SubscribeNetworkEvent]
+        private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
+        {
+            _roundEndReveal = false;
         }
 
         [SubscribeNetworkEvent]

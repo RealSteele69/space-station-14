@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Sprited by Zergologist (discord), ported to Funky by Zergologist Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "facepaint_blush",
+      "directions": 4
+    },
+    {
+      "name": "facepaint_eyebrows",
+      "directions": 4
+    },
+    {
+      "name": "facepaint_lipstick",
+      "directions": 4
+    },
+    {
+      "name": "facepaint_lipstick_snout",
+      "directions": 4
+    }
+  ]
+}

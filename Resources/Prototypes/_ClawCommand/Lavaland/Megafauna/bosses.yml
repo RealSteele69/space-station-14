@@ -205,13 +205,6 @@
       - !type:ActionAvailableCondition
         actionId: ActionLegionSummonSkulls
     - !type:PerformActionSelector
-      actionId: ActionLegionCharge
-      weight: 2
-      delay: 2.0
-      conditions:
-      - !type:ActionAvailableCondition
-        actionId: ActionLegionCharge
-    - !type:PerformActionSelector
       actionId: ActionLegionBileSpray
       weight: 2
       delay: 2.0

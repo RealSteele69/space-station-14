@@ -5,3 +5,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 reagent-effect-condition-pressure-threshold = requires pressure between {$min}kPa and {$max}kPa
+
+entity-condition-guidebook-on-lavaland =
+    the metabolizer is { $onLavaland ->
+                [true] on Lavaland
+                *[false] not on Lavaland
+               }

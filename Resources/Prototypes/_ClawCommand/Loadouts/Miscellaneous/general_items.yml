@@ -447,3 +447,33 @@
   storage:
     back:
     - MobMothroach
+
+- type: loadout
+  id: LoadoutPetMoproach
+  storage:
+    back:
+    - MobMoproach
+
+- type: loadout
+  id: LoadoutPetSquackroach
+  storage:
+    back:
+    - MobSquackroach
+
+- type: loadout
+  id: LoadoutPetGoldfish
+  storage:
+    back:
+    - MobCarpGoldfish
+
+- type: loadout
+  id: LoadoutPetRoingus
+  storage:
+    back:
+    - MobRoingus
+
+- type: loadout
+  id: LoadoutPetWhimperlet
+  storage:
+    back:
+    - MobWhimperlet

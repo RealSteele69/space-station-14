@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "made by nope_ingeneer Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "beholder-base",
+      "directions": 4
+    },
+    {
+      "name": "beholder-eye",
+      "directions": 4
+    },
+    {
+      "name": "malstrem-base",
+      "directions": 4
+    },
+    {
+      "name": "malstrem-leds",
+      "directions": 4
+    }
+  ]
+}

@@ -17,9 +17,11 @@
     shoes: ClothingShoesColorWhite
     id: ReporterPDA
     ears: ClothingHeadsetService
-  #storage:
-    #back:
-    #- Stuff
+  storage: # Claw Command: reporters start with recording gear
+    back:
+    - TapeRecorder
+    - CassetteTape
+    - CassetteTape
 
 - type: chameleonOutfit
   id: ReporterChameleonOutfit

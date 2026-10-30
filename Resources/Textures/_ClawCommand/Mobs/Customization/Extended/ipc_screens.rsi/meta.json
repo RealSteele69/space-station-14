@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from Yogstation at https://github.com/yogstation13/Yogstation/commit/9c046aa5327c71f9e93e45a34283b3a4aff58bd1 Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "ipc_screen_dot",
+      "directions": 4,
+      "delays": [
+        [
+          4,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          4,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          4,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          4,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# Extra pAI software. Lives alongside the stock catalog; listings are picked up by the PAIAbilities category.
+
+- type: listing
+  id: PAIVoiceRecorder
+  name: pai-voice-recorder-name
+  description: pai-voice-recorder-desc
+  productAction: ActionPAIVoiceRecorder
+  productComponents: PAIVoiceRecorderComponents
+  applyToMob: true
+  cost:
+    SiliconMemory: 5
+  categories:
+  - PAIAbilities
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

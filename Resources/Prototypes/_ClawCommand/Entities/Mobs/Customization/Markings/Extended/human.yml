@@ -1,0 +1,359 @@
+- type: marking
+  id: BodyScarl
+  bodyPart: Chest
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_scars.rsi
+    state: bodyscar_l
+
+- type: marking
+  id: BodyScarr
+  bodyPart: Chest
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/scars2.rsi
+    state: bodyscar_r
+
+- type: marking
+  id: BuffChest
+  bodyPart: Chest
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/scars.rsi
+    state: buff
+
+- type: marking
+  id: DwarfConstellationChest
+  bodyPart: Chest
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_chest.rsi
+    state: constellation
+    shader: unshaded
+
+- type: marking
+  id: DwarfMarkBear
+  bodyPart: Chest
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_chest.rsi
+    state: markbear
+    shader: unshaded
+
+- type: marking
+  id: DwarfMarkCobra
+  bodyPart: Chest
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_chest.rsi
+    state: markcobra
+    shader: unshaded
+
+- type: marking
+  id: DwarfMarkSpider
+  bodyPart: Chest
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_chest.rsi
+    state: markspider
+    shader: unshaded
+
+- type: marking
+  id: DwarfTattooShootingStar
+  bodyPart: Chest
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_chest.rsi
+    state: shootingstar
+    shader: unshaded
+
+- type: marking
+  id: FloralBeard
+  bodyPart: FacialHair
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_facialhair.rsi
+    state: messyfloral1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_facialhair.rsi
+    state: messyfloral2
+
+- type: marking
+  id: DwarfBearCheeks
+  bodyPart: Head
+  groupWhitelist: [ Human ]
+  forcedColoring: true
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_head.rsi
+    state: bearcheeks
+    shader: unshaded
+
+- type: marking
+  id: DwarfConstellationHead
+  bodyPart: Head
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_head.rsi
+    state: constellation
+    shader: unshaded
+
+- type: marking
+  id: DwarfHeadGlow
+  bodyPart: Head
+  groupWhitelist: [ Human ]
+  forcedColoring: true
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_head.rsi
+    state: glow
+    shader: unshaded
+
+- type: marking
+  id: OviniaBaphometHorns
+  bodyPart: HeadTop
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/ovinia_horn_markings.rsi
+    state: ovinia-baphomet-horns
+
+- type: marking
+  id: OviniaDevilHorns
+  bodyPart: HeadTop
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/ovinia_horn_markings.rsi
+    state: ovinia-devil-horns
+
+- type: marking
+  id: OviniaEarsCow
+  bodyPart: HeadTop
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/ovinia_ear_markings.rsi
+    state: cow-ears
+  - sprite: _ClawCommand/Mobs/Customization/Extended/ovinia_ear_markings.rsi
+    state: cow-ears-inner
+
+- type: marking
+  id: OviniaEarsDeer
+  bodyPart: HeadTop
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/ovinia_ear_markings.rsi
+    state: deer-ears
+  - sprite: _ClawCommand/Mobs/Customization/Extended/ovinia_ear_markings.rsi
+    state: deer-ears-inner
+
+- type: marking
+  id: OviniaEarsHorse
+  bodyPart: HeadTop
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/ovinia_ear_markings.rsi
+    state: horse-ears
+  - sprite: _ClawCommand/Mobs/Customization/Extended/ovinia_ear_markings.rsi
+    state: horse-ears-inner
+
+- type: marking
+  id: OviniaIbexHorns
+  bodyPart: HeadTop
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/ovinia_horn_markings.rsi
+    state: ovinia-ibex-horns
+
+- type: marking
+  id: OviniaJacobHorns
+  bodyPart: HeadTop
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/ovinia_horn_markings.rsi
+    state: jacob-horns
+
+- type: marking
+  id: dogEars
+  bodyPart: HeadTop
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dog_markings.rsi
+    state: dog_ears_standard
+
+- type: marking
+  id: dogEarsWag
+  bodyPart: HeadTop
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dog_markings.rsi
+    state: dog_ears_animated
+
+- type: marking
+  id: DwarfConstellationLArm
+  bodyPart: LArm
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_larm.rsi
+    state: constellation
+    shader: unshaded
+
+- type: marking
+  id: DwarfConstellationLFoot
+  bodyPart: LFoot
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_lfoot.rsi
+    state: constellation
+    shader: unshaded
+
+- type: marking
+  id: DwarfConstellationLHand
+  bodyPart: LHand
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_lhand.rsi
+    state: constellation
+    shader: unshaded
+
+- type: marking
+  id: DwarfMarkKangarooLHand
+  bodyPart: LHand
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_lhand.rsi
+    state: markkangaroo
+    shader: unshaded
+
+- type: marking
+  id: DwarfConstellationLLeg
+  bodyPart: LLeg
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_lleg.rsi
+    state: constellation
+    shader: unshaded
+
+- type: marking
+  id: DwarfConstellationRArm
+  bodyPart: RArm
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_rarm.rsi
+    state: constellation
+    shader: unshaded
+
+- type: marking
+  id: DwarfConstellationRFoot
+  bodyPart: RFoot
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_rfoot.rsi
+    state: constellation
+    shader: unshaded
+
+- type: marking
+  id: DwarfConstellationRHand
+  bodyPart: RHand
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_rhand.rsi
+    state: constellation
+    shader: unshaded
+
+- type: marking
+  id: DwarfMarkKangarooRHand
+  bodyPart: RHand
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_rhand.rsi
+    state: markkangaroo
+    shader: unshaded
+
+- type: marking
+  id: DwarfConstellationRLeg
+  bodyPart: RLeg
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dwarf_rleg.rsi
+    state: constellation
+    shader: unshaded
+
+- type: marking
+  id: HeadSeptum
+  bodyPart: Snout
+  groupWhitelist: [ Human ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffc833"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_snout.rsi
+    state: septum
+
+- type: marking
+  id: dogTail
+  bodyPart: Tail
+  groupWhitelist: [ Human ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dog_markings.rsi
+    state: dog_tail_standard

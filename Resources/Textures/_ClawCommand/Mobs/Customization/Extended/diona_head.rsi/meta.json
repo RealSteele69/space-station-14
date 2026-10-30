@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "flowers and thorns from https://github.com/Citadel-Station-13/Citadel-Station-13-RP/commit/38051f45d3b26bd31f6e292239f43adb36ff01fe, modified by EmoGarbage and atdoop (github). bloom, bracket, brush, cornflower, ficus, garland, king, laurel, lotus, oak, palm, root, rose, rosey, thorns, vinel, vines, and wildflower from https://github.com/TauCetiStation/TauCetiClassic/blob/a8c097fd0e749dcd6f66f05cf5325e51f6b081dd/icons/mob/human_face.dmi and modified by atdoop (github). amanita, bigfirefly, jack, mycena and shelf by crocodilecarousel (github) Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "amanita1",
+      "directions": 4
+    },
+    {
+      "name": "amanita2",
+      "directions": 4
+    },
+    {
+      "name": "jack",
+      "directions": 4
+    },
+    {
+      "name": "mycena",
+      "directions": 4
+    },
+    {
+      "name": "shelf",
+      "directions": 4
+    }
+  ]
+}

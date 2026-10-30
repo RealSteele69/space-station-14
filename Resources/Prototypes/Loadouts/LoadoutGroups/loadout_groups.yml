@@ -57,6 +57,71 @@
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
   - TowelColorWhite
+  - PlushieChoicesTadpole # CC14
+  - GoldenPersonalAI # CC14
+  - CrewCassette # CC14
+  - SuperSynth # CC14
+  - MagicCrayon # CC14
+  - BasicFlask # CC14
+  - FancyFlask # CC14
+  - CardBoxBlack # CC14
+  - CardBoxNanotrasen # CC14
+  - FoodSnackLollypopWrapped # CC14
+  - FoodSnackLollypopWrappedRainbow # CC14
+  - FoodSnackLollypopWrappedCarp # CC14
+  - ClothingNeckCloakProgressPride # CC14
+  - ClothingNeckCloakTrans # CC14
+  - ClothingNeckCloakGenderfluid # CC14
+  - ClothingNeckCloakAro # CC14
+  - ClothingNeckCloakAce # CC14
+  - ClothingNeckCloakBi # CC14
+  - ClothingNeckCloakIntersex # CC14
+  - ClothingNeckCloakLesbian # CC14
+  - ClothingNeckCloakGay # CC14
+  - ClothingNeckCloakEnby # CC14
+  - ClothingNeckCloakPan # CC14
+  - ClothingNeckScarfStripedAce # CC14
+  - ClothingNeckScarfStripedAro # CC14
+  - ClothingNeckScarfStripedAroace # CC14
+  - ClothingNeckScarfStripedBiSexual # CC14
+  - ClothingNeckScarfStripedGay # CC14
+  - ClothingNeckScarfStripedInter # CC14
+  - ClothingNeckScarfStripedLesbian # CC14
+  - ClothingNeckScarfStripedPan # CC14
+  - ClothingNeckScarfStripedNonBinary # CC14
+  - ClothingNeckScarfStripedRainbow # CC14
+  - ClothingNeckScarfStripedTrans # CC14
+  - ClothingNeckScarfStripedGenderfluid # CC14
+  - ClothingNeckChameleonPride # CC14
+  - ClothingNeckUnathiMantle # CC14
+  - MysteryLighterBox # CC14
+  - DiscountDanLighter # CC14
+  - TowelBlack # CC14
+  - TowelDarkBlue # CC14
+  - TowelDarkGreen # CC14
+  - TowelGold # CC14
+  - TowelGray # CC14
+  - TowelGreen # CC14
+  - TowelLightBlue # CC14
+  - TowelLightBrown # CC14
+  - TowelMaroon # CC14
+  - TowelMime # CC14
+  - TowelOrange # CC14
+  - TowelPurple # CC14
+  - TowelRed # CC14
+  - TowelSilver # CC14
+  - TowelYellow # CC14
+  - GoldRing # CC14
+  - SilverRing # CC14
+  - WhiteCane # CC14
+  - Dogtags # CC14
+  - TapeRecorder # CC14
+  - AACTablet # CC14
+  - PlushieCosmicCult # CC14
+  - PlushieExperiment # CC14
+  - CigarGoldCase # CC14
+  - PipePacker # CC14
+  - FlippoEngravedLighterWorn # CC14
 
 - type: loadoutGroup
   id: AssistiveItems
@@ -437,6 +502,11 @@
   minLimit: 0
   loadouts:
   - HoPWintercoat
+  - ClothingFormalHoPCoat # CC14
+  - ClothingFormalHoPJacket # CC14
+  - ClothingFormalHoPDress # CC14
+  - HoPLongcoat # CC14
+  - ClothingOuterCasualJacketHOP # CC14
   # Claw Command - imported wardrobe
   - CCWClothingUniformOuterSnowmaiden
 
@@ -706,6 +776,28 @@
   - BartenderVest
   - BartenderApron
   - BartenderWintercoat
+  - JacketBiker # CC14
+  - JacketLeather # CC14
+  - JacketJamrock # CC14
+  - MNKBlackJacket # CC14
+  - CorporateJacket # CC14
+  - CsCorporateJacket # CC14
+  - EECorporateJacket # CC14
+  - HICorporateJacket # CC14
+  - HMCorporateJacket # CC14
+  - IdCorporateJacket # CC14
+  - JacketLettermanBlue # CC14
+  - JacketLettermanBrown # CC14
+  - JacketLettermanRed # CC14
+  - JacketLettermanMagenta # CC14
+  - BomberPunkRed # CC14
+  - BomberAerostatic # CC14
+  - BomberPinkSleeves # CC14
+  - MNKBlackHoodie # CC14
+  - MNKWhiteHoodie # CC14
+  - MNKBlackTopCoat # CC14
+  - BomberJacket # CC14
+  - BomberCheckered # CC14
   # Claw Command - imported wardrobe
   - CCWClothingUniformOuterSnowmaiden
 
@@ -1817,6 +1909,11 @@
   minLimit: 0
   loadouts:
   - QuartermasterWintercoat
+  - BomberLogistic # CC14
+  - ClothingOuterCasualJacketQM # CC14
+  - ClothingOuterCasualJacketQMMoney # CC14
+  - ClothingOuterCasualJacketQMSalvage # CC14
+  - ClothingOuterCasualJacketQMMail # CC14
   # Claw Command - imported wardrobe
   - CCWClothingUniformOuterSnowmaiden
 
@@ -2134,6 +2231,10 @@
   minLimit: 0
   loadouts:
   - ChiefEngineerWintercoat
+  - BomberEngineering # CC14
+  - ClothingOuterCasualJacketCE # CC14
+  - ClothingOuterCasualJacketCEPower # CC14
+  - ClothingOuterCasualJacketCEAtmos # CC14
   # Claw Command - imported wardrobe
   - CCWClothingUniformOuterSnowmaiden
 
@@ -2533,6 +2634,14 @@
   loadouts:
   - ResearchDirectorLabCoat
   - ResearchDirectorWintercoat
+  - LongScienceCoat # CC14
+  - MystaLabcoat # CC14
+  - ResearchDirectorLabCoatPurple # CC14
+  - BomberEpistemic # CC14
+  - ClothingOuterCasualJacketRD # CC14
+  - ClothingOuterCasualJacketRDRobotics # CC14
+  - ClothingOuterCasualJacketRDXenoarch # CC14
+  - ClothingOuterCasualJacketRDXenobio # CC14
   # Claw Command - imported wardrobe
   - CCWClothingUniformOuterSnowmaiden
 

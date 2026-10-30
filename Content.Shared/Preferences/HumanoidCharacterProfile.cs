@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using Content.Shared.CCVar;
 using Content.Shared.Chat.Prototypes;
@@ -906,16 +907,9 @@ namespace Content.Shared.Preferences
                 name = GetName(Species, gender);
             }
 
-            string flavortext;
-            var maxFlavorTextLength = configManager.GetCVar(CCVars.MaxFlavorTextLength);
-            if (FlavorText.Length > maxFlavorTextLength)
-            {
-                flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText)[..maxFlavorTextLength];
-            }
-            else
-            {
-                flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText);
-            }
+            // Claw Command - store flavor text verbatim (it is displayed as plain text) instead of stripping markup,
+            // which threw on any stray '[' or '\' and made the profile unsavable.
+            var flavortext = SanitizeFreeText(FlavorText, configManager.GetCVar(CCVars.MaxFlavorTextLength));
 
             var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex);
 
@@ -1089,6 +1083,46 @@ namespace Content.Shared.Preferences
             profile.EnsureValid(session, collection);
             return profile;
         }
+
+        // Claw Command start
+        /// <summary>
+        /// Cleans player-entered free text so it can always be saved: drops control characters (other than
+        /// newlines and tabs) and unpaired UTF-16 surrogates, which the database rejects, and truncates to
+        /// <paramref name="maxLength"/> without splitting a surrogate pair.
+        /// </summary>
+        public static string SanitizeFreeText(string text, int maxLength)
+        {
+            maxLength = Math.Max(0, maxLength);
+            var builder = new StringBuilder(Math.Min(text.Length, maxLength));
+
+            for (var i = 0; i < text.Length; i++)
+            {
+                var c = text[i];
+
+                if (char.IsHighSurrogate(c))
+                {
+                    if (i + 1 >= text.Length || !char.IsLowSurrogate(text[i + 1]))
+                        continue;
+
+                    if (builder.Length + 2 > maxLength)
+                        break;
+
+                    builder.Append(c).Append(text[++i]);
+                    continue;
+                }
+
+                if (char.IsLowSurrogate(c) || char.IsControl(c) && c != '\n' && c != '\t')
+                    continue;
+
+                if (builder.Length + 1 > maxLength)
+                    break;
+
+                builder.Append(c);
+            }
+
+            return builder.ToString().Trim();
+        }
+        // Claw Command end
 
         // sorry this is kind of weird and duplicated,
         /// working inside these non entity systems is a bit wack

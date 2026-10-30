@@ -44,7 +44,7 @@
   parent: ClothingHandsGlovesColorBlack
   name: "broken god gloves"
   description: "Mechanical arms - reliable protection and precise control over tools for the glory of the Machine God."
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
   - type: Sprite
     sprite: Imperial/Seriozha/Fredik21/brokengod/gloves.rsi
@@ -53,34 +53,34 @@
   - type: Insulated
   - type: Fiber
     fiberMaterial: fibers-insulative
-  - type: Unremoveable
+  - type: CursedClothing
 
 - type: entity
   id: ClothingHeadHatFoxNDA953
   parent: ClothingHeadBase
   name: "fox ears"
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
   - type: Sprite
     sprite: Imperial/Seriozha/Fredik21/nda/nda953.rsi
   - type: Clothing
     sprite: Imperial/Seriozha/Fredik21/nda/nda953.rsi
-  - type: Unremoveable
+  - type: CursedClothing
 
 - type: entity
   id: ClothingHeadHatHolyWatermelonSCP343
   parent: ClothingHeadHatHolyWatermelon
   name: "Divine Robe"
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
-  - type: Unremoveable
+  - type: CursedClothing
 
 - type: entity
   id: ClothingHeadHatHoodCultScarletKing
   parent: ClothingHeadHatHoodCulthood
   name: "hood of the cult of the children of the Scarlet King"
   description: "The hood looks as if it was not sewn, but woven from living, but dead, organic fibers."
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
   - type: Armor
     modifiers:
@@ -89,7 +89,7 @@
         Slash: 0.95
         Heat: 0.95
         Piercing: 0.95
-  - type: Unremoveable
+  - type: CursedClothing
 
 - type: entity
   id: ClothingHeadHelmetCIsuppressor
@@ -199,7 +199,7 @@
   parent: ClothingHeadHelmetBase
   name: "Helmet broken god"
   description: "“Dome of Repentance” - silence outside, prayer inside."
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
   - type: Sprite
     sprite: Imperial/Seriozha/Fredik21/brokengod/head.rsi
@@ -213,7 +213,7 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
-  - type: Unremoveable
+  - type: CursedClothing
 
 - type: entity
   id: ClothingHeadHelmetepsilon9
@@ -610,7 +610,7 @@
   parent: ClothingOuterArmorBase
   name: "broken god"
   description: "Steam Blessing - the roar of a steam boiler is a song of war. May the power of steam bring purification and protection."
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
   - type: Sprite
     sprite: Imperial/Seriozha/Fredik21/brokengod/armor.rsi
@@ -631,14 +631,14 @@
     damageCoefficient: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.8
-  - type: Unremoveable
+  - type: CursedClothing
 
 - type: entity
   id: ClothingOuterArmorbrokengodHammerman
   parent: ClothingOuterArmorBase
   name: "broken god Hammerman"
   description: "The Hammer Fortress is armor crafted for those who carry out the will of the God-Machine, unleashing it upon their enemies."
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
   - type: Sprite
     sprite: Imperial/Seriozha/Fredik21/brokengod/armorHammerman.rsi
@@ -662,7 +662,7 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.5
     sprintModifier: 0.3
-  - type: Unremoveable
+  - type: CursedClothing
 
 - type: entity
   id: ClothingOuterArmorepsilon9
@@ -835,7 +835,7 @@
   parent: ClothingOuterBase
   name: "Robe of the Children of the Scarlet King cult"
   description: "The robe looks heavy and dense, as if it were made from skins, but not of animal origin."
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
   - type: Sprite
     sprite: Imperial/Seriozha/Fredik21/scarletking/robes.rsi
@@ -850,7 +850,7 @@
         Heat: 0.6
   - type: StaminaResistance
     damageCoefficient: 0.2
-  - type: Unremoveable
+  - type: CursedClothing
 
 - type: entity
   id: ClothingSCPCloakRed
@@ -879,7 +879,7 @@
   parent: ClothingShoesMilitaryBase
   name: "broken god Boots"
   description: "These boots not only help you walk on the ground, but also protect you from the forces hidden beneath it."
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
   - type: Sprite
     sprite: Imperial/Seriozha/Fredik21/brokengod/boot.rsi
@@ -887,7 +887,7 @@
     sprite: Imperial/Seriozha/Fredik21/brokengod/boot.rsi
   - type: Matchbox
   - type: FootstepModifier
-  - type: Unremoveable
+  - type: CursedClothing
   - type: ClothingSpeedModifier
     walkModifier: 1.1
     sprintModifier: 1.2
@@ -897,12 +897,12 @@
   parent: ClothingShoesCult
   name: "boots of the children of the Scarlet King"
   description: "These boots look like normal shoes, but their existence defies logic."
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
   - type: ClothingSpeedModifier
     walkModifier: 1.3
     sprintModifier: 1.5
-  - type: Unremoveable
+  - type: CursedClothing
 
 - type: entity
   id: ClothingShoesSCP
@@ -950,7 +950,7 @@
   id: ClothingUniformJumpsuitColorWhiteSCP343
   parent: ClothingUniformJumpsuitColorWhite
   name: "Divine Robe"
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
   - type: Armor
     modifiers:
@@ -963,7 +963,7 @@
         Cellular: 0
         Radiation: 0
         Caustic: 0
-  - type: Unremoveable
+  - type: CursedClothing
   - type: ClothingSpeedModifier
     walkModifier: 1.1
     sprintModifier: 1.1
@@ -978,9 +978,9 @@
   id: ClothingUniformJumpsuitKimonoNDA953
   parent: ClothingUniformJumpsuitKimono
   name: "Kimono NDA953"
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
-  - type: Unremoveable
+  - type: CursedClothing
 
 - type: entity
   id: ClothingUniformJumpsuitSCPCom
@@ -1084,7 +1084,7 @@
   - BaseToggleClothing
   name: "Invisibility in hand"
   description: "DO NOT PUT HER ON THE FLOOR!! Press Z to activate invisibility."
-  suffix: "Fredik21, Недра"
+  suffix: "CURSED, Fredik21, Недра"
   components:
   - type: Sprite
     sprite: Clothing/Head/Soft/cargosoft.rsi
@@ -1103,7 +1103,7 @@
       minVisibility: -10
       lastVisibility: -1
       maxVisibility: 1
-  - type: Unremoveable
+  - type: CursedClothing
 
 - type: entity
   id: SCP714

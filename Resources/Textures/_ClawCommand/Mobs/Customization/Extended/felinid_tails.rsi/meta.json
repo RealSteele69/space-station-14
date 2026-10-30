@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "@Vordenburg. Edited by Quill Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "basic_tail_tip",
+      "directions": 4
+    },
+    {
+      "name": "basic_tail_stripes_even",
+      "directions": 4
+    },
+    {
+      "name": "basic_tail_stripes_odd",
+      "directions": 4
+    },
+    {
+      "name": "basic_bow",
+      "directions": 4
+    },
+    {
+      "name": "basic_bell",
+      "directions": 4
+    }
+  ]
+}

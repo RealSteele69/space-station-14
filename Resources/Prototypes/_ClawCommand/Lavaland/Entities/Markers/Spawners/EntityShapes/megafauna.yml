@@ -149,7 +149,7 @@
     spawn: MobLegionSkull
     shape: !type:BoxRandomEntityShape
       size: 3
-      filledChance: 0.45
+      filledChance: 0.3
 
 - type: entity
   parent: MegafaunaShapeBase

@@ -374,7 +374,7 @@
   description: Release a swarm of skulls.
   components:
   - type: Action
-    useDelay: 8
+    useDelay: 12
     sound:
       path: /Audio/_ClawCommand/Lavaland/Mobs/legion_spawn.ogg
   - type: Sprite

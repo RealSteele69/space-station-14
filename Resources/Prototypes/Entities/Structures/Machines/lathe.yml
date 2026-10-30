@@ -139,6 +139,7 @@
     - PowerCellsStatic
     - ElectronicsStatic
     - HydroponicsStatic
+    - TapeRecorderStatic # Claw Command: tape recorder, cassettes, cassette player
     dynamicPacks:
     - AdvancedPartsPack # _ClawCommand: advanced modular machine parts
     - SuperPartsPack # _ClawCommand: super modular machine parts

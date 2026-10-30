@@ -91,3 +91,7 @@
 # Garlic bulbs, for the vampire-warding garlic necklace recipe.
 - type: Tag
   id: Garlic
+
+# Pride mantles the prideful chameleon mantle can disguise as.
+- type: Tag
+  id: WhitelistChameleonPrideMantle

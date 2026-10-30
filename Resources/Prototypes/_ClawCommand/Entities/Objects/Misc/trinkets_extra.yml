@@ -1,0 +1,134 @@
+- type: entity
+  parent: CrayonRainbow
+  id: CrayonMagic
+  name: magic rainbow crayon
+  description: A magical crayon. Looks tasty. Mmmm...
+  components:
+  - type: AutoRecharge
+    rechargeDuration: 10
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 30
+      - ReagentId: MindbreakerToxin
+        Quantity: 20
+
+- type: entity
+  name: worn engraved flippo lighter
+  parent: FlippoLighter
+  id: FlippoEngravedLighterWorn
+  description: "A rugged golden lighter, lasts quite a while. The engravings, having served no tactical purpose whatsoever, look slightly off, damaged or scratched, making the item less appealing to traders, collectioners and kleptomaniacs worldwide."
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/Lighters/lighters.rsi
+    layers:
+    - state: zippo_engraved_icon_base
+      map: ["base"]
+    - state: zippo_top
+      map: ["top"]
+      visible: false
+    - state: zippo_engraved_open
+      map: ["open"]
+      visible: false
+    - state: lighter_flame
+      map: ["flame"]
+
+- type: entity
+  parent: BaseItem
+  id: PipePacker
+  name: gilded pipe packer
+  description: "A mostly smooth yet bulky container holding twenty portions of ground tobacco. This gilded case uses high-end rosewood in its construction, with leather and gold for the frame, designed to hold a flippo and the pipe it comes with."
+  components:
+  - type: ContainerContainer
+    containers:
+      pipe: !type:ContainerSlot
+      lighter: !type:ContainerSlot
+  - type: BallisticAmmoProvider
+    whitelist:
+      requireAll: true
+      tags:
+      - Smokable
+      components:
+      - Construction
+      - Solution
+      - Stack
+      sizes:
+      - Tiny
+    proto: GroundTobacco
+    capacity: 20
+  - type: UseDelay
+    delay: 0.5
+  - type: ItemSlots
+    slots:
+      pipe:
+        name: Pipe
+        priority: 2
+        whitelist:
+          components:
+          - SmokingPipe
+      lighter:
+        name: Lighter
+        priority: 1
+        whitelist:
+          tags:
+          - Lighter
+  - type: ContainerFill
+    containers:
+      pipe:
+      - SmokingPipeFilledTobacco
+  - type: Item
+    sprite: _ClawCommand/Objects/Consumable/Smokeables/Pipes/pipepacker.rsi
+    size: Small
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Consumable/Smokeables/Pipes/pipepacker.rsi
+    layers:
+    - state: nopipe
+    - state: pipe
+      visible: false
+      map: [ "pipe" ]
+  - type: ItemMapper
+    mapLayers:
+      pipe:
+        whitelist:
+          components:
+          - SmokingPipe
+  - type: Appearance
+
+- type: entity
+  parent: BasePlushie
+  id: PlushieChoicesTadpole
+  name: Thaven tadpole plush
+  description: A marketable plushie of a certain thaven tadpole. It smells like the ocean.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Fun/Toys.rsi
+    state: plushie_choicesbaby
+  - type: Item
+    heldPrefix: plushiechoicestadpole
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_ClawCommand/Items/Toys/babusqueak.ogg
+      params:
+        volume: 12
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_ClawCommand/Items/Toys/babuthrow.ogg
+      params:
+        volume: 12
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/_ClawCommand/Items/Toys/babusqueak.ogg
+      params:
+        volume: 12
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_ClawCommand/Items/Toys/babusqueak.ogg
+      params:
+        volume: 12
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/_ClawCommand/Items/Toys/babusqueak.ogg
+      params:
+        volume: 12

@@ -1,0 +1,557 @@
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketCE
+  name: chief engineer's casual jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCE.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCE.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketCEAtmos
+  name: chief engineer's casual atmos jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue! For the atmospherically inclined.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCEatmos.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCEatmos.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketCEPower
+  name: chief engineer's casual power jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue! For the electrically inclined.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCEpower.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCEpower.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketCMO
+  name: chief medical officer's casual jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCMO.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCMO.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketCMOChem
+  name: chief medical officer's casual chemistry jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue! For expert pharmacists.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCMOchem.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCMOchem.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketCMOSurgeon
+  name: chief medical officer's casual surgeon jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue! You can legally perform lobotomies.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCMOsurgeon.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCMOsurgeon.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketCMOViro
+  name: chief medical officer's casual virology jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue! You've caught a lot of colds...
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCMOviro.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatCMOviro.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketHOP
+  name: head of personnel's casual jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being green!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatHOP.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatHOP.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketQM
+  name: quartermaster's casual jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatQM.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatQM.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketQMMail
+  name: quartermaster's casual mailperson jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue! For the logistics nerds.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatQMmail.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatQMmail.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketQMMoney
+  name: quartermaster's casual moneymaker jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue! For the profit-inclined.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatQMmoney.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatQMmoney.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketQMSalvage
+  name: quartermaster's casual salvager jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue! For the hunters among us.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatQMsalv.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatQMsalv.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketRD
+  name: research director's casual jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatRD.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatRD.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketRDRobotics
+  name: research director's casual robotics jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue! Hides oil stains relatively well.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatRDrobo.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatRDrobo.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketRDXenoarch
+  name: research director's casual xenoarchaeology jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue! It seems to shift in strange ways...
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatRDxenoarch.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatRDxenoarch.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCasualJacketRDXenobio
+  name: research director's casual xenobiology jacket
+  description: A cozy jacket with with a slick dual color design. Show your department who's in charge! By being blue! Easily cleansed of slime.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatRDxenobio.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/casualcoats/corpocoatRDxenobio.rsi
+
+- type: entity
+  id: ClothingOuterCoatBomberAerostatic
+  parent: ClothingOuterWinterCoat
+  name: aerostatic bomber
+  description: When you wear it, you can always hear the sickest guitar solo in your mind.
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/bomber_aerostatic.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/bomber_aerostatic.rsi
+
+- type: entity
+  parent: [ ClothingOuterStorageFoldableBase, ClothingOuterWinterCoat ]
+  id: ClothingOuterCoatBomberCheckered
+  name: checkered bomber jacket
+  description: A thick, well-worn vintage leather bomber jacket. It's dark blue, brandishing a checkerboard pattern on the back.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/Bombers/checkered.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/Bombers/checkered.rsi
+
+- type: entity
+  parent: [ ClothingOuterStorageFoldableBase, ClothingOuterWinterCoat ]
+  id: ClothingOuterCoatBomberEngineering
+  name: engineering bomber jacket
+  description: A thick, well-worn vintage leather bomber jacket brandishing engineering flair. It features a singularity patch on the back.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/Bombers/engi.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/Bombers/engi.rsi
+
+- type: entity
+  parent: [ ClothingOuterStorageFoldableBase, ClothingOuterWinterCoat ]
+  id: ClothingOuterCoatBomberEpistemic
+  name: science bomber jacket
+  description: A thick, well-worn vintage leather bomber jacket brandishing scientific flair. It features an alien patch on the back.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/Bombers/epi.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/Bombers/epi.rsi
+
+- type: entity
+  parent: [ ClothingOuterStorageFoldableBase, ClothingOuterWinterCoat ]
+  id: ClothingOuterCoatBomberLogistic
+  name: cargo bomber jacket
+  description: A thick, well-worn vintage leather bomber jacket brandishing cargo flair. It features a yellow band around the chest.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/Bombers/logi.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/Bombers/logi.rsi
+
+- type: entity
+  parent: [ ClothingOuterStorageFoldableBase, ClothingOuterWinterCoat ]
+  id: ClothingOuterCoatBomberMedical
+  name: medical bomber jacket
+  description: A thick, well-worn vintage leather bomber jacket brandishing medical flair. It features a medical Cross patch on the back.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/Bombers/med.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/Bombers/med.rsi
+
+- type: entity
+  id: ClothingOuterCoatBomberPinkSleeves
+  parent: ClothingOuterWinterCoat
+  name: bomber jacket
+  description: Oi! Whatcha lookin' at?
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/bomber_pinksleeves.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/bomber_pinksleeves.rsi
+
+- type: entity
+  id: ClothingOuterCoatBomberPunkRed
+  parent: ClothingOuterWinterCoat
+  name: red punk bomber
+  description: Ya gotta 'ave style on dem streets.
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/bomber_punk_red.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/bomber_punk_red.rsi
+
+- type: entity
+  id: ClothingOuterCoatJacketBiker
+  parent: ClothingOuterWinterCoat
+  name: biker jacket
+  description: Made out of toughest synthleather for toughest badasses.
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/jacket_biker.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/jacket_biker.rsi
+
+- type: entity
+  id: ClothingOuterCoatJacketJamrock
+  parent: ClothingOuterWinterCoat
+  name: jamrock blazer
+  description: Welcome to jamrock.
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/blazer_jamrock.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/blazer_jamrock.rsi
+
+- type: entity
+  id: ClothingOuterCoatJacketLeather
+  parent: ClothingOuterWinterCoat
+  name: leather jacket
+  description: Rock'n'roll, babe!
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/jacket_leather.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/jacket_leather.rsi
+
+- type: entity
+  id: ClothingOuterCoatJacketLettermanBlue
+  parent: ClothingOuterWinterCoat
+  name: blue letterman jacket
+  description: Where is your lacrosse stick?
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_blue.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_blue.rsi
+
+- type: entity
+  id: ClothingOuterCoatJacketLettermanBrown
+  parent: ClothingOuterWinterCoat
+  name: brown letterman jacket
+  description: Where is your lacrosse stick?
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_brown.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_brown.rsi
+
+- type: entity
+  id: ClothingOuterCoatJacketLettermanMagenta
+  parent: ClothingOuterWinterCoat
+  name: magenta letterman jacket
+  description: Where is your holocrosse joystick?
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_magenta.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_magenta.rsi
+
+- type: entity
+  id: ClothingOuterCoatJacketLettermanRed
+  parent: ClothingOuterWinterCoat
+  name: red letterman jacket
+  description: Where is your lacrosse stick?
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_red.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/jacket_letterman_red.rsi
+
+- type: entity
+  parent: ClothingOuterCoatLabChem
+  id: ClothingOuterCoatLabcoatChemLong
+  name: chemist's longcoat
+  description: A standard labcoat for chemistry which protects the wearer from acid spills.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/labcoatchemist.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/labcoatchemist.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCoatMNKBlackHoodie
+  name: MNK black hoodie
+  description: A classic MNK produced black hoodie.
+  components:
+  - type: Sprite
+    sprite: Nyanotrasen/Clothing/Misc/hoodie_black.rsi
+  - type: Clothing
+    sprite: Nyanotrasen/Clothing/Misc/hoodie_black.rsi
+  - type: TemperatureProtection
+    heatingCoefficient: 0.4
+    coolingCoefficient: 0.4
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCoatMNKBlackJacket
+  name: MNK black jacket
+  description: A light MNK black jacket.
+  components:
+  - type: Sprite
+    sprite: Nyanotrasen/Clothing/Misc/black_jacket.rsi
+  - type: Clothing
+    sprite: Nyanotrasen/Clothing/Misc/black_jacket.rsi
+  - type: TemperatureProtection
+    heatingCoefficient: 0.2
+    coolingCoefficient: 0.2
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCoatMNKBlackTopCoat
+  name: MNK black top coat
+  description: A sturdy MNK black top coat.
+  components:
+  - type: Sprite
+    sprite: Nyanotrasen/Clothing/Misc/black_top_coat.rsi
+  - type: Clothing
+    sprite: Nyanotrasen/Clothing/Misc/black_top_coat.rsi
+  - type: TemperatureProtection
+    heatingCoefficient: 0.4
+    coolingCoefficient: 0.4
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterCoatMNKWhiteHoodie
+  name: MNK white hoodie
+  description: A classic MNK produced white hoodie.
+  components:
+  - type: Sprite
+    sprite: Nyanotrasen/Clothing/Misc/hoodie_white.rsi
+  - type: Clothing
+    sprite: Nyanotrasen/Clothing/Misc/hoodie_white.rsi
+  - type: TemperatureProtection
+    heatingCoefficient: 0.4
+    coolingCoefficient: 0.4
+
+- type: entity
+  parent: [ClothingOuterWinterCoat, BaseCommandContraband]
+  id: ClothingOuterCoatHoP
+  name: head of personnel's coat
+  description: A stylish coat given to a Head of Personnel.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/hopcoat.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/hopcoat.rsi
+
+- type: entity
+  parent: ClothingOuterCoatHoP
+  id: ClothingOuterFormalDressHoP
+  name: head of personnel's formal dress jacket
+  description: An expensive, stylish dress given to a Head of Personnel.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/hopformaldress.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/hopformaldress.rsi
+
+- type: entity
+  parent: ClothingOuterCoatHoP
+  id: ClothingOuterFormalJacketHoP
+  name: head of personnel's formal jacket
+  description: An expensive, stylish jacket given to a Head of Personnel.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/hopformalcoat.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/hopformalcoat.rsi
+
+- type: entity
+  parent: ClothingOuterCoatLab
+  id: ClothingOuterCoatSciencecoatLong
+  name: science longcoat
+  description: A Nanotrasen standard labcoat for science personnel.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/sciencelonglabcoat.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/sciencelonglabcoat.rsi
+
+- type: entity
+  parent: ClothingOuterStorageFoldableBase
+  id: ClothingOuterCMOLabCoat
+  name: CMO's splashproof labcoat
+  description: A heavy, splash resistant labcoat made out of a fabric inner layer and plastic outer layer. Practical and cozy!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/CMOlabcoat.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/CMOlabcoat.rsi
+  - type: ExplosionResistance
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.9
+        Heat: 0.9
+        Caustic: 0.4
+
+- type: entity
+  parent: [ClothingOuterStorageFoldableBase, ClothingOuterCoatRD]
+  id: ClothingOuterCoatRDPurple
+  name: research director's experimental lab coat
+  description: Woven with experimental technology... this labcoat seems no more protective than your usual one. At least it looks nice.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/rdaltcoat.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/rdaltcoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.6
+        Radiation: 0.6
+
+- type: entity
+  parent: [ClothingOuterStorageBase, BaseCommandContraband]
+  id: ClothingOuterCoatHoPLong
+  name: hop's longcoat
+  description: A smart longcoat for the Head of Personnel.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/hoplongcoat.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/hoplongcoat.rsi
+
+- type: entity
+  parent: ClothingOuterStorageFoldableBase
+  id: ClothingOuterCoatLabSeniorChemist
+  name: senior chemist lab coat
+  description: A suit that protects against minor chemical spills. Has orange sleeves, an orange waist trim, and two pink stripes on the shoulders.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/labcoat_senior_chemist.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/Coats/labcoat_senior_chemist.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
+
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterChemSenior
+  name: senior chemist winter coat
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Clothing/OuterClothing/WinterCoats/coat.rsi
+    layers:
+    - state: CHEM-SENIOR-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: CHEM-SENIOR-inhand-left
+      right:
+      - state: CHEM-SENIOR-inhand-right
+  - type: Clothing
+    sprite: _ClawCommand/Clothing/OuterClothing/WinterCoats/coat.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: CHEM-SENIOR-equipped-OUTERCLOTHING
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Heat: 0.90
+        Caustic: 0.75
+    priceMultiplier: 0.15
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ClothingHeadHatHoodWinterChemSenior
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatRndMysta
+  name: mystagogue lab coat
+  description: Similar to the standard model but with more purple and gold.
+  components:
+  - type: Sprite
+    sprite: DeltaV/Clothing/OuterClothing/Coats/mystacoat.rsi
+  - type: Clothing
+    sprite: DeltaV/Clothing/OuterClothing/Coats/mystacoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.65

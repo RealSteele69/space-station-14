@@ -1,0 +1,16 @@
+- type: entity
+  parent: BaseMentalAction
+  id: ActionPAIVoiceRecorder
+  name: Voice Recorder
+  description: Open your built-in voice recorder to record, play back, rewind or wipe what was said around you.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Devices/tape_recorder.rsi
+    layers:
+    - state: empty
+    - state: recording
+  - type: InstantAction
+    event: !type:OpenUiActionEvent
+      key: enum.TapeRecorderUIKey.Key

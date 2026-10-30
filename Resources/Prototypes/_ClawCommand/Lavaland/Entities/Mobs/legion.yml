@@ -86,7 +86,7 @@
     animation: WeaponArcPunch
     damage:
       types:
-        Blunt: 9 # Literally collides with you at full speed
+        Blunt: 6 # Literally collides with you at full speed
   - type: Ammo
     muzzleFlash: null
   - type: Destructible
@@ -111,4 +111,4 @@
       NavSmash: !type:Bool
         true
   - type: TimedDespawn
-    lifetime: 45
+    lifetime: 20

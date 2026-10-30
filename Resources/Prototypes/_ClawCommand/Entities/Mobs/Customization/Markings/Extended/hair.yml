@@ -1,0 +1,614 @@
+- type: marking
+  id: ADTAllShavedFemale
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/hair_hair.rsi
+    state: shaved_female
+
+- type: marking
+  id: ADTAllhonor
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/hair_hair.rsi
+    state: honor
+
+- type: marking
+  id: BurqaSolid
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: burqasolid
+
+- type: marking
+  id: HairFloralLong
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: florallong1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: florallong2
+
+- type: marking
+  id: HairFloralMid
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: floralmid1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: floralmid2
+
+- type: marking
+  id: HijabFashionable
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: hijabchic
+
+- type: marking
+  id: HijabSimple
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: hijabsimple
+
+- type: marking
+  id: HumanHairAdoringFan
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: adoringfan
+
+- type: marking
+  id: HumanHairAsymBun
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: asymbun
+
+- type: marking
+  id: HumanHairAsymmetricalAfro
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: asymmetricalafro
+
+- type: marking
+  id: HumanHairBabyHair
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: babyhair
+
+- type: marking
+  id: HumanHairBaldingCurls
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: baldingcurls
+
+- type: marking
+  id: HumanHairBaldingLong
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: baldinglong
+
+- type: marking
+  id: HumanHairBlackbird
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: blackbird
+
+- type: marking
+  id: HumanHairBlackbirdNoAhoge
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: blackbirdnoahoge
+
+- type: marking
+  id: HumanHairBraidMed
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: braidmed
+
+- type: marking
+  id: HumanHairChonmage
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: chonmage
+
+- type: marking
+  id: HumanHairCurlyPerm
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: curlyperm
+
+- type: marking
+  id: HumanHairDreamer
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: dreamer
+
+- type: marking
+  id: HumanHairDrillTail
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: drilltail
+
+- type: marking
+  id: HumanHairEyeBangLong
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: eyebanglong
+
+- type: marking
+  id: HumanHairEyeBangSideTail
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: eyebangsidetail
+
+- type: marking
+  id: HumanHairFadeHighlight
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: fadehighlight
+
+- type: marking
+  id: HumanHairFloorlengthBraided
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: floorlengthbraided
+
+- type: marking
+  id: HumanHairFloorlengthMessy
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: floorlengthmessy
+
+- type: marking
+  id: HumanHairFluffybob
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: fluffybob
+
+- type: marking
+  id: HumanHairFriar
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: friar
+
+- type: marking
+  id: HumanHairFringeBraid
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: fringebraid
+
+- type: marking
+  id: HumanHairFringeRat
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: fringerat
+
+- type: marking
+  id: HumanHairFringeTail
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: fringetail
+
+- type: marking
+  id: HumanHairGuyMullet
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: guymullet
+
+- type: marking
+  id: HumanHairGuyTied
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: guytied
+
+- type: marking
+  id: HumanHairHacker
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: hacker
+
+- type: marking
+  id: HumanHairHalfUpLong
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: halfuplong
+
+- type: marking
+  id: HumanHairHalfUpShort
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: halfupshort
+
+- type: marking
+  id: HumanHairHalfUpUndercut
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: halfupundercut
+
+- type: marking
+  id: HumanHairIntakeLong
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: intakelong
+
+- type: marking
+  id: HumanHairIntakeShort
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: intakeshort
+
+- type: marking
+  id: HumanHairJed
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: jed
+
+- type: marking
+  id: HumanHairJedPonytail
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: jedponytail
+
+- type: marking
+  id: HumanHairJinx
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_hair.rsi
+    state: jinx
+
+- type: marking
+  id: HumanHairLiberatorLong
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: liberatorlong
+
+- type: marking
+  id: HumanHairLiberatorShort
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: liberatorshort
+
+- type: marking
+  id: HumanHairLiberatorTied
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: liberatortied
+
+- type: marking
+  id: HumanHairLocsTied
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: locstied
+
+- type: marking
+  id: HumanHairLongLocs
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: longlocs
+
+- type: marking
+  id: HumanHairLongNatural
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: longnatural
+
+- type: marking
+  id: HumanHairLongTwinTails
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_hair.rsi
+    state: longtwintails
+
+- type: marking
+  id: HumanHairLongWithStrand
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: longwithstrand
+
+- type: marking
+  id: HumanHairLooseBun
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_hair.rsi
+    state: loosebun
+
+- type: marking
+  id: HumanHairLooseCurlsLong
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: loosecurlslong
+
+- type: marking
+  id: HumanHairLooseCurlsMedium
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: loosecurlsmedium
+
+- type: marking
+  id: HumanHairLooseCurlsShort
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: loosecurlsshort
+
+- type: marking
+  id: HumanHairLostBoy
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: lostboy
+
+- type: marking
+  id: HumanHairLowPonytail
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_hair.rsi
+    state: lowponytail
+
+- type: marking
+  id: HumanHairMeanerGirl
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: meanergirl
+
+- type: marking
+  id: HumanHairMeanerGirlOverEye
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: meanergirlovereye
+
+- type: marking
+  id: HumanHairMidBangs
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: midbangs
+
+- type: marking
+  id: HumanHairMidBangsCovered
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: midbangscovered
+
+- type: marking
+  id: HumanHairMidPartLong
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: midpartlong
+
+- type: marking
+  id: HumanHairMidPartLonger
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: midpartlonger
+
+- type: marking
+  id: HumanHairMidPartPonytail
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: midpartponytail
+
+- type: marking
+  id: HumanHairMiddlePartShort
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: middlepartshort
+
+- type: marking
+  id: HumanHairMulletSideshave
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: mulletsideshave
+
+- type: marking
+  id: HumanHairNiko
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_hair.rsi
+    state: nikooneshot
+
+- type: marking
+  id: HumanHairOverEyes
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: overeyes
+
+- type: marking
+  id: HumanHairOverEyesTail
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: overeyestail
+
+- type: marking
+  id: HumanHairPosterPerson
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: posterperson
+
+- type: marking
+  id: HumanHairShaggy
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: shaggy
+
+- type: marking
+  id: HumanHairShaggyLonger
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: shaggylonger
+
+- type: marking
+  id: HumanHairShaggyMessy
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: shaggymessy
+
+- type: marking
+  id: HumanHairSideshaveBun
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: sideshavebun
+
+- type: marking
+  id: HumanHairSideshaveCurly
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: sideshavecurly
+
+- type: marking
+  id: HumanHairSmiler
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: smiler
+
+- type: marking
+  id: HumanHairSpikeHawk
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_hair.rsi
+    state: spikehawk
+
+- type: marking
+  id: HumanHairSpikyPonytailLong
+  bodyPart: Hair
+  groupWhitelist: [ Human, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: spikyponytaillong
+
+- type: marking
+  id: HumanHairStreakedAfroDark
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: streakedafrodark
+
+- type: marking
+  id: HumanHairStreakedAfroLight
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: streakedafrolight
+
+- type: marking
+  id: HumanHairSusie
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: susie
+
+- type: marking
+  id: HumanHairSusieNoBangs
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: susienobangs
+
+- type: marking
+  id: HumanHairTwists
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: twists
+
+- type: marking
+  id: HumanHairUndercutCurly
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: undercutcurly
+
+- type: marking
+  id: HumanHairUnkemptBraid
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair.rsi
+    state: unkemptbraid
+
+- type: marking
+  id: HumanHairWavyLong
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: wavylong
+
+- type: marking
+  id: Niqab
+  bodyPart: Hair
+  groupWhitelist: [ Human, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: niqab
+
+- type: marking
+  id: TichelFashionable
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: tichelfashionable
+
+- type: marking
+  id: TichelSimple
+  bodyPart: Hair
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_hair2.rsi
+    state: tichelsimple

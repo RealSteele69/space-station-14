@@ -1,6 +1,8 @@
 using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Shared.Actions;
+using Content.Shared.Actions.Components;
+using Content.Shared.Interaction;
 using Robust.Shared.Timing;
 
 namespace Content.Server.NPC.Systems;
@@ -8,6 +10,7 @@ namespace Content.Server.NPC.Systems;
 public sealed partial class NPCUseActionOnTargetSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -31,6 +34,13 @@ public sealed partial class NPCUseActionOnTargetSystem : EntitySystem
             return false;
 
         if (!_actions.ValidAction(action))
+            return false;
+
+        // Claw Command: NPCs kept their target after losing sight of it and fired at any distance, through walls.
+        var range = TryComp<TargetActionComponent>(action, out var targetAction) && targetAction.Range > 0f
+            ? targetAction.Range
+            : SharedInteractionSystem.InteractionRange;
+        if (!_interaction.InRangeUnobstructed(user.Owner, target, range))
             return false;
 
         _actions.SetEventTarget(action, target);

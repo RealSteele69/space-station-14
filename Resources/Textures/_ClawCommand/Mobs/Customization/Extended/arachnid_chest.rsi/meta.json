@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "cross, heart, hourglass, nailandhammer, slashes, scar, stripes, target and x by PixelTheKermit (github) for SS14. Core, skull and target made by Nairodian (github) for SS14. Segments marking, fluffy, and all east/west sprites sprited and edited by Sha-Seng (Github). mirror sprited by crocodilecarousel (github), both for Impstation. Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "fluffy",
+      "directions": 4
+    },
+    {
+      "name": "segments1",
+      "directions": 4
+    },
+    {
+      "name": "segments2",
+      "directions": 4
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "shadekin, shadekin_stripes made by team Adventure Time. Other made by discord:filokini Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "gauze_ear_l_default",
+      "directions": 4
+    },
+    {
+      "name": "gauze_ear_r_default",
+      "directions": 4
+    },
+    {
+      "name": "gauze_ear_all_default",
+      "directions": 4
+    },
+    {
+      "name": "saggy_default",
+      "directions": 4
+    },
+    {
+      "name": "saggy_gauze_l",
+      "directions": 4
+    },
+    {
+      "name": "saggy_gauze_r",
+      "directions": 4
+    },
+    {
+      "name": "saggy_gauze_all",
+      "directions": 4
+    }
+  ]
+}

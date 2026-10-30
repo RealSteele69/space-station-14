@@ -1,0 +1,1500 @@
+- type: marking
+  id: ChestHeavyTattoos
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: heavy1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: heavy2
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: heavy3
+
+- type: marking
+  id: ChestNecklace
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffc833"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: necklace
+
+- type: marking
+  id: DemonChestTrinitySpots
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: trinity_spots
+
+- type: marking
+  id: HumanTattooChurchdomes
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_churchdomes
+
+- type: marking
+  id: HumanTattooElysiumPatriotism
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_elysium_patriotism
+
+- type: marking
+  id: HumanTattooKarabel
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_karabel
+
+- type: marking
+  id: HumanTattooNarsi
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_narsi
+
+- type: marking
+  id: HumanTattooRose
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_Rose
+
+- type: marking
+  id: HumanTattooSerpentTemptation
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_serpenttemptation
+
+- type: marking
+  id: HumanTattooSymbolElysium
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_symbol_elysium
+
+- type: marking
+  id: ProstheticShoulderL
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#E4E4E4"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: prostheticshoulderleft
+
+- type: marking
+  id: ProstheticShoulderR
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#E4E4E4"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: prostheticshoulderright
+
+- type: marking
+  id: TattooAnchor
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#3894C5"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: anchor
+
+- type: marking
+  id: TattooCode1
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffffff"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: code1
+
+- type: marking
+  id: TattooCode2
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffffff"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: code2
+
+- type: marking
+  id: TattooCode3
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffffff"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: code3
+
+- type: marking
+  id: TattooDragon
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: dragontattoo1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: dragontattoo2
+
+- type: marking
+  id: TattooLoops
+  bodyPart: Chest
+  groupWhitelist: [ Human, MarkingsFelinid, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tattoos2.rsi
+    state: loops
+
+- type: marking
+  id: TattooNanotrasenChest
+  bodyPart: Chest
+  groupWhitelist: [ Human, Slime ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tattoos.rsi
+    state: tattoo_nanotrasen_chest
+
+- type: marking
+  id: TattooTribal1
+  bodyPart: Chest
+  groupWhitelist: [ Human, MarkingsFelinid, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tattoos2.rsi
+    state: tribal1
+
+- type: marking
+  id: TattooVinesHumanoid
+  bodyPart: Chest
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#379d0e"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_chest.rsi
+    state: vines
+
+- type: marking
+  id: Beholder
+  bodyPart: Eyes
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsRodentia, MarkingsTajaran, Slime ]
+  forcedColoring: false
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/augments_headaugs.rsi
+    state: beholder-base
+  - sprite: _ClawCommand/Mobs/Customization/Extended/augments_headaugs.rsi
+    state: beholder-eye
+
+- type: marking
+  id: Malstrem
+  bodyPart: Eyes
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsRodentia, MarkingsTajaran, Slime ]
+  forcedColoring: false
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/augments_headaugs.rsi
+    state: malstrem-base
+  - sprite: _ClawCommand/Mobs/Customization/Extended/augments_headaugs.rsi
+    state: malstrem-leds
+
+- type: marking
+  id: FacepaintBlushHead
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_shared.rsi
+    state: facepaint_blush
+
+- type: marking
+  id: FacepaintClown
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_human.rsi
+    state: facepaint_clown
+
+- type: marking
+  id: FacepaintClownMinimal
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_human.rsi
+    state: facepaint_clown_minimal
+
+- type: marking
+  id: FacepaintClownSad
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_human.rsi
+    state: facepaint_clown_sad
+
+- type: marking
+  id: FacepaintClownSerious
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_human.rsi
+    state: facepaint_clown_serious
+
+- type: marking
+  id: FacepaintClownSmug
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_human.rsi
+    state: facepaint_clown_smug
+
+- type: marking
+  id: FacepaintEyebrowsHead
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_shared.rsi
+    state: facepaint_eyebrows
+
+- type: marking
+  id: FacepaintLipstickHead
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_shared.rsi
+    state: facepaint_lipstick
+
+- type: marking
+  id: FacepaintMime
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_human.rsi
+    state: facepaint_mime
+
+- type: marking
+  id: FacepaintMimeBlush
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_human.rsi
+    state: facepaint_mime_blush
+
+- type: marking
+  id: FacepaintMimeOdd
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_human.rsi
+    state: facepaint_mime_odd
+
+- type: marking
+  id: FacepaintMimeSad
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_human.rsi
+    state: facepaint_mime_sad
+
+- type: marking
+  id: FacepaintMimeSerious
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_human.rsi
+    state: facepaint_mime_serious
+
+- type: marking
+  id: FacepaintWhite
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Moth, Slime ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_human.rsi
+    state: facepaint_white
+
+- type: marking
+  id: HeadHeavyTattoos
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsRodentia, MarkingsTajaran, Slime ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_head.rsi
+    state: heavy1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_head.rsi
+    state: heavy2
+
+- type: marking
+  id: HumanTattooSkull
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_skull
+
+- type: marking
+  id: HumanTattooSkullFace
+  bodyPart: Head
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsTajaran, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_skull_face
+
+- type: marking
+  id: DemonCowEars
+  bodyPart: HeadSide
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: cow_ears
+
+- type: marking
+  id: DemonEars
+  bodyPart: HeadSide
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: demon_ears
+
+- type: marking
+  id: DemonElfEars
+  bodyPart: HeadSide
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: ears_elf
+
+- type: marking
+  id: HeadEarrings
+  bodyPart: HeadSide
+  groupWhitelist: [ Human, MarkingsFelinid, MarkingsRodentia, MarkingsTajaran, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffc833"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_headtop.rsi
+    state: earrings1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_headtop.rsi
+    state: earrings2
+
+- type: marking
+  id: HeadEarringsDrop
+  bodyPart: HeadSide
+  groupWhitelist: [ Human, MarkingsFelinid, MarkingsRodentia, MarkingsTajaran, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffc833"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_headtop.rsi
+    state: earringsdrop1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_headtop.rsi
+    state: earringsdrop2
+
+- type: marking
+  id: HeadEarringsWeights
+  bodyPart: HeadSide
+  groupWhitelist: [ Human, MarkingsFelinid, MarkingsRodentia, MarkingsTajaran, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffc833"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_headtop.rsi
+    state: earringsweights1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_headtop.rsi
+    state: earringsweights2
+
+- type: marking
+  id: DemonCowHorns
+  bodyPart: HeadTop
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: cow_horns
+
+- type: marking
+  id: DemonHornsBuffalo
+  bodyPart: HeadTop
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: horns_buffalo
+
+- type: marking
+  id: DemonHornsCarpicorn
+  bodyPart: HeadTop
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: horns_capricorn
+
+- type: marking
+  id: DemonHornsDeer
+  bodyPart: HeadTop
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: deer_antlers_horns
+
+- type: marking
+  id: DemonHornsDevil
+  bodyPart: HeadTop
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: horns_devil
+
+- type: marking
+  id: DemonHornsDevil2
+  bodyPart: HeadTop
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: horns_devil2
+
+- type: marking
+  id: DemonHornsDevil3
+  bodyPart: HeadTop
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: horns_devil3
+
+- type: marking
+  id: DemonHornsDevil4
+  bodyPart: HeadTop
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: horns_devil4
+
+- type: marking
+  id: DemonHornsRam
+  bodyPart: HeadTop
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: horns_ram
+
+- type: marking
+  id: DemonHornsSmall
+  bodyPart: HeadTop
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: small_horns
+
+- type: marking
+  id: DemonHornsUnicorn
+  bodyPart: HeadTop
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: horns_unicorn
+
+- type: marking
+  id: FelinidEarsBasic
+  bodyPart: HeadTop
+  groupWhitelist: [ Human, MarkingsFelinid ]
+  sprites:
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_ears.rsi
+    state: basic_outer
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_ears.rsi
+    state: basic_inner
+
+- type: marking
+  id: TajaranServalEars
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_ears.rsi
+    state: serval_ears
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_ears.rsi
+    state: serval_ears_markings
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_ears.rsi
+    state: serval_ears_inside
+
+- type: marking
+  id: ArmHeavyTattoosLeft
+  bodyPart: LArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_larm.rsi
+    state: heavy1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_larm.rsi
+    state: heavy2
+
+- type: marking
+  id: CyberLimbsMarkingBishopLArm
+  bodyPart: LArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: l_arm-primary
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: l_arm-secondary
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: l_arm-tertiary
+
+- type: marking
+  id: CyberLimbsMarkingHesphiastosLArm
+  bodyPart: LArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: l_arm-1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: l_arm-2
+
+- type: marking
+  id: HumanTattooArmImheartmomL
+  bodyPart: LArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_arm_imheartmom_l
+
+- type: marking
+  id: HumanTattooArmlazaL
+  bodyPart: LArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattooarm-laza_l
+
+- type: marking
+  id: HumanTattooLineArmL
+  bodyPart: LArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_line_arm_l
+
+- type: marking
+  id: HumanTattooSkeletarmL
+  bodyPart: LArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_skelet_arm_l
+
+- type: marking
+  id: TattooHeartL
+  bodyPart: LArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  forcedColoring: false
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ff254c"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_larm.rsi
+    state: heart
+
+- type: marking
+  id: VulpPointsCrestArmsLeft
+  bodyPart: LArm
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_body_markings.rsi
+    state: points_crest-arms_left
+
+- type: marking
+  id: VulpPointsFadeArmsLeft
+  bodyPart: LArm
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_body_markings.rsi
+    state: points_fade-arms_left
+
+- type: marking
+  id: VulpPointsSharpArmsLeft
+  bodyPart: LArm
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_body_markings.rsi
+    state: points_sharp-arms_left
+
+- type: marking
+  id: CyberLimbsMarkingBishopLFoot
+  bodyPart: LFoot
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: l_foot
+
+- type: marking
+  id: CyberLimbsMarkingHesphiastosLFoot
+  bodyPart: LFoot
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: l_foot-1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: l_foot-2
+
+- type: marking
+  id: FootHeavyTattoosLeft
+  bodyPart: LFoot
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_lfoot.rsi
+    state: heavy1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_lfoot.rsi
+    state: heavy2
+
+- type: marking
+  id: HumanTattooSkeletfootL
+  bodyPart: LFoot
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_skelet_foot_l
+
+- type: marking
+  id: CyberLimbsMarkingBishopLHand
+  bodyPart: LHand
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: l_hand
+
+- type: marking
+  id: CyberLimbsMarkingHesphiastosLHand
+  bodyPart: LHand
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: l_hand-1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: l_hand-2
+
+- type: marking
+  id: HandBraceletLeft
+  bodyPart: LHand
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffc833"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_lhand.rsi
+    state: bracelet
+
+- type: marking
+  id: HandHeavyTattoosLeft
+  bodyPart: LHand
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_lhand.rsi
+    state: heavy1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_lhand.rsi
+    state: heavy2
+
+- type: marking
+  id: HandRingsLeft
+  bodyPart: LHand
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffc833"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_lhand.rsi
+    state: rings1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_lhand.rsi
+    state: rings2
+
+- type: marking
+  id: CyberLimbsMarkingBishopLLeg
+  bodyPart: LLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: l_leg-primary
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: l_leg-secondary
+
+- type: marking
+  id: CyberLimbsMarkingHesphiastosLLeg
+  bodyPart: LLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: l_leg-1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: l_leg-2
+
+- type: marking
+  id: DemonChestCowSpots
+  bodyPart: LLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: cow_spots
+
+- type: marking
+  id: DemonChestGuard
+  bodyPart: LLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: guards_stripes
+
+- type: marking
+  id: DemonChestLinesEmperos
+  bodyPart: LLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: lines_emperos
+
+- type: marking
+  id: DemonChestQueenLines
+  bodyPart: LLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: queen_lines
+
+- type: marking
+  id: DemonChestTreeLines
+  bodyPart: LLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: tree_lines
+
+- type: marking
+  id: HumanTattooFullskelet
+  bodyPart: LLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_fullskelet
+
+- type: marking
+  id: HumanTattooKrenelMercenary
+  bodyPart: LLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_KrenelMercenary
+
+- type: marking
+  id: HumanTattooSkeletbody
+  bodyPart: LLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_skelet_body
+
+- type: marking
+  id: HumanTattooSkeletlegL
+  bodyPart: LLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_skelet_leg_l
+
+- type: marking
+  id: LegHeavyTattoosLeft
+  bodyPart: LLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_lleg.rsi
+    state: heavy1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_lleg.rsi
+    state: heavy2
+
+- type: marking
+  id: VulpPointsCrestLegsLeft
+  bodyPart: LLeg
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_body_markings.rsi
+    state: points_crest-legs_left
+
+- type: marking
+  id: VulpPointsFadeLegsLeft
+  bodyPart: LLeg
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_body_markings.rsi
+    state: points_fade-legs_left
+
+- type: marking
+  id: VulpPointsSharpLegsLeft
+  bodyPart: LLeg
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_body_markings.rsi
+    state: points_sharp-legs_left
+
+- type: marking
+  id: ArmHeavyTattoosRight
+  bodyPart: RArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rarm.rsi
+    state: heavy1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rarm.rsi
+    state: heavy2
+
+- type: marking
+  id: CyberLimbsMarkingBishopRArm
+  bodyPart: RArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: r_arm-primary
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: r_arm-secondary
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: r_arm-tertiary
+
+- type: marking
+  id: CyberLimbsMarkingHesphiastosRArm
+  bodyPart: RArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: r_arm-1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: r_arm-2
+
+- type: marking
+  id: HumanTattooArmImheartmomR
+  bodyPart: RArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_arm_imheartmom_r
+
+- type: marking
+  id: HumanTattooArmlazaR
+  bodyPart: RArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattooarm-laza_r
+
+- type: marking
+  id: HumanTattooLineArmR
+  bodyPart: RArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_line_arm_r
+
+- type: marking
+  id: HumanTattooSkeletarmR
+  bodyPart: RArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_skelet_arm_r
+
+- type: marking
+  id: TattooCode4
+  bodyPart: RArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  forcedColoring: false
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffffff"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rarm.rsi
+    state: code4
+
+- type: marking
+  id: TattooCode5
+  bodyPart: RArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  forcedColoring: false
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffffff"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rarm.rsi
+    state: code5
+
+- type: marking
+  id: TattooHeartR
+  bodyPart: RArm
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  forcedColoring: false
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ff254c"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rarm.rsi
+    state: heart
+
+- type: marking
+  id: VulpPointsCrestArmsRight
+  bodyPart: RArm
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_body_markings.rsi
+    state: points_crest-arms_right
+
+- type: marking
+  id: VulpPointsFadeArmsRight
+  bodyPart: RArm
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_body_markings.rsi
+    state: points_fade-arms_right
+
+- type: marking
+  id: VulpPointsSharpArmsRight
+  bodyPart: RArm
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_body_markings.rsi
+    state: points_sharp-arms_right
+
+- type: marking
+  id: CyberLimbsMarkingBishopRFoot
+  bodyPart: RFoot
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: r_foot
+
+- type: marking
+  id: CyberLimbsMarkingHesphiastosRFoot
+  bodyPart: RFoot
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: r_foot-1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: r_foot-2
+
+- type: marking
+  id: FootHeavyTattoosRight
+  bodyPart: RFoot
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rfoot.rsi
+    state: heavy1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rfoot.rsi
+    state: heavy2
+
+- type: marking
+  id: HumanTattooSkeletfootR
+  bodyPart: RFoot
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_skelet_foot_r
+
+- type: marking
+  id: CyberLimbsMarkingBishopRHand
+  bodyPart: RHand
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: r_hand
+
+- type: marking
+  id: CyberLimbsMarkingHesphiastosRHand
+  bodyPart: RHand
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: r_hand-1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: r_hand-2
+
+- type: marking
+  id: HandBraceletRight
+  bodyPart: RHand
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffc833"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rhand.rsi
+    state: bracelet
+
+- type: marking
+  id: HandHeavyTattoosRight
+  bodyPart: RHand
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rhand.rsi
+    state: heavy1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rhand.rsi
+    state: heavy2
+
+- type: marking
+  id: HandRingsRight
+  bodyPart: RHand
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsTajaran, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffc833"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rhand.rsi
+    state: rings1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rhand.rsi
+    state: rings2
+
+- type: marking
+  id: CyberLimbsMarkingBishopRLeg
+  bodyPart: RLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: r_leg-primary
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_bishop_bishop_main.rsi
+    state: r_leg-secondary
+
+- type: marking
+  id: CyberLimbsMarkingHesphiastosRLeg
+  bodyPart: RLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsIPC, MarkingsTajaran, Moth, Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: r_leg-1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/species_cybernetics_hesphiastos_hesphiastos_main.rsi
+    state: r_leg-2
+
+- type: marking
+  id: HumanTattooSkeletlegR
+  bodyPart: RLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/human_custom.rsi
+    state: tattoo_skelet_leg_r
+
+- type: marking
+  id: LegHeavyTattoosRight
+  bodyPart: RLeg
+  groupWhitelist: [ Arachnid, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsRodentia, MarkingsShadowkin, MarkingsTajaran, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rleg.rsi
+    state: heavy1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/humanoid_rleg.rsi
+    state: heavy2
+
+- type: marking
+  id: VulpPointsCrestLegsRight
+  bodyPart: RLeg
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_body_markings.rsi
+    state: points_crest-legs_right
+
+- type: marking
+  id: VulpPointsFadeLegsRight
+  bodyPart: RLeg
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_body_markings.rsi
+    state: points_fade-legs_right
+
+- type: marking
+  id: VulpPointsSharpLegsRight
+  bodyPart: RLeg
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_body_markings.rsi
+    state: points_sharp-legs_right
+
+- type: marking
+  id: FacepaintBlushSnout
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_shared.rsi
+    state: facepaint_blush
+
+- type: marking
+  id: FacepaintEyebrowsSnout
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_shared.rsi
+    state: facepaint_eyebrows
+
+- type: marking
+  id: FacepaintLipstickSnout
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_shared.rsi
+    state: facepaint_lipstick_snout
+
+- type: marking
+  id: DemomTail1
+  bodyPart: Tail
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: demon_tail
+
+- type: marking
+  id: DemomTailLong
+  bodyPart: Tail
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: long
+
+- type: marking
+  id: DemomTailUp
+  bodyPart: Tail
+  groupWhitelist: [ Arachnid, Human, MarkingsIPC, Reptilian, Slime ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/demon_custom.rsi
+    state: up
+
+- type: marking
+  id: FelinidAlternativeTail
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_alternative_tail2.rsi
+    state: m_waggingtail_cat_FRONT
+
+- type: marking
+  id: FelinidFluffyTail
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_felinid_tails2.rsi
+    state: Felinid_fluffy_tail_full
+
+- type: marking
+  id: FelinidFluffyTailRings
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_felinid_tails2.rsi
+    state: Felinid_fluffy_tail_full
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_felinid_tails2.rsi
+    state: felinid_fluffy_tail_rings
+
+- type: marking
+  id: FelinidLeopard
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinids_leopard_tail.rsi
+    state: m_tail_leopard_primary
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinids_leopard_tail.rsi
+    state: m_tail_leopard_tertiary
+
+- type: marking
+  id: FelinidTailBasic
+  bodyPart: Tail
+  groupWhitelist: [ Human, MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_tail_tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_tail_stripes_even
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_tail_stripes_odd
+
+- type: marking
+  id: FelinidTailBasicWithBell
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_tail_tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_tail_stripes_even
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_tail_stripes_odd
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_bell
+
+- type: marking
+  id: FelinidTailBasicWithBow
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_tail_tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_tail_stripes_even
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_tail_stripes_odd
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_bow
+
+- type: marking
+  id: FelinidTailBasicWithBowAndBell
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_tail_tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_tail_stripes_even
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_tail_stripes_odd
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_bow
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_tails.rsi
+    state: basic_bell
+
+- type: marking
+  id: FelinidTailFoxtail
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_foxtail.rsi
+    state: base_fox_tail
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_foxtail.rsi
+    state: base_fox_tail_tip
+
+- type: marking
+  id: TajaranTailNubAnimated
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_tails.rsi
+    state: tail_nub_anim
+
+- type: marking
+  id: TajaranTailNubTippedAnimated
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_tails.rsi
+    state: tail_nub_anim
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_tail_markings.rsi
+    state: tail_nub_tip_anim
+
+- type: marking
+  id: TajaranTailNubUndersideAnimated
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_tails.rsi
+    state: tail_nub_anim
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_tail_markings.rsi
+    state: tail_nub_underside_anim
+
+- type: marking
+  id: TajaranTailSpottedAnimated
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_tails2.rsi
+    state: tail_anim
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_tail_markings.rsi
+    state: tail_spots_anim
+
+- type: marking
+  id: TajaranTailSpottedDoubleAnimated
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_tails2.rsi
+    state: tail_anim
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_tail_markings.rsi
+    state: tail_spots_anim
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_tail_markings.rsi
+    state: tail_spots_alt_anim
+
+- type: marking
+  id: TajaranTailSpottedSparseAnimated
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFelinid, MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_tails2.rsi
+    state: tail_anim
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_tail_markings.rsi
+    state: tail_spots_alt_anim
+
+- type: marking
+  id: VulpTail
+  bodyPart: Tail
+  groupWhitelist: [ Human, Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tails_digi.rsi
+    state: vulp
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tail_markings.rsi
+    state: vulp-fade

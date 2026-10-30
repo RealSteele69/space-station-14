@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "sprited by bunnygirlHyacinth Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "plushie_choicesbaby"
+    },
+    {
+      "name": "plushiechoicestadpole-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "plushiechoicestadpole-inhand-right",
+      "directions": 4
+    }
+  ]
+}

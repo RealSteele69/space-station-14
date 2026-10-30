@@ -14,16 +14,19 @@
         Base: goliath
       Dead:
         Base: goliath_dead
+  - type: MovementSpeedModifier # Ambush predator, relies on tentacles rather than chasing
+    baseWalkSpeed: 1
+    baseSprintSpeed: 1
   - type: NpcFactionMember
     factions:
     - Lavafauna
   - type: Fauna
   - type: HTN
     blackboard:
-      VisionRadius: !type:Single # Highly aggressive
-        8
+      VisionRadius: !type:Single
+        5
       AggroVisionRadius: !type:Single
-        9
+        7
       NavSmash: !type:Bool
         true
 
@@ -45,8 +48,8 @@
       Dead:
         Base: goliath_ancient_dead
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2.5
-    baseSprintSpeed: 2.5
+    baseWalkSpeed: 1.25
+    baseSprintSpeed: 1.25
   - type: MeleeWeapon
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
@@ -67,10 +70,10 @@
   - type: Fauna
   - type: HTN
     blackboard:
-      VisionRadius: !type:Single # Extremely aggressive
-        9
+      VisionRadius: !type:Single
+        6
       AggroVisionRadius: !type:Single
-        10
+        8
       NavSmash: !type:Bool
         true
   - type: Butcherable
@@ -96,8 +99,8 @@
       0: Alive
       40: Dead
   - type: MovementSpeedModifier
-    baseWalkSpeed: 3
-    baseSprintSpeed: 3
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2
   - type: MeleeWeapon
     soundHit:
       path: "/Audio/Weapons/smash.ogg"

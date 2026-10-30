@@ -1,0 +1,304 @@
+- type: loadout
+  id: JacketBiker
+  equipment:
+    outerClothing: ClothingOuterCoatJacketBiker
+  groupBy: "jacket"
+
+- type: loadout
+  id: JacketLeather
+  equipment:
+    outerClothing: ClothingOuterCoatJacketLeather
+  groupBy: "jacket"
+
+- type: loadout
+  id: JacketJamrock
+  equipment:
+    outerClothing: ClothingOuterCoatJacketJamrock
+  groupBy: "jacket"
+
+- type: loadout
+  id: MNKBlackJacket
+  equipment:
+    outerClothing: ClothingOuterCoatMNKBlackJacket
+  groupBy: "jacket"
+
+- type: loadout
+  id: CorporateJacket
+  equipment:
+    outerClothing: ClothingOuterCorporateJacket
+  groupBy: "corpoJacket"
+
+- type: loadout
+  id: CsCorporateJacket
+  equipment:
+    outerClothing: ClothingOuterCsCorporateJacket
+  groupBy: "corpoJacket"
+
+- type: loadout
+  id: EECorporateJacket
+  equipment:
+    outerClothing: ClothingOuterEeCorporateJacket
+  groupBy: "corpoJacket"
+
+- type: loadout
+  id: HICorporateJacket
+  equipment:
+    outerClothing: ClothingOuterHiCorporateJacket
+  groupBy: "corpoJacket"
+
+- type: loadout
+  id: HMCorporateJacket
+  equipment:
+    outerClothing: ClothingOuterHmCorporateJacket
+  groupBy: "corpoJacket"
+
+- type: loadout
+  id: IdCorporateJacket
+  equipment:
+    outerClothing: ClothingOuterIdCorporateJacket
+  groupBy: "corpoJacket"
+
+- type: loadout
+  id: JacketLettermanBlue
+  equipment:
+    outerClothing: ClothingOuterCoatJacketLettermanBlue
+  groupBy: "jacketLetterman"
+
+- type: loadout
+  id: JacketLettermanBrown
+  equipment:
+    outerClothing: ClothingOuterCoatJacketLettermanBrown
+  groupBy: "jacketLetterman"
+
+- type: loadout
+  id: JacketLettermanRed
+  equipment:
+    outerClothing: ClothingOuterCoatJacketLettermanRed
+  groupBy: "jacketLetterman"
+
+- type: loadout
+  id: JacketLettermanMagenta
+  equipment:
+    outerClothing: ClothingOuterCoatJacketLettermanMagenta
+  groupBy: "jacketLetterman"
+
+- type: loadout
+  id: BomberPunkRed
+  equipment:
+    outerClothing: ClothingOuterCoatBomberPunkRed
+  groupBy: "bomber"
+
+- type: loadout
+  id: BomberAerostatic
+  equipment:
+    outerClothing: ClothingOuterCoatBomberAerostatic
+  groupBy: "bomber"
+
+- type: loadout
+  id: BomberPinkSleeves
+  equipment:
+    outerClothing: ClothingOuterCoatBomberPinkSleeves
+  groupBy: "bomber"
+
+- type: loadout
+  id: MNKBlackHoodie
+  equipment:
+    outerClothing: ClothingOuterCoatMNKBlackHoodie
+  groupBy: "hoodie"
+
+- type: loadout
+  id: MNKWhiteHoodie
+  equipment:
+    outerClothing: ClothingOuterCoatMNKWhiteHoodie
+  groupBy: "hoodie"
+
+- type: loadout
+  id: MNKBlackTopCoat
+  equipment:
+    outerClothing: ClothingOuterCoatMNKBlackTopCoat
+
+- type: loadout
+  id: BomberJacket
+  equipment:
+    outerClothing: ClothingOuterCoatBomberCheckered
+
+- type: loadout
+  id: BomberCheckered
+  equipment:
+    outerClothing: ClothingOuterCoatBomber
+  groupBy: "bomber"
+
+- type: loadout
+  id: LongScienceCoat
+  equipment:
+    outerClothing: ClothingOuterCoatSciencecoatLong
+
+- type: loadout
+  id: MystaLabcoat
+  equipment:
+    outerClothing: ClothingOuterCoatRndMysta
+
+- type: loadout
+  id: ResearchDirectorLabCoatPurple
+  equipment:
+    outerClothing: ClothingOuterCoatRDPurple
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterRD
+
+- type: loadout
+  id: BomberEpistemic
+  equipment:
+    outerClothing: ClothingOuterCoatBomberEpistemic
+
+- type: loadout
+  id: ClothingOuterCasualJacketRD
+  equipment:
+    outerClothing: ClothingOuterCasualJacketRD
+
+- type: loadout
+  id: ClothingOuterCasualJacketRDRobotics
+  equipment:
+    outerClothing: ClothingOuterCasualJacketRDRobotics
+
+- type: loadout
+  id: ClothingOuterCasualJacketRDXenoarch
+  equipment:
+    outerClothing: ClothingOuterCasualJacketRDXenoarch
+
+- type: loadout
+  id: ClothingOuterCasualJacketRDXenobio
+  equipment:
+    outerClothing: ClothingOuterCasualJacketRDXenobio
+
+- type: loadout
+  id: CMOVetLabCoat
+  equipment:
+    outerClothing: ClothingOuterCMOLabCoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: VeteranCMO
+
+- type: loadout
+  id: BomberMedical
+  equipment:
+    outerClothing: ClothingOuterCoatBomberMedical
+
+- type: loadout
+  id: ClothingOuterCasualJacketCMO
+  equipment:
+    outerClothing: ClothingOuterCasualJacketCMO
+
+- type: loadout
+  id: ClothingOuterCasualJacketCMOViro
+  equipment:
+    outerClothing: ClothingOuterCasualJacketCMOViro
+
+- type: loadout
+  id: ClothingOuterCasualJacketCMOSurgeon
+  equipment:
+    outerClothing: ClothingOuterCasualJacketCMOSurgeon
+
+- type: loadout
+  id: ClothingOuterCasualJacketCMOChem
+  equipment:
+    outerClothing: ClothingOuterCasualJacketCMOChem
+
+- type: loadout
+  id: ChemLabcoatLong
+  equipment:
+    outerClothing: ClothingOuterCoatLabcoatChemLong
+
+- type: loadout
+  id: ChemistApron
+  equipment:
+    outerClothing: ClothingOuterApronChemist
+
+- type: loadout
+  id: SeniorChemistLabCoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorChemist
+  equipment:
+    outerClothing: ClothingOuterCoatLabSeniorChemist
+
+- type: loadout
+  id: SeniorChemistWintercoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorChemist
+  equipment:
+    outerClothing: ClothingOuterWinterChemSenior
+
+- type: loadout
+  id: BomberEngineering
+  equipment:
+    outerClothing: ClothingOuterCoatBomberEngineering
+
+- type: loadout
+  id: ClothingOuterCasualJacketCE
+  equipment:
+    outerClothing: ClothingOuterCasualJacketCE
+
+- type: loadout
+  id: ClothingOuterCasualJacketCEPower
+  equipment:
+    outerClothing: ClothingOuterCasualJacketCEPower
+
+- type: loadout
+  id: ClothingOuterCasualJacketCEAtmos
+  equipment:
+    outerClothing: ClothingOuterCasualJacketCEAtmos
+
+- type: loadout
+  id: BomberLogistic
+  equipment:
+    outerClothing: ClothingOuterCoatBomberLogistic
+
+- type: loadout
+  id: ClothingOuterCasualJacketQM
+  equipment:
+    outerClothing: ClothingOuterCasualJacketQM
+
+- type: loadout
+  id: ClothingOuterCasualJacketQMMoney
+  equipment:
+    outerClothing: ClothingOuterCasualJacketQMMoney
+
+- type: loadout
+  id: ClothingOuterCasualJacketQMSalvage
+  equipment:
+    outerClothing: ClothingOuterCasualJacketQMSalvage
+
+- type: loadout
+  id: ClothingOuterCasualJacketQMMail
+  equipment:
+    outerClothing: ClothingOuterCasualJacketQMMail
+
+- type: loadout
+  id: ClothingFormalHoPCoat
+  equipment:
+    outerClothing: ClothingOuterCoatHoP
+
+- type: loadout
+  id: ClothingFormalHoPJacket
+  equipment:
+    outerClothing: ClothingOuterFormalJacketHoP
+
+- type: loadout
+  id: ClothingFormalHoPDress
+  equipment:
+    outerClothing: ClothingOuterFormalDressHoP
+
+- type: loadout
+  id: HoPLongcoat
+  equipment:
+    outerClothing: ClothingOuterCoatHoPLong
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterHoP
+
+- type: loadout
+  id: ClothingOuterCasualJacketHOP
+  equipment:
+    outerClothing: ClothingOuterCasualJacketHOP

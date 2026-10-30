@@ -57,8 +57,8 @@
     - CannotSuicide
   - type: CombatMode
   - type: MovementSpeedModifier
-    baseWalkSpeed: 5
-    baseSprintSpeed: 5
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 3.5
   - type: MobThresholds
     thresholds:
       0: Alive

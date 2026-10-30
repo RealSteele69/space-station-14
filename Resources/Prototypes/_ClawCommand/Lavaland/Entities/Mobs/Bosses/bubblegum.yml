@@ -56,8 +56,8 @@
     - FootstepSound
   - type: CombatMode
   - type: MovementSpeedModifier
-    baseWalkSpeed: 4
-    baseSprintSpeed: 4
+    baseWalkSpeed: 3
+    baseSprintSpeed: 3
   - type: MobThresholds
     thresholds:
       0: Alive

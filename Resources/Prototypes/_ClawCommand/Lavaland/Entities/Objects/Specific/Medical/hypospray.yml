@@ -4,7 +4,7 @@
   name: survival medipen
   parent: ChemicalMedipen
   id: SurvivalMedipen
-  description: A cocktail of powerful healing chemicals. Slowly heals damage and stabilizes body temperature. You can overdose on these if you use more than one in quick succession.
+  description: A cocktail of powerful healing chemicals tuned for Lavaland's atmosphere. Slowly heals damage and stabilizes body temperature, but the healing agent is inert anywhere else. Using more than one in quick succession wastes the second dose.
   components:
   - type: Sprite
     sprite: _ClawCommand/Lavaland/Objects/Specific/Medical/medipen.rsi
@@ -32,7 +32,7 @@
   name: luxury medipen
   parent: ChemicalMedipen
   id: LuxuryMedipen
-  description: Contains powerful chemicals used to aid in exploration of harsh environments. Chemicals relatively harmful and not as effective when used outside of low pressure.
+  description: Contains powerful chemicals used to aid in exploration of harsh environments. The main healing agent only works on Lavaland.
   components:
   - type: Sprite
     sprite: _ClawCommand/Lavaland/Objects/Specific/Medical/luxmedipen.rsi

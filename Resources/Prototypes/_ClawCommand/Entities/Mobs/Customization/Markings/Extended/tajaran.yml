@@ -1,0 +1,163 @@
+- type: marking
+  id: TajaranHeart
+  bodyPart: Chest
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_chest.rsi
+    state: heart_big
+
+- type: marking
+  id: TajaranHeartSmall
+  bodyPart: Chest
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_chest.rsi
+    state: heart_small
+
+- type: marking
+  id: TajaranSpotted
+  bodyPart: Chest
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_chest.rsi
+    state: spotted
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_chest.rsi
+    state: spotted_extra
+
+- type: marking
+  id: TajaranSpottedAlt
+  bodyPart: Chest
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_chest.rsi
+    state: spotted_alt
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_chest.rsi
+    state: spotted_extra
+
+- type: marking
+  id: TajaranTorsoTuxedo
+  bodyPart: Chest
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_torso.rsi
+    state: tuxedocat_back
+
+- type: marking
+  id: TajaranFaceServal
+  bodyPart: Head
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_head.rsi
+    state: serval_face
+
+- type: marking
+  id: TajaranFaceSpots
+  bodyPart: Head
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_head.rsi
+    state: face_spots
+
+- type: marking
+  id: TajaranFaceTearL
+  bodyPart: Head
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_head.rsi
+    state: tear_left
+
+- type: marking
+  id: TajaranFaceTearR
+  bodyPart: Head
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_head.rsi
+    state: tear_right
+
+- type: marking
+  id: TajaranHeadTuxedo
+  bodyPart: Head
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_head2.rsi
+    state: tuxedocat_face
+
+- type: marking
+  id: TajaranLArmSpotted
+  bodyPart: LArm
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_arms.rsi
+    state: spotted_arm_left
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_arms.rsi
+    state: spotted_arm_left_extra
+
+- type: marking
+  id: TajaranLFootSpotted
+  bodyPart: LFoot
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_legs.rsi
+    state: spotted_foot_left
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_legs.rsi
+    state: spotted_foot_left_extra
+
+- type: marking
+  id: TajaranLHandSpotted
+  bodyPart: LHand
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_arms.rsi
+    state: spotted_paw_left
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_arms.rsi
+    state: spotted_paw_left_extra
+
+- type: marking
+  id: TajaranLLegSpotted
+  bodyPart: LLeg
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_legs.rsi
+    state: spotted_leg_left
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_legs.rsi
+    state: spotted_leg_left_extra
+
+- type: marking
+  id: TajaranRArmSpotted
+  bodyPart: RArm
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_arms.rsi
+    state: spotted_arm_right
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_arms.rsi
+    state: spotted_arm_right_extra
+
+- type: marking
+  id: TajaranRFootSpotted
+  bodyPart: RFoot
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_legs.rsi
+    state: spotted_foot_right
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_legs.rsi
+    state: spotted_foot_right_extra
+
+- type: marking
+  id: TajaranRHandSpotted
+  bodyPart: RHand
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_arms.rsi
+    state: spotted_paw_right
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_arms.rsi
+    state: spotted_paw_right_extra
+
+- type: marking
+  id: TajaranRLegSpotted
+  bodyPart: RLeg
+  groupWhitelist: [ MarkingsTajaran ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_legs.rsi
+    state: spotted_leg_right
+  - sprite: _ClawCommand/Mobs/Customization/Extended/tajaran_legs.rsi
+    state: spotted_leg_right_extra

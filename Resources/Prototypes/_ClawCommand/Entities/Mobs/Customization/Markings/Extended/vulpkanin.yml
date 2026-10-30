@@ -1,0 +1,208 @@
+- type: marking
+  id: VulpEarDalmatian
+  bodyPart: HeadTop
+  groupWhitelist: [ Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_ear_markings.rsi
+    state: dalmatian
+
+- type: marking
+  id: FacepaintClownMinimalVulpkanin
+  bodyPart: Snout
+  groupWhitelist: [ Vulpkanin ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_vulpkanin.rsi
+    state: facepaint_clown_minimal
+
+- type: marking
+  id: FacepaintClownSadVulpkanin
+  bodyPart: Snout
+  groupWhitelist: [ Vulpkanin ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_vulpkanin.rsi
+    state: facepaint_clown_sad
+
+- type: marking
+  id: FacepaintClownSeriousVulpkanin
+  bodyPart: Snout
+  groupWhitelist: [ Vulpkanin ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_vulpkanin.rsi
+    state: facepaint_clown_serious
+
+- type: marking
+  id: FacepaintClownSmugVulpkanin
+  bodyPart: Snout
+  groupWhitelist: [ Vulpkanin ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_vulpkanin.rsi
+    state: facepaint_clown_smug
+
+- type: marking
+  id: FacepaintClownVulpkanin
+  bodyPart: Snout
+  groupWhitelist: [ Vulpkanin ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_vulpkanin.rsi
+    state: facepaint_clown
+
+- type: marking
+  id: FacepaintMimeBlushVulpkanin
+  bodyPart: Snout
+  groupWhitelist: [ Vulpkanin ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_vulpkanin.rsi
+    state: facepaint_mime_blush
+
+- type: marking
+  id: FacepaintMimeOddVulpkanin
+  bodyPart: Snout
+  groupWhitelist: [ Vulpkanin ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_vulpkanin.rsi
+    state: facepaint_mime_odd
+
+- type: marking
+  id: FacepaintMimeSadVulpkanin
+  bodyPart: Snout
+  groupWhitelist: [ Vulpkanin ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_vulpkanin.rsi
+    state: facepaint_mime_sad
+
+- type: marking
+  id: FacepaintMimeSeriousVulpkanin
+  bodyPart: Snout
+  groupWhitelist: [ Vulpkanin ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_vulpkanin.rsi
+    state: facepaint_mime_serious
+
+- type: marking
+  id: FacepaintMimeVulpkanin
+  bodyPart: Snout
+  groupWhitelist: [ Vulpkanin ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_vulpkanin.rsi
+    state: facepaint_mime
+
+- type: marking
+  id: FacepaintWhiteVulpkanin
+  bodyPart: Snout
+  groupWhitelist: [ Vulpkanin ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_vulpkanin.rsi
+    state: facepaint_white
+
+- type: marking
+  id: VulpSnoutFade
+  bodyPart: Snout
+  groupWhitelist: [ Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_head_markings.rsi
+    state: muzzle_fade
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_head_markings.rsi
+    state: nose
+
+- type: marking
+  id: VulpTailAlt
+  bodyPart: Tail
+  groupWhitelist: [ Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tails_digi.rsi
+    state: vulp_alt
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tail_markings.rsi
+    state: vulp_alt-fade
+
+- type: marking
+  id: VulpTailAltTip
+  bodyPart: Tail
+  groupWhitelist: [ Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tails_digi.rsi
+    state: vulp_alt
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tail_markings.rsi
+    state: vulp_alt-tip
+
+- type: marking
+  id: VulpTailFluffyTip
+  bodyPart: Tail
+  groupWhitelist: [ Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tails_digi.rsi
+    state: fluffy
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tail_markings.rsi
+    state: fluffy-tip
+
+- type: marking
+  id: VulpTailOtie
+  bodyPart: Tail
+  groupWhitelist: [ Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tails_digi.rsi
+    state: otie
+
+- type: marking
+  id: VulpTailTip
+  bodyPart: Tail
+  groupWhitelist: [ Vulpkanin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tails_digi.rsi
+    state: vulp
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tail_markings.rsi
+    state: vulp-tip

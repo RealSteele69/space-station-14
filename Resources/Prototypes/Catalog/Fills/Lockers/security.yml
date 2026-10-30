@@ -181,6 +181,7 @@
     - id: HoloprojectorSecurity
     - id: BoxEvidenceMarkers
     - id: HandLabeler
+    - id: BoxTapeRecorder # Claw Command
     - id: PlushieLizardJobDetective
       prob: 0.02
 

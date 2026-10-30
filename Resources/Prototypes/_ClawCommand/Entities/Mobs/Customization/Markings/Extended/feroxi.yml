@@ -1,0 +1,299 @@
+- type: marking
+  id: FeroxiTorsoStripesTigerAlt
+  bodyPart: Chest
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-torso-stripes-tiger-alt
+
+- type: marking
+  id: FeroxiHeadStripesTigerAlt
+  bodyPart: Head
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-head-stripes-tiger-alt
+
+- type: marking
+  id: FeroxiEarsAlt
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-alt
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-alt-inner
+
+- type: marking
+  id: FeroxiEarsAltTiger
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-alt
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-alt-inner
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-alt-tiger
+
+- type: marking
+  id: FeroxiEarsAltTips
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-alt
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-alt-inner
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-alt-tips
+
+- type: marking
+  id: FeroxiEarsPierced
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-pierced
+
+- type: marking
+  id: FeroxiEarsPiercedTiger
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-pierced
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-tiger
+
+- type: marking
+  id: FeroxiEarsTiger
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-inner
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_ear_markings.rsi
+    state: feroxi-ears-tiger
+
+- type: marking
+  id: FeroxiLArmStripesBlitz
+  bodyPart: LArm
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Larm-stripes-blitz
+
+- type: marking
+  id: FeroxiLArmStripesTiger
+  bodyPart: LArm
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Larm-stripes-tiger
+
+- type: marking
+  id: FeroxiLFootStripesTiger
+  bodyPart: LFoot
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Lfoot-stripes-tiger
+
+- type: marking
+  id: FeroxiLFootTip
+  bodyPart: LFoot
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Lfoot-tip
+
+- type: marking
+  id: FeroxiLHandStripesTiger
+  bodyPart: LHand
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Lhand-stripes-tiger
+
+- type: marking
+  id: FeroxiLHandTip
+  bodyPart: LHand
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Lhand-tip
+
+- type: marking
+  id: FeroxiLLegStripesBlitz
+  bodyPart: LLeg
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Lleg-stripes-blitz
+
+- type: marking
+  id: FeroxiLLegStripesTiger
+  bodyPart: LLeg
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Lleg-stripes-tiger
+
+- type: marking
+  id: FeroxiRArmStripesBlitz
+  bodyPart: RArm
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Rarm-stripes-blitz
+
+- type: marking
+  id: FeroxiRArmStripesTiger
+  bodyPart: RArm
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Rarm-stripes-tiger
+
+- type: marking
+  id: FeroxiRFootStripesTiger
+  bodyPart: RFoot
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Rfoot-stripes-tiger
+
+- type: marking
+  id: FeroxiRFootTip
+  bodyPart: RFoot
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Rfoot-tip
+
+- type: marking
+  id: FeroxiRHandStripesTiger
+  bodyPart: RHand
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Rhand-stripes-tiger
+
+- type: marking
+  id: FeroxiRHandTip
+  bodyPart: RHand
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Rhand-tip
+
+- type: marking
+  id: FeroxiRLegStripesBlitz
+  bodyPart: RLeg
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Rleg-stripes-blitz
+
+- type: marking
+  id: FeroxiRLegStripesTiger
+  bodyPart: RLeg
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_body_markings.rsi
+    state: feroxi-Rleg-stripes-tiger
+
+- type: marking
+  id: FeroxiFullTipTail
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-second-dorsal-tip
+
+- type: marking
+  id: FeroxiFullTipTailAndDorsal
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-second-dorsal-tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-dorsal
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-dorsal-tip
+
+- type: marking
+  id: FeroxiFullTipTwoToneTail
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-second-dorsal-tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-under
+
+- type: marking
+  id: FeroxiFullTipTwoToneTailAndDorsal
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-second-dorsal-tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-under
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-dorsal
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-dorsal-tip
+
+- type: marking
+  id: FeroxiTailBlitzFullTip
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-stripes
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-under
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-dorsal
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-dorsal-stripes
+
+- type: marking
+  id: FeroxiTailBlitzNoDorsalFullTip
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsFeroxi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-stripes
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-tip
+  - sprite: _ClawCommand/Mobs/Customization/Extended/feroxi_tail_markings.rsi
+    state: feroxi-tail-under

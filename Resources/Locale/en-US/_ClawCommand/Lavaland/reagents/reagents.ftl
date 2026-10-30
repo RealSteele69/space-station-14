@@ -6,10 +6,10 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 reagent-name-minerssalve = minerslavine
-reagent-desc-minerssalve = A powerful mixture of stimulants intended for use by lavaland shaft miners.
+reagent-desc-minerssalve = A powerful mixture of stimulants intended for use by Lavaland shaft miners. Inert anywhere but Lavaland.
 
 reagent-name-luxurium = luxurium
-reagent-desc-luxurium = An evil concoction devised by the top Nanotrasen scientists which becomes harmful outside of low pressure, reducing the effectiveness of the luxury mining pen when used outside of intended environments.
+reagent-desc-luxurium = An evil concoction devised by the top Nanotrasen scientists. Only reacts with Lavaland's atmosphere, so it does nothing anywhere else.
 
 reagent-name-vitrium-froth = vitrium Froth
 reagent-desc-vitrium-froth = A bubbly paste that heals wounds of the skin.

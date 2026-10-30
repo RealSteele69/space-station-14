@@ -131,7 +131,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             {
                 if (loadout.CustomName != null)
                 {
-                    var trimmed = loadout.CustomName.Trim();
+                    var trimmed = HumanoidCharacterProfile.SanitizeFreeText(loadout.CustomName, int.MaxValue);
                     if (trimmed.Length < 3 || trimmed.Length > 15)
                         loadout.CustomName = null;
                     else

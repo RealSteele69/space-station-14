@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "asymmetricalafro originally taken from https://github.com/tgstation/tgstation/blob/05ec94e46349c35e29ca91e5e97d0c88ae26ad44/icons/mob/species/human/human_face.dmi, blackbird, blackbirdnoahoge, floorlengthbraided, floorlengthmessy, fluffybob, hacker, longlocs, longnatural, loosecurlslong, loosecurlsmedium, loosecurlsshort, lostboy, meanergirl, meanergirlovereye, sleepy, twists, unkempt braid by orchard (git), longwithstrand by orangeAlligator (git) Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "asymmetricalafro",
+      "directions": 4
+    },
+    {
+      "name": "blackbird",
+      "directions": 4
+    },
+    {
+      "name": "blackbirdnoahoge",
+      "directions": 4
+    },
+    {
+      "name": "dreamer",
+      "directions": 4
+    },
+    {
+      "name": "floorlengthbraided",
+      "directions": 4
+    },
+    {
+      "name": "floorlengthmessy",
+      "directions": 4
+    },
+    {
+      "name": "fluffybob",
+      "directions": 4
+    },
+    {
+      "name": "hacker",
+      "directions": 4
+    },
+    {
+      "name": "longlocs",
+      "directions": 4
+    },
+    {
+      "name": "longnatural",
+      "directions": 4
+    },
+    {
+      "name": "longwithstrand",
+      "directions": 4
+    },
+    {
+      "name": "loosecurlslong",
+      "directions": 4
+    },
+    {
+      "name": "loosecurlsmedium",
+      "directions": 4
+    },
+    {
+      "name": "loosecurlsshort",
+      "directions": 4
+    },
+    {
+      "name": "lostboy",
+      "directions": 4
+    },
+    {
+      "name": "meanergirl",
+      "directions": 4
+    },
+    {
+      "name": "meanergirlovereye",
+      "directions": 4
+    },
+    {
+      "name": "streakedafrodark",
+      "directions": 4
+    },
+    {
+      "name": "streakedafrolight",
+      "directions": 4
+    },
+    {
+      "name": "twists",
+      "directions": 4
+    },
+    {
+      "name": "unkemptbraid",
+      "directions": 4
+    }
+  ]
+}

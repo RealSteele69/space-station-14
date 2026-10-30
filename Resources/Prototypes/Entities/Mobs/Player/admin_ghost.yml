@@ -20,6 +20,7 @@
     - NotGhostnadoWarpable
     - AllowPortalTraversal
     - PreventPortalCollision
+    - AllowGhostShownByEvent # Claw Command - aghosts are revealed at round end too
   - type: Input
     context: "aghost"
   - type: Ghost

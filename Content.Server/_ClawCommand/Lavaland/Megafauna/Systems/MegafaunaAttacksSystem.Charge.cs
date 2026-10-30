@@ -187,7 +187,7 @@ public sealed partial class MegafaunaAttacksSystem
             }
 
             if (charge.Args.KnockdownTime > 0f)
-                _stun.TryKnockdown(target.Owner, TimeSpan.FromSeconds(charge.Args.KnockdownTime));
+                _stun.TryKnockdown(target.Owner, TimeSpan.FromSeconds(charge.Args.KnockdownTime), drop: false); // Knockdown drops held items by default; losing the weapon mid-fight is near-certain death.
 
             if (charge.Args.HitSound != null)
                 _audio.PlayPvs(charge.Args.HitSound, target.Owner);

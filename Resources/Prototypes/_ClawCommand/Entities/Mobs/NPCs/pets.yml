@@ -1,0 +1,251 @@
+# Small pets offered through the pet loadout group.
+
+- type: entity
+  parent: MobCockroach
+  id: MobSquackroach
+  name: squackroach
+  description: This is just a horrific genetic stew of a specimen.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/Animals/squackroach.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base", "movement" ]
+      state: squackroach
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: squackroach-moving
+    noMovementLayers:
+      movement:
+        state: squackroach
+  - type: Appearance
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: squackroach
+      Critical:
+        Base: squackroach_dead
+      Dead:
+        Base: squackroach_dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 100
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      40: Critical
+      60: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 4
+    weightlessAcceleration: 1.5
+    weightlessFriction: 1
+    baseWeightlessModifier: 1
+  - type: Damageable
+    damageModifierSet: Moth
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 0.5
+    damageRecovery:
+      types:
+        Asphyxiation: -0.5
+  - type: CombatMode
+  - type: Item
+    size: Normal
+  - type: Clothing
+    quickEquip: false
+    sprite: _ClawCommand/Mobs/Animals/squackroach.rsi
+    equippedPrefix: sq
+    slots:
+    - HEAD
+    - NECK
+  - type: Speech
+    speechVerb: Parrot
+    speechSounds: Parrot
+  - type: Vocal
+    emoteSounds: Parrot
+    wilhelmProbability: 0.001
+  - type: MobPrice
+    price: 150
+  - type: Tag
+    tags:
+    - Trash
+    - CannotSuicide
+    - VimPilot
+  - type: CanEscapeInventory
+  - type: NpcFactionMember
+    factions:
+    - Mouse
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 60
+      behaviors:
+      - !type:GibBehavior
+        recursive: false
+  - type: FireVisuals
+    sprite: Mobs/Effects/onfire.rsi
+    normalState: Mouse_burning
+  - type: GhostTakeoverAvailable
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: ghost-role-information-squackroach-name
+    description: ghost-role-information-squackroach-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgentHarmless
+
+- type: entity
+  parent: BaseMobCarp
+  id: MobCarpGoldfish
+  name: space goldfish
+  description: A domesticated variety of space carp, much smaller but no less aggressive.
+  components:
+  - type: HTN
+    rootTask:
+      task: IdleCompound
+  - type: NpcFactionMember
+    factions:
+    - Mouse
+  - type: Tag
+    tags:
+    - VimPilot
+    - Carp
+    - CannotSuicide
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _ClawCommand/Mobs/Aliens/Carps/goldfish.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: mouth
+      shader: unshaded
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+        BaseUnshaded: mouth
+      Critical:
+        Base: critical
+        BaseUnshaded: critical_mouth
+      Dead:
+        Base: dead
+        BaseUnshaded: dead_mouth
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        alive: Rainbow
+      enum.DamageStateVisualLayers.BaseUnshaded:
+        mouth: ""
+  - type: FireVisuals
+    sprite: Mobs/Effects/onfire.rsi
+    normalState: Mouse_burning
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 80
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: Item
+    size: Tiny
+  - type: CanEscapeInventory
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Critical
+      50: Dead
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeatFish
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Piercing: 2
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 5
+  - type: Clothing
+    quickEquip: false
+    sprite: _ClawCommand/Mobs/Aliens/Carps/goldfish.rsi
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+      - state: mouth-equipped-NECK
+        shader: unshaded
+    slots:
+    - NECK
+  - type: GhostTakeoverAvailable
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: ghost-role-information-space-goldfish-name
+    description: ghost-role-information-space-goldfish-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgentHarmless
+
+- type: entity
+  parent: MobMouse
+  id: MobRoingus
+  name: roingus
+  description: Bounce!
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Mobs/Animals/roingus.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base", "movement" ]
+      state: roingus
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: roingus-moving
+    noMovementLayers:
+      movement:
+        state: roingus
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: roingus
+      Critical:
+        Base: dead
+      Dead:
+        Base: splat
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepBounce
+      params:
+        pitch: 1.15
+  - type: Item
+    size: Tiny
+    heldPrefix: null
+  - type: Clothing
+    quickEquip: false
+    sprite: _ClawCommand/Mobs/Animals/roingus.rsi
+    equippedPrefix: null
+    slots:
+    - HEAD

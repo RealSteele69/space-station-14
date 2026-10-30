@@ -1,0 +1,355 @@
+- type: marking
+  id: BodyShadowkinFullBelly
+  bodyPart: Chest
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_overlay.rsi
+    state: body_fullbelly
+
+- type: marking
+  id: EyesShadowkinGlowingLeft
+  bodyPart: Eyes
+  groupWhitelist: [ MarkingsShadowkin ]
+  coloring:
+    default:
+      type: !type:EyeColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_parts.rsi
+    state: eyes_left
+    shader: unshaded
+
+- type: marking
+  id: EyesShadowkinGlowingRight
+  bodyPart: Eyes
+  groupWhitelist: [ MarkingsShadowkin ]
+  coloring:
+    default:
+      type: !type:EyeColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_parts.rsi
+    state: eyes_right
+    shader: unshaded
+
+- type: marking
+  id: EyesShadowkinNormalLeft
+  bodyPart: Eyes
+  groupWhitelist: [ MarkingsShadowkin ]
+  coloring:
+    default:
+      type: !type:EyeColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_parts.rsi
+    state: eyes_left
+
+- type: marking
+  id: EyesShadowkinNormalRight
+  bodyPart: Eyes
+  groupWhitelist: [ MarkingsShadowkin ]
+  coloring:
+    default:
+      type: !type:EyeColoring
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_parts.rsi
+    state: eyes_right
+
+- type: marking
+  id: EarsShadowkinAllEarsGauzedAll
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_ears.rsi
+    state: shadowkin
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadekin_shadekin_ears_32x32.rsi
+    state: gauze_ear_all_default
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_ears_32x32.rsi
+    state: gauze_lowerears_all_default
+
+- type: marking
+  id: EarsShadowkinAllEarsGauzedLeft
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_ears.rsi
+    state: shadowkin
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadekin_shadekin_ears_32x32.rsi
+    state: gauze_ear_l_default
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_ears_32x32.rsi
+    state: gauze_lowerears_l_default
+
+- type: marking
+  id: EarsShadowkinAllEarsGauzedRight
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_ears.rsi
+    state: shadowkin
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadekin_shadekin_ears_32x32.rsi
+    state: gauze_ear_r_default
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_ears_32x32.rsi
+    state: gauze_lowerears_r_default
+
+- type: marking
+  id: EarsShadowkinAllSaggyGauzedAll
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadekin_shadekin_ears_32x32.rsi
+    state: saggy_default
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadekin_shadekin_ears_32x32.rsi
+    state: saggy_gauze_all
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_ears_32x32.rsi
+    state: saggy_gauze_lowerears_all
+
+- type: marking
+  id: EarsShadowkinAllSaggyGauzedLeft
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadekin_shadekin_ears_32x32.rsi
+    state: saggy_default
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadekin_shadekin_ears_32x32.rsi
+    state: saggy_gauze_l
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_ears_32x32.rsi
+    state: saggy_gauze_lowerears_l
+
+- type: marking
+  id: EarsShadowkinAllSaggyGauzedRight
+  bodyPart: HeadTop
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadekin_shadekin_ears_32x32.rsi
+    state: saggy_default
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadekin_shadekin_ears_32x32.rsi
+    state: saggy_gauze_r
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_ears_32x32.rsi
+    state: saggy_gauze_lowerears_r
+
+- type: marking
+  id: CyberLimbsShadowkinMarkingBishopLHand
+  bodyPart: LHand
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_bishop_main.rsi
+    state: l_hand
+
+- type: marking
+  id: HandShadowkinDollJointsTattooLeft
+  bodyPart: LHand
+  groupWhitelist: [ MarkingsShadowkin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_lhand.rsi
+    state: doll
+
+- type: marking
+  id: HandShadowkinHeavyTattoosLeft
+  bodyPart: LHand
+  groupWhitelist: [ MarkingsShadowkin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_lhand.rsi
+    state: heavy1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_lhand.rsi
+    state: heavy2
+
+- type: marking
+  id: HandShadowkinProstheticLeft
+  bodyPart: LHand
+  groupWhitelist: [ MarkingsShadowkin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#E4E4E4"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_lhand.rsi
+    state: prosthetic
+
+- type: marking
+  id: HandShadowkinRingsLeft
+  bodyPart: LHand
+  groupWhitelist: [ MarkingsShadowkin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffc833"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_lhand.rsi
+    state: rings1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_lhand.rsi
+    state: rings2
+
+- type: marking
+  id: CyberLimbsShadowkinMarkingBishopRHand
+  bodyPart: RHand
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_bishop_main.rsi
+    state: r_hand
+
+- type: marking
+  id: HandShadowkinDollJointsTattooRight
+  bodyPart: RHand
+  groupWhitelist: [ MarkingsShadowkin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_rhand.rsi
+    state: doll
+
+- type: marking
+  id: HandShadowkinHeavyTattoosRight
+  bodyPart: RHand
+  groupWhitelist: [ MarkingsShadowkin ]
+  coloring:
+    default:
+      type: !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_rhand.rsi
+    state: heavy1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_rhand.rsi
+    state: heavy2
+
+- type: marking
+  id: HandShadowkinProstheticRight
+  bodyPart: RHand
+  groupWhitelist: [ MarkingsShadowkin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#E4E4E4"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_rhand.rsi
+    state: prosthetic
+
+- type: marking
+  id: HandShadowkinRingsRight
+  bodyPart: RHand
+  groupWhitelist: [ MarkingsShadowkin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#ffc833"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_rhand.rsi
+    state: rings1
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_rhand.rsi
+    state: rings2
+
+- type: marking
+  id: TailShadowkinBigFluffFurry
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_tails64x32.rsi
+    state: shadowkin_big_fluff
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_tails_64x32.rsi
+    state: shadowkin_big_fluff_furry
+
+- type: marking
+  id: TailShadowkinBigFluffStriped
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_tails64x32.rsi
+    state: shadowkin_big_fluff
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_tails_64x32.rsi
+    state: shadowkin_big_fluff_striped
+
+- type: marking
+  id: TailShadowkinBigFluffTwoColored
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_tails64x32.rsi
+    state: shadowkin_big_fluff
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_tails_64x32.rsi
+    state: shadowkin_big_fluff_twocolored
+
+- type: marking
+  id: TailShadowkinBigFurry
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_tails64x32.rsi
+    state: shadowkin_big
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_tails_64x32.rsi
+    state: shadowkin_big_furry
+
+- type: marking
+  id: TailShadowkinBigStriped
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_tails64x32.rsi
+    state: shadowkin_big
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_tails_64x32.rsi
+    state: shadowkin_big_striped
+
+- type: marking
+  id: TailShadowkinBigTwoColored
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_tails64x32.rsi
+    state: shadowkin_big
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_tails_64x32.rsi
+    state: shadowkin_big_twocolored
+
+- type: marking
+  id: TailShadowkinFurry
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_tails64x32.rsi
+    state: shadowkin
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_tails_64x32.rsi
+    state: shadowkin_furry
+
+- type: marking
+  id: TailShadowkinMediumFurry
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadekin_shadekin_tails_32x32.rsi
+    state: shadekin_medium
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_tails_32x32.rsi
+    state: medium_furry
+
+- type: marking
+  id: TailShadowkinShortTwoColored
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadekin_shadekin_tails_32x32.rsi
+    state: shadekin_shorter
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_tails_32x32.rsi
+    state: short_twocolored
+
+- type: marking
+  id: TailShadowkinStriped
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_tails64x32.rsi
+    state: shadowkin
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_tails_64x32.rsi
+    state: shadowkin_striped
+
+- type: marking
+  id: TailShadowkinTwoColored
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsShadowkin ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_tails64x32.rsi
+    state: shadowkin
+  - sprite: _ClawCommand/Mobs/Customization/Extended/shadowkin_shadowkin_tails_64x32.rsi
+    state: shadowkin_twocolored

@@ -2,7 +2,9 @@ using Content.IntegrationTests.Fixtures;
 using System.Linq;
 using Content.Client._ClawCommand.VentCrawl;
 using Content.Server._ClawCommand.VentCrawl;
+using Content.Shared.Eye;
 using Content.Shared.SubFloor;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Content.Shared._ClawCommand.VentCrawl;
 using Content.Shared.Cuffs;
@@ -11,6 +13,7 @@ using Content.Shared.Maps;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Verbs;
+using Robust.Shared;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Localization;
 using Robust.Shared.Map;
@@ -218,7 +221,10 @@ public sealed class VentCrawlTest : GameTest
         });
     }
 
-    /// <summary>A player crawling sees the ducts: the overlay is up and nearby pipes are revealed client-side.</summary>
+    /// <summary>
+    /// A player crawling sees the ducts: the server adds the subfloor layer to their eye (and keeps it through
+    /// other vismask refreshes), so a pipe hidden under a floor tile is networked and drawn on the client.
+    /// </summary>
     [Test]
     public async Task CrawlerSeesTheDucts()
     {
@@ -227,6 +233,8 @@ public sealed class VentCrawlTest : GameTest
         var client = pair.Client;
         var entMan = server.ResolveDependency<IEntityManager>();
         var tileDefs = server.ResolveDependency<ITileDefinitionManager>();
+        // The pool turns PVS off, which networks everything and hides exactly the bug this guards against.
+        server.CfgMan.SetCVar(CVars.NetPVS, true);
         var testMap = await pair.CreateTestMap();
 
         EntityUid larva = default;
@@ -240,6 +248,10 @@ public sealed class VentCrawlTest : GameTest
             var plating = new Tile(tileDefs["Plating"].TileId);
             for (var x = -1; x <= 3; x++)
                 map.SetTile(testMap.Grid, new Vector2i(x, 0), plating);
+            // floor over the pipe run, as on a real station
+            var floor = new Tile(tileDefs["FloorSteel"].TileId);
+            for (var x = 0; x <= 2; x++)
+                map.SetTile(testMap.Grid, new Vector2i(x, 0), floor);
 
             vent = entMan.SpawnEntity("GasVentPump", map.GridTileToLocal(testMap.Grid, testMap.Grid, new Vector2i(0, 0)));
             xformSys.SetLocalRotation(vent, Angle.FromDegrees(90));
@@ -248,33 +260,64 @@ public sealed class VentCrawlTest : GameTest
             var cap = entMan.SpawnEntity("GasVentPump", map.GridTileToLocal(testMap.Grid, testMap.Grid, new Vector2i(2, 0)));
             xformSys.SetLocalRotation(cap, Angle.FromDegrees(-90));
 
+            Assert.That(entMan.GetComponent<SubFloorHideComponent>(pipe).IsUnderCover, "The pipe should be under the floor.");
+
             larva = entMan.SpawnEntity("MobAdvXenoLarva", map.GridTileToLocal(testMap.Grid, testMap.Grid, new Vector2i(-1, 0)));
             var session = server.PlayerMan.GetSessionById(client.Session!.UserId);
             server.PlayerMan.SetAttachedEntity(session, larva);
         });
 
         await pair.RunTicksSync(15);
-        await server.WaitPost(() => entMan.System<VentCrawlSystem>().Enter(larva, vent));
-        await pair.RunTicksSync(30);
 
         var cEntMan = client.ResolveDependency<IEntityManager>();
+        var netPipe = entMan.GetNetEntity(pipe);
+        await client.WaitAssertion(() =>
+        {
+            Assert.That(cEntMan.TryGetEntity(netPipe, out var cPipe) && cEntMan.EntityExists(cPipe)
+                && cEntMan.GetComponent<TransformComponent>(cPipe.Value).MapID != MapId.Nullspace, Is.False,
+                "Before crawling, the covered pipe should not be sent to the client.");
+        });
+
+        await server.WaitPost(() => entMan.System<VentCrawlSystem>().Enter(larva, vent));
+        await pair.RunTicksSync(15);
+
+        // another system refreshing the vismask mid-crawl must not take the subfloor view away
+        await server.WaitPost(() => entMan.System<SharedEyeSystem>().RefreshVisibilityMask(larva));
+        await pair.RunTicksSync(15);
+
+        await server.WaitAssertion(() =>
+        {
+            var mask = entMan.GetComponent<EyeComponent>(larva).VisibilityMask;
+            Assert.That(mask & (int) VisibilityFlags.Subfloor, Is.Not.Zero, "The crawler's eye should see the subfloor layer.");
+        });
+
         await client.WaitAssertion(() =>
         {
             Assert.That(client.ResolveDependency<IOverlayManager>().HasOverlay<VentCrawlOverlay>(), "The crawler's view should be up.");
-            var cPipe = cEntMan.GetEntity(entMan.GetNetEntity(pipe));
-            Assert.That(cEntMan.System<SharedAppearanceSystem>().TryGetData<bool>(cPipe, SubFloorVisuals.ScannerRevealed, out var revealed) && revealed,
-                "Pipes around the crawler should be revealed.");
+            Assert.That(cEntMan.TryGetEntity(netPipe, out var cPipe), "The covered pipe should be networked to the crawler.");
+            var sprite = cEntMan.GetComponent<SpriteComponent>(cPipe!.Value);
+            Assert.That(sprite.Visible, "The covered pipe should be drawn for the crawler.");
+            Assert.That(sprite.AllLayers.Any(l => l.Visible), "At least one of the pipe's layers should be drawn.");
         });
 
         await server.WaitPost(() => entMan.GetComponent<InputMoverComponent>(larva).HeldMoveButtons = MoveButtons.Right);
         await pair.RunSeconds(1.5f);
         await server.WaitPost(() => entMan.GetComponent<InputMoverComponent>(larva).HeldMoveButtons = MoveButtons.None);
-        await pair.RunTicksSync(10);
+        await pair.RunTicksSync(15);
+
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(entMan.HasComponent<VentCrawlingComponent>(larva), Is.False, "The larva should be out of the far vent.");
+            var mask = entMan.GetComponent<EyeComponent>(larva).VisibilityMask;
+            Assert.That(mask & (int) VisibilityFlags.Subfloor, Is.Zero, "Out of the ducts, the subfloor layer should be gone.");
+        });
 
         await client.WaitAssertion(() =>
         {
-            Assert.That(entMan.HasComponent<VentCrawlingComponent>(larva), Is.False, "The larva should be out of the far vent.");
             Assert.That(client.ResolveDependency<IOverlayManager>().HasOverlay<VentCrawlOverlay>(), Is.False, "The duct view should go away.");
+            if (cEntMan.TryGetEntity(netPipe, out var cPipe) && cEntMan.TryGetComponent<SpriteComponent>(cPipe, out var sprite)
+                && cEntMan.GetComponent<TransformComponent>(cPipe.Value).MapID != MapId.Nullspace)
+                Assert.That(sprite.Visible, Is.False, "Out of the ducts, the covered pipe should be hidden again.");
         });
     }
 }

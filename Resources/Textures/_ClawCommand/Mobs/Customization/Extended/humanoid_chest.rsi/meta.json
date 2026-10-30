@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "bodyhair by Honeyed_Lemons_, anchor, backstabbed, code, dragontattoo, incision, muscular, prosthetics, twisting, star, vines, and vitiligo by crocodilecarousel (github). cuthere, heavy and necklace by Sha-Seng (GitHub). Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "anchor",
+      "directions": 4
+    },
+    {
+      "name": "code1",
+      "directions": 4
+    },
+    {
+      "name": "code2",
+      "directions": 4
+    },
+    {
+      "name": "code3",
+      "directions": 4
+    },
+    {
+      "name": "dragontattoo1",
+      "directions": 4
+    },
+    {
+      "name": "dragontattoo2",
+      "directions": 4
+    },
+    {
+      "name": "heavy1",
+      "directions": 4
+    },
+    {
+      "name": "heavy2",
+      "directions": 4
+    },
+    {
+      "name": "heavy3",
+      "directions": 4
+    },
+    {
+      "name": "necklace",
+      "directions": 4
+    },
+    {
+      "name": "prostheticshoulderleft",
+      "directions": 4
+    },
+    {
+      "name": "prostheticshoulderright",
+      "directions": 4
+    },
+    {
+      "name": "vines",
+      "directions": 4
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+- type: marking
+  id: FelinidAlternativeTailAnimated
+  bodyPart: Tail
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_alternative_tail.rsi
+    state: m_waggingtail_cat_FRONT
+
+- type: marking
+  id: FelinidFluffyTailAnimated
+  bodyPart: Tail
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_felinid_tails.rsi
+    state: Felinid_fluffy_tail_full
+
+- type: marking
+  id: FelinidFluffyTailRingsAnimated
+  bodyPart: Tail
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_felinid_tails.rsi
+    state: Felinid_fluffy_tail_full
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinid_felinid_tails.rsi
+    state: felinid_fluffy_tail_rings
+
+- type: marking
+  id: FelinidLeopardAnimated
+  bodyPart: Tail
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinids_leopard_tail.rsi
+    state: m_tail_leopard_primary_wag
+  - sprite: _ClawCommand/Mobs/Customization/Extended/felinids_leopard_tail.rsi
+    state: m_tail_leopard_tertiary_wag
+
+- type: marking
+  id: FelinidTailBasicAnimated
+  bodyPart: Tail
+  sprites:
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_tail_tip
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_tail_stripes_even
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_tail_stripes_odd
+
+- type: marking
+  id: FelinidTailBasicWithBellAnimated
+  bodyPart: Tail
+  sprites:
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_tail_tip
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_tail_stripes_even
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_tail_stripes_odd
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_bell
+
+- type: marking
+  id: FelinidTailBasicWithBowAndBellAnimated
+  bodyPart: Tail
+  sprites:
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_tail_tip
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_tail_stripes_even
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_tail_stripes_odd
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_bow
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_bell
+
+- type: marking
+  id: FelinidTailBasicWithBowAnimated
+  bodyPart: Tail
+  sprites:
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_tail_tip
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_tail_stripes_even
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_tail_stripes_odd
+  - sprite: Nyanotrasen/Mobs/Customization/felinid_tails.rsi
+    state: basic_bow
+
+- type: marking
+  id: TailDroppedAnimated
+  bodyPart: Tail
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_tail.rsi
+    state: droppedwagging
+
+- type: marking
+  id: VulpTailAnimated
+  bodyPart: Tail
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tails_digi.rsi
+    state: vulp_wag
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tail_markings.rsi
+    state: vulp_wag-tip
+
+- type: marking
+  id: VulpTailTipAnimated
+  bodyPart: Tail
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tails_digi.rsi
+    state: vulp_wag
+  - sprite: _ClawCommand/Mobs/Customization/Extended/vulpkanin_tail_markings.rsi
+    state: vulp_wag-tip
+
+- type: marking
+  id: dogTailAnimated
+  bodyPart: Tail
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/dog_markings.rsi
+    state: dog_tail_animated

@@ -1,0 +1,23 @@
+- type: marking
+  id: ResomiFluffEars
+  bodyPart: Head
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/resomi_markings.rsi
+    state: fluffy_ears
+
+- type: marking
+  id: ResomiFluffForehead
+  bodyPart: Head
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/resomi_markings.rsi
+    state: forehead_fluff
+
+- type: marking
+  id: ResomiFluffyTail
+  bodyPart: Tail
+  groupWhitelist: [ MarkingsResomi ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/resomi_markings.rsi
+    state: fluffy_tail

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprites by Github MozarteanChaos / Discord mozarteanchaos (213813868282118144) and modified by Github Zeyria / Discord zeyria (232964236186353664). Additional versions edited by Github AegisShieldDev / Discord aegis_shield (230542392300666881) Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "tail_avalibase",
+      "directions": 4
+    },
+    {
+      "name": "tail_pointedtailtip",
+      "directions": 4
+    },
+    {
+      "name": "tail_chevrontailtip",
+      "directions": 4
+    }
+  ]
+}

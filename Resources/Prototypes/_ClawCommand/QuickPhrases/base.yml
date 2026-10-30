@@ -1,0 +1,86 @@
+# Tabs
+
+- type: quickPhrase
+  id: BaseCommonPhrase
+  tab: aac-tablet-tab-common-phrases
+  abstract: true
+
+- type: quickPhrase
+  id: BaseJobPhrase
+  tab: aac-tablet-tab-jobs
+  abstract: true
+
+- type: quickPhrase
+  id: BaseLocationPhrase
+  tab: aac-tablet-tab-locations
+  abstract: true
+
+- type: quickPhrase
+  id: BaseSubjectPhrase
+  tab: aac-tablet-tab-subjects
+  abstract: true
+
+- type: quickPhrase
+  id: BaseThreatPhrase
+  tab: aac-tablet-tab-safety
+  abstract: true
+
+- type: quickPhrase
+  id: BaseSpeciesPhrase
+  tab: aac-tablet-tab-species
+  abstract: true
+
+# Departments
+
+- type: quickPhrase
+  id: BaseCivilianPhrase
+  group: aac-tablet-group-civilian
+  abstract: true
+
+- type: quickPhrase
+  id: BaseCommandPhrase
+  group: aac-tablet-group-command
+  styleClass: AacCommandButton
+  abstract: true
+
+- type: quickPhrase
+  id: BaseEngineeringPhrase
+  group: aac-tablet-group-engineering
+  styleClass: AacEngineeringButton
+  abstract: true
+
+- type: quickPhrase
+  id: BaseSciencePhrase
+  group: aac-tablet-group-science
+  styleClass: AacScienceButton
+  abstract: true
+
+- type: quickPhrase
+  id: BaseJusticePhrase
+  group: aac-tablet-group-justice
+  styleClass: AacJusticeButton
+  abstract: true
+
+- type: quickPhrase
+  id: BaseCargoPhrase
+  group: aac-tablet-group-cargo
+  styleClass: AacCargoButton
+  abstract: true
+
+- type: quickPhrase
+  id: BaseMedicalPhrase
+  group: aac-tablet-group-medical
+  styleClass: AacMedicalButton
+  abstract: true
+
+- type: quickPhrase
+  id: BaseSecurityPhrase
+  group: aac-tablet-group-security
+  styleClass: AacSecurityButton
+  abstract: true
+
+- type: quickPhrase
+  id: BaseServicePhrase
+  group: aac-tablet-group-service
+  styleClass: AacServiceButton
+  abstract: true

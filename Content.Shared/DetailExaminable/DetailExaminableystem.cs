@@ -30,7 +30,7 @@ public sealed partial class DetailExaminableSystem : EntitySystem
             Act = () =>
             {
                 var markup = new FormattedMessage();
-                markup.AddMarkupPermissive(ent.Comp.Content);
+                markup.AddText(ent.Comp.Content); // Claw Command - player-written text, show it literally
                 _examine.SendExamineTooltip(user, ent, markup, false, false);
             },
             Text = Loc.GetString("detail-examinable-verb-text"),

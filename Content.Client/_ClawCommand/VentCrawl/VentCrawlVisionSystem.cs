@@ -12,9 +12,10 @@ using Robust.Shared.Prototypes;
 namespace Content.Client._ClawCommand.VentCrawl;
 
 /// <summary>
-/// Claw Command - what a vent crawler sees: every pipe and atmos fitting around you is pulled out from under
-/// the floor and drawn fullbright, above the lighting, so the duct layout, its junctions and the vents you can climb out of stand out even in a pitch-black maintenance
-/// tunnel. You are drawn at your spot in the pipe on top of it all.
+/// Claw Command - what a vent crawler sees: the whole subfloor, like the sandbox "show subfloor" toggle, with every
+/// pipe and atmos fitting around you also drawn fullbright, above the lighting, so the duct layout, its junctions and
+/// the vents you can climb out of stand out even in a pitch-black maintenance tunnel. You are drawn at your spot in
+/// the pipe on top of it all.
 /// </summary>
 public sealed partial class VentCrawlVisionSystem : EntitySystem
 {
@@ -23,11 +24,6 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SubFloorHideSystem _subFloorHide = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-#if DEBUG
-    [Dependency] private ILogManager _logManager = default!;
-
-    private ISawmill _sawmill = default!;
-#endif
 
     private const float Range = 14f;
     private const string Unshaded = "unshaded";
@@ -43,9 +39,6 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
     {
         base.Initialize();
         _overlay = new VentCrawlOverlay();
-#if DEBUG
-        _sawmill = _logManager.GetSawmill("ventcrawl.vision");
-#endif
     }
 
     public override void Shutdown()
@@ -64,18 +57,15 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
         {
             if (_overlays.HasOverlay<VentCrawlOverlay>())
                 _overlays.RemoveOverlay(_overlay);
+            _subFloorHide.SetVentCrawlView(false);
             if (_revealed.Count > 0)
                 UnrevealAll();
             return;
         }
 
         if (!_overlays.HasOverlay<VentCrawlOverlay>())
-        {
             _overlays.AddOverlay(_overlay);
-#if DEBUG
-            _sawmill.Info($"Overlay added for {ToPrettyString(player.Value)}");
-#endif
-        }
+        _subFloorHide.SetVentCrawlView(true);
 
         _accumulator += frameTime;
         if (_accumulator < 0.25f)
@@ -89,13 +79,11 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
             LookupFlags.Static | LookupFlags.Sundries | LookupFlags.Approximate);
 
         var keep = new HashSet<EntityUid>();
-        var pipeCandidates = 0;
         foreach (var (uid, _) in _inRange)
         {
             if (!HasComp<PipeAppearanceComponent>(uid) && !HasComp<AtmosPipeLayersComponent>(uid))
                 continue;
 
-            pipeCandidates++;
             keep.Add(uid);
             if (!_revealed.ContainsKey(uid))
                 Reveal(uid);
@@ -106,25 +94,12 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
             if (!keep.Contains(uid))
                 Unreveal(uid);
         }
-
-#if DEBUG
-        _sawmill.Info($"tick: mapId={xform.MapID} pos={worldPos} inRange={_inRange.Count} pipeCandidates={pipeCandidates} revealed={_revealed.Count}");
-#endif
     }
 
     private void Reveal(EntityUid uid)
     {
         if (!TryComp<SpriteComponent>(uid, out var sprite))
-        {
-#if DEBUG
-            _sawmill.Warning($"Reveal: {ToPrettyString(uid)} has no SpriteComponent");
-#endif
             return;
-        }
-
-#if DEBUG
-        _sawmill.Info($"Reveal: {ToPrettyString(uid)} layers={sprite.AllLayers.Count()} visibleBefore={sprite.Visible} drawDepthBefore={sprite.DrawDepth}");
-#endif
 
         var saved = new List<(ProtoId<ShaderPrototype>?, ShaderInstance?)>();
         for (var i = 0; i < sprite.AllLayers.Count(); i++)
@@ -143,7 +118,6 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
         }
 
         _revealed[uid] = saved;
-        _subFloorHide.SetVentCrawlRevealed(uid, true);
     }
 
     private void Unreveal(EntityUid uid)
@@ -151,7 +125,6 @@ public sealed partial class VentCrawlVisionSystem : EntitySystem
         if (!_revealed.Remove(uid, out var saved) || TerminatingOrDeleted(uid))
             return;
 
-        _subFloorHide.SetVentCrawlRevealed(uid, false);
         if (!TryComp<SpriteComponent>(uid, out var sprite))
             return;
 

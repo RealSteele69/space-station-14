@@ -4,7 +4,6 @@ using Content.Server.NodeContainer.Nodes;
 using Content.Shared._ClawCommand.VentCrawl;
 using Content.Shared.Atmos;
 using Content.Shared.Cuffs;
-using Content.Shared.Eye;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
@@ -256,9 +255,8 @@ public sealed partial class VentCrawlSystem : EntitySystem
         {
             crawling.PreviousDrawFov = eye.DrawFov;
             _eye.SetDrawFov(user, false, eye);
-            // Pull every bit of piping over PVS, same as a t-ray would, without also networking the
-            // cables/wires/disposal tubes hidden alongside it.
-            _eye.SetVisibilityMask(user, eye.VisibilityMask | (int) VisibilityFlags.VentCrawlPipe, eye);
+            // SharedVentCrawlSystem adds the subfloor layer while VentCrawlingComponent is present.
+            _eye.RefreshVisibilityMask((user, eye));
         }
 
         Dirty(user, crawling);
@@ -433,12 +431,11 @@ public sealed partial class VentCrawlSystem : EntitySystem
         _transform.AttachToGridOrMap(ent);
 
         if (TryComp<EyeComponent>(ent, out var eye))
-        {
             _eye.SetDrawFov(ent, ent.Comp.PreviousDrawFov, eye);
-            _eye.SetVisibilityMask(ent, eye.VisibilityMask & ~(int) VisibilityFlags.VentCrawlPipe, eye);
-        }
 
         RemComp<VentCrawlingComponent>(ent);
+        // after the removal, so the subfloor layer drops out of the mask
+        _eye.RefreshVisibilityMask(ent.Owner);
         if (duct != null)
             QueueDel(duct);
 

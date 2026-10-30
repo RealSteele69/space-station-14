@@ -1,0 +1,133 @@
+- type: entity
+  parent: [ SimpleMobBase, BaseSlicingRefinableButchering ]
+  id: MobWhimperlet
+  name: scrimpering whimperlet
+  description: A pitiful creature, it loses a lot of salt through its tears.
+  components:
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: ghost-role-information-whimperlet-name
+    description: ghost-role-information-whimperlet-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgentHarmless
+  - type: GhostTakeoverAvailable
+  - type: Speech
+    allowedEmotes: [ 'Whine', 'Mew' ]
+    speechSounds: Squeak
+  - type: Vocal
+    emoteSounds: WhimperletSounds
+  - type: TypingIndicator
+    proto: slime
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _ClawCommand/Mobs/Animals/whimperlet.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base", "movement" ]
+      state: whimperlet
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: whimperlet-moving
+    noMovementLayers:
+      movement:
+        state: whimperlet-whimpering
+  - type: Item
+    size: Normal
+    heldPrefix: 0
+  - type: Clothing
+    quickEquip: false
+    sprite: _ClawCommand/Mobs/Animals/whimperlet.rsi
+    equippedPrefix: 0
+    slots:
+    - HEAD
+  - type: CanEscapeInventory
+  - type: FaxableObject
+    insertingState: inserting
+  - type: Appearance
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: whimperlet-whimpering
+      Critical:
+        Base: whimperlet-dead
+      Dead:
+        Base: whimperlet-dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Critical
+      50: Dead
+  - type: Satiation
+    satiations:
+      Hunger:
+        prototype: WhimperletHunger
+      Thirst:
+        prototype: WhimperletThirst
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeat
+      amount: 1
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.7
+    baseSprintSpeed: 4.5
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 0.5
+    damageRecovery:
+      types:
+        Asphyxiation: -0.5
+  - type: MobPrice
+    price: 150
+  - type: Tag
+    tags:
+    - Trash
+    - CannotSuicide
+    - VimPilot
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    angle: 0
+    animation: WeaponArcBite
+    damage:
+      types:
+        Piercing: 0.5 # Minimal damage, 'mostly harmless'.
+  - type: Whimperlet
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 10
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: HTN
+    rootTask:
+      task: RuminantCompound
+
+# It cries a lot, so it gets hungry and especially thirsty quickly.
+- type: satiation
+  id: WhimperletHunger
+  parent: SimpleMobBaseHunger
+  baseChangeRate: -0.15
+
+- type: satiation
+  id: WhimperletThirst
+  parent: SimpleMobBaseThirst
+  baseChangeRate: -0.25
+
+- type: emoteSounds
+  id: WhimperletSounds
+  params:
+    variation: 0.075
+  sound:
+    path: /Audio/_ClawCommand/Voice/Whimperlet/fox_squeal1.ogg
+  sounds:
+    Mew:
+      collection: FelinidMews

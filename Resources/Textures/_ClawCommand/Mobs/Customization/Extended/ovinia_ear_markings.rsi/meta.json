@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": "Ovinia ears made by juniwoofs. Cow, deer, and horse ears made by portfiend. Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "cow-ears",
+      "directions": 4
+    },
+    {
+      "name": "cow-ears-inner",
+      "directions": 4
+    },
+    {
+      "name": "deer-ears",
+      "directions": 4
+    },
+    {
+      "name": "deer-ears-inner",
+      "directions": 4
+    },
+    {
+      "name": "horse-ears",
+      "directions": 4
+    },
+    {
+      "name": "horse-ears-inner",
+      "directions": 4
+    }
+  ]
+}

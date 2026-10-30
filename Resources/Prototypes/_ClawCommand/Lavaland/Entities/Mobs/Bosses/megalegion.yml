@@ -52,15 +52,15 @@
     animation: WeaponArcBite
     damage:
         types:
-          Blunt: 35
+          Blunt: 20
           Structural: 200
   - type: Tag
     tags:
     - CannotSuicide
   - type: CombatMode
   - type: MovementSpeedModifier
-    baseWalkSpeed: 5
-    baseSprintSpeed: 5
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 2.5
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -81,7 +81,6 @@
   - type: ActionGrant
     actions:
     - ActionLegionSummonSkulls
-    - ActionLegionCharge
     - ActionLegionBileSpray
   - type: MegafaunaAi
     actionDelay: 0.6

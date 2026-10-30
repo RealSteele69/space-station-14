@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "sprites by crocodilecarousel (github) for impstation, tweaked by mousesweater Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "bloom1",
+      "directions": 4
+    },
+    {
+      "name": "bloom2",
+      "directions": 4
+    },
+    {
+      "name": "bloom3",
+      "directions": 4
+    },
+    {
+      "name": "friendsfeather1",
+      "directions": 4
+    },
+    {
+      "name": "friendsfeather2",
+      "directions": 4
+    },
+    {
+      "name": "nub1",
+      "directions": 4
+    },
+    {
+      "name": "nub2",
+      "directions": 4
+    },
+    {
+      "name": "raptor",
+      "directions": 4
+    },
+    {
+      "name": "short",
+      "directions": 4
+    },
+    {
+      "name": "short2",
+      "directions": 4
+    },
+    {
+      "name": "split",
+      "directions": 4
+    },
+    {
+      "name": "spots",
+      "directions": 4
+    }
+  ]
+}

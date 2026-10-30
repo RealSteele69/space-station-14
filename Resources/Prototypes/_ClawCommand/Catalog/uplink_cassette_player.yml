@@ -1,0 +1,10 @@
+- type: listing
+  id: UplinkBloodredCassette
+  name: uplink-bloodred-cassette-name
+  description: uplink-bloodred-cassette-desc
+  icon: { sprite: _ClawCommand/Objects/Fun/bloodred_cassette_player.rsi, state: icon }
+  productEntity: BloodredCassette
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkPointless

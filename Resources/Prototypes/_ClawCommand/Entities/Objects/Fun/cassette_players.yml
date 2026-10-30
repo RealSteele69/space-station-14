@@ -1,0 +1,64 @@
+# Portable cassette players: small handheld instruments that can be worn around the neck.
+
+- type: entity
+  parent: [BaseHandheldInstrument, Clothing]
+  id: BaseCassettePlayer
+  abstract: true
+  components:
+  - type: Instrument
+    program: 62
+  - type: SwappableInstrument
+    instrumentList:
+      swappable-instrument-style-synth: { 62: 0 }
+      swappable-instrument-style-friend: { 2: 0 }
+      swappable-instrument-style-overdriven: { 29: 0 }
+  - type: Item
+    size: Small
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - neck
+  - type: ActivatableUI
+    inHandsOnly: false
+
+- type: entity
+  parent: BaseCassettePlayer
+  id: CrewCassette
+  name: cassette player
+  description: Regular old cassette player to enjoy your tunes on the go.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Fun/crew_cassette_player.rsi
+    state: icon
+  - type: Item
+    sprite: _ClawCommand/Objects/Fun/crew_cassette_player.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Objects/Fun/crew_cassette_player.rsi
+
+- type: entity
+  parent: BaseCassettePlayer
+  id: ExecutiveCassette
+  name: executive cassette player
+  description: Perfect to make you look like you do mergers and acquisitions.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Fun/executive_cassette_player.rsi
+    state: icon
+  - type: Item
+    sprite: _ClawCommand/Objects/Fun/executive_cassette_player.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Objects/Fun/executive_cassette_player.rsi
+
+- type: entity
+  parent: [BaseCassettePlayer, BaseSyndicateContraband]
+  id: BloodredCassette
+  name: bloodred cassette player
+  description: The least subtle way to enjoy your favorite tunes.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Objects/Fun/bloodred_cassette_player.rsi
+    state: icon
+  - type: Item
+    sprite: _ClawCommand/Objects/Fun/bloodred_cassette_player.rsi
+  - type: Clothing
+    sprite: _ClawCommand/Objects/Fun/bloodred_cassette_player.rsi

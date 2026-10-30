@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Content.Client.UserInterface.Systems.Sandbox;
 using Content.Shared.SubFloor;
 using Robust.Client.GameObjects;
@@ -12,23 +11,15 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private IUserInterfaceManager _ui = default!;
-#if DEBUG
-    [Dependency] private ILogManager _logManager = default!;
-
-    private ISawmill _sawmill = default!;
-#endif
 
     private bool _showAll;
 
     /// <summary>
-    /// Claw Command - entities a client-local system (e.g. vent crawling) wants drawn as if revealed by a
-    /// t-ray scanner, without going through <see cref="SharedAppearanceSystem.SetData"/>. That call writes into
-    /// the networked <see cref="AppearanceComponent"/> dictionary, which the server fully overwrites on every
-    /// state update for that component (pipes get those often, e.g. atmos recoloring) - wiping out a client-only
-    /// flag almost as soon as it's set and causing the reveal to flicker or drop. This set lives only on the
-    /// client, so it survives server state application.
+    /// Claw Command - the local player is vent crawling: draw everything under the floor, as with
+    /// <see cref="ShowAll"/>, but without touching the sandbox toggle. The server adds the subfloor layer
+    /// to the crawler's eye, so the hidden entities are already networked.
     /// </summary>
-    private readonly HashSet<EntityUid> _ventCrawlRevealed = new();
+    private bool _ventCrawlView;
 
     [ViewVariables(VVAccess.ReadWrite)]
     public bool ShowAll
@@ -48,15 +39,6 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
         }
     }
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-#if DEBUG
-        _sawmill = _logManager.GetSawmill("subfloor.hide");
-#endif
-    }
-
     [SubscribeLocalEvent]
     private void OnPlayerDetached(LocalPlayerDetachedEvent ev)
     {
@@ -65,27 +47,15 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
     }
 
     /// <summary>
-    /// Claw Command - reveal (or stop revealing) an entity for a client-local reason, e.g. vent crawling.
-    /// Unlike <see cref="SharedAppearanceSystem.SetData"/> with <see cref="SubFloorVisuals.ScannerRevealed"/>,
-    /// this never touches the networked appearance data, so a server state update for this entity (which pipes
-    /// get often) can't silently reset it.
+    /// Claw Command - turn the vent crawler's full subfloor view on or off.
     /// </summary>
-    public void SetVentCrawlRevealed(EntityUid uid, bool revealed)
+    public void SetVentCrawlView(bool value)
     {
-        var changed = revealed ? _ventCrawlRevealed.Add(uid) : _ventCrawlRevealed.Remove(uid);
-        if (!changed)
+        if (_ventCrawlView == value)
             return;
 
-        if (TryComp<AppearanceComponent>(uid, out var appearance))
-        {
-            _appearance.QueueUpdate(uid, appearance);
-        }
-#if DEBUG
-        else
-        {
-            _sawmill.Warning($"SetVentCrawlRevealed({ToPrettyString(uid)}, {revealed}): entity has no AppearanceComponent, reveal will never apply");
-        }
-#endif
+        _ventCrawlView = value;
+        UpdateAll();
     }
 
     [SubscribeNetworkEvent]
@@ -103,20 +73,11 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
 
         args.TryGetData<bool>(SubFloorVisuals.Covered, out var covered);
         args.TryGetData<bool>(SubFloorVisuals.ScannerRevealed, out var scannerRevealed);
-        var ventCrawlRevealed = _ventCrawlRevealed.Contains(uid);
+        var showAll = ShowAll || _ventCrawlView; // Claw Command - vent crawlers see the whole subfloor
 
-        scannerRevealed &= !ShowAll; // no transparency for show-subfloor mode.
-        // Claw Command - a vent crawler sees it the same way a t-ray scanner would.
-        scannerRevealed |= ventCrawlRevealed && !ShowAll;
+        scannerRevealed &= !showAll; // no transparency for show-subfloor mode.
 
-        var revealed = !covered || ShowAll || scannerRevealed;
-
-#if DEBUG
-        if (ventCrawlRevealed)
-        {
-            _sawmill.Info($"OnAppearanceChanged({ToPrettyString(uid)}): covered={covered} scannerRevealed={scannerRevealed} ventCrawlRevealed={ventCrawlRevealed} showAll={ShowAll} -> revealed={revealed}");
-        }
-#endif
+        var revealed = !covered || showAll || scannerRevealed;
 
         // set visibility & color of each layer
         foreach (var layer in args.Sprite.AllLayers)
@@ -140,19 +101,13 @@ public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
 
         _sprite.SetVisible((uid, args.Sprite), hasVisibleLayer || revealed);
 
-#if DEBUG
-        if (ventCrawlRevealed)
-        {
-            _sawmill.Info($"OnAppearanceChanged({ToPrettyString(uid)}): after SetVisible, sprite.Visible={args.Sprite.Visible} drawDepth={args.Sprite.DrawDepth}");
-        }
-#endif
-
-        if (ShowAll)
+        if (showAll)
         {
             // Allows sandbox mode to make wires visible over other stuff.
-            component.OriginalDrawDepth ??= args.Sprite.DrawDepth;
+            // Claw Command - offset from the original depth, not the current one, so repeated appearance updates don't stack it.
+            var originalDrawDepth = component.OriginalDrawDepth ??= args.Sprite.DrawDepth;
             var drawDepthDifference = Shared.DrawDepth.DrawDepth.ThickPipe - (Shared.DrawDepth.DrawDepth.Overdoors + 1);
-            _sprite.SetDrawDepth((uid, args.Sprite), args.Sprite.DrawDepth - drawDepthDifference);
+            _sprite.SetDrawDepth((uid, args.Sprite), originalDrawDepth - drawDepthDifference);
         }
         else if (scannerRevealed)
         {

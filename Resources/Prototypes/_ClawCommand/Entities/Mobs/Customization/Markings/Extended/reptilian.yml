@@ -1,0 +1,565 @@
+- type: marking
+  id: ReptilianDrawingKhar
+  bodyPart: Chest
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: drawing_khar
+
+- type: marking
+  id: ReptilianDrawingSkeletBody
+  bodyPart: Chest
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: drawing_skelet_body
+
+- type: marking
+  id: ReptilianDrawingSkeleton
+  bodyPart: Chest
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: drawing_skeleton
+
+- type: marking
+  id: ReptilianDrawingSun
+  bodyPart: Chest
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: drawing_sun
+
+- type: marking
+  id: ReptilianDrawingWarpaint
+  bodyPart: Chest
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: drawing_warpaint
+
+- type: marking
+  id: ReptilianLineEyes
+  bodyPart: Eyes
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: lineeyes
+
+- type: marking
+  id: BurqaSolidLizard
+  bodyPart: HeadSide
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headside.rsi
+    state: burqa
+
+- type: marking
+  id: HijabFashionableLizard
+  bodyPart: HeadSide
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headside.rsi
+    state: hijabchic
+
+- type: marking
+  id: HijabSimpleLizard
+  bodyPart: HeadSide
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headside.rsi
+    state: hijabsimple
+
+- type: marking
+  id: LizardKoboldEarsMid
+  bodyPart: HeadSide
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headside.rsi
+    state: koboldearsmid
+
+- type: marking
+  id: LizardKoboldEarsTall
+  bodyPart: HeadSide
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headside.rsi
+    state: koboldearstall
+
+- type: marking
+  id: NiqabLizard
+  bodyPart: HeadSide
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headside.rsi
+    state: niqab
+
+- type: marking
+  id: TichelFashionableLizard
+  bodyPart: HeadSide
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headside.rsi
+    state: tichelfashionable
+
+- type: marking
+  id: TichelSimpleLizard
+  bodyPart: HeadSide
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headside.rsi
+    state: tichelsimple
+
+- type: marking
+  id: EarsChemlight
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_ears.rsi
+    state: chemlight_outer
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_ears.rsi
+    state: chemlight_inner
+
+- type: marking
+  id: EarsDragonLong
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_ears.rsi
+    state: dragonlong
+
+- type: marking
+  id: EarsEasternD
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_ears.rsi
+    state: easternd_ears
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_ears.rsi
+    state: easternd_horns
+
+- type: marking
+  id: EarsMagus
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_ears.rsi
+    state: magus_ears
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_ears.rsi
+    state: magus_neck
+
+- type: marking
+  id: EarsResomi
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_ears.rsi
+    state: avali_inner
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_ears.rsi
+    state: avali_outer
+
+- type: marking
+  id: EarsSylveon
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_ears.rsi
+    state: sylveon_primary
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_ears.rsi
+    state: sylveon_secondary
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_ears.rsi
+    state: sylveon_tertiary
+
+- type: marking
+  id: LizardFrill
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headtop.rsi
+    state: frill
+
+- type: marking
+  id: LizardHeadFlat
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headtop.rsi
+    state: flat
+
+- type: marking
+  id: LizardHornsEasternDragon
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian.rsi
+    state: dragon-antlers-left
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian.rsi
+    state: dragon-antlers-right
+
+- type: marking
+  id: LizardHornsKoboldEarspiercings
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headtop.rsi
+    state: koboldears
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headtop.rsi
+    state: koboldearspiercings
+
+- type: marking
+  id: LizardHornsNubby
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headtop.rsi
+    state: nubby
+
+- type: marking
+  id: LizardLittleHorns
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_headtop.rsi
+    state: little
+
+- type: marking
+  id: ReptilianHornsBaran
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: horns_baran
+
+- type: marking
+  id: ReptilianHornsBullhorns
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: horns_bullhorns
+
+- type: marking
+  id: ReptilianHornsCrown
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: horns_crown
+
+- type: marking
+  id: ReptilianHornsFive
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: horns_five
+
+- type: marking
+  id: ReptilianHornsHighback
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: horns_highback
+
+- type: marking
+  id: ReptilianHornsJacksonchameleon
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: horns_jacksonchameleon
+
+- type: marking
+  id: ReptilianHornsLong
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: horns_long
+
+- type: marking
+  id: ReptilianHornsStagbeetle
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: horns_stagbeetle
+
+- type: marking
+  id: ReptilianHornsSuperlong
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: horns_superlong
+
+- type: marking
+  id: ReptilianHornsTwoago
+  bodyPart: HeadTop
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: horns_twoago
+
+- type: marking
+  id: ReptilianTattoSkeletArmL
+  bodyPart: LArm
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: tatto_skelet_arm_l
+
+- type: marking
+  id: ReptilianTattoSkeletLegL
+  bodyPart: LLeg
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: tatto_skelet_leg_l
+
+- type: marking
+  id: ReptilianTattoSkeletArmR
+  bodyPart: RArm
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: tatto_skelet_arm_r
+
+- type: marking
+  id: ReptilianTattoSkeletLegR
+  bodyPart: RLeg
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_custom.rsi
+    state: tatto_skelet_leg_r
+
+- type: marking
+  id: FacepaintClownMinimalReptilian
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_reptilian.rsi
+    state: facepaint_clown_minimal
+
+- type: marking
+  id: FacepaintClownReptilian
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_reptilian.rsi
+    state: facepaint_clown
+
+- type: marking
+  id: FacepaintClownSadReptilian
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_reptilian.rsi
+    state: facepaint_clown_sad
+
+- type: marking
+  id: FacepaintClownSeriousReptilian
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_reptilian.rsi
+    state: facepaint_clown_serious
+
+- type: marking
+  id: FacepaintClownSmugReptilian
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_reptilian.rsi
+    state: facepaint_clown_smug
+
+- type: marking
+  id: FacepaintMimeBlushReptilian
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_reptilian.rsi
+    state: facepaint_mime_blush
+
+- type: marking
+  id: FacepaintMimeOddReptilian
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_reptilian.rsi
+    state: facepaint_mime_odd
+
+- type: marking
+  id: FacepaintMimeReptilian
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_reptilian.rsi
+    state: facepaint_mime
+
+- type: marking
+  id: FacepaintMimeSadReptilian
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_reptilian.rsi
+    state: facepaint_mime_sad
+
+- type: marking
+  id: FacepaintWhiteReptilian
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/facepaints_reptilian.rsi
+    state: facepaint_white
+
+- type: marking
+  id: Fangs
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_snout.rsi
+    state: fangs
+
+- type: marking
+  id: LizardBeard
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_snout.rsi
+    state: beard
+
+- type: marking
+  id: LizardDroopySnout
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_snout.rsi
+    state: droopy
+
+- type: marking
+  id: LizardSnoutTall
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  forcedColoring: true
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_snout.rsi
+    state: tall
+
+- type: marking
+  id: LizardSnoutpiercings
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  forcedColoring: true
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_snout.rsi
+    state: piercings1
+
+- type: marking
+  id: LizardUpperSnout
+  bodyPart: Snout
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_snout.rsi
+    state: upper
+
+- type: marking
+  id: TailDatashark
+  bodyPart: Tail
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_tails.rsi
+    state: datashark_ears_inner
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_tails.rsi
+    state: datashark_ears
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_tails.rsi
+    state: datashark_fin
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_tails.rsi
+    state: datashark_tail
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_reptilian_tails.rsi
+    state: datashark_taildata
+
+- type: marking
+  id: TailDropped
+  bodyPart: Tail
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/reptilian_tail.rsi
+    state: dropped
+
+- type: marking
+  id: WingsDragon
+  bodyPart: Tail
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/wings64x34.rsi
+    state: dragon
+
+- type: marking
+  id: WingsDragonTwotone
+  bodyPart: Tail
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/wings64x34.rsi
+    state: dragon
+  - sprite: _ClawCommand/Mobs/Customization/Extended/wings64x34.rsi
+    state: dragon-inner

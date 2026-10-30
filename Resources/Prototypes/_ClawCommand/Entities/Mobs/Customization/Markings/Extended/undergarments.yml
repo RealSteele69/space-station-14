@@ -1,0 +1,95 @@
+- type: marking
+  id: UnderwearDefault
+  bodyPart: UndergarmentBottom
+  groupWhitelist: [ Arachnid, Diona, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/underwear.rsi
+    state: boxers
+
+- type: marking
+  id: UndershirtBinder
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Arachnid, Diona, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/undershirt.rsi
+    state: binder
+
+- type: marking
+  id: UndershirtBraClassic
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Arachnid, Diona, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/undershirt.rsi
+    state: classic
+
+- type: marking
+  id: UndershirtBraSports
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Arachnid, Diona, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/undershirt.rsi
+    state: sports
+
+- type: marking
+  id: UndershirtBraStrapless
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Arachnid, Diona, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/undershirt.rsi
+    state: strapless
+
+- type: marking
+  id: UndershirtDefault
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Arachnid, Diona, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/undershirt.rsi
+    state: undershirt
+
+- type: marking
+  id: UndershirtGrossSleeveless
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Arachnid, Diona, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/undershirt.rsi
+    state: gross_sleeveless
+
+- type: marking
+  id: UndershirtNanotrasen
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Arachnid, Diona, Human, MarkingsFelinid, MarkingsFeroxi, MarkingsIPC, MarkingsShadowkin, MarkingsTajaran, Moth, Reptilian, Slime, Vulpkanin ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _ClawCommand/Mobs/Customization/Extended/undershirt.rsi
+    state: nanotrasen

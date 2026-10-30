@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "claw by LandsharkRAWR, rest by crocodilecarousel (github) Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "claw",
+      "directions": 4
+    },
+    {
+      "name": "scarincision",
+      "directions": 4
+    },
+    {
+      "name": "scarmangled",
+      "directions": 4
+    },
+    {
+      "name": "scarspinal",
+      "directions": 4
+    },
+    {
+      "name": "spots1",
+      "directions": 4
+    },
+    {
+      "name": "spots2",
+      "directions": 4
+    },
+    {
+      "name": "v1",
+      "directions": 4
+    },
+    {
+      "name": "v2",
+      "directions": 4
+    },
+    {
+      "name": "v3",
+      "directions": 4
+    }
+  ]
+}

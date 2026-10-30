@@ -127,7 +127,7 @@ public sealed partial class MegafaunaAttacksSystem
             }
 
             if (args.KnockdownTime > 0f)
-                _stun.TryKnockdown(target.Owner, TimeSpan.FromSeconds(args.KnockdownTime));
+                _stun.TryKnockdown(target.Owner, TimeSpan.FromSeconds(args.KnockdownTime), drop: false);
         }
     }
 

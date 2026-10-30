@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Original drawn by @robustyanka on Discord, modified by @pspritechologist Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "chest_m",
+      "directions": 4
+    },
+    {
+      "name": "chest_f",
+      "directions": 4
+    }
+  ]
+}

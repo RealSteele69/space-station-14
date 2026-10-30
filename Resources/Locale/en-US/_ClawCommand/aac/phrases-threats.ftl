@@ -1,0 +1,59 @@
+# statuses
+phrase-safety-bleeding = Bleeding
+phrase-safety-dangerous = Dangerous
+phrase-safety-dying = Dying
+phrase-safety-escape = Escape
+phrase-safety-hazardous = Hazardous
+phrase-safety-here-to-help = Here to help
+phrase-safety-how-to-help = How can I help?
+phrase-safety-in-danger = In danger
+phrase-safety-injured = Injured
+phrase-safety-leaving = Leaving
+phrase-safety-evac = Let's evacuate
+phrase-safety-lost = Lost
+phrase-safety-need = Need
+phrase-safety-not = Not
+phrase-safety-rescue = Rescue
+phrase-safety-safe = Safe
+phrase-safety-trustworthy = Trustworthy
+
+# hazards
+phrase-hazard-bad-temperature = Bad temperature
+phrase-hazard-broken-equipment = Broken equipment
+phrase-hazard-burning = Burning
+phrase-hazard-chemical-spill = Chemical spill
+phrase-hazard-cold = Cold
+phrase-hazard-darkness = Darkness
+phrase-hazard-explosion = Explosion
+phrase-hazard-fire = Fire
+phrase-hazard-freezing = Freezing
+phrase-hazard-gas-leak = Gas leak
+phrase-hazard = Hazard
+phrase-hazard-high-presure = High pressure
+phrase-hazard-hot = Hot
+phrase-hazard-infection = Infection
+phrase-hazard-low = Low power
+phrase-hazard-low-presure = Low pressure
+phrase-hazard-meteors = Meteor
+phrase-hazard-heat = Overheating
+phrase-hazard-poison = Poison
+phrase-hazard-power-outage = Power outage
+phrase-hazard-radiation = Radiation
+phrase-hazard-shock = Shock hazard
+phrase-hazard-space = Spaced
+phrase-hazard-structure-damage = Structural damage
+phrase-hazard-viral-threat = Viral threat
+
+# hostiles
+phrase-hostile-attacker = Attacker
+phrase-hostile-bomb = Bomb
+phrase-hostile-criminal = Criminal
+phrase-hostile-lifeform = Dangerous lifeform
+phrase-hostile-enemy = Enemy
+phrase-hostile-entity = Entity
+phrase-hostile-fugitive = Fugitive
+phrase-hostile-gun = Gun
+phrase-hostile = Hostile
+phrase-hostile-infiltrator = Infiltrator
+phrase-hostile-intruder = Intruder
+phrase-hostile-weapon = Weapon

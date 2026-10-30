@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Drawn by crocodilecarousel (github) for Impstation Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "cockroach",
+      "directions": 4
+    },
+    {
+      "name": "fly",
+      "directions": 4
+    },
+    {
+      "name": "heart1",
+      "directions": 4
+    },
+    {
+      "name": "heart2",
+      "directions": 4
+    },
+    {
+      "name": "nub",
+      "directions": 4
+    }
+  ]
+}

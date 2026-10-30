@@ -132,6 +132,12 @@
   loadouts:
   - ChiefMedicalOfficerLabCoat
   - ChiefMedicalOfficerWintercoat
+  - CMOVetLabCoat # CC14
+  - BomberMedical # CC14
+  - ClothingOuterCasualJacketCMO # CC14
+  - ClothingOuterCasualJacketCMOViro # CC14
+  - ClothingOuterCasualJacketCMOSurgeon # CC14
+  - ClothingOuterCasualJacketCMOChem # CC14
   # Claw Command - imported wardrobe
   - CCWClothingUniformOuterSnowmaiden
 
@@ -412,6 +418,11 @@
   - RegularLabCoat
   - ChemistLabCoat
   - ChemistWintercoat
+  - ChemLabcoatLong # CC14
+  - ChemistApron # CC14
+  - SeniorPhysicianLabCoat # CC14
+  - SeniorChemistLabCoat # CC14
+  - SeniorChemistWintercoat # CC14
   # Claw Command - imported wardrobe
   - CCWClothingUniformOuterSnowmaiden
 

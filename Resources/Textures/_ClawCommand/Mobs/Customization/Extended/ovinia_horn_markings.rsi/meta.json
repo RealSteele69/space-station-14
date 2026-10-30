@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Lamb horns by Rosycup. ram, pointy, and curved horns by P4ny7, deer, devil, baphomet and ibex horns by Monotheonist. Jacob horns by portfiend. Ported via Byrd-Station/Byrd (https://github.com/Byrd-Station/Byrd), master snapshot 2026-10-30.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "ovinia-baphomet-horns",
+      "directions": 4
+    },
+    {
+      "name": "ovinia-devil-horns",
+      "directions": 4
+    },
+    {
+      "name": "ovinia-ibex-horns",
+      "directions": 4
+    },
+    {
+      "name": "jacob-horns",
+      "directions": 4
+    }
+  ]
+}

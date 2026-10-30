@@ -286,3 +286,8 @@
   copyright: "Original sound taken from Paradise Station, volume amplified"
   license: "CC-BY-SA-3.0"
   source: https://github.com/S34NW/Paradise/blob/5931fb5642f2266f47516f5eaae627febd498afa/sound/effects/deltaalarm.ogg
+
+- files: ["wail.ogg", "magic_missile_1.ogg", "magic_missile_2.ogg", "magic_missile_3.ogg"]
+  license: "CC-BY-SA-4.0"
+  copyright: "From battle for wesnoth. Ported via DeltaV (Nyanotrasen)."
+  source: "https://github.com/wesnoth/wesnoth"

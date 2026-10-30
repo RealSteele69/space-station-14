@@ -18,3 +18,8 @@ scissors.svg by Icons8 under Good Boy License https://github.com/icons8/WPF-UI-F
 https://github.com/icons8/WPF-UI-Framework/blob/master/Windows%20Icons/Cut.svg
 
 vault.svg as Traceur by Gan Khoon Lay from Noun Project (CC BY 3.0) edited by SlamBamActionman (github) (CC BY 3.0)
+
+dispel.png, mass_sleep.png, metapsionic.png, mind_swap.png, mind_swap_return.png, noospheric_zap.png,
+psionic_invisibility.png, psionic_invisibility_off.png, psionic_regeneration.png, pyrokinesis.png and
+telegnosis.png are not public domain: created by @Vordenburg (github) for Nyanotrasen under CC BY-SA 4.0,
+ported via DeltaV (https://github.com/DeltaV-Station/Delta-v, Resources/Textures/_DV/Interface/Actions/actions_psionics.rsi)

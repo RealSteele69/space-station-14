@@ -55,8 +55,8 @@
     - CannotSuicide
   - type: CombatMode
   - type: MovementSpeedModifier
-    baseWalkSpeed: 3
-    baseSprintSpeed: 3
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 2.5
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -119,8 +119,8 @@
     - CannotSuicide
   - type: CombatMode
   - type: MovementSpeedModifier
-    baseWalkSpeed: 3
-    baseSprintSpeed: 3
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 2.5
   - type: BossMusic
     soundId: Miniboss
   - type: Aggressive # also required component for aggro checking
@@ -317,8 +317,8 @@
     - CannotSuicide
   - type: CombatMode
   - type: MovementSpeedModifier
-    baseWalkSpeed: 3
-    baseSprintSpeed: 3
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 2.5
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -397,8 +397,8 @@
     - CannotSuicide
   - type: CombatMode
   - type: MovementSpeedModifier
-    baseWalkSpeed: 3
-    baseSprintSpeed: 3
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 2.5
   - type: BossMusic
     soundId: Miniboss
   - type: Aggressive # also required component for aggro checking

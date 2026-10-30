@@ -139,7 +139,7 @@
   description: Charge at the target.
   components:
   - type: Action
-    useDelay: 5
+    useDelay: 7
   - type: Sprite
     sprite: _ClawCommand/Lavaland/Mobs/Bosses/96x96.rsi
     layers:
@@ -450,7 +450,7 @@
   name: Legionnaire Charge
   components:
   - type: Action
-    useDelay: 6
+    useDelay: 8
   - type: Sprite
     sprite: _ClawCommand/Lavaland/Mobs/Elites/32x64.rsi
     layers:
@@ -655,7 +655,7 @@
   description: Charge at the target, pickaxe raised.
   components:
   - type: Action
-    useDelay: 5
+    useDelay: 7
     sound:
       path: /Audio/Items/Mining/pickaxe.ogg
   - type: Sprite

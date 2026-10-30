@@ -73,8 +73,8 @@
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: legion-skull
   - type: MovementSpeedModifier
-    baseWalkSpeed : 3.5
-    baseSprintSpeed : 4.0
+    baseWalkSpeed : 2.5
+    baseSprintSpeed : 3.0
   - type: MobThresholds
     thresholds:
       0: Alive

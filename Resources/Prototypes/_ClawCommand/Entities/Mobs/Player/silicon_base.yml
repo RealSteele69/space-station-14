@@ -150,6 +150,11 @@
         types:
           Heat: 0
     - type: Identity
+    # Claw Command: without this, IPCs (and any other species built on this base) have no job
+    # icon/title at all for HUDs and scanners that read JobStatusComponent (e.g. medical borg
+    # vision, sec/med HUD glasses) - they're invisible to those overlays instead of showing
+    # "unknown" like organic species without an ID.
+    - type: JobStatus
     - type: RangedDamageSound
       soundGroups:
         Brute:

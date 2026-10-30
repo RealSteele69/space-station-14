@@ -681,6 +681,7 @@ public sealed partial class AdvXenoAbilitySystem : EntitySystem
         if (!_container.Insert(target, stomach))
             return;
 
+        EnsureComp<AdvXenoDevouredComponent>(target);
         _audio.PlayPvs(DevourSound, ent);
         _popup.PopupEntity(Loc.GetString("adv-xeno-devoured", ("user", ent.Owner), ("target", Identity.Entity(target, EntityManager))), ent, PopupType.LargeCaution);
         _adminLog.Add(LogType.Action, LogImpact.High, $"{ToPrettyString(ent):user} devoured {ToPrettyString(target):target}");
@@ -701,7 +702,11 @@ public sealed partial class AdvXenoAbilitySystem : EntitySystem
         if (!_container.TryGetContainer(ent, AdvXenoStomachComponent.ContainerId, out var stomach) || stomach.ContainedEntities.Count == 0)
             return;
 
+        var prey = stomach.ContainedEntities.ToArray();
         _container.EmptyContainer(stomach, true, Transform(ent).Coordinates);
+        foreach (var victim in prey)
+            RemComp<AdvXenoDevouredComponent>(victim);
+
         if (message)
             _popup.PopupEntity(Loc.GetString("adv-xeno-regurgitate", ("user", ent.Owner)), ent, PopupType.LargeCaution);
     }

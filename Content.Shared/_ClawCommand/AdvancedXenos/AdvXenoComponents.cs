@@ -332,6 +332,10 @@ public sealed partial class AdvXenoStomachComponent : Component
     public TimeSpan DevourTime = TimeSpan.FromSeconds(3);
 }
 
+/// <summary>Marks prey currently held in a xeno's stomach. Cannot attack their way out; only regurgitation or the xeno's death frees them.</summary>
+[RegisterComponent, NetworkedComponent]
+public sealed partial class AdvXenoDevouredComponent : Component;
+
 /// <summary>In-flight hunter leap: checks for the grab when it lands.</summary>
 [RegisterComponent, AutoGenerateComponentPause]
 public sealed partial class AdvXenoLeapingComponent : Component

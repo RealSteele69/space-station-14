@@ -1,0 +1,43 @@
+# ClawCommand - a dedicated mining points shop vendor, standing alongside (not replacing) the
+# existing free VendingMachineSalvage tool dispenser. Ported from DeltaV's ShopVendor conversion
+# of VendingMachineSalvage, kept as its own entity so the free tool vendor stays untouched.
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineMiningPoints
+  name: mining points vendor
+  description: Trades mining points earned from smelting Lavaland ore for gear.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/mining.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 3.0
+    color: "#25a7b8"
+  - type: ShopVendor
+    pack: LavalandMiningPointsInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    denyState: deny-unshaded
+  - type: PointsVendor
+  - type: UserInterface
+    interfaces:
+      enum.VendingMachineUiKey.Key:
+        type: ShopVendorBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Wires
+    layoutId: ShopVendor
+  - type: AccessReader
+    access: [["Salvage"]]
+  - type: GuideHelp
+    guides:
+    - Salvage

@@ -11409,6 +11409,13 @@ entities:
     - type: Transform
       pos: 9.5,-4.5
       parent: 1
+- proto: VendingMachineMiningPoints
+  entities:
+  - uid: 2200
+    components:
+    - type: Transform
+      pos: 9.5,-3.5
+      parent: 1
 - proto: VendingMachineTankDispenserEVA
   entities:
   - uid: 1730

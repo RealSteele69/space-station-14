@@ -1,0 +1,9 @@
+# ClawCommand - wire layout for ShopVendor-based machines (skips the vanilla Vending layout's
+# contraband/eject-item wire actions, which assume a VendingMachineComponent that ShopVendor machines don't have).
+- type: wireLayout
+  id: ShopVendor
+  wires:
+  - !type:AiInteractWireAction
+  - !type:PowerWireAction
+  - !type:AccessWireAction
+  - !type:LogWireAction

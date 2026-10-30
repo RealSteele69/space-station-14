@@ -1,0 +1,155 @@
+using Content.Shared.Access.Systems;
+using Content.Shared.Advertise.Systems;
+using Content.Shared.Advertise.Components;
+using Content.Shared.Destructible;
+using Content.Shared.Popups;
+using Content.Shared.Power.EntitySystems;
+using Content.Shared.UserInterface;
+using Content.Shared.VendingMachines;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
+
+namespace Content.Shared._ClawCommand.Lavaland.Salvage.Vendor;
+
+public abstract partial class SharedShopVendorSystem : EntitySystem
+{
+    [Dependency] private AccessReaderSystem _access = default!;
+    [Dependency] private MiningPointsSystem _points = default!;
+    [Dependency] protected IGameTiming Timing = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedPointLightSystem _light = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedPowerReceiverSystem _power = default!;
+    [Dependency] private SharedSpeakOnUIClosedSystem _speakOnUIClosed = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<PointsVendorComponent, ShopVendorBalanceEvent>(OnPointsBalance);
+        SubscribeLocalEvent<PointsVendorComponent, ShopVendorPurchaseEvent>(OnPointsPurchase);
+
+        SubscribeLocalEvent<ShopVendorComponent, BreakageEventArgs>(OnBreak);
+        SubscribeLocalEvent<ShopVendorComponent, ActivatableUIOpenAttemptEvent>(OnOpenAttempt);
+        Subs.BuiEvents<ShopVendorComponent>(VendingMachineUiKey.Key, subs =>
+        {
+            subs.Event<ShopVendorPurchaseMessage>(OnPurchase);
+        });
+    }
+
+    #region Public API
+
+    public uint GetBalance(EntityUid uid, EntityUid user)
+    {
+        var ev = new ShopVendorBalanceEvent(user);
+        RaiseLocalEvent(uid, ref ev);
+        return ev.Balance;
+    }
+
+    #endregion
+
+    #region Balance adapters
+
+    private void OnPointsBalance(Entity<PointsVendorComponent> ent, ref ShopVendorBalanceEvent args)
+    {
+        args.Balance = _points.TryFindIdCard(args.User)?.Comp?.Points ?? 0;
+    }
+
+    private void OnPointsPurchase(Entity<PointsVendorComponent> ent, ref ShopVendorPurchaseEvent args)
+    {
+        if (_points.TryFindIdCard(args.User) is {} idCard && _points.RemovePoints(idCard, args.Cost))
+            args.Paid = true;
+    }
+
+    #endregion
+
+    private void OnBreak(Entity<ShopVendorComponent> ent, ref BreakageEventArgs args)
+    {
+        ent.Comp.Broken = true;
+        Dirty(ent);
+        UpdateLight(ent);
+    }
+
+    private void OnOpenAttempt(Entity<ShopVendorComponent> ent, ref ActivatableUIOpenAttemptEvent args)
+    {
+        if (ent.Comp.Broken)
+            args.Cancel();
+    }
+
+    private void OnPurchase(Entity<ShopVendorComponent> ent, ref ShopVendorPurchaseMessage args)
+    {
+        if (ent.Comp.Ejecting != null || ent.Comp.Broken || !_power.IsPowered(ent.Owner))
+            return;
+
+        var pack = _proto.Index(ent.Comp.Pack);
+        if (args.Index < 0 || args.Index >= pack.Listings.Count)
+            return;
+
+        var user = args.Actor;
+        if (!_access.IsAllowed(user, ent))
+        {
+            Deny(ent, user);
+            return;
+        }
+
+        var listing = pack.Listings[args.Index];
+        var ev = new ShopVendorPurchaseEvent(user, listing.Cost);
+        RaiseLocalEvent(ent, ref ev);
+        if (!ev.Paid)
+        {
+            Deny(ent, user);
+            return;
+        }
+
+        ent.Comp.Ejecting = listing.Id;
+        ent.Comp.NextEject = Timing.CurTime + ent.Comp.EjectDelay;
+        Dirty(ent);
+
+        _audio.PlayPvs(ent.Comp.PurchaseSound, ent);
+
+        Log.Debug($"Player {ToPrettyString(user):user} purchased {listing.Id} from {ToPrettyString(ent):vendor}");
+
+        if (TryComp<SpeakOnUIClosedComponent>(ent, out var speak))
+            _speakOnUIClosed.TrySetFlag((ent, speak));
+    }
+
+    private void Deny(Entity<ShopVendorComponent> ent, EntityUid user)
+    {
+        _popup.PopupClient(Loc.GetString("vending-machine-component-try-eject-access-denied"), ent, user);
+        if (ent.Comp.Denying)
+            return;
+
+        ent.Comp.Denying = true;
+        ent.Comp.NextDeny = Timing.CurTime + ent.Comp.DenyDelay;
+        Dirty(ent);
+
+        _audio.PlayPvs(ent.Comp.DenySound, ent);
+    }
+
+    /// <summary>
+    /// Keeps the point light in sync with power/broken state. The rest of the sprite's visual
+    /// state (normal/deny/eject/off) is computed client-side from the networked component fields -
+    /// see the client ShopVendorSystem, mirroring how vanilla VendingMachine does it post-refactor.
+    /// </summary>
+    protected void UpdateLight(Entity<ShopVendorComponent> ent)
+    {
+        var lit = !ent.Comp.Broken && _power.IsPowered(ent.Owner);
+        _light.SetEnabled(ent, lit);
+    }
+}
+
+/// <summary>
+/// Raised on a shop vendor to get its current balance.
+/// A currency component sets Balance to whatever it is.
+/// </summary>
+[ByRefEvent]
+public record struct ShopVendorBalanceEvent(EntityUid User, uint Balance = 0);
+
+/// <summary>
+/// Raised on a shop vendor when trying to purchase an item.
+/// A currency component sets Paid to true if the user successfully paid for it.
+/// </summary>
+[ByRefEvent]
+public record struct ShopVendorPurchaseEvent(EntityUid User, uint Cost, bool Paid = false);

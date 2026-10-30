@@ -139,6 +139,12 @@
                     VerticalExpand="True"
                     HorizontalExpand="True">
                     <ui:MaterialStorageControl Name="MaterialsList" SizeFlagsStretchRatio="8"/>
+                    <!-- Begin ClawCommand Additions - Mining points -->
+                    <BoxContainer Orientation="Horizontal" Name="MiningPointsContainer" Visible="False">
+                        <Label Name="MiningPointsLabel" HorizontalExpand="True"/>
+                        <Button Name="MiningPointsClaimButton" Text="{Loc 'lathe-menu-mining-points-claim-button'}"/>
+                    </BoxContainer>
+                    <!-- End ClawCommand Additions -->
                 </BoxContainer>
             </PanelContainer>
         </BoxContainer>

@@ -1,3 +1,4 @@
+using Content.Shared._ClawCommand.Lavaland.Salvage; // ClawCommand
 using Content.Shared.Lathe;
 using Content.Shared.Research.Components;
 using JetBrains.Annotations;
@@ -30,6 +31,7 @@ namespace Content.Client.Lathe.UI
             {
                 SendMessage(new LatheQueueRecipeMessage(recipe, amount));
             };
+            _menu.OnClaimMiningPoints += () => SendMessage(new LatheClaimMiningPointsMessage()); // ClawCommand
             _menu.QueueDeleteAction += index => SendMessage(new LatheDeleteRequestMessage(index));
             _menu.QueueMoveUpAction += index => SendMessage(new LatheMoveRequestMessage(index, -1));
             _menu.QueueMoveDownAction += index => SendMessage(new LatheMoveRequestMessage(index, 1));

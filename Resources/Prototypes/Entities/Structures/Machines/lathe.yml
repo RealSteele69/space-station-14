@@ -626,6 +626,10 @@
       staticPacks:
       - OreSmelting
       - RGlassSmelting
+    - type: MiningPoints # ClawCommand - awards mining points when unclaimed Lavaland ore is deposited via ore bag
+      transferSound:
+        path: /Audio/Effects/Cargo/ping.ogg
+    - type: MiningPointsLathe # ClawCommand
 
 - type: entity
   parent: OreProcessor

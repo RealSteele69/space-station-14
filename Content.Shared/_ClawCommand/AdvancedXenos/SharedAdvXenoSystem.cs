@@ -3,6 +3,7 @@ using Content.Shared.Buckle.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Doors;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Item;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Ranged.Events;
@@ -39,6 +40,8 @@ public sealed partial class SharedAdvXenoSystem : EntitySystem
         SubscribeLocalEvent<BuckleComponent, AdvXenoNestResistDoAfterEvent>(OnNestResistDoAfter);
 
         SubscribeLocalEvent<AdvXenoHiderComponent, AdvXenoHideActionEvent>(OnHide);
+
+        SubscribeLocalEvent<AdvXenoDevouredComponent, AttackAttemptEvent>(OnDevouredAttackAttempt);
     }
 
     public bool IsHive(EntityUid? uid)
@@ -159,6 +162,13 @@ public sealed partial class SharedAdvXenoSystem : EntitySystem
     }
 
     #endregion
+
+    // Swallowed prey (/mob/living/carbon/human/proc/devour): no struggling or fighting your way out,
+    // only regurgitation or the xeno's death frees you.
+    private void OnDevouredAttackAttempt(Entity<AdvXenoDevouredComponent> ent, ref AttackAttemptEvent args)
+    {
+        args.Cancel();
+    }
 
     // /mob/living/proc/hide
     private void OnHide(Entity<AdvXenoHiderComponent> ent, ref AdvXenoHideActionEvent args)

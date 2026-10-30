@@ -24,9 +24,9 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._ClawCommand.Lavaland.Salvage;
 
 /// <summary>
-/// Marker component for lathes that accept ore bag transfers (mining points lathe equivalent).
-/// Minimal port of Goob/DV's MiningPointsLatheComponent.
-/// Mining-points scoring is deferred (no MiningPoints port in this phase).
+/// Marker component for lathes that accept ore bag transfers and award mining points
+/// (see <see cref="MiningPointsSystem"/>) for any deposited ore carrying
+/// <see cref="Content.Shared._ClawCommand.Lavaland.UnclaimedOre.UnclaimedOreComponent"/>.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class MiningPointsLatheComponent : Component;

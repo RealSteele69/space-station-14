@@ -20,6 +20,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._ClawCommand.Lavaland.Salvage;
+using Content.Shared._ClawCommand.Lavaland.UnclaimedOre;
 using Content.Shared.DragDrop;
 using Content.Shared.Storage;
 using Content.Shared.Interaction;
@@ -31,6 +32,7 @@ namespace Content.Shared._ClawCommand.Lavaland.OreBag;
 public sealed partial class OreBagSystem : EntitySystem
 {
     [Dependency] private SharedMaterialStorageSystem _materialStorage = default!;
+    [Dependency] private MiningPointsSystem _miningPoints = default!;
     [Dependency] private IGameTiming _timing = default!;
     public override void Initialize()
     {
@@ -59,7 +61,7 @@ public sealed partial class OreBagSystem : EntitySystem
                 validEntities.Add(entity);
 
         foreach (var entity in validEntities)
-            _materialStorage.TryInsertMaterialEntity(args.User, entity, args.Target.Value);
+            InsertOreAndAwardPoints(args.User, entity, args.Target.Value);
     }
 
     private void OnDrag(Entity<OreBagComponent> ent, ref DragDropDraggedEvent args)
@@ -74,9 +76,26 @@ public sealed partial class OreBagSystem : EntitySystem
                 validEntities.Add(entity);
 
         foreach (var entity in validEntities)
-            _materialStorage.TryInsertMaterialEntity(args.User, entity, args.Target);
+            InsertOreAndAwardPoints(args.User, entity, args.Target);
 
         args.Handled = true;
+    }
+
+    /// <summary>
+    /// Inserts an ore bag's contents into a material storage entity, awarding mining points
+    /// if the ore is unclaimed Lavaland ore and the target accepts mining points.
+    /// </summary>
+    private void InsertOreAndAwardPoints(EntityUid user, EntityUid ore, EntityUid target)
+    {
+        var points = TryComp<UnclaimedOreComponent>(ore, out var unclaimed)
+            ? (uint) MathF.Round(unclaimed.MiningPoints)
+            : 0;
+
+        if (!_materialStorage.TryInsertMaterialEntity(user, ore, target))
+            return;
+
+        if (points > 0 && HasComp<MiningPointsLatheComponent>(target))
+            _miningPoints.AddPoints(target, points);
     }
 
     private void OnDragAttempt(Entity<OreBagComponent> ent, ref CanDropDraggedEvent args)

@@ -25,6 +25,7 @@
     - WhitelistChameleonIdCard
   - type: StealTarget
     stealGroup: IDCard
+  - type: MiningPoints # ClawCommand - lets ID cards hold a mining points balance
 
 #IDs with layers
 

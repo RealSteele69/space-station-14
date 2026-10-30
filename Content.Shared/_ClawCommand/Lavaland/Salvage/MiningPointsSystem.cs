@@ -5,9 +5,8 @@ using Robust.Shared.Audio.Systems;
 namespace Content.Shared._ClawCommand.Lavaland.Salvage;
 
 /// <summary>
-/// Handles mining points: a currency miners earn by depositing unclaimed Lavaland ore into a
-/// <see cref="MiningPointsLatheComponent"/> (via <c>OreBagSystem</c>) and claim onto their ID card
-/// to spend at a mining points vendor.
+/// Handles mining points: a currency miners earn by smelting ore in a <see cref="MiningPointsLatheComponent"/>
+/// (each printed recipe adds its <c>miningPoints</c>) and claim onto their ID card to spend at a mining points vendor.
 /// </summary>
 public sealed partial class MiningPointsSystem : EntitySystem
 {
@@ -22,6 +21,7 @@ public sealed partial class MiningPointsSystem : EntitySystem
 
         _query = GetEntityQuery<MiningPointsComponent>();
 
+        SubscribeLocalEvent<MiningPointsLatheComponent, LatheStartPrintingEvent>(OnStartPrinting);
         Subs.BuiEvents<MiningPointsLatheComponent>(LatheUiKey.Key, subs =>
         {
             subs.Event<LatheClaimMiningPointsMessage>(OnClaimMiningPoints);
@@ -29,6 +29,13 @@ public sealed partial class MiningPointsSystem : EntitySystem
     }
 
     #region Event Handlers
+
+    private void OnStartPrinting(Entity<MiningPointsLatheComponent> ent, ref LatheStartPrintingEvent args)
+    {
+        var points = args.Recipe.MiningPoints;
+        if (points > 0)
+            AddPoints(ent.Owner, points);
+    }
 
     private void OnClaimMiningPoints(Entity<MiningPointsLatheComponent> ent, ref LatheClaimMiningPointsMessage args)
     {

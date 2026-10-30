@@ -69,5 +69,11 @@ namespace Content.Shared.Research.Prototypes
         /// </summary>
         [DataField]
         public List<ProtoId<LatheCategoryPrototype>> Categories = new();
+
+        /// <summary>
+        /// ClawCommand: Number of mining points this recipe adds to a lathe with MiningPointsLatheComponent each time it is printed.
+        /// </summary>
+        [DataField]
+        public uint MiningPoints;
     }
 }

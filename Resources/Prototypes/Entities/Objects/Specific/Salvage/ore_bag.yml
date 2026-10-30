@@ -26,6 +26,7 @@
         - ArtifactFragment
         - Ore
   - type: Dumpable
+  - type: OreBag # ClawCommand - click/drag the bag onto an ore processor to empty it in
 
 - type: entity
   parent: OreBag

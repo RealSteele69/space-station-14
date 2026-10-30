@@ -630,7 +630,7 @@
       staticPacks:
       - OreSmelting
       - RGlassSmelting
-    - type: MiningPoints # ClawCommand - awards mining points when unclaimed Lavaland ore is deposited via ore bag
+    - type: MiningPoints # ClawCommand - smelting ore earns mining points, claimable to an ID card from the lathe UI
       transferSound:
         path: /Audio/Effects/Cargo/ping.ogg
     - type: MiningPointsLathe # ClawCommand

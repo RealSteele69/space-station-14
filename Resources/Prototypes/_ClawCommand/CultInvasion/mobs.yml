@@ -192,7 +192,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      200: Dead
+      110: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.5
     baseSprintSpeed: 3
@@ -297,7 +297,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      250: Dead
+      140: Dead
   - type: Damageable
     damageModifierSet: InvasionCultRobesHeavy
   - type: MeleeWeapon
@@ -346,6 +346,10 @@
     - state: artificer
     - state: artificer_eyes
       shader: unshaded
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      70: Dead
 
 - type: entity
   parent: [ MobInvasionCultistCasterBase, MobInvasionConstructBase ]
@@ -356,6 +360,10 @@
   - type: Sprite
     layers:
     - state: caster_artificer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      70: Dead
 
 - type: entity
   parent: MobInvasionConstructBase
@@ -372,7 +380,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      150: Dead
+      100: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 4
     baseSprintSpeed: 5
@@ -426,7 +434,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      160: Dead
+      110: Dead
   - type: Fixtures
     fixtures:
       fix1:

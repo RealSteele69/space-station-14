@@ -217,7 +217,7 @@
         layer:
           - MobLayer
   - type: Damageable
-    damageModifierSet: StrongMetallic # Massive daamge reduction, but very low health.
+    damageModifierSet: HeavyArmorSyndi # Massive daamge reduction, but very low health.
   - type: NoSlip
   - type: Pullable
   - type: Speech
@@ -481,7 +481,7 @@
         maxDistance: 12
         variation: 0.05
   - type: Damageable
-    damageModifierSet: StrongMetallic
+    damageModifierSet: HeavyArmorSyndi
   - type: PointLight
     enabled: true
     color: "#790c24"
@@ -582,7 +582,7 @@
     footstepSoundCollection:
       collection: FootstepHeavySuit
   - type: Damageable
-    damageModifierSet: StrongMetallic
+    damageModifierSet: HeavyArmorSyndi
   - type: Destructible
     thresholds:
       - trigger:

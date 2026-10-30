@@ -101,3 +101,15 @@
     Radiation: 0.15
     Caustic: 0.3
     Shock: 0.3
+
+- type: damageModifierSet
+  id: HeavyArmorSyndi
+  coefficients:
+    Blunt: 0.5
+    Slash: 0.5
+    Piercing: 0.4
+    Shock: 1.8
+    Heat: 0.7
+  flatReductions:
+    Blunt: 10
+    Heat: 7

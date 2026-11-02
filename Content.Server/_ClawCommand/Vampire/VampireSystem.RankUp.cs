@@ -25,12 +25,31 @@ public sealed partial class VampireSystem
         if (args.User != args.Target || !args.CanInteract)
             return;
 
-        if (vampire.Comp.LevelUnspent <= 0 || !IsRestingInOwnCoffin(vampire))
+        // Only offer the verb at all while resting in their own coffin - that's the one place it can ever
+        // succeed, so there's nothing useful to explain anywhere else.
+        if (!IsRestingInOwnCoffin(vampire))
             return;
+
+        if (vampire.Comp.LevelUnspent <= 0)
+        {
+            args.Verbs.Add(new Verb
+            {
+                Text = Loc.GetString("vampire-rankup-verb-stats"),
+                Act = () => _popup.PopupEntity(Loc.GetString("vampire-rankup-fail-no-rank"), vampire, vampire),
+            });
+            return;
+        }
 
         var cost = vampire.Comp.MaxBloodPoints * vampire.Comp.LevelCostFraction;
         if (vampire.Comp.BloodPoints < cost)
+        {
+            args.Verbs.Add(new Verb
+            {
+                Text = Loc.GetString("vampire-rankup-verb-stats"),
+                Act = () => _popup.PopupEntity(Loc.GetString("vampire-rankup-fail-no-blood", ("cost", (int) cost)), vampire, vampire),
+            });
             return;
+        }
 
         var unowned = new List<EntProtoId>();
         foreach (var power in vampire.Comp.PurchasablePowers)

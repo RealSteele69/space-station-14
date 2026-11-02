@@ -40,7 +40,9 @@
   Torpor does not heal you while the flare is up, and enough burn damage is final death, so take cover. When a flare ends, every vampire, wherever they are, gains one rank to spend.
 
   ## Growing in power
-  You start with one rank to spend. Inside your own closed coffin, with at least 20% of your maximum blood, right-click yourself and pick [bold]Grow in power[/bold]. That costs the blood, and you can choose to learn one new power. Your first rank costs 120 blood, so feed before you try. Every rank also gives:
+  You start with one rank to spend, and that is the only one you get for free - the next only comes once a solar flare ends, wherever you were when it did. Resting does not earn you a rank by itself, only lets you spend one you already have.
+
+  Inside your own closed coffin, with at least 20% of your maximum blood, right-click yourself and pick [bold]Grow in power[/bold]. That costs the blood, and you can choose to learn one new power. Your first rank costs 120 blood, so feed before you try. If you have no rank saved up, or not enough blood, the option is still there and tells you which one is stopping you. Every rank also gives:
   - +100 maximum blood.
   - +2 blood per second of feeding.
   - Slightly faster healing.
@@ -60,7 +62,7 @@
   Dying does not end a vampire. You fall into [bold]torpor[/bold] instead. Your body heals brute, toxin, burn and suffocation damage at twice your normal rate, without spending blood, and you get back up on your own once you have healed enough. Torpor stops healing while Sol is up, while you are staked, with garlic in you, or while Masquerade is on. Entering torpor frees all of your vassals.
 
   ## Vassals
-  [bold]Embrace[/bold] someone right next to you who is in critical condition or dead. It takes 10 seconds of standing still and has a 20-second cooldown. You can keep one vassal per rank, so a fresh vampire can keep none. Mindshielded crew, other vampires and existing vassals cannot be embraced.
+  [bold]Embrace[/bold] someone right next to you who is in critical condition or dead - unlike Feed, this needs no grip or grab, just proximity and a target too far gone to resist. Use the Embrace action and click them, then stand still for 10 seconds; it has a 20-second cooldown. If they are still conscious, even barely, it fails - beat them down into crit first. You can keep one vassal per rank, so a fresh vampire can keep none. Mindshielded crew, other vampires and existing vassals cannot be embraced.
 
   A vassal must keep you alive and gets two powers:
   - [bold]Sanguine Recuperation[/bold] (toggle): heals 1 brute and 1 toxin damage a second, using 2 of their own blood a second. It stops when their blood drops below 30%.

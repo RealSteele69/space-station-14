@@ -343,10 +343,9 @@
  ########### STAGE 1 #############
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: MonumentCosmicCultBase
   id: MonumentCosmicCult1
-  suffix: Base, DO NOT MAP
+  suffix: Admin Spawn, DO NOT MAP
   components:
   - type: Monument # Causes test fail without
     targetProgress: 35

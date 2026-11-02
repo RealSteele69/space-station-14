@@ -40,6 +40,8 @@ vampire-coffin-claimed = You claim this coffin as your lair. Rest here, lid shut
 vampire-rankup-verb-stats = Grow in power
 vampire-rankup-verb-power = Grow in power: learn {$power}
 vampire-rankup-success = Your blood thickens. You are now a rank {$level} vampire.
+vampire-rankup-fail-no-rank = You have no rank saved up to spend. Survive the next solar flare to earn one.
+vampire-rankup-fail-no-blood = You need at least {$cost} blood to spend on a rank.
 
 
 vampire-mesmerize-fail-target = That won't work on them.
@@ -55,6 +57,9 @@ vassal-objective-keep-master-alive-title = Keep {$name} from meeting their final
 
 vampire-embrace-fail-no-capacity = You cannot command any more thralls at your current rank.
 vampire-embrace-fail-target = They cannot be embraced.
+vampire-embrace-fail-already-turned = They are already bound to another's will, or to their own.
+vampire-embrace-fail-mindshield = Their mind is shielded against you.
+vampire-embrace-fail-conscious = They need to be unconscious or dead first - no grip or grab will help while they can still resist you.
 vampire-embrace-start = You lean in close over {$target}, baring your fangs...
 vampire-embrace-success-master = {$target} rises as your Vassal, bound to your fate.
 vampire-embrace-success-vassal = Your will is no longer entirely your own. You have been embraced as {$master}'s Vassal - while they live, so does your purpose.

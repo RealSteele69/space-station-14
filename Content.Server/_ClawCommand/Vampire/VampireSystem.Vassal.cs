@@ -58,13 +58,27 @@ public sealed partial class VampireSystem
             return;
         }
 
-        if (!TryComp<MobStateComponent>(target, out var mobState)
-            || HasComp<VampireComponent>(target)
-            || HasComp<VassalComponent>(target)
-            || HasComp<MindShieldComponent>(target)
-            || !_mobState.IsIncapacitated(target, mobState))
+        if (!TryComp<MobStateComponent>(target, out var mobState))
         {
             _popup.PopupEntity(Loc.GetString("vampire-embrace-fail-target"), vampire, vampire);
+            return;
+        }
+
+        if (HasComp<VampireComponent>(target) || HasComp<VassalComponent>(target))
+        {
+            _popup.PopupEntity(Loc.GetString("vampire-embrace-fail-already-turned"), vampire, vampire);
+            return;
+        }
+
+        if (HasComp<MindShieldComponent>(target))
+        {
+            _popup.PopupEntity(Loc.GetString("vampire-embrace-fail-mindshield"), vampire, vampire);
+            return;
+        }
+
+        if (!_mobState.IsIncapacitated(target, mobState))
+        {
+            _popup.PopupEntity(Loc.GetString("vampire-embrace-fail-conscious"), vampire, vampire);
             return;
         }
 

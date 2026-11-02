@@ -785,19 +785,42 @@ public sealed partial class CosmicCultRuleSystem : GameRuleSystem<CosmicCultRule
 
     public Entity<CosmicCultRuleComponent>? AssociatedGamerule(EntityUid uid)
     {
-        if (!TryComp<CosmicCultAssociatedRuleComponent>(uid, out var associated))
+        if (TryComp<CosmicCultAssociatedRuleComponent>(uid, out var associated)
+            && TryComp<CosmicCultRuleComponent>(associated.CultGamerule, out var cult))
         {
-            _sawmill.Debug("{0} has no associated rule", uid);
-            return null;
+            return (associated.CultGamerule, cult);
         }
 
-        if (!TryComp<CosmicCultRuleComponent>(associated.CultGamerule, out var cult))
+        // No valid association - this usually means the cult components were force-added directly
+        // (e.g. via an admin/VV panel) instead of going through the real antag-selection flow, which
+        // is what normally wires up CosmicCultAssociatedRuleComponent. Self-heal by latching onto
+        // whatever Cosmic Cult gamerule is actually running, instead of silently leaving the player broken.
+        if (TryFindActiveCultRule(out var healedRule) && healedRule is { } foundRule)
         {
-            _sawmill.Debug("Associated gamerule {0} is not a cult gamerule", associated.CultGamerule);
-            return null;
+            var fixedAssociated = EnsureComp<CosmicCultAssociatedRuleComponent>(uid);
+            fixedAssociated.CultGamerule = foundRule.Owner;
+            _sawmill.Warning($"{ToPrettyString(uid)} had no valid cosmic cult gamerule association - self-healed by linking it to {ToPrettyString(foundRule.Owner)}.");
+            return foundRule;
         }
 
-        return (associated.CultGamerule, cult);
+        _sawmill.Debug("{0} has no associated rule", uid);
+        return null;
+    }
+
+    private bool TryFindActiveCultRule(out Entity<CosmicCultRuleComponent>? rule)
+    {
+        var query = EntityQueryEnumerator<CosmicCultRuleComponent, GameRuleComponent>();
+        while (query.MoveNext(out var ruleUid, out var ruleComp, out var gameRuleComp))
+        {
+            if (!GameTicker.IsGameRuleActive((ruleUid, gameRuleComp)))
+                continue;
+
+            rule = (ruleUid, ruleComp);
+            return true;
+        }
+
+        rule = null;
+        return false;
     }
 
     public void CosmicConversion(EntityUid converter, EntityUid uid)

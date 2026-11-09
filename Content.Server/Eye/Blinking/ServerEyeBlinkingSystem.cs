@@ -8,23 +8,19 @@ namespace Content.Server.Eye.Blinking;
 public sealed partial class ServerEyeBlinkingSystem : EyeBlinkingSystem
 {
     // TODO: Move all this stuff into Shared once chat is predicted.
+    // Claw Command: the blink is purely visual, so it neither checks nor sets Handled. The Blink emote is
+    // category General (all flags), and our emote sound sets have a Blink sound, so BodyEmotes/Vocal would
+    // otherwise mark it handled first and skip the eyelids (or the eyelids would swallow the sound).
     [SubscribeLocalEvent]
     private void OnEmote(Entity<EyeBlinkingComponent> ent, ref EmoteEvent args)
     {
-        if (args.Handled)
-            return;
-
-        args.Handled = TrySendEmoteMessage(ent, args.Emote.ID);
+        TrySendEmoteMessage(ent, args.Emote.ID);
     }
 
     [SubscribeLocalEvent]
     private void OnEmote(Entity<EyeBlinkingComponent> ent, ref BodyRelayedEvent<EmoteEvent> args)
     {
-        if (args.Args.Handled)
-            return;
-
-        var handled = TrySendEmoteMessage(ent, args.Args.Emote.ID);
-        args.Args = args.Args with { Handled = handled };
+        TrySendEmoteMessage(ent, args.Args.Emote.ID);
     }
 
     private bool TrySendEmoteMessage(Entity<EyeBlinkingComponent> ent, string emoteId)

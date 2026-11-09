@@ -120,6 +120,9 @@
     data:
       sprite: _ClawCommand/Mobs/Species/Resomi/eyes.rsi
       state: eyes
+  - type: EyeBlinking
+    eyelidsSprite: /Textures/_ClawCommand/Mobs/Species/Resomi/eyelids.rsi
+  - type: Appearance
 
 - type: entity
   parent: [ OrganBaseTongue, OrganResomiInternal ]

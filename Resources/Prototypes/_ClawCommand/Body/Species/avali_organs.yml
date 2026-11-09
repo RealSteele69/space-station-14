@@ -106,6 +106,9 @@
     data:
       sprite: _ClawCommand/Mobs/Species/Avali/parts.rsi
       state: eyes
+  - type: EyeBlinking
+    eyelidsSprite: /Textures/_ClawCommand/Mobs/Species/Avali/eyelids.rsi
+  - type: Appearance
 
 - type: entity
   parent: [ OrganBaseTongue, OrganAvaliInternal ]

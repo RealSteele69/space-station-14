@@ -105,6 +105,9 @@
     data:
       sprite: _ClawCommand/Mobs/Species/Shadowkin/parts.rsi
       state: eyes
+  - type: EyeBlinking
+    eyelidsSprite: /Textures/_ClawCommand/Mobs/Species/Shadowkin/eyelids.rsi
+  - type: Appearance
 
 - type: entity
   parent: [ OrganBaseTongue, OrganShadowkinInternal ]

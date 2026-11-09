@@ -358,9 +358,9 @@ public sealed partial class HumanoidProfileEditor
     private SpeciesPrototype? CurrentSpecies =>
         Profile is null ? null : _species.Find(x => x.ID == Profile.Species);
 
-    public float MaxCharWidth => CurrentSpecies?.MaxWidth ?? 1.15f;
+    public float MaxCharWidth => CurrentSpecies?.MaxWidth ?? 1.2f;
     public float MinCharWidth => CurrentSpecies?.MinWidth ?? 0.85f;
-    public float MaxCharHeight => CurrentSpecies?.MaxHeight ?? 1.15f;
+    public float MaxCharHeight => CurrentSpecies?.MaxHeight ?? 1.2f;
     public float MinCharHeight => CurrentSpecies?.MinHeight ?? 0.9f;
     public float SizeRatio = 1.2f;
     public float AverageHeight = 176.1f;

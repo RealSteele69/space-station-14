@@ -134,7 +134,7 @@ public sealed partial class SpeciesPrototype : IPrototype
     ///     the sprite roughly 1.6px past its tile in each direction even with bottom pinning on.
     /// </summary>
     [DataField]
-    public float MaxHeight = 1.15f;
+    public float MaxHeight = 1.2f;
 
     /// <inheritdoc cref="MinHeight"/>
     [DataField]
@@ -142,7 +142,7 @@ public sealed partial class SpeciesPrototype : IPrototype
 
     /// <inheritdoc cref="MaxHeight"/>
     [DataField]
-    public float MaxWidth = 1.15f;
+    public float MaxWidth = 1.2f;
 
     /// <summary>
     ///     Claw Command - What a member of this species weighs, in kilograms, at height 1.0 and

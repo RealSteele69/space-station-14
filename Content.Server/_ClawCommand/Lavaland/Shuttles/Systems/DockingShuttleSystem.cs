@@ -101,8 +101,8 @@ public sealed partial class DockingShuttleSystem : SharedDockingShuttleSystem
     }
 
     /// <summary>
-    /// _ClawCommand: lavaland planets are generated after the round starts (deferred),
-    /// so any shuttle that already spawned won't have seen their FTL destination yet.
+    /// _ClawCommand: lavaland planets can be generated after shuttles already exist (e.g. via the
+    /// mapping command), so those shuttles won't have seen their FTL destination yet.
     /// Call this after a new destination-bearing map is created to refresh every docking
     /// shuttle's destination list and its consoles.
     /// </summary>

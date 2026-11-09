@@ -38,6 +38,7 @@ using Content.Server.Station.Systems;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.PAI;
 using Content.Shared.Security.Components;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
@@ -226,8 +227,9 @@ public sealed partial class DockingConsoleSystem : SharedDockingConsoleSystem
                 continue;
             }
 
-            // borgs are crew-controlled, not unidentified lifeforms
-            if (HasComp<BorgChassisComponent>(uid))
+            // borgs are crew-controlled, not unidentified lifeforms. Their positronic brains (and pAIs)
+            // carry their own MobState and sit inside the chassis/pockets on the same grid, so skip those too
+            if (HasComp<BorgChassisComponent>(uid) || HasComp<BorgBrainComponent>(uid) || HasComp<PAIComponent>(uid))
                 continue;
 
             // a humanoid with a station record on file is accounted-for crew

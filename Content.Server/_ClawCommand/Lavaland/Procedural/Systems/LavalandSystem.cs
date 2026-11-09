@@ -23,7 +23,6 @@
 
 using Content.Server._ClawCommand.Lavaland.Procedural.Components;
 using Content.Server._ClawCommand.Lavaland.Shuttles.Systems;
-using Content.Shared._ClawCommand.Lavaland.Procedural.Prototypes;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Decals;
 using Content.Server.GameTicking;
@@ -77,7 +76,7 @@ public sealed partial class LavalandSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<LoadingMapsEvent>(OnLoadingMaps);
-        SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged); // _ClawCommand: deferred lavaland generation
+        SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged); // _ClawCommand: unpause preloaded planets at round start
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
         SubscribeLocalEvent<MobStateComponent, EntParentChangedMessage>(OnPlayerParentChange);
 
@@ -88,10 +87,10 @@ public sealed partial class LavalandSystem : EntitySystem
         Subs.CVar(_config, CCVars.LavalandEnabled, value => LavalandEnabled = value, true);
     }
 
-    // _ClawCommand Lavaland change start: planets are queued during map load and generated
-    // once the round actually starts (after players spawn in) so the synchronous generation
-    // doesn't sit on the spawn-in critical path.
-    private readonly List<ProtoId<LavalandMapPrototype>> _pendingPlanets = new();
+    // _ClawCommand Lavaland change start: planets are generated while maps load, which the
+    // game ticker does during the lobby preload window (before anyone spawns), and kept paused
+    // until the round actually starts, the same way the station map is.
+    private readonly List<EntityUid> _pausedPlanets = new();
 
     private void OnLoadingMaps(LoadingMapsEvent ev)
     {
@@ -100,43 +99,43 @@ public sealed partial class LavalandSystem : EntitySystem
         {
             foreach (var planetEntry in gameMap.Planets)
             {
-                _pendingPlanets.Add(planetEntry);
+                try
+                {
+                    if (SetupLavalandPlanet(planetEntry, out var lavaland, unpause: false) && lavaland != null)
+                        _pausedPlanets.Add(lavaland.Value.Owner);
+                }
+                catch (Exception e)
+                {
+                    Log.Error($"Failed to generate lavaland planet {planetEntry}:\n{e}");
+                }
             }
         }
     }
 
     private void OnGameRunLevelChanged(GameRunLevelChangedEvent ev)
     {
-        if (ev.New != GameRunLevel.InRound || _pendingPlanets.Count == 0)
+        if (ev.New != GameRunLevel.InRound || _pausedPlanets.Count == 0)
             return;
 
-        foreach (var planetEntry in _pendingPlanets)
+        foreach (var planet in _pausedPlanets)
         {
-            try
-            {
-                SetupLavalandPlanet(planetEntry, out _);
-            }
-            catch (Exception e)
-            {
-                Log.Error($"Failed to generate deferred lavaland planet {planetEntry}:\n{e}");
-            }
+            if (!TerminatingOrDeleted(planet))
+                _map.SetPaused(planet, false);
         }
 
-        _pendingPlanets.Clear();
+        _pausedPlanets.Clear();
     }
     // _ClawCommand Lavaland change end
 
     private void OnRoundRestart(RoundRestartCleanupEvent ev)
     {
+        _pausedPlanets.Clear();
+
         var ent = GetPreloaderEntity();
         if (ent == null)
-        {
-            _pendingPlanets.Clear();
             return;
-        }
 
         Del(ent.Value.Owner);
-        _pendingPlanets.Clear();
     }
 
     public void EnsurePreloaderMap()

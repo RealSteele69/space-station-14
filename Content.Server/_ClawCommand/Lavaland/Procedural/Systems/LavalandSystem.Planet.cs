@@ -23,7 +23,8 @@ public sealed partial class LavalandSystem
         ProtoId<LavalandMapPrototype> mapProto,
         out Entity<LavalandMapComponent>? lavaland,
         int? seed = null,
-        Entity<LavalandPreloaderComponent>? preloader = null)
+        Entity<LavalandPreloaderComponent>? preloader = null,
+        bool unpause = true)
     {
         lavaland = null;
 
@@ -84,15 +85,15 @@ public sealed partial class LavalandSystem
             _shuttle.AddIFFFlag(grid, flag);
         }
 
-        _map.InitializeMap(lavalandMapId);
+        _map.InitializeMap(lavalandMapId, unpause);
 
         // Assign all other components to the map
         if (prototype.AddComponents != null)
             EntityManager.AddComponents(lavalandMap, prototype.AddComponents);
 
-        // _ClawCommand: planets are generated after the round starts (deferred), so any
-        // docking shuttle that already exists (e.g. the mining shuttle) never saw this FTL
-        // destination. Refresh every docking shuttle's destination list and its consoles.
+        // _ClawCommand: planets can be generated after docking shuttles already exist (e.g. the
+        // mapping command mid-round), so the shuttle never saw this FTL destination. Refresh every
+        // docking shuttle's destination list and its consoles.
         _dockingShuttle.RefreshAllDestinations();
 
         // Preload here to prevent biome entities from overlaying with everything else

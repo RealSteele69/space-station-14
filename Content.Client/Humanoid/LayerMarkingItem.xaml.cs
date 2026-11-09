@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client.Clickable; // Claw Command
 using Content.Client.Guidebook.Controls;
 using Content.Shared.Body;
 using Content.Shared.Humanoid;
@@ -12,6 +13,9 @@ using Robust.Shared.Input;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Robust.Client.Graphics;
+using Robust.Client.ResourceManagement; // Claw Command
+using Robust.Shared.Graphics.RSI; // Claw Command
+using Robust.Shared.Serialization.TypeSerializers.Implementations; // Claw Command
 
 namespace Content.Client.Humanoid;
 
@@ -19,6 +23,8 @@ namespace Content.Client.Humanoid;
 public sealed partial class LayerMarkingItem : BoxContainer, ISearchableControl
 {
     [Dependency] private IEntityManager _entity = default!;
+    [Dependency] private IResourceCache _resourceCache = default!; // Claw Command
+    [Dependency] private IClickMapManager _clickMap = default!; // Claw Command
 
     private readonly SpriteSystem _sprite;
 
@@ -106,12 +112,56 @@ public sealed partial class LayerMarkingItem : BoxContainer, ISearchableControl
 
     private void UpdateData()
     {
+        // Claw Command - markings like tails are blank facing south, so show the first direction that has pixels.
+        var direction = GetIconDirection();
         var textures = _markingPrototype.Sprites
-            .Select(l => _sprite.Frame0(l.Sprite))
+            .Select(l => _sprite.GetState(l.Sprite) is var state && state.RsiDirections != RsiDirectionType.Dir1
+                ? state.GetFrame(direction, 0)
+                : state.Frame0)
             .ToList();
 
         MarkingTexture.Textures = textures;
         SelectButton.Text = Loc.GetString($"marking-{_markingPrototype.ID}");
+    }
+
+    // Claw Command
+    private static readonly RsiDirection[] IconDirections =
+        [RsiDirection.South, RsiDirection.North, RsiDirection.East, RsiDirection.West];
+
+    // Claw Command
+    private RsiDirection GetIconDirection()
+    {
+        foreach (var direction in IconDirections)
+        {
+            foreach (var layer in _markingPrototype.Sprites)
+            {
+                if (HasVisiblePixels(layer.Sprite, direction))
+                    return direction;
+            }
+        }
+
+        return RsiDirection.South;
+    }
+
+    // Claw Command - samples the click map, which spans ClickRadius (2) pixels around each sample point.
+    private bool HasVisiblePixels(SpriteSpecifier.Rsi sprite, RsiDirection direction)
+    {
+        if (!_resourceCache.TryGetResource(SpriteSpecifierSerializer.TextureRoot / sprite.RsiPath, out RSIResource? resource)
+            || !resource.RSI.TryGetState(sprite.RsiState, out var state)
+            || state.RsiDirections == RsiDirectionType.Dir1 && direction != RsiDirection.South)
+            return false;
+
+        var size = resource.RSI.Size;
+        for (var x = 2; x < size.X + 2; x += 5)
+        {
+            for (var y = 2; y < size.Y + 2; y += 5)
+            {
+                if (_clickMap.IsOccluding(resource.RSI, sprite.RsiState, direction, 0, new Vector2i(x, y)))
+                    return true;
+            }
+        }
+
+        return false;
     }
 
     private void UpdateSelection()

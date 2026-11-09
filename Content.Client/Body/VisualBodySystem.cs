@@ -303,12 +303,16 @@ public sealed partial class VisualBodySystem : SharedVisualBodySystem
         var offset = layerOffsets.GetValueOrDefault(layerSlot, 0);
         var spriteLayerIndex = baseLayerIndex + offset + 1;
 
-        // Claw Command - also respect initially-hidden layers and layers currently hidden by clothing.
+        // Claw Command - also respect initially-hidden layers and layers currently hidden by clothing,
+        // including layers that hide along with another one (dependentHidingLayers).
         var visible = baseLayer.Visible
             && !organ.InitiallyHiddenLayers.Contains(markingProto.BodyPart)
-            && !(organ.HideableLayers.Contains(markingProto.BodyPart)
-                 && TryComp<HideableHumanoidLayersComponent>(target, out var hideComp)
-                 && hideComp.HiddenLayers.ContainsKey(markingProto.BodyPart));
+            && !(TryComp<HideableHumanoidLayersComponent>(target, out var hideComp)
+                 && organ.HideableLayers.Any(hideable => hideable is HumanoidVisualLayers hiddenLayer
+                     && hideComp.HiddenLayers.ContainsKey(hiddenLayer)
+                     && (hiddenLayer == markingProto.BodyPart
+                         || organ.DependentHidingLayers.TryGetValue(hideable, out var dependent)
+                         && dependent.Contains(markingProto.BodyPart))));
 
         // Add the marking layer to the target entity, if the target doesn't have it yet
         var spriteLayer = EnsureTargetLayer(

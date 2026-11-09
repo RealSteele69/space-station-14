@@ -96,6 +96,9 @@
   # TODO // Looks off on some tails (i.e docked/amputated), if conditionals for markings ever get implemented this needs to be updated to account for those.
   bodyPart: TailOversuit
   groupWhitelist: [Vox]
+  renderPriority: 1 # Claw Command - TailOversuit sits under Tail, so draw over the tail instead
+  layering: # Claw Command
+    tail_ring: Tail
   coloring:
     default:
       type:

@@ -331,12 +331,9 @@
 
 - type: marking
   id: VoxTailStripes
-  bodyPart: Chest
+  bodyPart: Tail # full tail of its own, like VoxTailBalled; hides with the tail
   groupWhitelist: [ Vox ]
   forcedColoring: false
-  layering:
-    tail_stenciled: Tail
-    voxtailstripes: Tail
   sprites:
   - sprite: _ClawCommand/Mobs/Customization/markingsbundle1.rsi
     state: voxtailstripes

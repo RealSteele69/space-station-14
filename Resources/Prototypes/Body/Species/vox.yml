@@ -60,7 +60,7 @@
       required: true
       default: [ VoxTail ]
     enum.HumanoidVisualLayers.TailOversuit:
-      limit: 1
+      limit: 3 # Claw Command - tail overlays (ring, spots, bloom, feathers)
       required: false
     enum.HumanoidVisualLayers.UndergarmentTop:
       limit: 1
@@ -287,6 +287,9 @@
   - type: VisualOrganMarkings
     hideableLayers:
     - enum.HumanoidVisualLayers.Tail
+    dependentHidingLayers: # Claw Command - tail overlays hide with the tail
+      enum.HumanoidVisualLayers.Tail:
+      - enum.HumanoidVisualLayers.TailOversuit
 
 - type: entity
   parent: [ OrganBaseHead, OrganVoxExternal ]

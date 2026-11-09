@@ -323,8 +323,12 @@
 
 - type: marking
   id: FriendsOfAFeather
-  bodyPart: Tail
+  bodyPart: TailOversuit # drawn over the base tail via layering
   groupWhitelist: [ Vox ]
+  renderPriority: 1
+  layering:
+    friendsfeather1: Tail
+    friendsfeather2: Tail
   sprites:
   - sprite: _ClawCommand/Mobs/Customization/Extended/vox_tail.rsi
     state: friendsfeather1
@@ -333,17 +337,25 @@
 
 - type: marking
   id: SpotsTail
-  bodyPart: Tail
+  bodyPart: TailOversuit # drawn over the base tail via layering
   groupWhitelist: [ Vox ]
   forcedColoring: true
+  renderPriority: 1
+  layering:
+    spots: Tail
   sprites:
   - sprite: _ClawCommand/Mobs/Customization/Extended/vox_tail.rsi
     state: spots
 
 - type: marking
   id: TailBloom
-  bodyPart: Tail
+  bodyPart: TailOversuit # drawn over the base tail via layering
   groupWhitelist: [ Vox ]
+  renderPriority: 1
+  layering:
+    bloom1: Tail
+    bloom2: Tail
+    bloom3: Tail
   sprites:
   - sprite: _ClawCommand/Mobs/Customization/Extended/vox_tail.rsi
     state: bloom1

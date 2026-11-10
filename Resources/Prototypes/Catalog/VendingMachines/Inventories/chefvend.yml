@@ -34,6 +34,7 @@
     FoodSushiRice: 2 # Claw Command - exotic snack
     FoodSeaweedSheet: 2 # Claw Command - exotic snack
     FoodCannedTuna: 2 # Claw Command - exotic snack
+    FoodSausageCasing: 6 # Claw Command - sausage making
   contrabandInventory:
     EggBoxBroken: 1
     FoodBoxDonkpocket: 1

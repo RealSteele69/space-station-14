@@ -523,11 +523,11 @@
   result: FoodSnackMarsFrouka
   time: 10
   group: Sweet
-  reagents:
+  reagents: # Claw Command - was identical to RecipeBakedBrownie; now the "sweet eggs and taters" the snack describes.
     Sugar: 5
-    Theobromine: 5
+    Egg: 6
   solids:
-    FoodDoughSlice: 1
+    FoodPotato: 1
 
 - type: microwaveMealRecipe
   id: RecipeSnackPokeysticks
@@ -549,6 +549,7 @@
   reagents:
     Sugar: 10
     JuiceBerry: 5
+    Water: 10 # Claw Command - was identical to RecipeGumball.
 
 # --- Cooked meats not handled by steak graph --- #
 

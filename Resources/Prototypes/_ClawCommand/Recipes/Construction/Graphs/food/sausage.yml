@@ -1,0 +1,16 @@
+# Claw Command - grill-cooking for raw sausage, same heat-driven pattern as upstream steak.yml.
+
+- type: constructionGraph
+  id: SausageCooked
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: sausage
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 345
+  - node: sausage
+    entity: FoodMeatSausage

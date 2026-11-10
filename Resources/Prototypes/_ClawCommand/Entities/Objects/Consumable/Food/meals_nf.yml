@@ -235,13 +235,14 @@
 
 # Sausage & hotdog
 # Ported from _NF/Entities/Objects/Consumable/Food/ingredients.yml and _NF/Entities/Objects/Consumable/Food/meals.yml.
-# Source's NFHotdogStove Construction graph doesn't exist in this fork - dropped, microwave recipe
-# reachability is sufficient (matches this fork's convention elsewhere).
+# Source's NFHotdogStove Construction graph doesn't exist in this fork - raw sausage instead cooks on a
+# grill via the SausageCooked graph (Recipes/Construction/Graphs/food/sausage.yml), or in a microwave.
 # sausagecooked.png/hotdog.png from the source's meat.rsi were skipped: that file's meta.json has two
 # conflicting "copyright" keys and neither one actually credits those two specific states, so they are
-# effectively unattributed - substituted with existing, clearly-credited vanilla sprites instead
-# (Objects/Consumable/Food/meat.rsi "cutlet-cooked" and Objects/Consumable/Food/burger.rsi "bun").
+# effectively unattributed - substituted with existing, clearly-credited sprites already in the repo
+# (Objects/Consumable/Food/meat.rsi "sausage" and Objects/Consumable/Food/bay_food.rsi "hotdog").
 # sausageraw.png/sausagecasing.png (credited to Prismatic) were copied normally.
+# Casings are sold by the ChefVend. Topped hotdogs live in meals_hotdogs.yml.
 
 - type: entity
   parent: FoodMeatBase
@@ -258,6 +259,14 @@
       reagents:
       - ReagentId: UncookedAnimalProteins
         Quantity: 5
+  - type: Tag
+    tags:
+    - Meat
+    - Raw
+  - type: Construction
+    graph: SausageCooked
+    node: start
+    defaultTarget: sausage
 
 - type: entity
   parent: BaseItem
@@ -268,6 +277,8 @@
   - type: Sprite
     sprite: _NF/Objects/Consumable/Food/ingredients.rsi
     state: sausagecasing
+  - type: Item
+    size: Tiny
 
 - type: entity
   parent: FoodMealBase
@@ -284,7 +295,9 @@
     - meaty
   - type: Sprite
     sprite: Objects/Consumable/Food/meat.rsi
-    state: cutlet-cooked
+    state: sausage
+  - type: Item
+    heldPrefix: sausage
   - type: Solution
     solution:
       maxVol: 10
@@ -309,8 +322,8 @@
     - meaty
     - bread
   - type: Sprite
-    sprite: Objects/Consumable/Food/burger.rsi
-    state: bun
+    sprite: Objects/Consumable/Food/bay_food.rsi
+    state: hotdog
   - type: Solution
     solution:
       maxVol: 18

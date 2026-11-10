@@ -29,6 +29,7 @@
     Sugar: 5
   solids:
     FoodDoughSlice: 1
+    FoodSnackRaisins: 1 # Claw Command - was identical to RecipeCookieFortune.
 
 - type: microwaveMealRecipe
   id: RecipeMeatBun

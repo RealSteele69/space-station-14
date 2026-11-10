@@ -208,7 +208,7 @@
   id: RecipeSausageRaw
   result: FoodSausageRaw
   time: 10
-  group: Savory
+  group: Hotdog
   solids:
     FoodSausageCasing: 1
   reagents:
@@ -218,9 +218,19 @@
   id: RecipeSausageRawStomachHuman
   result: FoodSausageRaw
   time: 10
-  group: Savory
+  group: Hotdog
   solids:
     OrganHumanStomach: 1
+  reagents:
+    UncookedAnimalProteins: 9
+
+- type: microwaveMealRecipe
+  id: RecipeSausageRawStomachAnimal # Claw Command - animal stomachs work as casings too.
+  result: FoodSausageRaw
+  time: 10
+  group: Hotdog
+  solids:
+    OrganAnimalStomach: 1
   reagents:
     UncookedAnimalProteins: 9
 
@@ -228,7 +238,7 @@
   id: RecipeSausageCooked
   result: FoodMeatSausage
   time: 5
-  group: Savory
+  group: Hotdog
   solids:
     FoodSausageRaw: 1
   reagents:
@@ -238,7 +248,7 @@
   id: RecipeHotdog
   result: FoodMealHotdog
   time: 10
-  group: Savory
+  group: Hotdog
   solids:
     FoodMeatSausage: 1
     FoodBreadBun: 1

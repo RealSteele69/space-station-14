@@ -1,0 +1,238 @@
+# Claw Command - topped hotdogs from the DonkCo recipe folder (BoxFolderHotdogRecipes).
+# Each is a plain microwave recipe (Recipes/Cooking/meal_recipes_hotdogs.yml): hotdog bun + sausage +
+# the toppings on its card. All share the bay_food.rsi "hotdog" sprite of the base FoodMealHotdog.
+
+- type: entity
+  parent: FoodMealHotdog
+  id: FoodMealHotdogLosAngeles
+  name: Los Angeles hotdog
+  description: Wrapped in bacon, smothered in onions and chili. Born from street carts and questionable life choices.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - bacon
+    - onion
+    - spicy
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Protein
+        Quantity: 4
+      - ReagentId: Vitamin
+        Quantity: 1
+      - ReagentId: CapsaicinOil
+        Quantity: 2
+
+- type: entity
+  parent: FoodMealHotdog
+  id: FoodMealHotdogHuman
+  name: humadog
+  description: A hotdog with a slab of something extra tucked in next to the sausage. Best not to ask.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - bun
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Protein
+        Quantity: 6
+
+- type: entity
+  parent: FoodMealHotdog
+  id: FoodMealHotdogTofu
+  name: tofudog
+  description: A pressed tofu "sausage" in a hotdog bun. Fools nobody, offends nobody.
+  components:
+  - type: Tag
+    tags:
+    - Cooked
+  - type: FlavorProfile
+    flavors:
+    - tofu
+    - bun
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Protein
+        Quantity: 3
+      - ReagentId: Vitamin
+        Quantity: 1
+
+- type: entity
+  parent: FoodMealHotdog
+  id: FoodMealHotdogDirtyWater
+  name: dirty water dog
+  description: Boiled in a cart's murky water and topped with cabbage and onion. Tastes better than it sounds.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - cabbage
+    - onion
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Vitamin
+        Quantity: 2
+
+- type: entity
+  parent: FoodMealHotdog
+  id: FoodMealHotdogChicago
+  name: Chicago dog
+  description: Dragged through the garden - tomato, onion and a hot pepper. Never, ever ketchup.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - tomato
+    - onion
+    - spicy
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Vitamin
+        Quantity: 2
+      - ReagentId: CapsaicinOil
+        Quantity: 1
+
+- type: entity
+  parent: FoodMealHotdog
+  id: FoodMealHotdogChili
+  name: chili dog
+  description: A hotdog buried under a ladle of chili and melted cheese. Bring napkins.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - spicy
+    - cheesy
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 14
+      - ReagentId: Protein
+        Quantity: 4
+      - ReagentId: CapsaicinOil
+        Quantity: 2
+
+- type: entity
+  parent: FoodMealHotdog
+  id: FoodMealHotdogConey
+  name: Coney Island dog
+  description: A boardwalk classic - chili and diced onion over a snappy sausage.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - spicy
+    - onion
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 14
+      - ReagentId: Protein
+        Quantity: 3
+      - ReagentId: CapsaicinOil
+        Quantity: 2
+
+- type: entity
+  parent: FoodMealHotdog
+  id: FoodMealHotdogHalfSmoke
+  name: half-smoke
+  description: A smoky sausage loaded with chili and pulled rib meat. Half smoke, all heart attack.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - smokey
+    - spicy
+  - type: Solution
+    solution:
+      maxVol: 35
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 18
+      - ReagentId: Protein
+        Quantity: 6
+      - ReagentId: BbqSauce
+        Quantity: 2
+
+- type: entity
+  parent: FoodMealHotdog
+  id: FoodMealHotdogBacon
+  name: bacon supreme dog
+  description: A sausage, two strips of bacon and a bun. The cardiologist's nemesis.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - bacon
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 12
+      - ReagentId: Protein
+        Quantity: 6
+
+- type: entity
+  parent: FoodMealHotdog
+  id: FoodMealHotdogFish
+  name: fishdog
+  description: A fried fish fillet folded into a hotdog bun. Somewhere, a carp weeps.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - fishy
+    - bun
+  - type: Solution
+    solution:
+      maxVol: 25
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Protein
+        Quantity: 4
+
+- type: entity
+  parent: FoodMealHotdog
+  id: FoodMealHotdogPolishBoy
+  name: Polish boy
+  description: A sausage on a bun, buried under fries and slaw. A meal pretending to be a hotdog.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - potatoes
+    - cabbage
+  - type: Solution
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 16
+      - ReagentId: Vitamin
+        Quantity: 2

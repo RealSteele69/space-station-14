@@ -1,0 +1,130 @@
+# Claw Command - topped hotdogs matching the DonkCo recipe cards (Entities/Objects/Misc/recipe_cards_euphoria.yml).
+# All listed on the "Sausages & Hotdogs" guidebook page via the Hotdog group.
+# Recipes are tried in descending ingredient count, so a topped dog wins over the plain
+# RecipeHotdogHotdogBun whenever its toppings are in the microwave.
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogHotdogBun
+  result: FoodMealHotdog
+  time: 10
+  group: Hotdog
+  solids:
+    FoodMeatSausage: 1
+    FoodHotdogBun: 1
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogLosAngeles
+  result: FoodMealHotdogLosAngeles
+  time: 10
+  group: Hotdog
+  solids:
+    FoodHotdogBun: 1
+    FoodMeatSausage: 1
+    FoodChiliPepper: 1
+    FoodOnionSlice: 1
+    FoodMeatBaconCooked: 1
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogHuman
+  result: FoodMealHotdogHuman
+  time: 10
+  group: Hotdog
+  solids:
+    FoodHotdogBun: 1
+    FoodMeatSausage: 1
+    FoodMeatHuman: 1
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogTofu
+  result: FoodMealHotdogTofu
+  time: 10
+  group: Hotdog
+  solids:
+    FoodHotdogBun: 1
+    FoodTofuSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogDirtyWater
+  result: FoodMealHotdogDirtyWater
+  time: 10
+  group: Hotdog
+  solids:
+    FoodHotdogBun: 1
+    FoodMeatSausage: 1
+    FoodCabbage: 1
+    FoodOnionSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogChicago
+  result: FoodMealHotdogChicago
+  time: 10
+  group: Hotdog
+  solids:
+    FoodHotdogBun: 1
+    FoodMeatSausage: 1
+    FoodTomato: 1
+    FoodOnionSlice: 1
+    FoodChiliPepper: 1
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogChili
+  result: FoodMealHotdogChili
+  time: 10
+  group: Hotdog
+  solids:
+    FoodHotdogBun: 1
+    FoodMeatSausage: 1
+    FoodSoupChiliHot: 1
+    FoodCheeseSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogConey
+  result: FoodMealHotdogConey
+  time: 10
+  group: Hotdog
+  solids:
+    FoodHotdogBun: 1
+    FoodMeatSausage: 1
+    FoodSoupChiliHot: 1
+    FoodOnionSlice: 1
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogHalfSmoke
+  result: FoodMealHotdogHalfSmoke
+  time: 10
+  group: Hotdog
+  solids:
+    FoodHotdogBun: 1
+    FoodMeatSausage: 1
+    FoodSoupChiliHot: 1
+    FoodMealRibs: 1
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogBacon
+  result: FoodMealHotdogBacon
+  time: 10
+  group: Hotdog
+  solids:
+    FoodHotdogBun: 1
+    FoodMeatSausage: 1
+    FoodMeatBaconCooked: 2
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogFish
+  result: FoodMealHotdogFish
+  time: 10
+  group: Hotdog
+  solids:
+    FoodHotdogBun: 1
+    FoodMeatFish: 1
+
+- type: microwaveMealRecipe
+  id: RecipeHotdogPolishBoy
+  result: FoodMealHotdogPolishBoy
+  time: 10
+  group: Hotdog
+  solids:
+    FoodHotdogBun: 1
+    FoodMeatSausage: 1
+    FoodMealFries: 1
+    FoodCabbage: 1

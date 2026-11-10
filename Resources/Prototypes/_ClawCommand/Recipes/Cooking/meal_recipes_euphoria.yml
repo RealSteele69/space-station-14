@@ -8,6 +8,8 @@
   id: RecipeHotdogBun
   result: FoodHotdogBun
   time: 5
-  group: Breads
+  group: Hotdog # Claw Command - listed with the rest of the sausage/hotdog chain.
   solids:
     FoodDoughSlice: 1
+  reagents:
+    Milk: 5 # Claw Command - a lone dough slice is already vanilla RecipeBun; milk makes it a soft hotdog bun instead.

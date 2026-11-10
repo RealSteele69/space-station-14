@@ -11,6 +11,12 @@
   filterEnabled: True
 
 - type: guideEntry
+  id: HotdogRecipes
+  name: guide-entry-hotdog-recipes
+  text: "/ServerInfo/_ClawCommand/Guidebook/Service/HotdogRecipes.xml"
+  filterEnabled: True
+
+- type: guideEntry
   id: SweetRecipes
   name: guide-entry-sweet-recipes
   text: "/ServerInfo/_ClawCommand/Guidebook/Service/SweetRecipes.xml"

@@ -34,6 +34,7 @@ guide-entry-loadout-info-security-weapons = Security Weapons
 
 # Claw Command - cookbook categories that had recipes but no page.
 guide-entry-meat-recipes = Meat Dishes
+guide-entry-hotdog-recipes = Sausages & Hotdogs
 guide-entry-sweet-recipes = Sweet Snacks
 guide-entry-candy-recipes = Candy
 guide-entry-lavaland-megafauna = Lavaland Megafauna

@@ -17,6 +17,7 @@
     FoodAvocadoSlice: 2
     FoodCucumberSlice: 2
     FoodMeatFish: 1
+    FoodSeaweedSheet: 1 # Claw Command - was identical to RecipeCarpSushi.
   reagents:
     Rice: 15
     Water: 10

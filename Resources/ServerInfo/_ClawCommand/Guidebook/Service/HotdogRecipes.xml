@@ -1,0 +1,24 @@
+<Document>
+
+# Sausages & Hotdogs
+
+Every hotdog starts as a sausage, and every sausage starts in a grinder.
+
+## Making Sausages
+
+- [color=#a4885c]Casing:[/color] The ChefVend stocks sausage casings. In a pinch, a cleaned-out human or animal stomach works too.
+- [color=#a4885c]Filling:[/color] Grind raw meat in the reagent grinder for uncooked animal proteins. One cut of meat is more than enough for a sausage.
+- [color=#a4885c]Stuffing:[/color] Microwave the casing with 9u of uncooked animal proteins to get a raw sausage.
+- [color=#a4885c]Cooking:[/color] Throw the raw sausage on a grill, or microwave it with 10u of water.
+
+## Buns
+
+A hotdog bun is a dough slice microwaved with 5u of milk - see [textlink="Breads" link="BreadRecipes"] for making dough. A plain burger bun also works for a basic hotdog in a pinch.
+
+## Toppings
+
+DonkCo's hotdog recipe folder, found in the chef's locker, lists the classics. Put a cooked sausage, a hotdog bun and the toppings into the microwave together.
+
+<GuideMicrowaveGroupEmbed Group="Hotdog"/>
+
+</Document>

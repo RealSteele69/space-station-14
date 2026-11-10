@@ -61,6 +61,7 @@
     - id: FoodCondimentBottleEnzyme
     - id: DrinkSoyMilkCarton
     - id: BookHowToCookForFortySpaceman # _ClawCommand: Added.
+    - id: BoxFolderHotdogRecipes # _ClawCommand: Added.
     - !type:AllSelector
       rolls: 2
       children:

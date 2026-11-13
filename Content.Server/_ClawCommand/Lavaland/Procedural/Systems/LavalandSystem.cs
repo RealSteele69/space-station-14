@@ -124,6 +124,10 @@ public sealed partial class LavalandSystem : EntitySystem
         }
 
         _pausedPlanets.Clear();
+
+        // The station's mining shuttle spawns (GridFill on station map init) while the planets are still
+        // paused, so make sure it and every console picked up the now-live planet destinations.
+        _dockingShuttle.RefreshAllDestinations();
     }
     // _ClawCommand Lavaland change end
 

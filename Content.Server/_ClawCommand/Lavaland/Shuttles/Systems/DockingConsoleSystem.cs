@@ -142,7 +142,7 @@ public sealed partial class DockingConsoleSystem : SharedDockingConsoleSystem
         if (!HasComp<DockingShuttleComponent>(shuttle))
             return;
 
-        var query = EntityQueryEnumerator<DockingConsoleComponent>();
+        var query = AllEntityQuery<DockingConsoleComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
             if (comp.Shuttle == shuttle)
@@ -167,7 +167,7 @@ public sealed partial class DockingConsoleSystem : SharedDockingConsoleSystem
 
         if (TryComp<DockingShuttleComponent>(shuttle, out var docking))
         {
-            destinations = docking.Destinations;
+            destinations = new List<DockingDestination>(docking.Destinations); // _ClawCommand: snapshot, not the live list
         }
 
         var state = new DockingConsoleState(ftlState, ftlTime, destinations);
@@ -179,7 +179,7 @@ public sealed partial class DockingConsoleSystem : SharedDockingConsoleSystem
         if (ent.Comp.Shuttle is not {} shuttle || !TryComp<DockingShuttleComponent>(shuttle, out var docking))
             return;
 
-        if (args.Index < 0 || args.Index > docking.Destinations.Count)
+        if (args.Index < 0 || args.Index >= docking.Destinations.Count)
             return;
 
         var dest = docking.Destinations[args.Index];
@@ -347,7 +347,7 @@ public sealed partial class DockingConsoleSystem : SharedDockingConsoleSystem
         EntityUid? largestGrid = null;
         var largestSize = 0f;
 
-        var query = EntityQueryEnumerator<MapGridComponent, TransformComponent>();
+        var query = AllEntityQuery<MapGridComponent, TransformComponent>();
         while (query.MoveNext(out var gridUid, out var grid, out var xform))
         {
             if (xform.MapID != map)
@@ -390,7 +390,7 @@ public sealed partial class DockingConsoleSystem : SharedDockingConsoleSystem
 
     private EntityUid? FindShuttle(EntityWhitelist whitelist)
     {
-        var query = EntityQueryEnumerator<DockingShuttleComponent>();
+        var query = AllEntityQuery<DockingShuttleComponent>();
         while (query.MoveNext(out var uid, out _))
         {
             if (_whitelist.IsValid(whitelist, uid))

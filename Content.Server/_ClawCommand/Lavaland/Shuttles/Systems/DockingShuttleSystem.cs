@@ -63,7 +63,7 @@ public sealed partial class DockingShuttleSystem : SharedDockingShuttleSystem
         RefreshDestinations(ent);
 
         // Also update all consoles
-        var consoleQuery = EntityQueryEnumerator<DockingConsoleComponent>();
+        var consoleQuery = AllEntityQuery<DockingConsoleComponent>();
         while (consoleQuery.MoveNext(out var uid, out var dest))
         {
             if (TerminatingOrDeleted(uid))
@@ -81,7 +81,7 @@ public sealed partial class DockingShuttleSystem : SharedDockingShuttleSystem
     /// </summary>
     private void RefreshDestinations(Entity<DockingShuttleComponent> ent)
     {
-        var query = EntityQueryEnumerator<FTLDestinationComponent, MapComponent>();
+        var query = AllEntityQuery<FTLDestinationComponent, MapComponent>();
         while (query.MoveNext(out var mapUid, out var dest, out var map))
         {
             if (!dest.Enabled || _whitelist.IsWhitelistFailOrNull(dest.Whitelist, ent))
@@ -102,20 +102,29 @@ public sealed partial class DockingShuttleSystem : SharedDockingShuttleSystem
 
     /// <summary>
     /// _ClawCommand: lavaland planets can be generated after shuttles already exist (e.g. via the
-    /// mapping command), so those shuttles won't have seen their FTL destination yet.
-    /// Call this after a new destination-bearing map is created to refresh every docking
-    /// shuttle's destination list and its consoles.
+    /// mapping command), and at round start they are still paused while the station's shuttle spawns.
+    /// Call this after a destination-bearing map is created or unpaused to refresh every docking
+    /// shuttle's destination list, rebind every console to its shuttle and push fresh UI state.
     /// </summary>
     public void RefreshAllDestinations()
     {
-        var query = EntityQueryEnumerator<DockingShuttleComponent>();
+        var query = AllEntityQuery<DockingShuttleComponent>();
         while (query.MoveNext(out var shuttleUid, out var docking))
         {
             if (TerminatingOrDeleted(shuttleUid))
                 continue;
 
             RefreshDestinations((shuttleUid, docking));
-            _console.UpdateConsolesUsing(shuttleUid);
+        }
+
+        var consoleQuery = AllEntityQuery<DockingConsoleComponent>();
+        while (consoleQuery.MoveNext(out var uid, out var console))
+        {
+            if (TerminatingOrDeleted(uid))
+                continue;
+
+            _console.UpdateShuttle((uid, console));
+            _console.UpdateUI((uid, console));
         }
     }
 

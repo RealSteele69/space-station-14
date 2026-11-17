@@ -57,7 +57,7 @@ public sealed class GangConversionTest : GameTest
             await pair.SetAntagPreference(GangBossAntagRoleName, true, dummy.UserId);
         }
 
-        GangConversionRuleComponent? rule = null;
+        GangConversionRuleComponent rule = null;
         EntityUid ruleUid = default;
         await server.WaitPost(() =>
         {

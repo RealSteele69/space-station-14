@@ -42,6 +42,7 @@ public sealed partial class AnomalyJobSystem : EntitySystem
             return;
 
         shadekin.Blackeye = false;
+        Dirty(uid, shadekin); // Claw Command - Blackeye is networked for the shared portal gates.
         RaiseLocalEvent(uid, new RejuvenateEvent());
     }
 }

@@ -92,8 +92,8 @@ public sealed partial class StationRecordsSystem : EntitySystem
             || !ProtoMan.TryIndex<JobPrototype>(jobId, out var jobProto))
             return;
 
-        // Claw Command: roles that are not legally crew never get a station record, which keeps
-        // them off the crew manifest and out of records consoles.
+        // Claw Command: skip the inventory lookup early for non-crew roles; the public overload
+        // enforces AddToStationRecords for every caller.
         if (!jobProto.AddToStationRecords)
             return;
 
@@ -156,6 +156,12 @@ public sealed partial class StationRecordsSystem : EntitySystem
     {
         if (!ProtoMan.TryIndex<JobPrototype>(jobId, out var jobPrototype))
             throw new ArgumentException($"Invalid job prototype ID: {jobId}");
+
+        // Claw Command: roles that are not legally crew never get a station record, which keeps
+        // them off the crew manifest and out of records consoles. Checked here so every caller
+        // (spawn hook, borg manifest hook, anything added later) respects it.
+        if (!jobPrototype.AddToStationRecords)
+            return;
 
         // when adding a record that already exists use the old one
         // this happens when respawning as the same character

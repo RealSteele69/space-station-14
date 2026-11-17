@@ -31,9 +31,9 @@
     abilityDuration: 5
     initialDamage:
       types:
-        Blunt: 50
+        Blunt: 25 # Claw Command - nerf, was 50
   - type: TouchOfEvil
-    damageBuff: 2.5
+    damageBuff: 1.5 # Claw Command - nerf, was 2.5
   - type: RevenantShockwave
     structureDamage:
       types:
@@ -41,7 +41,7 @@
   - type: RevenantPush
     damageWhenThrown:
       types:
-        Blunt: 30
+        Blunt: 15 # Claw Command - nerf, was 30
   - type: WraithCommand
     blacklist:
       components:
@@ -55,7 +55,7 @@
   - type: WraithPoints
     startingWraithPoints: 500
   - type: PassiveWraithPoints
-    wpGeneration: 15 # generate points 15x than a normal wraith
+    wpGeneration: 5 # Claw Command - nerf, was 15/s (Touch of Evil every ~67s, Crush every ~3 min)
     nextWpUpdate: 1 # generate points every second
   - type: ActionGrant
     actions:

@@ -1,0 +1,4 @@
+- files: ["firepunch3.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from Citadel Station 13. Remixed to mono where it was stereo by metalgearsloth then added punch sound effects by Skubman. Ported via Goob-Station (https://github.com/Goob-Station/Goob-Station, Resources/Audio/Weapons/firepunch3.ogg) at commit 707e36693d1d9289a4f04921c5e070b1e4195589."
+  source: "https://github.com/Citadel-Station-13/Citadel-Station-13-RP/tree/cc701aedb633d83eae8339a8b3712ad8ad99cca0/sound"

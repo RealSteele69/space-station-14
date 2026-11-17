@@ -74,6 +74,15 @@ public sealed partial class ShadekinRestraintSystem : EntitySystem
             return;
         }
 
+        // A phased kin isn't fully here. Binding them mid-phase would strip the phase action and leave the
+        // cuff marker blocking the way back, stranding them ethereal (walking through walls) for good.
+        if (HasComp<EtherealComponent>(target))
+        {
+            _popup.PopupEntity(Loc.GetString("shadekin-restraint-ethereal", ("target", target)), target, args.User);
+            args.Handled = true;
+            return;
+        }
+
         var doAfterArgs = new DoAfterArgs(EntityManager,
             args.User,
             ent.Comp.ApplyTime,
@@ -106,7 +115,10 @@ public sealed partial class ShadekinRestraintSystem : EntitySystem
             return;
 
         // They could have died/despawned or been bound by someone else while the do-after ran.
-        if (!TryComp<ShadekinComponent>(target, out var shadekin) || HasComp<ShadekinCuffComponent>(target))
+        // They could also have phased out mid do-after (see OnAfterInteract).
+        if (!TryComp<ShadekinComponent>(target, out var shadekin)
+            || HasComp<ShadekinCuffComponent>(target)
+            || HasComp<EtherealComponent>(target))
             return;
 
         args.Handled = true;

@@ -1,17 +1,29 @@
 # Misc clothing entities ported from Goob for loadout picker options.
 
+# Not parented to ClothingHeadHelmetBasic: that one folds a visor down via a "visor-" equipped prefix,
+# and this sprite has no visor-* worn states, so lowering it made the helmet vanish while worn.
 - type: entity
-  parent: ClothingHeadHelmetBasic
+  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband]
   id: ClothingHeadHelmetBasicAlt
+  name: security helmet
+  description: Standard security gear. Protects the head from impacts.
   suffix: Alt
   components:
   - type: Sprite
     sprite: _GoobStation/Clothing/Head/Helmets/security.rsi
+    state: icon-visor
   - type: Clothing
     sprite: _GoobStation/Clothing/Head/Helmets/security.rsi
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SecurityHelmet
+  # HeadTop/HeadSide hide ear markings; the vulpkanin worn state draws its own ears.
+  - type: HideLayerClothing
+    layers:
+      HeadTop: HEAD
+      HeadSide: HEAD
+      Hair: HEAD
 
 - type: entity
   parent: ClothingUniformSkirtBase

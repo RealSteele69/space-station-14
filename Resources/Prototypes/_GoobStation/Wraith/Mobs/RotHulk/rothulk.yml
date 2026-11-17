@@ -126,12 +126,13 @@
     altDisarm: false
     angle: 0
     animation: WeaponArcClaw
+    attackRate: 0.8 # Claw Command - nerf, was 1
     soundHit:
       collection: AlienClaw
     damage:
       types:
-        Slash: 10
-        Blunt: 10
+        Slash: 7 # Claw Command - nerf, was 10
+        Blunt: 7 # Claw Command - nerf, was 10
         Structural: 80
   - type: MovementSpeedModifier
     baseWalkSpeed: 4
@@ -141,4 +142,4 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      200: Dead
+      150: Dead # Claw Command - nerf, was 200

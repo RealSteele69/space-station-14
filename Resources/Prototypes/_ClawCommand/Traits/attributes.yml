@@ -296,6 +296,8 @@
           Slash: -0.06
           Heat: -0.06
           Cold: -0.06
+          Shock: -0.06
+          Caustic: -0.06
           Asphyxiation: -0.05
           Bloodloss: -0.05
           Poison: -0.06

@@ -1,0 +1,22 @@
+# Chaplain null rods and altar offerings.
+
+- type: Tag
+  id: BudgetInsuls # ConstructionGraph: AltarsGraph (maint altar offering)
+
+- type: Tag
+  id: MakeshiftShield # ConstructionGraph: AltarsGraph (blue altar offering)
+
+- type: Tag
+  id: Nullrod # Only the plain null rod; it can be reforged once on an altar with AltarSource.
+
+- type: Tag
+  id: NunHood # ConstructionGraph: AltarsGraph (space-Christian altar offering)
+
+- type: Tag
+  id: TemplarHelmet # ConstructionGraph: AltarsGraph (heaven altar offering)
+
+- type: Tag
+  id: WeaponPistolCasul # RequiresDualWield whitelist and chaplain holster slot.
+
+- type: Tag
+  id: WeaponPistolJackal # RequiresDualWield whitelist and chaplain holster slot.

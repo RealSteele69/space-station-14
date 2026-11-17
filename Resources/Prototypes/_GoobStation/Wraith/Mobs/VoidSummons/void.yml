@@ -82,7 +82,7 @@
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 100 # Not parity, but the health system in Goonstation works completely differently so :shrug:
+          damage: 75 # Claw Command - nerf, was 100 (on top of Metallic resists)
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
@@ -143,7 +143,7 @@
           Quantity: 100
   - type: MeleeChemicalInjector
     solution: melee
-    transferAmount: 4
+    transferAmount: 2 # Claw Command - nerf, was 4 units of Nocturine per hit
   # Fork note: TentacleHook (ranged grapple-and-reel) is cut - see port report. Kept SpikerLash/Shuffle as
   # the Spiker's melee kit.
   - type: SpikerLash
@@ -170,7 +170,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead # Not parity, but the health system in Goonstation works completely differently so :shrug:
+      75: Dead # Claw Command - nerf, was 100 (on top of Infernal resists)
   - type: Grammar
     attributes:
       gender: male
@@ -221,8 +221,8 @@
     animation: WeaponArcBite
     damage:
       types:
-        Piercing: 8
-        Slash: 5
+        Piercing: 5 # Claw Command - nerf, was 8
+        Slash: 4 # Claw Command - nerf, was 5
   - type: Rushdown
   - type: Cloak
   - type: ActionGrant
@@ -241,7 +241,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead # Not parity, but the health system in Goonstation works completely differently so :shrug:
+      75: Dead # Claw Command - nerf, was 100 (on top of Infernal resists)
   - type: Grammar
     attributes:
       gender: male

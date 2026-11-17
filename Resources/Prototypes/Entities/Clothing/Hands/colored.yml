@@ -363,6 +363,11 @@
   - type: Fiber
     fiberMaterial: fibers-insulative-frayed
     fiberColor: fibers-yellow
+  - type: Tag # Claw Command - maint altar offering
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+    - BudgetInsuls
 
 # Conductive Insulated Gloves
 - type: entity

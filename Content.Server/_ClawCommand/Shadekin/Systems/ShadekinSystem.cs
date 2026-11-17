@@ -94,6 +94,12 @@ public sealed partial class ShadekinSystem : EntitySystem
             mobstate.Actions[MobState.Critical].Add("ActionCritSuccumb");
             mobstate.Actions[MobState.Critical].Add("ActionCritFakeDeath");
             mobstate.Actions[MobState.Critical].Add("ActionCritLastWords");
+
+            // CLAW COMMAND: MobStateActionsSystem only regrants on the next state change, so a kin who is
+            // blackeyed while already in crit (the usual way restraints get put on) kept the old respawn
+            // action and never got succumb/fake death/last words. Swap the live crit actions over now.
+            if (_mobState.IsCritical(uid))
+                RegrantCritActions(uid, mobstate);
         }
 
         component.Energy = 0;
@@ -103,7 +109,27 @@ public sealed partial class ShadekinSystem : EntitySystem
         component.LightExposure = 0;
         ClearLightMood(uid);
 
+        Dirty(uid, component); // Claw Command - Blackeye/Energy are networked.
         UpdateAlert(uid, component);
+    }
+
+    /// <summary>
+    ///     Claw Command - mirrors MobStateActionsSystem.ComposeActions for the crit list, for when that list
+    ///     is swapped while the mob is already critical.
+    /// </summary>
+    private void RegrantCritActions(EntityUid uid, MobStateActionsComponent mobstate)
+    {
+        foreach (var act in mobstate.GrantedActions)
+            Del(act);
+
+        mobstate.GrantedActions.Clear();
+
+        foreach (var id in mobstate.Actions[MobState.Critical])
+        {
+            EntityUid? act = null;
+            if (_actionsSystem.AddAction(uid, ref act, id, uid))
+                mobstate.GrantedActions.Add(act.Value);
+        }
     }
 
     /// <summary>
@@ -355,6 +381,7 @@ public sealed partial class ShadekinSystem : EntitySystem
         RaiseLocalEvent(uid, new RejuvenateEvent());
         component.Rejuvenating = true;
         component.Energy = 0;
+        Dirty(uid, component); // Claw Command - Rejuvenating is networked for the shared hub gate.
     }
 
     private Angle GetAngle(EntityUid lightUid, SharedPointLightComponent lightComp, EntityUid targetUid)
@@ -575,6 +602,7 @@ public sealed partial class ShadekinSystem : EntitySystem
             if (component.Rejuvenating && component.Energy >= component.MaxEnergy)
             {
                 component.Rejuvenating = false;
+                Dirty(uid, component); // Claw Command
                 _popup.PopupEntity(Loc.GetString("shadekin-rejuvenate-completed"), uid, uid, PopupType.Large);
             }
         }

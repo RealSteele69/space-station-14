@@ -20,11 +20,10 @@
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency.yml
         - type: StationJobs
-          # Claw Command - every slot here is at least what Pebble offers for the same job. Reach was
-          # running one-of-everything (a single salvager, a single scientist) which left the station
-          # thin at its 20 player cap. Values are the element-wise max of the old Reach figures and
-          # Pebble's, so nothing was reduced - SecurityOfficer keeps its max of 3 while gaining Pebble's
-          # minimum of 2.
+          # Claw Command - every slot here is at least what Pebble offers for the same job, and the
+          # core crew roles (engineering, medical, science, security, cargo, service) sit one or more
+          # above it: Reach is the bigger station with the higher player cap, so it opens more of each
+          # job rather than just matching Pebble. Heads, seniors and one-off roles stay at 1.
           availableJobs:
             Anomaly: [ 4, 4 ] # CLAW COMMAND - Shadekin
             #command
@@ -32,41 +31,41 @@
             HeadOfSecurity: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ] # Claw Command - added to match Pebble
             #service
-            Bartender: [ 1, 2 ]
-            Botanist: [ 2, 2 ]
+            Bartender: [ 2, 2 ]
+            Botanist: [ 2, 3 ]
             Chef: [ 2, 2 ]
-            Janitor: [ 1, 2 ]
+            Janitor: [ 2, 3 ]
             Librarian: [ 1, 1 ] # Claw Command - added to match Pebble
             #engineering
             ChiefEngineer: [ 1, 1 ] # Claw Command - added to match Pebble
-            AtmosphericTechnician: [ 1, 1 ]
-            StationEngineer: [ 2, 3 ]
+            AtmosphericTechnician: [ 2, 2 ]
+            StationEngineer: [ 3, 4 ]
             SeniorEngineer: [ 1, 1 ] # Claw Command - senior variant
-            TechnicalAssistant: [ 2, 2 ] # Claw Command - added to match Pebble
+            TechnicalAssistant: [ 2, 3 ] # Claw Command - added to match Pebble
             #medical
             ChiefMedicalOfficer: [ 1, 1 ] # Claw Command - added to match Pebble
-            Chemist: [ 1, 1 ]
-            MedicalDoctor: [ 2, 3 ]
+            Chemist: [ 2, 2 ]
+            MedicalDoctor: [ 3, 4 ]
             SeniorPhysician: [ 1, 1 ] # Claw Command - senior variant
-            MedicalIntern: [ 2, 2 ] # Claw Command - added to match Pebble
-            Paramedic: [ 1, 1 ] # Claw Command - added to match Pebble
+            MedicalIntern: [ 2, 3 ] # Claw Command - added to match Pebble
+            Paramedic: [ 1, 2 ] # Claw Command - added to match Pebble
             #science
             ResearchDirector: [ 1, 1 ] # Claw Command - added to match Pebble
-            Scientist: [ 2, 3 ]
+            Scientist: [ 3, 4 ]
             SeniorResearcher: [ 1, 1 ] # Claw Command - senior variant
             ForensicMantis: [ 1, 1 ] # Claw Command - psionics port
-            ResearchAssistant: [ 2, 2 ] # Claw Command - added to match Pebble
+            ResearchAssistant: [ 2, 3 ] # Claw Command - added to match Pebble
             #security
             Warden: [ 1, 1 ] # Claw Command - added to match Pebble
             Detective: [ 1, 1 ] # Claw Command - added to match Pebble
-            SecurityOfficer: [ 2, 3 ]
+            SecurityOfficer: [ 3, 4 ]
             SeniorOfficer: [ 1, 1 ] # Claw Command - senior variant
-            SecurityCadet: [ 1, 1 ] # Claw Command - added to match Pebble
+            SecurityCadet: [ 1, 2 ] # Claw Command - added to match Pebble
             #supply
             Quartermaster: [ 1, 1 ] # Claw Command - added to match Pebble
-            CargoTechnician: [ 2, 3 ]
+            CargoTechnician: [ 3, 4 ]
             SeniorCourier: [ 1, 1 ] # Claw Command - senior variant
-            SalvageSpecialist: [ 2, 2 ]
+            SalvageSpecialist: [ 2, 3 ]
             #civilian (3+)
             Passenger: [ -1, -1 ] #infinite, not counted
             Prisoner: [ 2, 2 ] #claw command

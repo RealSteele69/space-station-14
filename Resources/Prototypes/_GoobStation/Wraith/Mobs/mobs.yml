@@ -41,12 +41,13 @@
     altDisarm: false
     angle: 0
     animation: WeaponArcBite
+    attackRate: 0.8 # Claw Command - nerf, was 1
     soundHit:
       path: /Audio/Effects/bone_rattle.ogg
     damage:
       types:
-        Blunt: 15
-        Structural: 30
+        Blunt: 8 # Claw Command - nerf, was 15
+        Structural: 20 # Claw Command - nerf, was 30
   - type: MobState
   - type: Fixtures
     fixtures:
@@ -216,8 +217,9 @@
           - MobMask
         layer:
           - MobLayer
+  # Claw Command - nerf: was HeavyArmorSyndi with 20 health. Its flat 10 blunt reduction made
+  # fists, toolboxes and most blunt melee do nothing, so it's unarmored with a bit more health instead.
   - type: Damageable
-    damageModifierSet: HeavyArmorSyndi # Massive daamge reduction, but very low health.
   - type: NoSlip
   - type: Pullable
   - type: Speech
@@ -226,7 +228,7 @@
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 20
+          damage: 35
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
@@ -280,7 +282,7 @@
       collection: AlienClaw
     damage:
       types:
-        Slash: 10
+        Slash: 7 # Claw Command - nerf, was 10
   - type: NoSlip
   - type: Pullable
   - type: InputMover
@@ -409,7 +411,7 @@
       collection: AlienClaw
     damage:
       types:
-        Slash: 12
+        Slash: 8 # Claw Command - nerf, was 12
   - type: NoSlip
   - type: Pullable
   - type: InputMover
@@ -452,11 +454,12 @@
     altDisarm: false
     angle: 0
     animation: WeaponArcClaw
+    attackRate: 0.8 # Claw Command - nerf, was 1
     soundHit:
       collection: AlienClaw
     damage:
       types:
-        Piercing: 10
+        Piercing: 7 # Claw Command - nerf, was 10
   - type: MobState
   - type: Fixtures
     fixtures:
@@ -481,7 +484,7 @@
         maxDistance: 12
         variation: 0.05
   - type: Damageable
-    damageModifierSet: HeavyArmorSyndi
+    damageModifierSet: Metallic # Claw Command - nerf, was HeavyArmorSyndi (flat 10 blunt reduction)
   - type: PointLight
     enabled: true
     color: "#790c24"
@@ -521,11 +524,12 @@
     altDisarm: false
     angle: 0
     animation: WeaponArcClaw
+    attackRate: 0.8 # Claw Command - nerf, was 1
     soundHit:
       collection: AlienClaw
     damage:
       types:
-        Piercing: 15
+        Piercing: 9 # Claw Command - nerf, was 15
   - type: Destructible
     thresholds:
       - trigger:
@@ -573,16 +577,17 @@
     altDisarm: false
     angle: 0
     animation: WeaponArcClaw
+    attackRate: 0.8 # Claw Command - nerf, was 1
     soundHit:
       collection: AlienClaw
     damage:
       types:
-        Slash: 13
+        Slash: 9 # Claw Command - nerf, was 13
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepHeavySuit
   - type: Damageable
-    damageModifierSet: HeavyArmorSyndi
+    damageModifierSet: Metallic # Claw Command - nerf, was HeavyArmorSyndi (flat 10 blunt reduction)
   - type: Destructible
     thresholds:
       - trigger:

@@ -2,6 +2,7 @@
 
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
+using Content.Shared.Magic.Events;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
@@ -18,6 +19,25 @@ public sealed partial class DivineInterventionSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private INetManager _net = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        // Heretic touch spells and area effects ask this before landing on someone.
+        SubscribeLocalEvent<BeforeCastTouchSpellEvent>(OnBeforeCastTouchSpell);
+    }
+
+    private void OnBeforeCastTouchSpell(BeforeCastTouchSpellEvent args)
+    {
+        if (args.Cancelled || !ShouldDeny(args.Target, out var denyingItem) || denyingItem is not { } item)
+            return;
+
+        args.Cancel();
+
+        if (args.DoEffects)
+            DenialEffects(item, args.Target);
+    }
 
     /// <summary>
     /// Is the target protected by a held or correctly worn holy item?

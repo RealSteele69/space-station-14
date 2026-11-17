@@ -1,0 +1,127 @@
+<Document>
+# Chaplain
+There's something about the vast infinity of space that turns people to prayer... especially if they get thrown into it without a space suit.
+
+As the chaplain you tend to the spiritual needs of the crew: sermons over the radio, funerals, weddings and the occasional exorcism. Besides your office, the chapel, the crematorium and the morgue, you have no special access.
+
+<Box>
+  <GuideEntityEmbed Entity="Bible"/>
+  <GuideEntityEmbed Entity="Nullrod"/>
+  <GuideEntityEmbed Entity="CosmicCenser"/>
+</Box>
+
+## Religions
+You are free to preach any present-day religion you know of, or invent one of your own! Just make sure it doesn't go against NanoTrasen and its values, or you may well end up in the brig.
+
+## The Null Rod
+You start with a [bold]null rod[/bold] in your bag. It is your defence against the forces of evil.
+- [color=#a4885c][bold]While held, it makes you immune to unholy magic[/bold][/color]: heretic grasps and curses, the devil's grip and cosmic cult abilities fizzle against you, and magic bolts are reflected.
+- Its strikes deal [bold]holy damage[/bold], which only hurts the unholy. Ordinary crew shrug it off.
+- [bold]Bind[/bold] it to yourself through its right-click menu. Once bound, you can pray at any altar and pick [bold]Recall null rod[/bold] to summon it back into your hands.
+
+### Reforging the null rod
+Use your plain null rod on a dedicated altar to reforge it into that god's holy weapon. You only get one choice, so pick carefully! Your binding follows the rod to its new form.
+
+<Box>
+  <GuideEntityEmbed Entity="HolyClaymore"/>
+  <GuideEntityEmbed Entity="Rosary"/>
+  <GuideEntityEmbed Entity="GodHand"/>
+  <GuideEntityEmbed Entity="ArrythmicKnife"/>
+</Box>
+<Box>
+  <GuideEntityEmbed Entity="MonkStaff"/>
+  <GuideEntityEmbed Entity="AtheistFedora"/>
+  <GuideEntityEmbed Entity="Bulwark"/>
+  <GuideEntityEmbed Entity="HonkmotherMaw"/>
+</Box>
+<Box>
+  <GuideEntityEmbed Entity="UristHand"/>
+  <GuideEntityEmbed Entity="HolyChainsaw"/>
+  <GuideEntityEmbed Entity="ClothingBeltHolsterFilledChaplain"/>
+  <GuideEntityEmbed Entity="RatvarianSpear"/>
+</Box>
+<Box>
+  <GuideEntityEmbed Entity="DragonsTail"/>
+  <GuideEntityEmbed Entity="InquisitorChainSword"/>
+</Box>
+
+- [bold]Heaven altar - holy claymore:[/bold] a two-handed sword. Wield it to fire a holy bolt that marks a target; your next hit on them deals extra holy damage and heals you.
+- [bold]Space-Christian altar - rosary:[/bold] hold it and choose [bold]Pray to[/bold]. Every prayer heals everyone around you and burns the unholy. Holding it also speeds you up a little.
+- [bold]Chaos altar - hand of god:[/bold] a fiery hand that sets targets alight and can pry open doors. It can't be dropped.
+- [bold]Fanged altar - arrythmic knife:[/bold] a fast blade that randomly speeds you up and slows you down.
+- [bold]Druid altar - monk's staff:[/bold] fast, stamina-crushing strikes. Great for subduing without killing.
+- [bold]Nanotrasen altar - atheist's fedora:[/bold] wear it to stay protected from magic, or throw it and it flies back to you.
+- [bold]Blue altar - bulwark:[/bold] a huge shield that blocks most of what hits you. It knocks targets back and lets you dash, but it is heavy.
+- [bold]Honkmother altar - honkmother's maw:[/bold] a hammer that knocks people over every few seconds. Honk.
+- [bold]Maint altar - grey emperor's glove:[/bold] a long-reach glove that works as every basic tool and insulates you while held. It can't be dropped.
+- [bold]Toolbox altar - his holy chainsaw:[/bold] a two-handed chainsaw that tears through people and walls alike. It can't be dropped.
+- [bold]Technology altar - Casul and Jackal:[/bold] a holster with twin silver pistols. They only fire while you hold both, and [bold]Pray to[/bold] either one to reload it.
+- [bold]Clockwork altar - ancient spear:[/bold] a long-reach spear that can be thrown, sticks into targets and can be loaded with chemicals.
+- [bold]Draconic altar - dragon's tail:[/bold] a long-reach whip that sets targets alight.
+- [bold]Imperial altar - chain sword:[/bold] [bold]Pray to[/bold] it to rev it up for 20 seconds of brutal damage. It can only do that once every two minutes.
+
+Only bible users can pray to these weapons.
+
+## Altars
+Build a [bold]convert altar[/bold] from 3 steel and 1 cloth (it's in the construction menu under structures), then place an offering on it to dedicate it:
+
+<Box>
+  <GuideEntityEmbed Entity="AltarConvert"/>
+  <GuideEntityEmbed Entity="AltarHeaven"/>
+  <GuideEntityEmbed Entity="AltarSpaceChristian"/>
+  <GuideEntityEmbed Entity="AltarChaos"/>
+</Box>
+<Box>
+  <GuideEntityEmbed Entity="AltarFangs"/>
+  <GuideEntityEmbed Entity="AltarDruid"/>
+  <GuideEntityEmbed Entity="AltarNanotrasen"/>
+  <GuideEntityEmbed Entity="AltarConvertBlue"/>
+</Box>
+<Box>
+  <GuideEntityEmbed Entity="AltarConvertMaint"/>
+  <GuideEntityEmbed Entity="AltarToolbox"/>
+  <GuideEntityEmbed Entity="AltarTechnology"/>
+  <GuideEntityEmbed Entity="AltarClock"/>
+</Box>
+<Box>
+  <GuideEntityEmbed Entity="AltarDragon"/>
+  <GuideEntityEmbed Entity="AltarEmpire"/>
+  <GuideEntityEmbed Entity="AltarBananium"/>
+</Box>
+
+- Heaven altar: 1 knight helmet
+- Space-Christian altar: 1 nun hood
+- Chaos altar: 1 plasma
+- Fanged altar: 1 raw meat
+- Druid altar: 1 wooden plank
+- Nanotrasen altar: 1 plasteel
+- Blue altar: 1 makeshift shield
+- Maint altar: 1 pair of budget insulated gloves
+- Toolbox altar: 1 toolbox
+- Technology altar: 1 manipulator
+- Clockwork altar: 1 small power cell
+- Draconic altar: 1 carp plushie
+- Imperial altar: 1 book
+
+Pry a dedicated altar to take the offering back and return it to a convert altar. The honkmother altar is built on its own from 6 bananium.
+
+## Holy Water
+Use your bible on a cup, bottle, beaker or spray bottle with water in it to [bold]bless[/bold] the water into holy water. Holy water:
+- burns the unholy when they drink it or get splashed with it,
+- [bold]purges cult influence[/bold]: spraying or splashing a [textlink="blood cultist" link="BloodCult"] or [textlink="cosmic cultist" link="CosmicCult"] with at least 5u, or getting 5u into their stomach, starts cleansing them. After a short while of shaking, they return to the crew's side,
+- washes away blood cult runes,
+- is still water, so it quenches thirst and soothes small wounds for everyone else.
+
+## Metaphysical Threats
+As chaplain you are the first line of defence against the unholy. [bold]Blood cultists, cosmic cultists, [textlink="heretics" link="Heretics"] and [textlink="devils" link="Devil"][/bold] are weak to holy damage: your null rod, the rosary's prayers and holy water all hurt them. Your bible can smite them too.
+
+A [textlink="cosmic cultist" link="CosmicCultDeconversion"] can also be cleansed with your censer.
+
+[color=red][bold]Using excessive force against people you can't confirm are metaphysical threats may land you in trouble with the law. Investigate carefully before you smite.[/bold][/color]
+
+## Duties
+- Church services: give sermons and sing hymns.
+- Proselytising: most crew members are godless heathens, show them your god's love.
+- Burial services: security or medical may need someone, or something, cremated. Know your chapel so you can do it quickly.
+- Metaphysical investigation: most crew aren't aware of the threats posed by the unholy, so keep an eye out for anything suspicious.
+</Document>

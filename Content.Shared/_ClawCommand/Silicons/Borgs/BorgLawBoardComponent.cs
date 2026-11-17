@@ -11,9 +11,17 @@ namespace Content.Shared._ClawCommand.Silicons.Borgs;
 /// a do-after. Installing / removing a board rewrites the borg's laws (see the server-side
 /// <c>BorgLawBoardSystem</c>), and a borg with no board at all can't be activated.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class BorgLawBoardComponent : Component
 {
+    /// <summary>
+    /// Set when an admin rewrites this borg's laws through the law editor. Those laws win over the board
+    /// system's automatic swaps (the module-type department board), and let a borg with no board in run
+    /// anyway. A board being installed or pulled out by hand afterwards clears it.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool AdminLaws;
+
     /// <summary>
     /// The <c>ItemSlots</c> slot the law board sits in.
     /// </summary>

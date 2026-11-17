@@ -1258,6 +1258,22 @@
             Heat: -0.2
             Shock: -0.2
             Cold: -0.2
+      # Claw Command - burns the unholy from within; holy damage only lands on them.
+      - !type:HealthChange
+        damage:
+          types:
+            Holy: 1
+      # Claw Command - enough holy water in the system purges cult influence.
+      - !type:PurifyBloodCult
+        conditions:
+        - !type:ReagentCondition
+          reagent: Holywater
+          min: 5
+      - !type:CleanseCosmicCult
+        conditions:
+        - !type:ReagentCondition
+          reagent: Holywater
+          min: 5
   reactiveEffects:
     Extinguish: # same as BaseDrink, therefore same as Water
       methods: [ Touch ]
@@ -1271,6 +1287,11 @@
         damage:
           types:
             Holy: 0.5
+      # Claw Command - a proper dousing (a spray or splash) starts purging cult influence.
+      - !type:PurifyBloodCult
+        minScale: 5
+      - !type:CleanseCosmicCult
+        minScale: 5
 
 - type: reagent
   id: Pyrazine

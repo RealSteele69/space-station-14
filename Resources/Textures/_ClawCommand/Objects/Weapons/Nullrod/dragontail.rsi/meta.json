@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "made by the_biggestbruh, resprite by RedTerror Ported via Goob-Station (https://github.com/Goob-Station/Goob-Station, Resources/Textures/_ShitChap/Objects/Weapons/Nullrod/dragontail.rsi) at commit 707e36693d1d9289a4f04921c5e070b1e4195589.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        }
+    ]
+}

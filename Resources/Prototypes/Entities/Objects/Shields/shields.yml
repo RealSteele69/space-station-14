@@ -247,6 +247,9 @@
     - type: Construction
       graph: MakeshiftShield
       node: makeshiftShield
+    - type: Tag # Claw Command - blue altar offering
+      tags:
+      - MakeshiftShield
     - type: Destructible
       thresholds:
       - trigger:

@@ -37,6 +37,7 @@ shadekinenergy-alert-energy = [font size=12][color=green]Energy: {$energy}/{$ene
 shadekin-restraint-too-far = You can't reach them.
 shadekin-restraint-not-shadekin = The restraints only mean something to a shadekin.
 shadekin-restraint-already = { CAPITALIZE($target) } is already bound by restraints.
+shadekin-restraint-ethereal = { CAPITALIZE($target) } is slipping through the Dark - the restraints can't take hold.
 shadekin-restraint-begin = You press the restraints against { $target }...
 shadekin-restraint-equip-fail = You can't get the restraints onto { $target } - the sever took hold, but they're not wearing them.
 shadekin-restraint-portal-fail = The Dark recoils from you. The way is shut.

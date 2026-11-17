@@ -247,7 +247,8 @@ public sealed partial class BorgLawBoardSystem : EntitySystem
         if (args.Cancelled)
             return;
 
-        if (!HasLawBoard(ent.AsNullable()))
+        // Admin-set laws count as a lawset even without a board to back them.
+        if (!HasLawBoard(ent.AsNullable()) && !ent.Comp.AdminLaws)
             args.Cancelled = true;
     }
 }

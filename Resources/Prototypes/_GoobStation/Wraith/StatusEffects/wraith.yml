@@ -21,6 +21,8 @@
   name: rally
   components:
   - type: Rallied
+    ralliedStrength: 1.2 # Claw Command - nerf, was 1.5
+    ralliedAttackSpeed: 1.2 # Claw Command - nerf, was 1.5 (both together were 2.25x DPS)
 
 # Spiker - Shuffle
 # Results -> Makes it a small mob and removes all stuns

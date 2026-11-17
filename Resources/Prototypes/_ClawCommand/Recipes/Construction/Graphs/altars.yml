@@ -1,0 +1,335 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Convert altar: build it from steel and cloth, then place an offering on it to dedicate it to a god.
+# Each dedicated altar reforges the chaplain's null rod into a different holy weapon.
+# Prying a dedicated altar returns the offering and turns it back into a convert altar.
+# The honkmother altar keeps its own BananiumAltarGraph.
+
+- type: constructionGraph
+  id: AltarsGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Steel
+        amount: 3
+        doAfter: 3
+      - material: Cloth
+        amount: 1
+        doAfter: 1
+
+  - node: AltarConvertNode
+    entity: AltarConvert
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 3
+      - !type:SpawnPrototype
+        prototype: MaterialCloth1
+        amount: 1
+      - !type:DeleteEntity {}
+      conditions:
+      - !type:EntityAnchored
+        anchored: false
+      steps:
+      - tool: Prying
+        doAfter: 3
+    - to: ChaosAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Plasma
+        amount: 1
+        doAfter: 3
+    - to: DruidAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: WoodPlank
+        amount: 1
+        doAfter: 3
+    - to: FangedAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: Meat
+        name: construction-graph-tag-meat
+        icon:
+          sprite: Objects/Consumable/Food/meat.rsi
+          state: plain
+        doAfter: 3
+    - to: BlueAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: MakeshiftShield
+        name: construction-graph-tag-makeshift-shield
+        icon:
+          sprite: Objects/Weapons/Melee/shields.rsi
+          state: makeshift-icon
+        doAfter: 3
+    - to: HeavenAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: TemplarHelmet
+        name: construction-graph-tag-templar-helmet
+        icon:
+          sprite: Clothing/Head/Helmets/templar.rsi
+          state: icon
+        doAfter: 3
+    - to: MaintsAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: BudgetInsuls
+        name: construction-graph-tag-budget-insuls
+        icon:
+          sprite: Clothing/Hands/Gloves/Color/yellow.rsi
+          state: icon
+        store: altar_offering
+        doAfter: 3
+    - to: NanotrasenAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Plasteel
+        amount: 1
+        doAfter: 3
+    - to: SpaceChristianAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: NunHood
+        name: construction-graph-tag-nun-hood
+        icon:
+          sprite: Clothing/Head/Hoods/nun.rsi
+          state: icon
+        doAfter: 3
+    - to: TechnologyAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - material: Manipulator
+        amount: 1
+        doAfter: 3
+    - to: ToolAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: Toolbox
+        name: construction-graph-tag-toolbox
+        icon:
+          sprite: Objects/Tools/Toolboxes/toolbox_red.rsi
+          state: icon
+        doAfter: 3
+    - to: ClockAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: PowerCellSmall
+        name: construction-graph-tag-power-cell-small
+        icon:
+          sprite: Objects/Power/power_cells.rsi
+          state: small
+        doAfter: 3
+    - to: DragonAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: PlushieCarp
+        name: construction-graph-tag-plushie-carp
+        icon:
+          sprite: Objects/Fun/Plushies/carp.rsi
+          state: carpplush
+        doAfter: 3
+    - to: EmpireAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: Book
+        name: construction-graph-tag-book
+        icon:
+          sprite: Objects/Misc/books.rsi
+          state: book_icon
+        doAfter: 3
+
+  - node: ChaosAltarNode
+    entity: AltarChaos
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetPlasma1
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: DruidAltarNode
+    entity: AltarDruid
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: FangedAltarNode
+    entity: AltarFangs
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: FoodMeatBacon
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: BlueAltarNode
+    entity: AltarConvertBlue
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: MakeshiftShield
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: HeavenAltarNode
+    entity: AltarHeaven
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: ClothingHeadHelmetTemplar
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: MaintsAltarNode
+    entity: AltarConvertMaint
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:EmptyContainer
+        container: altar_offering
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: NanotrasenAltarNode
+    entity: AltarNanotrasen
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetPlasteel1
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: SpaceChristianAltarNode
+    entity: AltarSpaceChristian
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: ClothingHeadHatHoodNunHood
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: TechnologyAltarNode
+    entity: AltarTechnology
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: MicroManipulatorStockPart
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: ToolAltarNode
+    entity: AltarToolbox
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: ToolboxEmergency
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: ClockAltarNode
+    entity: AltarClock
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: PowerCellSmallPrinted
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: DragonAltarNode
+    entity: AltarDragon
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: PlushieCarp
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: EmpireAltarNode
+    entity: AltarEmpire
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: BookRandom
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+- type: construction
+  parent: BaseStructureFullTile
+  id: AltarConvert
+  graph: AltarsGraph
+  targetNode: AltarConvertNode

@@ -73,10 +73,15 @@ namespace Content.Shared._ClawCommand.HereticAdapters
     public static class MagicSystemHereticExtensions
     {
         /// <summary>
-        /// Adapter for Goob's IsTouchSpellDenied. Upstream has no equivalent; default
-        /// "not denied". The Goob hook was used to let antimagic gear block touch spells.
+        /// Adapter for Goob's IsTouchSpellDenied: asks whether held/worn holy items (null rods) on
+        /// <paramref name="target"/> block a touch spell, playing the denial effects if so.
         /// </summary>
-        public static bool IsTouchSpellDenied(this SharedMagicSystem _, EntityUid user, EntityUid target = default) => false;
+        public static bool IsTouchSpellDenied(this SharedMagicSystem _, EntityUid target)
+        {
+            var ev = new Content.Shared.Magic.Events.BeforeCastTouchSpellEvent(target);
+            IoCManager.Resolve<IEntityManager>().EventBus.RaiseLocalEvent(target, ev, true);
+            return ev.Cancelled;
+        }
     }
 
     /// <summary>

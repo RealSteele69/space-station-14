@@ -1,0 +1,63 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Extra altars that reforge the chaplain's null rod.
+
+- type: entity
+  parent: AltarBaseSteel
+  id: AltarClock
+  name: clockwork altar
+  description: Altar of Ratvar.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Structures/Altars/clockaltar.rsi
+    state: clock
+  - type: Icon
+    sprite: _ClawCommand/Structures/Altars/clockaltar.rsi
+    state: clock
+  - type: Construction
+    graph: AltarsGraph
+    node: ClockAltarNode
+  - type: AltarSource
+    rodProto: RatvarianSpear
+
+- type: entity
+  parent: AltarBaseSteel
+  id: AltarDragon
+  name: draconic altar
+  description: Altar of the dragons.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Structures/Altars/dragonaltar.rsi
+    layers:
+    - state: dragonaltar
+    - state: miniportal
+      shader: unshaded
+  - type: Icon
+    sprite: _ClawCommand/Structures/Altars/dragonaltar.rsi
+    state: dragonaltar
+  - type: PointLight
+    color: "#366db5"
+    radius: 1.5
+    energy: 1
+  - type: Construction
+    graph: AltarsGraph
+    node: DragonAltarNode
+  - type: AltarSource
+    rodProto: DragonsTail
+
+- type: entity
+  parent: AltarBaseWood
+  id: AltarEmpire
+  name: imperial altar
+  description: Altar of the Great Emperor.
+  components:
+  - type: Sprite
+    sprite: _ClawCommand/Structures/Altars/empirealtar.rsi
+    state: empire
+  - type: Icon
+    sprite: _ClawCommand/Structures/Altars/empirealtar.rsi
+    state: empire
+  - type: Construction
+    graph: AltarsGraph
+    node: EmpireAltarNode
+  - type: AltarSource
+    rodProto: InquisitorChainSword

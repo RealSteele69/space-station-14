@@ -395,7 +395,7 @@
       prob: 0.6
     - !type:NestedSelector
       tableId: CCSyndicateInfiltrationTable
-      prob: 0.5
+      prob: 0.6 # Claw Command - was 0.5
     - !type:NestedSelector
       tableId: CCSleeperAgentsTable
       prob: 0.14
@@ -404,16 +404,16 @@
       prob: 0.5
     - !type:NestedSelector
       tableId: CCHostileMobLightTable
-      prob: 0.5
+      prob: 0.8 # Claw Command - was 0.5
     - !type:NestedSelector
       tableId: CCHostileMobHeavyTable
-      prob: 0.2
+      prob: 0.35 # Claw Command - was 0.2
     - !type:NestedSelector
       tableId: CCHostileMobBossTable
-      prob: 0.05
+      prob: 0.08 # Claw Command - was 0.05
     - !type:NestedSelector
       tableId: CCLrpAntagEventsTable
-      prob: 0.1
+      prob: 0.15 # Claw Command - was 0.1
 
 - type: entityTable
   id: CCSecretMediumEventsTable
@@ -427,8 +427,10 @@
       tableId: CCIonStormEventsTable
     - !type:NestedSelector
       tableId: CCVerminEventsTable
+      prob: 0.7 # Claw Command - harmless filler, was always in
     - !type:NestedSelector
       tableId: CargoGiftsTable
+      prob: 0.7 # Claw Command - was always in
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
       prob: 0.7
@@ -443,13 +445,14 @@
       prob: 0.6
     - !type:NestedSelector
       tableId: CCHostileMobLightTable
-      prob: 0.7
+      prob: 1 # Claw Command - was 0.7
     - !type:NestedSelector
       tableId: CCHostileMobHeavyTable
-      prob: 0.45
+      prob: 0.6 # Claw Command - was 0.45, now rolled twice
+      rolls: 2
     - !type:NestedSelector
       tableId: CCHostileMobBossTable
-      prob: 0.15
+      prob: 0.2 # Claw Command - was 0.15
     - !type:NestedSelector
       tableId: CCLrpAntagEventsTable
       prob: 0.3
@@ -466,8 +469,10 @@
       tableId: CCIonStormEventsTable
     - !type:NestedSelector
       tableId: CCVerminEventsTable
+      prob: 0.4 # Claw Command - harmless filler, was always in
     - !type:NestedSelector
       tableId: CargoGiftsTable
+      prob: 0.5 # Claw Command - was always in
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
       prob: 0.8
@@ -482,16 +487,18 @@
       prob: 0.7
     - !type:NestedSelector
       tableId: CCHostileMobLightTable
-      prob: 0.85
+      prob: 1 # Claw Command - was 0.85, now rolled twice
+      rolls: 2
     - !type:NestedSelector
       tableId: CCHostileMobHeavyTable
-      prob: 0.7
+      prob: 0.9 # Claw Command - was 0.7, now rolled twice
+      rolls: 2
     - !type:NestedSelector
       tableId: CCHostileMobBossTable
-      prob: 0.3
+      prob: 0.4 # Claw Command - was 0.3
     - !type:NestedSelector
       tableId: CCLrpAntagEventsTable
-      prob: 0.5
+      prob: 0.6 # Claw Command - was 0.5
 
 # ---------------------------------------------------------------------------
 # Meteors

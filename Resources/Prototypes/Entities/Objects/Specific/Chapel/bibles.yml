@@ -6,6 +6,7 @@
   components:
   - type: UseDelay
     delay: 10.0
+  - type: WaterBlesser # Claw Command - bless water into holy water
   - type: Bible
     damage:
       types:

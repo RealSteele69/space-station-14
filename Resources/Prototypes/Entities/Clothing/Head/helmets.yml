@@ -251,6 +251,10 @@
     sprite: Clothing/Head/Helmets/templar.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/templar.rsi
+  - type: Tag # Claw Command - heaven altar offering
+    tags:
+    - WhitelistChameleon
+    - TemplarHelmet
   - type: Item
     storedRotation: 0
   - type: IngestionBlocker

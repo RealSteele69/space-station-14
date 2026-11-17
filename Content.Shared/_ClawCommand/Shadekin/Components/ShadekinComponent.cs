@@ -37,9 +37,12 @@ public sealed partial class ShadekinComponent : Component
     /// <summary>
     ///     If true, the shadekin is a Blackeye (This also affect spawning).
     /// </summary>
-    [DataField]
+    /// <remarks>
+    ///     Claw Command - networked: the shared dark-portal gates read it, so the client must agree.
+    /// </remarks>
+    [DataField, AutoNetworkedField]
     public bool Blackeye = true;
 
-    [DataField]
+    [DataField, AutoNetworkedField] // Claw Command - also read by the shared dark-hub gate.
     public bool Rejuvenating;
 }

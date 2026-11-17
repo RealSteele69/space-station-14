@@ -192,12 +192,13 @@
     altDisarm: false
     angle: 0
     animation: WeaponArcPunch
+    attackRate: 0.8 # Claw Command - nerf, was 1
     soundHit:
       path: /Audio/_GoobStation/Wraith/Attack/Flesh_Tear_2.ogg
     damage:
       types:
-        Slash: 10
-        Blunt: 5
+        Slash: 7 # Claw Command - nerf, was 10
+        Blunt: 4 # Claw Command - nerf, was 5
         Structural: 50
   - type: MobThresholds
     thresholds:

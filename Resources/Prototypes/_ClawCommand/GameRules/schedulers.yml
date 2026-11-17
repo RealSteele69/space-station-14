@@ -11,11 +11,10 @@
 #   initialChaos vs averageChaos -> how steep the ramp is (how much worse hour two is)
 #   minEventTime / maxEventTime  -> the pacing band the ramp is applied to
 #
-# Both modes share initialChaos per difficulty (0.55 / 0.75 / 0.9), so the two open at the
-# same relative calm. The difference is the band: Extended Irregular applies the ramp to a
-# wide, slow 10-25 min window, Secret to a tighter 7-16.7 min one. That keeps Secret shorter
-# between events than Extended Irregular at every point of the shift without Secret's opening
-# hour feeling frantic.
+# Extended Irregular uses initialChaos 0.55 / 0.75 / 0.9 per difficulty. Secret Easy and Hard
+# open hotter than that (0.7 / 1.2) because both played too quiet; Secret Medium matches. On top
+# of that Extended Irregular applies the ramp to a wide, slow 10-25 min window, Secret to a
+# tighter 7-16.7 min one, which keeps Secret shorter between events at every point of the shift.
 #
 # Roughly, minutes between events at round start / 60 min in / plateau. The plateau is the
 # permanent floor once the ramp tops out, so it is the number that decides how a long round
@@ -23,9 +22,9 @@
 #   Irregular Easy    18-45  /  9-23   /  6.1-15.2
 #   Irregular Medium  13-33  /  7-17   /  4.4-11.1
 #   Irregular Hard    11-28  /  5-13   /  3.4-8.6
-#   Secret Easy       13-30  /  6.6-16 /  4.7-11.1
+#   Secret Easy       10-24  /  5.4-13 /  3.9-9.3
 #   Secret Medium      9-22  /  4.6-11 /  3.3-7.9
-#   Secret Hard        8-19  /  3.4-8  /  2.5-5.8
+#   Secret Hard        6-14  /  2.8-6.8 / 2.1-5.1
 
 # ---------------------------------------------------------------------------
 # Extended Irregular
@@ -85,8 +84,8 @@
   - type: RampingStationEventScheduler
     minEventTime: 420
     maxEventTime: 1000
-    initialChaos: 0.55
-    averageChaos: 0.95
+    initialChaos: 0.7 # Claw Command - was 0.55
+    averageChaos: 1.1 # Claw Command - was 0.95
     averageEndTime: 110
     scheduledGameRules: !type:NestedSelector
       tableId: CCSecretEasyEventsTable
@@ -113,8 +112,8 @@
   - type: RampingStationEventScheduler
     minEventTime: 420
     maxEventTime: 1000
-    initialChaos: 0.9
-    averageChaos: 1.95
+    initialChaos: 1.2 # Claw Command - was 0.9
+    averageChaos: 2.1 # Claw Command - was 1.95
     averageEndTime: 100
     scheduledGameRules: !type:NestedSelector
       tableId: CCSecretHardEventsTable

@@ -145,6 +145,7 @@
     tags:
     - HamsterWearable
     - WhitelistChameleon
+    - NunHood # Claw Command - space-Christian altar offering
   - type: HideLayerClothing
     slots:
     - Hair

@@ -13,17 +13,31 @@
     cost: 200
   - id: WeaponGrapplingGun
     cost: 300
+  - id: ClothingShoesBootsJack
+    cost: 300
   - id: FultonBeacon
     cost: 400
   - id: ClothingBeltSalvageWebbing
+    cost: 500
+  - id: ClothingHandsGlovesCombat
+    cost: 500
+  - id: WeaponCrusherDagger
     cost: 500
   - id: MedkitBruteFilled
     cost: 600
   - id: MedkitBurnFilled
     cost: 600
+  - id: MedkitToxinFilled
+    cost: 600
+  - id: MedkitRadiationFilled
+    cost: 600
+  - id: WeaponCrusher
+    cost: 750
   - id: WeaponCrusherHammer
     cost: 750
   - id: WeaponProtoKineticPistol
+    cost: 750
+  - id: WeaponProtoKineticAccelerator
     cost: 750
   - id: AdvancedMineralScanner
     cost: 800
@@ -31,15 +45,43 @@
     cost: 800
   - id: Fulton
     cost: 1000
+  - id: PKAUpgradeDamage
+    cost: 1000
+  - id: PKAUpgradeFireRate
+    cost: 1000
+  - id: PKAUpgradeRange
+    cost: 1000
+  - id: MiningDrillDiamond
+    cost: 1000
+  - id: ShelterCapsule
+    cost: 1000
+  - id: LavalandEquipmentExplorerSuit
+    cost: 1000
   - id: ClothingBackpackDuffelSalvage
     cost: 1500
   - id: LuxuryMedipen
+    cost: 1500
+  - id: WeaponCrusherGlaive
+    cost: 1500
+  - id: WeaponCrusherHalberd
+    cost: 1500
+  - id: WeaponProtoKineticRepeater
+    cost: 1500
+  - id: WeaponProtoKineticShotgun
+    cost: 1500
+  - id: BorgModuleAdvancedMining
+    cost: 1500
+  - id: OreBagOfHolding
     cost: 1500
   - id: ClothingEyesNightVisionGoggles
     cost: 2000
   - id: SpaceCash1000
     cost: 2000
+  - id: ShelterCapsuleLuxury
+    cost: 3000
   - id: ClothingOuterHardsuitSalvage
     cost: 3000
+  - id: ClothingOuterHardsuitLuxury
+    cost: 5000
   - id: SeismicCharge
     cost: 6250

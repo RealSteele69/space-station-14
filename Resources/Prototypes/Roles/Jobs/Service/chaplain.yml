@@ -6,7 +6,7 @@
   startingGear: ChaplainGear
   icon: "JobIconChaplain"
   supervisors: job-supervisors-hop
-  guides: [ Service ] # TODO: should have a more specific guidebook page instead of using the department itself
+  guides: [ Chaplain ] # Claw Command - dedicated chaplain page
   access:
   - Chapel
   - Maintenance
@@ -26,6 +26,7 @@
     back:
     - RubberStampChaplain
     - CosmicCenser # Claw Command - Cosmic Cult counterplay
+    - Nullrod # Claw Command
 
 - type: chameleonOutfit
   id: ChaplainChameleonOutfit

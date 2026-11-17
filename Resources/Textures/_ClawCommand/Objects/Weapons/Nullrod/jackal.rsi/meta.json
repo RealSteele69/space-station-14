@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken at commit https://github.com/Space-Stories/space-station-14/commit/9f417bc5b0e90d5d45ed7f0fd3dd84e070770672, resprite by VictorJob Ported via Goob-Station (https://github.com/Goob-Station/Goob-Station, Resources/Textures/_ShitChap/Objects/Weapons/Nullrod/jackal.rsi) at commit 707e36693d1d9289a4f04921c5e070b1e4195589.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        }
+    ]
+}

@@ -5,6 +5,7 @@ using Content.Shared.Emag.Systems;
 using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
+using Content.Shared.Interaction.Components; // Claw Command
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
 using Content.Shared.Storage;
@@ -33,6 +34,7 @@ public sealed partial class LockSystem : EntitySystem
     [Dependency] private SharedPopupSystem _sharedPopupSystem = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private SharedWiresSystem _wires = default!; // Claw Command - admin ghost locking
 
     private readonly LocId _defaultDenyReason = "lock-comp-has-user-access-fail";
 
@@ -427,6 +429,15 @@ public sealed partial class LockSystem : EntitySystem
 
         if (!TryComp<WiresPanelComponent>(ent, out var panel) || !panel.Open)
             return;
+
+        // Claw Command - admin ghosts aren't held up by an open panel: on a real lock attempt (not the
+        // silent verb-menu check) the panel is closed for them first, since it can't be closed once locked.
+        if (HasComp<BypassInteractionChecksComponent>(args.User))
+        {
+            if (!args.Silent && !IsLocked(ent.Owner))
+                _wires.TogglePanel(ent, panel, false, args.User);
+            return;
+        }
 
         if (!args.Silent)
         {

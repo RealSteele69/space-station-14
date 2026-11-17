@@ -1,3 +1,4 @@
+using Content.Server._ClawCommand.Silicons.Borgs; // Claw Command
 using Content.Server.Administration.Managers;
 using Content.Server.EUI;
 using Content.Shared.Administration;
@@ -53,7 +54,10 @@ public sealed class SiliconLawEui : BaseEui
 
         var player = _entityManager.GetEntity(message.Target);
         if (_entityManager.TryGetComponent<SiliconLawProviderComponent>(player, out var playerProviderComp))
+        {
             _siliconLawSystem.SetLaws(message.Laws, player, playerProviderComp.LawUploadSound);
+            _entityManager.System<BorgLawBoardLawSystem>().ApplyAdminLaws(player); // Claw Command - law boards
+        }
     }
 
     private bool IsAllowed()

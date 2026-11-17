@@ -46,3 +46,25 @@ public sealed partial class DivineInterventionComponent : Component
 /// </summary>
 [Serializable, NetSerializable]
 public sealed partial class ExorcismDoAfterEvent : SimpleDoAfterEvent;
+
+/// <summary>
+/// Lets bible users bless the water in a container into holy water by using this item on it.
+/// </summary>
+[RegisterComponent, NetworkedComponent]
+public sealed partial class WaterBlesserComponent : Component
+{
+    [DataField]
+    public TimeSpan BlessTime = TimeSpan.FromSeconds(3);
+
+    [DataField]
+    public SoundSpecifier BlessSound = new SoundPathSpecifier("/Audio/Effects/holy.ogg");
+
+    [DataField]
+    public EntProtoId BlessEffect = "EffectSparks";
+}
+
+/// <summary>
+/// A chaplain blessing the water in a container with a <see cref="WaterBlesserComponent"/> item.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed partial class BlessWaterDoAfterEvent : SimpleDoAfterEvent;

@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "By RedTerror Ported via Goob-Station (https://github.com/Goob-Station/Goob-Station, Resources/Textures/_ShitChap/Structures/empirealtar.rsi) at commit 707e36693d1d9289a4f04921c5e070b1e4195589.",
+    "states": [
+        {
+            "name": "empire"
+        }
+    ]
+}

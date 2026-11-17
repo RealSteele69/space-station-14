@@ -41,7 +41,7 @@ public sealed partial class CultRuneBaseComponent : Component
     public bool CanBeErased = true;
 
     [DataField]
-    public ProtoId<ReagentPrototype> HolyWater = "HolyWater";
+    public ProtoId<ReagentPrototype> HolyWater = "Holywater";
 }
 
 /// <summary>

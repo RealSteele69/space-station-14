@@ -8,6 +8,10 @@
       types:
         Poison: -0.1
         Blunt: -0.1
+        # Claw Command - burns mend too, at half the brute rate.
+        Heat: -0.05
+        Shock: -0.05
+        Caustic: -0.05
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -75,6 +79,10 @@
         Poison: -0.2
         Cold: -0.4
         Blunt: -0.2
+        # Claw Command - burns mend too, at half the brute rate.
+        Heat: -0.1
+        Shock: -0.1
+        Caustic: -0.1
   - type: Construction
     graph: bed
     node: medicalbed

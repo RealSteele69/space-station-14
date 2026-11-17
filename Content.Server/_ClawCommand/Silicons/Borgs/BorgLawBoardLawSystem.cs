@@ -4,6 +4,7 @@ using Content.Shared._ClawCommand.Silicons.Borgs;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Database;
+using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Silicons.Laws.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -20,6 +21,7 @@ public sealed partial class BorgLawBoardLawSystem : EntitySystem
 {
     [Dependency] private ISharedAdminLogManager _adminLog = default!;
     [Dependency] private BorgLawBoardSystem _lawBoard = default!;
+    [Dependency] private BorgSystem _borg = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
     [Dependency] private SiliconLawSystem _siliconLaw = default!;
 
@@ -72,6 +74,10 @@ public sealed partial class BorgLawBoardLawSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp, false))
             return;
 
+        // Laws an admin set by hand outrank the department lawset a type comes with.
+        if (ent.Comp.AdminLaws)
+            return;
+
         if (!_itemSlots.TryGetSlot(ent.Owner, ent.Comp.SlotId, out var slot))
             return;
 
@@ -87,6 +93,34 @@ public sealed partial class BorgLawBoardLawSystem : EntitySystem
         }
 
         InsertBoard((ent.Owner, ent.Comp), slot, proto);
+    }
+
+    /// <summary>
+    /// Called after an admin saves new laws onto a borg through the law editor. The installed board is
+    /// rewritten to match, so pulling it and putting it back keeps the admin's laws instead of restoring
+    /// the board's originals, and the borg stops taking its type's department board on top of them.
+    /// A borg with no board at all is allowed to run on the admin's laws alone.
+    /// </summary>
+    public void ApplyAdminLaws(Entity<BorgLawBoardComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
+        if (!TryComp<SiliconLawProviderComponent>(ent, out var laws) || laws.Lawset == null)
+            return;
+
+        ent.Comp.AdminLaws = true;
+        Dirty(ent);
+
+        if (_lawBoard.GetLawBoard(ent) is { } boardUid &&
+            TryComp<SiliconLawProviderComponent>(boardUid, out var board))
+        {
+            board.Lawset = laws.Lawset.Clone();
+        }
+        else if (TryComp<BorgChassisComponent>(ent, out var chassis))
+        {
+            _borg.TryActivate((ent.Owner, chassis));
+        }
     }
 
     private void InsertBoard(Entity<BorgLawBoardComponent> ent, ItemSlot slot, EntProtoId proto)
@@ -114,6 +148,13 @@ public sealed partial class BorgLawBoardLawSystem : EntitySystem
         // the right order relative to everything else that touches laws at spawn.
         if (LifeStage(ent.Owner) < EntityLifeStage.MapInitialized)
             return;
+
+        // Someone deliberately swapped the board, so it's back in charge of the laws.
+        if (ent.Comp.AdminLaws)
+        {
+            ent.Comp.AdminLaws = false;
+            Dirty(ent);
+        }
 
         if (args.Installed)
         {

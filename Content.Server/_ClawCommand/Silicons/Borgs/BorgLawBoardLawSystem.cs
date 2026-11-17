@@ -115,7 +115,7 @@ public sealed partial class BorgLawBoardLawSystem : EntitySystem
         if (_lawBoard.GetLawBoard(ent) is { } boardUid &&
             TryComp<SiliconLawProviderComponent>(boardUid, out var board))
         {
-            board.Lawset = laws.Lawset.Clone();
+            _siliconLaw.CopyLawset((ent.Owner, laws), (boardUid, board));
         }
         else if (TryComp<BorgChassisComponent>(ent, out var chassis))
         {

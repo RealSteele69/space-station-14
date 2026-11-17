@@ -26,6 +26,18 @@ public sealed partial class SiliconLawSystem
     }
 
     /// <summary>
+    /// Overwrites <paramref name="target"/>'s lawset with a clone of <paramref name="source"/>'s, without
+    /// notifying anyone - used to rewrite a law board's stored laws.
+    /// </summary>
+    public void CopyLawset(Entity<SiliconLawProviderComponent> source, Entity<SiliconLawProviderComponent> target)
+    {
+        if (source.Comp.Lawset == null)
+            return;
+
+        target.Comp.Lawset = source.Comp.Lawset.Clone();
+    }
+
+    /// <summary>
     /// Strips a silicon of its laws entirely - it keeps its provider component, but the lawset is empty
     /// so it doesn't fall back to the station's lawset.
     /// </summary>

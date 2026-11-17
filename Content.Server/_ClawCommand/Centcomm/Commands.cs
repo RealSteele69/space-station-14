@@ -104,7 +104,7 @@ internal sealed partial class CentcommSystem : EntitySystem
         var points = EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
         while (points.MoveNext(out _, out var spawnPoint, out var xform))
         {
-            if (spawnPoint.Job?.Id != CentcommOfficialJob)
+            if (spawnPoint.Job != CentcommOfficialJob)
                 continue;
 
             var character = (HumanoidCharacterProfile)_prefs.GetPreferences(data.UserId).SelectedCharacter;
